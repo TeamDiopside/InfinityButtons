@@ -1,11 +1,11 @@
 ---
 name: Feature request
 about: Suggest an idea
-title: "[SUGGESTION]"
+title: "[SUGGESTION] ..."
 labels: enhancement
 assignees: ''
 
 ---
 
 **What is your suggestion?**
-This and that would be cool
+This and that would be cool!
