@@ -24,7 +24,7 @@ The mod will have many updates in the future!
 
 - Iron and Gold buttons, consistent with the pressure plate counterparts.
 
-- A portable button item, which will power any block you click on. This is would be useful in creative or for creating secret entrances.
+- A portable button item, which will power any block you click on. This would be useful in creative or for creating secret entrances.
 
 ![Large Buttons](https://i.imgur.com/TktdMfz.png)
 
