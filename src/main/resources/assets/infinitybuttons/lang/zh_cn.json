@@ -20,6 +20,16 @@
   "block.infinitybuttons.sticky_oxidized_copper_large_button": "涂蜡氧化的铜质大按钮",
   "block.infinitybuttons.emerald_large_button": "绿宝石大按钮",
 
+  "block.infinitybuttons.copper_button": "铜质按钮",
+  "block.infinitybuttons.exposed_copper_button": "斑驳的铜质按钮",
+  "block.infinitybuttons.weathered_copper_button": "锈蚀的铜质按钮",
+  "block.infinitybuttons.oxidized_copper_button": "氧化的铜质按钮",
+  "block.infinitybuttons.sticky_copper_button": "涂蜡铜质按钮",
+  "block.infinitybuttons.sticky_exposed_copper_button": "涂蜡斑驳的铜质按钮",
+  "block.infinitybuttons.sticky_weathered_copper_button": "涂蜡锈蚀的铜质按钮",
+  "block.infinitybuttons.sticky_oxidized_copper_button": "涂蜡氧化的铜质按钮",
+  "block.infinitybuttons.emerald_button": "绿宝石按钮",
+
   "block.infinitybuttons.red_emergency_button": "红色紧急按钮",
   "block.infinitybuttons.orange_emergency_button": "橙色紧急按钮",
   "block.infinitybuttons.yellow_emergency_button": "黄色紧急按钮",
@@ -37,5 +47,11 @@
   "block.infinitybuttons.gray_emergency_button": "灰色紧急按钮",
   "block.infinitybuttons.black_emergency_button": "黑色紧急按钮",
 
-  "itemGroup.infinitybuttons.infinitybuttons": "无限按钮"
+  "infinitybuttons.alarm": "警铃大作",
+
+  "itemGroup.infinitybuttons.infinitybuttons": "无限按钮",
+
+  "text.config.infinity-buttons-config.option.alarmSound": "警报声音",
+  "text.config.infinity-buttons-config.option.alarmSound.tooltip": "紧急按钮是否会发出警报声音",
+  "text.config.infinity-buttons-config.title": "无限按钮 Config"
 }
