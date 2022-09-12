@@ -1,0 +1,8 @@
+{
+  "alarm": {
+    "subtitle": "infinitybuttons.alarm",
+    "sounds": [
+      "infinitybuttons:alarm"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+package net.larsmans.infinitybuttons.block.custom;
+
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
+
+public class CopperButton extends Button {
+    public CopperButton(FabricBlockSettings settings) {
+        super(false, settings);
+    }
+
+    @Override
+    public int getPressTicks() {
+        return 50;
+    }
+
+    @Override
+    protected SoundEvent getClickSound(boolean powered) {
+        return SoundEvents.BLOCK_COPPER_PLACE;
+    }
+}
