@@ -1,4 +1,4 @@
-# Infinity buttons
+# Infinity Buttons
 
 Infinity Buttons is a mod which adds exciting new buttons!
 
