@@ -6,7 +6,12 @@ import net.minecraft.sound.SoundEvents;
 
 public class WoodenLargeButton extends LargeButton{
     public WoodenLargeButton(FabricBlockSettings settings) {
-        super(true, false,settings);
+        super(true, settings);
+    }
+
+    @Override
+    public int getPressTicks() {
+        return 30;
     }
 
     @Override

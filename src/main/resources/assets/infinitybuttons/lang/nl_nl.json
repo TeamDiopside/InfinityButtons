@@ -19,6 +19,8 @@
   "block.infinitybuttons.sticky_weathered_copper_large_button": "Kleverige verweerde koperen grote knop",
   "block.infinitybuttons.sticky_oxidized_copper_large_button": "Kleverige geoxideerde koperen grote knop",
   "block.infinitybuttons.emerald_large_button": "Smaragden grote knop",
+  "block.infinitybuttons.iron_projectile_large_button": "Iron Projectile Large Button",
+  "block.infinitybuttons.gold_projectile_large_button": "Gold Projectile Large Button",
 
   "block.infinitybuttons.copper_button": "Koperen knop",
   "block.infinitybuttons.exposed_copper_button": "Blootgestelde koperen knop",
@@ -29,6 +31,8 @@
   "block.infinitybuttons.sticky_weathered_copper_button": "Kleverige verweerde koperen knop",
   "block.infinitybuttons.sticky_oxidized_copper_button": "Kleverige geoxideerde koperen knop",
   "block.infinitybuttons.emerald_button": "Smaragden knop",
+  "block.infinitybuttons.iron_projectile_button": "Iron Projectile Button",
+  "block.infinitybuttons.gold_projectile_button": "Gold Projectile Button",
 
   "block.infinitybuttons.red_emergency_button": "Rode noodgevalknop",
   "block.infinitybuttons.orange_emergency_button": "Oranje noodgevalknop",
@@ -47,8 +51,11 @@
   "block.infinitybuttons.gray_emergency_button": "Grijze noodgevalknop",
   "block.infinitybuttons.black_emergency_button": "Zwarte noodgevalknop",
 
+  "infinitybuttons.alarm": "Alarm ging af",
+
   "itemGroup.infinitybuttons.infinitybuttons": "Infinity Buttons",
 
   "text.config.infinity-buttons-config.option.alarmSound": "Alarmgeluid",
-  "text.config.infinity-buttons-config.option.alarmSound.tooltip": "Of de noodgevalknoppen als een alarm klinken"
+  "text.config.infinity-buttons-config.option.alarmSound.tooltip": "Of de noodgevalknoppen als een alarm klinken",
+  "text.config.infinity-buttons-config.title": "Infinity Buttons Configuratie"
 }

@@ -46,28 +46,14 @@ public abstract class LargeButton extends WallMountedBlock {
     private static final VoxelShape CEILING_Z_PRESSED_SHAPE = Block.createCuboidShape(4, 15, 4, 12, 16, 12);
 
     private final boolean wooden;
-    private final boolean copper;
 
-
-
-    protected int getPressTicks() {
-        if (this.wooden) {
-            return 30;
-        } else {
-            if (this.copper) {
-                return 50;
-            } else {
-                return 20;
-            }
-        }
-    }
-
-    public LargeButton(boolean wooden,boolean copper,Settings settings) {
+    public LargeButton(boolean wooden,Settings settings) {
         super(settings);
         this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(PRESSED, false)).with(FACE, WallMountLocation.FLOOR));
         this.wooden = wooden;
-        this.copper = copper;
     }
+
+    public abstract int getPressTicks();
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {

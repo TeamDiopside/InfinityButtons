@@ -6,11 +6,11 @@ import net.minecraft.sound.SoundEvents;
 
 public class EmeraldLargeButton extends LargeButton{
     public EmeraldLargeButton(FabricBlockSettings settings) {
-        super(false, false,settings);
+        super(false, settings);
     }
 
     @Override
-    protected int getPressTicks() {
+    public int getPressTicks() {
         return (int)Math.floor(Math.random()*(90-10+1)+10);
     }
 

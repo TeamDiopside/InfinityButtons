@@ -19,6 +19,8 @@
   "block.infinitybuttons.sticky_weathered_copper_large_button": "Sticky Weathered Copper Large Button",
   "block.infinitybuttons.sticky_oxidized_copper_large_button": "Sticky Oxidized Copper Large Button",
   "block.infinitybuttons.emerald_large_button": "Emerald Large Button",
+  "block.infinitybuttons.iron_projectile_large_button": "Iron Projectile Large Button",
+  "block.infinitybuttons.gold_projectile_large_button": "Gold Projectile Large Button",
 
   "block.infinitybuttons.copper_button": "Copper Button",
   "block.infinitybuttons.exposed_copper_button": "Exposed Copper Button",
@@ -29,6 +31,8 @@
   "block.infinitybuttons.sticky_weathered_copper_button": "Sticky Weathered Copper Button",
   "block.infinitybuttons.sticky_oxidized_copper_button": "Sticky Oxidized Copper Button",
   "block.infinitybuttons.emerald_button": "Emerald Button",
+  "block.infinitybuttons.iron_projectile_button": "Iron Projectile Button",
+  "block.infinitybuttons.gold_projectile_button": "Gold Projectile Button",
 
   "block.infinitybuttons.red_emergency_button": "Red Emergency Button",
   "block.infinitybuttons.orange_emergency_button": "Orange Emergency Button",

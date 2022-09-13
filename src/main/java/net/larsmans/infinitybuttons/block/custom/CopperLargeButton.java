@@ -6,7 +6,12 @@ import net.minecraft.sound.SoundEvents;
 
 public class CopperLargeButton extends LargeButton{
     public CopperLargeButton(FabricBlockSettings settings) {
-        super(false, true,settings);
+        super(false, settings);
+    }
+
+    @Override
+    public int getPressTicks() {
+        return 50;
     }
 
     @Override

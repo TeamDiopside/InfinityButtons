@@ -17,7 +17,11 @@ import net.minecraft.util.registry.Registry;
 
 public class ModBlocks {
 
-    // Large Buttons ----------------------------------------------------
+    /*
+    -------------
+    Large Buttons
+    -------------
+    */
 
     public static final Block OAK_LARGE_BUTTON = registerBlock("oak_large_button",
             new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
@@ -99,7 +103,19 @@ public class ModBlocks {
             new EmeraldLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
                     .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
-    // Buttons ----------------------------------------------------
+    public static final Block IRON_PROJECTILE_LARGE_BUTTON = registerBlock("iron_projectile_large_button",
+            new ProjectileLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
+                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block GOLD_PROJECTILE_LARGE_BUTTON = registerBlock("gold_projectile_large_button",
+            new ProjectileLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
+                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+
+    /*
+    -------
+    Buttons
+    -------
+    */
 
     public static final Block COPPER_BUTTON = registerBlock("copper_button",
             new CopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
@@ -137,7 +153,19 @@ public class ModBlocks {
             new EmeraldButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
                     .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
-    // Emergency Buttons ----------------------------------------------------
+    public static final Block IRON_PROJECTILE_BUTTON = registerBlock("iron_projectile_button",
+            new ProjectileButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
+                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block GOLD_PROJECTILE_BUTTON = registerBlock("gold_projectile_button",
+            new ProjectileButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
+                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+
+    /*
+    -----------------
+    Emergency Buttons
+    -----------------
+    */
 
     public static final Block RED_EMERGENCY_BUTTON = registerBlock("red_emergency_button",
             new EmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);

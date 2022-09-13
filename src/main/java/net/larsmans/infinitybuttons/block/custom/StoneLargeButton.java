@@ -6,7 +6,12 @@ import net.minecraft.sound.SoundEvents;
 
 public class StoneLargeButton extends LargeButton {
     public StoneLargeButton(FabricBlockSettings settings) {
-        super(false, false,settings);
+        super(false, settings);
+    }
+
+    @Override
+    public int getPressTicks() {
+        return 20;
     }
 
     @Override
