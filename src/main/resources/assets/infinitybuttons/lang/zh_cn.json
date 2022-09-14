@@ -53,6 +53,11 @@
 
   "infinitybuttons.alarm": "警铃大作",
 
+  "infinitybuttons.tooltip.hold_shift": "[Hold Shift]",
+  "infinitybuttons.tooltip.sticky_copper_button": "This button acts like a lever",
+  "infinitybuttons.tooltip.emerald_button": "This button stays pressed randomly between 0.5 and 5 seconds",
+  "infinitybuttons.tooltip.arrow_button": "This button can only be pressed with an arrow",
+
   "itemGroup.infinitybuttons.infinitybuttons": "无限按钮",
 
   "text.config.infinity-buttons-config.option.alarmSound": "警报声音",

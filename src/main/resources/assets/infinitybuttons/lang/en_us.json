@@ -53,6 +53,11 @@
 
   "infinitybuttons.alarm": "Alarm went off",
 
+  "infinitybuttons.tooltip.hold_shift": "[Hold Shift]",
+  "infinitybuttons.tooltip.sticky_copper_button": "This button acts like a lever",
+  "infinitybuttons.tooltip.emerald_button": "This button stays pressed randomly between 0.5 and 5 seconds",
+  "infinitybuttons.tooltip.arrow_button": "This button can only be pressed with an arrow",
+
   "itemGroup.infinitybuttons.infinitybuttons": "Infinity Buttons",
 
   "text.config.infinity-buttons-config.option.alarmSound": "Alarm Sound",
