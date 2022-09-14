@@ -2,6 +2,7 @@ package net.larsmans.infinitybuttons.block.custom;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -9,6 +10,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -18,8 +20,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ProjectileLargeButton extends LargeButton {
-    public ProjectileLargeButton(FabricBlockSettings settings) {
+public class ArrowLargeButton extends LargeButton {
+    public ArrowLargeButton(FabricBlockSettings settings) {
         super(true, settings);
     }
 
@@ -40,6 +42,10 @@ public class ProjectileLargeButton extends LargeButton {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-        tooltip.add(Text.literal("This button can only be pushed by arrows"));
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Text.translatable("infinitybuttons.tooltip.arrow_button").formatted(Formatting.GRAY));
+        } else {
+            tooltip.add(Text.translatable("infinitybuttons.tooltip.hold_shift").formatted(Formatting.GRAY));
+        }
     }
 }
