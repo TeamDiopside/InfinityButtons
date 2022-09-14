@@ -103,12 +103,12 @@ public class ModBlocks {
             new EmeraldLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
                     .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
-    public static final Block IRON_PROJECTILE_LARGE_BUTTON = registerBlock("iron_projectile_large_button",
-            new ProjectileLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
+    public static final Block IRON_LARGE_BUTTON = registerBlock("iron_large_button",
+            new ArrowLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
                     .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
-    public static final Block GOLD_PROJECTILE_LARGE_BUTTON = registerBlock("gold_projectile_large_button",
-            new ProjectileLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
+    public static final Block GOLD_LARGE_BUTTON = registerBlock("gold_large_button",
+            new ArrowLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
                     .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
     /*
@@ -153,12 +153,12 @@ public class ModBlocks {
             new EmeraldButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
                     .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
-    public static final Block IRON_PROJECTILE_BUTTON = registerBlock("iron_projectile_button",
-            new ProjectileButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
+    public static final Block IRON_BUTTON = registerBlock("iron_button",
+            new ArrowButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
                     .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
-    public static final Block GOLD_PROJECTILE_BUTTON = registerBlock("gold_projectile_button",
-            new ProjectileButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
+    public static final Block GOLD_BUTTON = registerBlock("gold_button",
+            new ArrowButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
                     .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
     /*

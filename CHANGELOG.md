@@ -1,9 +1,14 @@
 # Changelog Infinity Buttons
 
+## 1.4.0
+
+- Added Iron and Gold buttons, which can only be pressed by shooting an arrow at it
+- Added tooltips to the iron, gold, emerald and sticky copper buttons
+
 ## 1.3.1
 
 - Added a config
-- Added an alarm sound to the Emergency Buttons, which is togglable in the config
+- Added an alarm sound to the Emergency Buttons, which is toggleable in the config
 - The mod has a new dependency: oωo lib
 
 ## 1.3.0
