@@ -12,6 +12,8 @@
     "infinitybuttons:sticky_weathered_copper_large_button",
     "infinitybuttons:sticky_oxidized_copper_large_button",
     "infinitybuttons:emerald_large_button",
+    "infinitybuttons:iron_large_button",
+    "infinitybuttons:gold_large_button",
 
     "infinitybuttons:copper_button",
     "infinitybuttons:exposed_copper_button",
@@ -22,6 +24,8 @@
     "infinitybuttons:sticky_weathered_copper_button",
     "infinitybuttons:sticky_oxidized_copper_button",
     "infinitybuttons:emerald_button",
+    "infinitybuttons:iron_button",
+    "infinitybuttons:gold_button",
 
     "infinitybuttons:white_emergency_button",
     "infinitybuttons:orange_emergency_button",
