@@ -26,6 +26,6 @@ public class CopperButton extends Button {
 
     @Override
     protected SoundEvent getClickSound(boolean powered) {
-        return SoundEvents.BLOCK_COPPER_PLACE;
+        return SoundEvents.BLOCK_COPPER_BREAK;
     }
 }

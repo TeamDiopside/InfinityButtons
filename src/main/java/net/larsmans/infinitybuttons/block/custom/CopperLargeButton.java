@@ -26,6 +26,6 @@ public class CopperLargeButton extends LargeButton{
 
     @Override
     protected SoundEvent getClickSound(boolean powered) {
-        return SoundEvents.BLOCK_COPPER_PLACE;
+        return SoundEvents.BLOCK_COPPER_BREAK;
     }
 }
