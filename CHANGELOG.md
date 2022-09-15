@@ -4,6 +4,7 @@
 
 - Added Iron and Gold buttons, which can only be pressed by shooting an arrow at it
 - Added tooltips to the iron, gold, emerald and sticky copper buttons
+- Fixed some sound volumes being too low
 
 ## 1.3.1
 
