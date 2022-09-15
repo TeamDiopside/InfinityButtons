@@ -145,7 +145,7 @@ public class EmergencyButton extends WallMountedBlock {
     }
 
     protected void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, boolean pressed) {
-        world.playSound(pressed ? player : null, pos, this.getClickSound(pressed), SoundCategory.BLOCKS, 0.5f, pressed ? 0.6f : 0.5f);
+        world.playSound(pressed ? player : null, pos, this.getClickSound(pressed), SoundCategory.BLOCKS, 0.75f, pressed ? 0.6f : 0.5f);
     }
 
     public SoundEvent getClickSound(boolean var1) {

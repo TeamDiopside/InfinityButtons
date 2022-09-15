@@ -65,7 +65,7 @@ public class StickyCopperButton extends Button {
 
     @Override
     protected void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, boolean powered) {
-        world.playSound(powered ? player : null, pos, this.getClickSound(powered), SoundCategory.BLOCKS, 1f, powered ? 1f : 0.5f);
+        world.playSound(powered ? player : null, pos, this.getClickSound(powered), SoundCategory.BLOCKS, 1f, powered ? 0.6f : 0.5f);
     }
 
     @Override

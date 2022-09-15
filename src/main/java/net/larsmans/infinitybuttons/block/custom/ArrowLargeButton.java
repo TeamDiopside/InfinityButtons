@@ -36,8 +36,8 @@ public class ArrowLargeButton extends LargeButton {
     }
 
     @Override
-    protected SoundEvent getClickSound(boolean var1) {
-        return SoundEvents.BLOCK_METAL_PRESSURE_PLATE_CLICK_ON;
+    protected SoundEvent getClickSound(boolean powered) {
+        return powered ? SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON : SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF;
     }
 
     @Override
