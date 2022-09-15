@@ -185,7 +185,7 @@ public abstract class LargeButton extends WallMountedBlock {
     }
 
 
-    private void updateNeighbors(BlockState state, World world, BlockPos pos) {
+    public void updateNeighbors(BlockState state, World world, BlockPos pos) {
         world.updateNeighborsAlways(pos, this);
         world.updateNeighborsAlways(pos.offset(LargeButton.getDirection(state).getOpposite()), this);
     }

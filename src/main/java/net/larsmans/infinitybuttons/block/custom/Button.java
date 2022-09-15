@@ -183,7 +183,7 @@ public abstract class Button extends WallMountedBlock {
         }
     }
 
-    private void updateNeighbors(BlockState state, World world, BlockPos pos) {
+    public void updateNeighbors(BlockState state, World world, BlockPos pos) {
         world.updateNeighborsAlways(pos, this);
         world.updateNeighborsAlways(pos.offset(Button.getDirection(state).getOpposite()), this);
     }
