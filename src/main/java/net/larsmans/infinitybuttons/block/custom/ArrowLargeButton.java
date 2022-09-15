@@ -27,7 +27,7 @@ public class ArrowLargeButton extends LargeButton {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        return ActionResult.CONSUME;
+        return ActionResult.FAIL;
     }
 
     @Override
