@@ -1,6 +1,6 @@
 # Infinity Buttons
 
-Infinity Buttons is a mod which adds exciting new buttons!
+Infinity Buttons is a fabric mod which adds exciting new buttons!
 
 *Important: [oωo lib](https://modrinth.com/mod/owo-lib) is required!*
 
