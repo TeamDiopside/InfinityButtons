@@ -7,4 +7,5 @@ import io.wispforest.owo.config.annotation.Modmenu;
 @Config(name = "infinity-buttons-config", wrapperName = "InfinityButtonsConfig")
 public class InfinityButtonsConfigModel {
     public boolean alarmSound = true;
+    public boolean tooltips = true;
 }

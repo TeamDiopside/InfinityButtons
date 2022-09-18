@@ -62,5 +62,7 @@
 
   "text.config.infinity-buttons-config.option.alarmSound": "警报声音",
   "text.config.infinity-buttons-config.option.alarmSound.tooltip": "紧急按钮是否会发出警报声音",
+  "text.config.infinity-buttons-config.option.tooltips": "Tooltips",
+  "text.config.infinity-buttons-config.option.tooltips.tooltip": "Whether tooltips will show up",
   "text.config.infinity-buttons-config.title": "无限按钮 Config"
 }

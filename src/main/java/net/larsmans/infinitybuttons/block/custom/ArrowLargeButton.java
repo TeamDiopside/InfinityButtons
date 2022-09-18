@@ -1,6 +1,7 @@
 package net.larsmans.infinitybuttons.block.custom;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.larsmans.infinitybuttons.InfinityButtons;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
@@ -42,10 +43,12 @@ public class ArrowLargeButton extends LargeButton {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-        if (Screen.hasShiftDown()) {
-            tooltip.add(Text.translatable("infinitybuttons.tooltip.arrow_button").formatted(Formatting.GRAY));
-        } else {
-            tooltip.add(Text.translatable("infinitybuttons.tooltip.hold_shift").formatted(Formatting.GRAY));
+        if (InfinityButtons.CONFIG.tooltips()) {
+            if (Screen.hasShiftDown()) {
+                tooltip.add(Text.translatable("infinitybuttons.tooltip.arrow_button").formatted(Formatting.GRAY));
+            } else {
+                tooltip.add(Text.translatable("infinitybuttons.tooltip.hold_shift").formatted(Formatting.GRAY));
+            }
         }
     }
 }

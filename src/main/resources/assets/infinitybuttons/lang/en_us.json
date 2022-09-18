@@ -62,5 +62,7 @@
 
   "text.config.infinity-buttons-config.option.alarmSound": "Alarm Sound",
   "text.config.infinity-buttons-config.option.alarmSound.tooltip": "Whether the Emergency Buttons will sound like an alarm",
+  "text.config.infinity-buttons-config.option.tooltips": "Tooltips",
+  "text.config.infinity-buttons-config.option.tooltips.tooltip": "Whether tooltips will show up",
   "text.config.infinity-buttons-config.title": "Infinity Buttons Config"
 }

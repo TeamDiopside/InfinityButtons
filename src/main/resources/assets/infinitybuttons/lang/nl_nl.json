@@ -62,5 +62,7 @@
 
   "text.config.infinity-buttons-config.option.alarmSound": "Alarmgeluid",
   "text.config.infinity-buttons-config.option.alarmSound.tooltip": "Of de noodknoppen als een alarm klinken",
+  "text.config.infinity-buttons-config.option.tooltips": "Tooltips",
+  "text.config.infinity-buttons-config.option.tooltips.tooltip": "Whether tooltips will show up",
   "text.config.infinity-buttons-config.title": "Infinity Buttons Configuratie"
 }
