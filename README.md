@@ -20,6 +20,8 @@ The mod will have many updates in the future!
 - More button shapes.
 - A portable button item, which will power any block you click on. This would be useful in creative or for creating secret entrances.
 
+[![Discord](https://discordapp.com/api/guilds/968437531865645076/widget.png?style=banner2)](https://discord.gg/PJCXjSJnu2)
+
 ![Large Buttons](https://i.imgur.com/TktdMfz.png)
 
 ![Emergency Buttons](https://i.imgur.com/YdZktEs.png)
