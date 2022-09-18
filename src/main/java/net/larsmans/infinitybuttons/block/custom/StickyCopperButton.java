@@ -1,7 +1,7 @@
 package net.larsmans.infinitybuttons.block.custom;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.larsmans.infinitybuttons.InfinityButtons;
+import net.larsmans.infinitybuttons.InfinityButtonsInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.gui.screen.Screen;
@@ -76,7 +76,7 @@ public class StickyCopperButton extends Button {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-        if (InfinityButtons.CONFIG.tooltips()) {
+        if (InfinityButtonsInit.CONFIG.tooltips()) {
             if (Screen.hasShiftDown()) {
                 tooltip.add(Text.translatable("infinitybuttons.tooltip.sticky_copper_button").formatted(Formatting.GRAY));
             } else {

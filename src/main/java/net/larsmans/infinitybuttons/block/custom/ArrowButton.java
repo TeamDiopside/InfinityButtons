@@ -1,6 +1,6 @@
 package net.larsmans.infinitybuttons.block.custom;
 
-import net.larsmans.infinitybuttons.InfinityButtons;
+import net.larsmans.infinitybuttons.InfinityButtonsInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
@@ -42,7 +42,7 @@ public class ArrowButton extends Button{
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-        if (InfinityButtons.CONFIG.tooltips()) {
+        if (InfinityButtonsInit.CONFIG.tooltips()) {
             if (Screen.hasShiftDown()) {
                 tooltip.add(Text.translatable("infinitybuttons.tooltip.arrow_button").formatted(Formatting.GRAY));
             } else {

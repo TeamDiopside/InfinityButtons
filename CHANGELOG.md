@@ -1,5 +1,9 @@
 # Changelog Infinity Buttons
 
+## 1.4.1
+
+- Added a config to disable tooltips
+
 ## 1.4.0
 
 - Added Iron and Gold buttons, which can only be pressed by shooting an arrow at it

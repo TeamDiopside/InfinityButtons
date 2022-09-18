@@ -2,7 +2,7 @@ package net.larsmans.infinitybuttons.block;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.larsmans.infinitybuttons.InfinityButtons;
+import net.larsmans.infinitybuttons.InfinityButtonsInit;
 import net.larsmans.infinitybuttons.block.custom.*;
 import net.larsmans.infinitybuttons.item.ModItemGroup;
 import net.minecraft.block.Block;
@@ -219,15 +219,15 @@ public class ModBlocks {
 
     private static Block registerBlock(String name, Block block, ItemGroup tab) {
         registerBlockItem(name, block, tab);
-        return Registry.register(Registry.BLOCK, new Identifier(InfinityButtons.MOD_ID, name), block);
+        return Registry.register(Registry.BLOCK, new Identifier(InfinityButtonsInit.MOD_ID, name), block);
     }
 
     private static Item registerBlockItem(String name, Block block, ItemGroup tab) {
-        return Registry.register(Registry.ITEM, new Identifier(InfinityButtons.MOD_ID, name),
+        return Registry.register(Registry.ITEM, new Identifier(InfinityButtonsInit.MOD_ID, name),
                 new BlockItem(block, new FabricItemSettings().group(tab)));
     }
 
     public static void registerModBlocks() {
-        InfinityButtons.LOGGER.debug("Registering Mod Blocks for " + InfinityButtons.MOD_ID);
+        InfinityButtonsInit.LOGGER.debug("Registering Mod Blocks for " + InfinityButtonsInit.MOD_ID);
     }
 }

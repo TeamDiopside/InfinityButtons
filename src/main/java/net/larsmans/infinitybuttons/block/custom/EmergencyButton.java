@@ -1,7 +1,6 @@
 package net.larsmans.infinitybuttons.block.custom;
 
-import net.larsmans.infinitybuttons.InfinityButtons;
-import net.larsmans.infinitybuttons.InfinityButtonsConfig;
+import net.larsmans.infinitybuttons.InfinityButtonsInit;
 import net.larsmans.infinitybuttons.sounds.ModSounds;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.WallMountLocation;
@@ -131,7 +130,7 @@ public class EmergencyButton extends WallMountedBlock {
         }
         this.powerOn(state, world, pos);
         this.playClickSound(player, world, pos, true);
-        if (InfinityButtons.CONFIG.alarmSound()) {
+        if (InfinityButtonsInit.CONFIG.alarmSound()) {
             world.playSound(player, pos, ModSounds.ALARM, SoundCategory.BLOCKS, 2f, 0.6f);
         }
         world.emitGameEvent((Entity)player, GameEvent.BLOCK_ACTIVATE, pos);
