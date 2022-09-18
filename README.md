@@ -22,6 +22,6 @@ The mod will have many updates in the future!
 
 [![Discord](https://discordapp.com/api/guilds/968437531865645076/widget.png?style=banner2)](https://discord.gg/PJCXjSJnu2)
 
-![Large Buttons](https://i.imgur.com/TktdMfz.png)
+![Large Buttons](https://i.imgur.com/suHiurX.png)
 
 ![Emergency Buttons](https://i.imgur.com/YdZktEs.png)
