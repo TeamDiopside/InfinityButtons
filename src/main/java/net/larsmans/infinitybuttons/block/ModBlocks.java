@@ -3,7 +3,13 @@ package net.larsmans.infinitybuttons.block;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.larsmans.infinitybuttons.InfinityButtonsInit;
-import net.larsmans.infinitybuttons.block.custom.*;
+import net.larsmans.infinitybuttons.block.custom.EmergencyButton;
+import net.larsmans.infinitybuttons.block.custom.button.ArrowButton;
+import net.larsmans.infinitybuttons.block.custom.button.CopperButton;
+import net.larsmans.infinitybuttons.block.custom.button.EmeraldButton;
+import net.larsmans.infinitybuttons.block.custom.button.StickyCopperButton;
+import net.larsmans.infinitybuttons.block.custom.largebutton.*;
+import net.larsmans.infinitybuttons.block.custom.secretbutton.BrickSecretButton;
 import net.larsmans.infinitybuttons.item.ModItemGroup;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
@@ -214,6 +220,46 @@ public class ModBlocks {
 
     public static final Block BLACK_EMERGENCY_BUTTON = registerBlock("black_emergency_button",
             new EmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+
+    /*
+    --------------
+    Secret Buttons
+    --------------
+    */
+
+    public static final Block STONE_BRICK_SECRET_BUTTON = registerBlock("stone_brick_secret_button",
+            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block MOSSY_STONE_BRICK_SECRET_BUTTON = registerBlock("mossy_stone_brick_secret_button",
+            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block CRACKED_STONE_BRICK_SECRET_BUTTON = registerBlock("cracked_stone_brick_secret_button",
+            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block DEEPSLATE_BRICK_SECRET_BUTTON = registerBlock("deepslate_brick_secret_button",
+            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.DEEPSLATE_BRICKS).requiresTool().strength(3.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block CRACKED_DEEPSLATE_BRICK_SECRET_BUTTON = registerBlock("cracked_deepslate_brick_secret_button",
+            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.DEEPSLATE_BRICKS).requiresTool().strength(3.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block END_STONE_BRICK_SECRET_BUTTON = registerBlock("end_stone_brick_secret_button",
+            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(3.0f, 9.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block QUARTZ_BRICK_SECRET_BUTTON = registerBlock("quartz_brick_secret_button",
+            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(0.8f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = registerBlock("polished_blackstone_brick_secret_button",
+            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block CRACKED_POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = registerBlock("cracked_polished_blackstone_brick_secret_button",
+            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+
+    /*
+    -------------
+    Extra Methods
+    -------------
+    */
 
 
 

@@ -51,7 +51,18 @@
   "block.infinitybuttons.gray_emergency_button": "灰色紧急按钮",
   "block.infinitybuttons.black_emergency_button": "黑色紧急按钮",
 
-  "infinitybuttons.alarm": "警铃大作",
+  "block.infinitybuttons.stone_brick_secret_button": "Stone Brick Secret Button",
+  "block.infinitybuttons.mossy_stone_brick_secret_button": "Mossy Stone Brick Secret Button",
+  "block.infinitybuttons.cracked_stone_brick_secret_button": "Cracked Stone Brick Secret Button",
+  "block.infinitybuttons.deepslate_brick_secret_button": "Deepslate Brick Secret Button",
+  "block.infinitybuttons.cracked_deepslate_brick_secret_button": "Cracked Deepslate Brick Secret Button",
+  "block.infinitybuttons.end_stone_brick_secret_button": "End Stone Brick Secret Button",
+  "block.infinitybuttons.quartz_brick_secret_button": "Quartz Brick Secret Button",
+  "block.infinitybuttons.polished_blackstone_brick_secret_button": "Polished Blackstone Brick Secret Button",
+  "block.infinitybuttons.cracked_polished_blackstone_brick_secret_button": "Cracked Polished Blackstone Brick Secret Button",
+
+  "infinitybuttons.subtitle.alarm": "警铃大作",
+  "infinitybuttons.subtitle.stone_scrape": "Stone scrapes",
 
   "infinitybuttons.tooltip.hold_shift": "[Hold Shift]",
   "infinitybuttons.tooltip.sticky_copper_button": "This button acts like a lever",
@@ -61,7 +72,7 @@
   "itemGroup.infinitybuttons.infinitybuttons": "无限按钮",
 
   "text.config.infinity-buttons-config.option.alarmSound": "警报声音",
-  "text.config.infinity-buttons-config.option.alarmSound.tooltip": "紧急按钮是否会发出警报声音",
+  "text.config.infinity-buttons-config.option.alarmSound.tooltip": "Whether the Emergency Buttons will make an alarm sound",
   "text.config.infinity-buttons-config.option.tooltips": "Tooltips",
   "text.config.infinity-buttons-config.option.tooltips.tooltip": "Whether tooltips will show up",
   "text.config.infinity-buttons-config.title": "无限按钮 Config"

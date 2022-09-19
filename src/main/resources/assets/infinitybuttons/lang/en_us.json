@@ -51,7 +51,18 @@
   "block.infinitybuttons.gray_emergency_button": "Gray Emergency Button",
   "block.infinitybuttons.black_emergency_button": "Black Emergency Button",
 
-  "infinitybuttons.alarm": "Alarm went off",
+  "block.infinitybuttons.stone_brick_secret_button": "Stone Brick Secret Button",
+  "block.infinitybuttons.mossy_stone_brick_secret_button": "Mossy Stone Brick Secret Button",
+  "block.infinitybuttons.cracked_stone_brick_secret_button": "Cracked Stone Brick Secret Button",
+  "block.infinitybuttons.deepslate_brick_secret_button": "Deepslate Brick Secret Button",
+  "block.infinitybuttons.cracked_deepslate_brick_secret_button": "Cracked Deepslate Brick Secret Button",
+  "block.infinitybuttons.end_stone_brick_secret_button": "End Stone Brick Secret Button",
+  "block.infinitybuttons.quartz_brick_secret_button": "Quartz Brick Secret Button",
+  "block.infinitybuttons.polished_blackstone_brick_secret_button": "Polished Blackstone Brick Secret Button",
+  "block.infinitybuttons.cracked_polished_blackstone_brick_secret_button": "Cracked Polished Blackstone Brick Secret Button",
+
+  "infinitybuttons.subtitle.alarm": "Alarm went off",
+  "infinitybuttons.subtitle.stone_scrape": "Stone scrapes",
 
   "infinitybuttons.tooltip.hold_shift": "[Hold Shift]",
   "infinitybuttons.tooltip.sticky_copper_button": "This button acts like a lever",
@@ -61,7 +72,7 @@
   "itemGroup.infinitybuttons.infinitybuttons": "Infinity Buttons",
 
   "text.config.infinity-buttons-config.option.alarmSound": "Alarm Sound",
-  "text.config.infinity-buttons-config.option.alarmSound.tooltip": "Whether the Emergency Buttons will sound like an alarm",
+  "text.config.infinity-buttons-config.option.alarmSound.tooltip": "Whether the Emergency Buttons will make an alarm sound",
   "text.config.infinity-buttons-config.option.tooltips": "Tooltips",
   "text.config.infinity-buttons-config.option.tooltips.tooltip": "Whether tooltips will show up",
   "text.config.infinity-buttons-config.title": "Infinity Buttons Config"

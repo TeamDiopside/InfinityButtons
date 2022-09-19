@@ -51,7 +51,18 @@
   "block.infinitybuttons.gray_emergency_button": "Grijze noodknop",
   "block.infinitybuttons.black_emergency_button": "Zwarte noodknop",
 
-  "infinitybuttons.alarm": "Alarm ging af",
+  "block.infinitybuttons.stone_brick_secret_button": "Stone Brick Secret Button",
+  "block.infinitybuttons.mossy_stone_brick_secret_button": "Mossy Stone Brick Secret Button",
+  "block.infinitybuttons.cracked_stone_brick_secret_button": "Cracked Stone Brick Secret Button",
+  "block.infinitybuttons.deepslate_brick_secret_button": "Deepslate Brick Secret Button",
+  "block.infinitybuttons.cracked_deepslate_brick_secret_button": "Cracked Deepslate Brick Secret Button",
+  "block.infinitybuttons.end_stone_brick_secret_button": "End Stone Brick Secret Button",
+  "block.infinitybuttons.quartz_brick_secret_button": "Quartz Brick Secret Button",
+  "block.infinitybuttons.polished_blackstone_brick_secret_button": "Polished Blackstone Brick Secret Button",
+  "block.infinitybuttons.cracked_polished_blackstone_brick_secret_button": "Cracked Polished Blackstone Brick Secret Button",
+
+  "infinitybuttons.subtitle.alarm": "Alarm went off",
+  "infinitybuttons.subtitle.stone_scrape": "Stone scrapes",
 
   "infinitybuttons.tooltip.hold_shift": "[Houd Shift ingedrukt]",
   "infinitybuttons.tooltip.sticky_copper_button": "Deze knop werkt als een hendel",
@@ -61,7 +72,7 @@
   "itemGroup.infinitybuttons.infinitybuttons": "Infinity Buttons",
 
   "text.config.infinity-buttons-config.option.alarmSound": "Alarmgeluid",
-  "text.config.infinity-buttons-config.option.alarmSound.tooltip": "Of de noodknoppen als een alarm klinken",
+  "text.config.infinity-buttons-config.option.alarmSound.tooltip": "Of de noodknoppen een alarmgeluid maken",
   "text.config.infinity-buttons-config.option.tooltips": "Tooltips",
   "text.config.infinity-buttons-config.option.tooltips.tooltip": "Of tooltips worden weergegeven",
   "text.config.infinity-buttons-config.title": "Infinity Buttons Configuratie"
