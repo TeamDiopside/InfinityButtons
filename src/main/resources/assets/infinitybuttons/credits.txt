@@ -1,5 +1,5 @@
 Developer - LarsMans
 
-Dutch translator - curryducker
+Forge port developer - curryducker
 
 Chinese translator - haoooo_
