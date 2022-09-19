@@ -1,8 +1,14 @@
 {
   "alarm": {
-    "subtitle": "infinitybuttons.alarm",
+    "subtitle": "infinitybuttons.subtitle.alarm",
     "sounds": [
       "infinitybuttons:alarm"
+    ]
+  },
+  "stone_scrape": {
+    "subtitle": "infinitybuttons.subtitle.stone_scrape",
+    "sounds": [
+      "infinitybuttons:stone_scrape"
     ]
   }
 }
