@@ -12,6 +12,8 @@ Infinity Buttons is a fabric mod which adds exciting new buttons!
 - Emergency Buttons in all 16 colors. They can also produce an alarm sound.
 - Emerald Button, which will stay pressed randomly between 0.5 and 5 seconds.
 - Iron and Gold Buttons, which can only be pressed by an arrow.
+- Secret Buttons, which blend into walls, press them
+    - Currently contains all Brick variants, like Stone Bricks and Quartz Bricks
 
 The mod will have many updates in the future!
 
@@ -25,3 +27,5 @@ The mod will have many updates in the future!
 ![Large Buttons](https://i.imgur.com/suHiurX.png)
 
 ![Emergency Buttons](https://i.imgur.com/YdZktEs.png)
+
+![Secret Button](https://i.imgur.com/IplIWut.png)

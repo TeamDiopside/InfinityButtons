@@ -1,5 +1,10 @@
 # Changelog Infinity Buttons
 
+## 1.5.0
+
+- Added Secret Buttons, which blend into walls, press them
+  - Currently contains all Brick variants, like Stone Bricks and Quartz Bricks
+
 ## 1.4.1
 
 - Added a config to disable tooltips
