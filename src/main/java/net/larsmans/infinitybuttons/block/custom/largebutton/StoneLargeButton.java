@@ -1,4 +1,4 @@
-package net.larsmans.infinitybuttons.block.custom;
+package net.larsmans.infinitybuttons.block.custom.largebutton;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.sound.SoundEvent;

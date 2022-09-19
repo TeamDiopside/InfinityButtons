@@ -19,4 +19,3 @@ public class InfinityButtonsInit implements ModInitializer {
 		ModSounds.registerSounds();
 	}
 }
-

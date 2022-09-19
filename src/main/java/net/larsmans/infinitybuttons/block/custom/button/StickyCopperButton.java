@@ -1,4 +1,4 @@
-package net.larsmans.infinitybuttons.block.custom;
+package net.larsmans.infinitybuttons.block.custom.button;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.larsmans.infinitybuttons.InfinityButtonsInit;

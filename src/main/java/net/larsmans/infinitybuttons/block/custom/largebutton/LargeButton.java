@@ -1,14 +1,6 @@
-/*
- * Decompiled with CFR 0.1.1 (FabricMC 57d88659).
- */
-package net.larsmans.infinitybuttons.block.custom;
+package net.larsmans.infinitybuttons.block.custom.largebutton;
 
-import java.util.List;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.block.WallMountedBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -31,29 +23,31 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class Button extends WallMountedBlock {
+import java.util.List;
 
+public abstract class LargeButton extends WallMountedBlock {
     public static final BooleanProperty PRESSED = BooleanProperty.of("pressed");
 
-    protected static final VoxelShape CEILING_X_SHAPE = Block.createCuboidShape(6.0, 14.0, 5.0, 10.0, 16.0, 11.0);
-    protected static final VoxelShape CEILING_Z_SHAPE = Block.createCuboidShape(5.0, 14.0, 6.0, 11.0, 16.0, 10.0);
-    protected static final VoxelShape FLOOR_X_SHAPE = Block.createCuboidShape(6.0, 0.0, 5.0, 10.0, 2.0, 11.0);
-    protected static final VoxelShape FLOOR_Z_SHAPE = Block.createCuboidShape(5.0, 0.0, 6.0, 11.0, 2.0, 10.0);
-    protected static final VoxelShape NORTH_SHAPE = Block.createCuboidShape(5.0, 6.0, 14.0, 11.0, 10.0, 16.0);
-    protected static final VoxelShape SOUTH_SHAPE = Block.createCuboidShape(5.0, 6.0, 0.0, 11.0, 10.0, 2.0);
-    protected static final VoxelShape WEST_SHAPE = Block.createCuboidShape(14.0, 6.0, 5.0, 16.0, 10.0, 11.0);
-    protected static final VoxelShape EAST_SHAPE = Block.createCuboidShape(0.0, 6.0, 5.0, 2.0, 10.0, 11.0);
-    protected static final VoxelShape CEILING_X_PRESSED_SHAPE = Block.createCuboidShape(6.0, 15.0, 5.0, 10.0, 16.0, 11.0);
-    protected static final VoxelShape CEILING_Z_PRESSED_SHAPE = Block.createCuboidShape(5.0, 15.0, 6.0, 11.0, 16.0, 10.0);
-    protected static final VoxelShape FLOOR_X_PRESSED_SHAPE = Block.createCuboidShape(6.0, 0.0, 5.0, 10.0, 1.0, 11.0);
-    protected static final VoxelShape FLOOR_Z_PRESSED_SHAPE = Block.createCuboidShape(5.0, 0.0, 6.0, 11.0, 1.0, 10.0);
-    protected static final VoxelShape NORTH_PRESSED_SHAPE = Block.createCuboidShape(5.0, 6.0, 15.0, 11.0, 10.0, 16.0);
-    protected static final VoxelShape SOUTH_PRESSED_SHAPE = Block.createCuboidShape(5.0, 6.0, 0.0, 11.0, 10.0, 1.0);
-    protected static final VoxelShape WEST_PRESSED_SHAPE = Block.createCuboidShape(15.0, 6.0, 5.0, 16.0, 10.0, 11.0);
-    protected static final VoxelShape EAST_PRESSED_SHAPE = Block.createCuboidShape(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
+    private static final VoxelShape FLOOR_X_SHAPE = Block.createCuboidShape(4, 0, 4, 12, 2, 12);
+    private static final VoxelShape FLOOR_Z_SHAPE = Block.createCuboidShape(4, 0, 4, 12, 2, 12);
+    private static final VoxelShape FLOOR_X_PRESSED_SHAPE = Block.createCuboidShape(4, 0, 4, 12, 1, 12);
+    private static final VoxelShape FLOOR_Z_PRESSED_SHAPE = Block.createCuboidShape(4, 0, 4, 12, 1, 12);
+    private static final VoxelShape NORTH_SHAPE = Block.createCuboidShape(4, 4, 14, 12, 12, 16);
+    private static final VoxelShape NORTH_PRESSED_SHAPE = Block.createCuboidShape(4, 4, 15, 12, 12, 16);
+    private static final VoxelShape EAST_SHAPE = Block.createCuboidShape(0, 4, 4, 2, 12, 12);
+    private static final VoxelShape EAST_PRESSED_SHAPE = Block.createCuboidShape(0, 4, 4, 1, 12, 12);
+    private static final VoxelShape SOUTH_SHAPE = Block.createCuboidShape(4, 4, 0, 12, 12, 2);
+    private static final VoxelShape SOUTH_PRESSED_SHAPE = Block.createCuboidShape(4, 4, 0, 12, 12, 1);
+    private static final VoxelShape WEST_SHAPE = Block.createCuboidShape(14, 4, 4, 16, 12, 12);
+    private static final VoxelShape WEST_PRESSED_SHAPE = Block.createCuboidShape(15, 4, 4, 16, 12, 12);
+    private static final VoxelShape CEILING_X_SHAPE = Block.createCuboidShape(4, 14, 4, 12, 16, 12);
+    private static final VoxelShape CEILING_Z_SHAPE = Block.createCuboidShape(4, 14, 4, 12, 16, 12);
+    private static final VoxelShape CEILING_X_PRESSED_SHAPE = Block.createCuboidShape(4, 15, 4, 12, 16, 12);
+    private static final VoxelShape CEILING_Z_PRESSED_SHAPE = Block.createCuboidShape(4, 15, 4, 12, 16, 12);
+
     private final boolean wooden;
 
-    protected Button(boolean wooden, AbstractBlock.Settings settings) {
+    public LargeButton(boolean wooden,Settings settings) {
         super(settings);
         this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(PRESSED, false)).with(FACE, WallMountLocation.FLOOR));
         this.wooden = wooden;
@@ -94,7 +88,13 @@ public abstract class Button extends WallMountedBlock {
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(PRESSED, FACING, FACE);
+    }
+
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos,
+                              PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (state.get(PRESSED)) {
             return ActionResult.CONSUME;
         }
@@ -110,8 +110,8 @@ public abstract class Button extends WallMountedBlock {
         world.createAndScheduleBlockTick(pos, this, this.getPressTicks());
     }
 
-    protected void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, boolean powered) {
-        world.playSound(powered ? player : null, pos, this.getClickSound(powered), SoundCategory.BLOCKS, 0.3f, powered ? 0.6f : 0.5f);
+    protected void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, boolean pressed) {
+        world.playSound(pressed ? player : null, pos, this.getClickSound(pressed), SoundCategory.BLOCKS, 0.3f, pressed ? 0.6f : 0.5f);
     }
 
     protected abstract SoundEvent getClickSound(boolean var1);
@@ -127,6 +127,7 @@ public abstract class Button extends WallMountedBlock {
         super.onStateReplaced(state, world, pos, newState, moved);
     }
 
+
     @Override
     public int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
         return state.get(PRESSED) ? 15 : 0;
@@ -134,7 +135,7 @@ public abstract class Button extends WallMountedBlock {
 
     @Override
     public int getStrongRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
-        if (state.get(PRESSED) && Button.getDirection(state) == direction) {
+        if (state.get(PRESSED) && LargeButton.getDirection(state) == direction) {
             return 15;
         }
         return 0;
@@ -183,14 +184,13 @@ public abstract class Button extends WallMountedBlock {
         }
     }
 
+
     public void updateNeighbors(BlockState state, World world, BlockPos pos) {
         world.updateNeighborsAlways(pos, this);
-        world.updateNeighborsAlways(pos.offset(Button.getDirection(state).getOpposite()), this);
+        world.updateNeighborsAlways(pos.offset(LargeButton.getDirection(state).getOpposite()), this);
     }
 
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING, PRESSED, FACE);
-    }
 }
+
+
 

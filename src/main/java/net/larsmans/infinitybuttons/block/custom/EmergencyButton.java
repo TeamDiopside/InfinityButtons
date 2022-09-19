@@ -183,8 +183,7 @@ public class EmergencyButton extends WallMountedBlock {
 
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if(!state.get(PRESSED)) {
-        } else {
+        if(state.get(PRESSED)) {
             world.setBlockState(pos, (BlockState)state.with(PRESSED, false), Block.NOTIFY_ALL);
             this.updateNeighbors(state, world, pos);
             this.playClickSound(null, world, pos, false);

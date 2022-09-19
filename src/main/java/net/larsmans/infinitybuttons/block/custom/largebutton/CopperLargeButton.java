@@ -1,4 +1,4 @@
-package net.larsmans.infinitybuttons.block.custom;
+package net.larsmans.infinitybuttons.block.custom.largebutton;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.entity.player.PlayerEntity;
@@ -9,8 +9,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
-public class CopperButton extends Button {
-    public CopperButton(FabricBlockSettings settings) {
+public class CopperLargeButton extends LargeButton{
+    public CopperLargeButton(FabricBlockSettings settings) {
         super(false, settings);
     }
 
