@@ -2,7 +2,7 @@
 
 ## 1.5.0
 
-- Added Secret Buttons, which blend into walls, press them
+- Added Secret Buttons, which blend into walls
   - Currently contains all Brick variants, like Stone Bricks and Quartz Bricks
 
 ## 1.4.1
