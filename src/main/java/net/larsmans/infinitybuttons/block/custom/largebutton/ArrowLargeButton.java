@@ -21,7 +21,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ArrowLargeButton extends LargeButton {
+public class ArrowLargeButton extends AbstractLargeButton {
     public ArrowLargeButton(FabricBlockSettings settings) {
         super(true, settings);
     }

@@ -26,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class StickyCopperButton extends Button {
+public class StickyCopperButton extends AbstractButton {
 
     public StickyCopperButton(FabricBlockSettings settings) {
         super(false, settings);

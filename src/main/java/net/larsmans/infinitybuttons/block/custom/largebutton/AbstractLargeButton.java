@@ -1,6 +1,9 @@
 package net.larsmans.infinitybuttons.block.custom.largebutton;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
+import net.minecraft.block.WallMountedBlock;
 import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,7 +28,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public abstract class LargeButton extends WallMountedBlock {
+public abstract class AbstractLargeButton extends WallMountedBlock {
     public static final BooleanProperty PRESSED = BooleanProperty.of("pressed");
 
     private static final VoxelShape FLOOR_X_SHAPE = Block.createCuboidShape(4, 0, 4, 12, 2, 12);
@@ -47,7 +50,7 @@ public abstract class LargeButton extends WallMountedBlock {
 
     private final boolean wooden;
 
-    public LargeButton(boolean wooden,Settings settings) {
+    public AbstractLargeButton(boolean wooden, Settings settings) {
         super(settings);
         this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(PRESSED, false)).with(FACE, WallMountLocation.FLOOR));
         this.wooden = wooden;
@@ -135,7 +138,7 @@ public abstract class LargeButton extends WallMountedBlock {
 
     @Override
     public int getStrongRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
-        if (state.get(PRESSED) && LargeButton.getDirection(state) == direction) {
+        if (state.get(PRESSED) && AbstractLargeButton.getDirection(state) == direction) {
             return 15;
         }
         return 0;
@@ -187,7 +190,7 @@ public abstract class LargeButton extends WallMountedBlock {
 
     public void updateNeighbors(BlockState state, World world, BlockPos pos) {
         world.updateNeighborsAlways(pos, this);
-        world.updateNeighborsAlways(pos.offset(LargeButton.getDirection(state).getOpposite()), this);
+        world.updateNeighborsAlways(pos.offset(AbstractLargeButton.getDirection(state).getOpposite()), this);
     }
 
 }

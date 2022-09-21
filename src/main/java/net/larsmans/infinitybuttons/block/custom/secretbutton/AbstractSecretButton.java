@@ -26,7 +26,7 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class SecretButton extends HorizontalFacingBlock {
+public abstract class AbstractSecretButton extends HorizontalFacingBlock {
     public static final BooleanProperty PRESSED = BooleanProperty.of("pressed");
 
     public final VoxelShape NORTH_SHAPE;
@@ -35,7 +35,7 @@ public abstract class SecretButton extends HorizontalFacingBlock {
     public final VoxelShape WEST_SHAPE;
     public final VoxelShape OFF_SHAPE;
 
-    protected SecretButton(Settings settings, VoxelShape north_shape, VoxelShape east_shape, VoxelShape south_shape, VoxelShape west_shape, VoxelShape off_shape) {
+    protected AbstractSecretButton(Settings settings, VoxelShape north_shape, VoxelShape east_shape, VoxelShape south_shape, VoxelShape west_shape, VoxelShape off_shape) {
         super(settings);
         NORTH_SHAPE = north_shape;
         EAST_SHAPE = east_shape;

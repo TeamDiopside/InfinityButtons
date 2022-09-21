@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class EmeraldButton extends Button{
+public class EmeraldButton extends AbstractButton {
     public EmeraldButton(FabricBlockSettings settings) {
         super(false, settings);
     }

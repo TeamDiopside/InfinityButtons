@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 
-public class StoneLargeButton extends LargeButton {
+public class StoneLargeButton extends AbstractLargeButton {
     public StoneLargeButton(FabricBlockSettings settings) {
         super(false, settings);
     }

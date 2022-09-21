@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ArrowButton extends Button{
+public class ArrowButton extends AbstractButton {
     public ArrowButton(Settings settings) {
         super(true, settings);
     }

@@ -3,12 +3,7 @@
  */
 package net.larsmans.infinitybuttons.block.custom.button;
 
-import java.util.List;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.block.WallMountedBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -31,7 +26,9 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class Button extends WallMountedBlock {
+import java.util.List;
+
+public abstract class AbstractButton extends WallMountedBlock {
 
     public static final BooleanProperty PRESSED = BooleanProperty.of("pressed");
 
@@ -53,7 +50,7 @@ public abstract class Button extends WallMountedBlock {
     protected static final VoxelShape EAST_PRESSED_SHAPE = Block.createCuboidShape(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
     private final boolean wooden;
 
-    protected Button(boolean wooden, AbstractBlock.Settings settings) {
+    protected AbstractButton(boolean wooden, AbstractBlock.Settings settings) {
         super(settings);
         this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(PRESSED, false)).with(FACE, WallMountLocation.FLOOR));
         this.wooden = wooden;
@@ -134,7 +131,7 @@ public abstract class Button extends WallMountedBlock {
 
     @Override
     public int getStrongRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
-        if (state.get(PRESSED) && Button.getDirection(state) == direction) {
+        if (state.get(PRESSED) && AbstractButton.getDirection(state) == direction) {
             return 15;
         }
         return 0;
@@ -185,7 +182,7 @@ public abstract class Button extends WallMountedBlock {
 
     public void updateNeighbors(BlockState state, World world, BlockPos pos) {
         world.updateNeighborsAlways(pos, this);
-        world.updateNeighborsAlways(pos.offset(Button.getDirection(state).getOpposite()), this);
+        world.updateNeighborsAlways(pos.offset(AbstractButton.getDirection(state).getOpposite()), this);
     }
 
     @Override
