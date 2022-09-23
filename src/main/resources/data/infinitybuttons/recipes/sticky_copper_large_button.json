@@ -4,6 +4,6 @@
   "ingredients": [{"item": "minecraft:honeycomb"},{"item": "infinitybuttons:copper_large_button"}],
   "result": {
     "item": "infinitybuttons:sticky_copper_large_button",
-    "count": 1
+    "count": 2
   }
 }

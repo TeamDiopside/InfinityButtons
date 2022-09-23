@@ -3,6 +3,6 @@
   "ingredients": [{"item": "minecraft:gold_ingot"},{"item": "infinitybuttons:stone_large_button"}],
   "result": {
     "item": "infinitybuttons:gold_large_button",
-    "count": 1
+    "count": 2
   }
 }

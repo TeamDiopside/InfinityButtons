@@ -4,6 +4,6 @@
   "ingredients": [{"item": "minecraft:exposed_copper"},{"item": "infinitybuttons:stone_large_button"}],
   "result": {
     "item": "infinitybuttons:exposed_copper_large_button",
-    "count": 1
+    "count": 2
   }
 }
