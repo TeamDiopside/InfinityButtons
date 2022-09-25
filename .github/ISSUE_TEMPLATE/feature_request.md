@@ -7,5 +7,4 @@ assignees: ''
 
 ---
 
-**What is your suggestion?**
-This and that would be cool!
+
