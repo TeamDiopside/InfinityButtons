@@ -10,10 +10,18 @@ public class BigBrickSecretButton extends AbstractSecretButton {
     public BigBrickSecretButton(Settings settings) {
         super (
                 settings,
-                VoxelShapes.union(BASE, Block.createCuboidShape(0, 8, 3, 16, 16, 19)),
-                VoxelShapes.union(BASE, Block.createCuboidShape(-3, 8, 0, 13, 16, 16)),
-                VoxelShapes.union(BASE, Block.createCuboidShape(0, 8, -3, 16, 16, 13)),
-                VoxelShapes.union(BASE, Block.createCuboidShape(3, 8, 0, 19, 16, 16)),
+                VoxelShapes.union(BASE,
+                        Block.createCuboidShape(0, 8, 3, 16, 16, 19)
+                ),
+                VoxelShapes.union(BASE,
+                        Block.createCuboidShape(-3, 8, 0, 13, 16, 16)
+                ),
+                VoxelShapes.union(BASE,
+                        Block.createCuboidShape(0, 8, -3, 16, 16, 13)
+                ),
+                VoxelShapes.union(BASE,
+                        Block.createCuboidShape(3, 8, 0, 19, 16, 16)
+                ),
                 Block.createCuboidShape(0, 0, 0, 16, 16, 16)
         );
     }
