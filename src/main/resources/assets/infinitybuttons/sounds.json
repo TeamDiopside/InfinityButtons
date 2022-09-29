@@ -10,5 +10,11 @@
     "sounds": [
       "infinitybuttons:stone_scrape"
     ]
+  },
+  "wood_scrape": {
+    "subtitle": "infinitybuttons.subtitle.wood_scrape",
+    "sounds": [
+      "infinitybuttons:wood_scrape"
+    ]
   }
 }
