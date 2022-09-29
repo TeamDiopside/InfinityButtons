@@ -9,7 +9,7 @@ import net.larsmans.infinitybuttons.block.custom.button.CopperButton;
 import net.larsmans.infinitybuttons.block.custom.button.EmeraldButton;
 import net.larsmans.infinitybuttons.block.custom.button.StickyCopperButton;
 import net.larsmans.infinitybuttons.block.custom.largebutton.*;
-import net.larsmans.infinitybuttons.block.custom.secretbutton.BrickSecretButton;
+import net.larsmans.infinitybuttons.block.custom.secretbutton.*;
 import net.larsmans.infinitybuttons.item.ModItemGroup;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
@@ -227,41 +227,101 @@ public class ModBlocks {
     --------------
     */
 
+    public static final Block BOOKSHELF_SECRET_BUTTON = registerBlock("bookshelf_secret_button",
+            new BookshelfSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(1.5f)), ModItemGroup.INFINITYBUTTONS);
+
     public static final Block STONE_BRICK_SECRET_BUTTON = registerBlock("stone_brick_secret_button",
-            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block MOSSY_STONE_BRICK_SECRET_BUTTON = registerBlock("mossy_stone_brick_secret_button",
-            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block CRACKED_STONE_BRICK_SECRET_BUTTON = registerBlock("cracked_stone_brick_secret_button",
-            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block CHISELED_STONE_BRICK_SECRET_BUTTON = registerBlock("chiseled_stone_brick_secret_button",
+            new ChiseledStoneBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block MUD_BRICK_SECRET_BUTTON = registerBlock("mud_brick_secret_button",
+            new MudBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.MUD_BRICKS).requiresTool().strength(1.5f, 3.0f)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block DEEPSLATE_BRICK_SECRET_BUTTON = registerBlock("deepslate_brick_secret_button",
-            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.DEEPSLATE_BRICKS).requiresTool().strength(3.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.DEEPSLATE_BRICKS).requiresTool().strength(3.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block CRACKED_DEEPSLATE_BRICK_SECRET_BUTTON = registerBlock("cracked_deepslate_brick_secret_button",
-            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.DEEPSLATE_BRICKS).requiresTool().strength(3.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.DEEPSLATE_BRICKS).requiresTool().strength(3.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block DEEPSLATE_TILE_SECRET_BUTTON = registerBlock("deepslate_tile_secret_button",
+            new DeepslateTileSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.DEEPSLATE_BRICKS).requiresTool().strength(3.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block CRACKED_DEEPSLATE_TILE_SECRET_BUTTON = registerBlock("cracked_deepslate_tile_secret_button",
+            new DeepslateTileSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.DEEPSLATE_BRICKS).requiresTool().strength(3.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block END_STONE_BRICK_SECRET_BUTTON = registerBlock("end_stone_brick_secret_button",
-            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(3.0f, 9.0f)), ModItemGroup.INFINITYBUTTONS);
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(3.0f, 9.0f)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block QUARTZ_BRICK_SECRET_BUTTON = registerBlock("quartz_brick_secret_button",
-            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(0.8f)), ModItemGroup.INFINITYBUTTONS);
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(0.8f)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = registerBlock("polished_blackstone_brick_secret_button",
-            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block CRACKED_POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = registerBlock("cracked_polished_blackstone_brick_secret_button",
-            new BrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
 
+    public static final Block CHISELED_POLISHED_BLACKSTONE_SECRET_BUTTON = registerBlock("chiseled_polished_blackstone_secret_button",
+            new ChiseledStoneBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block BRICK_SECRET_BUTTON = registerBlock("brick_secret_button",
+            new FullBlockBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block NETHER_BRICK_SECRET_BUTTON = registerBlock("nether_brick_secret_button",
+            new FullBlockBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool().strength(2.0f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block CRACKED_NETHER_BRICK_SECRET_BUTTON = registerBlock("cracked_nether_brick_secret_button",
+            new FullBlockBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool().strength(2.0f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block CHISELED_NETHER_BRICK_SECRET_BUTTON = registerBlock("chiseled_nether_brick_secret_button",
+            new ChiseledNetherBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool().strength(2.0f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block RED_NETHER_BRICK_SECRET_BUTTON = registerBlock("red_nether_brick_secret_button",
+            new FullBlockBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool().strength(2.0f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block DARK_PRISMARINE_SECRET_BUTTON = registerBlock("dark_prismarine_secret_button",
+            new FullBlockBrickSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block OAK_PLANK_SECRET_BUTTON = registerBlock("oak_plank_secret_button",
+            new PlankSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(2.0f, 3.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block BIRCH_PLANK_SECRET_BUTTON = registerBlock("birch_plank_secret_button",
+            new PlankSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(2.0f, 3.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block SPRUCE_PLANK_SECRET_BUTTON = registerBlock("spruce_plank_secret_button",
+            new PlankSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(2.0f, 3.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block ACACIA_PLANK_SECRET_BUTTON = registerBlock("acacia_plank_secret_button",
+            new PlankSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(2.0f, 3.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block DARK_OAK_PLANK_SECRET_BUTTON = registerBlock("dark_oak_plank_secret_button",
+            new PlankSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(2.0f, 3.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block JUNGLE_PLANK_SECRET_BUTTON = registerBlock("jungle_plank_secret_button",
+            new PlankSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(2.0f, 3.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block MANGROVE_PLANK_SECRET_BUTTON = registerBlock("mangrove_plank_secret_button",
+            new PlankSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(2.0f, 3.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block CRIMSON_PLANK_SECRET_BUTTON = registerBlock("crimson_plank_secret_button",
+            new PlankSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(2.0f, 3.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block WARPED_PLANK_SECRET_BUTTON = registerBlock("warped_plank_secret_button",
+            new PlankSecretButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(2.0f, 3.0f)), ModItemGroup.INFINITYBUTTONS);
 
     /*
     -------------
     Extra Methods
     -------------
     */
-
-
 
     private static Block registerBlock(String name, Block block, ItemGroup tab) {
         registerBlockItem(name, block, tab);
