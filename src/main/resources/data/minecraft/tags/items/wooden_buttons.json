@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "infinitybuttons:button_block",
     "infinitybuttons:oak_large_button",
     "infinitybuttons:birch_large_button",
     "infinitybuttons:spruce_large_button",
