@@ -36,5 +36,9 @@
   },
   "suggests": {
     "another-mod": "*"
-  }
+  },
+  "contributors": [
+    "curryducker",
+    "haoooo_"
+  ]
 }
