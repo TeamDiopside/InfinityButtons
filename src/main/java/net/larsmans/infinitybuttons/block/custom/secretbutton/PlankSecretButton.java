@@ -13,9 +13,9 @@ public class PlankSecretButton extends AbstractSecretButton {
                 VoxelShapes.union(BOTTOM, TOP,
                         Block.createCuboidShape(0, 4, 3, 16, 9, 16)),
                 VoxelShapes.union(BOTTOM, TOP,
-                        Block.createCuboidShape(0, 4, 12, 13, 9, 16)),
+                        Block.createCuboidShape(0, 4, 0, 13, 9, 16)),
                 VoxelShapes.union(BOTTOM, TOP,
-                        Block.createCuboidShape(0, 4, 0, 4, 9, 13)),
+                        Block.createCuboidShape(0, 4, 0, 16, 9, 13)),
                 VoxelShapes.union(BOTTOM, TOP,
                         Block.createCuboidShape(3, 4, 0, 16, 9, 16)),
 
