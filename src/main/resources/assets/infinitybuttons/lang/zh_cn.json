@@ -66,7 +66,7 @@
   "block.infinitybuttons.polished_blackstone_brick_secret_button": "磨制黑石砖隐蔽按钮",
   "block.infinitybuttons.cracked_polished_blackstone_brick_secret_button": "裂纹磨制黑石砖隐蔽按钮",
   "block.infinitybuttons.chiseled_polished_blackstone_secret_button": "錾制磨制黑石隐蔽按钮",
-  "block.infinitybuttons.brick_secret_button": "Brick Secret Button隐蔽按钮",
+  "block.infinitybuttons.brick_secret_button": "砖块隐蔽按钮",
   "block.infinitybuttons.nether_brick_secret_button": "下界砖隐蔽按钮",
   "block.infinitybuttons.cracked_nether_brick_secret_button": "裂纹下界砖块隐蔽按钮",
   "block.infinitybuttons.chiseled_nether_brick_secret_button": "錾制下界砖块隐蔽按钮",
@@ -81,6 +81,13 @@
   "block.infinitybuttons.mangrove_plank_secret_button": " 红树木板隐蔽按钮",
   "block.infinitybuttons.crimson_plank_secret_button": " 绯红木板隐蔽按钮",
   "block.infinitybuttons.warped_plank_secret_button": "诡异木板隐蔽按钮",
+
+  "block.infinitybuttons.torch_button": "火把按钮",
+  "block.infinitybuttons.torch_lever": "火把拉杆",
+  "block.infinitybuttons.soul_torch_button": "灵魂火把按钮",
+  "block.infinitybuttons.soul_torch_lever": "灵魂火把拉杆",
+  "block.infinitybuttons.redstone_torch_button": "红石火把按钮",
+  "block.infinitybuttons.redstone_torch_lever": "红石火把",
 
   "infinitybuttons.subtitle.alarm": "警铃大作",
   "infinitybuttons.subtitle.stone_scrape": "石头刮擦",

@@ -3,6 +3,6 @@
   "ingredients": [{"item": "minecraft:iron_ingot"},{"item": "minecraft:stone_button"}],
   "result": {
     "item": "infinitybuttons:iron_button",
-    "count": 1
+    "count": 4
   }
 }
