@@ -49,7 +49,6 @@ public class StickyCopperButton extends AbstractButton {
             this.playClickSound(player, world, pos, true);
             world.emitGameEvent((Entity)player, GameEvent.BLOCK_ACTIVATE, pos);
         }
-
         return ActionResult.success(world.isClient);
     }
 

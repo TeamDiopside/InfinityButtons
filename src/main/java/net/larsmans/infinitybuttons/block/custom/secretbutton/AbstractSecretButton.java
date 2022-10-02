@@ -113,7 +113,10 @@ public abstract class AbstractSecretButton extends HorizontalFacingBlock {
 
     @Override
     public int getStrongRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
-        return state.get(PRESSED) ? 15 : 0;
+        if (state.get(PRESSED) && state.get(FACING) == direction) {
+            return 15;
+        }
+        return 0;
     }
 
     @Override
@@ -133,6 +136,7 @@ public abstract class AbstractSecretButton extends HorizontalFacingBlock {
 
     public void updateNeighbors(BlockState state, World world, BlockPos pos) {
         world.updateNeighborsAlways(pos, this);
+        world.updateNeighborsAlways(pos.offset(state.get(FACING).getOpposite()), this);
     }
 
     @Override
