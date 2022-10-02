@@ -21,7 +21,7 @@
       "net.larsmans.infinitybuttons.InfinityButtonsInit"
     ],
     "client": [
-      "net.larsmans.infinitybuttons.InfinityButtonsClient"
+      "net.larsmans.infinitybuttons.InfinityButtonsClientInit"
     ]
   },
   "mixins": [
