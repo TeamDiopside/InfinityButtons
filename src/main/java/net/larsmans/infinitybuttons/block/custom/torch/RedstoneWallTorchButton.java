@@ -53,7 +53,6 @@ public class RedstoneWallTorchButton extends RedstoneTorchButton {
             return;
         }
         Direction direction = state.get(FACING).getOpposite();
-        double d = 0.27;
         double e = (double)pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.2 + 0.27 * (double)direction.getOffsetX();
         double f = (double)pos.getY() + 0.7 + (random.nextDouble() - 0.5) * 0.2 + 0.22;
         double g = (double)pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.2 + 0.27 * (double)direction.getOffsetZ();
