@@ -92,6 +92,17 @@
   "infinitybuttons.subtitle.alarm": "Alarm goes off",
   "infinitybuttons.subtitle.stone_scrape": "Stone scrapes",
   "infinitybuttons.subtitle.wood_scrape": "Wood scrapes",
+  
+  "advancement.infinitybuttons.root": "Infinity Buttons",
+  "advancement.infinitybuttons.root.desc": "Gotta press them all!",
+  "advancement.infinitybuttons.first_button": "First Button",
+  "advancement.infinitybuttons.first_button.desc": "Obtain your first button",
+  "advancement.infinitybuttons.emergency": "Emergency!",
+  "advancement.infinitybuttons.emergency.desc": "Press the emergency button!",
+  "advancement.infinitybuttons.secret_button": "Shhh... it's a secret!",
+  "advancement.infinitybuttons.secret_button.desc": "Hide a secret button in a wall",
+  "advancement.infinitybuttons.all_emergency_buttons": "Monstrous Emergency!",
+  "advancement.infinitybuttons.all_emergency_buttons.desc": "Obtain all the emergency buttons!",
 
   "infinitybuttons.tooltip.hold_shift": "[Hold Shift]",
   "infinitybuttons.tooltip.sticky_copper_button": "This button acts like a lever",
