@@ -4,6 +4,6 @@
   "ingredients": [{"item": "minecraft:oxidized_copper"},{"item": "minecraft:stone_button"}],
   "result": {
     "item": "infinitybuttons:oxidized_copper_button",
-    "count": 4
+    "count": 2
   }
 }
