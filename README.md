@@ -1,9 +1,17 @@
 # Infinity Buttons
 
-Infinity Buttons is a fabric mod which adds exciting new buttons!
+Infinity Buttons is a mod which adds exciting new buttons!
 
-*Important: [oωo lib](https://modrinth.com/mod/owo-lib) is required!*
+### Important!
+*Fabric:*
+- [oωo lib](https://modrinth.com/mod/owo-lib) is required!
 
+*Forge:*
+- [Cloth Config API](https://www.curseforge.com/minecraft/mc-mods/cloth-config) is required!
+- Can be played without, but has additional content with:
+  - [Quark](https://quarkmod.net/)
+  - [Environmental](https://www.curseforge.com/minecraft/mc-mods/environmental)
+  - [The Endergetic Expansion](https://www.curseforge.com/minecraft/mc-mods/endergetic)
 ### GitHub links
 
 Fabric: [https://github.com/LarsMans64/InfinityButtons](https://github.com/LarsMans64/InfinityButtons)  
