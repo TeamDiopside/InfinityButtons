@@ -82,6 +82,9 @@
   "block.infinitybuttons.crimson_plank_secret_button": "Helrode houten planken verborgen knop",
   "block.infinitybuttons.warped_plank_secret_button": "Spookachtige houten planken verborgen knop",
 
+  "block.infinitybuttons.doorbell": "Deurbel",
+  "block.infinitybuttons.doorbell_button": "Deurbelknop",
+
   "block.infinitybuttons.torch_button": "Fakkelknop",
   "block.infinitybuttons.torch_lever": "Fakkelhendel",
   "block.infinitybuttons.soul_torch_button": "Zielenfakkelknop",
@@ -92,22 +95,13 @@
   "infinitybuttons.subtitle.alarm": "Alarm gaat af",
   "infinitybuttons.subtitle.stone_scrape": "Steen verschuift",
   "infinitybuttons.subtitle.wood_scrape": "Hout verschuift",
-
-  "advancement.infinitybuttons.root": "Infinity Buttons",
-  "advancement.infinitybuttons.root.desc": "Indrukken die hap!",
-  "advancement.infinitybuttons.first_button": "Eerste knop",
-  "advancement.infinitybuttons.first_button.desc": "Verkrijg je eerste knop",
-  "advancement.infinitybuttons.emergency": "Noodgeval!",
-  "advancement.infinitybuttons.emergency.desc": "Druk de noodknop in!",
-  "advancement.infinitybuttons.secret_button": "Sttt... het is geheim!",
-  "advancement.infinitybuttons.secret_button.desc": "Verstop een verborgen knop in een muur",
-  "advancement.infinitybuttons.all_emergency_buttons": "Monsterlijk noodgeval!",
-  "advancement.infinitybuttons.all_emergency_buttons.desc": "Verkrijg alle noodknoppen!",
+  "infinitybuttons.subtitle.doorbell": "Ding dong",
 
   "infinitybuttons.tooltip.hold_shift": "[Houd Shift ingedrukt]",
   "infinitybuttons.tooltip.sticky_copper_button": "Deze knop werkt als een hendel",
   "infinitybuttons.tooltip.emerald_button": "Deze knop blijft willekeurig tussen 0,5 en 5 seconden ingedrukt",
   "infinitybuttons.tooltip.arrow_button": "Deze knop kan alleen ingedrukt worden met een pijl",
+  "infinitybuttons.tooltip.doorbell_button": "Deze deurbel produceert een redstone-signaal",
 
   "itemGroup.infinitybuttons.infinitybuttons": "Infinity Buttons",
 

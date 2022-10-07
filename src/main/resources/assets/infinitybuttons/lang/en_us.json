@@ -82,6 +82,9 @@
   "block.infinitybuttons.crimson_plank_secret_button": "Crimson Plank Secret Button",
   "block.infinitybuttons.warped_plank_secret_button": "Warped Plank Secret Button",
 
+  "block.infinitybuttons.doorbell": "Doorbell",
+  "block.infinitybuttons.doorbell_button": "Doorbell Button",
+
   "block.infinitybuttons.torch_button": "Torch Button",
   "block.infinitybuttons.torch_lever": "Torch Lever",
   "block.infinitybuttons.soul_torch_button": "Soul Torch Button",
@@ -92,22 +95,13 @@
   "infinitybuttons.subtitle.alarm": "Alarm goes off",
   "infinitybuttons.subtitle.stone_scrape": "Stone scrapes",
   "infinitybuttons.subtitle.wood_scrape": "Wood scrapes",
-  
-  "advancement.infinitybuttons.root": "Infinity Buttons",
-  "advancement.infinitybuttons.root.desc": "Gotta press them all!",
-  "advancement.infinitybuttons.first_button": "First Button",
-  "advancement.infinitybuttons.first_button.desc": "Obtain your first button",
-  "advancement.infinitybuttons.emergency": "Emergency!",
-  "advancement.infinitybuttons.emergency.desc": "Press the emergency button!",
-  "advancement.infinitybuttons.secret_button": "Shhh... it's a secret!",
-  "advancement.infinitybuttons.secret_button.desc": "Hide a secret button in a wall",
-  "advancement.infinitybuttons.all_emergency_buttons": "Monstrous Emergency!",
-  "advancement.infinitybuttons.all_emergency_buttons.desc": "Obtain all the emergency buttons!",
+  "infinitybuttons.subtitle.doorbell": "Ding dong",
 
   "infinitybuttons.tooltip.hold_shift": "[Hold Shift]",
   "infinitybuttons.tooltip.sticky_copper_button": "This button acts like a lever",
   "infinitybuttons.tooltip.emerald_button": "This button stays pressed randomly between 0.5 and 5 seconds",
   "infinitybuttons.tooltip.arrow_button": "This button can only be pressed with an arrow",
+  "infinitybuttons.tooltip.doorbell_button": "This doorbell emits a redstone signal",
 
   "itemGroup.infinitybuttons.infinitybuttons": "Infinity Buttons",
 

@@ -82,6 +82,9 @@
   "block.infinitybuttons.crimson_plank_secret_button": " 绯红木板隐蔽按钮",
   "block.infinitybuttons.warped_plank_secret_button": "诡异木板隐蔽按钮",
 
+  "block.infinitybuttons.doorbell": "Doorbell",
+  "block.infinitybuttons.doorbell_button": "Doorbell Button",
+
   "block.infinitybuttons.torch_button": "火把按钮",
   "block.infinitybuttons.torch_lever": "火把拉杆",
   "block.infinitybuttons.soul_torch_button": "灵魂火把按钮",
@@ -92,22 +95,13 @@
   "infinitybuttons.subtitle.alarm": "警铃大作",
   "infinitybuttons.subtitle.stone_scrape": "石头刮擦",
   "infinitybuttons.subtitle.wood_scrape": "木头刮擦",
-
-  "advancement.infinitybuttons.root": "Infinity Buttons",
-  "advancement.infinitybuttons.root.desc": "Gotta press them all!",
-  "advancement.infinitybuttons.first_button": "First Button",
-  "advancement.infinitybuttons.first_button.desc": "Obtain your first button",
-  "advancement.infinitybuttons.emergency": "Emergency!",
-  "advancement.infinitybuttons.emergency.desc": "Press the emergency button!",
-  "advancement.infinitybuttons.secret_button": "Shhh... it's a secret!",
-  "advancement.infinitybuttons.secret_button.desc": "Hide a secret button in a wall",
-  "advancement.infinitybuttons.all_emergency_buttons": "Monstrous Emergency!",
-  "advancement.infinitybuttons.all_emergency_buttons.desc": "Obtain all the emergency buttons!",
+  "infinitybuttons.subtitle.doorbell": "Ding dong",
 
   "infinitybuttons.tooltip.hold_shift": "[按下 Shift 键]",
   "infinitybuttons.tooltip.sticky_copper_button": "这个按钮的作用类似杠杆",
   "infinitybuttons.tooltip.emerald_button": "这个按钮再按下后会在0.5至5秒内随机弹起",
   "infinitybuttons.tooltip.arrow_button": "这个按钮只能通过弓箭射击来按下",
+  "infinitybuttons.tooltip.doorbell_button": "This doorbell emits a redstone signal",
 
   "itemGroup.infinitybuttons.infinitybuttons": "无限按钮",
 

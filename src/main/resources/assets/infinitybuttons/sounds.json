@@ -16,5 +16,11 @@
     "sounds": [
       "infinitybuttons:wood_scrape"
     ]
+  },
+  "doorbell": {
+    "subtitle": "infinitybuttons.subtitle.doorbell",
+    "sounds": [
+      "infinitybuttons:doorbell"
+    ]
   }
 }

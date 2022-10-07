@@ -3,6 +3,8 @@ package net.larsmans.infinitybuttons.block;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.larsmans.infinitybuttons.InfinityButtonsInit;
+import net.larsmans.infinitybuttons.block.custom.Doorbell;
+import net.larsmans.infinitybuttons.block.custom.DoorbellButton;
 import net.larsmans.infinitybuttons.block.custom.EmergencyButton;
 import net.larsmans.infinitybuttons.block.custom.button.ArrowButton;
 import net.larsmans.infinitybuttons.block.custom.button.CopperButton;
@@ -319,6 +321,18 @@ public class ModBlocks {
 
     public static final Block WARPED_PLANK_SECRET_BUTTON = registerBlock("warped_plank_secret_button",
             new PlankSecretButton(FabricBlockSettings.of(Material.NETHER_WOOD, MapColor.DARK_AQUA).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(2.0f, 3.0f)), ModItemGroup.INFINITYBUTTONS);
+
+    /*
+    ------
+    Random
+    ------
+    */
+
+    public static final Block DOORBELL = registerBlock("doorbell",
+            new Doorbell(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block DOORBELL_BUTTON = registerBlock("doorbell_button",
+            new DoorbellButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
 
     /*
     -------
