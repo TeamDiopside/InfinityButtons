@@ -9,10 +9,9 @@
 - Edited the vanilla Button recipe to produce 4 Buttons instead of 1.
 - Edited the small Button recipe to produce 2 Buttons instead of 1.
 - Fixed the side textures of the item model of Large Buttons.
-- Added advancements.
 
 Forge only:
-- Added compatibility for Quark, Environmental and Endergetic Expansion blocks.
+- Added compatibility for blocks from Quark, Environmental and The Endergetic Expansion.
 
 ## 1.5.0
 
