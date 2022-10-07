@@ -10,7 +10,7 @@ Infinity Buttons is a mod which adds exciting new buttons!
 - Emergency Buttons in all 16 colors. They can also produce an alarm sound*.
 - Emerald Button, which will stay pressed randomly between 0.5 and 5 seconds.
 - Iron and Gold Buttons, which can only be pressed by an arrow.
-- Secret Buttons, which blend into walls. Containing bookshelves, all bricks, planks and more.
+- Secret Buttons, which blend into walls. Containing bookshelves, bricks, planks and more.
 - Torch Buttons and Levers. They also come in soul and redstone form.
 - Doorbell and Doorbell Button.
 
