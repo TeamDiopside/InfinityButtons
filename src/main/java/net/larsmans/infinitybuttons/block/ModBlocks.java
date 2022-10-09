@@ -6,10 +6,7 @@ import net.larsmans.infinitybuttons.InfinityButtonsInit;
 import net.larsmans.infinitybuttons.block.custom.Doorbell;
 import net.larsmans.infinitybuttons.block.custom.DoorbellButton;
 import net.larsmans.infinitybuttons.block.custom.EmergencyButton;
-import net.larsmans.infinitybuttons.block.custom.button.ArrowButton;
-import net.larsmans.infinitybuttons.block.custom.button.CopperButton;
-import net.larsmans.infinitybuttons.block.custom.button.EmeraldButton;
-import net.larsmans.infinitybuttons.block.custom.button.StickyCopperButton;
+import net.larsmans.infinitybuttons.block.custom.button.*;
 import net.larsmans.infinitybuttons.block.custom.largebutton.*;
 import net.larsmans.infinitybuttons.block.custom.secretbutton.*;
 import net.larsmans.infinitybuttons.block.custom.torch.*;
@@ -29,148 +26,133 @@ import net.minecraft.util.registry.Registry;
 public class ModBlocks {
 
     /*
-    -------------
-    Large Buttons
-    -------------
-    */
-
-    public static final Block OAK_LARGE_BUTTON = registerBlock("oak_large_button",
-            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block BIRCH_LARGE_BUTTON = registerBlock("birch_large_button",
-            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block SPRUCE_LARGE_BUTTON = registerBlock("spruce_large_button",
-            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block ACACIA_LARGE_BUTTON = registerBlock("acacia_large_button",
-            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block DARK_OAK_LARGE_BUTTON = registerBlock("dark_oak_large_button",
-            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block JUNGLE_LARGE_BUTTON = registerBlock("jungle_large_button",
-            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block MANGROVE_LARGE_BUTTON = registerBlock("mangrove_large_button",
-            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block WARPED_LARGE_BUTTON = registerBlock("warped_large_button",
-            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block CRIMSON_LARGE_BUTTON = registerBlock("crimson_large_button",
-            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block STONE_LARGE_BUTTON = registerBlock("stone_large_button",
-            new StoneLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block POLISHED_BLACKSTONE_LARGE_BUTTON = registerBlock("polished_blackstone_large_button",
-            new StoneLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block COPPER_LARGE_BUTTON = registerBlock("copper_large_button",
-            new CopperLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.COPPER)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block EXPOSED_COPPER_LARGE_BUTTON = registerBlock("exposed_copper_large_button",
-            new CopperLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.COPPER)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block WEATHERED_COPPER_LARGE_BUTTON = registerBlock("weathered_copper_large_button",
-            new CopperLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.COPPER)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block OXIDIZED_COPPER_LARGE_BUTTON = registerBlock("oxidized_copper_large_button",
-            new CopperLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.COPPER)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block STICKY_COPPER_LARGE_BUTTON = registerBlock("sticky_copper_large_button",
-            new StickyCopperLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.COPPER)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block STICKY_EXPOSED_COPPER_LARGE_BUTTON = registerBlock("sticky_exposed_copper_large_button",
-            new StickyCopperLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.COPPER)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block STICKY_WEATHERED_COPPER_LARGE_BUTTON = registerBlock("sticky_weathered_copper_large_button",
-            new StickyCopperLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.COPPER)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block STICKY_OXIDIZED_COPPER_LARGE_BUTTON = registerBlock("sticky_oxidized_copper_large_button",
-            new StickyCopperLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.COPPER)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block EMERALD_LARGE_BUTTON = registerBlock("emerald_large_button",
-            new EmeraldLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block IRON_LARGE_BUTTON = registerBlock("iron_large_button",
-            new ArrowLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
-
-    public static final Block GOLD_LARGE_BUTTON = registerBlock("gold_large_button",
-            new ArrowLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
-
-    /*
     -------
     Buttons
     -------
     */
 
     public static final Block COPPER_BUTTON = registerBlock("copper_button",
-            new CopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+            new CopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block EXPOSED_COPPER_BUTTON = registerBlock("exposed_copper_button",
-            new CopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+            new CopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block WEATHERED_COPPER_BUTTON = registerBlock("weathered_copper_button",
-            new CopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+            new CopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block OXIDIZED_COPPER_BUTTON = registerBlock("oxidized_copper_button",
-            new CopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+            new CopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block STICKY_COPPER_BUTTON = registerBlock("sticky_copper_button",
-            new StickyCopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+            new StickyCopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block STICKY_EXPOSED_COPPER_BUTTON = registerBlock("sticky_exposed_copper_button",
-            new StickyCopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+            new StickyCopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block STICKY_WEATHERED_COPPER_BUTTON = registerBlock("sticky_weathered_copper_button",
-            new StickyCopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+            new StickyCopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block STICKY_OXIDIZED_COPPER_BUTTON = registerBlock("sticky_oxidized_copper_button",
-            new StickyCopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+            new StickyCopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block EMERALD_BUTTON = registerBlock("emerald_button",
-            new EmeraldButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+            new EmeraldButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block IRON_BUTTON = registerBlock("iron_button",
-            new ArrowButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+            new ArrowButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block GOLD_BUTTON = registerBlock("gold_button",
-            new ArrowButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f)
-                    .collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+            new ArrowButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block PRISMARINE_BUTTON = registerBlock("prismarine_button",
+            new PrismarineButton(FabricBlockSettings.of(Material.DECORATION, MapColor.CYAN).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block PRISMARINE_BRICK_BUTTON = registerBlock("prismarine_brick_button",
+            new PrismarineButton(FabricBlockSettings.of(Material.DECORATION, MapColor.DIAMOND_BLUE).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block DARK_PRISMARINE_BUTTON = registerBlock("dark_prismarine_button",
+            new PrismarineButton(FabricBlockSettings.of(Material.DECORATION, MapColor.DIAMOND_BLUE).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
+
+    /*
+    -------------
+    Large Buttons
+    -------------
+    */
+
+    public static final Block OAK_LARGE_BUTTON = registerBlock("oak_large_button",
+            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block BIRCH_LARGE_BUTTON = registerBlock("birch_large_button",
+            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block SPRUCE_LARGE_BUTTON = registerBlock("spruce_large_button",
+            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block ACACIA_LARGE_BUTTON = registerBlock("acacia_large_button",
+            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block DARK_OAK_LARGE_BUTTON = registerBlock("dark_oak_large_button",
+            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block JUNGLE_LARGE_BUTTON = registerBlock("jungle_large_button",
+            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block MANGROVE_LARGE_BUTTON = registerBlock("mangrove_large_button",
+            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block WARPED_LARGE_BUTTON = registerBlock("warped_large_button",
+            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block CRIMSON_LARGE_BUTTON = registerBlock("crimson_large_button",
+            new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block STONE_LARGE_BUTTON = registerBlock("stone_large_button",
+            new StoneLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block POLISHED_BLACKSTONE_LARGE_BUTTON = registerBlock("polished_blackstone_large_button",
+            new StoneLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block COPPER_LARGE_BUTTON = registerBlock("copper_large_button",
+            new CopperLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.COPPER)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block EXPOSED_COPPER_LARGE_BUTTON = registerBlock("exposed_copper_large_button",
+            new CopperLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.COPPER)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block WEATHERED_COPPER_LARGE_BUTTON = registerBlock("weathered_copper_large_button",
+            new CopperLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.COPPER)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block OXIDIZED_COPPER_LARGE_BUTTON = registerBlock("oxidized_copper_large_button",
+            new CopperLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.COPPER)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block STICKY_COPPER_LARGE_BUTTON = registerBlock("sticky_copper_large_button",
+            new StickyCopperLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.COPPER)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block STICKY_EXPOSED_COPPER_LARGE_BUTTON = registerBlock("sticky_exposed_copper_large_button",
+            new StickyCopperLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.COPPER)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block STICKY_WEATHERED_COPPER_LARGE_BUTTON = registerBlock("sticky_weathered_copper_large_button",
+            new StickyCopperLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.COPPER)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block STICKY_OXIDIZED_COPPER_LARGE_BUTTON = registerBlock("sticky_oxidized_copper_large_button",
+            new StickyCopperLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.COPPER)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block EMERALD_LARGE_BUTTON = registerBlock("emerald_large_button",
+            new EmeraldLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block IRON_LARGE_BUTTON = registerBlock("iron_large_button",
+            new ArrowLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block GOLD_LARGE_BUTTON = registerBlock("gold_large_button",
+            new ArrowLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block PRISMARINE_LARGE_BUTTON = registerBlock("prismarine_large_button",
+            new PrismarineLargeButton(FabricBlockSettings.of(Material.DECORATION, MapColor.CYAN).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block PRISMARINE_BRICK_LARGE_BUTTON = registerBlock("prismarine_brick_large_button",
+            new PrismarineLargeButton(FabricBlockSettings.of(Material.DECORATION, MapColor.DIAMOND_BLUE).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block DARK_PRISMARINE_LARGE_BUTTON = registerBlock("dark_prismarine_large_button",
+            new PrismarineLargeButton(FabricBlockSettings.of(Material.DECORATION, MapColor.DIAMOND_BLUE).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
 
     /*
     -----------------
