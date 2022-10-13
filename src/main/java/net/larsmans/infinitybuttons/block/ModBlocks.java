@@ -64,14 +64,17 @@ public class ModBlocks {
     public static final Block GOLD_BUTTON = registerBlock("gold_button",
             new ArrowButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
+    public static final Block DIAMOND_BUTTON = registerBlock("diamond_button",
+            new DiamondButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+
     public static final Block PRISMARINE_BUTTON = registerBlock("prismarine_button",
-            new PrismarineButton(FabricBlockSettings.of(Material.DECORATION, MapColor.CYAN).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
+            new PrismarineButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block PRISMARINE_BRICK_BUTTON = registerBlock("prismarine_brick_button",
-            new PrismarineButton(FabricBlockSettings.of(Material.DECORATION, MapColor.DIAMOND_BLUE).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
+            new PrismarineButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block DARK_PRISMARINE_BUTTON = registerBlock("dark_prismarine_button",
-            new PrismarineButton(FabricBlockSettings.of(Material.DECORATION, MapColor.DIAMOND_BLUE).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
+            new PrismarineButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
 
     /*
     -------------
@@ -146,13 +149,13 @@ public class ModBlocks {
             new ArrowLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block PRISMARINE_LARGE_BUTTON = registerBlock("prismarine_large_button",
-            new PrismarineLargeButton(FabricBlockSettings.of(Material.DECORATION, MapColor.CYAN).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
+            new PrismarineLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block PRISMARINE_BRICK_LARGE_BUTTON = registerBlock("prismarine_brick_large_button",
-            new PrismarineLargeButton(FabricBlockSettings.of(Material.DECORATION, MapColor.DIAMOND_BLUE).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
+            new PrismarineLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block DARK_PRISMARINE_LARGE_BUTTON = registerBlock("dark_prismarine_large_button",
-            new PrismarineLargeButton(FabricBlockSettings.of(Material.DECORATION, MapColor.DIAMOND_BLUE).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
+            new PrismarineLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
 
     /*
     -----------------
@@ -206,6 +209,9 @@ public class ModBlocks {
             new EmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
     public static final Block BLACK_EMERGENCY_BUTTON = registerBlock("black_emergency_button",
+            new EmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+
+    public static final Block FANCY_EMERGENCY_BUTTON = registerBlock("fancy_emergency_button",
             new EmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
     /*
