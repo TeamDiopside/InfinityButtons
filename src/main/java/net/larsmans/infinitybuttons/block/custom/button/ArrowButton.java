@@ -1,5 +1,6 @@
 package net.larsmans.infinitybuttons.block.custom.button;
 
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.larsmans.infinitybuttons.InfinityButtonsInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.gui.screen.Screen;
@@ -21,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class ArrowButton extends AbstractButton {
-    public ArrowButton(Settings settings) {
+    public ArrowButton(FabricBlockSettings settings) {
         super(true, settings);
     }
 

@@ -3,7 +3,11 @@
  */
 package net.larsmans.infinitybuttons.block.custom.button;
 
-import net.minecraft.block.*;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
+import net.minecraft.block.WallMountedBlock;
 import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -50,7 +54,7 @@ public abstract class AbstractButton extends WallMountedBlock {
     protected static final VoxelShape EAST_PRESSED_SHAPE = Block.createCuboidShape(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
     private final boolean wooden;
 
-    protected AbstractButton(boolean wooden, AbstractBlock.Settings settings) {
+    protected AbstractButton(boolean wooden, FabricBlockSettings settings) {
         super(settings);
         this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(PRESSED, false)).with(FACE, WallMountLocation.FLOOR));
         this.wooden = wooden;

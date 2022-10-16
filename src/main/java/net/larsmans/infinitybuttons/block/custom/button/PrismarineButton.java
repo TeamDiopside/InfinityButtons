@@ -3,6 +3,7 @@
  */
 package net.larsmans.infinitybuttons.block.custom.button;
 
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.larsmans.infinitybuttons.InfinityButtonsInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -34,7 +35,7 @@ public class PrismarineButton extends AbstractButton {
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
-    public PrismarineButton(Settings settings) {
+    public PrismarineButton(FabricBlockSettings settings) {
         super(true, settings);
         this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(PRESSED, false)).with(FACE, WallMountLocation.FLOOR)).with(WATERLOGGED, false));
     }
