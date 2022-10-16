@@ -29,7 +29,10 @@ body:
       label: What version of Minecraft are you playing?
       options:
         - 1.16.5
+        - 1.18.2
         - 1.19
+        - 1.19.1
+        - 1.19.2
     validations:
       required: true
   - type: checkboxes
