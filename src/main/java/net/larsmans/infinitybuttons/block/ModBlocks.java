@@ -148,6 +148,9 @@ public class ModBlocks {
     public static final Block GOLD_LARGE_BUTTON = registerBlock("gold_large_button",
             new ArrowLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
+    public static final Block DIAMOND_LARGE_BUTTON = registerBlock("diamond_large_button",
+            new DiamondLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
+
     public static final Block PRISMARINE_LARGE_BUTTON = registerBlock("prismarine_large_button",
             new PrismarineLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
 
