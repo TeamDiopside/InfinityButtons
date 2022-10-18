@@ -1,5 +1,13 @@
 # Changelog Infinity Buttons
 
+## 2.1.0
+
+- Added Fancy Emergency Button.
+- Added Prismarine Buttons, which can be waterlogged.
+- Added shiny Diamond Buttons, just to flex.
+- Torch Buttons and Levers can now be placed on the floor.
+- Piglins now get angry when breaking Gold Buttons.
+
 ## 2.0.0
 
 - Ported to Forge! From now on, every version will have its Forge counterpart as well.

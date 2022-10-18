@@ -66,22 +66,22 @@ public abstract class AbstractButton extends WallMountedBlock {
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         Direction direction = state.get(FACING);
         boolean bl = state.get(PRESSED);
-        switch ((WallMountLocation)state.get(FACE)) {
-            case FLOOR: {
+        switch ((WallMountLocation) state.get(FACE)) {
+            case FLOOR -> {
                 if (direction.getAxis() == Direction.Axis.X) {
                     return bl ? FLOOR_X_PRESSED_SHAPE : FLOOR_X_SHAPE;
                 }
                 return bl ? FLOOR_Z_PRESSED_SHAPE : FLOOR_Z_SHAPE;
             }
-            case WALL: {
+            case WALL -> {
                 switch (direction) {
-                    case EAST: {
+                    case EAST -> {
                         return bl ? EAST_PRESSED_SHAPE : EAST_SHAPE;
                     }
-                    case WEST: {
+                    case WEST -> {
                         return bl ? WEST_PRESSED_SHAPE : WEST_SHAPE;
                     }
-                    case SOUTH: {
+                    case SOUTH -> {
                         return bl ? SOUTH_PRESSED_SHAPE : SOUTH_SHAPE;
                     }
                 }
