@@ -109,8 +109,9 @@
   "infinitybuttons.tooltip.hold_shift": "[按下 Shift 键]",
   "infinitybuttons.tooltip.sticky_copper_button": "这个按钮的作用类似杠杆",
   "infinitybuttons.tooltip.emerald_button": "这个按钮再按下后会在0.5至5秒内随机弹起",
-  "infinitybuttons.tooltip.prismarine_button": "这个按钮可能会被水淹没",
   "infinitybuttons.tooltip.arrow_button": "这个按钮只能通过弓箭射击来按下",
+  "infinitybuttons.tooltip.diamond_button": "The biggest flex in the west",
+  "infinitybuttons.tooltip.prismarine_button": "这个按钮可能会被水淹没",
   "infinitybuttons.tooltip.doorbell_button": "这个门铃会发出红石信号",
 
   "itemGroup.infinitybuttons.infinitybuttons": "无限按钮",
