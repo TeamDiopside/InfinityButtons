@@ -25,11 +25,9 @@ import net.minecraft.util.registry.Registry;
 
 public class ModBlocks {
 
-    /*
-    -------
-    Buttons
-    -------
-    */
+    /**
+     * Buttons
+     */
 
     public static final Block COPPER_BUTTON = registerBlock("copper_button",
             new CopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
@@ -76,11 +74,9 @@ public class ModBlocks {
     public static final Block DARK_PRISMARINE_BUTTON = registerBlock("dark_prismarine_button",
             new PrismarineButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
 
-    /*
-    -------------
-    Large Buttons
-    -------------
-    */
+    /**
+     * Large Buttons
+     */
 
     public static final Block OAK_LARGE_BUTTON = registerBlock("oak_large_button",
             new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
@@ -160,11 +156,9 @@ public class ModBlocks {
     public static final Block DARK_PRISMARINE_LARGE_BUTTON = registerBlock("dark_prismarine_large_button",
             new PrismarineLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), ModItemGroup.INFINITYBUTTONS);
 
-    /*
-    -----------------
-    Emergency Buttons
-    -----------------
-    */
+    /**
+     * Emergency Buttons
+     */
 
     public static final Block RED_EMERGENCY_BUTTON = registerBlock("red_emergency_button",
             new EmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
@@ -217,11 +211,9 @@ public class ModBlocks {
     public static final Block FANCY_EMERGENCY_BUTTON = registerBlock("fancy_emergency_button",
             new EmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), ModItemGroup.INFINITYBUTTONS);
 
-    /*
-    --------------
-    Secret Buttons
-    --------------
-    */
+    /**
+     * Secret Buttons
+     */
 
     public static final Block BOOKSHELF_SECRET_BUTTON = registerBlock("bookshelf_secret_button",
             new BookshelfSecretButton(FabricBlockSettings.of(Material.WOOD).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(1.5f)), ModItemGroup.INFINITYBUTTONS);
@@ -313,11 +305,9 @@ public class ModBlocks {
     public static final Block WARPED_PLANK_SECRET_BUTTON = registerBlock("warped_plank_secret_button",
             new PlankSecretButton(FabricBlockSettings.of(Material.NETHER_WOOD, MapColor.DARK_AQUA).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(2.0f, 3.0f)), ModItemGroup.INFINITYBUTTONS);
 
-    /*
-    ------
-    Random
-    ------
-    */
+    /**
+     * Misc
+     */
 
     public static final Block DOORBELL = registerBlock("doorbell",
             new Doorbell(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
@@ -325,23 +315,33 @@ public class ModBlocks {
     public static final Block DOORBELL_BUTTON = registerBlock("doorbell_button",
             new DoorbellButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD)), ModItemGroup.INFINITYBUTTONS);
 
-    /*
-    -------
-    Torches
-    -------
-    */
+    /**
+     * Torches
+     */
 
     public static final Block TORCH_BUTTON = registerBlock("torch_button",
-            new TorchButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(14).sounds(BlockSoundGroup.WOOD), ParticleTypes.FLAME), ModItemGroup.INFINITYBUTTONS);
+            new TorchButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(14).sounds(BlockSoundGroup.WOOD), ParticleTypes.FLAME));
+
+    public static final Block WALL_TORCH_BUTTON = registerBlock("wall_torch_button",
+            new WallTorchButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(14).sounds(BlockSoundGroup.WOOD).dropsLike(TORCH_BUTTON), ParticleTypes.FLAME));
 
     public static final Block TORCH_LEVER = registerBlock("torch_lever",
-            new TorchLever(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(14).sounds(BlockSoundGroup.WOOD), ParticleTypes.FLAME), ModItemGroup.INFINITYBUTTONS);
+            new TorchLever(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(14).sounds(BlockSoundGroup.WOOD), ParticleTypes.FLAME));
+
+    public static final Block WALL_TORCH_LEVER = registerBlock("wall_torch_lever",
+            new WallTorchLever(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(14).sounds(BlockSoundGroup.WOOD).dropsLike(TORCH_LEVER), ParticleTypes.FLAME));
 
     public static final Block SOUL_TORCH_BUTTON = registerBlock("soul_torch_button",
-            new TorchButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(10).sounds(BlockSoundGroup.WOOD), ParticleTypes.SOUL_FIRE_FLAME), ModItemGroup.INFINITYBUTTONS);
+            new TorchButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(10).sounds(BlockSoundGroup.WOOD), ParticleTypes.SOUL_FIRE_FLAME));
+
+    public static final Block SOUL_WALL_TORCH_BUTTON = registerBlock("soul_wall_torch_button",
+            new WallTorchButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(10).sounds(BlockSoundGroup.WOOD).dropsLike(SOUL_TORCH_BUTTON), ParticleTypes.SOUL_FIRE_FLAME));
 
     public static final Block SOUL_TORCH_LEVER = registerBlock("soul_torch_lever",
-            new TorchLever(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(10).sounds(BlockSoundGroup.WOOD), ParticleTypes.SOUL_FIRE_FLAME), ModItemGroup.INFINITYBUTTONS);
+            new TorchLever(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(10).sounds(BlockSoundGroup.WOOD), ParticleTypes.SOUL_FIRE_FLAME));
+
+    public static final Block SOUL_WALL_TORCH_LEVER = registerBlock("soul_wall_torch_lever",
+            new WallTorchLever(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(10).sounds(BlockSoundGroup.WOOD).dropsLike(SOUL_TORCH_LEVER), ParticleTypes.SOUL_FIRE_FLAME));
 
     public static final Block REDSTONE_TORCH_BUTTON = registerBlock("redstone_torch_button",
             new RedstoneTorchButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(7).sounds(BlockSoundGroup.WOOD)));
@@ -355,11 +355,9 @@ public class ModBlocks {
     public static final Block REDSTONE_WALL_TORCH_LEVER = registerBlock("redstone_wall_torch_lever",
             new RedstoneWallTorchLever(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(7).sounds(BlockSoundGroup.WOOD).dropsLike(REDSTONE_TORCH_LEVER)));
 
-    /*
-    -------------
-    Extra Methods
-    -------------
-    */
+    /**
+     * Methods
+     */
 
     private static Block registerBlock(String name, Block block, ItemGroup tab) {
         registerBlockItem(name, block, tab);

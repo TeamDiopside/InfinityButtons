@@ -3,8 +3,7 @@ package net.larsmans.infinitybuttons.block.custom.torch;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.HorizontalFacingBlock;
-import net.minecraft.block.TorchBlock;
+import net.minecraft.block.WallTorchBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleEffect;
@@ -14,7 +13,6 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
@@ -27,14 +25,20 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
-public class TorchButton extends TorchBlock {
+public class WallTorchButton extends WallTorchBlock {
+
+    //this is terribly written but I have to because reasons
 
     public static final BooleanProperty PRESSED = BooleanProperty.of("pressed");
-    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
-    public TorchButton(FabricBlockSettings settings, ParticleEffect particleEffect) {
+    public WallTorchButton(FabricBlockSettings settings, ParticleEffect particleEffect) {
         super(settings, particleEffect);
         this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH).with(PRESSED, false));
+    }
+
+    @Override
+    public String getTranslationKey() {
+        return this.asItem().getTranslationKey();
     }
 
     @Override
