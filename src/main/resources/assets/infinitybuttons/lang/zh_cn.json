@@ -120,5 +120,7 @@
   "text.config.infinity-buttons-config.option.alarmSound.tooltip": "紧急按钮按下后是否会发出警报声音",
   "text.config.infinity-buttons-config.option.tooltips": "工具提示",
   "text.config.infinity-buttons-config.option.tooltips.tooltip": "是否显示工具提示",
+  "text.config.infinity-buttons-config.option.diamondParticle": "Diamond Button Particles",
+  "text.config.infinity-buttons-config.option.diamondParticle.tooltip": "Whether Diamond Buttons have particles around them",
   "text.config.infinity-buttons-config.title": "无限按钮 Config"
 }

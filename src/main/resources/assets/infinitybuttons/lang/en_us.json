@@ -120,5 +120,7 @@
   "text.config.infinity-buttons-config.option.alarmSound.tooltip": "Whether the Emergency Buttons will make an alarm sound",
   "text.config.infinity-buttons-config.option.tooltips": "Tooltips",
   "text.config.infinity-buttons-config.option.tooltips.tooltip": "Whether tooltips will show up",
+  "text.config.infinity-buttons-config.option.diamondParticle": "Diamond Button Particles",
+  "text.config.infinity-buttons-config.option.diamondParticle.tooltip": "Whether Diamond Buttons have particles around them",
   "text.config.infinity-buttons-config.title": "Infinity Buttons Config"
 }

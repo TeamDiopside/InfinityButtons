@@ -120,5 +120,7 @@
   "text.config.infinity-buttons-config.option.alarmSound.tooltip": "Of de noodknoppen een alarmgeluid maken",
   "text.config.infinity-buttons-config.option.tooltips": "Tooltips",
   "text.config.infinity-buttons-config.option.tooltips.tooltip": "Of tooltips worden weergegeven",
+  "text.config.infinity-buttons-config.option.diamondParticle": "Diamanten-knop-deeltjes",
+  "text.config.infinity-buttons-config.option.diamondParticle.tooltip": "Of er deeltjes om diamanten knoppen komen",
   "text.config.infinity-buttons-config.title": "Infinity Buttons Configuratie"
 }
