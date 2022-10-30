@@ -10,4 +10,6 @@ public class InfinityButtonsConfigModel {
     public boolean alarmSound = true;
 
     public boolean tooltips = true;
+
+    public boolean diamondParticles = true;
 }
