@@ -7,6 +7,7 @@ import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.TorchBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -16,6 +17,8 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.BlockMirror;
+import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -42,18 +45,18 @@ public class TorchButton extends TorchBlock {
         Direction direction = state.get(FACING);
         if (state.get(PRESSED)) {
             double d = (double) pos.getX() + 0.5;
-            double e = (double) pos.getY() + 0.6;
+            double e = (double) pos.getY() + 0.63;
             double f = (double) pos.getZ() + 0.5;
             Direction direction2 = direction.getOpposite();
             world.addParticle(ParticleTypes.SMOKE,
-                    d + 0.05 * (double) direction2.getOffsetX(),
-                    e + 0.15,
-                    f + 0.05 * (double) direction2.getOffsetZ(),
+                    d + 0.23 * (double) direction2.getOffsetX(),
+                    e,
+                    f + 0.23 * (double) direction2.getOffsetZ(),
                     0.0, 0.0, 0.0);
             world.addParticle(this.particle,
-                    d + 0.05 * (double) direction2.getOffsetX(),
-                    e + 0.15,
-                    f + 0.05 * (double) direction2.getOffsetZ(),
+                    d + 0.23 * (double) direction2.getOffsetX(),
+                    e,
+                    f + 0.23 * (double) direction2.getOffsetZ(),
                     0.0, 0.0, 0.0);
         } else {
             super.randomDisplayTick(state, world, pos, random);
@@ -104,7 +107,7 @@ public class TorchButton extends TorchBlock {
 
     @Override
     public int getStrongRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
-        if (state.get(PRESSED) && state.get(FACING) == direction) {
+        if (state.get(PRESSED) && Direction.DOWN.getOpposite() == direction) {
             return 15;
         }
         return 0;
@@ -127,6 +130,31 @@ public class TorchButton extends TorchBlock {
 
     public void updateNeighbors(BlockState state, World world, BlockPos pos) {
         world.updateNeighborsAlways(pos, this);
-        world.updateNeighborsAlways(pos.offset(state.get(FACING).getOpposite()), this);
+        world.updateNeighborsAlways(pos.offset(Direction.DOWN), this);
+    }
+
+    @Override
+    @Nullable
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        Direction[] directions;
+        BlockState blockState = this.getDefaultState();
+        World worldView = ctx.getWorld();
+        BlockPos blockPos = ctx.getBlockPos();
+        for (Direction direction : directions = ctx.getPlacementDirections()) {
+            Direction direction2;
+            if (!direction.getAxis().isHorizontal() || !(blockState = (BlockState)blockState.with(FACING, direction2 = direction.getOpposite())).canPlaceAt(worldView, blockPos)) continue;
+            return blockState;
+        }
+        return null;
+    }
+
+    @Override
+    public BlockState rotate(BlockState state, BlockRotation rotation) {
+        return (BlockState)state.with(FACING, rotation.rotate(state.get(FACING)));
+    }
+
+    @Override
+    public BlockState mirror(BlockState state, BlockMirror mirror) {
+        return state.rotate(mirror.getRotation(state.get(FACING)));
     }
 }
