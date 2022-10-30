@@ -2,8 +2,6 @@
   "replace": false,
   "values": [
     "infinitybuttons:soul_torch_button",
-    "infinitybuttons:soul_wall_torch_button",
-    "infinitybuttons:soul_torch_lever",
-    "infinitybuttons:soul_wall_torch_lever"
+    "infinitybuttons:soul_torch_lever"
   ]
 }
