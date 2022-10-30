@@ -5,7 +5,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class ModSounds {
+public class InfinityButtonsSounds {
     public static SoundEvent ALARM = registerSoundEvent("alarm");
     public static SoundEvent STONE_SCRAPE = registerSoundEvent("stone_scrape");
     public static SoundEvent WOOD_SCRAPE = registerSoundEvent("wood_scrape");
@@ -17,6 +17,6 @@ public class ModSounds {
     }
 
     public static void registerSounds() {
-        System.out.println("Registering ModSounds for " + InfinityButtonsInit.MOD_ID);
+        System.out.println("Registering InfinityButtonsSounds for " + InfinityButtonsInit.MOD_ID);
     }
 }
