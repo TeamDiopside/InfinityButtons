@@ -52,12 +52,12 @@ public abstract class AbstractButton extends WallMountedBlock {
     protected static final VoxelShape SOUTH_PRESSED_SHAPE = Block.createCuboidShape(5.0, 6.0, 0.0, 11.0, 10.0, 1.0);
     protected static final VoxelShape WEST_PRESSED_SHAPE = Block.createCuboidShape(15.0, 6.0, 5.0, 16.0, 10.0, 11.0);
     protected static final VoxelShape EAST_PRESSED_SHAPE = Block.createCuboidShape(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
-    private final boolean wooden;
+    private final boolean projectile;
 
-    protected AbstractButton(boolean wooden, FabricBlockSettings settings) {
+    protected AbstractButton(boolean projectile, FabricBlockSettings settings) {
         super(settings);
         this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(PRESSED, false)).with(FACE, WallMountLocation.FLOOR));
-        this.wooden = wooden;
+        this.projectile = projectile;
     }
 
     public abstract int getPressTicks();
@@ -111,11 +111,11 @@ public abstract class AbstractButton extends WallMountedBlock {
         world.createAndScheduleBlockTick(pos, this, this.getPressTicks());
     }
 
-    protected void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, boolean powered) {
-        world.playSound(powered ? player : null, pos, this.getClickSound(powered), SoundCategory.BLOCKS, 0.3f, powered ? 0.6f : 0.5f);
+    protected void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, boolean pressed) {
+        world.playSound(pressed ? player : null, pos, this.getClickSound(pressed), SoundCategory.BLOCKS, 0.3f, pressed ? 0.6f : 0.5f);
     }
 
-    protected abstract SoundEvent getClickSound(boolean var1);
+    protected abstract SoundEvent getClickSound(boolean pressed);
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
@@ -151,7 +151,7 @@ public abstract class AbstractButton extends WallMountedBlock {
         if (!state.get(PRESSED)) {
             return;
         }
-        if (this.wooden) {
+        if (this.projectile) {
             this.tryPowerWithProjectiles(state, world, pos);
         } else {
             world.setBlockState(pos, (BlockState)state.with(PRESSED, false), Block.NOTIFY_ALL);
@@ -163,7 +163,7 @@ public abstract class AbstractButton extends WallMountedBlock {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (world.isClient || !this.wooden || state.get(PRESSED)) {
+        if (world.isClient || !this.projectile || state.get(PRESSED)) {
             return;
         }
         this.tryPowerWithProjectiles(state, world, pos);
