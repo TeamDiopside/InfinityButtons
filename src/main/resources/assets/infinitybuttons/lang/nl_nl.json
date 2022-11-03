@@ -14,6 +14,9 @@
   "block.infinitybuttons.prismarine_button": "Prismarienen knop",
   "block.infinitybuttons.prismarine_brick_button": "Prismarienen bakstenen knop",
   "block.infinitybuttons.dark_prismarine_button": "Donkere Prismarienen knop",
+  "block.infinitybuttons.sand_button": "Sand Button",
+  "block.infinitybuttons.red_sand_button": "Red Sand Button",
+  "block.infinitybuttons.gravel_button": "Gravel Button",
 
   "block.infinitybuttons.oak_large_button": "Eikenhouten grote knop",
   "block.infinitybuttons.acacia_large_button": "Acaciahouten grote knop",
@@ -41,6 +44,9 @@
   "block.infinitybuttons.prismarine_large_button": "Prismarienen grote knop",
   "block.infinitybuttons.prismarine_brick_large_button": "Prismarienen bakstenen grote knop",
   "block.infinitybuttons.dark_prismarine_large_button": "Donkere Prismarienen grote knop",
+  "block.infinitybuttons.sand_large_button": "Sand Large Button",
+  "block.infinitybuttons.red_sand_large_button": "Red Sand Large Button",
+  "block.infinitybuttons.gravel_large_button": "Gravel Large Button",
 
   "block.infinitybuttons.red_emergency_button": "Rode noodknop",
   "block.infinitybuttons.orange_emergency_button": "Oranje noodknop",
@@ -108,10 +114,12 @@
 
   "infinitybuttons.tooltip.hold_shift": "[Houd Shift ingedrukt]",
   "infinitybuttons.tooltip.sticky_copper_button": "Deze knop werkt als een hendel",
-  "infinitybuttons.tooltip.emerald_button": "Deze knop blijft willekeurig tussen 0,5 en 5 seconden ingedrukt",
+  "infinitybuttons.tooltip.emerald_button1": "Deze knop blijft willekeurig tussen",
+  "infinitybuttons.tooltip.emerald_button2": "0,5 en 5 seconden ingedrukt",
   "infinitybuttons.tooltip.arrow_button": "Deze knop kan alleen ingedrukt worden met een pijl",
   "infinitybuttons.tooltip.diamond_button": "De grootste flex in het westen",
   "infinitybuttons.tooltip.prismarine_button": "Deze knop kan in het water",
+  "infinitybuttons.tooltip.falling_button": "Deze knop kan maar één keer ingedrukt worden",
   "infinitybuttons.tooltip.doorbell_button": "Deze deurbel produceert een redstone-signaal",
 
   "itemGroup.infinitybuttons.infinitybuttons": "Infinity Buttons",

@@ -74,6 +74,15 @@ public class InfinityButtonsBlocks {
     public static final Block DARK_PRISMARINE_BUTTON = registerBlock("dark_prismarine_button",
             new PrismarineButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), InfinityButtonsItemGroup.INFINITYBUTTONS);
 
+    public static final Block SAND_BUTTON = registerBlock("sand_button",
+            new FallingButton(false, FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.SAND)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block RED_SAND_BUTTON = registerBlock("red_sand_button",
+            new FallingButton(false, FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.SAND)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block GRAVEL_BUTTON = registerBlock("gravel_button",
+            new FallingButton(true, FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.GRAVEL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
     /**
      * Large Buttons
      */
@@ -155,6 +164,15 @@ public class InfinityButtonsBlocks {
 
     public static final Block DARK_PRISMARINE_LARGE_BUTTON = registerBlock("dark_prismarine_large_button",
             new PrismarineLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block SAND_LARGE_BUTTON = registerBlock("sand_large_button",
+            new FallingLargeButton(false, FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.SAND)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block RED_SAND_LARGE_BUTTON = registerBlock("red_sand_large_button",
+            new FallingLargeButton(false, FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.SAND)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block GRAVEL_LARGE_BUTTON = registerBlock("gravel_large_button",
+            new FallingLargeButton(true, FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.GRAVEL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
 
     /**
      * Emergency Buttons
