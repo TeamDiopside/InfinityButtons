@@ -13,7 +13,6 @@ import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Wearable;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -37,7 +36,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class SafeEmergencyButton extends WallMountedBlock implements Wearable {
+public class SafeEmergencyButton extends WallMountedBlock {
 
     public static final EnumProperty<SEBStateEnum> STATE = EnumProperty.of("state", SEBStateEnum.class);
 
