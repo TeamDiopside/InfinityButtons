@@ -3,13 +3,15 @@ package net.larsmans.infinitybuttons.block.custom.emergencybutton;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.larsmans.infinitybuttons.InfinityButtonsInit;
 import net.larsmans.infinitybuttons.sounds.InfinityButtonsSounds;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
+import net.minecraft.block.WallMountedBlock;
 import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -71,10 +73,6 @@ public class EmergencyButton extends WallMountedBlock {
     private static final VoxelShape CEILING_Z_PRESSED_SHAPE = VoxelShapes.union(
             Block.createCuboidShape(5, 13, 5, 11, 15, 11), STONE_UP);
 
-    protected int getPressTicks() {
-        return 10;
-    }
-
     public EmergencyButton(FabricBlockSettings settings) {
         super(settings);
         this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(PRESSED, false)).with(FACE, WallMountLocation.FLOOR));
@@ -84,22 +82,22 @@ public class EmergencyButton extends WallMountedBlock {
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         Direction direction = state.get(FACING);
         boolean bl = state.get(PRESSED);
-        switch ((WallMountLocation)state.get(FACE)) {
-            case FLOOR: {
+        switch (state.get(FACE)) {
+            case FLOOR -> {
                 if (direction.getAxis() == Direction.Axis.X) {
                     return bl ? FLOOR_X_PRESSED_SHAPE : FLOOR_X_SHAPE;
                 }
                 return bl ? FLOOR_Z_PRESSED_SHAPE : FLOOR_Z_SHAPE;
             }
-            case WALL: {
+            case WALL -> {
                 switch (direction) {
-                    case EAST: {
+                    case EAST -> {
                         return bl ? EAST_PRESSED_SHAPE : EAST_SHAPE;
                     }
-                    case WEST: {
+                    case WEST -> {
                         return bl ? WEST_PRESSED_SHAPE : WEST_SHAPE;
                     }
-                    case SOUTH: {
+                    case SOUTH -> {
                         return bl ? SOUTH_PRESSED_SHAPE : SOUTH_SHAPE;
                     }
                 }
@@ -110,12 +108,6 @@ public class EmergencyButton extends WallMountedBlock {
             return bl ? CEILING_X_PRESSED_SHAPE : CEILING_X_SHAPE;
         }
         return bl ? CEILING_Z_PRESSED_SHAPE : CEILING_Z_SHAPE;
-
-    }
-
-    @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
     }
 
     @Override
@@ -141,15 +133,11 @@ public class EmergencyButton extends WallMountedBlock {
     public void powerOn(BlockState state, World world, BlockPos pos) {
         world.setBlockState(pos, (BlockState)state.with(PRESSED, true), Block.NOTIFY_ALL);
         this.updateNeighbors(state, world, pos);
-        world.createAndScheduleBlockTick(pos, this, this.getPressTicks());
+        world.createAndScheduleBlockTick(pos, this, 10);
     }
 
     protected void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, boolean pressed) {
-        world.playSound(pressed ? player : null, pos, this.getClickSound(pressed), SoundCategory.BLOCKS, 0.75f, pressed ? 0.6f : 0.5f);
-    }
-
-    public SoundEvent getClickSound(boolean var1) {
-        return SoundEvents.BLOCK_BONE_BLOCK_BREAK;
+        world.playSound(pressed ? player : null, pos, SoundEvents.BLOCK_BONE_BLOCK_BREAK, SoundCategory.BLOCKS, 0.75f, pressed ? 0.6f : 0.5f);
     }
 
     @Override
@@ -196,7 +184,6 @@ public class EmergencyButton extends WallMountedBlock {
         world.updateNeighborsAlways(pos, this);
         world.updateNeighborsAlways(pos.offset(EmergencyButton.getDirection(state).getOpposite()), this);
     }
-
 }
 
 

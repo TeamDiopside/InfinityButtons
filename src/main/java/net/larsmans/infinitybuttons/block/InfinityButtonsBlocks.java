@@ -5,8 +5,9 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.larsmans.infinitybuttons.InfinityButtonsInit;
 import net.larsmans.infinitybuttons.block.custom.Doorbell;
 import net.larsmans.infinitybuttons.block.custom.DoorbellButton;
-import net.larsmans.infinitybuttons.block.custom.EmergencyButton;
 import net.larsmans.infinitybuttons.block.custom.button.*;
+import net.larsmans.infinitybuttons.block.custom.emergencybutton.EmergencyButton;
+import net.larsmans.infinitybuttons.block.custom.emergencybutton.SafeEmergencyButton;
 import net.larsmans.infinitybuttons.block.custom.largebutton.*;
 import net.larsmans.infinitybuttons.block.custom.secretbutton.*;
 import net.larsmans.infinitybuttons.block.custom.torch.*;
@@ -228,6 +229,9 @@ public class InfinityButtonsBlocks {
 
     public static final Block FANCY_EMERGENCY_BUTTON = registerBlock("fancy_emergency_button",
             new EmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block SAFE_EMERGENCY_BUTTON = registerBlock("safe_emergency_button",
+            new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
 
     /**
      * Secret Buttons

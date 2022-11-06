@@ -20,5 +20,6 @@ public class InfinityButtonsClientInit implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.REDSTONE_WALL_TORCH_BUTTON, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.REDSTONE_TORCH_LEVER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.REDSTONE_WALL_TORCH_LEVER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
     }
 }
