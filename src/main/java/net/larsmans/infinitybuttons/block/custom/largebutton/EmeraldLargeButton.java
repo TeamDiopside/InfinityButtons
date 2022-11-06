@@ -1,43 +1,20 @@
 package net.larsmans.infinitybuttons.block.custom.largebutton;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.larsmans.infinitybuttons.InfinityButtonsInit;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.item.TooltipContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
+import net.larsmans.infinitybuttons.block.custom.button.EmeraldButton;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
-
-public class EmeraldLargeButton extends AbstractLargeButton {
+public class EmeraldLargeButton extends EmeraldButton {
     public EmeraldLargeButton(FabricBlockSettings settings) {
-        super(false, settings);
+        super(settings);
     }
 
     @Override
-    public int getPressTicks() {
-        return (int)Math.floor(Math.random()*(90-10+1)+10);
-    }
-
-    @Override
-    protected SoundEvent getClickSound(boolean powered) {
-        return powered ? SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON : SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF;
-    }
-
-    @Override
-    public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-        if (InfinityButtonsInit.CONFIG.tooltips()) {
-            if (Screen.hasShiftDown()) {
-                tooltip.add(Text.translatable("infinitybuttons.tooltip.emerald_button1").formatted(Formatting.GRAY));
-                tooltip.add(Text.translatable("infinitybuttons.tooltip.emerald_button2").formatted(Formatting.GRAY));
-            } else {
-                tooltip.add(Text.translatable("infinitybuttons.tooltip.hold_shift").formatted(Formatting.GRAY));
-            }
-        }
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return LargeButtonShape.outlineShape(state);
     }
 }

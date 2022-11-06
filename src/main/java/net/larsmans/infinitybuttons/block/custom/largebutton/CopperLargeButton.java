@@ -1,31 +1,20 @@
 package net.larsmans.infinitybuttons.block.custom.largebutton;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
+import net.larsmans.infinitybuttons.block.custom.button.CopperButton;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.WorldAccess;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 
-public class CopperLargeButton extends AbstractLargeButton {
+public class CopperLargeButton extends CopperButton {
     public CopperLargeButton(FabricBlockSettings settings) {
-        super(false, settings);
+        super(settings);
     }
 
     @Override
-    protected void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, boolean powered) {
-        world.playSound(powered ? player : null, pos, this.getClickSound(powered), SoundCategory.BLOCKS, 1f, powered ? 0.6f : 0.5f);
-    }
-
-    @Override
-    public int getPressTicks() {
-        return 50;
-    }
-
-    @Override
-    protected SoundEvent getClickSound(boolean powered) {
-        return SoundEvents.BLOCK_COPPER_BREAK;
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return LargeButtonShape.outlineShape(state);
     }
 }

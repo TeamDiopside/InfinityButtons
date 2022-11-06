@@ -1,21 +1,20 @@
 package net.larsmans.infinitybuttons.block.custom.largebutton;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
+import net.minecraft.block.StoneButtonBlock;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 
-public class StoneLargeButton extends AbstractLargeButton {
+public class StoneLargeButton extends StoneButtonBlock {
     public StoneLargeButton(FabricBlockSettings settings) {
-        super(false, settings);
+        super(settings);
     }
 
     @Override
-    public int getPressTicks() {
-        return 20;
-    }
-
-    @Override
-    protected SoundEvent getClickSound(boolean powered) {
-        return powered ? SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON : SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF;
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return LargeButtonShape.outlineShape(state);
     }
 }
