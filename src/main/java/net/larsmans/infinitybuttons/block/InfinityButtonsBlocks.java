@@ -230,7 +230,55 @@ public class InfinityButtonsBlocks {
     public static final Block FANCY_EMERGENCY_BUTTON = registerBlock("fancy_emergency_button",
             new EmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
 
-    public static final Block SAFE_EMERGENCY_BUTTON = registerBlock("safe_emergency_button",
+    public static final Block RED_SAFE_EMERGENCY_BUTTON = registerBlock("red_safe_emergency_button",
+            new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block ORANGE_SAFE_EMERGENCY_BUTTON = registerBlock("orange_safe_emergency_button",
+            new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block YELLOW_SAFE_EMERGENCY_BUTTON = registerBlock("yellow_safe_emergency_button",
+            new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block LIME_SAFE_EMERGENCY_BUTTON = registerBlock("lime_safe_emergency_button",
+            new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block GREEN_SAFE_EMERGENCY_BUTTON = registerBlock("green_safe_emergency_button",
+            new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block CYAN_SAFE_EMERGENCY_BUTTON = registerBlock("cyan_safe_emergency_button",
+            new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block LIGHT_BLUE_SAFE_EMERGENCY_BUTTON = registerBlock("light_blue_safe_emergency_button",
+            new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block BLUE_SAFE_EMERGENCY_BUTTON = registerBlock("blue_safe_emergency_button",
+            new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block PURPLE_SAFE_EMERGENCY_BUTTON = registerBlock("purple_safe_emergency_button",
+            new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block MAGENTA_SAFE_EMERGENCY_BUTTON = registerBlock("magenta_safe_emergency_button",
+            new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block PINK_SAFE_EMERGENCY_BUTTON = registerBlock("pink_safe_emergency_button",
+            new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block BROWN_SAFE_EMERGENCY_BUTTON = registerBlock("brown_safe_emergency_button",
+            new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block WHITE_SAFE_EMERGENCY_BUTTON = registerBlock("white_safe_emergency_button",
+            new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block LIGHT_GRAY_SAFE_EMERGENCY_BUTTON = registerBlock("light_gray_safe_emergency_button",
+            new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block GRAY_SAFE_EMERGENCY_BUTTON = registerBlock("gray_safe_emergency_button",
+            new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block BLACK_SAFE_EMERGENCY_BUTTON = registerBlock("black_safe_emergency_button",
+            new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block FANCY_SAFE_EMERGENCY_BUTTON = registerBlock("fancy_safe_emergency_button",
             new SafeEmergencyButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
 
     /**

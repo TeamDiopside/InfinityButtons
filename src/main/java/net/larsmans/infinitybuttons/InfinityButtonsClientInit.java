@@ -20,6 +20,22 @@ public class InfinityButtonsClientInit implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.REDSTONE_WALL_TORCH_BUTTON, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.REDSTONE_TORCH_LEVER, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.REDSTONE_WALL_TORCH_LEVER, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.RED_SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.ORANGE_SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.YELLOW_SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.LIME_SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.GREEN_SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.CYAN_SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.LIGHT_BLUE_SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.BLUE_SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.PURPLE_SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.MAGENTA_SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.PINK_SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.BROWN_SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.WHITE_SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.LIGHT_GRAY_SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.GRAY_SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.BLACK_SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(InfinityButtonsBlocks.FANCY_SAFE_EMERGENCY_BUTTON, RenderLayer.getCutout());
     }
 }
