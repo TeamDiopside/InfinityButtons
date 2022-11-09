@@ -5,6 +5,7 @@ import com.google.common.collect.Maps;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
@@ -14,6 +15,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 
 import java.util.Map;
@@ -47,6 +49,14 @@ public class WallTorchButton extends TorchButton {
         BlockPos blockPos = pos.offset(direction.getOpposite());
         BlockState blockState = world.getBlockState(blockPos);
         return blockState.isSideSolidFullSquare(world, blockPos, direction);
+    }
+
+    @Override
+    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+        if (direction.getOpposite() == state.get(FACING) && !state.canPlaceAt(world, pos)) {
+            return Blocks.AIR.getDefaultState();
+        }
+        return state;
     }
 
     // override because direction
