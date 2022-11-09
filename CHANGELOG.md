@@ -1,5 +1,16 @@
 # Changelog Infinity Buttons
 
+## 2.2.0
+
+- Added Sand, Red Sand and Gravel Buttons. They can only be pressed once.
+- Added Safety Buttons in all colors. To unlock it, shift-click to open the glass casing.
+- Fixed Emergency Button breaking particles being black.
+
+Forge only:
+- Ported to 1.19.x!
+- Fixed an issue causing blocks to be unmineable. (1.18.2)
+- Expanded Quark Compat.
+
 ## 2.1.0
 
 - Added Fancy Emergency Button. Taste the rainbow!
