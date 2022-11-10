@@ -192,7 +192,7 @@ public class SafeEmergencyButton extends WallMountedBlock {
                 return ActionResult.CONSUME;
             }
             case OPEN -> {
-                if (Screen.hasShiftDown()) {
+                if (player.isSneaking()) {
                     this.closeCase(state, world, pos);
                     this.playToggleSound(player, world, pos, false);
                 } else {
@@ -205,7 +205,7 @@ public class SafeEmergencyButton extends WallMountedBlock {
                 }
             }
             case CLOSED -> {
-                if (Screen.hasShiftDown()) {
+                if (player.isSneaking()) {
                     this.openCase(state, world, pos);
                     this.playToggleSound(player, world, pos, true);
                 } else {
