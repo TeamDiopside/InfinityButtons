@@ -15,6 +15,7 @@ import net.larsmans.infinitybuttons.item.InfinityButtonsItemGroup;
 import net.minecraft.block.Block;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.Material;
+import net.minecraft.block.StoneButtonBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -29,6 +30,21 @@ public class InfinityButtonsBlocks {
     /**
      * Buttons
      */
+
+    public static final Block ANDESITE_BUTTON = registerBlock("andesite_button",
+            new StoneButtonBlock(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block GRANITE_BUTTON = registerBlock("granite_button",
+            new StoneButtonBlock(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block DIORITE_BUTTON = registerBlock("diorite_button",
+            new StoneButtonBlock(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block TUFF_BUTTON = registerBlock("tuff_button",
+            new StoneButtonBlock(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block CALCITE_BUTTON = registerBlock("calcite_button",
+            new StoneButtonBlock(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), InfinityButtonsItemGroup.INFINITYBUTTONS);
 
     public static final Block COPPER_BUTTON = registerBlock("copper_button",
             new CopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL)), InfinityButtonsItemGroup.INFINITYBUTTONS);
@@ -116,6 +132,21 @@ public class InfinityButtonsBlocks {
             new WoodenLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.WOOD)), InfinityButtonsItemGroup.INFINITYBUTTONS);
 
     public static final Block STONE_LARGE_BUTTON = registerBlock("stone_large_button",
+            new StoneLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block ANDESITE_LARGE_BUTTON = registerBlock("andesite_large_button",
+            new StoneLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block GRANITE_LARGE_BUTTON = registerBlock("granite_large_button",
+            new StoneLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block DIORITE_LARGE_BUTTON = registerBlock("diorite_large_button",
+            new StoneLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block TUFF_LARGE_BUTTON = registerBlock("tuff_large_button",
+            new StoneLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block CALCITE_LARGE_BUTTON = registerBlock("calcite_large_button",
             new StoneLargeButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.STONE)), InfinityButtonsItemGroup.INFINITYBUTTONS);
 
     public static final Block POLISHED_BLACKSTONE_LARGE_BUTTON = registerBlock("polished_blackstone_large_button",
