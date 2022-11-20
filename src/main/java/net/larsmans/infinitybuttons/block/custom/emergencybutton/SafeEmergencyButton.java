@@ -209,6 +209,7 @@ public class SafeEmergencyButton extends WallMountedBlock {
                     this.openCase(state, world, pos);
                     this.playToggleSound(player, world, pos, true);
                 } else {
+                    player.sendMessage(Text.translatable("infinitybuttons.actionbar.closed_safety_button"), true);
                     return ActionResult.CONSUME;
                 }
             }

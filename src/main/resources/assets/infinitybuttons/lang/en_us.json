@@ -143,6 +143,8 @@
 
     "itemGroup.infinitybuttons.infinitybuttons": "Infinity Buttons",
 
+    "infinitybuttons.actionbar.closed_safety_button": "To open and close case, hold shift",
+
     "text.config.infinity-buttons-config.option.alarmSound": "Alarm Sound",
     "text.config.infinity-buttons-config.option.alarmSound.tooltip": "Whether the Safety Buttons will make an alarm sound",
     "text.config.infinity-buttons-config.option.tooltips": "Tooltips",
