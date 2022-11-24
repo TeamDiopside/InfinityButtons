@@ -28,7 +28,8 @@
   ],
   "rewards": {
     "recipes": [
-      "infinitybuttons:torch_button"
+      "infinitybuttons:torch_button",
+      "infinitybuttons:torch_lever"
     ]
   }
 }
