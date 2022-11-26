@@ -177,10 +177,10 @@
     "infinitybuttons.tooltip.emerald_button1": "这个按钮保持着按下的状态",
     "infinitybuttons.tooltip.emerald_button2": "在0.5和5秒之间随机弹起",
     "infinitybuttons.tooltip.arrow_button": "这个按钮只能通过弓箭射击来按下",
-    "infinitybuttons.tooltip.diamond_button": "The biggest flex in the west",
+    "infinitybuttons.tooltip.diamond_button": "有钱银，羡慕不？",
     "infinitybuttons.tooltip.prismarine_button": "这个按钮可能会被水淹没",
-    "infinitybuttons.tooltip.falling_button": "This button can only be pressed once",
-    "infinitybuttons.tooltip.safe_emergency_button": "Shift-click with an empty hand to open the casing",
+    "infinitybuttons.tooltip.falling_button": "这是一个一次性按钮",
+    "infinitybuttons.tooltip.safe_emergency_button": "空手按下 shift 键会触发事件",
     "infinitybuttons.tooltip.doorbell_button": "这个门铃会发出红石信号",
 
     "itemGroup.infinitybuttons.infinitybuttons": "无限按钮",
@@ -191,7 +191,7 @@
     "text.config.infinity-buttons-config.option.alarmSound.tooltip": "紧急按钮按下后是否会发出警报声音",
     "text.config.infinity-buttons-config.option.tooltips": "工具提示",
     "text.config.infinity-buttons-config.option.tooltips.tooltip": "是否显示工具提示",
-    "text.config.infinity-buttons-config.option.diamondParticles": "Diamond Button Particles",
-    "text.config.infinity-buttons-config.option.diamondParticles.tooltip": "Whether Diamond Buttons have particles around them",
+    "text.config.infinity-buttons-config.option.diamondParticles": "钻石按钮的粒子效果",
+    "text.config.infinity-buttons-config.option.diamondParticles.tooltip": "钻石按钮四周是否会有粒子效果",
     "text.config.infinity-buttons-config.title": "无限按钮 Config"
 }
