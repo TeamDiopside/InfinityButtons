@@ -571,6 +571,6 @@ public class InfinityButtonsBlocks {
     }
 
     public static void registerModBlocks() {
-        InfinityButtonsInit.LOGGER.debug("Registering Mod Blocks for " + InfinityButtonsInit.MOD_ID);
+        InfinityButtonsInit.LOGGER.debug("Registering Mod Blocks for Infinity Buttons");
     }
 }

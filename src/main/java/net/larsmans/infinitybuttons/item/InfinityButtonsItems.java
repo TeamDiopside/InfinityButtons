@@ -35,6 +35,6 @@ public class InfinityButtonsItems {
     }
 
     public static void registerModItems() {
-        InfinityButtonsInit.LOGGER.debug("Registering Mod Items for " + InfinityButtonsInit.MOD_ID);
+        InfinityButtonsInit.LOGGER.debug("Registering Mod Items for Infinity Buttons");
     }
 }
