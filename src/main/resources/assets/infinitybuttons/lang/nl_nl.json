@@ -159,6 +159,8 @@
 
     "block.infinitybuttons.doorbell": "Deurbel",
     "block.infinitybuttons.doorbell_button": "Deurbelknop",
+    "block.infinitybuttons.lamp_button": "Lampknop",
+    "block.infinitybuttons.lamp_lever": "Lamphendel",
 
     "block.infinitybuttons.torch_button": "Fakkelknop",
     "block.infinitybuttons.torch_lever": "Fakkelhendel",

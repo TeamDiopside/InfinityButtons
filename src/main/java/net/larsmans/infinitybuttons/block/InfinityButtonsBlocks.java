@@ -5,6 +5,8 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.larsmans.infinitybuttons.InfinityButtonsInit;
 import net.larsmans.infinitybuttons.block.custom.Doorbell;
 import net.larsmans.infinitybuttons.block.custom.DoorbellButton;
+import net.larsmans.infinitybuttons.block.custom.LampButton;
+import net.larsmans.infinitybuttons.block.custom.LampLever;
 import net.larsmans.infinitybuttons.block.custom.button.*;
 import net.larsmans.infinitybuttons.block.custom.emergencybutton.EmergencyButton;
 import net.larsmans.infinitybuttons.block.custom.emergencybutton.SafeEmergencyButton;
@@ -12,10 +14,7 @@ import net.larsmans.infinitybuttons.block.custom.largebutton.*;
 import net.larsmans.infinitybuttons.block.custom.secretbutton.*;
 import net.larsmans.infinitybuttons.block.custom.torch.*;
 import net.larsmans.infinitybuttons.item.InfinityButtonsItemGroup;
-import net.minecraft.block.Block;
-import net.minecraft.block.MapColor;
-import net.minecraft.block.Material;
-import net.minecraft.block.StoneButtonBlock;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -23,6 +22,8 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+
+import java.util.function.ToIntFunction;
 
 
 public class InfinityButtonsBlocks {
@@ -512,6 +513,12 @@ public class InfinityButtonsBlocks {
     public static final Block DOORBELL_BUTTON = registerBlock("doorbell_button",
             new DoorbellButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD)), InfinityButtonsItemGroup.INFINITYBUTTONS);
 
+    public static final Block LAMP_BUTTON = registerBlock("lamp_button",
+            new LampButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().strength(0.3f).sounds(BlockSoundGroup.GLASS).luminance(getLampButtonLight(15))), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
+    public static final Block LAMP_LEVER = registerBlock("lamp_lever",
+            new LampLever(FabricBlockSettings.of(Material.DECORATION).nonOpaque().strength(0.3f).sounds(BlockSoundGroup.GLASS).luminance(getLampButtonLight(15))), InfinityButtonsItemGroup.INFINITYBUTTONS);
+
     /**
      * Torches
      */
@@ -572,5 +579,9 @@ public class InfinityButtonsBlocks {
 
     public static void registerModBlocks() {
         InfinityButtonsInit.LOGGER.debug("Registering Mod Blocks for Infinity Buttons");
+    }
+
+    private static ToIntFunction<BlockState> getLampButtonLight(int litLevel) {
+        return state -> state.get(LampButton.PRESSED) != !Boolean.valueOf((boolean)!false) ? litLevel : 0;
     }
 }
