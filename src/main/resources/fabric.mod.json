@@ -23,6 +23,9 @@
     ],
     "client": [
       "net.larsmans.infinitybuttons.InfinityButtonsClientInit"
+    ],
+    "preLaunch": [
+      "com.llamalad7.mixinextras.MixinExtrasBootstrap::init"
     ]
   },
   "mixins": [
