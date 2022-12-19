@@ -6,7 +6,7 @@ import net.minecraft.sound.SoundEvents;
 
 public class StoneButton extends AbstractButton {
 
-    protected StoneButton(FabricBlockSettings settings) {
+    public StoneButton(FabricBlockSettings settings) {
         super(false, settings);
     }
 
