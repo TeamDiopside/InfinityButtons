@@ -1,6 +1,6 @@
 {
   "parent": "infinitybuttons:block/large_button_pressed",
   "textures": {
-    "texture": "minecraft:block/acacia_planks"
+    "texture": "minecraft:block/dripstone_block"
   }
 }

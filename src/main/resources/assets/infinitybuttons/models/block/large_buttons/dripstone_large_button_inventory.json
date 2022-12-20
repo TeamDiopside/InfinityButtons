@@ -1,6 +1,6 @@
 {
   "parent": "infinitybuttons:block/large_button_inventory",
   "textures": {
-    "texture": "minecraft:block/dripstone"
+    "texture": "minecraft:block/dripstone_block"
   }
 }
