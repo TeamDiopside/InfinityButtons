@@ -120,9 +120,9 @@ public class InfinityButtonsBlocks {
     public static final Block OAK_LARGE_BUTTON = registerWoodenLargeButton("oak");
     public static final Block SPRUCE_LARGE_BUTTON = registerWoodenLargeButton("spruce");
     public static final Block BIRCH_LARGE_BUTTON = registerWoodenLargeButton("birch");
+    public static final Block JUNGLE_LARGE_BUTTON = registerWoodenLargeButton("jungle");
     public static final Block ACACIA_LARGE_BUTTON = registerWoodenLargeButton("acacia");
     public static final Block DARK_OAK_LARGE_BUTTON = registerWoodenLargeButton("dark_oak");
-    public static final Block JUNGLE_LARGE_BUTTON = registerWoodenLargeButton("jungle");
     public static final Block MANGROVE_LARGE_BUTTON = registerWoodenLargeButton("mangrove");
     public static final Block WARPED_LARGE_BUTTON = registerWoodenLargeButton("warped");
     public static final Block CRIMSON_LARGE_BUTTON = registerWoodenLargeButton("crimson");
@@ -296,11 +296,11 @@ public class InfinityButtonsBlocks {
             new DeepslateTileSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).nonOpaque().sounds(BlockSoundGroup.DEEPSLATE_TILES).requiresTool().strength(3.5f, 6.0f)));
 
     public static final Block OAK_PLANK_SECRET_BUTTON = registerPlankSecretButton("oak", Material.WOOD, MapColor.OAK_TAN);
-    public static final Block BIRCH_PLANK_SECRET_BUTTON = registerPlankSecretButton("birch", Material.WOOD, MapColor.PALE_YELLOW);
     public static final Block SPRUCE_PLANK_SECRET_BUTTON = registerPlankSecretButton("spruce", Material.WOOD, MapColor.SPRUCE_BROWN);
+    public static final Block BIRCH_PLANK_SECRET_BUTTON = registerPlankSecretButton("birch", Material.WOOD, MapColor.PALE_YELLOW);
+    public static final Block JUNGLE_PLANK_SECRET_BUTTON = registerPlankSecretButton("jungle", Material.WOOD, MapColor.DIRT_BROWN);
     public static final Block ACACIA_PLANK_SECRET_BUTTON = registerPlankSecretButton("acacia", Material.WOOD, MapColor.ORANGE);
     public static final Block DARK_OAK_PLANK_SECRET_BUTTON = registerPlankSecretButton("dark_oak", Material.WOOD, MapColor.BROWN);
-    public static final Block JUNGLE_PLANK_SECRET_BUTTON = registerPlankSecretButton("jungle", Material.WOOD, MapColor.DIRT_BROWN);
     public static final Block MANGROVE_PLANK_SECRET_BUTTON = registerPlankSecretButton("mangrove", Material.WOOD, MapColor.RED);
     public static final Block CRIMSON_PLANK_SECRET_BUTTON = registerPlankSecretButton("crimson", Material.NETHER_WOOD, MapColor.DULL_PINK);
     public static final Block WARPED_PLANK_SECRET_BUTTON = registerPlankSecretButton("warped", Material.NETHER_WOOD, MapColor.DARK_AQUA);
@@ -311,14 +311,17 @@ public class InfinityButtonsBlocks {
     public static final Block END_STONE_BRICK_SECRET_BUTTON = registerBlockWithItem("end_stone_brick_secret_button",
             new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.PALE_YELLOW).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(3.0f, 9.0f)));
 
-    public static final Block QUARTZ_BRICK_SECRET_BUTTON = registerBlockWithItem("quartz_brick_secret_button", new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(0.8f)));
+    public static final Block QUARTZ_BRICK_SECRET_BUTTON = registerBlockWithItem("quartz_brick_secret_button",
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(0.8f)));
 
     public static final Block DARK_PRISMARINE_SECRET_BUTTON = registerBlockWithItem("dark_prismarine_secret_button",
             new FullBlockBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DIAMOND_BLUE).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f)));
 
-    public static final Block POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = registerBlockWithItem("polished_blackstone_brick_secret_button", new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f)));
+    public static final Block POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = registerBlockWithItem("polished_blackstone_brick_secret_button",
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f)));
 
-    public static final Block CRACKED_POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = registerBlockWithItem("cracked_polished_blackstone_brick_secret_button", new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f)));
+    public static final Block CRACKED_POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = registerBlockWithItem("cracked_polished_blackstone_brick_secret_button",
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f)));
 
     public static final Block CHISELED_POLISHED_BLACKSTONE_SECRET_BUTTON = registerBlockWithItem("chiseled_polished_blackstone_secret_button",
             new ChiseledStoneBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f)));
