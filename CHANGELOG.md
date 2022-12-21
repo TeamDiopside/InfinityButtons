@@ -1,5 +1,38 @@
 # Changelog Infinity Buttons
 
+## 3.0.0
+
+- Ported to 1.19.3.
+- Added Deepslate, Granite, Diorite, Andesite, Calcite, Tuff and Dripstone Buttons.
+- Added Concrete Powder Buttons.
+- Added Lamp Button and Lever.
+- Added Carpenter compat. (1.18.2)
+- Added Stonecutter recipes.
+- Added an actionbar message to Safety Buttons when you don't sneak.
+- Added WoodGood compat.
+- Fixed texture rotation on Secret Buttons.
+- Changed the order of colored buttons, to match with 1.19.3.
+- Changed Prismarine Button Recipes.
+- Sorted tags to improve recipe compatibility.
+- Bookshelf Secret Buttons now provide Enchanting Power.
+
+Fabric Only:
+- Ported to 1.18.2.
+- Fixed the Emergency Button tooltip mentioning Safety Buttons.
+- Added compat for Nether's Delight Fabric. (1.18.2)
+
+Forge Only:
+- Added Mangrove buttons. (1.19.x)
+- Added Woodworks compat. (1.18.2 and 1.19.x)
+- Added compat for Atmospheric, Bamboo Blocks, Bayou Blues, Enhanced Mushrooms, Upgrade Aquatic, Abundance, Buzzier Bees, Neapolitan and Savage & Ravage. (1.16.5)
+- Expanded Quark compat.
+- Changed things in the way compat works. All loot table errors have been fixed! More info on compat soon! Be sure to back up your world! (Special Thanks to MehVahdJukaar for helping out!)
+- Fixed an issue causing compat blocks to have no tags. (1.18.2 and 1.19.x)
+- Fixed a black outline on Torch buttons when mod resources are not set correctly. (1.19.x)
+- Merged Creative Tabs
+
+
+
 ## 2.2.1
 
 - Fixed an issue causing Safety Buttons being unable to function on Dedicated Servers.
