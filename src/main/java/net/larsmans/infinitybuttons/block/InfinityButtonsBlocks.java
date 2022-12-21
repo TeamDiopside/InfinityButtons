@@ -217,12 +217,13 @@ public class InfinityButtonsBlocks {
      * Emergency Buttons
      */
 
-    public static final Block RED_EMERGENCY_BUTTON = registerEmergencyButton("red");
+
     public static final Block WHITE_EMERGENCY_BUTTON = registerEmergencyButton("white");
     public static final Block LIGHT_GRAY_EMERGENCY_BUTTON = registerEmergencyButton("light_gray");
     public static final Block GRAY_EMERGENCY_BUTTON = registerEmergencyButton("gray");
     public static final Block BLACK_EMERGENCY_BUTTON = registerEmergencyButton("black");
     public static final Block BROWN_EMERGENCY_BUTTON = registerEmergencyButton("brown");
+    public static final Block RED_EMERGENCY_BUTTON = registerEmergencyButton("red");
     public static final Block ORANGE_EMERGENCY_BUTTON = registerEmergencyButton("orange");
     public static final Block YELLOW_EMERGENCY_BUTTON = registerEmergencyButton("yellow");
     public static final Block LIME_EMERGENCY_BUTTON = registerEmergencyButton("lime");
