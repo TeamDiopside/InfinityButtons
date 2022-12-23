@@ -16,6 +16,13 @@
 - Sorted tags to improve recipe compatibility.
 - Bookshelf Secret Buttons now provide Enchanting Power.
 
+1.19.3:
+- Added vanilla buttons to the beginning of the Infinity Buttons tab.
+- Added Large Buttons to the Building Blocks tab.
+- Added Redstone Torch lever and Copper Buttons to the Redstone tab.
+- Added all colored buttons to the Colored Blocks tab.
+- Crimson and Warped Buttons now use Nether wood sounds.
+
 Fabric Only:
 - Ported to 1.18.2.
 - Fixed the Emergency Button tooltip mentioning Safety Buttons.
