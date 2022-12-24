@@ -32,7 +32,7 @@ Infinity Buttons is a mod which adds exciting new buttons!
 ### Important!
 
 **Fabric:**  
-- (1.19 +) [oωo lib](https://modrinth.com/mod/owo-lib) is required!
+- (1.19+) [oωo lib](https://modrinth.com/mod/owo-lib) is required!
 - (1.18.2) [Cloth Config API](https://www.curseforge.com/minecraft/mc-mods/cloth-config) is required!
 
 Can be played without, but has additional content with:
@@ -45,19 +45,19 @@ Can be played without, but has additional content with:
 Can be played without, but has additional content with:
 - [Quark](https://quarkmod.net/)
 - [Nether's Delight](https://www.curseforge.com/minecraft/mc-mods/nethers-delight)
-- Woodworks (1.18.2 - 1.19.x)
+- [Woodworks](https://www.curseforge.com/minecraft/mc-mods/woodworks) (1.18.2 - 1.19.x)
 - [Environmental](https://www.curseforge.com/minecraft/mc-mods/environmental) (1.16.5)
 - [The Endergetic Expansion](https://www.curseforge.com/minecraft/mc-mods/endergetic) (1.16.5)
 - [Autumnity](https://www.curseforge.com/minecraft/mc-mods/autumnity) (1.16.5)
-- Atmospheric (1.16.5)
-- Bamboo Blocks (1.16.5)
-- Bayou Blues (1.16.5)
-- Enhanced Mushrooms (1.16.5)
-- Upgrade Aquatic (1.16.5)
-- Abundance (1.16.5)
-- Buzzier Bees (1.16.5)
-- Neapolitan (1.16.5)
-- Savage & Ravage (1.16.5)
+- [Abundance](https://www.curseforge.com/minecraft/mc-mods/abundance) (1.16.5)
+- [Atmospheric](https://www.curseforge.com/minecraft/mc-mods/atmospheric) (1.16.5)
+- [Bamboo Blocks](https://www.curseforge.com/minecraft/mc-mods/bamboo-blocks) (1.16.5)
+- [Bayou Blues](https://www.curseforge.com/minecraft/mc-mods/bayou-blues) (1.16.5)
+- [Enhanced Mushrooms](https://www.curseforge.com/minecraft/mc-mods/enhanced-mushrooms) (1.16.5)
+- [Upgrade Aquatic](https://www.curseforge.com/minecraft/mc-mods/upgrade-aquatic) (1.16.5)
+- [Buzzier Bees](https://www.curseforge.com/minecraft/mc-mods/buzzier-bees) (1.16.5)
+- [Neapolitan](https://www.curseforge.com/minecraft/mc-mods/neapolitan) (1.16.5)
+- [Savage & Ravage](https://www.curseforge.com/minecraft/mc-mods/savage-and-ravage) (1.16.5)
 
 ### GitHub links
 
