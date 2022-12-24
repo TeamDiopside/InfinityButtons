@@ -186,12 +186,12 @@
     "infinitybuttons.tooltip.diamond_button": "The biggest flex in the west",
     "infinitybuttons.tooltip.prismarine_button": "This button can be waterlogged",
     "infinitybuttons.tooltip.falling_button": "This button can only be pressed once",
-    "infinitybuttons.tooltip.safe_emergency_button": "Shift-click with an empty hand to open the casing",
+    "infinitybuttons.tooltip.safe_emergency_button": "Sneak with an empty hand to open and close",
     "infinitybuttons.tooltip.doorbell_button": "This doorbell emits a redstone signal",
 
     "itemGroup.infinitybuttons.infinitybuttons": "Infinity Buttons",
 
-    "infinitybuttons.actionbar.closed_safety_button": "To open and close case, hold shift",
+    "infinitybuttons.actionbar.closed_safety_button": "Sneak with an empty hand to open and close",
 
     "text.config.infinity-buttons-config.option.alarmSound": "Alarm Sound",
     "text.config.infinity-buttons-config.option.alarmSound.tooltip": "Whether the Emergency Buttons will make an alarm sound",
