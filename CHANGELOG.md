@@ -4,7 +4,7 @@
 
 - Ported to 1.19.3.
 - Added Deepslate, Granite, Diorite, Andesite, Calcite, Tuff and Dripstone Buttons.
-- Added Concrete Powder Buttons.
+- Added Concrete Powder Buttons, which act the same as Sand Buttons.
 - Added Lamp Button and Lever.
 - Added Carpenter compat. (1.18.2)
 - Added Stonecutter recipes.
@@ -25,20 +25,19 @@
 
 Fabric Only:
 - Ported to 1.18.2.
+- Added tag models for EMI.
 - Fixed the Emergency Button tooltip mentioning Safety Buttons.
 - Added compat for Nether's Delight Fabric. (1.18.2)
 
 Forge Only:
 - Added Mangrove buttons. (1.19.x)
 - Added Woodworks compat. (1.18.2 and 1.19.x)
-- Added compat for Atmospheric, Bamboo Blocks, Bayou Blues, Enhanced Mushrooms, Upgrade Aquatic, Abundance, Buzzier Bees, Neapolitan and Savage & Ravage. (1.16.5)
+- Added compat for Abundance, Atmospheric, Bamboo Blocks, Bayou Blues, Enhanced Mushrooms, Upgrade Aquatic, Buzzier Bees, Neapolitan and Savage & Ravage. (1.16.5)
 - Expanded Quark compat.
 - Changed things in the way compat works. All loot table errors have been fixed! More info on compat soon! Be sure to back up your world! (Special Thanks to MehVahdJukaar for helping out!)
 - Fixed an issue causing compat blocks to have no tags. (1.18.2 and 1.19.x)
 - Fixed a black outline on Torch buttons when mod resources are not set correctly. (1.19.x)
 - Merged Creative Tabs
-
-
 
 ## 2.2.1
 
