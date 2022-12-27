@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "concrete_powder_large_button",
+  "ingredients": [
+    {
+      "item": "infinitybuttons:yellow_concrete_powder_button"
+    },
+    {
+      "item": "infinitybuttons:yellow_concrete_powder_button"
+    }
+  ],
+  "result": {
+    "item": "infinitybuttons:yellow_concrete_powder_large_button"
+  }
+}

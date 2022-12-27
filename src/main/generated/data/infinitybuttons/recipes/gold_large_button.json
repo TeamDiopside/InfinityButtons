@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "infinitybuttons:gold_button"
+    },
+    {
+      "item": "infinitybuttons:gold_button"
+    }
+  ],
+  "result": {
+    "item": "infinitybuttons:gold_large_button"
+  }
+}

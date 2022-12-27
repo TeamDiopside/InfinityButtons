@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "infinitybuttons:dripstone_button"
+    },
+    {
+      "item": "infinitybuttons:dripstone_button"
+    }
+  ],
+  "result": {
+    "item": "infinitybuttons:dripstone_large_button"
+  }
+}

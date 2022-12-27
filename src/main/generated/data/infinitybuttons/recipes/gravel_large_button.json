@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "infinitybuttons:gravel_button"
+    },
+    {
+      "item": "infinitybuttons:gravel_button"
+    }
+  ],
+  "result": {
+    "item": "infinitybuttons:gravel_large_button"
+  }
+}

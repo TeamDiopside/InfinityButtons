@@ -1,0 +1,31 @@
+{
+  "replace": false,
+  "values": [
+    "infinitybuttons:deepslate_button",
+    "infinitybuttons:granite_button",
+    "infinitybuttons:diorite_button",
+    "infinitybuttons:andesite_button",
+    "infinitybuttons:tuff_button",
+    "infinitybuttons:dripstone_button",
+    "infinitybuttons:calcite_button",
+    "infinitybuttons:copper_button",
+    "infinitybuttons:exposed_copper_button",
+    "infinitybuttons:weathered_copper_button",
+    "infinitybuttons:oxidized_copper_button",
+    "infinitybuttons:sticky_copper_button",
+    "infinitybuttons:sticky_exposed_copper_button",
+    "infinitybuttons:sticky_weathered_copper_button",
+    "infinitybuttons:sticky_oxidized_copper_button",
+    "infinitybuttons:iron_button",
+    "infinitybuttons:gold_button",
+    "infinitybuttons:emerald_button",
+    "infinitybuttons:diamond_button",
+    "infinitybuttons:prismarine_button",
+    "infinitybuttons:prismarine_brick_button",
+    "infinitybuttons:dark_prismarine_button",
+    {
+      "id": "#infinitybuttons:concrete_powder_buttons",
+      "required": false
+    }
+  ]
+}

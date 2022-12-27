@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:crafting_shapeless",
-  "group": "copper_button",
-  "ingredients": [{"item": "minecraft:copper_block"},{"item": "minecraft:stone_button"}],
-  "result": {
-    "item": "infinitybuttons:copper_button",
-    "count": 2
-  }
-}

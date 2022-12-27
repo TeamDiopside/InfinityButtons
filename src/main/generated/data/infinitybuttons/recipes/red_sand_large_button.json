@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "infinitybuttons:red_sand_button"
+    },
+    {
+      "item": "infinitybuttons:red_sand_button"
+    }
+  ],
+  "result": {
+    "item": "infinitybuttons:red_sand_large_button"
+  }
+}
