@@ -23,6 +23,9 @@
     "infinitybuttons:prismarine_button",
     "infinitybuttons:prismarine_brick_button",
     "infinitybuttons:dark_prismarine_button",
+    "infinitybuttons:sand_button",
+    "infinitybuttons:red_sand_button",
+    "infinitybuttons:gravel_button",
     {
       "id": "#infinitybuttons:concrete_powder_buttons",
       "required": false

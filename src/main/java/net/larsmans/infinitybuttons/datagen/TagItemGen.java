@@ -67,7 +67,6 @@ public class TagItemGen extends FabricTagProvider<Item> {
 
         getOrCreateTagBuilder(LARGE_BUTTONS)
                 .addOptionalTag(WOODEN_LARGE_BUTTONS)
-                .addOptionalTag(CONCRETE_POWDER_LARGE_BUTTONS)
                 .add(InfinityButtonsBlocks.STONE_LARGE_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.DEEPSLATE_LARGE_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.GRANITE_LARGE_BUTTON.asItem())
@@ -94,7 +93,8 @@ public class TagItemGen extends FabricTagProvider<Item> {
                 .add(InfinityButtonsBlocks.DARK_PRISMARINE_LARGE_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.SAND_LARGE_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.RED_SAND_LARGE_BUTTON.asItem())
-                .add(InfinityButtonsBlocks.GRAVEL_LARGE_BUTTON.asItem());
+                .add(InfinityButtonsBlocks.GRAVEL_LARGE_BUTTON.asItem())
+                .addOptionalTag(CONCRETE_POWDER_LARGE_BUTTONS);
 
         getOrCreateTagBuilder(WOODEN_LARGE_BUTTONS)
                 .add(InfinityButtonsBlocks.OAK_LARGE_BUTTON.asItem())
@@ -224,6 +224,9 @@ public class TagItemGen extends FabricTagProvider<Item> {
                 .add(InfinityButtonsBlocks.PRISMARINE_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.PRISMARINE_BRICK_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.DARK_PRISMARINE_BUTTON.asItem())
+                .add(InfinityButtonsBlocks.SAND_BUTTON.asItem())
+                .add(InfinityButtonsBlocks.RED_SAND_BUTTON.asItem())
+                .add(InfinityButtonsBlocks.GRAVEL_BUTTON.asItem())
                 .addOptionalTag(CONCRETE_POWDER_BUTTONS);
 
         getOrCreateTagBuilder(NON_FLAMMABLE_WOOD)

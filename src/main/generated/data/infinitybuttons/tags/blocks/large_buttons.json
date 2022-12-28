@@ -5,10 +5,6 @@
       "id": "#infinitybuttons:wooden_large_buttons",
       "required": false
     },
-    {
-      "id": "#infinitybuttons:concrete_powder_large_buttons",
-      "required": false
-    },
     "infinitybuttons:stone_large_button",
     "infinitybuttons:deepslate_large_button",
     "infinitybuttons:granite_large_button",
@@ -35,6 +31,10 @@
     "infinitybuttons:dark_prismarine_large_button",
     "infinitybuttons:sand_large_button",
     "infinitybuttons:red_sand_large_button",
-    "infinitybuttons:gravel_large_button"
+    "infinitybuttons:gravel_large_button",
+    {
+      "id": "#infinitybuttons:concrete_powder_large_buttons",
+      "required": false
+    }
   ]
 }

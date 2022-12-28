@@ -67,7 +67,6 @@ public class TagBlockGen extends FabricTagProvider<Block> {
 
         getOrCreateTagBuilder(LARGE_BUTTONS)
                 .addOptionalTag(WOODEN_LARGE_BUTTONS)
-                .addOptionalTag(CONCRETE_POWDER_LARGE_BUTTONS)
                 .add(InfinityButtonsBlocks.STONE_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.DEEPSLATE_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.GRANITE_LARGE_BUTTON)
@@ -94,7 +93,8 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.DARK_PRISMARINE_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.SAND_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.RED_SAND_LARGE_BUTTON)
-                .add(InfinityButtonsBlocks.GRAVEL_LARGE_BUTTON);
+                .add(InfinityButtonsBlocks.GRAVEL_LARGE_BUTTON)
+                .addOptionalTag(CONCRETE_POWDER_LARGE_BUTTONS);
 
         getOrCreateTagBuilder(WOODEN_LARGE_BUTTONS)
                 .add(InfinityButtonsBlocks.OAK_LARGE_BUTTON)
@@ -324,6 +324,9 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.PRISMARINE_BUTTON)
                 .add(InfinityButtonsBlocks.PRISMARINE_BRICK_BUTTON)
                 .add(InfinityButtonsBlocks.DARK_PRISMARINE_BUTTON)
+                .add(InfinityButtonsBlocks.SAND_BUTTON)
+                .add(InfinityButtonsBlocks.RED_SAND_BUTTON)
+                .add(InfinityButtonsBlocks.GRAVEL_BUTTON)
                 .addOptionalTag(CONCRETE_POWDER_BUTTONS);
 
         getOrCreateTagBuilder(GUARDED_BY_PIGLINS)
