@@ -2,6 +2,7 @@
 
 ## 3.1.0
 
+- Fixed the Fabric version crashing when loaded on its own.
 - Bookshelf Secret Buttons top faces are now also fixed.
 - Secret Buttons now only work when you click on the correct side.
 - You are now able to place blocks on Secret Buttons without having to sneak.
