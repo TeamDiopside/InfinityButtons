@@ -72,7 +72,7 @@ public abstract class AbstractSecretButton extends HorizontalFacingBlock {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (hit.getSide() == state.get(FACING)) {
+        if (!state.get(PRESSED) && hit.getSide() == state.get(FACING)) {
             this.powerOn(state, world, pos);
             this.playClickSound(player, world, pos, true);
             world.emitGameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
