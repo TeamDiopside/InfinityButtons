@@ -1,15 +1,15 @@
-name: Issue Report
-description: Tell us about your issue
-title: "[Issue]: "
+name: Bug Report
+description: Tell us about your bug
+title: "[Bug]: "
 labels: ["bug"]
 assignees:
   - LarsMans64,curryducker
 body:
   - type: textarea
-    id: issue
+    id: bug
     attributes:
-      label: Issue
-      description: Tell us about your issue!
+      label: Bug
+      description: Tell us about your bug!
       placeholder: 1. What happened?\n2. What did you expect to happen?\n3. How can we reproduce the bug?
       value: "1. What happened?\n\n2. What did you expect to happen?\n\n3. How can we reproduce the bug?\n"
     validations:
