@@ -135,7 +135,7 @@ public abstract class AbstractButton extends WallMountedBlock {
 
     @Override
     public int getStrongRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {
-        if (state.get(PRESSED) && AbstractButton.getDirection(state) == direction) {
+        if (state.get(PRESSED) && getDirection(state) == direction) {
             return 15;
         }
         return 0;
@@ -186,7 +186,7 @@ public abstract class AbstractButton extends WallMountedBlock {
 
     public void updateNeighbors(BlockState state, World world, BlockPos pos) {
         world.updateNeighborsAlways(pos, this);
-        world.updateNeighborsAlways(pos.offset(AbstractButton.getDirection(state).getOpposite()), this);
+        world.updateNeighborsAlways(pos.offset(getDirection(state).getOpposite()), this);
     }
 
     @Override

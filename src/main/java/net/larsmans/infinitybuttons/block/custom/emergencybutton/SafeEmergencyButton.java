@@ -10,7 +10,6 @@ import net.minecraft.block.WallMountedBlock;
 import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
@@ -199,9 +198,9 @@ public class SafeEmergencyButton extends WallMountedBlock {
                     this.powerOn(state, world, pos);
                     this.playClickSound(player, world, pos, true);
                     if (InfinityButtonsInit.CONFIG.alarmSound()) {
-                        world.playSound(player, pos, InfinityButtonsSounds.ALARM, SoundCategory.BLOCKS, 2f, 0.6f);
+                        world.playSound(player, pos, InfinityButtonsSounds.ALARM, SoundCategory.BLOCKS, 1, 1);
                     }
-                    world.emitGameEvent((Entity) player, GameEvent.BLOCK_ACTIVATE, pos);
+                    world.emitGameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
                 }
             }
             case CLOSED -> {
@@ -234,7 +233,7 @@ public class SafeEmergencyButton extends WallMountedBlock {
     }
 
     protected void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, boolean pressed) {
-        world.playSound(pressed ? player : null, pos, SoundEvents.BLOCK_BONE_BLOCK_BREAK, SoundCategory.BLOCKS, 0.75f, pressed ? 0.6f : 0.5f);
+        world.playSound(pressed ? player : null, pos, SoundEvents.BLOCK_BONE_BLOCK_BREAK, SoundCategory.BLOCKS, 1, pressed ? 0.6f : 0.5f);
     }
 
     protected void playToggleSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, boolean pressed) {
