@@ -187,7 +187,9 @@ public class TagItemGen extends FabricTagProvider<Item> {
                 .add(InfinityButtonsBlocks.SOUL_TORCH_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.SOUL_TORCH_LEVER.asItem())
                 .add(InfinityButtonsBlocks.REDSTONE_TORCH_BUTTON.asItem())
-                .add(InfinityButtonsBlocks.REDSTONE_TORCH_LEVER.asItem());
+                .add(InfinityButtonsBlocks.REDSTONE_TORCH_LEVER.asItem())
+                .addOptional(new Identifier("infinitybuttons:propelplant_torch_button"))
+                .addOptional(new Identifier("infinitybuttons:propelplant_torch_lever"));
     }
     
     public static final TagKey<Item> BUTTONS = edit("buttons");

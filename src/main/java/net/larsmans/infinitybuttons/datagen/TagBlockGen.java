@@ -188,12 +188,16 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.SOUL_TORCH_LEVER)
                 .add(InfinityButtonsBlocks.REDSTONE_TORCH_BUTTON)
                 .add(InfinityButtonsBlocks.REDSTONE_TORCH_LEVER)
+                .addOptional(new Identifier("infinitybuttons:propelplant_torch_button"))
+                .addOptional(new Identifier("infinitybuttons:propelplant_torch_lever"))
                 .add(InfinityButtonsBlocks.WALL_TORCH_BUTTON)
                 .add(InfinityButtonsBlocks.WALL_TORCH_LEVER)
                 .add(InfinityButtonsBlocks.SOUL_WALL_TORCH_BUTTON)
                 .add(InfinityButtonsBlocks.SOUL_WALL_TORCH_LEVER)
                 .add(InfinityButtonsBlocks.REDSTONE_WALL_TORCH_BUTTON)
-                .add(InfinityButtonsBlocks.REDSTONE_WALL_TORCH_LEVER);
+                .add(InfinityButtonsBlocks.REDSTONE_WALL_TORCH_LEVER)
+                .addOptional(new Identifier("infinitybuttons:propelplant_wall_torch_button"))
+                .addOptional(new Identifier("infinitybuttons:propelplant_wall_torch_lever"));
     }
 
     public static final TagKey<Block> MINEABLE_AXE = edit("mineable/axe");
@@ -357,7 +361,9 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.SOUL_TORCH_BUTTON)
                 .add(InfinityButtonsBlocks.SOUL_TORCH_LEVER)
                 .add(InfinityButtonsBlocks.REDSTONE_TORCH_BUTTON)
-                .add(InfinityButtonsBlocks.REDSTONE_TORCH_LEVER);
+                .add(InfinityButtonsBlocks.REDSTONE_TORCH_LEVER)
+                .addOptional(new Identifier("infinitybuttons:propelplant_torch_button"))
+                .addOptional(new Identifier("infinitybuttons:propelplant_torch_lever"));
     }
 
     @Override

@@ -1,9 +1,13 @@
 package net.larsmans.infinitybuttons.datagen;
 
+import com.nethersdelight.core.registry.NDBlocks;
+import com.nethersdelight.core.registry.NDItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.larsmans.infinitybuttons.block.InfinityButtonsBlocks;
+import net.larsmans.infinitybuttons.compat.IBNethersDelightBlocks;
+import net.larsmans.infinitybuttons.compat.IBNethersDelightItems;
 import net.minecraft.data.server.RecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
@@ -165,6 +169,7 @@ public class RecipeGen extends FabricRecipeProvider {
                 .input(Items.REDSTONE_LAMP)
                 .input(Items.LEVER)
                 .criterion("has_thing", RecipeProvider.conditionsFromItem(Items.REDSTONE_LAMP)).offerTo(i);
+        generateSecretButton(i, IBNethersDelightBlocks.HOGLIN_MOUNT_BUTTON, NDBlocks.HOGLIN_MOUNT.get());
 
         ShapedRecipeJsonBuilder.create(InfinityButtonsBlocks.TORCH_BUTTON)
                 .pattern("C").input('C', ItemTags.COALS)
@@ -203,6 +208,18 @@ public class RecipeGen extends FabricRecipeProvider {
                 .pattern("#").input('#', Items.LEVER)
                 .pattern("S").input('S', Items.STICK)
                 .criterion("has_thing", RecipeProvider.conditionsFromItem(Items.REDSTONE)).offerTo(i);
+
+        ShapedRecipeJsonBuilder.create(IBNethersDelightItems.PROPELPLANT_TORCH_BUTTON)
+                .pattern("P").input('P', NDItems.PROPELPEARL)
+                .pattern("#").input('#', Items.STONE_BUTTON)
+                .pattern("C").input('C', NDBlocks.PROPELPLANT_CANE.get())
+                .criterion("has_thing", RecipeProvider.conditionsFromItem(NDBlocks.PROPELPLANT_CANE.get())).offerTo(i);
+
+        ShapedRecipeJsonBuilder.create(IBNethersDelightItems.PROPELPLANT_TORCH_LEVER)
+                .pattern("P").input('P', NDItems.PROPELPEARL)
+                .pattern("#").input('#', Items.LEVER)
+                .pattern("C").input('C', NDBlocks.PROPELPLANT_CANE.get())
+                .criterion("has_thing", RecipeProvider.conditionsFromItem(NDBlocks.PROPELPLANT_CANE.get())).offerTo(i);
 
         generateStonecutter(i, Items.STONE_BUTTON, Items.STONE);
         generateStonecutter(i, InfinityButtonsBlocks.DEEPSLATE_BUTTON, Items.DEEPSLATE);

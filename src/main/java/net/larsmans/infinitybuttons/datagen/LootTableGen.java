@@ -3,6 +3,7 @@ package net.larsmans.infinitybuttons.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
 import net.larsmans.infinitybuttons.block.InfinityButtonsBlocks;
+import net.larsmans.infinitybuttons.compat.IBNethersDelightBlocks;
 import net.minecraft.data.server.BlockLootTableGenerator;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.loot.LootTable;
@@ -181,6 +182,7 @@ public class LootTableGen extends SimpleFabricLootTableProvider {
         generateLootTable(i, "doorbell_button", InfinityButtonsBlocks.DOORBELL_BUTTON);
         generateLootTable(i, "lamp_button", InfinityButtonsBlocks.LAMP_BUTTON);
         generateLootTable(i, "lamp_lever", InfinityButtonsBlocks.LAMP_LEVER);
+        generateLootTable(i, "hoglin_mount_button", IBNethersDelightBlocks.HOGLIN_MOUNT_BUTTON);
 
         generateLootTable(i, "torch_button", InfinityButtonsBlocks.TORCH_BUTTON);
         generateLootTable(i, "torch_lever", InfinityButtonsBlocks.TORCH_LEVER);
@@ -188,6 +190,8 @@ public class LootTableGen extends SimpleFabricLootTableProvider {
         generateLootTable(i, "soul_torch_lever", InfinityButtonsBlocks.SOUL_TORCH_LEVER);
         generateLootTable(i, "redstone_torch_button", InfinityButtonsBlocks.REDSTONE_TORCH_BUTTON);
         generateLootTable(i, "redstone_torch_lever", InfinityButtonsBlocks.REDSTONE_TORCH_LEVER);
+        generateLootTable(i, "propelplant_torch_button", IBNethersDelightBlocks.PROPELPLANT_TORCH_BUTTON);
+        generateLootTable(i, "propelplant_torch_lever", IBNethersDelightBlocks.PROPELPLANT_TORCH_LEVER);
     }
     
     public void generateButton(BiConsumer<Identifier, LootTable.Builder> i, String name, ItemConvertible item) {
