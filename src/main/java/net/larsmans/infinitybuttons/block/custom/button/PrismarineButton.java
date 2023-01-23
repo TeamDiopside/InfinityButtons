@@ -4,10 +4,9 @@
 package net.larsmans.infinitybuttons.block.custom.button;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.larsmans.infinitybuttons.InfinityButtonsInit;
+import net.larsmans.infinitybuttons.block.InfinityButtonsUtil;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.WallMountLocation;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -19,7 +18,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
@@ -32,9 +30,8 @@ public class PrismarineButton extends AbstractButton implements Waterloggable {
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
-    public PrismarineButton(FabricBlockSettings settings) {
-        super(true, settings);
-        this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(PRESSED, false)).with(FACE, WallMountLocation.FLOOR)).with(WATERLOGGED, false));
+    public PrismarineButton(FabricBlockSettings settings, boolean large) {
+        super(true, large, settings);
     }
 
     @Override
@@ -58,7 +55,7 @@ public class PrismarineButton extends AbstractButton implements Waterloggable {
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
         boolean bl = fluidState.getFluid() == Fluids.WATER;
         for (Direction direction : ctx.getPlacementDirections()) {
-            BlockState blockState = direction.getAxis() == Direction.Axis.Y ? (BlockState)((BlockState)((BlockState)this.getDefaultState().with(FACE, direction == Direction.UP ? WallMountLocation.CEILING : WallMountLocation.FLOOR)).with(FACING, ctx.getPlayerFacing())).with(WATERLOGGED, bl) : (BlockState)((BlockState)((BlockState)this.getDefaultState().with(FACE, WallMountLocation.WALL)).with(FACING, direction.getOpposite())).with(WATERLOGGED, bl);
+            BlockState blockState = direction.getAxis() == Direction.Axis.Y ? this.getDefaultState().with(FACE, direction == Direction.UP ? WallMountLocation.CEILING : WallMountLocation.FLOOR).with(FACING, ctx.getPlayerFacing()).with(WATERLOGGED, bl) : this.getDefaultState().with(FACE, WallMountLocation.WALL).with(FACING, direction.getOpposite()).with(WATERLOGGED, bl);
             if (!blockState.canPlaceAt(ctx.getWorld(), ctx.getBlockPos())) continue;
             return blockState;
         }
@@ -86,13 +83,7 @@ public class PrismarineButton extends AbstractButton implements Waterloggable {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-        if (InfinityButtonsInit.CONFIG.tooltips()) {
-            if (Screen.hasShiftDown()) {
-                tooltip.add(Text.translatable("infinitybuttons.tooltip.prismarine_button").formatted(Formatting.GRAY));
-            } else {
-                tooltip.add(Text.translatable("infinitybuttons.tooltip.hold_shift").formatted(Formatting.GRAY));
-            }
-        }
+        InfinityButtonsUtil.tooltip(tooltip, "prismarine_button");
     }
 }
 

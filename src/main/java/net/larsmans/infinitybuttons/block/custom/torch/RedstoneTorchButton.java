@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.TorchBlock;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.DustParticleEffect;
 import net.minecraft.server.world.ServerWorld;
@@ -30,7 +29,7 @@ public class RedstoneTorchButton extends TorchBlock {
 
     public RedstoneTorchButton(FabricBlockSettings settings) {
         super(settings, DustParticleEffect.DEFAULT);
-        this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(LIT, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(LIT, false));
     }
 
     @Override
@@ -40,14 +39,14 @@ public class RedstoneTorchButton extends TorchBlock {
         }
         this.powerOn(state, world, pos);
         this.playClickSound(player, world, pos, true);
-        world.emitGameEvent((Entity)player, GameEvent.BLOCK_ACTIVATE, pos);
+        world.emitGameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
         return ActionResult.success(world.isClient);
     }
 
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (state.get(LIT)) {
-            world.setBlockState(pos, (BlockState)state.with(LIT, false), Block.NOTIFY_ALL);
+            world.setBlockState(pos, state.with(LIT, false), Block.NOTIFY_ALL);
             this.updateNeighbors(state, world, pos);
             this.playClickSound(null, world, pos, false);
             world.emitGameEvent(null, GameEvent.BLOCK_DEACTIVATE, pos);
@@ -55,7 +54,7 @@ public class RedstoneTorchButton extends TorchBlock {
     }
 
     public void powerOn(BlockState state, World world, BlockPos pos) {
-        world.setBlockState(pos, (BlockState)state.with(LIT, true), Block.NOTIFY_ALL);
+        world.setBlockState(pos, state.with(LIT, true), Block.NOTIFY_ALL);
         this.updateNeighbors(state, world, pos);
         world.createAndScheduleBlockTick(pos, this, 60);
     }

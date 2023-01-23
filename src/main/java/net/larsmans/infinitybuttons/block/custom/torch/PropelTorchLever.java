@@ -7,7 +7,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
-public class PropelTorchLever extends TorchLever{
+public class PropelTorchLever extends TorchLever {
     public PropelTorchLever(FabricBlockSettings settings) {
         super(settings, ParticleTypes.FLAME);
     }

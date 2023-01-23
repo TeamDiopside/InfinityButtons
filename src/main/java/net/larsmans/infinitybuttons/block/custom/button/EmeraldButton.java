@@ -1,22 +1,20 @@
 package net.larsmans.infinitybuttons.block.custom.button;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.larsmans.infinitybuttons.InfinityButtonsInit;
-import net.minecraft.client.gui.screen.Screen;
+import net.larsmans.infinitybuttons.block.InfinityButtonsUtil;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.world.BlockView;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class EmeraldButton extends AbstractButton {
-    public EmeraldButton(FabricBlockSettings settings) {
-        super(false, settings);
+    public EmeraldButton(FabricBlockSettings settings, boolean large) {
+        super(false, large, settings);
     }
 
     @Override
@@ -31,13 +29,6 @@ public class EmeraldButton extends AbstractButton {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-        if (InfinityButtonsInit.CONFIG.tooltips()) {
-            if (Screen.hasShiftDown()) {
-                tooltip.add(Text.translatable("infinitybuttons.tooltip.emerald_button1").formatted(Formatting.GRAY));
-                tooltip.add(Text.translatable("infinitybuttons.tooltip.emerald_button2").formatted(Formatting.GRAY));
-            } else {
-                tooltip.add(Text.translatable("infinitybuttons.tooltip.hold_shift").formatted(Formatting.GRAY));
-            }
-        }
+        InfinityButtonsUtil.tooltip(tooltip, "emerald_button1", "emerald_button2");
     }
 }

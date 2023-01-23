@@ -2,13 +2,13 @@ package net.larsmans.infinitybuttons.block.custom.emergencybutton;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.larsmans.infinitybuttons.InfinityButtonsInit;
+import net.larsmans.infinitybuttons.block.InfinityButtonsUtil;
 import net.larsmans.infinitybuttons.sounds.InfinityButtonsSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.WallMountedBlock;
 import net.minecraft.block.enums.WallMountLocation;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -19,7 +19,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -85,7 +84,7 @@ public class SafeEmergencyButton extends WallMountedBlock {
 
     public SafeEmergencyButton(FabricBlockSettings settings) {
         super(settings);
-        this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(STATE, SEBStateEnum.CLOSED)).with(FACE, WallMountLocation.FLOOR));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(STATE, SEBStateEnum.CLOSED).with(FACE, WallMountLocation.FLOOR));
     }
 
     @Override
@@ -287,12 +286,6 @@ public class SafeEmergencyButton extends WallMountedBlock {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-        if (InfinityButtonsInit.CONFIG.tooltips()) {
-            if (Screen.hasShiftDown()) {
-                tooltip.add(Text.translatable("infinitybuttons.tooltip.safe_emergency_button").formatted(Formatting.GRAY));
-            } else {
-                tooltip.add(Text.translatable("infinitybuttons.tooltip.hold_shift").formatted(Formatting.GRAY));
-            }
-        }
+        InfinityButtonsUtil.tooltip(tooltip, "safe_emergency_button");
     }
 }

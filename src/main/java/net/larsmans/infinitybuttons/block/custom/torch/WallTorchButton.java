@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
@@ -17,6 +18,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 
@@ -26,7 +28,6 @@ public class WallTorchButton extends TorchButton {
 
     public WallTorchButton(FabricBlockSettings settings, ParticleEffect particleEffect) {
         super(settings, particleEffect);
-        this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH).with(PRESSED, false));
     }
 
     @Override
@@ -36,10 +37,6 @@ public class WallTorchButton extends TorchButton {
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return WallTorchButton.getBoundingShape(state);
-    }
-
-    public static VoxelShape getBoundingShape(BlockState state) {
         return BOUNDING_SHAPES.get(state.get(FACING));
     }
 
@@ -52,11 +49,32 @@ public class WallTorchButton extends TorchButton {
     }
 
     @Override
+    @Nullable
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        Direction[] directions;
+        BlockState blockState = this.getDefaultState();
+        World worldView = ctx.getWorld();
+        BlockPos blockPos = ctx.getBlockPos();
+        for (Direction direction : directions = ctx.getPlacementDirections()) {
+            Direction direction2;
+            if (!direction.getAxis().isHorizontal() || !(blockState = blockState.with(FACING, direction2 = direction.getOpposite())).canPlaceAt(worldView, blockPos)) continue;
+            return blockState;
+        }
+        return null;
+    }
+
+    @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (direction.getOpposite() == state.get(FACING) && !state.canPlaceAt(world, pos)) {
             return Blocks.AIR.getDefaultState();
         }
         return state;
+    }
+
+    @Override
+    public void updateNeighbors(BlockState state, World world, BlockPos pos) {
+        world.updateNeighborsAlways(pos, this);
+        world.updateNeighborsAlways(pos.offset(state.get(FACING).getOpposite()), this);
     }
 
     // override because direction
@@ -91,15 +109,11 @@ public class WallTorchButton extends TorchButton {
             double d = (double)pos.getX() + 0.5;
             double e = (double)pos.getY() + 0.7;
             double f = (double)pos.getZ() + 0.5;
+            double g = 0.22;
+            double h = 0.27;
             Direction direction2 = direction.getOpposite();
-            world.addParticle(ParticleTypes.SMOKE, d + 0.27 * (double)direction2.getOffsetX(), e + 0.22, f + 0.27 * (double)direction2.getOffsetZ(), 0.0, 0.0, 0.0);
-            world.addParticle(this.particle, d + 0.27 * (double)direction2.getOffsetX(), e + 0.22, f + 0.27 * (double)direction2.getOffsetZ(), 0.0, 0.0, 0.0);
+            world.addParticle(ParticleTypes.SMOKE, d + h * (double)direction2.getOffsetX(), e + g, f + h * (double)direction2.getOffsetZ(), 0.0, 0.0, 0.0);
+            world.addParticle(this.particle, d + h * (double)direction2.getOffsetX(), e + g, f + h * (double)direction2.getOffsetZ(), 0.0, 0.0, 0.0);
         }
-    }
-
-    @Override
-    public void updateNeighbors(BlockState state, World world, BlockPos pos) {
-        world.updateNeighborsAlways(pos, this);
-        world.updateNeighborsAlways(pos.offset(state.get(FACING).getOpposite()), this);
     }
 }

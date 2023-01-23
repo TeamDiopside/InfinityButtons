@@ -7,7 +7,6 @@ import net.larsmans.infinitybuttons.sounds.InfinityButtonsSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
-import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -61,8 +60,7 @@ public class EmergencyButton extends AbstractButton {
             Block.createCuboidShape(5, 13, 5, 11, 15, 11), STONE_UP);
 
     public EmergencyButton(FabricBlockSettings settings) {
-        super(false, settings);
-        this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(PRESSED, false)).with(FACE, WallMountLocation.FLOOR));
+        super(false, false, settings);
     }
 
     @Override

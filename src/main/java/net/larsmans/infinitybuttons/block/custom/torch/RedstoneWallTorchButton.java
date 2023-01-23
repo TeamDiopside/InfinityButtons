@@ -22,7 +22,7 @@ public class RedstoneWallTorchButton extends RedstoneTorchButton {
 
     public RedstoneWallTorchButton(FabricBlockSettings settings) {
         super(settings);
-        this.setDefaultState((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(LIT, false)).with(FACING, Direction.NORTH));
+        this.setDefaultState(this.stateManager.getDefaultState().with(LIT, false).with(FACING, Direction.NORTH));
     }
 
     @Override
@@ -44,7 +44,7 @@ public class RedstoneWallTorchButton extends RedstoneTorchButton {
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockState blockState = Blocks.WALL_TORCH.getPlacementState(ctx);
-        return blockState == null ? null : (BlockState)this.getDefaultState().with(FACING, blockState.get(FACING));
+        return blockState == null ? null : this.getDefaultState().with(FACING, blockState.get(FACING));
     }
 
     @Override

@@ -1,7 +1,6 @@
-package net.larsmans.infinitybuttons.block.custom.largebutton;
+package net.larsmans.infinitybuttons.block.custom.button;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.larsmans.infinitybuttons.block.custom.button.AbstractButton;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.Direction;
@@ -23,7 +22,7 @@ public abstract class LargeButtonShape extends AbstractButton {
     private static final VoxelShape CEILING_PRESSED_SHAPE = Block.createCuboidShape(4, 15, 4, 12, 16, 12);
 
     public LargeButtonShape(boolean projectile, FabricBlockSettings settings) {
-        super(projectile, settings);
+        super(projectile, false, settings);
     }
 
     public static VoxelShape outlineShape(BlockState state) {

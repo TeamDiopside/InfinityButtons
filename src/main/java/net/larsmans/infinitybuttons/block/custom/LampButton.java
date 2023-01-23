@@ -14,19 +14,6 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
 public class LampButton extends AbstractButton {
-    public LampButton(FabricBlockSettings settings) {
-        super(false, settings);
-    }
-
-    @Override
-    public int getPressTicks() {
-        return 20;
-    }
-
-    @Override
-    protected SoundEvent getClickSound(boolean pressed) {
-        return pressed ? SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON : SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF;
-    }
 
     private static final VoxelShape FLOOR_SHAPE = VoxelShapes.union(
             Block.createCuboidShape(3, 0, 3, 13, 1, 13),
@@ -46,6 +33,20 @@ public class LampButton extends AbstractButton {
     private static final VoxelShape WEST_SHAPE = VoxelShapes.union(
             Block.createCuboidShape(15, 3, 3, 16, 13, 13),
             Block.createCuboidShape(8, 4, 4, 15, 12, 12));
+
+    public LampButton(FabricBlockSettings settings) {
+        super(false, false, settings);
+    }
+
+    @Override
+    public int getPressTicks() {
+        return 20;
+    }
+
+    @Override
+    protected SoundEvent getClickSound(boolean pressed) {
+        return pressed ? SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON : SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF;
+    }
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {

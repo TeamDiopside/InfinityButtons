@@ -52,21 +52,27 @@ public abstract class AbstractButton extends WallMountedBlock {
     protected static final VoxelShape SOUTH_PRESSED_SHAPE = Block.createCuboidShape(5.0, 6.0, 0.0, 11.0, 10.0, 1.0);
     protected static final VoxelShape WEST_PRESSED_SHAPE = Block.createCuboidShape(15.0, 6.0, 5.0, 16.0, 10.0, 11.0);
     protected static final VoxelShape EAST_PRESSED_SHAPE = Block.createCuboidShape(0.0, 6.0, 5.0, 1.0, 10.0, 11.0);
-    private final boolean projectile;
 
-    protected AbstractButton(boolean projectile, FabricBlockSettings settings) {
+    private final boolean projectile;
+    private final boolean large;
+
+    protected AbstractButton(boolean projectile, boolean large, FabricBlockSettings settings) {
         super(settings);
-        this.setDefaultState((BlockState)((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(FACING, Direction.NORTH)).with(PRESSED, false)).with(FACE, WallMountLocation.FLOOR));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(PRESSED, false).with(FACE, WallMountLocation.FLOOR));
         this.projectile = projectile;
+        this.large = large;
     }
 
     public abstract int getPressTicks();
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        if (large) {
+            return LargeButtonShape.outlineShape(state);
+        }
         Direction direction = state.get(FACING);
         boolean bl = state.get(PRESSED);
-        switch ((WallMountLocation) state.get(FACE)) {
+        switch (state.get(FACE)) {
             case FLOOR -> {
                 if (direction.getAxis() == Direction.Axis.X) {
                     return bl ? FLOOR_X_PRESSED_SHAPE : FLOOR_X_SHAPE;
@@ -101,12 +107,12 @@ public abstract class AbstractButton extends WallMountedBlock {
         }
         this.powerOn(state, world, pos);
         this.playClickSound(player, world, pos, true);
-        world.emitGameEvent((Entity)player, GameEvent.BLOCK_ACTIVATE, pos);
+        world.emitGameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
         return ActionResult.success(world.isClient);
     }
 
     public void powerOn(BlockState state, World world, BlockPos pos) {
-        world.setBlockState(pos, (BlockState)state.with(PRESSED, true), Block.NOTIFY_ALL);
+        world.setBlockState(pos, state.with(PRESSED, true), Block.NOTIFY_ALL);
         this.updateNeighbors(state, world, pos);
         world.createAndScheduleBlockTick(pos, this, this.getPressTicks());
     }
@@ -154,7 +160,7 @@ public abstract class AbstractButton extends WallMountedBlock {
         if (this.projectile) {
             this.tryPowerWithProjectiles(state, world, pos);
         } else {
-            world.setBlockState(pos, (BlockState)state.with(PRESSED, false), Block.NOTIFY_ALL);
+            world.setBlockState(pos, state.with(PRESSED, false), Block.NOTIFY_ALL);
             this.updateNeighbors(state, world, pos);
             this.playClickSound(null, world, pos, false);
             world.emitGameEvent(null, GameEvent.BLOCK_DEACTIVATE, pos);
@@ -174,10 +180,10 @@ public abstract class AbstractButton extends WallMountedBlock {
         List<PersistentProjectileEntity> list = world.getNonSpectatingEntities(PersistentProjectileEntity.class, state.getOutlineShape(world, pos).getBoundingBox().offset(pos));
         boolean bl = !list.isEmpty();
         if (bl != (bl2 = state.get(PRESSED))) {
-            world.setBlockState(pos, (BlockState)state.with(PRESSED, bl), Block.NOTIFY_ALL);
+            world.setBlockState(pos, state.with(PRESSED, bl), Block.NOTIFY_ALL);
             this.updateNeighbors(state, world, pos);
             this.playClickSound(null, world, pos, bl);
-            world.emitGameEvent((Entity)list.stream().findFirst().orElse(null), bl ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, pos);
+            world.emitGameEvent(list.stream().findFirst().orElse(null), bl ? GameEvent.BLOCK_ACTIVATE : GameEvent.BLOCK_DEACTIVATE, pos);
         }
         if (bl) {
             world.createAndScheduleBlockTick(new BlockPos(pos), this, this.getPressTicks());
