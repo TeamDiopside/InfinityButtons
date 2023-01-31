@@ -350,57 +350,50 @@ public class InfinityButtonsBlocks {
      * Misc
      */
 
-    public static final Block DOORBELL = registerBlockWithItem("doorbell",
-            new Doorbell(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD)));
+    public static final Block DOORBELL = registerBlockWithItem("doorbell", new Doorbell(doorbellSettings()));
+    public static final Block DOORBELL_BUTTON = registerBlockWithItem("doorbell_button", new DoorbellButton(doorbellSettings()));
+    public static final Block LAMP_BUTTON = registerBlockWithItem("lamp_button", new LampButton(lampSettings()));
+    public static final Block LAMP_LEVER = registerBlockWithItem("lamp_lever", new LampLever(lampSettings()));
 
-    public static final Block DOORBELL_BUTTON = registerBlockWithItem("doorbell_button",
-            new DoorbellButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD)));
+    public static FabricBlockSettings doorbellSettings() {
+        return FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD);
+    }
 
-    public static final Block LAMP_BUTTON = registerBlockWithItem("lamp_button",
-            new LampButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().strength(0.3f).sounds(BlockSoundGroup.GLASS).luminance(getLampButtonLight())));
-
-    public static final Block LAMP_LEVER = registerBlockWithItem("lamp_lever",
-            new LampLever(FabricBlockSettings.of(Material.DECORATION).nonOpaque().strength(0.3f).sounds(BlockSoundGroup.GLASS).luminance(getLampButtonLight())));
+    public static FabricBlockSettings lampSettings() {
+        return FabricBlockSettings.of(Material.DECORATION).nonOpaque().strength(0.3f).sounds(BlockSoundGroup.GLASS).luminance(getLampButtonLight());
+    }
 
     /**
      * Torches
      */
 
-    public static final Block TORCH_BUTTON = registerOnlyBlock("torch_button",
-            new TorchButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(14).sounds(BlockSoundGroup.WOOD), ParticleTypes.FLAME));
+    public static final Block TORCH_BUTTON = registerOnlyBlock("torch_button", new TorchButton(torchSettings(14), ParticleTypes.FLAME));
 
-    public static final Block WALL_TORCH_BUTTON = registerOnlyBlock("wall_torch_button",
-            new WallTorchButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(14).sounds(BlockSoundGroup.WOOD).dropsLike(TORCH_BUTTON), ParticleTypes.FLAME));
+    public static final Block WALL_TORCH_BUTTON = registerOnlyBlock("wall_torch_button", new WallTorchButton(torchSettings(14).dropsLike(TORCH_BUTTON), ParticleTypes.FLAME));
 
-    public static final Block TORCH_LEVER = registerOnlyBlock("torch_lever",
-            new TorchLever(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(14).sounds(BlockSoundGroup.WOOD), ParticleTypes.FLAME));
+    public static final Block TORCH_LEVER = registerOnlyBlock("torch_lever", new TorchLever(torchSettings(14), ParticleTypes.FLAME));
 
-    public static final Block WALL_TORCH_LEVER = registerOnlyBlock("wall_torch_lever",
-            new WallTorchLever(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(14).sounds(BlockSoundGroup.WOOD).dropsLike(TORCH_LEVER), ParticleTypes.FLAME));
+    public static final Block WALL_TORCH_LEVER = registerOnlyBlock("wall_torch_lever", new WallTorchLever(torchSettings(14).dropsLike(TORCH_LEVER), ParticleTypes.FLAME));
 
-    public static final Block SOUL_TORCH_BUTTON = registerOnlyBlock("soul_torch_button",
-            new TorchButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(10).sounds(BlockSoundGroup.WOOD), ParticleTypes.SOUL_FIRE_FLAME));
+    public static final Block SOUL_TORCH_BUTTON = registerOnlyBlock("soul_torch_button", new TorchButton(torchSettings(10), ParticleTypes.SOUL_FIRE_FLAME));
 
-    public static final Block SOUL_WALL_TORCH_BUTTON = registerOnlyBlock("soul_wall_torch_button",
-            new WallTorchButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(10).sounds(BlockSoundGroup.WOOD).dropsLike(SOUL_TORCH_BUTTON), ParticleTypes.SOUL_FIRE_FLAME));
+    public static final Block SOUL_WALL_TORCH_BUTTON = registerOnlyBlock("soul_wall_torch_button", new WallTorchButton(torchSettings(10).dropsLike(SOUL_TORCH_BUTTON), ParticleTypes.SOUL_FIRE_FLAME));
 
-    public static final Block SOUL_TORCH_LEVER = registerOnlyBlock("soul_torch_lever",
-            new TorchLever(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(10).sounds(BlockSoundGroup.WOOD), ParticleTypes.SOUL_FIRE_FLAME));
+    public static final Block SOUL_TORCH_LEVER = registerOnlyBlock("soul_torch_lever", new TorchLever(torchSettings(10), ParticleTypes.SOUL_FIRE_FLAME));
 
-    public static final Block SOUL_WALL_TORCH_LEVER = registerOnlyBlock("soul_wall_torch_lever",
-            new WallTorchLever(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(10).sounds(BlockSoundGroup.WOOD).dropsLike(SOUL_TORCH_LEVER), ParticleTypes.SOUL_FIRE_FLAME));
+    public static final Block SOUL_WALL_TORCH_LEVER = registerOnlyBlock("soul_wall_torch_lever", new WallTorchLever(torchSettings(10).dropsLike(SOUL_TORCH_LEVER), ParticleTypes.SOUL_FIRE_FLAME));
 
-    public static final Block REDSTONE_TORCH_BUTTON = registerOnlyBlock("redstone_torch_button",
-            new RedstoneTorchButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(7).sounds(BlockSoundGroup.WOOD)));
+    public static final Block REDSTONE_TORCH_BUTTON = registerOnlyBlock("redstone_torch_button", new RedstoneTorchButton(torchSettings(7)));
 
-    public static final Block REDSTONE_WALL_TORCH_BUTTON = registerOnlyBlock("redstone_wall_torch_button",
-            new RedstoneWallTorchButton(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(7).sounds(BlockSoundGroup.WOOD).dropsLike(REDSTONE_TORCH_BUTTON)));
+    public static final Block REDSTONE_WALL_TORCH_BUTTON = registerOnlyBlock("redstone_wall_torch_button", new RedstoneWallTorchButton(torchSettings(7).dropsLike(REDSTONE_TORCH_BUTTON)));
 
-    public static final Block REDSTONE_TORCH_LEVER = registerOnlyBlock("redstone_torch_lever",
-            new RedstoneTorchLever(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(7).sounds(BlockSoundGroup.WOOD)));
+    public static final Block REDSTONE_TORCH_LEVER = registerOnlyBlock("redstone_torch_lever", new RedstoneTorchLever(torchSettings(7)));
 
-    public static final Block REDSTONE_WALL_TORCH_LEVER = registerOnlyBlock("redstone_wall_torch_lever",
-            new RedstoneWallTorchLever(FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(7).sounds(BlockSoundGroup.WOOD).dropsLike(REDSTONE_TORCH_LEVER)));
+    public static final Block REDSTONE_WALL_TORCH_LEVER = registerOnlyBlock("redstone_wall_torch_lever", new RedstoneWallTorchLever(torchSettings(7).dropsLike(REDSTONE_TORCH_LEVER)));
+
+    public static FabricBlockSettings torchSettings(int light) {
+        return FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(light).sounds(BlockSoundGroup.WOOD);
+    }
 
     /**
      * Methods
