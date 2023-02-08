@@ -6,8 +6,10 @@ import net.larsmans.infinitybuttons.InfinityButtonsInit;
 import net.larsmans.infinitybuttons.block.custom.Doorbell;
 import net.larsmans.infinitybuttons.block.custom.DoorbellButton;
 import net.larsmans.infinitybuttons.block.custom.LampButton;
-import net.larsmans.infinitybuttons.block.custom.LampLever;
 import net.larsmans.infinitybuttons.block.custom.button.*;
+import net.larsmans.infinitybuttons.block.custom.consolebutton.ConsoleButton;
+import net.larsmans.infinitybuttons.block.custom.consolebutton.LargeConsoleButton;
+import net.larsmans.infinitybuttons.block.custom.consolebutton.SmallConsoleButton;
 import net.larsmans.infinitybuttons.block.custom.emergencybutton.EmergencyButton;
 import net.larsmans.infinitybuttons.block.custom.emergencybutton.SafeEmergencyButton;
 import net.larsmans.infinitybuttons.block.custom.secretbutton.*;
@@ -352,8 +354,8 @@ public class InfinityButtonsBlocks {
 
     public static final Block DOORBELL = registerBlockWithItem("doorbell", new Doorbell(doorbellSettings()));
     public static final Block DOORBELL_BUTTON = registerBlockWithItem("doorbell_button", new DoorbellButton(doorbellSettings()));
-    public static final Block LAMP_BUTTON = registerBlockWithItem("lamp_button", new LampButton(lampSettings()));
-    public static final Block LAMP_LEVER = registerBlockWithItem("lamp_lever", new LampLever(lampSettings()));
+    public static final Block LAMP_BUTTON = registerBlockWithItem("lamp_button", new LampButton(lampSettings(), false));
+    public static final Block LAMP_LEVER = registerBlockWithItem("lamp_lever", new LampButton(lampSettings(), true));
 
     public static FabricBlockSettings doorbellSettings() {
         return FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD);
@@ -361,6 +363,23 @@ public class InfinityButtonsBlocks {
 
     public static FabricBlockSettings lampSettings() {
         return FabricBlockSettings.of(Material.DECORATION).nonOpaque().strength(0.3f).sounds(BlockSoundGroup.GLASS).luminance(getLampButtonLight());
+    }
+
+    /**
+     * Console Buttons
+     */
+
+    public static final Block SMALL_CONSOLE_BUTTON = registerBlockWithItem("small_console_button", new SmallConsoleButton(consoleButtonSettings(), false));
+    public static final Block SMALL_CONSOLE_LEVER = registerBlockWithItem("small_console_lever", new SmallConsoleButton(consoleButtonSettings(), true));
+    public static final Block CONSOLE_BUTTON = registerBlockWithItem("console_button", new ConsoleButton(consoleButtonSettings(), false));
+    public static final Block CONSOLE_LEVER = registerBlockWithItem("console_lever", new ConsoleButton(consoleButtonSettings(), true));
+    public static final Block LARGE_CONSOLE_BUTTON = registerBlockWithItem("large_console_button", new LargeConsoleButton(consoleButtonSettings(), false));
+    public static final Block LARGE_CONSOLE_LEVER = registerBlockWithItem("large_console_lever", new LargeConsoleButton(consoleButtonSettings(), true));
+    public static final Block BIG_CONSOLE_BUTTON = registerBlockWithItem("big_console_button", new LargeConsoleButton(consoleButtonSettings(), false));
+    public static final Block BIG_CONSOLE_LEVER = registerBlockWithItem("big_console_lever", new LargeConsoleButton(consoleButtonSettings(), true));
+
+    public static FabricBlockSettings consoleButtonSettings() {
+        return FabricBlockSettings.of(Material.METAL).nonOpaque().strength(0.5f).sounds(BlockSoundGroup.METAL);
     }
 
     /**

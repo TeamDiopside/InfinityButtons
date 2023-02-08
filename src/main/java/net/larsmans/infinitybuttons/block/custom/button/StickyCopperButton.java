@@ -23,7 +23,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class StickyCopperButton extends AbstractButton {
+public class StickyCopperButton extends AbstractSmallButton {
 
     public StickyCopperButton(FabricBlockSettings settings, boolean large) {
         super(false, large, settings);

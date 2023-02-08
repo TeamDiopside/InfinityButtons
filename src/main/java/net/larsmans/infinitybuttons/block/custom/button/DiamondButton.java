@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class DiamondButton extends AbstractButton {
+public class DiamondButton extends AbstractSmallButton {
 
     private final boolean large;
 

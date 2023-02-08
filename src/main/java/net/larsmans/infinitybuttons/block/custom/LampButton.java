@@ -1,7 +1,7 @@
 package net.larsmans.infinitybuttons.block.custom;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.larsmans.infinitybuttons.block.custom.button.AbstractButton;
+import net.larsmans.infinitybuttons.block.custom.button.AbstractLeverableButton;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -13,7 +13,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
-public class LampButton extends AbstractButton {
+public class LampButton extends AbstractLeverableButton {
 
     private static final VoxelShape FLOOR_SHAPE = VoxelShapes.union(
             Block.createCuboidShape(3, 0, 3, 13, 1, 13),
@@ -34,8 +34,8 @@ public class LampButton extends AbstractButton {
             Block.createCuboidShape(15, 3, 3, 16, 13, 13),
             Block.createCuboidShape(8, 4, 4, 15, 12, 12));
 
-    public LampButton(FabricBlockSettings settings) {
-        super(false, false, settings);
+    public LampButton(FabricBlockSettings settings, boolean lever) {
+        super(lever, settings);
     }
 
     @Override

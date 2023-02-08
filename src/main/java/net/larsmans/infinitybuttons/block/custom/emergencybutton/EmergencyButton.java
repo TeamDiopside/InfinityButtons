@@ -60,7 +60,7 @@ public class EmergencyButton extends AbstractButton {
             Block.createCuboidShape(5, 13, 5, 11, 15, 11), STONE_UP);
 
     public EmergencyButton(FabricBlockSettings settings) {
-        super(false, false, settings);
+        super(false, settings);
     }
 
     @Override

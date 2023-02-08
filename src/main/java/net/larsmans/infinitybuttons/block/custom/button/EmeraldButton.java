@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class EmeraldButton extends AbstractButton {
+public class EmeraldButton extends AbstractSmallButton {
     public EmeraldButton(FabricBlockSettings settings, boolean large) {
         super(false, large, settings);
     }

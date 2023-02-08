@@ -9,7 +9,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
-public class CopperButton extends AbstractButton {
+public class CopperButton extends AbstractSmallButton {
     public CopperButton(FabricBlockSettings settings, boolean large) {
         super(false, large, settings);
     }

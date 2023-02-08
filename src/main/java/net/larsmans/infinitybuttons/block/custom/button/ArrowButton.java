@@ -19,7 +19,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ArrowButton extends AbstractButton {
+public class ArrowButton extends AbstractSmallButton {
     public ArrowButton(FabricBlockSettings settings, boolean large) {
         super(true, large, settings);
     }

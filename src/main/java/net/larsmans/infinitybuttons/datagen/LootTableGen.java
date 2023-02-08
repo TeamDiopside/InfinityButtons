@@ -184,6 +184,15 @@ public class LootTableGen extends SimpleFabricLootTableProvider {
         generateLootTable(i, "lamp_lever", InfinityButtonsBlocks.LAMP_LEVER);
         generateLootTable(i, "hoglin_mount_button", IBNethersDelightBlocks.HOGLIN_MOUNT_BUTTON);
 
+        generateLootTable(i, "small_console_button", InfinityButtonsBlocks.SMALL_CONSOLE_BUTTON);
+        generateLootTable(i, "small_console_lever", InfinityButtonsBlocks.SMALL_CONSOLE_LEVER);
+        generateLootTable(i, "console_button", InfinityButtonsBlocks.CONSOLE_BUTTON);
+        generateLootTable(i, "console_lever", InfinityButtonsBlocks.CONSOLE_LEVER);
+        generateLootTable(i, "large_console_button", InfinityButtonsBlocks.LARGE_CONSOLE_BUTTON);
+        generateLootTable(i, "large_console_lever", InfinityButtonsBlocks.LARGE_CONSOLE_LEVER);
+        generateLootTable(i, "big_console_button", InfinityButtonsBlocks.BIG_CONSOLE_BUTTON);
+        generateLootTable(i, "big_console_lever", InfinityButtonsBlocks.BIG_CONSOLE_LEVER);
+
         generateLootTable(i, "torch_button", InfinityButtonsBlocks.TORCH_BUTTON);
         generateLootTable(i, "torch_lever", InfinityButtonsBlocks.TORCH_LEVER);
         generateLootTable(i, "soul_torch_button", InfinityButtonsBlocks.SOUL_TORCH_BUTTON);

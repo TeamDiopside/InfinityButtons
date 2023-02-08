@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 
-public class WoodenButton extends AbstractButton {
+public class WoodenButton extends AbstractSmallButton {
 
     public WoodenButton(FabricBlockSettings settings, boolean large) {
         super(true, large, settings);

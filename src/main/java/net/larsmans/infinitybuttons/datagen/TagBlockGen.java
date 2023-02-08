@@ -293,7 +293,15 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.NETHER_BRICK_SECRET_BUTTON)
                 .add(InfinityButtonsBlocks.CRACKED_NETHER_BRICK_SECRET_BUTTON)
                 .add(InfinityButtonsBlocks.CHISELED_NETHER_BRICK_SECRET_BUTTON)
-                .add(InfinityButtonsBlocks.RED_NETHER_BRICK_SECRET_BUTTON);
+                .add(InfinityButtonsBlocks.RED_NETHER_BRICK_SECRET_BUTTON)
+                .add(InfinityButtonsBlocks.SMALL_CONSOLE_BUTTON)
+                .add(InfinityButtonsBlocks.SMALL_CONSOLE_LEVER)
+                .add(InfinityButtonsBlocks.CONSOLE_BUTTON)
+                .add(InfinityButtonsBlocks.CONSOLE_LEVER)
+                .add(InfinityButtonsBlocks.LARGE_CONSOLE_BUTTON)
+                .add(InfinityButtonsBlocks.LARGE_CONSOLE_LEVER)
+                .add(InfinityButtonsBlocks.BIG_CONSOLE_BUTTON)
+                .add(InfinityButtonsBlocks.BIG_CONSOLE_LEVER);
 
         getOrCreateTagBuilder(MINEABLE_SHOVEL)
                 .add(InfinityButtonsBlocks.SAND_BUTTON)
