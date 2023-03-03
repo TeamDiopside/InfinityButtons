@@ -80,7 +80,7 @@ public abstract class AbstractHorizontalButton extends HorizontalFacingBlock {
         }
         this.powerOn(state, world, pos);
         this.playClickSound(player, world, pos, true);
-        world.emitGameEvent(player, GameEvent.BLOCK_DEACTIVATE, pos);
+        world.emitGameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
         return ActionResult.success(world.isClient);
     }
 
@@ -133,7 +133,7 @@ public abstract class AbstractHorizontalButton extends HorizontalFacingBlock {
             world.setBlockState(pos, state.with(PRESSED, false), Block.NOTIFY_ALL);
             this.updateNeighbors(state, world, pos);
             this.playClickSound(null, world, pos, false);
-            world.emitGameEvent(null, GameEvent.BLOCK_ACTIVATE, pos);
+            world.emitGameEvent(null, GameEvent.BLOCK_DEACTIVATE, pos);
         }
     }
 

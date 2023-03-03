@@ -39,104 +39,102 @@ public class DiamondButton extends AbstractSmallButton {
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if (InfinityButtonsInit.CONFIG.diamondParticles()) {
-            if (random.nextInt(3) == 0) {
-                if (large) {
-                    switch (state.get(FACE)) {
-                        case FLOOR -> world.addParticle(ParticleTypes.SCRAPE,
-                                (double) pos.getX() + 0.1875 + (double) random.nextFloat() * 0.625,
-                                (double) pos.getY() + 0.125 + (double) random.nextFloat() * 0.0625,
-                                (double) pos.getZ() + 0.1875 + (double) random.nextFloat() * 0.625,
-                                0, 0, 0);
-                        case WALL -> {
-                            switch (state.get(FACING)) {
-                                case NORTH -> world.addParticle(ParticleTypes.SCRAPE,
-                                        (double) pos.getX() + 0.1875 + (double) random.nextFloat() * 0.625,
-                                        (double) pos.getY() + 0.1875 + (double) random.nextFloat() * 0.625,
-                                        (double) pos.getZ() + 0.8125 + (double) random.nextFloat() * 0.0625,
-                                        0, 0, 0);
+        if (InfinityButtonsInit.CONFIG.diamondParticles() && random.nextInt(3) == 0) {
+            if (large) {
+                switch (state.get(FACE)) {
+                    case FLOOR -> world.addParticle(ParticleTypes.SCRAPE,
+                            (double) pos.getX() + 0.1875 + (double) random.nextFloat() * 0.625,
+                            (double) pos.getY() + 0.125 + (double) random.nextFloat() * 0.0625,
+                            (double) pos.getZ() + 0.1875 + (double) random.nextFloat() * 0.625,
+                            0, 0, 0);
+                    case WALL -> {
+                        switch (state.get(FACING)) {
+                            case NORTH -> world.addParticle(ParticleTypes.SCRAPE,
+                                    (double) pos.getX() + 0.1875 + (double) random.nextFloat() * 0.625,
+                                    (double) pos.getY() + 0.1875 + (double) random.nextFloat() * 0.625,
+                                    (double) pos.getZ() + 0.8125 + (double) random.nextFloat() * 0.0625,
+                                    0, 0, 0);
 
-                                case EAST -> world.addParticle(ParticleTypes.SCRAPE,
-                                        (double) pos.getX() + 0.125 + (double) random.nextFloat() * 0.0625,
-                                        (double) pos.getY() + 0.1875 + (double) random.nextFloat() * 0.625,
-                                        (double) pos.getZ() + 0.1875 + (double) random.nextFloat() * 0.625,
-                                        0, 0, 0);
+                            case EAST -> world.addParticle(ParticleTypes.SCRAPE,
+                                    (double) pos.getX() + 0.125 + (double) random.nextFloat() * 0.0625,
+                                    (double) pos.getY() + 0.1875 + (double) random.nextFloat() * 0.625,
+                                    (double) pos.getZ() + 0.1875 + (double) random.nextFloat() * 0.625,
+                                    0, 0, 0);
 
-                                case SOUTH -> world.addParticle(ParticleTypes.SCRAPE,
-                                        (double) pos.getX() + 0.1875 + (double) random.nextFloat() * 0.625,
-                                        (double) pos.getY() + 0.1875 + (double) random.nextFloat() * 0.625,
-                                        (double) pos.getZ() + 0.125 + (double) random.nextFloat() * 0.0625,
-                                        0, 0, 0);
+                            case SOUTH -> world.addParticle(ParticleTypes.SCRAPE,
+                                    (double) pos.getX() + 0.1875 + (double) random.nextFloat() * 0.625,
+                                    (double) pos.getY() + 0.1875 + (double) random.nextFloat() * 0.625,
+                                    (double) pos.getZ() + 0.125 + (double) random.nextFloat() * 0.0625,
+                                    0, 0, 0);
 
-                                case WEST -> world.addParticle(ParticleTypes.SCRAPE,
-                                        (double) pos.getX() + 0.8125 + (double) random.nextFloat() * 0.0625,
-                                        (double) pos.getY() + 0.1875 + (double) random.nextFloat() * 0.625,
-                                        (double) pos.getZ() + 0.1875 + (double) random.nextFloat() * 0.625,
-                                        0, 0, 0);
-                            }
+                            case WEST -> world.addParticle(ParticleTypes.SCRAPE,
+                                    (double) pos.getX() + 0.8125 + (double) random.nextFloat() * 0.0625,
+                                    (double) pos.getY() + 0.1875 + (double) random.nextFloat() * 0.625,
+                                    (double) pos.getZ() + 0.1875 + (double) random.nextFloat() * 0.625,
+                                    0, 0, 0);
                         }
-                        case CEILING -> world.addParticle(ParticleTypes.SCRAPE,
-                                (double) pos.getX() + 0.1875 + (double) random.nextFloat() * 0.625,
-                                (double) pos.getY() + 0.8125 + (double) random.nextFloat() * 0.0625,
-                                (double) pos.getZ() + 0.1875 + (double) random.nextFloat() * 0.625,
-                                0, 0, 0);
                     }
-                } else {
-                    switch (state.get(FACE)) {
-                        case FLOOR -> {
-                            switch (state.get(FACING)) {
-                                case NORTH, SOUTH -> world.addParticle(ParticleTypes.SCRAPE,
-                                        (double) pos.getX() + 0.25 + (double) random.nextFloat() * 0.5,
-                                        (double) pos.getY() + 0.125 + (double) random.nextFloat() * 0.0625,
-                                        (double) pos.getZ() + 0.3125 + (double) random.nextFloat() * 0.375,
-                                        0, 0, 0);
-                                case EAST, WEST -> world.addParticle(ParticleTypes.SCRAPE,
-                                        (double) pos.getX() + 0.3125 + (double) random.nextFloat() * 0.375,
-                                        (double) pos.getY() + 0.125 + (double) random.nextFloat() * 0.0625,
-                                        (double) pos.getZ() + 0.25 + (double) random.nextFloat() * 0.5,
-                                        0, 0, 0);
-                            }
+                    case CEILING -> world.addParticle(ParticleTypes.SCRAPE,
+                            (double) pos.getX() + 0.1875 + (double) random.nextFloat() * 0.625,
+                            (double) pos.getY() + 0.8125 + (double) random.nextFloat() * 0.0625,
+                            (double) pos.getZ() + 0.1875 + (double) random.nextFloat() * 0.625,
+                            0, 0, 0);
+                }
+            } else {
+                switch (state.get(FACE)) {
+                    case FLOOR -> {
+                        switch (state.get(FACING)) {
+                            case NORTH, SOUTH -> world.addParticle(ParticleTypes.SCRAPE,
+                                    (double) pos.getX() + 0.25 + (double) random.nextFloat() * 0.5,
+                                    (double) pos.getY() + 0.125 + (double) random.nextFloat() * 0.0625,
+                                    (double) pos.getZ() + 0.3125 + (double) random.nextFloat() * 0.375,
+                                    0, 0, 0);
+                            case EAST, WEST -> world.addParticle(ParticleTypes.SCRAPE,
+                                    (double) pos.getX() + 0.3125 + (double) random.nextFloat() * 0.375,
+                                    (double) pos.getY() + 0.125 + (double) random.nextFloat() * 0.0625,
+                                    (double) pos.getZ() + 0.25 + (double) random.nextFloat() * 0.5,
+                                    0, 0, 0);
                         }
-                        case WALL -> {
-                            switch (state.get(FACING)) {
-                                case NORTH -> world.addParticle(ParticleTypes.SCRAPE,
-                                        (double) pos.getX() + 0.25 + (double) random.nextFloat() * 0.5,
-                                        (double) pos.getY() + 0.3125 + (double) random.nextFloat() * 0.375,
-                                        (double) pos.getZ() + 0.8125 + (double) random.nextFloat() * 0.0625,
-                                        0, 0, 0);
+                    }
+                    case WALL -> {
+                        switch (state.get(FACING)) {
+                            case NORTH -> world.addParticle(ParticleTypes.SCRAPE,
+                                    (double) pos.getX() + 0.25 + (double) random.nextFloat() * 0.5,
+                                    (double) pos.getY() + 0.3125 + (double) random.nextFloat() * 0.375,
+                                    (double) pos.getZ() + 0.8125 + (double) random.nextFloat() * 0.0625,
+                                    0, 0, 0);
 
-                                case EAST -> world.addParticle(ParticleTypes.SCRAPE,
-                                        (double) pos.getX() + 0.125 + (double) random.nextFloat() * 0.0625,
-                                        (double) pos.getY() + 0.3125 + (double) random.nextFloat() * 0.375,
-                                        (double) pos.getZ() + 0.25 + (double) random.nextFloat() * 0.5,
-                                        0, 0, 0);
+                            case EAST -> world.addParticle(ParticleTypes.SCRAPE,
+                                    (double) pos.getX() + 0.125 + (double) random.nextFloat() * 0.0625,
+                                    (double) pos.getY() + 0.3125 + (double) random.nextFloat() * 0.375,
+                                    (double) pos.getZ() + 0.25 + (double) random.nextFloat() * 0.5,
+                                    0, 0, 0);
 
-                                case SOUTH -> world.addParticle(ParticleTypes.SCRAPE,
-                                        (double) pos.getX() + 0.25 + (double) random.nextFloat() * 0.5,
-                                        (double) pos.getY() + 0.3125 + (double) random.nextFloat() * 0.375,
-                                        (double) pos.getZ() + 0.125 + (double) random.nextFloat() * 0.0625,
-                                        0, 0, 0);
+                            case SOUTH -> world.addParticle(ParticleTypes.SCRAPE,
+                                    (double) pos.getX() + 0.25 + (double) random.nextFloat() * 0.5,
+                                    (double) pos.getY() + 0.3125 + (double) random.nextFloat() * 0.375,
+                                    (double) pos.getZ() + 0.125 + (double) random.nextFloat() * 0.0625,
+                                    0, 0, 0);
 
-                                case WEST -> world.addParticle(ParticleTypes.SCRAPE,
-                                        (double) pos.getX() + 0.8125 + (double) random.nextFloat() * 0.0625,
-                                        (double) pos.getY() + 0.3125 + (double) random.nextFloat() * 0.375,
-                                        (double) pos.getZ() + 0.25 + (double) random.nextFloat() * 0.5,
-                                        0, 0, 0);
-                            }
+                            case WEST -> world.addParticle(ParticleTypes.SCRAPE,
+                                    (double) pos.getX() + 0.8125 + (double) random.nextFloat() * 0.0625,
+                                    (double) pos.getY() + 0.3125 + (double) random.nextFloat() * 0.375,
+                                    (double) pos.getZ() + 0.25 + (double) random.nextFloat() * 0.5,
+                                    0, 0, 0);
                         }
-                        case CEILING -> {
-                            switch (state.get(FACING)) {
-                                case NORTH, SOUTH -> world.addParticle(ParticleTypes.SCRAPE,
-                                        (double) pos.getX() + 0.25 + (double) random.nextFloat() * 0.5,
-                                        (double) pos.getY() + 0.8125 + (double) random.nextFloat() * 0.0625,
-                                        (double) pos.getZ() + 0.3125 + (double) random.nextFloat() * 0.375,
-                                        0, 0, 0);
-                                case EAST, WEST -> world.addParticle(ParticleTypes.SCRAPE,
-                                        (double) pos.getX() + 0.3125 + (double) random.nextFloat() * 0.375,
-                                        (double) pos.getY() + 0.8125 + (double) random.nextFloat() * 0.0625,
-                                        (double) pos.getZ() + 0.25 + (double) random.nextFloat() * 0.5,
-                                        0, 0, 0);
-                            }
+                    }
+                    case CEILING -> {
+                        switch (state.get(FACING)) {
+                            case NORTH, SOUTH -> world.addParticle(ParticleTypes.SCRAPE,
+                                    (double) pos.getX() + 0.25 + (double) random.nextFloat() * 0.5,
+                                    (double) pos.getY() + 0.8125 + (double) random.nextFloat() * 0.0625,
+                                    (double) pos.getZ() + 0.3125 + (double) random.nextFloat() * 0.375,
+                                    0, 0, 0);
+                            case EAST, WEST -> world.addParticle(ParticleTypes.SCRAPE,
+                                    (double) pos.getX() + 0.3125 + (double) random.nextFloat() * 0.375,
+                                    (double) pos.getY() + 0.8125 + (double) random.nextFloat() * 0.0625,
+                                    (double) pos.getZ() + 0.25 + (double) random.nextFloat() * 0.5,
+                                    0, 0, 0);
                         }
                     }
                 }
