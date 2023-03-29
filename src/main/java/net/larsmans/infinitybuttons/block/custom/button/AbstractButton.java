@@ -34,7 +34,7 @@ public abstract class AbstractButton extends WallMountedBlock {
 
     public static final BooleanProperty PRESSED = BooleanProperty.of("pressed");
 
-    private final boolean projectile;
+    protected final boolean projectile;
 
     protected AbstractButton(boolean projectile, FabricBlockSettings settings) {
         super(settings);
