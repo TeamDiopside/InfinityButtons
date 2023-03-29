@@ -15,13 +15,9 @@ public class HoglinMountButton extends AbstractWallButton {
     protected static final VoxelShape EAST_SHAPE =  Block.createCuboidShape(0, 0, 0, 3, 16, 16);
     protected static final VoxelShape SOUTH_SHAPE =  Block.createCuboidShape(0, 0, 0, 16, 16, 3);
     protected static final VoxelShape WEST_SHAPE =  Block.createCuboidShape(13, 0, 0, 16, 16, 16);
-    protected static final VoxelShape NORTH_PRESSED_SHAPE = NORTH_SHAPE;
-    protected static final VoxelShape EAST_PRESSED_SHAPE = EAST_SHAPE;
-    protected static final VoxelShape SOUTH_PRESSED_SHAPE = SOUTH_SHAPE;
-    protected static final VoxelShape WEST_PRESSED_SHAPE = WEST_SHAPE;
 
     public HoglinMountButton (Settings settings) {
-        super(settings, NORTH_SHAPE, EAST_SHAPE, SOUTH_SHAPE, WEST_SHAPE, NORTH_PRESSED_SHAPE, EAST_PRESSED_SHAPE, SOUTH_PRESSED_SHAPE, WEST_PRESSED_SHAPE);
+        super(settings, NORTH_SHAPE, EAST_SHAPE, SOUTH_SHAPE, WEST_SHAPE, NORTH_SHAPE, EAST_SHAPE, SOUTH_SHAPE, WEST_SHAPE);
     }
 
     @Override

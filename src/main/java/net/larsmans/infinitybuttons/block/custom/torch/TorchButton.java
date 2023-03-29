@@ -44,7 +44,7 @@ public class TorchButton extends AbstractHorizontalButton {
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        return TorchButton.sideCoversSmallSquare(world, pos.down(), Direction.UP);
+        return sideCoversSmallSquare(world, pos.down(), Direction.UP);
     }
 
     @Override
