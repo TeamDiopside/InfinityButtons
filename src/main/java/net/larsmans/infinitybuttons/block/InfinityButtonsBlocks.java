@@ -13,6 +13,7 @@ import net.larsmans.infinitybuttons.block.custom.consolebutton.SmallConsoleButto
 import net.larsmans.infinitybuttons.block.custom.emergencybutton.EmergencyButton;
 import net.larsmans.infinitybuttons.block.custom.emergencybutton.SafeEmergencyButton;
 import net.larsmans.infinitybuttons.block.custom.secretbutton.*;
+import net.larsmans.infinitybuttons.block.custom.signbutton.LetterButton;
 import net.larsmans.infinitybuttons.block.custom.torch.*;
 import net.larsmans.infinitybuttons.item.InfinityButtonsItemGroup;
 import net.minecraft.block.Block;
@@ -356,6 +357,7 @@ public class InfinityButtonsBlocks {
     public static final Block DOORBELL_BUTTON = registerBlockWithItem("doorbell_button", new DoorbellButton(doorbellSettings()));
     public static final Block LAMP_BUTTON = registerBlockWithItem("lamp_button", new LampButton(lampSettings(), false));
     public static final Block LAMP_LEVER = registerBlockWithItem("lamp_lever", new LampButton(lampSettings(), true));
+    public static final Block LETTER_BUTTON = registerBlockWithItem("letter_button", new LetterButton(FabricBlockSettings.of(Material.WOOD).nonOpaque().noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD)));
 
     public static FabricBlockSettings doorbellSettings() {
         return FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().strength(0.5f).sounds(BlockSoundGroup.WOOD);

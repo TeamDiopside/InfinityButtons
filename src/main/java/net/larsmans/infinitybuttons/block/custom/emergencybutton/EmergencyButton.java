@@ -110,7 +110,7 @@ public class EmergencyButton extends AbstractButton {
 
     @Override
     protected void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, boolean pressed) {
-        world.playSound(pressed ? player : null, pos, this.getClickSound(pressed), SoundCategory.BLOCKS, 1, pressed ? 0.6f : 0.5f);
+        world.playSound(pressed ? player : null, pos, this.getClickSound(pressed), SoundCategory.BLOCKS, 16, pressed ? 0.6f : 0.5f);
     }
 
     @Override
