@@ -4,8 +4,10 @@
     "package": "net.larsmans.infinitybuttons.mixin",
     "compatibilityLevel": "JAVA_17",
     "mixins": [
+        "ClientPlayerInteractionManagerMixin",
         "EnchantingTableBlockMixin",
-        "LivingEntityMixin"
+        "LivingEntityMixin",
+        "ServerPlayerInteractionManagerMixin"
     ],
     "injectors": {
         "defaultRequire": 1
