@@ -206,7 +206,10 @@
     "infinitybuttons.actionbar.closed_safety_button": "空手蹲下来开关按钮",
 
     "text.config.infinity-buttons-config.option.alarmSoundType": "警报声音",
-    "text.config.infinity-buttons-config.option.alarmSoundType.tooltip": "The way the Emergency Buttons will make an alarm sound",
+    "text.config.infinity-buttons-config.option.alarmSoundType.tooltip": "The way the Emergency Buttons will make an alarm sound\nRange: The sound is audible up to a certain radius\nGlobal: The sound is audible from anywhere in the world",
+    "text.config.infinity-buttons-config.option.alarmSoundType.value.off": "Off",
+    "text.config.infinity-buttons-config.option.alarmSoundType.value.range": "Range",
+    "text.config.infinity-buttons-config.option.alarmSoundType.value.global": "Global",
     "text.config.infinity-buttons-config.option.alarmSoundRange": "Alarm Sound Range",
     "text.config.infinity-buttons-config.option.alarmSoundRange.tooltip": "The range in which the alarm sound is heard when 'Alarm sound' is set to 'RANGE'",
     "text.config.infinity-buttons-config.option.tooltips": "工具提示",
