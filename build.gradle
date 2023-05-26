@@ -38,8 +38,8 @@ dependencies {
 	annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
 	include "io.wispforest:owo-sentinel:${project.owo_version}"
 
-	modImplementation("curse.maven:farmers-delight-fabric-482834:4111426")
-	modImplementation("curse.maven:nethers-delight-fabric-701831:4353098")
+	modCompileOnlyApi("curse.maven:farmers-delight-fabric-482834:4111426")
+	modCompileOnlyApi("curse.maven:nethers-delight-fabric-701831:4353098")
 
 	include(implementation(annotationProcessor("com.github.LlamaLad7:MixinExtras:0.1.1")))
 }

@@ -1,13 +1,17 @@
-package net.larsmans.infinitybuttons;
+package net.larsmans.infinitybuttons.config;
 
 import io.wispforest.owo.config.annotation.Config;
 import io.wispforest.owo.config.annotation.Modmenu;
+import io.wispforest.owo.config.annotation.RangeConstraint;
 
 @Modmenu(modId = "infinitybuttons")
 @Config(name = "infinity-buttons-config", wrapperName = "InfinityButtonsConfig")
 public class InfinityButtonsConfigModel {
 
-    public boolean alarmSound = true;
+    public AlarmEnum alarmSoundType = AlarmEnum.RANGE;
+
+    @RangeConstraint(min = 16, max = 512)
+    public int alarmSoundRange = 64;
 
     public boolean tooltips = true;
 

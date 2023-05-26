@@ -2,7 +2,9 @@ package net.larsmans.infinitybuttons.block.custom.emergencybutton;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.larsmans.infinitybuttons.InfinityButtonsInit;
+import net.larsmans.infinitybuttons.block.InfinityButtonsUtil;
 import net.larsmans.infinitybuttons.block.custom.button.AbstractButton;
+import net.larsmans.infinitybuttons.config.AlarmEnum;
 import net.larsmans.infinitybuttons.sounds.InfinityButtonsSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -96,8 +98,8 @@ public class EmergencyButton extends AbstractButton {
         }
         this.powerOn(state, world, pos);
         this.playClickSound(player, world, pos, true);
-        if (InfinityButtonsInit.CONFIG.alarmSound()) {
-            world.playSound(player, pos, InfinityButtonsSounds.ALARM, SoundCategory.BLOCKS, 1, 1);
+        if (InfinityButtonsInit.CONFIG.alarmSoundType() != AlarmEnum.OFF) {
+            emergencySound(world, pos, player);
         }
         world.emitGameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
         return ActionResult.success(world.isClient);
@@ -110,12 +112,20 @@ public class EmergencyButton extends AbstractButton {
 
     @Override
     protected void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, boolean pressed) {
-        world.playSound(pressed ? player : null, pos, this.getClickSound(pressed), SoundCategory.BLOCKS, 16, pressed ? 0.6f : 0.5f);
+        world.playSound(pressed ? player : null, pos, this.getClickSound(pressed), SoundCategory.BLOCKS, 1, pressed ? 0.6f : 0.5f);
     }
 
     @Override
     protected SoundEvent getClickSound(boolean pressed) {
         return SoundEvents.BLOCK_BONE_BLOCK_BREAK;
+    }
+
+    public static void emergencySound(World world, BlockPos pos, PlayerEntity player) {
+        if (InfinityButtonsInit.CONFIG.alarmSoundType() == AlarmEnum.GLOBAL) {
+            InfinityButtonsUtil.playGlobalSound(world, pos, InfinityButtonsSounds.ALARM, SoundCategory.BLOCKS);
+        } else {
+            world.playSound(player, pos, InfinityButtonsSounds.ALARM, SoundCategory.BLOCKS, (float) InfinityButtonsInit.CONFIG.alarmSoundRange() / 16f, 1);
+        }
     }
 }
 

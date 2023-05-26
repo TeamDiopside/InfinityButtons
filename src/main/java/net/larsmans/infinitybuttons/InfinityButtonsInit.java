@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 public class InfinityButtonsInit implements ModInitializer {
 	public static final String MOD_ID = "infinitybuttons";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-	public static final net.larsmans.infinitybuttons.InfinityButtonsConfig CONFIG = net.larsmans.infinitybuttons.InfinityButtonsConfig.createAndLoad();
+	public static final net.larsmans.infinitybuttons.config.InfinityButtonsConfig CONFIG = net.larsmans.infinitybuttons.config.InfinityButtonsConfig.createAndLoad();
 
 	@Override
 	public void onInitialize() {
