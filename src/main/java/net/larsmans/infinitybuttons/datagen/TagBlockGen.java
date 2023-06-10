@@ -45,7 +45,8 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.BLUE_CONCRETE_POWDER_BUTTON)
                 .add(InfinityButtonsBlocks.PURPLE_CONCRETE_POWDER_BUTTON)
                 .add(InfinityButtonsBlocks.MAGENTA_CONCRETE_POWDER_BUTTON)
-                .add(InfinityButtonsBlocks.PINK_CONCRETE_POWDER_BUTTON);
+                .add(InfinityButtonsBlocks.PINK_CONCRETE_POWDER_BUTTON)
+        ;
 
         getOrCreateTagBuilder(CONCRETE_POWDER_LARGE_BUTTONS)
                 .add(InfinityButtonsBlocks.WHITE_CONCRETE_POWDER_LARGE_BUTTON)
@@ -63,7 +64,8 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.BLUE_CONCRETE_POWDER_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.PURPLE_CONCRETE_POWDER_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.MAGENTA_CONCRETE_POWDER_LARGE_BUTTON)
-                .add(InfinityButtonsBlocks.PINK_CONCRETE_POWDER_LARGE_BUTTON);
+                .add(InfinityButtonsBlocks.PINK_CONCRETE_POWDER_LARGE_BUTTON)
+        ;
 
         getOrCreateTagBuilder(LARGE_BUTTONS)
                 .addOptionalTag(WOODEN_LARGE_BUTTONS)
@@ -94,7 +96,8 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.SAND_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.RED_SAND_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.GRAVEL_LARGE_BUTTON)
-                .addOptionalTag(CONCRETE_POWDER_LARGE_BUTTONS);
+                .addOptionalTag(CONCRETE_POWDER_LARGE_BUTTONS)
+        ;
 
         getOrCreateTagBuilder(WOODEN_LARGE_BUTTONS)
                 .add(InfinityButtonsBlocks.OAK_LARGE_BUTTON)
@@ -105,7 +108,8 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.DARK_OAK_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.MANGROVE_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.CRIMSON_LARGE_BUTTON)
-                .add(InfinityButtonsBlocks.WARPED_LARGE_BUTTON);
+                .add(InfinityButtonsBlocks.WARPED_LARGE_BUTTON)
+        ;
 
         getOrCreateTagBuilder(EMERGENCY_BUTTONS)
                 .add(InfinityButtonsBlocks.WHITE_EMERGENCY_BUTTON)
@@ -123,7 +127,8 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.BLUE_EMERGENCY_BUTTON)
                 .add(InfinityButtonsBlocks.PURPLE_EMERGENCY_BUTTON)
                 .add(InfinityButtonsBlocks.MAGENTA_EMERGENCY_BUTTON)
-                .add(InfinityButtonsBlocks.PINK_EMERGENCY_BUTTON);
+                .add(InfinityButtonsBlocks.PINK_EMERGENCY_BUTTON)
+        ;
 
         getOrCreateTagBuilder(SAFE_EMERGENCY_BUTTONS)
                 .add(InfinityButtonsBlocks.WHITE_SAFE_EMERGENCY_BUTTON)
@@ -141,7 +146,8 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.BLUE_SAFE_EMERGENCY_BUTTON)
                 .add(InfinityButtonsBlocks.PURPLE_SAFE_EMERGENCY_BUTTON)
                 .add(InfinityButtonsBlocks.MAGENTA_SAFE_EMERGENCY_BUTTON)
-                .add(InfinityButtonsBlocks.PINK_SAFE_EMERGENCY_BUTTON);
+                .add(InfinityButtonsBlocks.PINK_SAFE_EMERGENCY_BUTTON)
+        ;
 
         getOrCreateTagBuilder(SECRET_BUTTONS)
                 .addOptionalTag(WOODEN_SECRET_BUTTONS)
@@ -164,7 +170,8 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.NETHER_BRICK_SECRET_BUTTON)
                 .add(InfinityButtonsBlocks.CRACKED_NETHER_BRICK_SECRET_BUTTON)
                 .add(InfinityButtonsBlocks.CHISELED_NETHER_BRICK_SECRET_BUTTON)
-                .add(InfinityButtonsBlocks.RED_NETHER_BRICK_SECRET_BUTTON);
+                .add(InfinityButtonsBlocks.RED_NETHER_BRICK_SECRET_BUTTON)
+        ;
 
         getOrCreateTagBuilder(WOODEN_SECRET_BUTTONS)
                 .addOptionalTag(BOOKSHELF_SECRET_BUTTONS)
@@ -176,10 +183,12 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.DARK_OAK_PLANK_SECRET_BUTTON)
                 .add(InfinityButtonsBlocks.MANGROVE_PLANK_SECRET_BUTTON)
                 .add(InfinityButtonsBlocks.CRIMSON_PLANK_SECRET_BUTTON)
-                .add(InfinityButtonsBlocks.WARPED_PLANK_SECRET_BUTTON);
+                .add(InfinityButtonsBlocks.WARPED_PLANK_SECRET_BUTTON)
+        ;
 
         getOrCreateTagBuilder(BOOKSHELF_SECRET_BUTTONS)
-                .add(InfinityButtonsBlocks.BOOKSHELF_SECRET_BUTTON);
+                .add(InfinityButtonsBlocks.BOOKSHELF_SECRET_BUTTON)
+        ;
 
         getOrCreateTagBuilder(TORCH_BUTTONS)
                 .add(InfinityButtonsBlocks.TORCH_BUTTON)
@@ -197,7 +206,8 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.REDSTONE_WALL_TORCH_BUTTON)
                 .add(InfinityButtonsBlocks.REDSTONE_WALL_TORCH_LEVER)
                 .addOptional(new Identifier("infinitybuttons:propelplant_wall_torch_button"))
-                .addOptional(new Identifier("infinitybuttons:propelplant_wall_torch_lever"));
+                .addOptional(new Identifier("infinitybuttons:propelplant_wall_torch_lever"))
+        ;
     }
 
     public static final TagKey<Block> MINEABLE_AXE = edit("mineable/axe");
@@ -217,7 +227,8 @@ public class TagBlockGen extends FabricTagProvider<Block> {
     protected void generateVanillaTags() {
         getOrCreateTagBuilder(MINEABLE_AXE)
                 .addOptionalTag(WOODEN_LARGE_BUTTONS)
-                .addOptionalTag(WOODEN_SECRET_BUTTONS);
+                .addOptionalTag(WOODEN_SECRET_BUTTONS)
+        ;
 
         getOrCreateTagBuilder(MINEABLE_PICKAXE)
                 .add(InfinityButtonsBlocks.DEEPSLATE_BUTTON)
@@ -294,6 +305,10 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.CRACKED_NETHER_BRICK_SECRET_BUTTON)
                 .add(InfinityButtonsBlocks.CHISELED_NETHER_BRICK_SECRET_BUTTON)
                 .add(InfinityButtonsBlocks.RED_NETHER_BRICK_SECRET_BUTTON)
+                .add(InfinityButtonsBlocks.LANTERN_BUTTON)
+                .add(InfinityButtonsBlocks.LANTERN_LEVER)
+                .add(InfinityButtonsBlocks.SOUL_LANTERN_BUTTON)
+                .add(InfinityButtonsBlocks.SOUL_LANTERN_LEVER)
                 .add(InfinityButtonsBlocks.SMALL_CONSOLE_BUTTON)
                 .add(InfinityButtonsBlocks.SMALL_CONSOLE_LEVER)
                 .add(InfinityButtonsBlocks.CONSOLE_BUTTON)
@@ -301,7 +316,8 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.LARGE_CONSOLE_BUTTON)
                 .add(InfinityButtonsBlocks.LARGE_CONSOLE_LEVER)
                 .add(InfinityButtonsBlocks.BIG_CONSOLE_BUTTON)
-                .add(InfinityButtonsBlocks.BIG_CONSOLE_LEVER);
+                .add(InfinityButtonsBlocks.BIG_CONSOLE_LEVER)
+        ;
 
         getOrCreateTagBuilder(MINEABLE_SHOVEL)
                 .add(InfinityButtonsBlocks.SAND_BUTTON)
@@ -311,7 +327,8 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.SAND_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.RED_SAND_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.GRAVEL_LARGE_BUTTON)
-                .addOptionalTag(CONCRETE_POWDER_LARGE_BUTTONS);
+                .addOptionalTag(CONCRETE_POWDER_LARGE_BUTTONS)
+        ;
 
         getOrCreateTagBuilder(BUTTONS)
                 .add(InfinityButtonsBlocks.DEEPSLATE_BUTTON)
@@ -339,29 +356,36 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.SAND_BUTTON)
                 .add(InfinityButtonsBlocks.RED_SAND_BUTTON)
                 .add(InfinityButtonsBlocks.GRAVEL_BUTTON)
-                .addOptionalTag(CONCRETE_POWDER_BUTTONS);
+                .addOptionalTag(CONCRETE_POWDER_BUTTONS)
+        ;
 
         getOrCreateTagBuilder(GUARDED_BY_PIGLINS)
                 .add(InfinityButtonsBlocks.GOLD_BUTTON)
-                .add(InfinityButtonsBlocks.GOLD_LARGE_BUTTON);
+                .add(InfinityButtonsBlocks.GOLD_LARGE_BUTTON)
+        ;
 
         getOrCreateTagBuilder(NON_FLAMMABLE_WOOD)
                 .add(InfinityButtonsBlocks.CRIMSON_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.WARPED_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.CRIMSON_PLANK_SECRET_BUTTON)
-                .add(InfinityButtonsBlocks.WARPED_PLANK_SECRET_BUTTON);
+                .add(InfinityButtonsBlocks.WARPED_PLANK_SECRET_BUTTON)
+        ;
 
         getOrCreateTagBuilder(PIGLIN_REPELLENTS)
                 .add(InfinityButtonsBlocks.SOUL_TORCH_BUTTON)
                 .add(InfinityButtonsBlocks.SOUL_WALL_TORCH_BUTTON)
                 .add(InfinityButtonsBlocks.SOUL_TORCH_LEVER)
-                .add(InfinityButtonsBlocks.SOUL_WALL_TORCH_LEVER);
+                .add(InfinityButtonsBlocks.SOUL_WALL_TORCH_LEVER)
+                .add(InfinityButtonsBlocks.SOUL_LANTERN_BUTTON)
+                .add(InfinityButtonsBlocks.SOUL_LANTERN_LEVER)
+        ;
 
         getOrCreateTagBuilder(STONE_BRICKS)
                 .add(InfinityButtonsBlocks.STONE_BRICK_SECRET_BUTTON)
                 .add(InfinityButtonsBlocks.MOSSY_STONE_BRICK_SECRET_BUTTON)
                 .add(InfinityButtonsBlocks.CRACKED_STONE_BRICK_SECRET_BUTTON)
-                .add(InfinityButtonsBlocks.CHISELED_STONE_BRICK_SECRET_BUTTON);
+                .add(InfinityButtonsBlocks.CHISELED_STONE_BRICK_SECRET_BUTTON)
+        ;
 
         getOrCreateTagBuilder(WALL_POST_OVERRIDE)
                 .add(InfinityButtonsBlocks.TORCH_BUTTON)
@@ -371,7 +395,8 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.REDSTONE_TORCH_BUTTON)
                 .add(InfinityButtonsBlocks.REDSTONE_TORCH_LEVER)
                 .addOptional(new Identifier("infinitybuttons:propelplant_torch_button"))
-                .addOptional(new Identifier("infinitybuttons:propelplant_torch_lever"));
+                .addOptional(new Identifier("infinitybuttons:propelplant_torch_lever"))
+        ;
     }
 
     @Override

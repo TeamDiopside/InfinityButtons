@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:air"
+          "name": "infinitybuttons:lantern_lever"
         }
       ],
       "rolls": 1.0

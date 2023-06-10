@@ -166,6 +166,10 @@
     "block.infinitybuttons.lamp_button": "Lampknop",
     "block.infinitybuttons.lamp_lever": "Lamphendel",
     "block.infinitybuttons.hoglin_mount_button": "Opgezettehoglinknop",
+    "block.infinitybuttons.lantern_button": "Lantaarnknop",
+    "block.infinitybuttons.lantern_lever": "Lantaarnhendel",
+    "block.infinitybuttons.soul_lantern_button": "Zielenlantaarnknop",
+    "block.infinitybuttons.soul_lantern_lever": "Zielenlantaarnhendel",
 
     "block.infinitybuttons.small_console_button": "Kleine consoleknop",
     "block.infinitybuttons.small_console_lever": "Kleine consolehendel",
@@ -200,6 +204,7 @@
     "infinitybuttons.tooltip.falling_button": "Deze knop kan maar één keer ingedrukt worden",
     "infinitybuttons.tooltip.safe_emergency_button": "Sluip om te openen en sluiten",
     "infinitybuttons.tooltip.doorbell_button": "Deze deurbel produceert een redstone-signaal",
+    "infinitybuttons.tooltip.lantern_button": "Produceert een redstone-signaal bij de bovenste ketting boven de lantaarn",
 
     "itemGroup.infinitybuttons.infinitybuttons": "Infinity Buttons",
 

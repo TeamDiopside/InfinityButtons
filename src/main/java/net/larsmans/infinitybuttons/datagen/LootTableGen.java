@@ -182,6 +182,10 @@ public class LootTableGen extends SimpleFabricLootTableProvider {
         generateLootTable(i, "doorbell_button", InfinityButtonsBlocks.DOORBELL_BUTTON);
         generateLootTable(i, "lamp_button", InfinityButtonsBlocks.LAMP_BUTTON);
         generateLootTable(i, "lamp_lever", InfinityButtonsBlocks.LAMP_LEVER);
+        generateLootTable(i, InfinityButtonsBlocks.LANTERN_BUTTON);
+        generateLootTable(i, InfinityButtonsBlocks.LANTERN_LEVER);
+        generateLootTable(i, InfinityButtonsBlocks.SOUL_LANTERN_BUTTON);
+        generateLootTable(i, InfinityButtonsBlocks.SOUL_LANTERN_LEVER);
         generateLootTable(i, "hoglin_mount_button", IBNethersDelightBlocks.HOGLIN_MOUNT_BUTTON);
 
         generateLootTable(i, "small_console_button", InfinityButtonsBlocks.SMALL_CONSOLE_BUTTON);
@@ -225,5 +229,9 @@ public class LootTableGen extends SimpleFabricLootTableProvider {
 
     public void generateLootTable(BiConsumer<Identifier, LootTable.Builder> i, String name, ItemConvertible item) {
         i.accept(new Identifier("infinitybuttons", "blocks/" + name), BlockLootTableGenerator.drops(item));
+    }
+
+    public void generateLootTable(BiConsumer<Identifier, LootTable.Builder> i, ItemConvertible item) {
+        i.accept(new Identifier("infinitybuttons", "blocks/" + item.asItem().toString()), BlockLootTableGenerator.drops(item));
     }
 }

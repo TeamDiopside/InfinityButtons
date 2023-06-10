@@ -166,6 +166,10 @@
     "block.infinitybuttons.lamp_button": "Lamp Button",
     "block.infinitybuttons.lamp_lever": "Lamp Lever",
     "block.infinitybuttons.hoglin_mount_button": "Hoglin Mount Button",
+    "block.infinitybuttons.lantern_button": "Lantern Button",
+    "block.infinitybuttons.lantern_lever": "Lantern Lever",
+    "block.infinitybuttons.soul_lantern_button": "Soul Lantern Button",
+    "block.infinitybuttons.soul_lantern_lever": "Soul Lantern Lever",
 
     "block.infinitybuttons.small_console_button": "Small Console Button",
     "block.infinitybuttons.small_console_lever": "Small Console Lever",
@@ -200,6 +204,7 @@
     "infinitybuttons.tooltip.falling_button": "This button can only be pressed once",
     "infinitybuttons.tooltip.safe_emergency_button": "Sneak to open and close",
     "infinitybuttons.tooltip.doorbell_button": "This doorbell emits a redstone signal",
+    "infinitybuttons.tooltip.lantern_button": "Emits a redstone signal at the top most chain above the lantern",
 
     "itemGroup.infinitybuttons.infinitybuttons": "Infinity Buttons",
 
