@@ -13,6 +13,7 @@ import net.larsmans.infinitybuttons.block.custom.consolebutton.LargeConsoleButto
 import net.larsmans.infinitybuttons.block.custom.consolebutton.SmallConsoleButton;
 import net.larsmans.infinitybuttons.block.custom.emergencybutton.EmergencyButton;
 import net.larsmans.infinitybuttons.block.custom.emergencybutton.SafeEmergencyButton;
+import net.larsmans.infinitybuttons.block.custom.letterbutton.LetterButton;
 import net.larsmans.infinitybuttons.block.custom.secretbutton.*;
 import net.larsmans.infinitybuttons.block.custom.torch.*;
 import net.larsmans.infinitybuttons.item.InfinityButtonsItemGroup;
@@ -357,6 +358,7 @@ public class InfinityButtonsBlocks {
     public static final Block DOORBELL_BUTTON = registerBlockWithItem("doorbell_button", new DoorbellButton(doorbellSettings()));
     public static final Block LAMP_BUTTON = registerBlockWithItem("lamp_button", new LampButton(lampSettings(), false));
     public static final Block LAMP_LEVER = registerBlockWithItem("lamp_lever", new LampButton(lampSettings(), true));
+    public static final Block LETTER_BUTTON = registerBlockWithItem("letter_button", new LetterButton(FabricBlockSettings.of(Material.WOOD).strength(0.5f).noCollision().sounds(BlockSoundGroup.WOOD)));
     public static final Block LANTERN_BUTTON = registerBlockWithItem("lantern_button", new LanternButton(lanternSettings().luminance(state -> 15), false));
     public static final Block LANTERN_LEVER = registerBlockWithItem("lantern_lever", new LanternButton(lanternSettings().luminance(state -> 15), true));
     public static final Block SOUL_LANTERN_BUTTON = registerBlockWithItem("soul_lantern_button", new LanternButton(lanternSettings().luminance(state -> 10), false));
