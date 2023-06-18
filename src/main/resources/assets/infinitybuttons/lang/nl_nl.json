@@ -190,6 +190,8 @@
     "block.infinitybuttons.propelplant_torch_button": "Propelplantfakkelknop",
     "block.infinitybuttons.propelplant_torch_lever": "Propelplantfakkelhendel",
 
+    "itemGroup.infinitybuttons.infinitybuttons": "Infinity Buttons",
+
     "infinitybuttons.subtitle.alarm": "Alarm gaat af",
     "infinitybuttons.subtitle.stone_scrape": "Steen verschuift",
     "infinitybuttons.subtitle.wood_scrape": "Hout verschuift",
@@ -207,17 +209,17 @@
     "infinitybuttons.tooltip.doorbell_button": "Deze deurbel produceert een redstone-signaal",
     "infinitybuttons.tooltip.lantern_button": "Produceert een redstone-signaal bij de bovenste ketting boven de lantaarn",
 
-    "itemGroup.infinitybuttons.infinitybuttons": "Infinity Buttons",
-
     "infinitybuttons.actionbar.closed_safety_button": "Sluip om te openen en sluiten",
 
     "text.config.infinity-buttons-config.option.alarmSoundType": "Alarmgeluid",
-        "text.config.infinity-buttons-config.option.alarmSoundType.tooltip": "De manier waarop noodknoppen een alarmgeluid kunnen maken\nBereik: Het geluid is hoorbaar tot een bepaalde radius\nGlobaal: Het geluid is overal in de wereld hoorbaar",
+        "text.config.infinity-buttons-config.option.alarmSoundType.tooltip": "De manier waarop noodknoppen alarmgeluiden kunnen maken\nBereik: Het alarm is hoorbaar tot een bepaalde radius\nGlobaal: Het alarm is overal in de wereld hoorbaar",
     "text.config.infinity-buttons-config.option.alarmSoundType.value.off": "Uit",
     "text.config.infinity-buttons-config.option.alarmSoundType.value.range": "Bereik",
     "text.config.infinity-buttons-config.option.alarmSoundType.value.global": "Globaal",
     "text.config.infinity-buttons-config.option.alarmSoundRange": "Alarmgeluid bereik",
-    "text.config.infinity-buttons-config.option.alarmSoundRange.tooltip": "Het bereik waarin het alarmgeluid hoorbaar is wanneer 'Alarmgeluid' is ingesteld op 'Bereik'",
+    "text.config.infinity-buttons-config.option.alarmSoundRange.tooltip": "De afstand in blokken waarin het alarmgeluid hoorbaar is wanneer 'Alarmgeluid' is ingesteld op 'Bereik'",
+    "text.config.infinity-buttons-config.option.alarmVillagerPanic": "Dorpelingpaniek",
+    "text.config.infinity-buttons-config.option.alarmVillagerPanic.tooltip": "Zorgt ervoor dat dorpelingen naar hun bed rennen als ze een alarm horen",
     "text.config.infinity-buttons-config.option.tooltips": "Tooltips",
     "text.config.infinity-buttons-config.option.tooltips.tooltip": "Of tooltips worden weergegeven",
     "text.config.infinity-buttons-config.option.diamondParticles": "Diamanten-knopdeeltjes",

@@ -6,9 +6,7 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.render.Camera;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.DirectionProperty;
-import net.minecraft.state.property.Properties;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
@@ -18,15 +16,16 @@ import java.util.List;
 
 public class InfinityButtonsUtil {
 
-    public static final BooleanProperty PRESSED = BooleanProperty.of("pressed");
-    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+    public static final MutableText HOLD_SHIFT_TEXT = Text.translatable("infinitybuttons.tooltip.hold_shift");
+    
+    public static final MutableText SAFE_EMERGENCY_BUTTON_ACTIONBAR_TEXT = Text.translatable("infinitybuttons.actionbar.closed_safety_button");
 
     public static void tooltip(List<Text> tooltip, String name) {
         if (InfinityButtonsInit.CONFIG.tooltips()) {
             if (Screen.hasShiftDown()) {
                 tooltip.add(Text.translatable("infinitybuttons.tooltip." + name).formatted(Formatting.GRAY));
             } else {
-                tooltip.add(Text.translatable("infinitybuttons.tooltip.hold_shift").formatted(Formatting.GRAY));
+                tooltip.add(HOLD_SHIFT_TEXT.formatted(Formatting.GRAY));
             }
         }
     }
@@ -37,7 +36,7 @@ public class InfinityButtonsUtil {
                 tooltip.add(Text.translatable("infinitybuttons.tooltip." + name1).formatted(Formatting.GRAY));
                 tooltip.add(Text.translatable("infinitybuttons.tooltip." + name2).formatted(Formatting.GRAY));
             } else {
-                tooltip.add(Text.translatable("infinitybuttons.tooltip.hold_shift").formatted(Formatting.GRAY));
+                tooltip.add(HOLD_SHIFT_TEXT.formatted(Formatting.GRAY));
             }
         }
     }
