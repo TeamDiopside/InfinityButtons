@@ -41,6 +41,10 @@ dependencies {
 	modCompileOnlyApi("curse.maven:farmers-delight-fabric-482834:4111426")
 	modCompileOnlyApi("curse.maven:nethers-delight-fabric-701831:4353098")
 
+	// Only for data gen
+//	modImplementation("curse.maven:farmers-delight-fabric-482834:4111426")
+//	modImplementation("curse.maven:nethers-delight-fabric-701831:4353098")
+
 	include(implementation(annotationProcessor("com.github.LlamaLad7:MixinExtras:0.1.1")))
 }
 

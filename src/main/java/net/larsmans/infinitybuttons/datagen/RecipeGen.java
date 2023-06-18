@@ -9,6 +9,7 @@ import net.larsmans.infinitybuttons.block.InfinityButtonsBlocks;
 import net.larsmans.infinitybuttons.compat.IBNethersDelightBlocks;
 import net.larsmans.infinitybuttons.compat.IBNethersDelightItems;
 import net.minecraft.data.server.RecipeProvider;
+import net.minecraft.data.server.recipe.CraftingRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
@@ -38,10 +39,10 @@ public class RecipeGen extends FabricRecipeProvider {
         generateCopperButton(i, InfinityButtonsBlocks.EXPOSED_COPPER_BUTTON, Items.EXPOSED_COPPER, InfinityButtonsBlocks.EXPOSED_COPPER_LARGE_BUTTON);
         generateCopperButton(i, InfinityButtonsBlocks.WEATHERED_COPPER_BUTTON, Items.WEATHERED_COPPER, InfinityButtonsBlocks.WEATHERED_COPPER_LARGE_BUTTON);
         generateCopperButton(i, InfinityButtonsBlocks.OXIDIZED_COPPER_BUTTON, Items.OXIDIZED_COPPER, InfinityButtonsBlocks.OXIDIZED_COPPER_LARGE_BUTTON);
-        generateStickyCopperButton(i, InfinityButtonsBlocks.STICKY_COPPER_BUTTON, InfinityButtonsBlocks.COPPER_BUTTON, InfinityButtonsBlocks.STICKY_COPPER_LARGE_BUTTON);
-        generateStickyCopperButton(i, InfinityButtonsBlocks.STICKY_EXPOSED_COPPER_BUTTON, InfinityButtonsBlocks.EXPOSED_COPPER_BUTTON, InfinityButtonsBlocks.STICKY_EXPOSED_COPPER_LARGE_BUTTON);
-        generateStickyCopperButton(i, InfinityButtonsBlocks.STICKY_WEATHERED_COPPER_BUTTON, InfinityButtonsBlocks.WEATHERED_COPPER_BUTTON, InfinityButtonsBlocks.STICKY_WEATHERED_COPPER_LARGE_BUTTON);
-        generateStickyCopperButton(i, InfinityButtonsBlocks.STICKY_OXIDIZED_COPPER_BUTTON, InfinityButtonsBlocks.OXIDIZED_COPPER_BUTTON, InfinityButtonsBlocks.STICKY_OXIDIZED_COPPER_LARGE_BUTTON);
+        generateStickyCopperButton(i, InfinityButtonsBlocks.STICKY_COPPER_BUTTON, InfinityButtonsBlocks.COPPER_BUTTON, InfinityButtonsBlocks.STICKY_COPPER_LARGE_BUTTON, InfinityButtonsBlocks.COPPER_LARGE_BUTTON);
+        generateStickyCopperButton(i, InfinityButtonsBlocks.STICKY_EXPOSED_COPPER_BUTTON, InfinityButtonsBlocks.EXPOSED_COPPER_BUTTON, InfinityButtonsBlocks.STICKY_EXPOSED_COPPER_LARGE_BUTTON, InfinityButtonsBlocks.EXPOSED_COPPER_LARGE_BUTTON);
+        generateStickyCopperButton(i, InfinityButtonsBlocks.STICKY_WEATHERED_COPPER_BUTTON, InfinityButtonsBlocks.WEATHERED_COPPER_BUTTON, InfinityButtonsBlocks.STICKY_WEATHERED_COPPER_LARGE_BUTTON, InfinityButtonsBlocks.WEATHERED_COPPER_LARGE_BUTTON);
+        generateStickyCopperButton(i, InfinityButtonsBlocks.STICKY_OXIDIZED_COPPER_BUTTON, InfinityButtonsBlocks.OXIDIZED_COPPER_BUTTON, InfinityButtonsBlocks.STICKY_OXIDIZED_COPPER_LARGE_BUTTON, InfinityButtonsBlocks.OXIDIZED_COPPER_LARGE_BUTTON);
 
         generateButtonFromStone(i, InfinityButtonsBlocks.IRON_BUTTON, Items.IRON_INGOT, InfinityButtonsBlocks.IRON_LARGE_BUTTON);
         generateButtonFromStone(i, InfinityButtonsBlocks.GOLD_BUTTON, Items.GOLD_INGOT, InfinityButtonsBlocks.GOLD_LARGE_BUTTON);
@@ -282,9 +283,10 @@ public class RecipeGen extends FabricRecipeProvider {
         generateLargeButton(i, large, out, Items.COPPER_INGOT, "copper_large_button");
     }
 
-    protected void generateStickyCopperButton(Consumer<RecipeJsonProvider> i, ItemConvertible out, ItemConvertible in, ItemConvertible large) {
+    protected void generateStickyCopperButton(Consumer<RecipeJsonProvider> i, ItemConvertible out, ItemConvertible in, ItemConvertible largeOut, ItemConvertible largeIn) {
         ShapelessRecipeJsonBuilder.create(out).input(in).input(Items.HONEYCOMB).criterion("has_thing", RecipeProvider.conditionsFromItem(Items.COPPER_INGOT)).offerTo(i);
-        generateLargeButton(i, large, out, Items.COPPER_INGOT, "sticky_copper_large_button");
+        ShapelessRecipeJsonBuilder.create(largeOut).input(largeIn).input(Items.HONEYCOMB).criterion("has_thing", RecipeProvider.conditionsFromItem(Items.COPPER_INGOT)).offerTo(i, CraftingRecipeJsonBuilder.getItemId(largeOut) + "_waxing");
+        generateLargeButton(i, largeOut, out, Items.COPPER_INGOT, "sticky_copper_large_button");
     }
 
     protected void generateSandButton(Consumer<RecipeJsonProvider> i, ItemConvertible out, ItemConvertible in, ItemConvertible large) {
