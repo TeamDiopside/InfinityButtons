@@ -9,6 +9,10 @@ import net.larsmans.infinitybuttons.sounds.InfinityButtonsSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.brain.MemoryModuleType;
+import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -17,6 +21,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -25,6 +30,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 
 public class EmergencyButton extends AbstractButton {
@@ -100,6 +107,14 @@ public class EmergencyButton extends AbstractButton {
         this.playClickSound(player, world, pos, true);
         if (InfinityButtonsInit.CONFIG.alarmSoundType() != AlarmEnum.OFF) {
             emergencySound(world, pos, player);
+        }
+        if (!world.isClient && InfinityButtonsInit.CONFIG.alarmVillagerPanic()) {
+            List<LivingEntity> villagers = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(InfinityButtonsInit.CONFIG.alarmSoundRange()), entity -> entity.getType() == EntityType.VILLAGER);
+            for (LivingEntity villager : villagers) {
+                if (villager instanceof VillagerEntity villagerEntity) {
+                    villagerEntity.getBrain().remember(MemoryModuleType.HEARD_BELL_TIME, world.getTime());
+                }
+            }
         }
         world.emitGameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
         return ActionResult.success(world.isClient);

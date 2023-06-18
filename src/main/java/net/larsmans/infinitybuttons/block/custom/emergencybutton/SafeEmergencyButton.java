@@ -10,6 +10,10 @@ import net.minecraft.block.ShapeContext;
 import net.minecraft.block.WallMountedBlock;
 import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.brain.MemoryModuleType;
+import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
@@ -22,6 +26,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
@@ -198,6 +203,14 @@ public class SafeEmergencyButton extends WallMountedBlock {
                     this.playClickSound(player, world, pos, true);
                     if (InfinityButtonsInit.CONFIG.alarmSoundType() != AlarmEnum.OFF) {
                         EmergencyButton.emergencySound(world, pos, player);
+                    }
+                    if (!world.isClient && InfinityButtonsInit.CONFIG.alarmVillagerPanic()) {
+                        List<LivingEntity> villagers = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(InfinityButtonsInit.CONFIG.alarmSoundRange()), entity -> entity.getType() == EntityType.VILLAGER);
+                        for (LivingEntity villager : villagers) {
+                            if (villager instanceof VillagerEntity villagerEntity) {
+                                villagerEntity.getBrain().remember(MemoryModuleType.HEARD_BELL_TIME, world.getTime());
+                            }
+                        }
                     }
                     world.emitGameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
                 }

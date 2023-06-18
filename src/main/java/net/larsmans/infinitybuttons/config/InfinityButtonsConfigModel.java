@@ -13,6 +13,8 @@ public class InfinityButtonsConfigModel {
     @RangeConstraint(min = 16, max = 512)
     public int alarmSoundRange = 64;
 
+    public boolean alarmVillagerPanic = true;
+
     public boolean tooltips = true;
 
     public boolean diamondParticles = true;
