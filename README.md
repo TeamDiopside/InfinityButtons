@@ -1,8 +1,14 @@
 [![Discord](https://i.imgur.com/JiW4MLF.png)](https://discord.gg/PJCXjSJnu2)
 
+---
+
 # Infinity Buttons
 
 Infinity Buttons is a mod which adds exciting new buttons!
+
+[![RocketNode](https://teamdiopside.nl/assets/diopside/rocketnode.png)](https://billing.rocketnode.com/aff.php?aff=150440)
+
+---
 
 ### Current features
 
