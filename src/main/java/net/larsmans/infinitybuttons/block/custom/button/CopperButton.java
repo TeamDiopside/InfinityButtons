@@ -1,31 +1,54 @@
 package net.larsmans.infinitybuttons.block.custom.button;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
+import net.minecraft.item.AxeItem;
+import net.minecraft.item.HoneycombItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.WorldAccess;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.World;
 
-public class CopperButton extends AbstractSmallButton {
-    public CopperButton(FabricBlockSettings settings, boolean large) {
-        super(false, large, settings);
+public class CopperButton extends WaxedCopperButton implements WeatheringButton {
+
+    private final OxidationLevel weatherState;
+
+    public CopperButton(FabricBlockSettings settings, boolean large, OxidationLevel weatherState) {
+        super(settings, large);
+        this.weatherState = weatherState;
     }
 
     @Override
-    protected void playClickSound(@Nullable PlayerEntity player, WorldAccess world, BlockPos pos, boolean powered) {
-        world.playSound(powered ? player : null, pos, this.getClickSound(powered), SoundCategory.BLOCKS, 1f, powered ? 0.6f : 0.5f);
+    public void randomTick(BlockState pState, ServerWorld pLevel, BlockPos pPos, Random pRandom) {
+        this.tickDegradation(pState, pLevel, pPos, pRandom);
     }
 
     @Override
-    public int getPressTicks() {
-        return 50;
+    public ActionResult onUse(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockHitResult hit) {
+        ItemStack itemStack = player.getStackInHand(handIn);
+        if (state.get(PRESSED)) {
+            return ActionResult.CONSUME;
+        } else if (itemStack.getItem() instanceof HoneycombItem) {
+            return wax(state, worldIn, pos, player, itemStack);
+        } else if (itemStack.getItem() instanceof AxeItem && getDegradationLevel() != OxidationLevel.UNAFFECTED) {
+            return scrape(state, worldIn, pos, player, itemStack);
+        } else {
+            return super.onUse(state, worldIn, pos, player, handIn, hit);
+        }
     }
 
     @Override
-    protected SoundEvent getClickSound(boolean powered) {
-        return SoundEvents.BLOCK_COPPER_BREAK;
+    public boolean hasRandomTicks(BlockState pState) {
+        return WeatheringButton.getNext(pState.getBlock()).isPresent() && !pState.get(PRESSED);
+    }
+
+    @Override
+    public OxidationLevel getDegradationLevel() {
+        return this.weatherState;
     }
 }

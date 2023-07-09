@@ -2,11 +2,14 @@ package net.larsmans.infinitybuttons.block.custom.button;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.larsmans.infinitybuttons.block.InfinityButtonsUtil;
+import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -35,16 +38,30 @@ public class StickyCopperButton extends AbstractSmallButton {
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos,
-                              PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (state.get(PRESSED)) {
-            this.powerOff(state, world, pos);
-            this.playClickSound(player, world, pos, false);
-            world.emitGameEvent(player, GameEvent.BLOCK_DEACTIVATE, pos);
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        ItemStack itemStack = player.getStackInHand(hand);
+        if (itemStack.getItem() instanceof AxeItem) {
+            return WeatheringButton.getUnsticky(state).map((waxedBlockState) -> {
+                if (player instanceof ServerPlayerEntity) {
+                    Criteria.ITEM_USED_ON_BLOCK.trigger((ServerPlayerEntity) player, pos, itemStack);
+                }
+                if (!player.getAbilities().creativeMode) {
+                    itemStack.damage(1, player, (entity) -> entity.sendToolBreakStatus(player.getActiveHand()));
+                }
+                world.setBlockState(pos, waxedBlockState.with(PRESSED, false), Block.field_31022);
+                world.syncWorldEvent(player, 3004, pos, 0);
+                return ActionResult.success(world.isClient);
+            }).orElse(ActionResult.PASS);
         } else {
-            this.powerOn(state, world, pos);
-            this.playClickSound(player, world, pos, true);
-            world.emitGameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
+            if (state.get(PRESSED)) {
+                this.powerOff(state, world, pos);
+                this.playClickSound(player, world, pos, false);
+                world.emitGameEvent(player, GameEvent.BLOCK_DEACTIVATE, pos);
+            } else {
+                this.powerOn(state, world, pos);
+                this.playClickSound(player, world, pos, true);
+                world.emitGameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
+            }
         }
         return ActionResult.success(world.isClient);
     }
