@@ -16,7 +16,7 @@ import java.util.List;
 
 public class InfinityButtonsUtil {
 
-    public static final MutableText HOLD_SHIFT_TEXT = Text.translatable("infinitybuttons.tooltip.hold_shift");
+    public static final MutableText HOLD_SHIFT_TEXT = Text.translatable("infinitybuttons.tooltip.hold_shift").formatted(Formatting.GRAY);
     
     public static final MutableText SAFE_EMERGENCY_BUTTON_ACTIONBAR_TEXT = Text.translatable("infinitybuttons.actionbar.closed_safety_button");
 
@@ -25,7 +25,7 @@ public class InfinityButtonsUtil {
             if (Screen.hasShiftDown()) {
                 tooltip.add(Text.translatable("infinitybuttons.tooltip." + name).formatted(Formatting.GRAY));
             } else {
-                tooltip.add(HOLD_SHIFT_TEXT.formatted(Formatting.GRAY));
+                tooltip.add(HOLD_SHIFT_TEXT);
             }
         }
     }
@@ -36,7 +36,7 @@ public class InfinityButtonsUtil {
                 tooltip.add(Text.translatable("infinitybuttons.tooltip." + name1).formatted(Formatting.GRAY));
                 tooltip.add(Text.translatable("infinitybuttons.tooltip." + name2).formatted(Formatting.GRAY));
             } else {
-                tooltip.add(HOLD_SHIFT_TEXT.formatted(Formatting.GRAY));
+                tooltip.add(HOLD_SHIFT_TEXT);
             }
         }
     }
