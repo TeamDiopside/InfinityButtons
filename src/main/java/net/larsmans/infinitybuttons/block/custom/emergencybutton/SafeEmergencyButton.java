@@ -2,6 +2,7 @@ package net.larsmans.infinitybuttons.block.custom.emergencybutton;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.larsmans.infinitybuttons.InfinityButtonsInit;
+import net.larsmans.infinitybuttons.advancement.InfinityButtonsTriggers;
 import net.larsmans.infinitybuttons.block.InfinityButtonsUtil;
 import net.larsmans.infinitybuttons.config.AlarmEnum;
 import net.minecraft.block.Block;
@@ -16,6 +17,7 @@ import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -203,6 +205,9 @@ public class SafeEmergencyButton extends WallMountedBlock {
                     this.playClickSound(player, world, pos, true);
                     if (InfinityButtonsInit.CONFIG.alarmSoundType() != AlarmEnum.OFF) {
                         EmergencyButton.emergencySound(world, pos, player);
+                    }
+                    if (player instanceof ServerPlayerEntity) {
+                        InfinityButtonsTriggers.EMERGENCY_TRIGGER.trigger((ServerPlayerEntity) player);
                     }
                     if (!world.isClient && InfinityButtonsInit.CONFIG.alarmVillagerPanic()) {
                         List<LivingEntity> villagers = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(InfinityButtonsInit.CONFIG.alarmSoundRange()), entity -> entity.getType() == EntityType.VILLAGER);

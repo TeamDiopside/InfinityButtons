@@ -23,6 +23,8 @@ public class TagItemGen extends FabricTagProvider<Item> {
     public static final TagKey<Item> WOODEN_SECRET_BUTTONS = add("wooden_secret_buttons");
     public static final TagKey<Item> BOOKSHELF_SECRET_BUTTONS = add("bookshelf_secret_buttons");
     public static final TagKey<Item> TORCH_BUTTONS = add("torch_buttons");
+    public static final TagKey<Item> CONSOLE_BUTTONS = add("console_buttons");
+    public static final TagKey<Item> LANTERN_BUTTONS = add("lantern_buttons");
 
     static TagKey<Item> add(String name) {
         return TagKey.of(Registry.ITEM_KEY, new Identifier("infinitybuttons:" + name));
@@ -128,6 +130,7 @@ public class TagItemGen extends FabricTagProvider<Item> {
                 .add(InfinityButtonsBlocks.PURPLE_EMERGENCY_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.MAGENTA_EMERGENCY_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.PINK_EMERGENCY_BUTTON.asItem())
+                .add(InfinityButtonsBlocks.FANCY_EMERGENCY_BUTTON.asItem())
         ;
 
         getOrCreateTagBuilder(SAFE_EMERGENCY_BUTTONS)
@@ -147,6 +150,7 @@ public class TagItemGen extends FabricTagProvider<Item> {
                 .add(InfinityButtonsBlocks.PURPLE_SAFE_EMERGENCY_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.MAGENTA_SAFE_EMERGENCY_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.PINK_SAFE_EMERGENCY_BUTTON.asItem())
+                .add(InfinityButtonsBlocks.FANCY_SAFE_EMERGENCY_BUTTON.asItem())
         ;
 
         getOrCreateTagBuilder(SECRET_BUTTONS)
@@ -199,6 +203,24 @@ public class TagItemGen extends FabricTagProvider<Item> {
                 .add(InfinityButtonsBlocks.REDSTONE_TORCH_LEVER.asItem())
                 .addOptional(new Identifier("infinitybuttons:propelplant_torch_button"))
                 .addOptional(new Identifier("infinitybuttons:propelplant_torch_lever"))
+        ;
+
+        getOrCreateTagBuilder(CONSOLE_BUTTONS)
+                .add(InfinityButtonsBlocks.SMALL_CONSOLE_BUTTON.asItem())
+                .add(InfinityButtonsBlocks.SMALL_CONSOLE_LEVER.asItem())
+                .add(InfinityButtonsBlocks.CONSOLE_BUTTON.asItem())
+                .add(InfinityButtonsBlocks.CONSOLE_LEVER.asItem())
+                .add(InfinityButtonsBlocks.LARGE_CONSOLE_BUTTON.asItem())
+                .add(InfinityButtonsBlocks.LARGE_CONSOLE_LEVER.asItem())
+                .add(InfinityButtonsBlocks.BIG_CONSOLE_BUTTON.asItem())
+                .add(InfinityButtonsBlocks.BIG_CONSOLE_LEVER.asItem())
+        ;
+
+        getOrCreateTagBuilder(LANTERN_BUTTONS)
+                .add(InfinityButtonsBlocks.LANTERN_BUTTON.asItem())
+                .add(InfinityButtonsBlocks.LANTERN_LEVER.asItem())
+                .add(InfinityButtonsBlocks.SOUL_LANTERN_BUTTON.asItem())
+                .add(InfinityButtonsBlocks.SOUL_LANTERN_LEVER.asItem())
         ;
     }
     

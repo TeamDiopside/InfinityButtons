@@ -23,6 +23,8 @@ public class TagBlockGen extends FabricTagProvider<Block> {
     public static final TagKey<Block> WOODEN_SECRET_BUTTONS = add("wooden_secret_buttons");
     public static final TagKey<Block> BOOKSHELF_SECRET_BUTTONS = add("bookshelf_secret_buttons");
     public static final TagKey<Block> TORCH_BUTTONS = add("torch_buttons");
+    public static final TagKey<Block> CONSOLE_BUTTONS = add("console_buttons");
+    public static final TagKey<Block> LANTERN_BUTTONS = add("lantern_buttons");
 
     static TagKey<Block> add(String name) {
         return TagKey.of(Registry.BLOCK_KEY, new Identifier("infinitybuttons:" + name));
@@ -128,6 +130,7 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.PURPLE_EMERGENCY_BUTTON)
                 .add(InfinityButtonsBlocks.MAGENTA_EMERGENCY_BUTTON)
                 .add(InfinityButtonsBlocks.PINK_EMERGENCY_BUTTON)
+                .add(InfinityButtonsBlocks.FANCY_EMERGENCY_BUTTON)
         ;
 
         getOrCreateTagBuilder(SAFE_EMERGENCY_BUTTONS)
@@ -147,6 +150,7 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.PURPLE_SAFE_EMERGENCY_BUTTON)
                 .add(InfinityButtonsBlocks.MAGENTA_SAFE_EMERGENCY_BUTTON)
                 .add(InfinityButtonsBlocks.PINK_SAFE_EMERGENCY_BUTTON)
+                .add(InfinityButtonsBlocks.FANCY_SAFE_EMERGENCY_BUTTON)
         ;
 
         getOrCreateTagBuilder(SECRET_BUTTONS)
@@ -207,6 +211,24 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.REDSTONE_WALL_TORCH_LEVER)
                 .addOptional(new Identifier("infinitybuttons:propelplant_wall_torch_button"))
                 .addOptional(new Identifier("infinitybuttons:propelplant_wall_torch_lever"))
+        ;
+
+        getOrCreateTagBuilder(CONSOLE_BUTTONS)
+                .add(InfinityButtonsBlocks.SMALL_CONSOLE_BUTTON)
+                .add(InfinityButtonsBlocks.SMALL_CONSOLE_LEVER)
+                .add(InfinityButtonsBlocks.CONSOLE_BUTTON)
+                .add(InfinityButtonsBlocks.CONSOLE_LEVER)
+                .add(InfinityButtonsBlocks.LARGE_CONSOLE_BUTTON)
+                .add(InfinityButtonsBlocks.LARGE_CONSOLE_LEVER)
+                .add(InfinityButtonsBlocks.BIG_CONSOLE_BUTTON)
+                .add(InfinityButtonsBlocks.BIG_CONSOLE_LEVER)
+        ;
+
+        getOrCreateTagBuilder(LANTERN_BUTTONS)
+                .add(InfinityButtonsBlocks.LANTERN_BUTTON)
+                .add(InfinityButtonsBlocks.LANTERN_LEVER)
+                .add(InfinityButtonsBlocks.SOUL_LANTERN_BUTTON)
+                .add(InfinityButtonsBlocks.SOUL_LANTERN_LEVER)
         ;
     }
 
