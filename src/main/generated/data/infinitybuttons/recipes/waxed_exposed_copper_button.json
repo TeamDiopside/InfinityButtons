@@ -1,14 +1,15 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "group": "waxed_copper_buttons",
   "ingredients": [
     {
-      "item": "infinitybuttons:oxidized_copper_large_button"
+      "item": "infinitybuttons:exposed_copper_button"
     },
     {
       "item": "minecraft:honeycomb"
     }
   ],
   "result": {
-    "item": "infinitybuttons:sticky_oxidized_copper_large_button"
+    "item": "infinitybuttons:waxed_exposed_copper_button"
   }
 }

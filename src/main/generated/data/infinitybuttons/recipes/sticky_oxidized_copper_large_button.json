@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "group": "sticky_copper_large_button",
+  "group": "sticky_copper_large_buttons",
   "ingredients": [
     {
       "item": "infinitybuttons:sticky_oxidized_copper_button"

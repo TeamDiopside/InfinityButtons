@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "group": "waxed_copper_large_buttons",
   "ingredients": [
     {
       "item": "infinitybuttons:copper_large_button"
@@ -9,6 +10,6 @@
     }
   ],
   "result": {
-    "item": "infinitybuttons:sticky_copper_large_button"
+    "item": "infinitybuttons:waxed_copper_large_button"
   }
 }

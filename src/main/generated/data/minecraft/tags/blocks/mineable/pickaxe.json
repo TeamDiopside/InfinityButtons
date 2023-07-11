@@ -1,6 +1,14 @@
 {
   "replace": false,
   "values": [
+    {
+      "id": "#infinitybuttons:copper_buttons",
+      "required": false
+    },
+    {
+      "id": "#infinitybuttons:copper_large_buttons",
+      "required": false
+    },
     "infinitybuttons:deepslate_button",
     "infinitybuttons:granite_button",
     "infinitybuttons:diorite_button",
@@ -8,14 +16,6 @@
     "infinitybuttons:tuff_button",
     "infinitybuttons:dripstone_button",
     "infinitybuttons:calcite_button",
-    "infinitybuttons:copper_button",
-    "infinitybuttons:exposed_copper_button",
-    "infinitybuttons:weathered_copper_button",
-    "infinitybuttons:oxidized_copper_button",
-    "infinitybuttons:sticky_copper_button",
-    "infinitybuttons:sticky_exposed_copper_button",
-    "infinitybuttons:sticky_weathered_copper_button",
-    "infinitybuttons:sticky_oxidized_copper_button",
     "infinitybuttons:iron_button",
     "infinitybuttons:gold_button",
     "infinitybuttons:emerald_button",
@@ -32,14 +32,6 @@
     "infinitybuttons:dripstone_large_button",
     "infinitybuttons:calcite_large_button",
     "infinitybuttons:polished_blackstone_large_button",
-    "infinitybuttons:copper_large_button",
-    "infinitybuttons:exposed_copper_large_button",
-    "infinitybuttons:weathered_copper_large_button",
-    "infinitybuttons:oxidized_copper_large_button",
-    "infinitybuttons:sticky_copper_large_button",
-    "infinitybuttons:sticky_exposed_copper_large_button",
-    "infinitybuttons:sticky_weathered_copper_large_button",
-    "infinitybuttons:sticky_oxidized_copper_large_button",
     "infinitybuttons:iron_large_button",
     "infinitybuttons:gold_large_button",
     "infinitybuttons:emerald_large_button",

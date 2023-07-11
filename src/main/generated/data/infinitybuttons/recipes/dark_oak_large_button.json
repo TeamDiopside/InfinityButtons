@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "group": "wooden_large_button",
+  "group": "wooden_large_buttons",
   "ingredients": [
     {
       "item": "minecraft:dark_oak_button"

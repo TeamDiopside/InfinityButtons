@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "group": "console_buttons",
   "ingredients": [
     {
       "item": "infinitybuttons:small_console_button"

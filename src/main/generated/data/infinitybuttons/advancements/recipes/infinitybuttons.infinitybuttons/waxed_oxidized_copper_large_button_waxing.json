@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "infinitybuttons:sticky_weathered_copper_large_button_waxing"
+        "recipe": "infinitybuttons:waxed_oxidized_copper_large_button_waxing"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "infinitybuttons:sticky_weathered_copper_large_button_waxing"
+      "infinitybuttons:waxed_oxidized_copper_large_button_waxing"
     ]
   }
 }

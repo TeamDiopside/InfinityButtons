@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "group": "emergency_button",
+  "group": "emergency_buttons",
   "ingredients": [
     {
       "item": "minecraft:black_dye"

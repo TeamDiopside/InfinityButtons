@@ -1,11 +1,12 @@
 {
   "type": "minecraft:crafting_shapeless",
+  "group": "sticky_copper_large_buttons",
   "ingredients": [
     {
-      "item": "infinitybuttons:copper_large_button"
+      "item": "infinitybuttons:sticky_copper_button"
     },
     {
-      "item": "minecraft:honeycomb"
+      "item": "infinitybuttons:sticky_copper_button"
     }
   ],
   "result": {

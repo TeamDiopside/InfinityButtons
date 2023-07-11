@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "group": "copper_large_button",
+  "group": "copper_large_buttons",
   "ingredients": [
     {
       "item": "infinitybuttons:copper_button"
