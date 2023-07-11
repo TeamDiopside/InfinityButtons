@@ -19,6 +19,33 @@ repositories {
 	maven { url 'https://maven.wispforest.io' }
 	maven { url "https://www.cursemaven.com/" }
 	maven { url 'https://jitpack.io' }
+
+	maven {
+		name 'Progwm16 maven'
+		url 'https://dvs1.progwml6.com/files/maven'
+	}
+	maven { url = "https://maven.terraformersmc.com/releases/" }
+	maven { url = "https://mvn.devos.one/snapshots/" }
+	maven { url = "https://maven.jamieswhiteshirt.com/libs-release" }
+	maven {
+		name 'tterrag maven'
+		url 'https://maven.tterrag.com'
+	}
+	maven { // forge config api port
+		name = "Fuzs Mod Resources"
+		url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/"
+	}
+	exclusiveContent {
+		forRepository {
+			maven {
+				name = "Modrinth"
+				url = "https://api.modrinth.com/maven"
+			}
+		}
+		filter {
+			includeGroup "maven.modrinth"
+		}
+	}
 }
 
 dependencies {
@@ -40,10 +67,13 @@ dependencies {
 
 	modCompileOnlyApi("curse.maven:farmers-delight-fabric-482834:4111426")
 	modCompileOnlyApi("curse.maven:nethers-delight-fabric-701831:4353098")
+	modCompileOnly("com.simibubi.create:create-fabric-1.19.2:0.5.1-b-build.1089+mc1.19.2")
 
 	// Only for data gen
 //	modImplementation("curse.maven:farmers-delight-fabric-482834:4111426")
 //	modImplementation("curse.maven:nethers-delight-fabric-701831:4353098")
+//	modImplementation("com.simibubi.create:create-fabric-1.19.2:0.5.1-b-build.1089+mc1.19.2")
+//	modApi "net.minecraftforge:forgeconfigapiport-fabric:4.2.9"
 
 	include(implementation(annotationProcessor("com.github.LlamaLad7:MixinExtras:0.1.1")))
 }

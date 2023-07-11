@@ -6,14 +6,15 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.shape.VoxelShape;
 
 public class BookshelfSecretButton extends AbstractSecretButton {
-    public BookshelfSecretButton(Settings settings) {
+    public BookshelfSecretButton(Settings settings, Block jadeBlock) {
         super (
                 settings,
                 FULL,
                 FULL,
                 FULL,
                 FULL,
-                FULL
+                FULL,
+                jadeBlock
         );
     }
 

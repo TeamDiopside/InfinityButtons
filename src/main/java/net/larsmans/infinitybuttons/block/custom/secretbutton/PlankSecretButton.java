@@ -7,7 +7,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
 public class PlankSecretButton extends AbstractSecretButton {
-    public PlankSecretButton(Settings settings) {
+    public PlankSecretButton(Settings settings, Block jadeBlock) {
         super (
                 settings,
                 VoxelShapes.union(BOTTOM, TOP,
@@ -19,7 +19,8 @@ public class PlankSecretButton extends AbstractSecretButton {
                 VoxelShapes.union(BOTTOM, TOP,
                         Block.createCuboidShape(3, 4, 0, 16, 9, 16)),
 
-                Block.createCuboidShape(0, 0, 0, 16, 16, 16)
+                Block.createCuboidShape(0, 0, 0, 16, 16, 16),
+                jadeBlock
         );
     }
 

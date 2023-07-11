@@ -7,7 +7,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
 public class DeepslateTileSecretButton extends AbstractSecretButton {
-    public DeepslateTileSecretButton(Settings settings) {
+    public DeepslateTileSecretButton(Settings settings, Block jadeBlock) {
         super (
                 settings,
                 VoxelShapes.union(BASE,
@@ -26,7 +26,8 @@ public class DeepslateTileSecretButton extends AbstractSecretButton {
                         Block.createCuboidShape(0, 10, 0, 16, 16, 3),
                         Block.createCuboidShape(3, 10, 3, 19, 16, 16)
                 ),
-                Block.createCuboidShape(0, 0, 0, 16, 16, 16)
+                Block.createCuboidShape(0, 0, 0, 16, 16, 16),
+                jadeBlock
         );
     }
 

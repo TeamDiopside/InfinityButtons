@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "minecraft:air"
+          "name": "infinitybuttons:propelplant_torch_button"
         }
       ],
       "rolls": 1.0

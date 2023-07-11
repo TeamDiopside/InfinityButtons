@@ -7,7 +7,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
 public class ChiseledNetherBrickSecretButton extends AbstractSecretButton {
-    public ChiseledNetherBrickSecretButton(Settings settings) {
+    public ChiseledNetherBrickSecretButton(Settings settings, Block jadeBlock) {
         super (
                 settings,
                 VoxelShapes.union(BOTTOM, TOP,
@@ -30,7 +30,8 @@ public class ChiseledNetherBrickSecretButton extends AbstractSecretButton {
                         Block.createCuboidShape(3, 3, 3, 16, 13, 13),
                         Block.createCuboidShape(0, 3, 13, 16, 13, 16)
                 ),
-                Block.createCuboidShape(0, 0, 0, 16, 16, 16)
+                Block.createCuboidShape(0, 0, 0, 16, 16, 16),
+                jadeBlock
         );
     }
 

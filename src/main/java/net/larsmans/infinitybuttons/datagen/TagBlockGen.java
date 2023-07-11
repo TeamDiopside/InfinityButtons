@@ -3,6 +3,7 @@ package net.larsmans.infinitybuttons.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.larsmans.infinitybuttons.block.InfinityButtonsBlocks;
+import net.larsmans.infinitybuttons.compat.IBCreateBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
@@ -161,6 +162,7 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.CRACKED_DEEPSLATE_TILE_SECRET_BUTTON)
                 .add(InfinityButtonsBlocks.MUD_BRICK_SECRET_BUTTON)
                 .add(InfinityButtonsBlocks.END_STONE_BRICK_SECRET_BUTTON)
+                .add(InfinityButtonsBlocks.PURPUR_BLOCK_SECRET_BUTTON)
                 .add(InfinityButtonsBlocks.QUARTZ_BRICK_SECRET_BUTTON)
                 .add(InfinityButtonsBlocks.DARK_PRISMARINE_SECRET_BUTTON)
                 .add(InfinityButtonsBlocks.POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON)
@@ -170,6 +172,37 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.CRACKED_NETHER_BRICK_SECRET_BUTTON)
                 .add(InfinityButtonsBlocks.CHISELED_NETHER_BRICK_SECRET_BUTTON)
                 .add(InfinityButtonsBlocks.RED_NETHER_BRICK_SECRET_BUTTON)
+
+                .addOptional(new Identifier("infinitybuttons:rose_quartz_tile_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:small_rose_quartz_tile_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:cut_granite_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:small_granite_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:cut_diorite_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:small_diorite_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:cut_andesite_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:small_andesite_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:cut_calcite_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:small_calcite_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:cut_dripstone_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:small_dripstone_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:cut_deepslate_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:small_deepslate_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:cut_tuff_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:small_tuff_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:cut_asurine_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:small_asurine_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:cut_crimsite_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:small_crimsite_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:cut_limestone_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:small_limestone_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:cut_ochrum_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:small_ochrum_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:cut_scoria_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:small_scoria_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:cut_scorchia_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:small_scorchia_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:cut_veridium_brick_secret_button"))
+                .addOptional(new Identifier("infinitybuttons:small_veridium_brick_secret_button"))
         ;
 
         getOrCreateTagBuilder(WOODEN_SECRET_BUTTONS)

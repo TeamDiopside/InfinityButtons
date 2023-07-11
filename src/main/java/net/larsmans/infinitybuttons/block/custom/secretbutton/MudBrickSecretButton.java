@@ -7,7 +7,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 
 public class MudBrickSecretButton extends AbstractSecretButton {
-    public MudBrickSecretButton(Settings settings) {
+    public MudBrickSecretButton(Settings settings, Block jadeBlock) {
         super (
                 settings,
                 VoxelShapes.union(BASE,
@@ -30,7 +30,8 @@ public class MudBrickSecretButton extends AbstractSecretButton {
                         Block.createCuboidShape(3, 0, 3, 16, 9, 13),
                         Block.createCuboidShape(0, 0, 13, 16, 9, 16)
                 ),
-                Block.createCuboidShape(0, 0, 0, 16, 16, 16)
+                Block.createCuboidShape(0, 0, 0, 16, 16, 16),
+                jadeBlock
         );
     }
 

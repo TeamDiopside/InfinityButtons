@@ -237,7 +237,6 @@ public class InfinityButtonsBlocks {
      * Emergency Buttons
      */
 
-
     public static final Block WHITE_EMERGENCY_BUTTON = registerEmergencyButton("white");
     public static final Block LIGHT_GRAY_EMERGENCY_BUTTON = registerEmergencyButton("light_gray");
     public static final Block GRAY_EMERGENCY_BUTTON = registerEmergencyButton("gray");
@@ -290,34 +289,34 @@ public class InfinityButtonsBlocks {
      */
 
     public static final Block BOOKSHELF_SECRET_BUTTON = registerBlockWithItem("bookshelf_secret_button",
-            new BookshelfSecretButton(FabricBlockSettings.of(Material.WOOD).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(1.5f)));
+            new BookshelfSecretButton(FabricBlockSettings.of(Material.WOOD).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(1.5f), byName("bookshelf")));
 
     public static final Block BRICK_SECRET_BUTTON = registerBlockWithItem("brick_secret_button",
-            new FullBlockBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.RED).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f)));
+            new FullBlockBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.RED).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f), byName("bricks")));
 
     public static final Block STONE_BRICK_SECRET_BUTTON = registerBlockWithItem("stone_brick_secret_button",
-            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f)));
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f), byName("stone_bricks")));
 
     public static final Block MOSSY_STONE_BRICK_SECRET_BUTTON = registerBlockWithItem("mossy_stone_brick_secret_button",
-            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f)));
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f), byName("mossy_stone_bricks")));
 
     public static final Block CRACKED_STONE_BRICK_SECRET_BUTTON = registerBlockWithItem("cracked_stone_brick_secret_button",
-            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f)));
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f), byName("cracked_stone_bricks")));
 
     public static final Block CHISELED_STONE_BRICK_SECRET_BUTTON = registerBlockWithItem("chiseled_stone_brick_secret_button",
-            new ChiseledStoneBrickSecretButton(FabricBlockSettings.of(Material.STONE).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f)));
+            new ChiseledStoneBrickSecretButton(FabricBlockSettings.of(Material.STONE).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f), byName("chiseled_stone_bricks")));
 
     public static final Block DEEPSLATE_BRICK_SECRET_BUTTON = registerBlockWithItem("deepslate_brick_secret_button",
-            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).nonOpaque().sounds(BlockSoundGroup.DEEPSLATE_BRICKS).requiresTool().strength(3.5f, 6.0f)));
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).nonOpaque().sounds(BlockSoundGroup.DEEPSLATE_BRICKS).requiresTool().strength(3.5f, 6.0f), byName("deepslate_bricks")));
 
     public static final Block CRACKED_DEEPSLATE_BRICK_SECRET_BUTTON = registerBlockWithItem("cracked_deepslate_brick_secret_button",
-            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).nonOpaque().sounds(BlockSoundGroup.DEEPSLATE_BRICKS).requiresTool().strength(3.5f, 6.0f)));
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).nonOpaque().sounds(BlockSoundGroup.DEEPSLATE_BRICKS).requiresTool().strength(3.5f, 6.0f), byName("cracked_deepslate_bricks")));
 
     public static final Block DEEPSLATE_TILE_SECRET_BUTTON = registerBlockWithItem("deepslate_tile_secret_button",
-            new DeepslateTileSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).nonOpaque().sounds(BlockSoundGroup.DEEPSLATE_TILES).requiresTool().strength(3.5f, 6.0f)));
+            new DeepslateTileSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).nonOpaque().sounds(BlockSoundGroup.DEEPSLATE_TILES).requiresTool().strength(3.5f, 6.0f), byName("deepslate_tiles")));
 
     public static final Block CRACKED_DEEPSLATE_TILE_SECRET_BUTTON = registerBlockWithItem("cracked_deepslate_tile_secret_button",
-            new DeepslateTileSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).nonOpaque().sounds(BlockSoundGroup.DEEPSLATE_TILES).requiresTool().strength(3.5f, 6.0f)));
+            new DeepslateTileSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DEEPSLATE_GRAY).nonOpaque().sounds(BlockSoundGroup.DEEPSLATE_TILES).requiresTool().strength(3.5f, 6.0f), byName("cracked_deepslate_tiles")));
 
     public static final Block OAK_PLANK_SECRET_BUTTON = registerPlankSecretButton("oak", MapColor.OAK_TAN);
     public static final Block SPRUCE_PLANK_SECRET_BUTTON = registerPlankSecretButton("spruce", MapColor.SPRUCE_BROWN);
@@ -330,44 +329,47 @@ public class InfinityButtonsBlocks {
     public static final Block WARPED_PLANK_SECRET_BUTTON = registerNetherPlankSecretButton("warped", MapColor.DARK_AQUA);
 
     public static final Block MUD_BRICK_SECRET_BUTTON = registerBlockWithItem("mud_brick_secret_button",
-            new MudBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_LIGHT_GRAY).nonOpaque().sounds(BlockSoundGroup.MUD_BRICKS).requiresTool().strength(1.5f, 3.0f)));
+            new MudBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.TERRACOTTA_LIGHT_GRAY).nonOpaque().sounds(BlockSoundGroup.MUD_BRICKS).requiresTool().strength(1.5f, 3.0f), byName("mud_bricks")));
 
     public static final Block END_STONE_BRICK_SECRET_BUTTON = registerBlockWithItem("end_stone_brick_secret_button",
-            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.PALE_YELLOW).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(3.0f, 9.0f)));
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.PALE_YELLOW).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(3.0f, 9.0f), byName("end_stone_bricks")));
+
+    public static final Block PURPUR_BLOCK_SECRET_BUTTON = registerBlockWithItem("purpur_block_secret_button",
+            new TileSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.MAGENTA).strength(1.5f, 6.0f).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool(), byName("purpur_block")));
 
     public static final Block QUARTZ_BRICK_SECRET_BUTTON = registerBlockWithItem("quartz_brick_secret_button",
-            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(0.8f)));
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.OFF_WHITE).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(0.8f), byName("quartz_bricks")));
 
     public static final Block DARK_PRISMARINE_SECRET_BUTTON = registerBlockWithItem("dark_prismarine_secret_button",
-            new FullBlockBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DIAMOND_BLUE).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f)));
+            new FullBlockBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DIAMOND_BLUE).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(1.5f, 6.0f), byName("dark_prismarine")));
 
     public static final Block POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = registerBlockWithItem("polished_blackstone_brick_secret_button",
-            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f)));
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f), byName("polished_blackstone_bricks")));
 
     public static final Block CRACKED_POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = registerBlockWithItem("cracked_polished_blackstone_brick_secret_button",
-            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f)));
+            new BigBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f), byName("cracked_polished_blackstone_bricks")));
 
     public static final Block CHISELED_POLISHED_BLACKSTONE_SECRET_BUTTON = registerBlockWithItem("chiseled_polished_blackstone_secret_button",
-            new ChiseledStoneBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f)));
+            new ChiseledStoneBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.BLACK).nonOpaque().sounds(BlockSoundGroup.STONE).requiresTool().strength(2.0f, 6.0f), byName("chiseled_polished_blackstone")));
 
     public static final Block NETHER_BRICK_SECRET_BUTTON = registerBlockWithItem("nether_brick_secret_button",
-            new FullBlockBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DARK_RED).nonOpaque().sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool().strength(2.0f, 6.0f)));
+            new FullBlockBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DARK_RED).nonOpaque().sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool().strength(2.0f, 6.0f), byName("nether_bricks")));
 
     public static final Block CRACKED_NETHER_BRICK_SECRET_BUTTON = registerBlockWithItem("cracked_nether_brick_secret_button",
-            new FullBlockBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DARK_RED).nonOpaque().sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool().strength(2.0f, 6.0f)));
+            new FullBlockBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DARK_RED).nonOpaque().sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool().strength(2.0f, 6.0f), byName("cracked_nether_bricks")));
 
     public static final Block CHISELED_NETHER_BRICK_SECRET_BUTTON = registerBlockWithItem("chiseled_nether_brick_secret_button",
-            new ChiseledNetherBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DARK_RED).nonOpaque().sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool().strength(2.0f, 6.0f)));
+            new ChiseledNetherBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DARK_RED).nonOpaque().sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool().strength(2.0f, 6.0f), byName("chiseled_nether_bricks")));
 
     public static final Block RED_NETHER_BRICK_SECRET_BUTTON = registerBlockWithItem("red_nether_brick_secret_button",
-            new FullBlockBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DARK_RED).nonOpaque().sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool().strength(2.0f, 6.0f)));
+            new FullBlockBrickSecretButton(FabricBlockSettings.of(Material.STONE, MapColor.DARK_RED).nonOpaque().sounds(BlockSoundGroup.NETHER_BRICKS).requiresTool().strength(2.0f, 6.0f), byName("red_nether_bricks")));
 
     public static Block registerPlankSecretButton(String name, MapColor color) {
-        return registerBlockWithItem(name + "_plank_secret_button", new PlankSecretButton(FabricBlockSettings.of(Material.WOOD, color).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(2.0f, 3.0f)));
+        return registerBlockWithItem(name + "_plank_secret_button", new PlankSecretButton(FabricBlockSettings.of(Material.WOOD, color).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(2.0f, 3.0f), byName(name + "_planks")));
     }
 
     public static Block registerNetherPlankSecretButton(String name, MapColor color) {
-        return registerBlockWithItem(name + "_plank_secret_button", new PlankSecretButton(FabricBlockSettings.of(Material.NETHER_WOOD, color).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(2.0f, 3.0f)));
+        return registerBlockWithItem(name + "_plank_secret_button", new PlankSecretButton(FabricBlockSettings.of(Material.NETHER_WOOD, color).nonOpaque().sounds(BlockSoundGroup.WOOD).strength(2.0f, 3.0f), byName(name + "_planks")));
     }
 
     /**
@@ -448,6 +450,10 @@ public class InfinityButtonsBlocks {
     /**
      * Methods
      */
+
+    private static Block byName(String block) {
+        return Registry.BLOCK.get(new Identifier("minecraft", block));
+    }
 
     private static Block registerBlockWithItem(String name, Block block) {
         registerBlockItem(name, block);
