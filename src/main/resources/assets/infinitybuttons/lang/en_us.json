@@ -245,5 +245,20 @@
   "text.config.infinity-buttons-config.option.tooltips.tooltip": "Whether tooltips show up",
   "text.config.infinity-buttons-config.option.diamondParticles": "Diamond Button Particles",
   "text.config.infinity-buttons-config.option.diamondParticles.tooltip": "Whether Diamond Buttons have particles around them",
-  "text.config.infinity-buttons-config.title": "Infinity Buttons Config"
+  "text.config.infinity-buttons-config.title": "Infinity Buttons Config",
+
+  "tag.item.infinitybuttons.bookshelf_secret_buttons": "Bookshelf Secret Buttons",
+  "tag.item.infinitybuttons.concrete_powder_buttons": "Concrete Powder Buttons",
+  "tag.item.infinitybuttons.concrete_powder_lage_buttons": "Concrete Powder Large Buttons",
+  "tag.item.infinitybuttons.console_buttons": "Console Buttons",
+  "tag.item.infinitybuttons.copper_buttons": "Copper Buttons",
+  "tag.item.infinitybuttons.copper_large_buttons": "Copper Large Buttons",
+  "tag.item.infinitybuttons.emergency_buttons": "Emergency Buttons",
+  "tag.item.infinitybuttons.lantern_buttons": "Lantern Buttons",
+  "tag.item.infinitybuttons.large_buttons": "Large Buttons",
+  "tag.item.infinitybuttons.safe_emergency_buttons": "Safe Emergency Buttons",
+  "tag.item.infinitybuttons.secret_buttons": "Secret Buttons",
+  "tag.item.infinitybuttons.torch_buttons": "Torch Buttons",
+  "tag.item.infinitybuttons.wooden_large_buttons": "Wooden Large Buttons",
+  "tag.item.infinitybuttons.wooden_secret_buttons": "Wooden Secret Buttons"
 }
