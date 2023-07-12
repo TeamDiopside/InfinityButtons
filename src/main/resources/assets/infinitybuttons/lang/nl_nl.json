@@ -292,5 +292,8 @@
   "tag.item.infinitybuttons.secret_buttons": "Verborgen knoppen",
   "tag.item.infinitybuttons.torch_buttons": "Toortsknoppen",
   "tag.item.infinitybuttons.wooden_large_buttons": "Houten grote knoppen",
-  "tag.item.infinitybuttons.wooden_secret_buttons": "Houten verborgen knoppen"
+  "tag.item.infinitybuttons.wooden_secret_buttons": "Houten verborgen knoppen",
+
+  "config.jade.plugin_infinitybuttons.hide_secret_buttons": "Verberg verborgen knoppen",
+  "config.jade.plugin_infinitybuttons.hide_torch_buttons": "Verberg fakkelknoppen"
 }

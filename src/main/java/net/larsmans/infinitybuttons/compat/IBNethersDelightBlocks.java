@@ -22,16 +22,20 @@ public class IBNethersDelightBlocks {
     public static final Block HOGLIN_MOUNT_BUTTON = registerBlockWithItem("hoglin_mount_button",
             new HoglinMountButton(FabricBlockSettings.of(Material.WOOL, MapColor.BROWN).strength(0.8f).sounds(BlockSoundGroup.WOOL)));
 
-    public static final Block PROPELPLANT_TORCH_BUTTON = registerBlock("propelplant_torch_button", new PropelTorchButton(torchSettings()));
+    public static final Block PROPELPLANT_TORCH_BUTTON = registerBlock("propelplant_torch_button", new PropelTorchButton(torchSettings(), byName("propelplant_torch")));
 
-    public static final Block PROPELPLANT_WALL_TORCH_BUTTON = registerBlock("propelplant_wall_torch_button", new PropelWallTorchButton(torchSettings().dropsLike(PROPELPLANT_TORCH_BUTTON)));
+    public static final Block PROPELPLANT_WALL_TORCH_BUTTON = registerBlock("propelplant_wall_torch_button", new PropelWallTorchButton(torchSettings().dropsLike(PROPELPLANT_TORCH_BUTTON), byName("propelplant_torch")));
 
-    public static final Block PROPELPLANT_TORCH_LEVER = registerBlock("propelplant_torch_lever", new PropelTorchLever(torchSettings()));
+    public static final Block PROPELPLANT_TORCH_LEVER = registerBlock("propelplant_torch_lever", new PropelTorchLever(torchSettings(), byName("propelplant_torch")));
 
-    public static final Block PROPELPLANT_WALL_TORCH_LEVER = registerBlock("propelplant_wall_torch_lever", new PropelWallTorchLever(torchSettings().dropsLike(PROPELPLANT_TORCH_LEVER)));
+    public static final Block PROPELPLANT_WALL_TORCH_LEVER = registerBlock("propelplant_wall_torch_lever", new PropelWallTorchLever(torchSettings().dropsLike(PROPELPLANT_TORCH_LEVER), byName("propelplant_torch")));
 
     public static FabricBlockSettings torchSettings() {
         return FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(12).sounds(BlockSoundGroup.WOOD);
+    }
+
+    private static Block byName(String block) {
+        return Registry.BLOCK.get(new Identifier("nethersdelight", block));
     }
 
     private static Block registerBlockWithItem(String name, Block block) {

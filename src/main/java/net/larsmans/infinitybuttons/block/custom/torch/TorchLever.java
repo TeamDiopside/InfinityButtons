@@ -13,8 +13,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
 public class TorchLever extends TorchButton {
-    public TorchLever(FabricBlockSettings settings, ParticleEffect particleEffect) {
-        super(settings, particleEffect);
+    public TorchLever(FabricBlockSettings settings, ParticleEffect particleEffect, Block jadeBlock) {
+        super(settings, particleEffect, jadeBlock);
     }
 
     @Override

@@ -419,29 +419,18 @@ public class InfinityButtonsBlocks {
      * Torches
      */
 
-    public static final Block TORCH_BUTTON = registerOnlyBlock("torch_button", new TorchButton(torchSettings(14), ParticleTypes.FLAME));
-
-    public static final Block WALL_TORCH_BUTTON = registerOnlyBlock("wall_torch_button", new WallTorchButton(torchSettings(14).dropsLike(TORCH_BUTTON), ParticleTypes.FLAME));
-
-    public static final Block TORCH_LEVER = registerOnlyBlock("torch_lever", new TorchLever(torchSettings(14), ParticleTypes.FLAME));
-
-    public static final Block WALL_TORCH_LEVER = registerOnlyBlock("wall_torch_lever", new WallTorchLever(torchSettings(14).dropsLike(TORCH_LEVER), ParticleTypes.FLAME));
-
-    public static final Block SOUL_TORCH_BUTTON = registerOnlyBlock("soul_torch_button", new TorchButton(torchSettings(10), ParticleTypes.SOUL_FIRE_FLAME));
-
-    public static final Block SOUL_WALL_TORCH_BUTTON = registerOnlyBlock("soul_wall_torch_button", new WallTorchButton(torchSettings(10).dropsLike(SOUL_TORCH_BUTTON), ParticleTypes.SOUL_FIRE_FLAME));
-
-    public static final Block SOUL_TORCH_LEVER = registerOnlyBlock("soul_torch_lever", new TorchLever(torchSettings(10), ParticleTypes.SOUL_FIRE_FLAME));
-
-    public static final Block SOUL_WALL_TORCH_LEVER = registerOnlyBlock("soul_wall_torch_lever", new WallTorchLever(torchSettings(10).dropsLike(SOUL_TORCH_LEVER), ParticleTypes.SOUL_FIRE_FLAME));
-
-    public static final Block REDSTONE_TORCH_BUTTON = registerOnlyBlock("redstone_torch_button", new RedstoneTorchButton(torchSettings(7)));
-
-    public static final Block REDSTONE_WALL_TORCH_BUTTON = registerOnlyBlock("redstone_wall_torch_button", new RedstoneWallTorchButton(torchSettings(7).dropsLike(REDSTONE_TORCH_BUTTON)));
-
-    public static final Block REDSTONE_TORCH_LEVER = registerOnlyBlock("redstone_torch_lever", new RedstoneTorchLever(torchSettings(7)));
-
-    public static final Block REDSTONE_WALL_TORCH_LEVER = registerOnlyBlock("redstone_wall_torch_lever", new RedstoneWallTorchLever(torchSettings(7).dropsLike(REDSTONE_TORCH_LEVER)));
+    public static final Block TORCH_BUTTON = registerOnlyBlock("torch_button", new TorchButton(torchSettings(14), ParticleTypes.FLAME, byName("torch")));
+    public static final Block WALL_TORCH_BUTTON = registerOnlyBlock("wall_torch_button", new WallTorchButton(torchSettings(14).dropsLike(TORCH_BUTTON), ParticleTypes.FLAME, byName("torch")));
+    public static final Block TORCH_LEVER = registerOnlyBlock("torch_lever", new TorchLever(torchSettings(14), ParticleTypes.FLAME, byName("torch")));
+    public static final Block WALL_TORCH_LEVER = registerOnlyBlock("wall_torch_lever", new WallTorchLever(torchSettings(14).dropsLike(TORCH_LEVER), ParticleTypes.FLAME, byName("torch")));
+    public static final Block SOUL_TORCH_BUTTON = registerOnlyBlock("soul_torch_button", new TorchButton(torchSettings(10), ParticleTypes.SOUL_FIRE_FLAME, byName("soul_torch")));
+    public static final Block SOUL_WALL_TORCH_BUTTON = registerOnlyBlock("soul_wall_torch_button", new WallTorchButton(torchSettings(10).dropsLike(SOUL_TORCH_BUTTON), ParticleTypes.SOUL_FIRE_FLAME, byName("soul_torch")));
+    public static final Block SOUL_TORCH_LEVER = registerOnlyBlock("soul_torch_lever", new TorchLever(torchSettings(10), ParticleTypes.SOUL_FIRE_FLAME, byName("soul_torch")));
+    public static final Block SOUL_WALL_TORCH_LEVER = registerOnlyBlock("soul_wall_torch_lever", new WallTorchLever(torchSettings(10).dropsLike(SOUL_TORCH_LEVER), ParticleTypes.SOUL_FIRE_FLAME, byName("soul_torch")));
+    public static final Block REDSTONE_TORCH_BUTTON = registerOnlyBlock("redstone_torch_button", new RedstoneTorchButton(torchSettings(7), byName("redstone_torch")));
+    public static final Block REDSTONE_WALL_TORCH_BUTTON = registerOnlyBlock("redstone_wall_torch_button", new RedstoneWallTorchButton(torchSettings(7).dropsLike(REDSTONE_TORCH_BUTTON), byName("redstone_torch")));
+    public static final Block REDSTONE_TORCH_LEVER = registerOnlyBlock("redstone_torch_lever", new RedstoneTorchLever(torchSettings(7), byName("redstone_torch")));
+    public static final Block REDSTONE_WALL_TORCH_LEVER = registerOnlyBlock("redstone_wall_torch_lever", new RedstoneWallTorchLever(torchSettings(7).dropsLike(REDSTONE_TORCH_LEVER), byName("redstone_torch")));
 
     public static FabricBlockSettings torchSettings(int light) {
         return FabricBlockSettings.of(Material.DECORATION).nonOpaque().noCollision().breakInstantly().luminance(light).sounds(BlockSoundGroup.WOOD);

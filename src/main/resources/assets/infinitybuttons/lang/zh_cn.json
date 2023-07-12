@@ -292,5 +292,8 @@
   "tag.item.infinitybuttons.secret_buttons": "Secret Buttons",
   "tag.item.infinitybuttons.torch_buttons": "Torch Buttons",
   "tag.item.infinitybuttons.wooden_large_buttons": "Wooden Large Buttons",
-  "tag.item.infinitybuttons.wooden_secret_buttons": "Wooden Secret Buttons"
+  "tag.item.infinitybuttons.wooden_secret_buttons": "Wooden Secret Buttons",
+
+  "config.jade.plugin_infinitybuttons.hide_secret_buttons": "Hide Secret Buttons",
+  "config.jade.plugin_infinitybuttons.hide_torch_buttons": "Hide Torch Buttons"
 }

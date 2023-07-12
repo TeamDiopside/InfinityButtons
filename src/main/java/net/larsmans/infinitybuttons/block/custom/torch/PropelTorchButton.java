@@ -1,6 +1,7 @@
 package net.larsmans.infinitybuttons.block.custom.torch;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
@@ -8,8 +9,8 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 public class PropelTorchButton extends TorchButton {
-    public PropelTorchButton(FabricBlockSettings settings) {
-        super(settings, ParticleTypes.FLAME);
+    public PropelTorchButton(FabricBlockSettings settings, Block jadeBlock) {
+        super(settings, ParticleTypes.FLAME, jadeBlock);
     }
 
     @Override

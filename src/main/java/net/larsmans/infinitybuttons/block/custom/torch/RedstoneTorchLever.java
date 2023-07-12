@@ -13,8 +13,8 @@ import net.minecraft.world.event.GameEvent;
 
 public class RedstoneTorchLever extends RedstoneTorchButton {
 
-    public RedstoneTorchLever(FabricBlockSettings settings) {
-        super(settings);
+    public RedstoneTorchLever(FabricBlockSettings settings, Block jadeBlock) {
+        super(settings, jadeBlock);
     }
 
     @Override

@@ -20,8 +20,8 @@ import org.jetbrains.annotations.Nullable;
 public class RedstoneWallTorchButton extends RedstoneTorchButton {
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
-    public RedstoneWallTorchButton(FabricBlockSettings settings) {
-        super(settings);
+    public RedstoneWallTorchButton(FabricBlockSettings settings, Block jadeBlock) {
+        super(settings, jadeBlock);
         this.setDefaultState(this.stateManager.getDefaultState().with(LIT, false).with(FACING, Direction.NORTH));
     }
 

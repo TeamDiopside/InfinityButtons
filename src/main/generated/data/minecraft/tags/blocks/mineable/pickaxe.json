@@ -60,6 +60,7 @@
     "infinitybuttons:cracked_deepslate_tile_secret_button",
     "infinitybuttons:mud_brick_secret_button",
     "infinitybuttons:end_stone_brick_secret_button",
+    "infinitybuttons:purpur_block_secret_button",
     "infinitybuttons:quartz_brick_secret_button",
     "infinitybuttons:dark_prismarine_secret_button",
     "infinitybuttons:polished_blackstone_brick_secret_button",
@@ -69,6 +70,126 @@
     "infinitybuttons:cracked_nether_brick_secret_button",
     "infinitybuttons:chiseled_nether_brick_secret_button",
     "infinitybuttons:red_nether_brick_secret_button",
+    {
+      "id": "infinitybuttons:rose_quartz_tile_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:small_rose_quartz_tile_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:cut_granite_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:small_granite_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:cut_diorite_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:small_diorite_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:cut_andesite_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:small_andesite_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:cut_calcite_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:small_calcite_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:cut_dripstone_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:small_dripstone_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:cut_deepslate_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:small_deepslate_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:cut_tuff_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:small_tuff_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:cut_asurine_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:small_asurine_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:cut_crimsite_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:small_crimsite_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:cut_limestone_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:small_limestone_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:cut_ochrum_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:small_ochrum_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:cut_scoria_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:small_scoria_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:cut_scorchia_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:small_scorchia_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:cut_veridium_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:small_veridium_brick_secret_button",
+      "required": false
+    },
     "infinitybuttons:lantern_button",
     "infinitybuttons:lantern_lever",
     "infinitybuttons:soul_lantern_button",
