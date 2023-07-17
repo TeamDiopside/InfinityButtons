@@ -13,6 +13,7 @@ import net.larsmans.infinitybuttons.compat.IBNethersDelightBlocks;
 import net.larsmans.infinitybuttons.compat.IBNethersDelightItems;
 import net.larsmans.infinitybuttons.item.InfinityButtonsItems;
 import net.larsmans.infinitybuttons.item.SafeEmergencyButtonItem;
+import net.larsmans.infinitybuttons.particle.InfinityButtonsParticleTypes;
 import net.larsmans.infinitybuttons.sounds.InfinityButtonsSounds;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.FallibleItemDispenserBehavior;
@@ -44,6 +45,7 @@ public class InfinityButtonsInit implements ModInitializer {
 		InfinityButtonsBlocks.registerModBlocks();
 		InfinityButtonsSounds.registerSounds();
 		InfinityButtonsTriggers.register();
+		InfinityButtonsParticleTypes.register();
 		registerDispenserBehavior();
 
 		if (FabricLoader.getInstance().isModLoaded("nethersdelight")) {
