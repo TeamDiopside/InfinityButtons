@@ -12,8 +12,16 @@ import net.larsmans.infinitybuttons.compat.IBCreateBlocks;
 import net.larsmans.infinitybuttons.compat.IBNethersDelightBlocks;
 import net.larsmans.infinitybuttons.compat.IBNethersDelightItems;
 import net.larsmans.infinitybuttons.item.InfinityButtonsItems;
+import net.larsmans.infinitybuttons.item.SafeEmergencyButtonItem;
 import net.larsmans.infinitybuttons.sounds.InfinityButtonsSounds;
+import net.minecraft.block.DispenserBlock;
+import net.minecraft.block.dispenser.FallibleItemDispenserBehavior;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPointer;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +44,7 @@ public class InfinityButtonsInit implements ModInitializer {
 		InfinityButtonsBlocks.registerModBlocks();
 		InfinityButtonsSounds.registerSounds();
 		InfinityButtonsTriggers.register();
+		registerDispenserBehavior();
 
 		if (FabricLoader.getInstance().isModLoaded("nethersdelight")) {
 			IBNethersDelightItems.registerCompatItems();
@@ -44,6 +53,20 @@ public class InfinityButtonsInit implements ModInitializer {
 
 		if (FabricLoader.getInstance().isModLoaded("create")) {
 			IBCreateBlocks.registerCompatBlocks();
+		}
+	}
+
+	public static void registerDispenserBehavior() {
+		for (Item item : Registry.ITEM.stream().toList()) {
+			if (item instanceof SafeEmergencyButtonItem) {
+				DispenserBlock.registerBehavior(item, new FallibleItemDispenserBehavior() {
+					@Override
+					protected ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
+						this.setSuccess(ArmorItem.dispenseArmor(pointer, stack));
+						return stack;
+					}
+				});
+			}
 		}
 	}
 }
