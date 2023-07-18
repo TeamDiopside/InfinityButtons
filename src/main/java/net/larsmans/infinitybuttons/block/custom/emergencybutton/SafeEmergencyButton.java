@@ -39,6 +39,7 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SafeEmergencyButton extends WallMountedBlock {
@@ -210,7 +211,20 @@ public class SafeEmergencyButton extends WallMountedBlock {
                         InfinityButtonsTriggers.EMERGENCY_TRIGGER.trigger((ServerPlayerEntity) player);
                     }
                     if (!world.isClient && InfinityButtonsInit.CONFIG.alarmVillagerPanic()) {
-                        List<LivingEntity> villagers = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(InfinityButtonsInit.CONFIG.alarmSoundRange()), entity -> entity.getType() == EntityType.VILLAGER);
+                        List<LivingEntity> villagers = new ArrayList<>();
+                        if (InfinityButtonsInit.CONFIG.alarmSoundType() == AlarmEnum.GLOBAL) {
+                            villagers = new ArrayList<>();
+                            List<LivingEntity> villagersDup = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(512), entity -> entity.getType() == EntityType.VILLAGER);
+                            for (PlayerEntity player1 : world.getPlayers())
+                                villagersDup.addAll(world.getEntitiesByClass(LivingEntity.class, new Box(player1.getBlockPos()).expand(512), entity -> entity.getType() == EntityType.VILLAGER));
+                            for (LivingEntity villager : villagersDup)
+                                if (!villagers.contains(villager))
+                                    villagers.add(villager);
+
+                        }
+                        if (InfinityButtonsInit.CONFIG.alarmSoundType() == AlarmEnum.RANGE) {
+                            villagers = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(InfinityButtonsInit.CONFIG.alarmSoundRange()), entity -> entity.getType() == EntityType.VILLAGER);
+                        }
                         for (LivingEntity villager : villagers) {
                             if (villager instanceof VillagerEntity villagerEntity) {
                                 villagerEntity.getBrain().remember(MemoryModuleType.HEARD_BELL_TIME, world.getTime());
