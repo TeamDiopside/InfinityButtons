@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -17,7 +18,10 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
+
+import java.util.Objects;
 
 public class LetterButton extends AbstractSmallButton {
 
@@ -30,7 +34,13 @@ public class LetterButton extends AbstractSmallButton {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        ClientPlayNetworkHandler connection = MinecraftClient.getInstance().getNetworkHandler();
+        assert connection != null;
+        GameMode gameMode = Objects.requireNonNull(connection.getPlayerListEntry(player.getGameProfile().getId())).getGameMode();
         if (player.isSneaking()) {
+            if (gameMode == GameMode.ADVENTURE) {
+                return super.onUse(state, world, pos, player, hand, hit);
+            }
             if (world.isClient) {
                 MinecraftClient.getInstance().setScreen(new LetterButtonGui(this, state, world, pos));
             }
