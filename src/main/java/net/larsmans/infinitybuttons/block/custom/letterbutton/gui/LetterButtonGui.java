@@ -7,10 +7,12 @@ import net.larsmans.infinitybuttons.block.custom.letterbutton.LetterButtonEnum;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.PressableTextWidget;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.lwjgl.glfw.GLFW;
 
 public class LetterButtonGui extends Screen {
 
@@ -60,6 +62,21 @@ public class LetterButtonGui extends Screen {
         int buttonHeight = textRenderer.fontHeight;
         addDrawableChild(new PressableTextWidget((width - buttonWidth) / 2, startY + (((NUM_BUTTONS - 1) / BUTTONS_PER_ROW) + 1) * (BUTTON_HEIGHT + BUTTON_MARGIN),
                 buttonWidth, buttonHeight, Text.translatable("gui.done"), pButton -> close(), textRenderer));
+    }
+
+    @Override
+    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
+        renderBackground(matrices);
+        super.render(matrices, mouseX, mouseY, delta);
+    }
+
+    @Override
+    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+        if (keyCode == GLFW.GLFW_KEY_E) {
+            this.close();
+            return true;
+        }
+        return super.keyPressed(keyCode, scanCode, modifiers);
     }
 
     @Override

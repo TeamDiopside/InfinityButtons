@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "infinitybuttons:propelplant_torch_lever"
+          "name": "infinitybuttons:letter_button"
         }
       ],
       "rolls": 1.0

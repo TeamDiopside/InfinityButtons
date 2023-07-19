@@ -1,34 +1,44 @@
 package net.larsmans.infinitybuttons.block.custom.letterbutton;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.larsmans.infinitybuttons.block.custom.button.AbstractSmallButton;
+import net.larsmans.infinitybuttons.InfinityButtonsUtil;
+import net.larsmans.infinitybuttons.block.custom.button.AbstractLeverableButton;
+import net.larsmans.infinitybuttons.block.custom.button.LargeButtonShape;
 import net.larsmans.infinitybuttons.block.custom.letterbutton.gui.LetterButtonGui;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.GameMode;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Objects;
 
-public class LetterButton extends AbstractSmallButton {
+public class LetterButton extends AbstractLeverableButton {
 
     public static final EnumProperty<LetterButtonEnum> CHARACTER = EnumProperty.of("character", LetterButtonEnum.class);
 
-    public LetterButton(FabricBlockSettings settings) {
-        super(true, true, settings);
+    public LetterButton(FabricBlockSettings settings, boolean lever) {
+        super(lever, settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(PRESSED, false).with(FACE, WallMountLocation.FLOOR).with(CHARACTER, LetterButtonEnum.NONE));
     }
 
@@ -48,6 +58,11 @@ public class LetterButton extends AbstractSmallButton {
         } else {
             return super.onUse(state, world, pos, player, hand, hit);
         }
+    }
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return LargeButtonShape.outlineShape(state);
     }
 
     @Override
@@ -73,5 +88,10 @@ public class LetterButton extends AbstractSmallButton {
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
         builder.add(CHARACTER);
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+        InfinityButtonsUtil.tooltip(tooltip, "letter_button");
     }
 }

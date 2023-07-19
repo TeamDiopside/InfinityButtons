@@ -2,8 +2,8 @@ package net.larsmans.infinitybuttons.block.custom.emergencybutton;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.larsmans.infinitybuttons.InfinityButtonsInit;
+import net.larsmans.infinitybuttons.InfinityButtonsUtil;
 import net.larsmans.infinitybuttons.advancement.InfinityButtonsTriggers;
-import net.larsmans.infinitybuttons.block.InfinityButtonsUtil;
 import net.larsmans.infinitybuttons.block.custom.button.AbstractButton;
 import net.larsmans.infinitybuttons.config.AlarmEnum;
 import net.larsmans.infinitybuttons.sounds.InfinityButtonsSounds;

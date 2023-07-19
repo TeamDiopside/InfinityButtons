@@ -2,7 +2,7 @@ package net.larsmans.infinitybuttons.block.custom.button;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.larsmans.infinitybuttons.InfinityButtonsInit;
-import net.larsmans.infinitybuttons.block.InfinityButtonsUtil;
+import net.larsmans.infinitybuttons.InfinityButtonsUtil;
 import net.larsmans.infinitybuttons.particle.InfinityButtonsParticleTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;

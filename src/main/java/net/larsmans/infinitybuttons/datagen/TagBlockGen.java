@@ -3,7 +3,6 @@ package net.larsmans.infinitybuttons.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.larsmans.infinitybuttons.block.InfinityButtonsBlocks;
-import net.larsmans.infinitybuttons.compat.IBCreateBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
@@ -310,6 +309,8 @@ public class TagBlockGen extends FabricTagProvider<Block> {
         getOrCreateTagBuilder(MINEABLE_AXE)
                 .addOptionalTag(WOODEN_LARGE_BUTTONS)
                 .addOptionalTag(WOODEN_SECRET_BUTTONS)
+                .add(InfinityButtonsBlocks.LETTER_BUTTON)
+                .add(InfinityButtonsBlocks.LETTER_LEVER)
         ;
 
         getOrCreateTagBuilder(MINEABLE_PICKAXE)

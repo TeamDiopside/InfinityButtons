@@ -3,8 +3,8 @@ package net.larsmans.infinitybuttons.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
 import net.larsmans.infinitybuttons.block.InfinityButtonsBlocks;
-import net.larsmans.infinitybuttons.compat.IBNethersDelightBlocks;
 import net.larsmans.infinitybuttons.compat.IBCreateBlocks;
+import net.larsmans.infinitybuttons.compat.IBNethersDelightBlocks;
 import net.minecraft.data.server.BlockLootTableGenerator;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.loot.LootTable;
@@ -223,6 +223,8 @@ public class LootTableGen extends SimpleFabricLootTableProvider {
         generateLootTable(i, InfinityButtonsBlocks.DOORBELL_BUTTON);
         generateLootTable(i, InfinityButtonsBlocks.LAMP_BUTTON);
         generateLootTable(i, InfinityButtonsBlocks.LAMP_LEVER);
+        generateLootTable(i, InfinityButtonsBlocks.LETTER_BUTTON);
+        generateLootTable(i, InfinityButtonsBlocks.LETTER_LEVER);
         generateLootTable(i, InfinityButtonsBlocks.LANTERN_BUTTON);
         generateLootTable(i, InfinityButtonsBlocks.LANTERN_LEVER);
         generateLootTable(i, InfinityButtonsBlocks.SOUL_LANTERN_BUTTON);

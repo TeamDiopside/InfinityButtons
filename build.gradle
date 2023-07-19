@@ -59,17 +59,16 @@ dependencies {
 
 	// Uncomment the following line to enable the deprecated Fabric API modules. 
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
-
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 
 	annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
 	include "io.wispforest:owo-sentinel:${project.owo_version}"
+	modRuntimeOnly("com.terraformersmc:modmenu:4.1.2")
+	modImplementation("curse.maven:jade-324717:4328558")
 
 	modCompileOnlyApi("curse.maven:farmers-delight-fabric-482834:4111426")
 	modCompileOnlyApi("curse.maven:nethers-delight-fabric-701831:4353098")
 	modCompileOnlyApi("com.simibubi.create:create-fabric-1.19.2:0.5.1-b-build.1089+mc1.19.2")
-	modImplementation("curse.maven:jade-324717:4328558")
-	modRuntimeOnly("com.terraformersmc:modmenu:4.1.2")
 
 	// Only for data gen
 //	modImplementation("curse.maven:farmers-delight-fabric-482834:4111426")

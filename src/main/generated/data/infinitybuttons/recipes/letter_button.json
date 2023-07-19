@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "infinitybuttons:spruce_large_button"
+    }
+  },
+  "pattern": [
+    "ISI",
+    " I "
+  ],
+  "result": {
+    "item": "infinitybuttons:letter_button"
+  }
+}

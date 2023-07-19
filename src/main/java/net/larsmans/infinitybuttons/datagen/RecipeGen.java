@@ -210,6 +210,16 @@ public class RecipeGen extends FabricRecipeProvider {
                 .input(Items.LEVER)
                 .criterion("has_thing", RecipeProvider.conditionsFromItem(Items.REDSTONE_LAMP)).offerTo(i);
 
+        ShapedRecipeJsonBuilder.create(InfinityButtonsBlocks.LETTER_BUTTON)
+                .pattern("ISI").input('S', InfinityButtonsBlocks.SPRUCE_LARGE_BUTTON)
+                .pattern(" I ").input('I', Items.IRON_INGOT)
+                .criterion("has_thing", RecipeProvider.conditionsFromItem(Items.IRON_INGOT)).offerTo(i);
+
+        ShapelessRecipeJsonBuilder.create(InfinityButtonsBlocks.LETTER_LEVER)
+                .input(InfinityButtonsBlocks.LETTER_BUTTON)
+                .input(Items.LEVER)
+                .criterion("has_thing", RecipeProvider.conditionsFromItem(InfinityButtonsBlocks.LETTER_BUTTON)).offerTo(i);
+
         ShapelessRecipeJsonBuilder.create(InfinityButtonsBlocks.LANTERN_BUTTON)
                 .input(Items.LANTERN)
                 .input(Items.STONE_BUTTON)

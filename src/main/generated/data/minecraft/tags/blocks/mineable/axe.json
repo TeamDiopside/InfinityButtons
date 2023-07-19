@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "infinitybuttons:letter_button",
+    "infinitybuttons:letter_lever",
     {
       "id": "#infinitybuttons:wooden_large_buttons",
       "required": false

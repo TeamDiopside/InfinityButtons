@@ -1,9 +1,11 @@
-package net.larsmans.infinitybuttons.block;
+package net.larsmans.infinitybuttons;
 
 import com.google.common.base.Suppliers;
 import com.google.common.collect.BiMap;
 import com.google.common.collect.ImmutableBiMap;
-import net.larsmans.infinitybuttons.InfinityButtonsInit;
+import net.larsmans.infinitybuttons.block.InfinityButtonsBlocks;
+import net.larsmans.infinitybuttons.block.custom.emergencybutton.SafeEmergencyButton;
+import net.larsmans.infinitybuttons.block.custom.letterbutton.LetterButton;
 import net.minecraft.block.Block;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
@@ -30,6 +32,10 @@ public class InfinityButtonsUtil {
     public static Supplier<BiMap<Block, Block>> WAX_OFF_BY_BLOCK;
     public static Supplier<BiMap<Block, Block>> STICKY_ON_BY_BLOCK;
     public static Supplier<BiMap<Block, Block>> STICKY_OFF_BY_BLOCK;
+
+    public static boolean crouchClickOverrides(Block block) {
+        return block instanceof SafeEmergencyButton || block instanceof LetterButton;
+    }
 
     public static void tooltip(List<Text> tooltip, String name) {
         if (InfinityButtonsInit.CONFIG.tooltips()) {

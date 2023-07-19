@@ -51,6 +51,8 @@ public class InfinityButtonsClientInit implements ClientModInitializer {
         transparent(InfinityButtonsBlocks.BLACK_SAFE_EMERGENCY_BUTTON);
         transparent(InfinityButtonsBlocks.FANCY_SAFE_EMERGENCY_BUTTON);
 
+        transparent(InfinityButtonsBlocks.LETTER_BUTTON);
+        transparent(InfinityButtonsBlocks.LETTER_LEVER);
         transparent(InfinityButtonsBlocks.LANTERN_BUTTON);
         transparent(InfinityButtonsBlocks.LANTERN_LEVER);
         transparent(InfinityButtonsBlocks.SOUL_LANTERN_BUTTON);
