@@ -6,6 +6,7 @@ import com.google.common.collect.ImmutableBiMap;
 import net.larsmans.infinitybuttons.block.InfinityButtonsBlocks;
 import net.larsmans.infinitybuttons.block.custom.emergencybutton.SafeEmergencyButton;
 import net.larsmans.infinitybuttons.block.custom.letterbutton.LetterButton;
+import net.larsmans.infinitybuttons.item.SafeEmergencyButtonItem;
 import net.minecraft.block.Block;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
@@ -16,8 +17,10 @@ import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -25,6 +28,8 @@ public class InfinityButtonsUtil {
 
     public static final MutableText HOLD_SHIFT_TEXT = Text.translatable("infinitybuttons.tooltip.hold_shift").formatted(Formatting.GRAY);
     public static final MutableText SAFE_EMERGENCY_BUTTON_ACTIONBAR_TEXT = Text.translatable("infinitybuttons.actionbar.closed_safety_button");
+
+    public static List<SafeEmergencyButtonItem> SAFETY_BUTTONS;
 
     public static Supplier<BiMap<Block, Block>> NEXT_BY_BLOCK;
     public static Supplier<BiMap<Block, Block>> PREVIOUS_BY_BLOCK;
@@ -117,6 +122,15 @@ public class InfinityButtonsUtil {
                     .put(InfinityButtonsBlocks.WAXED_WEATHERED_COPPER_LARGE_BUTTON, InfinityButtonsBlocks.STICKY_WEATHERED_COPPER_LARGE_BUTTON)
                     .put(InfinityButtonsBlocks.WAXED_OXIDIZED_COPPER_LARGE_BUTTON, InfinityButtonsBlocks.STICKY_OXIDIZED_COPPER_LARGE_BUTTON).build());
             STICKY_OFF_BY_BLOCK = Suppliers.memoize(() -> STICKY_ON_BY_BLOCK.get().inverse());
+        }
+    }
+
+    public static void buildSafety() {
+        if (SAFETY_BUTTONS == null) {
+            SAFETY_BUTTONS = new ArrayList<>();
+            for (Block block : Registry.BLOCK.stream().toList())
+                if (block instanceof SafeEmergencyButton)
+                    SAFETY_BUTTONS.add((SafeEmergencyButtonItem) block.asItem());
         }
     }
 }
