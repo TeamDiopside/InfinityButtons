@@ -265,6 +265,8 @@
   "advancement.infinitybuttons.secret_button.desc": "Verstop een verborgen knop in een muur",
   "advancement.infinitybuttons.safety_button": "Stijlvol!",
   "advancement.infinitybuttons.safety_button.desc": "Draag een veilige noodknop op je hoofd",
+  "advancement.infinitybuttons.letter_button": "Schrijf er een brief mee!",
+  "advancement.infinitybuttons.letter_button.desc": "Uit jezelf met een letterknop",
 
   "text.config.infinity-buttons-config.option.alarmSoundType": "Alarmgeluid",
   "text.config.infinity-buttons-config.option.alarmSoundType.tooltip": "De manier waarop noodknoppen alarmgeluiden kunnen maken\nBereik: Het alarm is hoorbaar tot een bepaalde radius\nGlobaal: Het alarm is overal in de wereld hoorbaar",

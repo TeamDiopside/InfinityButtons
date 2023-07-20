@@ -265,6 +265,8 @@
   "advancement.infinitybuttons.secret_button.desc": "Hide a secret button in a wall",
   "advancement.infinitybuttons.safety_button": "Stylish!",
   "advancement.infinitybuttons.safety_button.desc": "Wear a Safety Button on your head",
+  "advancement.infinitybuttons.letter_button": "Write Me a Letter",
+  "advancement.infinitybuttons.letter_button.desc": "Express yourself with a Letter Button",
 
   "text.config.infinity-buttons-config.option.alarmSoundType": "Alarm Sound",
   "text.config.infinity-buttons-config.option.alarmSoundType.tooltip": "The way in which Emergency Buttons make alarm sounds\nRange: The alarm is audible up to a certain radius\nGlobal: The alarm is audible from anywhere in the world",

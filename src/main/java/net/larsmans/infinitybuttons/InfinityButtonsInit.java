@@ -38,7 +38,9 @@ public class InfinityButtonsInit implements ModInitializer {
 			BlockPos pos = buf.readBlockPos();
 			LetterButtonEnum letterButtonEnum = buf.readEnumConstant(LetterButtonEnum.class);
 			World world = player.getWorld();
-			world.setBlockState(pos, world.getBlockState(pos).with(LetterButton.CHARACTER, letterButtonEnum));
+			if (world.getBlockState(pos).getBlock() instanceof LetterButton) {
+				world.setBlockState(pos, world.getBlockState(pos).with(LetterButton.CHARACTER, letterButtonEnum));
+			}
 		});
 
 		InfinityButtonsItems.registerModItems();

@@ -12,6 +12,7 @@ import net.minecraft.block.enums.WallMountLocation;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
@@ -51,12 +52,22 @@ public class LetterButton extends AbstractLeverableButton {
             if (gameMode == GameMode.ADVENTURE) {
                 return super.onUse(state, world, pos, player, hand, hit);
             }
-            if (world.isClient) {
-                MinecraftClient.getInstance().setScreen(new LetterButtonGui(this, state, world, pos));
-            }
+            openScreen(state, world, pos);
             return ActionResult.success(world.isClient);
         } else {
             return super.onUse(state, world, pos, player, hand, hit);
+        }
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        super.onPlaced(world, pos, state, placer, itemStack);
+        openScreen(state, world, pos);
+    }
+
+    public void openScreen(BlockState state, World world, BlockPos pos) {
+        if (world.isClient) {
+            MinecraftClient.getInstance().setScreen(new LetterButtonGui(this, state, world, pos));
         }
     }
 
