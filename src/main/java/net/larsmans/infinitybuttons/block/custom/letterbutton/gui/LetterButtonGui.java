@@ -87,7 +87,7 @@ public class LetterButtonGui extends Screen {
     @Override
     public void close() {
         for (LetterButtonEnum buttonEnum : LetterButtonEnum.values()) {
-            if (selectedButton == buttonEnum.ordinal()) {
+            if (selectedButton == buttonEnum.ordinal() && world.getBlockState(pos).getBlock() instanceof LetterButton) {
                 letterButton.setState(state, world, pos, buttonEnum);
                 ClientPlayNetworking.send(LETTER_BUTTON_PACKET, PacketByteBufs.create().writeBlockPos(pos).writeEnumConstant(buttonEnum));
             }
