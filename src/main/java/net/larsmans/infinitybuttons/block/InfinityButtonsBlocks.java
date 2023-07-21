@@ -380,7 +380,7 @@ public class InfinityButtonsBlocks {
     public static final Block DOORBELL_BUTTON = registerBlockWithItem("doorbell_button", new DoorbellButton(doorbellSettings()));
     public static final Block LAMP_BUTTON = registerBlockWithItem("lamp_button", new LampButton(lampSettings(), false));
     public static final Block LAMP_LEVER = registerBlockWithItem("lamp_lever", new LampButton(lampSettings(), true));
-    public static final Block LETTER_BUTTON = registerBlockWithItem("letter_button", new LetterButton(FabricBlockSettings.of(Material.WOOD).strength(0.5f).noCollision().sounds(BlockSoundGroup.WOOD), false));
+    public static final Block LETTER_BUTTON = registerBlockWithItem("letter_button", new LetterButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).noCollision().sounds(BlockSoundGroup.WOOD), false));
     public static final Block LETTER_LEVER = registerBlockWithItem("letter_lever", new LetterButton(FabricBlockSettings.copyOf(LETTER_BUTTON), true));
     public static final Block LANTERN_BUTTON = registerBlockWithItem("lantern_button", new LanternButton(lanternSettings().luminance(state -> 15), false));
     public static final Block LANTERN_LEVER = registerBlockWithItem("lantern_lever", new LanternButton(lanternSettings().luminance(state -> 15), true));
