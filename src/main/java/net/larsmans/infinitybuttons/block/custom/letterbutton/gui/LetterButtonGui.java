@@ -14,10 +14,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.lwjgl.glfw.GLFW;
 
+import static net.larsmans.infinitybuttons.InfinityButtonsInit.LETTER_BUTTON_PACKET;
+
 public class LetterButtonGui extends Screen {
 
     private static final Identifier LETTER_TEXTURE = new Identifier("infinitybuttons", "textures/block/letter_button/characters.png");
-    public static final Identifier LETTER_BUTTON_PACKET = new Identifier("infinitybuttons", "letter_button");
 
     private static final int BUTTON_WIDTH = 24;
     private static final int BUTTON_HEIGHT = 24;

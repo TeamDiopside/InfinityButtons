@@ -7,7 +7,6 @@ import net.larsmans.infinitybuttons.advancement.InfinityButtonsTriggers;
 import net.larsmans.infinitybuttons.block.InfinityButtonsBlocks;
 import net.larsmans.infinitybuttons.block.custom.letterbutton.LetterButton;
 import net.larsmans.infinitybuttons.block.custom.letterbutton.LetterButtonEnum;
-import net.larsmans.infinitybuttons.block.custom.letterbutton.gui.LetterButtonGui;
 import net.larsmans.infinitybuttons.compat.IBCreateBlocks;
 import net.larsmans.infinitybuttons.compat.IBNethersDelightBlocks;
 import net.larsmans.infinitybuttons.compat.IBNethersDelightItems;
@@ -20,6 +19,7 @@ import net.minecraft.block.dispenser.FallibleItemDispenserBehavior;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPointer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
@@ -31,10 +31,11 @@ public class InfinityButtonsInit implements ModInitializer {
 	public static final String MOD_ID = "infinitybuttons";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static final net.larsmans.infinitybuttons.config.InfinityButtonsConfig CONFIG = net.larsmans.infinitybuttons.config.InfinityButtonsConfig.createAndLoad();
+	public static final Identifier LETTER_BUTTON_PACKET = new Identifier("infinitybuttons", "letter_button");
 
 	@Override
 	public void onInitialize() {
-		ServerPlayNetworking.registerGlobalReceiver(LetterButtonGui.LETTER_BUTTON_PACKET, (server, player, handler, buf, sender) -> {
+		ServerPlayNetworking.registerGlobalReceiver(LETTER_BUTTON_PACKET, (server, player, handler, buf, sender) -> {
 			BlockPos pos = buf.readBlockPos();
 			LetterButtonEnum letterButtonEnum = buf.readEnumConstant(LetterButtonEnum.class);
 			World world = player.getWorld();
