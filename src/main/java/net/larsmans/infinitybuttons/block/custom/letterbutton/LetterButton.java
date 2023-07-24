@@ -1,10 +1,11 @@
 package net.larsmans.infinitybuttons.block.custom.letterbutton;
 
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.larsmans.infinitybuttons.InfinityButtonsUtil;
 import net.larsmans.infinitybuttons.block.custom.button.AbstractLeverableButton;
 import net.larsmans.infinitybuttons.block.custom.button.LargeButtonShape;
-import net.larsmans.infinitybuttons.block.custom.letterbutton.gui.LetterButtonGui;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -15,6 +16,8 @@ import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
@@ -34,6 +37,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Objects;
 
+import static net.larsmans.infinitybuttons.InfinityButtonsClientInit.LETTER_BUTTON_SCREEN_PACKET;
+
 public class LetterButton extends AbstractLeverableButton {
 
     public static final EnumProperty<LetterButtonEnum> CHARACTER = EnumProperty.of("character", LetterButtonEnum.class);
@@ -45,29 +50,36 @@ public class LetterButton extends AbstractLeverableButton {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ClientPlayNetworkHandler connection = MinecraftClient.getInstance().getNetworkHandler();
-        assert connection != null;
-        GameMode gameMode = Objects.requireNonNull(connection.getPlayerListEntry(player.getGameProfile().getId())).getGameMode();
+        GameMode gameMode = GameMode.DEFAULT;
+        if (world.isClient) {
+            ClientPlayNetworkHandler connection = MinecraftClient.getInstance().getNetworkHandler();
+            assert connection != null;
+            gameMode = Objects.requireNonNull(connection.getPlayerListEntry(player.getGameProfile().getId())).getGameMode();
+        } else if (player instanceof ServerPlayerEntity serverPlayer) {
+            gameMode = serverPlayer.interactionManager.getGameMode();
+        }
+
         if (player.isSneaking()) {
             if (gameMode == GameMode.ADVENTURE) {
                 return super.onUse(state, world, pos, player, hand, hit);
             }
-            openScreen(state, world, pos);
+            openScreen(world, pos, player);
             return ActionResult.success(world.isClient);
-        } else {
-            return super.onUse(state, world, pos, player, hand, hit);
         }
+        return super.onUse(state, world, pos, player, hand, hit);
     }
 
     @Override
-    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+    public void onPlaced(World world, BlockPos pos, BlockState state, @javax.annotation.Nullable LivingEntity placer, ItemStack itemStack) {
         super.onPlaced(world, pos, state, placer, itemStack);
-        openScreen(state, world, pos);
+        openScreen(world, pos, placer);
     }
 
-    public void openScreen(BlockState state, World world, BlockPos pos) {
-        if (world.isClient) {
-            MinecraftClient.getInstance().setScreen(new LetterButtonGui(this, state, world, pos));
+    public void openScreen(World world, BlockPos pos, LivingEntity entity) {
+        if (!world.isClient && entity instanceof ServerPlayerEntity player) {
+            PacketByteBuf buf = PacketByteBufs.create();
+            buf.writeBlockPos(pos);
+            ServerPlayNetworking.send(player, LETTER_BUTTON_SCREEN_PACKET, buf);
         }
     }
 

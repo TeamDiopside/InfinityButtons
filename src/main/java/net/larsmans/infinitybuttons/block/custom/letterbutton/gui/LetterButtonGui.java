@@ -14,7 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.lwjgl.glfw.GLFW;
 
-import static net.larsmans.infinitybuttons.InfinityButtonsInit.LETTER_BUTTON_PACKET;
+import static net.larsmans.infinitybuttons.InfinityButtonsInit.LETTER_BUTTON_BLOCK_PACKET;
 
 public class LetterButtonGui extends Screen {
 
@@ -90,7 +90,7 @@ public class LetterButtonGui extends Screen {
         for (LetterButtonEnum buttonEnum : LetterButtonEnum.values()) {
             if (selectedButton == buttonEnum.ordinal() && world.getBlockState(pos).getBlock() instanceof LetterButton) {
                 letterButton.setState(state, world, pos, buttonEnum);
-                ClientPlayNetworking.send(LETTER_BUTTON_PACKET, PacketByteBufs.create().writeBlockPos(pos).writeEnumConstant(buttonEnum));
+                ClientPlayNetworking.send(LETTER_BUTTON_BLOCK_PACKET, PacketByteBufs.create().writeBlockPos(pos).writeEnumConstant(buttonEnum));
             }
         }
         super.close();

@@ -2,21 +2,35 @@ package net.larsmans.infinitybuttons;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.larsmans.infinitybuttons.block.InfinityButtonsBlocks;
+import net.larsmans.infinitybuttons.block.custom.letterbutton.LetterButton;
+import net.larsmans.infinitybuttons.block.custom.letterbutton.gui.LetterButtonGui;
 import net.larsmans.infinitybuttons.compat.IBNethersDelightBlocks;
 import net.larsmans.infinitybuttons.particle.DiamondSparkleParticle;
 import net.larsmans.infinitybuttons.particle.InfinityButtonsParticleTypes;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+
+import static net.larsmans.infinitybuttons.InfinityButtonsInit.MOD_ID;
 
 public class InfinityButtonsClientInit implements ClientModInitializer {
+
+    public static final Identifier LETTER_BUTTON_SCREEN_PACKET = new Identifier(MOD_ID, "letter_button_screen");
+
     @Override
     public void onInitializeClient() {
+        registerPackets();
+
         ClientSpriteRegistryCallback.event(PlayerScreenHandler.BLOCK_ATLAS_TEXTURE).register(((atlasTexture, registry) -> registry.register(new Identifier("infinitybuttons", "particle/diamond_sparkle"))));
         ParticleFactoryRegistry.getInstance().register(InfinityButtonsParticleTypes.DIAMOND_SPARKLE, DiamondSparkleParticle.Factory::new);
 
@@ -77,5 +91,16 @@ public class InfinityButtonsClientInit implements ClientModInitializer {
 
     private void transparent(Block block) {
         BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
+    }
+
+    public static void registerPackets() {
+        ClientPlayNetworking.registerGlobalReceiver(LETTER_BUTTON_SCREEN_PACKET, (client, handler, buf, responseSender) -> {
+            BlockPos pos = buf.readBlockPos();
+            World world = client.world;
+            BlockState state = world.getBlockState(pos);
+            if (state.getBlock() instanceof LetterButton letterButton) {
+                client.execute(() -> MinecraftClient.getInstance().setScreen(new LetterButtonGui(letterButton, state, world, pos)));
+            }
+        });
     }
 }

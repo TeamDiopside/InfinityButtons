@@ -31,19 +31,12 @@ public class InfinityButtonsInit implements ModInitializer {
 	public static final String MOD_ID = "infinitybuttons";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 	public static final net.larsmans.infinitybuttons.config.InfinityButtonsConfig CONFIG = net.larsmans.infinitybuttons.config.InfinityButtonsConfig.createAndLoad();
-	public static final Identifier LETTER_BUTTON_PACKET = new Identifier("infinitybuttons", "letter_button");
+
+	public static final Identifier LETTER_BUTTON_BLOCK_PACKET = new Identifier(MOD_ID, "letter_button_block");
 
 	@Override
 	public void onInitialize() {
-		ServerPlayNetworking.registerGlobalReceiver(LETTER_BUTTON_PACKET, (server, player, handler, buf, sender) -> {
-			BlockPos pos = buf.readBlockPos();
-			LetterButtonEnum letterButtonEnum = buf.readEnumConstant(LetterButtonEnum.class);
-			World world = player.getWorld();
-			if (world.getBlockState(pos).getBlock() instanceof LetterButton) {
-				world.setBlockState(pos, world.getBlockState(pos).with(LetterButton.CHARACTER, letterButtonEnum));
-			}
-		});
-
+		registerPackets();
 		InfinityButtonsItems.registerModItems();
 		InfinityButtonsBlocks.registerModBlocks();
 		InfinityButtonsSounds.registerSounds();
@@ -59,6 +52,17 @@ public class InfinityButtonsInit implements ModInitializer {
 		if (FabricLoader.getInstance().isModLoaded("create")) {
 			IBCreateBlocks.registerCompatBlocks();
 		}
+	}
+
+	public static void registerPackets() {
+		ServerPlayNetworking.registerGlobalReceiver(LETTER_BUTTON_BLOCK_PACKET, (server, player, handler, buf, sender) -> {
+			BlockPos pos = buf.readBlockPos();
+			LetterButtonEnum letterButtonEnum = buf.readEnumConstant(LetterButtonEnum.class);
+			World world = player.getWorld();
+			if (world.getBlockState(pos).getBlock() instanceof LetterButton) {
+				world.setBlockState(pos, world.getBlockState(pos).with(LetterButton.CHARACTER, letterButtonEnum));
+			}
+		});
 	}
 
 	public static void registerDispenserBehavior() {
