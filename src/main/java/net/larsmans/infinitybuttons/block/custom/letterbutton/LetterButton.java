@@ -37,7 +37,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Objects;
 
-import static net.larsmans.infinitybuttons.InfinityButtonsClientInit.LETTER_BUTTON_SCREEN_PACKET;
+import static net.larsmans.infinitybuttons.InfinityButtonsInit.LETTER_BUTTON_SCREEN_PACKET;
 
 public class LetterButton extends AbstractLeverableButton {
 
@@ -59,10 +59,7 @@ public class LetterButton extends AbstractLeverableButton {
             gameMode = serverPlayer.interactionManager.getGameMode();
         }
 
-        if (player.isSneaking()) {
-            if (gameMode == GameMode.ADVENTURE) {
-                return super.onUse(state, world, pos, player, hand, hit);
-            }
+        if (player.isSneaking() && gameMode != GameMode.ADVENTURE) {
             openScreen(world, pos, player);
             return ActionResult.success(world.isClient);
         }

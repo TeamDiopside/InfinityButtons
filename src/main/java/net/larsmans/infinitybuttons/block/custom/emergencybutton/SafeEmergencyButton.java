@@ -197,9 +197,15 @@ public class SafeEmergencyButton extends WallMountedBlock {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ClientPlayNetworkHandler connection = MinecraftClient.getInstance().getNetworkHandler();
-        assert connection != null;
-        GameMode gameMode = Objects.requireNonNull(connection.getPlayerListEntry(player.getGameProfile().getId())).getGameMode();
+        GameMode gameMode = GameMode.DEFAULT;
+        if (world.isClient) {
+            ClientPlayNetworkHandler connection = MinecraftClient.getInstance().getNetworkHandler();
+            assert connection != null;
+            gameMode = Objects.requireNonNull(connection.getPlayerListEntry(player.getGameProfile().getId())).getGameMode();
+        } else if (player instanceof ServerPlayerEntity serverPlayer) {
+            gameMode = serverPlayer.interactionManager.getGameMode();
+        }
+
         if (gameMode == GameMode.SPECTATOR)
             return ActionResult.FAIL;
         switch (state.get(STATE)) {
