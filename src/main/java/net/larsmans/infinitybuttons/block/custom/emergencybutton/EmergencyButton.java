@@ -1,12 +1,12 @@
 package net.larsmans.infinitybuttons.block.custom.emergencybutton;
 
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.larsmans.infinitybuttons.InfinityButtonsInit;
-import net.larsmans.infinitybuttons.InfinityButtonsUtil;
 import net.larsmans.infinitybuttons.advancement.InfinityButtonsTriggers;
 import net.larsmans.infinitybuttons.block.custom.button.AbstractButton;
 import net.larsmans.infinitybuttons.config.AlarmEnum;
-import net.larsmans.infinitybuttons.sounds.InfinityButtonsSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -15,7 +15,9 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -35,6 +37,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static net.larsmans.infinitybuttons.InfinityButtonsInit.ALARM_PACKET;
 
 
 public class EmergencyButton extends AbstractButton {
@@ -108,9 +112,7 @@ public class EmergencyButton extends AbstractButton {
         }
         this.powerOn(state, world, pos);
         this.playClickSound(player, world, pos, true);
-        if (InfinityButtonsInit.CONFIG.alarmSoundType() != AlarmEnum.OFF) {
-            emergencySound(world, pos, player);
-        }
+        emergencySound(world, pos);
         if (player instanceof ServerPlayerEntity) {
             InfinityButtonsTriggers.EMERGENCY_TRIGGER.trigger((ServerPlayerEntity) player);
         }
@@ -119,12 +121,14 @@ public class EmergencyButton extends AbstractButton {
             if (InfinityButtonsInit.CONFIG.alarmSoundType() == AlarmEnum.GLOBAL) {
                 villagers = new ArrayList<>();
                 List<LivingEntity> villagersDup = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(512), entity -> entity.getType() == EntityType.VILLAGER);
-                for (PlayerEntity player1 : world.getPlayers())
+                for (PlayerEntity player1 : world.getPlayers()) {
                     villagersDup.addAll(world.getEntitiesByClass(LivingEntity.class, new Box(player1.getBlockPos()).expand(512), entity -> entity.getType() == EntityType.VILLAGER));
-                for (LivingEntity villager : villagersDup)
-                    if (!villagers.contains(villager))
+                }
+                for (LivingEntity villager : villagersDup) {
+                    if (!villagers.contains(villager)) {
                         villagers.add(villager);
-
+                    }
+                }
             }
             if (InfinityButtonsInit.CONFIG.alarmSoundType() == AlarmEnum.RANGE) {
                 villagers = world.getEntitiesByClass(LivingEntity.class, new Box(pos).expand(InfinityButtonsInit.CONFIG.alarmSoundRange()), entity -> entity.getType() == EntityType.VILLAGER);
@@ -154,14 +158,14 @@ public class EmergencyButton extends AbstractButton {
         return SoundEvents.BLOCK_BONE_BLOCK_BREAK;
     }
 
-    public static void emergencySound(World world, BlockPos pos, PlayerEntity player) {
-        if (InfinityButtonsInit.CONFIG.alarmSoundType() == AlarmEnum.GLOBAL) {
-            InfinityButtonsUtil.playGlobalSound(world, pos, InfinityButtonsSounds.ALARM, SoundCategory.BLOCKS);
-        } else {
-            world.playSound(player, pos, InfinityButtonsSounds.ALARM, SoundCategory.BLOCKS, (float) InfinityButtonsInit.CONFIG.alarmSoundRange() / 16f, 1);
+    public static void emergencySound(World world, BlockPos pos) {
+        if (!world.isClient) {
+            PacketByteBuf buf = PacketByteBufs.create();
+            buf.writeBlockPos(pos);
+            buf.writeEnumConstant(InfinityButtonsInit.CONFIG.alarmSoundType());
+            for (ServerPlayerEntity playerEntity : ((ServerWorld) world).getPlayers()) {
+                ServerPlayNetworking.send(playerEntity, ALARM_PACKET, buf);
+            }
         }
     }
 }
-
-
-

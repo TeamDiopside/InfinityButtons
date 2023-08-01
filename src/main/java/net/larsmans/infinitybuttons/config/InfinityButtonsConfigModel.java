@@ -8,10 +8,12 @@ import io.wispforest.owo.config.annotation.RangeConstraint;
 @Config(name = "infinity-buttons-config", wrapperName = "InfinityButtonsConfig")
 public class InfinityButtonsConfigModel {
 
+    public boolean muteAlarmSound = false;
+
     public AlarmEnum alarmSoundType = AlarmEnum.RANGE;
 
-    @RangeConstraint(min = 16, max = 512)
-    public int alarmSoundRange = 64;
+    @RangeConstraint(min = 1, max = 32)
+    public int alarmSoundRange = 6;
 
     public boolean alarmVillagerPanic = true;
 

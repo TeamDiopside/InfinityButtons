@@ -219,9 +219,7 @@ public class SafeEmergencyButton extends WallMountedBlock {
                 } else {
                     this.powerOn(state, world, pos);
                     this.playClickSound(player, world, pos, true);
-                    if (InfinityButtonsInit.CONFIG.alarmSoundType() != AlarmEnum.OFF) {
-                        EmergencyButton.emergencySound(world, pos, player);
-                    }
+                    EmergencyButton.emergencySound(world, pos);
                     if (player instanceof ServerPlayerEntity) {
                         InfinityButtonsTriggers.EMERGENCY_TRIGGER.trigger((ServerPlayerEntity) player);
                     }
