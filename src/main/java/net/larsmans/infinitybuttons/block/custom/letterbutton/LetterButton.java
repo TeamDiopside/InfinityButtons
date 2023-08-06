@@ -60,7 +60,7 @@ public class LetterButton extends AbstractLeverableButton {
         }
 
         if (player.isSneaking() && gameMode != GameMode.ADVENTURE) {
-            openScreen(world, pos, player);
+            openScreen(pos, player);
             return ActionResult.success(world.isClient);
         }
         return super.onUse(state, world, pos, player, hand, hit);
@@ -69,11 +69,11 @@ public class LetterButton extends AbstractLeverableButton {
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @javax.annotation.Nullable LivingEntity placer, ItemStack itemStack) {
         super.onPlaced(world, pos, state, placer, itemStack);
-        openScreen(world, pos, placer);
+        openScreen(pos, placer);
     }
 
-    public void openScreen(World world, BlockPos pos, LivingEntity entity) {
-        if (!world.isClient && entity instanceof ServerPlayerEntity player) {
+    public void openScreen(BlockPos pos, LivingEntity entity) {
+        if (entity instanceof ServerPlayerEntity player) {
             PacketByteBuf buf = PacketByteBufs.create();
             buf.writeBlockPos(pos);
             ServerPlayNetworking.send(player, LETTER_BUTTON_SCREEN_PACKET, buf);
