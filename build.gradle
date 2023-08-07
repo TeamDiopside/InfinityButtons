@@ -84,14 +84,15 @@ dependencies {
 modrinth {
 	token = System.getenv("MODRINTH_TOKEN")
 	projectId = "infinitybuttons"
-	versionNumber = "${rootProject.mod_version}"
-	versionName = "Infinity Buttons ${rootProject.mod_version} Fabric 1.19.2"
+	versionNumber = "${project.mod_version}"
+	versionName = "Infinity Buttons [FABRIC] ${project.mod_version} - 1.19.2"
 	versionType = "release"
 	uploadFile = remapJar
 	gameVersions = ["1.19", "1.19.1", "1.19.2"]
 	loaders = ["fabric"]
 	dependencies {
 		required.project "owo-lib"
+		optional.project "modmenu"
 	}
 	changelog = rootProject.file("CHANGELOG_LATEST.md").text
 
@@ -113,9 +114,10 @@ curseforge {
 
 		relations {
 			requiredDependency "owo-lib"
+			optionalDependency "modmenu"
 		}
 		mainArtifact(remapJar) {
-			displayName = "Infinity Buttons ${rootProject.mod_version} Fabric 1.19.2"
+			displayName = "Infinity Buttons [FABRIC] ${project.mod_version} - 1.19.2"
 		}
 		options {
 			javaVersionAutoDetect = false
