@@ -281,6 +281,8 @@
   "text.config.infinity-buttons-config.option.tooltips.tooltip": "Whether tooltips show up",
   "text.config.infinity-buttons-config.option.diamondParticles": "Diamond Button Particles",
   "text.config.infinity-buttons-config.option.diamondParticles.tooltip": "Whether Diamond Buttons have particles around them",
+  "text.config.infinity-buttons-config.option.forceJadeHiding": "Force Hiding In Jade",
+  "text.config.infinity-buttons-config.option.forceJadeHiding.tooltip": "Whether a server should force clients to hide secret buttons when using Jade\n\n§cChanging this client-side has no effect on a server,\nit has to be changed in the server's config",
   "text.config.infinity-buttons-config.title": "Infinity Buttons Config",
 
   "tag.item.infinitybuttons.bookshelf_secret_buttons": "Bookshelf Secret Buttons",

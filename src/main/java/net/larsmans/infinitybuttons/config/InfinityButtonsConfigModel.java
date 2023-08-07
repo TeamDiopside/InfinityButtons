@@ -20,4 +20,6 @@ public class InfinityButtonsConfigModel {
     public boolean tooltips = true;
 
     public boolean diamondParticles = true;
+
+    public boolean forceJadeHiding = true;
 }

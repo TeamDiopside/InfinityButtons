@@ -280,6 +280,8 @@
   "text.config.infinity-buttons-config.option.tooltips.tooltip": "是否显示工具提示",
   "text.config.infinity-buttons-config.option.diamondParticles": "钻石按钮的粒子效果",
   "text.config.infinity-buttons-config.option.diamondParticles.tooltip": "钻石按钮四周是否会有粒子效果",
+  "text.config.infinity-buttons-config.option.forceJadeHiding": "Force Hiding In Jade",
+  "text.config.infinity-buttons-config.option.forceJadeHiding.tooltip": "Whether a server should force clients to hide secret buttons when using Jade\n\n§cChanging this client-side has no effect on a server,\nit has to be changed in the server's config",
   "text.config.infinity-buttons-config.title": "无限按钮 Config",
 
   "tag.item.infinitybuttons.bookshelf_secret_buttons": "Bookshelf Secret Buttons",

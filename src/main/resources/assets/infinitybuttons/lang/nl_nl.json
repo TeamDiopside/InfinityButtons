@@ -281,6 +281,8 @@
   "text.config.infinity-buttons-config.option.tooltips.tooltip": "Of tooltips worden weergegeven",
   "text.config.infinity-buttons-config.option.diamondParticles": "Diamanten-knopdeeltjes",
   "text.config.infinity-buttons-config.option.diamondParticles.tooltip": "Of er deeltjes om diamanten knoppen komen",
+  "text.config.infinity-buttons-config.option.forceJadeHiding": "Force Hiding In Jade",
+  "text.config.infinity-buttons-config.option.forceJadeHiding.tooltip": "Of een server clients moet forceren om verborgen knoppen te verstoppen wanneer ze Jade gebruiken\n\n§cDit client-side veranderen heeft geen effect op een server,\nhet moet in de config van de server veranderd worden",
   "text.config.infinity-buttons-config.title": "Infinity Buttons Configuratie",
 
   "tag.item.infinitybuttons.bookshelf_secret_buttons": "Boekenkast verborgen knoppen",
