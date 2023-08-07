@@ -63,25 +63,6 @@ public class InfinityButtonsUtil {
         }
     }
 
-    public static void playGlobalSound(World world, BlockPos pos, SoundEvent soundEvent, SoundCategory soundCategory) {
-        Camera cam = MinecraftClient.getInstance().gameRenderer.getCamera();
-        if (cam.isReady()) {
-            double x = cam.getPos().x;
-            double y = cam.getPos().y;
-            double z = cam.getPos().z;
-            double d0 = (double)pos.getX() - x;
-            double d1 = (double)pos.getY() - y;
-            double d2 = (double)pos.getZ() - z;
-            double d3 = Math.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
-            if (d3 > 0.0D) {
-                x += d0 / d3 * 2.0D;
-                y += d1 / d3 * 2.0D;
-                z += d2 / d3 * 2.0D;
-            }
-            world.playSound(x, y, z, soundEvent, soundCategory, 1.0F, 1.0F, false);
-        }
-    }
-
     public static void buildNext() {
         if (NEXT_BY_BLOCK == null) {
             NEXT_BY_BLOCK = Suppliers.memoize(() -> ImmutableBiMap.<Block, Block>builder()

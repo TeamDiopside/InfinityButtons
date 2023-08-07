@@ -17,11 +17,14 @@ import net.larsmans.infinitybuttons.sounds.InfinityButtonsSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import static net.larsmans.infinitybuttons.InfinityButtonsInit.ALARM_PACKET;
@@ -111,10 +114,18 @@ public class InfinityButtonsClientInit implements ClientModInitializer {
             BlockPos pos = buf.readBlockPos();
             AlarmEnum alarmEnum = buf.readEnumConstant(AlarmEnum.class);
             if (alarmEnum == AlarmEnum.GLOBAL) {
-                InfinityButtonsUtil.playGlobalSound(client.world, pos, InfinityButtonsSounds.ALARM, SoundCategory.BLOCKS);
+                playGlobalSound(client.world, pos, InfinityButtonsSounds.ALARM, SoundCategory.BLOCKS);
             } else {
+                assert client.world != null;
                 client.world.playSound(client.player, pos, InfinityButtonsSounds.ALARM, SoundCategory.BLOCKS, (float) InfinityButtonsInit.CONFIG.alarmSoundRange(), 1);
             }
         });
+    }
+
+    public static void playGlobalSound(World world, BlockPos pos, SoundEvent soundEvent, SoundCategory soundCategory) {
+        Camera cam = MinecraftClient.getInstance().gameRenderer.getCamera();
+        if (cam.isReady()) {
+            world.playSound(pos.getX(), pos.getY(), pos.getZ(), soundEvent, soundCategory, (float)cam.getPos().distanceTo(Vec3d.ofCenter(pos))/16.0F + 20.0F, 1.0F, false);
+        }
     }
 }
