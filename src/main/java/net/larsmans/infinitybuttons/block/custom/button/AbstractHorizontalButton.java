@@ -135,11 +135,6 @@ public abstract class AbstractHorizontalButton extends HorizontalDirectionalBloc
         }
     }
 
-    @Override
-    public PushReaction getPistonPushReaction(BlockState pState) {
-        return PushReaction.DESTROY;
-    }
-
     public void updateNeighbors(BlockState state, Level world, BlockPos pos) {
         world.updateNeighborsAt(pos, this);
         world.updateNeighborsAt(pos.relative(state.getValue(FACING).getOpposite()), this);

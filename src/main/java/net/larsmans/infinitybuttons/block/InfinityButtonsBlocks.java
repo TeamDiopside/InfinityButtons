@@ -26,6 +26,7 @@ import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -69,10 +70,10 @@ public class InfinityButtonsBlocks {
     public static final RegistryObject<Block> GOLD_BUTTON = registerArrowButton("gold");
 
     public static final RegistryObject<Block> EMERALD_BUTTON = registerBlock("emerald_button",
-            () -> new EmeraldButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.METAL).requiresCorrectToolForDrops(), false));
+            () -> new EmeraldButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.METAL).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), false));
 
     public static final RegistryObject<Block> DIAMOND_BUTTON = registerBlock("diamond_button",
-            () -> new DiamondButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.METAL).requiresCorrectToolForDrops(), false));
+            () -> new DiamondButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.METAL).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), false));
 
     public static final RegistryObject<Block> PRISMARINE_BUTTON = registerPrismarineButton("prismarine");
     public static final RegistryObject<Block> PRISMARINE_BRICK_BUTTON = registerPrismarineButton("prismarine_brick");
@@ -142,10 +143,10 @@ public class InfinityButtonsBlocks {
     public static final RegistryObject<Block> GOLD_LARGE_BUTTON = registerArrowLargeButton("gold");
 
     public static final RegistryObject<Block> EMERALD_LARGE_BUTTON = registerBlock("emerald_large_button",
-            () -> new EmeraldButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.METAL).requiresCorrectToolForDrops(), true));
+            () -> new EmeraldButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.METAL).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), true));
 
     public static final RegistryObject<Block> DIAMOND_LARGE_BUTTON = registerBlock("diamond_large_button",
-            () -> new DiamondButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.METAL).requiresCorrectToolForDrops(), true));
+            () -> new DiamondButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.METAL).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), true));
 
     public static final RegistryObject<Block> PRISMARINE_LARGE_BUTTON = registerPrismarineLargeButton("prismarine");
     public static final RegistryObject<Block> PRISMARINE_BRICK_LARGE_BUTTON = registerPrismarineLargeButton("prismarine_brick");
@@ -217,34 +218,34 @@ public class InfinityButtonsBlocks {
      */
 
     public static final RegistryObject<Block> BOOKSHELF_SECRET_BUTTON = registerBlock("bookshelf_secret_button",
-            () -> new BookshelfSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).ignitedByLava().strength(1.5f).noOcclusion().sound(SoundType.WOOD), byName("bookshelf")));
+            () -> new BookshelfSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).ignitedByLava().strength(1.5f).noOcclusion().sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY), byName("bookshelf")));
 
     public static final RegistryObject<Block> BRICK_SECRET_BUTTON = registerBlock("brick_secret_button",
-            () -> new FullBlockBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops(), byName("bricks")));
+            () -> new FullBlockBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("bricks")));
 
     public static final RegistryObject<Block> STONE_BRICK_SECRET_BUTTON = registerBlock("stone_brick_secret_button",
-            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops(), byName("stone_bricks")));
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("stone_bricks")));
 
     public static final RegistryObject<Block> MOSSY_STONE_BRICK_SECRET_BUTTON = registerBlock("mossy_stone_brick_secret_button",
-            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops(), byName("mossy_stone_bricks")));
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("mossy_stone_bricks")));
 
     public static final RegistryObject<Block> CRACKED_STONE_BRICK_SECRET_BUTTON = registerBlock("cracked_stone_brick_secret_button",
-            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops(), byName("cracked_stone_bricks")));
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("cracked_stone_bricks")));
 
     public static final RegistryObject<Block> CHISELED_STONE_BRICK_SECRET_BUTTON = registerBlock("chiseled_stone_brick_secret_button",
-            () -> new ChiseledStoneBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops(), byName("chiseled_stone_bricks")));
+            () -> new ChiseledStoneBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("chiseled_stone_bricks")));
 
     public static final RegistryObject<Block> DEEPSLATE_BRICK_SECRET_BUTTON = registerBlock("deepslate_brick_secret_button",
-            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(3.5f, 6.0f).noOcclusion().sound(SoundType.DEEPSLATE_BRICKS).requiresCorrectToolForDrops(), byName("deepslate_bricks")));
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(3.5f, 6.0f).noOcclusion().sound(SoundType.DEEPSLATE_BRICKS).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("deepslate_bricks")));
 
     public static final RegistryObject<Block> CRACKED_DEEPSLATE_BRICK_SECRET_BUTTON = registerBlock("cracked_deepslate_brick_secret_button",
-            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(3.5f, 6.0f).noOcclusion().sound(SoundType.DEEPSLATE_BRICKS).requiresCorrectToolForDrops(), byName("cracked_deepslate_bricks")));
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(3.5f, 6.0f).noOcclusion().sound(SoundType.DEEPSLATE_BRICKS).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("cracked_deepslate_bricks")));
 
     public static final RegistryObject<Block> DEEPSLATE_TILE_SECRET_BUTTON = registerBlock("deepslate_tile_secret_button",
-            () -> new DeepslateTileSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(3.5f, 6.0f).noOcclusion().sound(SoundType.DEEPSLATE_TILES).requiresCorrectToolForDrops(), byName("deepslate_tiles")));
+            () -> new DeepslateTileSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(3.5f, 6.0f).noOcclusion().sound(SoundType.DEEPSLATE_TILES).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("deepslate_tiles")));
 
     public static final RegistryObject<Block> CRACKED_DEEPSLATE_TILE_SECRET_BUTTON = registerBlock("cracked_deepslate_tile_secret_button",
-            () -> new DeepslateTileSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(3.5f, 6.0f).noOcclusion().sound(SoundType.DEEPSLATE_TILES).requiresCorrectToolForDrops(), byName("cracked_deepslate_tiles")));
+            () -> new DeepslateTileSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(3.5f, 6.0f).noOcclusion().sound(SoundType.DEEPSLATE_TILES).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("cracked_deepslate_tiles")));
 
     public static final RegistryObject<Block> OAK_PLANK_SECRET_BUTTON = registerPlankSecretButton("oak", MapColor.WOOD);
     public static final RegistryObject<Block> SPRUCE_PLANK_SECRET_BUTTON = registerPlankSecretButton("spruce", MapColor.PODZOL);
@@ -257,40 +258,40 @@ public class InfinityButtonsBlocks {
     public static final RegistryObject<Block> WARPED_PLANK_SECRET_BUTTON = registerNetherPlankSecretButton("warped", MapColor.WARPED_STEM);
 
     public static final RegistryObject<Block> MUD_BRICK_SECRET_BUTTON = registerBlock("mud_brick_secret_button",
-            () -> new MudBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).strength(1.5f, 3.0f).noOcclusion().sound(SoundType.MUD_BRICKS).requiresCorrectToolForDrops(), byName("mud_bricks")));
+            () -> new MudBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).strength(1.5f, 3.0f).noOcclusion().sound(SoundType.MUD_BRICKS).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("mud_bricks")));
 
     public static final RegistryObject<Block> END_STONE_BRICK_SECRET_BUTTON = registerBlock("end_stone_brick_secret_button",
-            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0f, 9.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops(), byName("end_stone_bricks")));
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0f, 9.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("end_stone_bricks")));
 
     public static final RegistryObject<Block> PURPUR_BLOCK_SECRET_BUTTON = registerBlock("purpur_block_secret_button",
-            () -> new TileSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_MAGENTA).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops(), byName("purpur_block")));
+            () -> new TileSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_MAGENTA).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("purpur_block")));
 
     public static final RegistryObject<Block> QUARTZ_BRICK_SECRET_BUTTON = registerBlock("quartz_brick_secret_button",
-            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(0.8f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops(), byName("quartz_bricks")));
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(0.8f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("quartz_bricks")));
 
     public static final RegistryObject<Block> DARK_PRISMARINE_SECRET_BUTTON = registerBlock("dark_prismarine_secret_button",
-            () -> new FullBlockBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.DIAMOND).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops(), byName("dark_prismarine")));
+            () -> new FullBlockBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.DIAMOND).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("dark_prismarine")));
 
     public static final RegistryObject<Block> POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = registerBlock("polished_blackstone_brick_secret_button",
-            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops(), byName("polished_blackstone_bricks")));
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("polished_blackstone_bricks")));
 
     public static final RegistryObject<Block> CRACKED_POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = registerBlock("cracked_polished_blackstone_brick_secret_button",
-            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops(), byName("cracked_polished_blackstone_bricks")));
+            () -> new BigBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("cracked_polished_blackstone_bricks")));
 
     public static final RegistryObject<Block> CHISELED_POLISHED_BLACKSTONE_SECRET_BUTTON = registerBlock("chiseled_polished_blackstone_secret_button",
-            () -> new ChiseledStoneBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops(), byName("chiseled_polished_blackstone")));
+            () -> new ChiseledStoneBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("chiseled_polished_blackstone")));
 
     public static final RegistryObject<Block> NETHER_BRICK_SECRET_BUTTON = registerBlock("nether_brick_secret_button",
-            () -> new FullBlockBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.NETHER).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops(), byName("nether_bricks")));
+            () -> new FullBlockBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.NETHER).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("nether_bricks")));
 
     public static final RegistryObject<Block> CRACKED_NETHER_BRICK_SECRET_BUTTON = registerBlock("cracked_nether_brick_secret_button",
-            () -> new FullBlockBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.NETHER).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops(), byName("cracked_nether_bricks")));
+            () -> new FullBlockBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.NETHER).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("cracked_nether_bricks")));
 
     public static final RegistryObject<Block> CHISELED_NETHER_BRICK_SECRET_BUTTON = registerBlock("chiseled_nether_brick_secret_button",
-            () -> new ChiseledNetherBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.NETHER).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops(), byName("chiseled_nether_bricks")));
+            () -> new ChiseledNetherBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.NETHER).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("chiseled_nether_bricks")));
 
     public static final RegistryObject<Block> RED_NETHER_BRICK_SECRET_BUTTON = registerBlock("red_nether_brick_secret_button",
-            () -> new FullBlockBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.NETHER).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops(), byName("red_nether_bricks")));
+            () -> new FullBlockBrickSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.NETHER).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), byName("red_nether_bricks")));
 
     /**
      * Misc
@@ -309,7 +310,7 @@ public class InfinityButtonsBlocks {
             () -> new LampButton(lampProperties(), true));
 
     public static final RegistryObject<Block> LETTER_BUTTON = registerBlock("letter_button",
-            () -> new LetterButton(BlockBehaviour.Properties.of().strength(0.5f).noOcclusion().noCollission().sound(SoundType.WOOD), false));
+            () -> new LetterButton(BlockBehaviour.Properties.of().strength(0.5f).noOcclusion().noCollission().sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY), false));
 
     public static final RegistryObject<Block> LETTER_LEVER = registerBlock("letter_lever",
             () -> new LetterButton(BlockBehaviour.Properties.copy(LETTER_BUTTON.get()), true));
@@ -396,15 +397,15 @@ public class InfinityButtonsBlocks {
     }
 
     private static BlockBehaviour.Properties doorbellProperties() {
-        return BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.WOOD);
+        return BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY);
     }
 
     private static BlockBehaviour.Properties lampProperties() {
-        return BlockBehaviour.Properties.of().strength(0.3f).sound(SoundType.GLASS).lightLevel(InfinityButtonsBlocks::getPressLight);
+        return BlockBehaviour.Properties.of().strength(0.3f).sound(SoundType.GLASS).lightLevel(InfinityButtonsBlocks::getPressLight).pushReaction(PushReaction.DESTROY);
     }
 
     private static BlockBehaviour.Properties lanternProperties(int light) {
-        return BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(3.5f).noOcclusion().sound(SoundType.LANTERN).requiresCorrectToolForDrops().lightLevel((p_50876_) -> light);
+        return BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(3.5f).noOcclusion().sound(SoundType.LANTERN).requiresCorrectToolForDrops().lightLevel((p_50876_) -> light).pushReaction(PushReaction.DESTROY);
     }
 
     private static int getPressLight(BlockState state) {
@@ -412,39 +413,39 @@ public class InfinityButtonsBlocks {
     }
 
     public static BlockBehaviour.Properties consoleButtonProperties() {
-        return BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(0.5f).sound(SoundType.METAL);
+        return BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(0.5f).sound(SoundType.METAL).pushReaction(PushReaction.DESTROY);
     }
 
     private static BlockBehaviour.Properties torchProperties(int light) {
-        return BlockBehaviour.Properties.of().noCollission().instabreak().lightLevel((p_50876_) -> light).sound(SoundType.WOOD);
+        return BlockBehaviour.Properties.of().noCollission().instabreak().lightLevel((p_50876_) -> light).sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY);
     }
 
     private static RegistryObject<Block> registerStoneButton(String type) {
-        return registerBlock(type + "_button", () -> new StoneButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.STONE), false));
+        return registerBlock(type + "_button", () -> new StoneButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.STONE).pushReaction(PushReaction.DESTROY), false));
     }
 
     private static RegistryObject<Block> registerCopperButton(String type, WeatheringCopper.WeatherState state) {
-        return registerBlock(type + "_button", () -> new CopperButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.COPPER).requiresCorrectToolForDrops(), false, state));
+        return registerBlock(type + "_button", () -> new CopperButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.COPPER).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), false, state));
     }
 
     private static RegistryObject<Block> registerWaxedCopperButton(String type) {
-        return registerBlock("waxed_" + type + "_button", () -> new WaxedCopperButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.COPPER).requiresCorrectToolForDrops(), false));
+        return registerBlock("waxed_" + type + "_button", () -> new WaxedCopperButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.COPPER).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), false));
     }
 
     private static RegistryObject<Block> registerStickyCopperButton(String type) {
-        return registerBlock("sticky_" + type + "_button", () -> new StickyCopperButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.COPPER).requiresCorrectToolForDrops(), false));
+        return registerBlock("sticky_" + type + "_button", () -> new StickyCopperButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.COPPER).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), false));
     }
 
     private static RegistryObject<Block> registerArrowButton(String type) {
-        return registerBlock(type + "_button", () -> new ArrowButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.METAL).requiresCorrectToolForDrops(), false));
+        return registerBlock(type + "_button", () -> new ArrowButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.METAL).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), false));
     }
 
     private static RegistryObject<Block> registerPrismarineButton(String type) {
-        return registerBlock(type + "_button", () -> new PrismarineButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.STONE), false));
+        return registerBlock(type + "_button", () -> new PrismarineButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.STONE).pushReaction(PushReaction.DESTROY), false));
     }
 
     private static RegistryObject<Block> registerSandButton(String type, boolean gravel) {
-        return registerBlock(type + "_button", () -> new FallingButton(gravel, BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(gravel ? SoundType.GRAVEL : SoundType.SAND), false));
+        return registerBlock(type + "_button", () -> new FallingButton(gravel, BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(gravel ? SoundType.GRAVEL : SoundType.SAND).pushReaction(PushReaction.DESTROY), false));
     }
 
     private static RegistryObject<Block> registerConcretePowderButton(String color) {
@@ -452,39 +453,39 @@ public class InfinityButtonsBlocks {
     }
 
     private static RegistryObject<Block> registerWoodenLargeButton(String wood) {
-        return registerBlock(wood + "_large_button", () -> new WoodenButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.WOOD), true, false));
+        return registerBlock(wood + "_large_button", () -> new WoodenButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY), true, false));
     }
 
     private static RegistryObject<Block> registerNetherWoodenLargeButton(String wood) {
-        return registerBlock(wood + "_large_button", () -> new WoodenButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.NETHER_WOOD), true, true));
+        return registerBlock(wood + "_large_button", () -> new WoodenButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.NETHER_WOOD).pushReaction(PushReaction.DESTROY), true, true));
     }
 
     private static RegistryObject<Block> registerStoneLargeButton(String type) {
-        return registerBlock(type + "_large_button", () -> new StoneButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.STONE), true));
+        return registerBlock(type + "_large_button", () -> new StoneButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.STONE).pushReaction(PushReaction.DESTROY), true));
     }
 
     private static RegistryObject<Block> registerCopperLargeButton(String type, WeatheringCopper.WeatherState state) {
-        return registerBlock(type + "_large_button", () -> new CopperButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.COPPER).requiresCorrectToolForDrops(), true, state));
+        return registerBlock(type + "_large_button", () -> new CopperButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.COPPER).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), true, state));
     }
 
     private static RegistryObject<Block> registerWaxedCopperLargeButton(String type) {
-        return registerBlock("waxed_" + type + "_large_button", () -> new WaxedCopperButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.COPPER).requiresCorrectToolForDrops(), true));
+        return registerBlock("waxed_" + type + "_large_button", () -> new WaxedCopperButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.COPPER).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), true));
     }
 
     private static RegistryObject<Block> registerStickyCopperLargeButton(String type) {
-        return registerBlock("sticky_" + type + "_large_button", () -> new StickyCopperButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.COPPER).requiresCorrectToolForDrops(), true));
+        return registerBlock("sticky_" + type + "_large_button", () -> new StickyCopperButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.COPPER).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), true));
     }
 
     private static RegistryObject<Block> registerArrowLargeButton(String type) {
-        return registerBlock(type + "_large_button", () -> new ArrowButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.METAL).requiresCorrectToolForDrops(), true));
+        return registerBlock(type + "_large_button", () -> new ArrowButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.METAL).requiresCorrectToolForDrops().pushReaction(PushReaction.DESTROY), true));
     }
 
     private static RegistryObject<Block> registerPrismarineLargeButton(String type) {
-        return registerBlock(type + "_large_button", () -> new PrismarineButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.STONE), true));
+        return registerBlock(type + "_large_button", () -> new PrismarineButton(BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.STONE).pushReaction(PushReaction.DESTROY), true));
     }
 
     private static RegistryObject<Block> registerSandLargeButton(String type, boolean gravel) {
-        return registerBlock(type + "_large_button", () -> new FallingButton(gravel, BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(gravel ? SoundType.GRAVEL : SoundType.SAND), true));
+        return registerBlock(type + "_large_button", () -> new FallingButton(gravel, BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(gravel ? SoundType.GRAVEL : SoundType.SAND).pushReaction(PushReaction.DESTROY), true));
     }
 
     private static RegistryObject<Block> registerConcretePowderLargeButton(String color) {
@@ -492,19 +493,19 @@ public class InfinityButtonsBlocks {
     }
 
     private static RegistryObject<Block> registerEmergencyButton(String color) {
-        return registerBlock(color + "_emergency_button", () -> new EmergencyButton(BlockBehaviour.Properties.of().strength(0.5f).noOcclusion().sound(SoundType.METAL)));
+        return registerBlock(color + "_emergency_button", () -> new EmergencyButton(BlockBehaviour.Properties.of().strength(0.5f).noOcclusion().sound(SoundType.METAL).pushReaction(PushReaction.DESTROY)));
     }
 
     private static RegistryObject<Block> registerSafeEmergencyButton(String color) {
-        return registerSafeEmergencyButtonBlock(color + "_safe_emergency_button", () -> new SafeEmergencyButton(BlockBehaviour.Properties.of().strength(0.5f).noOcclusion().sound(SoundType.METAL)));
+        return registerSafeEmergencyButtonBlock(color + "_safe_emergency_button", () -> new SafeEmergencyButton(BlockBehaviour.Properties.of().strength(0.5f).noOcclusion().sound(SoundType.METAL).pushReaction(PushReaction.DESTROY)));
     }
 
     private static RegistryObject<Block> registerPlankSecretButton(String wood, MapColor materialColor) {
-        return registerBlock(wood + "_plank_secret_button", () -> new PlankSecretButton(BlockBehaviour.Properties.of().ignitedByLava().mapColor(materialColor).strength(2.0f, 3.0f).noOcclusion().sound(SoundType.WOOD), byName(wood + "_planks")));
+        return registerBlock(wood + "_plank_secret_button", () -> new PlankSecretButton(BlockBehaviour.Properties.of().ignitedByLava().mapColor(materialColor).strength(2.0f, 3.0f).noOcclusion().sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY), byName(wood + "_planks")));
     }
 
     private static RegistryObject<Block> registerNetherPlankSecretButton(String wood, MapColor materialColor) {
-        return registerBlock(wood + "_plank_secret_button", () -> new PlankSecretButton(BlockBehaviour.Properties.of().mapColor(materialColor).strength(2.0f, 3.0f).noOcclusion().sound(SoundType.NETHER_WOOD), byName(wood + "_planks")));
+        return registerBlock(wood + "_plank_secret_button", () -> new PlankSecretButton(BlockBehaviour.Properties.of().mapColor(materialColor).strength(2.0f, 3.0f).noOcclusion().sound(SoundType.NETHER_WOOD).pushReaction(PushReaction.DESTROY), byName(wood + "_planks")));
     }
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

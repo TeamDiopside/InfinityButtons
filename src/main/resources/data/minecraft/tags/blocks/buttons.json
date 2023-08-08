@@ -1,16 +1,18 @@
 {
   "replace": false,
   "values": [
-    "#infinitybuttons:copper_buttons",
-    "#infinitybuttons:concrete_powder_buttons",
-
-    "infinitybuttons:deepslate_button",
-    "infinitybuttons:granite_button",
-    "infinitybuttons:diorite_button",
-    "infinitybuttons:andesite_button",
-    "infinitybuttons:calcite_button",
-    "infinitybuttons:tuff_button",
-    "infinitybuttons:dripstone_button",
+    {
+      "id": "#infinitybuttons:copper_buttons",
+      "required": false
+    },
+    {
+      "id": "#infinitybuttons:concrete_powder_buttons",
+      "required": false
+    },
+    {
+      "id": "#minecraft:stone_buttons",
+      "required": false
+    },
     "infinitybuttons:iron_button",
     "infinitybuttons:gold_button",
     "infinitybuttons:emerald_button",

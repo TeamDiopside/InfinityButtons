@@ -131,11 +131,6 @@ public abstract class AbstractButton extends FaceAttachedHorizontalDirectionalBl
 
     }
 
-    @Override
-    public PushReaction getPistonPushReaction(BlockState pState) {
-        return PushReaction.DESTROY;
-    }
-
     public void updateNeighbors(BlockState state, Level worldIn, BlockPos pos) {
         worldIn.updateNeighborsAt(pos, this);
         worldIn.updateNeighborsAt(pos.relative(getConnectedDirection(state).getOpposite()), this);
