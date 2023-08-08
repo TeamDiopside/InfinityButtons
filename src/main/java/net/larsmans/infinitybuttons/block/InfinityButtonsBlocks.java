@@ -111,6 +111,8 @@ public class InfinityButtonsBlocks {
     public static final RegistryObject<Block> ACACIA_LARGE_BUTTON = registerWoodenLargeButton("acacia");
     public static final RegistryObject<Block> DARK_OAK_LARGE_BUTTON = registerWoodenLargeButton("dark_oak");
     public static final RegistryObject<Block> MANGROVE_LARGE_BUTTON = registerWoodenLargeButton("mangrove");
+    public static final RegistryObject<Block> CHERRY_LARGE_BUTTON = registerWoodenLargeButton("cherry");
+    public static final RegistryObject<Block> BAMBOO_LARGE_BUTTON = registerWoodenLargeButton("bamboo");
     public static final RegistryObject<Block> CRIMSON_LARGE_BUTTON = registerNetherWoodenLargeButton("crimson");
     public static final RegistryObject<Block> WARPED_LARGE_BUTTON = registerNetherWoodenLargeButton("warped");
 
@@ -254,6 +256,7 @@ public class InfinityButtonsBlocks {
     public static final RegistryObject<Block> ACACIA_PLANK_SECRET_BUTTON = registerPlankSecretButton("acacia", MapColor.COLOR_ORANGE);
     public static final RegistryObject<Block> DARK_OAK_PLANK_SECRET_BUTTON = registerPlankSecretButton("dark_oak", MapColor.COLOR_BROWN);
     public static final RegistryObject<Block> MANGROVE_PLANK_SECRET_BUTTON = registerPlankSecretButton("mangrove", MapColor.COLOR_RED);
+    public static final RegistryObject<Block> CHERRY_PLANK_SECRET_BUTTON = registerPlankSecretButton("cherry", MapColor.TERRACOTTA_WHITE);
     public static final RegistryObject<Block> CRIMSON_PLANK_SECRET_BUTTON = registerNetherPlankSecretButton("crimson", MapColor.CRIMSON_STEM);
     public static final RegistryObject<Block> WARPED_PLANK_SECRET_BUTTON = registerNetherPlankSecretButton("warped", MapColor.WARPED_STEM);
 

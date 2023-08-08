@@ -36,6 +36,8 @@ public class CreativeTabEvents {
                 output.accept(new ItemStack(Blocks.ACACIA_BUTTON));
                 output.accept(new ItemStack(Blocks.DARK_OAK_BUTTON));
                 output.accept(new ItemStack(Blocks.MANGROVE_BUTTON));
+                output.accept(new ItemStack(Blocks.CHERRY_BUTTON));
+                output.accept(new ItemStack(Blocks.BAMBOO_BUTTON));
                 output.accept(new ItemStack(Blocks.CRIMSON_BUTTON));
                 output.accept(new ItemStack(Blocks.WARPED_BUTTON));
                 output.accept(new ItemStack(Blocks.STONE_BUTTON));
@@ -93,6 +95,8 @@ public class CreativeTabEvents {
                 output.accept(new ItemStack(InfinityButtonsBlocks.ACACIA_LARGE_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.DARK_OAK_LARGE_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.MANGROVE_LARGE_BUTTON.get()));
+                output.accept(new ItemStack(InfinityButtonsBlocks.CHERRY_LARGE_BUTTON.get()));
+                output.accept(new ItemStack(InfinityButtonsBlocks.BAMBOO_LARGE_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.CRIMSON_LARGE_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.WARPED_LARGE_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.STONE_LARGE_BUTTON.get()));
@@ -296,6 +300,7 @@ public class CreativeTabEvents {
                 output.accept(new ItemStack(InfinityButtonsBlocks.ACACIA_PLANK_SECRET_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.DARK_OAK_PLANK_SECRET_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.MANGROVE_PLANK_SECRET_BUTTON.get()));
+                output.accept(new ItemStack(InfinityButtonsBlocks.CHERRY_PLANK_SECRET_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.CRIMSON_PLANK_SECRET_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.WARPED_PLANK_SECRET_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.MUD_BRICK_SECRET_BUTTON.get()));
@@ -451,6 +456,8 @@ public class CreativeTabEvents {
         addAfterInBuildingBlocks(event, Items.ACACIA_BUTTON, InfinityButtonsBlocks.ACACIA_LARGE_BUTTON.get());
         addAfterInBuildingBlocks(event, Items.DARK_OAK_BUTTON, InfinityButtonsBlocks.DARK_OAK_LARGE_BUTTON.get());
         addAfterInBuildingBlocks(event, Items.MANGROVE_BUTTON, InfinityButtonsBlocks.MANGROVE_LARGE_BUTTON.get());
+        addAfterInBuildingBlocks(event, Items.CHERRY_BUTTON, InfinityButtonsBlocks.CHERRY_LARGE_BUTTON.get());
+        addAfterInBuildingBlocks(event, Items.BAMBOO_BUTTON, InfinityButtonsBlocks.BAMBOO_LARGE_BUTTON.get());
         addAfterInBuildingBlocks(event, Items.CRIMSON_BUTTON, InfinityButtonsBlocks.CRIMSON_LARGE_BUTTON.get());
         addAfterInBuildingBlocks(event, Items.WARPED_BUTTON, InfinityButtonsBlocks.WARPED_LARGE_BUTTON.get());
         addAfterInBuildingBlocks(event, Items.STONE_BUTTON, InfinityButtonsBlocks.STONE_LARGE_BUTTON.get());
