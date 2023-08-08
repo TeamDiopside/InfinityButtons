@@ -139,6 +139,8 @@ public class InfinityButtonsBlocks {
     public static final Block ACACIA_LARGE_BUTTON = registerWoodenLargeButton("acacia");
     public static final Block DARK_OAK_LARGE_BUTTON = registerWoodenLargeButton("dark_oak");
     public static final Block MANGROVE_LARGE_BUTTON = registerWoodenLargeButton("mangrove");
+    public static final Block CHERRY_LARGE_BUTTON = registerWoodenLargeButton("cherry");
+    public static final Block BAMBOO_LARGE_BUTTON = registerWoodenLargeButton("bamboo");
     public static final Block CRIMSON_LARGE_BUTTON = registerNetherWoodenLargeButton("crimson");
     public static final Block WARPED_LARGE_BUTTON = registerNetherWoodenLargeButton("warped");
 
@@ -333,6 +335,7 @@ public class InfinityButtonsBlocks {
     public static final Block ACACIA_PLANK_SECRET_BUTTON = registerPlankSecretButton("acacia", MapColor.ORANGE);
     public static final Block DARK_OAK_PLANK_SECRET_BUTTON = registerPlankSecretButton("dark_oak", MapColor.BROWN);
     public static final Block MANGROVE_PLANK_SECRET_BUTTON = registerPlankSecretButton("mangrove", MapColor.RED);
+    public static final Block CHERRY_PLANK_SECRET_BUTTON = registerPlankSecretButton("cherry", MapColor.TERRACOTTA_WHITE);
     public static final Block CRIMSON_PLANK_SECRET_BUTTON = registerNetherPlankSecretButton("crimson", MapColor.DULL_PINK);
     public static final Block WARPED_PLANK_SECRET_BUTTON = registerNetherPlankSecretButton("warped", MapColor.DARK_AQUA);
 

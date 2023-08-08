@@ -64,6 +64,8 @@ public class LootTableGen extends FabricBlockLootTableProvider {
         addDrop(InfinityButtonsBlocks.ACACIA_LARGE_BUTTON);
         addDrop(InfinityButtonsBlocks.DARK_OAK_LARGE_BUTTON);
         addDrop(InfinityButtonsBlocks.MANGROVE_LARGE_BUTTON);
+        addDrop(InfinityButtonsBlocks.CHERRY_LARGE_BUTTON);
+        addDrop(InfinityButtonsBlocks.BAMBOO_LARGE_BUTTON);
         addDrop(InfinityButtonsBlocks.CRIMSON_LARGE_BUTTON);
         addDrop(InfinityButtonsBlocks.WARPED_LARGE_BUTTON);
         addDrop(InfinityButtonsBlocks.STONE_LARGE_BUTTON);
@@ -164,6 +166,7 @@ public class LootTableGen extends FabricBlockLootTableProvider {
         addDrop(InfinityButtonsBlocks.ACACIA_PLANK_SECRET_BUTTON);
         addDrop(InfinityButtonsBlocks.DARK_OAK_PLANK_SECRET_BUTTON);
         addDrop(InfinityButtonsBlocks.MANGROVE_PLANK_SECRET_BUTTON);
+        addDrop(InfinityButtonsBlocks.CHERRY_PLANK_SECRET_BUTTON);
         addDrop(InfinityButtonsBlocks.CRIMSON_PLANK_SECRET_BUTTON);
         addDrop(InfinityButtonsBlocks.WARPED_PLANK_SECRET_BUTTON);
         addDrop(InfinityButtonsBlocks.MUD_BRICK_SECRET_BUTTON);

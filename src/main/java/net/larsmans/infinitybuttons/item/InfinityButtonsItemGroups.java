@@ -30,6 +30,8 @@ public class InfinityButtonsItemGroups {
                     entries.add(Blocks.ACACIA_BUTTON);
                     entries.add(Blocks.DARK_OAK_BUTTON);
                     entries.add(Blocks.MANGROVE_BUTTON);
+                    entries.add(Blocks.CHERRY_BUTTON);
+                    entries.add(Blocks.BAMBOO_BUTTON);
                     entries.add(Blocks.CRIMSON_BUTTON);
                     entries.add(Blocks.WARPED_BUTTON);
                     entries.add(Blocks.STONE_BUTTON);
@@ -87,6 +89,8 @@ public class InfinityButtonsItemGroups {
                     entries.add(InfinityButtonsBlocks.ACACIA_LARGE_BUTTON);
                     entries.add(InfinityButtonsBlocks.DARK_OAK_LARGE_BUTTON);
                     entries.add(InfinityButtonsBlocks.MANGROVE_LARGE_BUTTON);
+                    entries.add(InfinityButtonsBlocks.CHERRY_LARGE_BUTTON);
+                    entries.add(InfinityButtonsBlocks.BAMBOO_LARGE_BUTTON);
                     entries.add(InfinityButtonsBlocks.CRIMSON_LARGE_BUTTON);
                     entries.add(InfinityButtonsBlocks.WARPED_LARGE_BUTTON);
                     entries.add(InfinityButtonsBlocks.STONE_LARGE_BUTTON);
@@ -190,6 +194,7 @@ public class InfinityButtonsItemGroups {
                     entries.add(InfinityButtonsBlocks.ACACIA_PLANK_SECRET_BUTTON);
                     entries.add(InfinityButtonsBlocks.DARK_OAK_PLANK_SECRET_BUTTON);
                     entries.add(InfinityButtonsBlocks.MANGROVE_PLANK_SECRET_BUTTON);
+                    entries.add(InfinityButtonsBlocks.CHERRY_PLANK_SECRET_BUTTON);
                     entries.add(InfinityButtonsBlocks.CRIMSON_PLANK_SECRET_BUTTON);
                     entries.add(InfinityButtonsBlocks.WARPED_PLANK_SECRET_BUTTON);
                     entries.add(InfinityButtonsBlocks.MUD_BRICK_SECRET_BUTTON);
@@ -244,6 +249,8 @@ public class InfinityButtonsItemGroups {
         addAfterInBuildingBlocks(Items.ACACIA_BUTTON, InfinityButtonsBlocks.ACACIA_LARGE_BUTTON);
         addAfterInBuildingBlocks(Items.DARK_OAK_BUTTON, InfinityButtonsBlocks.DARK_OAK_LARGE_BUTTON);
         addAfterInBuildingBlocks(Items.MANGROVE_BUTTON, InfinityButtonsBlocks.MANGROVE_LARGE_BUTTON);
+        addAfterInBuildingBlocks(Items.CHERRY_BUTTON, InfinityButtonsBlocks.CHERRY_LARGE_BUTTON);
+        addAfterInBuildingBlocks(Items.BAMBOO_BUTTON, InfinityButtonsBlocks.BAMBOO_LARGE_BUTTON);
         addAfterInBuildingBlocks(Items.CRIMSON_BUTTON, InfinityButtonsBlocks.CRIMSON_LARGE_BUTTON);
         addAfterInBuildingBlocks(Items.WARPED_BUTTON, InfinityButtonsBlocks.WARPED_LARGE_BUTTON);
         addAfterInBuildingBlocks(Items.STONE_BUTTON, InfinityButtonsBlocks.STONE_LARGE_BUTTON);

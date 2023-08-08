@@ -112,6 +112,8 @@ public class TagItemGen extends FabricTagProvider<Item> {
                 .add(InfinityButtonsBlocks.ACACIA_LARGE_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.DARK_OAK_LARGE_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.MANGROVE_LARGE_BUTTON.asItem())
+                .add(InfinityButtonsBlocks.CHERRY_LARGE_BUTTON.asItem())
+                .add(InfinityButtonsBlocks.BAMBOO_LARGE_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.CRIMSON_LARGE_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.WARPED_LARGE_BUTTON.asItem())
         ;
@@ -190,6 +192,7 @@ public class TagItemGen extends FabricTagProvider<Item> {
                 .add(InfinityButtonsBlocks.ACACIA_PLANK_SECRET_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.DARK_OAK_PLANK_SECRET_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.MANGROVE_PLANK_SECRET_BUTTON.asItem())
+                .add(InfinityButtonsBlocks.CHERRY_PLANK_SECRET_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.CRIMSON_PLANK_SECRET_BUTTON.asItem())
                 .add(InfinityButtonsBlocks.WARPED_PLANK_SECRET_BUTTON.asItem())
         ;

@@ -77,6 +77,8 @@ public class RecipeGen extends FabricRecipeProvider {
         genWoodenLargeButton(i, InfinityButtonsBlocks.ACACIA_LARGE_BUTTON, Items.ACACIA_BUTTON, Items.ACACIA_PLANKS);
         genWoodenLargeButton(i, InfinityButtonsBlocks.DARK_OAK_LARGE_BUTTON, Items.DARK_OAK_BUTTON, Items.DARK_OAK_PLANKS);
         genWoodenLargeButton(i, InfinityButtonsBlocks.MANGROVE_LARGE_BUTTON, Items.MANGROVE_BUTTON, Items.MANGROVE_PLANKS);
+        genWoodenLargeButton(i, InfinityButtonsBlocks.CHERRY_LARGE_BUTTON, Items.CHERRY_BUTTON, Items.CHERRY_PLANKS);
+        genWoodenLargeButton(i, InfinityButtonsBlocks.BAMBOO_LARGE_BUTTON, Items.BAMBOO_BUTTON, Items.BAMBOO_PLANKS);
         genWoodenLargeButton(i, InfinityButtonsBlocks.CRIMSON_LARGE_BUTTON, Items.CRIMSON_BUTTON, Items.CRIMSON_PLANKS);
         genWoodenLargeButton(i, InfinityButtonsBlocks.WARPED_LARGE_BUTTON, Items.WARPED_BUTTON, Items.WARPED_PLANKS);
 
@@ -128,6 +130,7 @@ public class RecipeGen extends FabricRecipeProvider {
         genSecretButton(i, InfinityButtonsBlocks.ACACIA_PLANK_SECRET_BUTTON, Items.ACACIA_PLANKS);
         genSecretButton(i, InfinityButtonsBlocks.DARK_OAK_PLANK_SECRET_BUTTON, Items.DARK_OAK_PLANKS);
         genSecretButton(i, InfinityButtonsBlocks.MANGROVE_PLANK_SECRET_BUTTON, Items.MANGROVE_PLANKS);
+        genSecretButton(i, InfinityButtonsBlocks.CHERRY_PLANK_SECRET_BUTTON, Items.CHERRY_PLANKS);
         genSecretButton(i, InfinityButtonsBlocks.CRIMSON_PLANK_SECRET_BUTTON, Items.CRIMSON_PLANKS);
         genSecretButton(i, InfinityButtonsBlocks.WARPED_PLANK_SECRET_BUTTON, Items.WARPED_PLANKS);
         genSecretButton(i, InfinityButtonsBlocks.MUD_BRICK_SECRET_BUTTON, Items.MUD_BRICKS);
