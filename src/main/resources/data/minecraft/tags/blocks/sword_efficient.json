@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "infinitybuttons:propelplant_torch_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:propelplant_torch_lever",
+      "required": false
+    }
+  ]
+}
