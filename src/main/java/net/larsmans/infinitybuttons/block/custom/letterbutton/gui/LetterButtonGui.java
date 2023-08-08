@@ -1,6 +1,5 @@
 package net.larsmans.infinitybuttons.block.custom.letterbutton.gui;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.larsmans.infinitybuttons.block.custom.letterbutton.LetterButton;
 import net.larsmans.infinitybuttons.block.custom.letterbutton.LetterButtonEnum;
 import net.larsmans.infinitybuttons.network.IBPacketHandler;
@@ -13,7 +12,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
 
 public class LetterButtonGui extends Screen {
