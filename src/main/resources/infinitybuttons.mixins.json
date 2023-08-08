@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.larsmans.infinitybuttons.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "ChainBlockMixin",
+    "MobEntityMixin",
+    "ServerPlayerInteractionManagerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "ClientPlayerInteractionManagerMixin"
+  ]
+}

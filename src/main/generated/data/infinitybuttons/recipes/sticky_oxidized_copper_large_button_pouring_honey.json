@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "sticky_copper_large_buttons",
+  "ingredients": [
+    {
+      "item": "infinitybuttons:waxed_oxidized_copper_large_button"
+    },
+    {
+      "item": "minecraft:honey_bottle"
+    }
+  ],
+  "result": {
+    "item": "infinitybuttons:sticky_oxidized_copper_large_button"
+  }
+}

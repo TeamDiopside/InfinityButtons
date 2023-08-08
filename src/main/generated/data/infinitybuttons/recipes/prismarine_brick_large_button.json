@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "infinitybuttons:prismarine_brick_button"
+    },
+    {
+      "item": "infinitybuttons:prismarine_brick_button"
+    }
+  ],
+  "result": {
+    "item": "infinitybuttons:prismarine_brick_large_button"
+  }
+}

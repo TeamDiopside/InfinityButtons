@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "#": {
+      "item": "minecraft:lever"
+    },
+    "C": {
+      "tag": "minecraft:coals"
+    },
+    "O": {
+      "tag": "minecraft:soul_fire_base_blocks"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " C",
+    "#S",
+    " O"
+  ],
+  "result": {
+    "item": "infinitybuttons:soul_torch_lever"
+  }
+}
