@@ -9,13 +9,10 @@
       "id": "#infinitybuttons:concrete_powder_buttons",
       "required": false
     },
-    "infinitybuttons:deepslate_button",
-    "infinitybuttons:granite_button",
-    "infinitybuttons:diorite_button",
-    "infinitybuttons:andesite_button",
-    "infinitybuttons:tuff_button",
-    "infinitybuttons:dripstone_button",
-    "infinitybuttons:calcite_button",
+    {
+      "id": "#minecraft:stone_buttons",
+      "required": false
+    },
     "infinitybuttons:iron_button",
     "infinitybuttons:gold_button",
     "infinitybuttons:emerald_button",

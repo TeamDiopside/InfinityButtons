@@ -30,5 +30,6 @@
     "recipes": [
       "infinitybuttons:deepslate_large_button"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

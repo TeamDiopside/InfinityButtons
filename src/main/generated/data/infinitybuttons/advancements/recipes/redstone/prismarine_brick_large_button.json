@@ -30,5 +30,6 @@
     "recipes": [
       "infinitybuttons:prismarine_brick_large_button"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

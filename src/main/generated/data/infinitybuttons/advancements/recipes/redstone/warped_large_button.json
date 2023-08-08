@@ -30,5 +30,6 @@
     "recipes": [
       "infinitybuttons:warped_large_button"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "infinitybuttons:diorite_large_button"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

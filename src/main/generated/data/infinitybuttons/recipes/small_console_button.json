@@ -16,5 +16,6 @@
   "result": {
     "count": 4,
     "item": "infinitybuttons:small_console_button"
-  }
+  },
+  "show_notification": true
 }

@@ -16,5 +16,6 @@
   ],
   "result": {
     "item": "infinitybuttons:brown_safe_emergency_button"
-  }
+  },
+  "show_notification": true
 }

@@ -22,5 +22,6 @@
   ],
   "result": {
     "item": "infinitybuttons:soul_torch_button"
-  }
+  },
+  "show_notification": true
 }

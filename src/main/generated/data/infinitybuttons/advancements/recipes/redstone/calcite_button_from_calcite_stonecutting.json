@@ -30,5 +30,6 @@
     "recipes": [
       "minecraft:calcite_button_from_calcite_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

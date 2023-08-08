@@ -30,5 +30,6 @@
     "recipes": [
       "infinitybuttons:emerald_button"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

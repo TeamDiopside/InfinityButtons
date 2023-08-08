@@ -30,5 +30,6 @@
     "recipes": [
       "infinitybuttons:lamp_button"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

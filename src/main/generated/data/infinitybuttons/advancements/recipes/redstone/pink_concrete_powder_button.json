@@ -30,5 +30,6 @@
     "recipes": [
       "infinitybuttons:pink_concrete_powder_button"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

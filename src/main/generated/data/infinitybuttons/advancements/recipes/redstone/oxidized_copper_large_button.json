@@ -30,5 +30,6 @@
     "recipes": [
       "infinitybuttons:oxidized_copper_large_button"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

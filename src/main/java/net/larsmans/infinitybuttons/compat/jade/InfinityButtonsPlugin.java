@@ -29,6 +29,8 @@ public class InfinityButtonsPlugin implements IWailaPlugin {
     public void registerClient(IWailaClientRegistration registration) {
         registration.addConfig(CONFIG_HIDE_SECRET_BUTTONS, true);
         registration.addConfig(CONFIG_HIDE_TORCH_BUTTONS, true);
+        registration.markAsClientFeature(CONFIG_HIDE_SECRET_BUTTONS);
+        registration.markAsClientFeature(CONFIG_HIDE_TORCH_BUTTONS);
         registration.addRayTraceCallback((hitResult, accessor, originalAccessor) -> {
             if (accessor instanceof BlockAccessor blockAccessor) {
                 if (hidden(CONFIG_HIDE_SECRET_BUTTONS) && blockAccessor.getBlock() instanceof AbstractSecretButton secretButton) {

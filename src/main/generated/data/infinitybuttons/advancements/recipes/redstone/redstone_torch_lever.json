@@ -30,5 +30,6 @@
     "recipes": [
       "infinitybuttons:redstone_torch_lever"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

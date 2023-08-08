@@ -30,5 +30,6 @@
     "recipes": [
       "infinitybuttons:birch_large_button"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

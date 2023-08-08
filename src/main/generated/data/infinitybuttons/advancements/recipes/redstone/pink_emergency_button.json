@@ -30,5 +30,6 @@
     "recipes": [
       "infinitybuttons:pink_emergency_button"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

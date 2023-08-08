@@ -19,5 +19,6 @@
   ],
   "result": {
     "item": "infinitybuttons:redstone_torch_lever"
-  }
+  },
+  "show_notification": true
 }

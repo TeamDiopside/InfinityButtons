@@ -19,6 +19,7 @@ public class TagBlockGen extends FabricTagProvider<Block> {
     public static final TagKey<Block> CONCRETE_POWDER_BUTTONS = add("concrete_powder_buttons");
     public static final TagKey<Block> CONCRETE_POWDER_LARGE_BUTTONS = add("concrete_powder_large_buttons");
     public static final TagKey<Block> LARGE_BUTTONS = add("large_buttons");
+    public static final TagKey<Block> STONE_LARGE_BUTTONS = add("stone_large_buttons");
     public static final TagKey<Block> WOODEN_LARGE_BUTTONS = add("wooden_large_buttons");
     public static final TagKey<Block> EMERGENCY_BUTTONS = add("emergency_buttons");
     public static final TagKey<Block> SAFE_EMERGENCY_BUTTONS = add("safe_emergency_buttons");
@@ -76,17 +77,9 @@ public class TagBlockGen extends FabricTagProvider<Block> {
 
         getOrCreateTagBuilder(LARGE_BUTTONS)
                 .addOptionalTag(WOODEN_LARGE_BUTTONS)
+                .addOptionalTag(STONE_LARGE_BUTTONS)
                 .addOptionalTag(COPPER_LARGE_BUTTONS)
                 .addOptionalTag(CONCRETE_POWDER_LARGE_BUTTONS)
-                .add(InfinityButtonsBlocks.STONE_LARGE_BUTTON)
-                .add(InfinityButtonsBlocks.DEEPSLATE_LARGE_BUTTON)
-                .add(InfinityButtonsBlocks.GRANITE_LARGE_BUTTON)
-                .add(InfinityButtonsBlocks.DIORITE_LARGE_BUTTON)
-                .add(InfinityButtonsBlocks.ANDESITE_LARGE_BUTTON)
-                .add(InfinityButtonsBlocks.TUFF_LARGE_BUTTON)
-                .add(InfinityButtonsBlocks.DRIPSTONE_LARGE_BUTTON)
-                .add(InfinityButtonsBlocks.CALCITE_LARGE_BUTTON)
-                .add(InfinityButtonsBlocks.POLISHED_BLACKSTONE_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.IRON_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.GOLD_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.EMERALD_LARGE_BUTTON)
@@ -97,6 +90,18 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.SAND_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.RED_SAND_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.GRAVEL_LARGE_BUTTON)
+        ;
+
+        getOrCreateTagBuilder(STONE_LARGE_BUTTONS)
+                .add(InfinityButtonsBlocks.STONE_LARGE_BUTTON)
+                .add(InfinityButtonsBlocks.DEEPSLATE_LARGE_BUTTON)
+                .add(InfinityButtonsBlocks.GRANITE_LARGE_BUTTON)
+                .add(InfinityButtonsBlocks.DIORITE_LARGE_BUTTON)
+                .add(InfinityButtonsBlocks.ANDESITE_LARGE_BUTTON)
+                .add(InfinityButtonsBlocks.TUFF_LARGE_BUTTON)
+                .add(InfinityButtonsBlocks.DRIPSTONE_LARGE_BUTTON)
+                .add(InfinityButtonsBlocks.CALCITE_LARGE_BUTTON)
+                .add(InfinityButtonsBlocks.POLISHED_BLACKSTONE_LARGE_BUTTON)
         ;
 
         getOrCreateTagBuilder(WOODEN_LARGE_BUTTONS)
@@ -261,6 +266,7 @@ public class TagBlockGen extends FabricTagProvider<Block> {
     public static final TagKey<Block> MINEABLE_PICKAXE = edit("mineable/pickaxe");
     public static final TagKey<Block> MINEABLE_SHOVEL = edit("mineable/shovel");
     public static final TagKey<Block> BUTTONS = edit("buttons");
+    public static final TagKey<Block> STONE_BUTTONS = edit("stone_buttons");
     public static final TagKey<Block> GUARDED_BY_PIGLINS = edit("guarded_by_piglins");
     public static final TagKey<Block> NON_FLAMMABLE_WOOD = edit("non_flammable_wood");
     public static final TagKey<Block> PIGLIN_REPELLENTS = edit("piglin_repellents");
@@ -268,6 +274,7 @@ public class TagBlockGen extends FabricTagProvider<Block> {
     public static final TagKey<Block> WALL_POST_OVERRIDE = edit("wall_post_override");
     public static final TagKey<Block> NEEDS_STONE_TOOL = edit("needs_stone_tool");
     public static final TagKey<Block> NEEDS_IRON_TOOL = edit("needs_iron_tool");
+    public static final TagKey<Block> ENCHANTMENT_POWER_PROVIDER = edit("enchantment_power_provider");
 
     static TagKey<Block> edit(String name) {
         return TagKey.of(RegistryKeys.BLOCK, new Identifier("minecraft:" + name));
@@ -371,13 +378,7 @@ public class TagBlockGen extends FabricTagProvider<Block> {
         getOrCreateTagBuilder(BUTTONS)
                 .addOptionalTag(COPPER_BUTTONS)
                 .addOptionalTag(CONCRETE_POWDER_BUTTONS)
-                .add(InfinityButtonsBlocks.DEEPSLATE_BUTTON)
-                .add(InfinityButtonsBlocks.GRANITE_BUTTON)
-                .add(InfinityButtonsBlocks.DIORITE_BUTTON)
-                .add(InfinityButtonsBlocks.ANDESITE_BUTTON)
-                .add(InfinityButtonsBlocks.TUFF_BUTTON)
-                .add(InfinityButtonsBlocks.DRIPSTONE_BUTTON)
-                .add(InfinityButtonsBlocks.CALCITE_BUTTON)
+                .addOptionalTag(STONE_BUTTONS)
                 .add(InfinityButtonsBlocks.IRON_BUTTON)
                 .add(InfinityButtonsBlocks.GOLD_BUTTON)
                 .add(InfinityButtonsBlocks.EMERALD_BUTTON)
@@ -388,6 +389,16 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.SAND_BUTTON)
                 .add(InfinityButtonsBlocks.RED_SAND_BUTTON)
                 .add(InfinityButtonsBlocks.GRAVEL_BUTTON)
+        ;
+
+        getOrCreateTagBuilder(STONE_BUTTONS)
+                .add(InfinityButtonsBlocks.DEEPSLATE_BUTTON)
+                .add(InfinityButtonsBlocks.GRANITE_BUTTON)
+                .add(InfinityButtonsBlocks.DIORITE_BUTTON)
+                .add(InfinityButtonsBlocks.ANDESITE_BUTTON)
+                .add(InfinityButtonsBlocks.TUFF_BUTTON)
+                .add(InfinityButtonsBlocks.DRIPSTONE_BUTTON)
+                .add(InfinityButtonsBlocks.CALCITE_BUTTON)
         ;
 
         getOrCreateTagBuilder(GUARDED_BY_PIGLINS)
@@ -441,6 +452,9 @@ public class TagBlockGen extends FabricTagProvider<Block> {
                 .add(InfinityButtonsBlocks.GOLD_LARGE_BUTTON)
                 .add(InfinityButtonsBlocks.EMERALD_BUTTON)
                 .add(InfinityButtonsBlocks.EMERALD_LARGE_BUTTON)
+        ;
+        getOrCreateTagBuilder(ENCHANTMENT_POWER_PROVIDER)
+                .addOptionalTag(BOOKSHELF_SECRET_BUTTONS)
         ;
     }
 

@@ -30,5 +30,6 @@
     "recipes": [
       "minecraft:doorbell_button_2"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

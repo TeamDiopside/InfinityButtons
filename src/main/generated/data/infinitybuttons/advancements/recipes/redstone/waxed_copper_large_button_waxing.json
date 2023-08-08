@@ -30,5 +30,6 @@
     "recipes": [
       "infinitybuttons:waxed_copper_large_button_waxing"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "infinitybuttons:console_button"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -15,5 +15,6 @@
   ],
   "result": {
     "item": "infinitybuttons:letter_button"
-  }
+  },
+  "show_notification": true
 }

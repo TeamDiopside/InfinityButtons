@@ -28,5 +28,6 @@
     "recipes": [
       "infinitybuttons:soul_torch_lever"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "infinitybuttons:stone_large_button"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

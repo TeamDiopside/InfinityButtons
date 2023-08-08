@@ -19,5 +19,6 @@
   ],
   "result": {
     "item": "infinitybuttons:torch_lever"
-  }
+  },
+  "show_notification": true
 }

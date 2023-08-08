@@ -30,5 +30,6 @@
     "recipes": [
       "infinitybuttons:sticky_copper_large_button_pouring_honey"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

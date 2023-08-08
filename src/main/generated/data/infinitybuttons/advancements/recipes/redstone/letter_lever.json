@@ -30,5 +30,6 @@
     "recipes": [
       "infinitybuttons:letter_lever"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }
