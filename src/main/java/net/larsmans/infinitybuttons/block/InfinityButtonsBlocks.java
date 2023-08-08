@@ -390,10 +390,10 @@ public class InfinityButtonsBlocks {
     public static final Block LAMP_LEVER = registerBlockWithItem("lamp_lever", new LampButton(lampSettings(), true));
     public static final Block LETTER_BUTTON = registerBlockWithItem("letter_button", new LetterButton(FabricBlockSettings.create().strength(0.5f).noCollision().sounds(BlockSoundGroup.WOOD).pistonBehavior(PistonBehavior.DESTROY), false));
     public static final Block LETTER_LEVER = registerBlockWithItem("letter_lever", new LetterButton(FabricBlockSettings.copyOf(LETTER_BUTTON), true));
-    public static final Block LANTERN_BUTTON = registerBlockWithItem("lantern_button", new LanternButton(lanternSettings().luminance(state -> 15), false));
-    public static final Block LANTERN_LEVER = registerBlockWithItem("lantern_lever", new LanternButton(lanternSettings().luminance(state -> 15), true));
-    public static final Block SOUL_LANTERN_BUTTON = registerBlockWithItem("soul_lantern_button", new LanternButton(lanternSettings().luminance(state -> 10), false));
-    public static final Block SOUL_LANTERN_LEVER = registerBlockWithItem("soul_lantern_lever", new LanternButton(lanternSettings().luminance(state -> 10), true));
+    public static final Block LANTERN_BUTTON = registerBlockWithItem("lantern_button", new LanternButton(lanternSettings().luminance(state -> 15), false, byName("lantern")));
+    public static final Block LANTERN_LEVER = registerBlockWithItem("lantern_lever", new LanternButton(lanternSettings().luminance(state -> 15), true, byName("lantern")));
+    public static final Block SOUL_LANTERN_BUTTON = registerBlockWithItem("soul_lantern_button", new LanternButton(lanternSettings().luminance(state -> 10), false, byName("soul_lantern")));
+    public static final Block SOUL_LANTERN_LEVER = registerBlockWithItem("soul_lantern_lever", new LanternButton(lanternSettings().luminance(state -> 10), true, byName("soul_lantern")));
 
     public static FabricBlockSettings lampSettings() {
         return FabricBlockSettings.create().nonOpaque().strength(0.3f).sounds(BlockSoundGroup.GLASS).luminance(getLampButtonLight()).pistonBehavior(PistonBehavior.DESTROY);

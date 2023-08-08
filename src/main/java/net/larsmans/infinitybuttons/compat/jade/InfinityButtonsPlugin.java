@@ -2,6 +2,7 @@ package net.larsmans.infinitybuttons.compat.jade;
 
 import net.larsmans.infinitybuttons.InfinityButtonsClientInit;
 import net.larsmans.infinitybuttons.InfinityButtonsInit;
+import net.larsmans.infinitybuttons.block.custom.LanternButton;
 import net.larsmans.infinitybuttons.block.custom.secretbutton.AbstractSecretButton;
 import net.larsmans.infinitybuttons.block.custom.secretbutton.BookshelfSecretButton;
 import net.larsmans.infinitybuttons.block.custom.torch.RedstoneTorchButton;
@@ -27,13 +28,16 @@ public class InfinityButtonsPlugin implements IWailaPlugin {
 
     static final Identifier CONFIG_HIDE_SECRET_BUTTONS = new Identifier(InfinityButtonsInit.MOD_ID, "hide_secret_buttons");
     static final Identifier CONFIG_HIDE_TORCH_BUTTONS = new Identifier(InfinityButtonsInit.MOD_ID, "hide_torch_buttons");
+    static final Identifier CONFIG_HIDE_LANTERN_BUTTONS = new Identifier(InfinityButtonsInit.MOD_ID, "hide_lantern_buttons");
 
     @Override
     public void registerClient(IWailaClientRegistration registration) {
         registration.addConfig(CONFIG_HIDE_SECRET_BUTTONS, true);
         registration.addConfig(CONFIG_HIDE_TORCH_BUTTONS, true);
+        registration.addConfig(CONFIG_HIDE_LANTERN_BUTTONS, true);
         registration.markAsClientFeature(CONFIG_HIDE_SECRET_BUTTONS);
         registration.markAsClientFeature(CONFIG_HIDE_TORCH_BUTTONS);
+        registration.markAsClientFeature(CONFIG_HIDE_LANTERN_BUTTONS);
 
         for (Block block : Registries.BLOCK)
             if (block instanceof BookshelfSecretButton)
@@ -49,6 +53,9 @@ public class InfinityButtonsPlugin implements IWailaPlugin {
                 }
                 if (hidden(CONFIG_HIDE_TORCH_BUTTONS) && blockAccessor.getBlock() instanceof RedstoneTorchButton redstoneTorchButton) {
                     return registration.blockAccessor().from(blockAccessor).blockState(redstoneTorchButton.jadeBlock.getDefaultState()).build();
+                }
+                if (hidden(CONFIG_HIDE_LANTERN_BUTTONS) && blockAccessor.getBlock() instanceof LanternButton lanternButton) {
+                    return registration.blockAccessor().from(blockAccessor).blockState(lanternButton.jadeBlock.getDefaultState()).build();
                 }
             }
             return accessor;
