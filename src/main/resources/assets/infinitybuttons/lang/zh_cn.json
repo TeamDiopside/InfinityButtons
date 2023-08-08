@@ -275,6 +275,7 @@
   "text.config.infinity-buttons-config.option.alarmSoundType.value.global": "Global",
   "text.config.infinity-buttons-config.option.alarmSoundRange": "Alarm Range",
   "text.config.infinity-buttons-config.option.alarmSoundRange.tooltip": "The distance in chunks in which the alarm is heard when 'Alarm Type' is set to 'Range'",
+  "text.config.infinity-buttons-config.option.alarmVillagerPanic": "Villager Panic",
   "text.config.infinity-buttons-config.option.alarmVillagerPanic.tooltip": "Makes villagers run to their beds when hearing an alarm",
   "text.config.infinity-buttons-config.option.tooltips": "工具提示",
   "text.config.infinity-buttons-config.option.tooltips.tooltip": "是否显示工具提示",
