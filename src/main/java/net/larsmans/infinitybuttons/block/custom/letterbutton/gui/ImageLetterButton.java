@@ -2,7 +2,6 @@ package net.larsmans.infinitybuttons.block.custom.letterbutton.gui;
 
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.widget.TexturedButtonWidget;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
 import java.awt.*;

@@ -19,13 +19,35 @@
     "letterbutton": {
       "trigger": "minecraft:placed_block",
       "conditions": {
-        "block": "infinitybuttons:letter_button"
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": [
+                  "infinitybuttons:letter_button"
+                ]
+              }
+            }
+          }
+        ]
       }
     },
     "letterlever": {
       "trigger": "minecraft:placed_block",
       "conditions": {
-        "block": "infinitybuttons:letter_lever"
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": [
+                  "infinitybuttons:letter_lever"
+                ]
+              }
+            }
+          }
+        ]
       }
     }
   },

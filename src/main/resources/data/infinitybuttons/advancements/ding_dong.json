@@ -19,25 +19,35 @@
     "doorbell": {
       "trigger": "minecraft:item_used_on_block",
       "conditions": {
-        "location": {
-          "block": {
-            "blocks": [
-              "infinitybuttons:doorbell"
-            ]
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": [
+                  "infinitybuttons:doorbell"
+                ]
+              }
+            }
           }
-        }
+        ]
       }
     },
     "doorbell_button": {
       "trigger": "minecraft:item_used_on_block",
       "conditions": {
-        "location": {
-          "block": {
-            "blocks": [
-              "infinitybuttons:doorbell_button"
-            ]
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": [
+                  "infinitybuttons:doorbell_button"
+                ]
+              }
+            }
           }
-        }
+        ]
       }
     }
   },

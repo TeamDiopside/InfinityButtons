@@ -7,17 +7,13 @@ import net.larsmans.infinitybuttons.block.custom.secretbutton.BookshelfSecretBut
 import net.larsmans.infinitybuttons.block.custom.torch.RedstoneTorchButton;
 import net.larsmans.infinitybuttons.block.custom.torch.TorchButton;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaPlugin;
 import snownee.jade.api.WailaPlugin;
 import snownee.jade.api.config.IWailaConfig;
-import snownee.jade.api.platform.CustomEnchantPower;
 
 @WailaPlugin
 public class InfinityButtonsPlugin implements IWailaPlugin {
