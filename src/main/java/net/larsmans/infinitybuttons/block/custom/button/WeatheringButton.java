@@ -8,6 +8,8 @@ import net.minecraft.block.Oxidizable;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -67,6 +69,7 @@ public interface WeatheringButton extends Oxidizable {
             }
             level.setBlockState(blockpos, waxedBlockState, Block.field_31022);
             level.syncWorldEvent(player, 3003, blockpos, 0);
+            level.playSound(player, blockpos, SoundEvents.ITEM_HONEYCOMB_WAX_ON, SoundCategory.BLOCKS, 1.0f, 1.0f);
             return ActionResult.success(level.isClient);
         }).orElse(ActionResult.success(level.isClient));
     }
@@ -81,6 +84,7 @@ public interface WeatheringButton extends Oxidizable {
             }
             level.setBlockState(blockpos, previousBlockState, Block.field_31022);
             level.syncWorldEvent(player, 3005, blockpos, 0);
+            level.playSound(player, blockpos, SoundEvents.ITEM_AXE_SCRAPE, SoundCategory.BLOCKS, 1.0f, 1.0f);
             return ActionResult.success(level.isClient);
         }).orElse(ActionResult.success(level.isClient));
     }

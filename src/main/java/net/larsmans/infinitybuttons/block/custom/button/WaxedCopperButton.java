@@ -1,6 +1,7 @@
 package net.larsmans.infinitybuttons.block.custom.button;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.larsmans.infinitybuttons.advancement.InfinityButtonsTriggers;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -50,6 +51,9 @@ public class WaxedCopperButton extends AbstractSmallButton {
             }
             world.setBlockState(blockpos, waxedBlockState, Block.field_31022);
             world.syncWorldEvent(player, 3004, blockpos, 0);
+            world.playSound(player, blockpos, SoundEvents.ITEM_AXE_WAX_OFF, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            if (player instanceof ServerPlayerEntity serverPlayerEntity)
+                InfinityButtonsTriggers.WAX_OFF_TRIGGER.trigger(serverPlayerEntity);
             return ActionResult.success(world.isClient);
         }).orElse(ActionResult.success(world.isClient));
     }
@@ -64,6 +68,7 @@ public class WaxedCopperButton extends AbstractSmallButton {
             }
             world.setBlockState(blockpos, waxedBlockState, Block.field_31022);
             world.syncWorldEvent(player, 3003, blockpos, 0);
+            world.playSound(player, blockpos, SoundEvents.ITEM_HONEYCOMB_WAX_ON, SoundCategory.BLOCKS, 1.0f, 1.0f);
             return ActionResult.success(world.isClient);
         }).orElse(ActionResult.success(world.isClient));
     }
