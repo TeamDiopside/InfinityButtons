@@ -62,10 +62,10 @@ public class InfinityButtonsBlocks {
     public static final Block GOLD_BUTTON = registerArrowButton("gold");
 
     public static final Block EMERALD_BUTTON = registerBlockWithItem("emerald_button",
-            new EmeraldButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL), false));
+            new EmeraldButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL).requiresTool(), false));
 
     public static final Block DIAMOND_BUTTON = registerBlockWithItem("diamond_button",
-            new DiamondButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL), false));
+            new DiamondButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL).requiresTool(), false));
 
     public static final Block PRISMARINE_BUTTON = registerPrismarineButton("prismarine");
     public static final Block PRISMARINE_BRICK_BUTTON = registerPrismarineButton("prismarine_brick");
@@ -97,19 +97,19 @@ public class InfinityButtonsBlocks {
     }
 
     public static Block registerCopperButton(String name, Oxidizable.OxidationLevel level) {
-        return registerBlockWithItem(name + "_button", new CopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL), false, level));
+        return registerBlockWithItem(name + "_button", new CopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL).requiresTool(), false, level));
     }
 
     public static Block registerWaxedCopperButton(String name) {
-        return registerBlockWithItem("waxed_" + name + "_button", new WaxedCopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL), false));
+        return registerBlockWithItem("waxed_" + name + "_button", new WaxedCopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL).requiresTool(), false));
     }
 
     public static Block registerStickyCopperButton(String name) {
-        return registerBlockWithItem("sticky_" + name + "_button", new StickyCopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL), false));
+        return registerBlockWithItem("sticky_" + name + "_button", new StickyCopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL).requiresTool(), false));
     }
 
     public static Block registerArrowButton(String name) {
-        return registerBlockWithItem(name + "_button", new ArrowButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL), false));
+        return registerBlockWithItem(name + "_button", new ArrowButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL).requiresTool(), false));
     }
 
     public static Block registerPrismarineButton(String name) {
@@ -167,10 +167,10 @@ public class InfinityButtonsBlocks {
     public static final Block GOLD_LARGE_BUTTON = registerArrowLargeButton("gold");
 
     public static final Block EMERALD_LARGE_BUTTON = registerBlockWithItem("emerald_large_button",
-            new EmeraldButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL), true));
+            new EmeraldButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL).requiresTool(), true));
 
     public static final Block DIAMOND_LARGE_BUTTON = registerBlockWithItem("diamond_large_button",
-            new DiamondButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL), true));
+            new DiamondButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL).requiresTool(), true));
 
     public static final Block PRISMARINE_LARGE_BUTTON = registerPrismarineLargeButton("prismarine");
     public static final Block PRISMARINE_BRICK_LARGE_BUTTON = registerPrismarineLargeButton("prismarine_brick");
@@ -206,19 +206,19 @@ public class InfinityButtonsBlocks {
     }
 
     public static Block registerCopperLargeButton(String name, Oxidizable.OxidationLevel level) {
-        return registerBlockWithItem(name + "_large_button", new CopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL), true, level));
+        return registerBlockWithItem(name + "_large_button", new CopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL).requiresTool(), true, level));
     }
 
     public static Block registerWaxedCopperLargeButton(String name) {
-        return registerBlockWithItem("waxed_" + name + "_large_button", new WaxedCopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL), true));
+        return registerBlockWithItem("waxed_" + name + "_large_button", new WaxedCopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL).requiresTool(), true));
     }
 
     public static Block registerStickyCopperLargeButton(String name) {
-        return registerBlockWithItem("sticky_" + name + "_large_button", new StickyCopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL), true));
+        return registerBlockWithItem("sticky_" + name + "_large_button", new StickyCopperButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL).requiresTool(), true));
     }
 
     public static Block registerArrowLargeButton(String name) {
-        return registerBlockWithItem(name + "_large_button", new ArrowButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL), true));
+        return registerBlockWithItem(name + "_large_button", new ArrowButton(FabricBlockSettings.of(Material.DECORATION).strength(0.5f).collidable(false).nonOpaque().sounds(BlockSoundGroup.METAL).requiresTool(), true));
     }
 
     public static Block registerPrismarineLargeButton(String name) {
