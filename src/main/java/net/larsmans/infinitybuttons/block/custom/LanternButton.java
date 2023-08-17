@@ -30,6 +30,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
+import static net.larsmans.infinitybuttons.InfinityButtonsUtil.checkChains;
+
 public class LanternButton extends LanternBlock {
 
     public static final BooleanProperty PRESSED = BooleanProperty.of("pressed");
@@ -157,17 +159,10 @@ public class LanternButton extends LanternBlock {
     }
 
     public void updateNeighbors(World world, BlockPos pos) {
+        int distance = checkChains(world, pos);
         world.updateNeighborsAlways(pos, this);
-        world.updateNeighborsAlways(pos.up(checkChains(world, pos)), this);
-        world.updateNeighborsAlways(pos.up(checkChains(world, pos) + 1), this);
-    }
-
-    public int checkChains(World world, BlockPos pos) {
-        int i = 1;
-        while (world.getBlockState(pos.up(i)).getBlock() instanceof ChainBlock) {
-            i++;
-        }
-        return i - 1;
+        world.updateNeighborsAlways(pos.up(distance), this);
+        world.updateNeighborsAlways(pos.up(distance + 1), this);
     }
 
     @Override
