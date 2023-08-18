@@ -72,5 +72,9 @@ public abstract class AbstractSmallButton extends AbstractButton {
         }
         return bl ? CEILING_Z_PRESSED_SHAPE : CEILING_Z_SHAPE;
     }
+
+    public boolean isLarge() {
+        return large;
+    }
 }
 
