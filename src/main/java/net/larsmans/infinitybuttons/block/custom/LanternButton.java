@@ -1,7 +1,10 @@
 package net.larsmans.infinitybuttons.block.custom;
 
 import net.larsmans.infinitybuttons.InfinityButtonsUtil;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.LanternBlock;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
