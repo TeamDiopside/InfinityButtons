@@ -180,8 +180,8 @@ dependencies {
 modrinth {
     token = System.getenv("MODRINTH_TOKEN")
     projectId = "infinitybuttons"
-    versionNumber = "${rootProject.version}"
-    versionName = "Infinity Buttons [FORGE] ${rootProject.version} - 1.20.1"
+    versionNumber = "4.0.0-forge-1.20.1"
+    versionName = "Infinity Buttons [FORGE] 4.0.0 - 1.20.1"
     versionType = "release"
     uploadFile = jar
     gameVersions = ["1.20", "1.20.1"]
@@ -209,7 +209,7 @@ curseforge {
             optionalDependency "create"
         }
         mainArtifact(jar) {
-            displayName = "Infinity Buttons [FORGE] ${rootProject.version} - 1.20.1"
+            displayName = "Infinity Buttons [FORGE] 4.0.0 - 1.20.1"
         }
         options {
             javaVersionAutoDetect = false
