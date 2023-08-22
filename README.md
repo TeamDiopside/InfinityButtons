@@ -34,6 +34,7 @@ Install [Every Compat (Wood Good)](https://modrinth.com/mod/every-compat) for mo
 - (1.18.2) [Cloth Config API](https://www.curseforge.com/minecraft/mc-mods/cloth-config) is required!
 
 Can be played without, but has additional content with:
+
 - [Create](https://modrinth.com/mod/create) (1.18.2 & 1.19.2)
 - [Nether's Delight](https://www.curseforge.com/minecraft/mc-mods/nethers-delight-fabric) (1.18.2 & 1.19.2)
 - [Carpenter](https://www.curseforge.com/minecraft/mc-mods/carpenter) (1.18.2)
@@ -42,6 +43,7 @@ Can be played without, but has additional content with:
 - [Cloth Config API](https://modrinth.com/mod/cloth-config) is required! 
 
 Can be played without, but has additional content with:
+
 - [Quark](https://quarkmod.net/)
 - [Create](https://modrinth.com/mod/create) (1.18.2+)
 - [Nether's Delight](https://www.curseforge.com/minecraft/mc-mods/nethers-delight)
