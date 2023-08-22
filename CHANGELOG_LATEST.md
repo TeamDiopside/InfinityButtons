@@ -29,7 +29,7 @@
 - Added Cherry Large Button (1.20)
 - Added Bamboo Large Button (1.20)
 - Added Cherry Plank Secret Button (1.20)
-- Change tags to match vanilla (1.20)
+- Change tags to match Vanilla (1.20)
 - (Mostly) Added Spanish translations by SoyTutta!
 - The Creative Tab has been sorted correctly. (1.16.5-1.19.2)
 
@@ -43,11 +43,11 @@ Forge Only:
 - Changed background in config menu.
 - Added integration for Copperized JEI Categories. (1.18.2-1.19.2)
 - Added compat for:
-    - Atmospheric 1.18.2 & 1.19.x
-    - Autumnity 1.18.2 & 1.19.x
-    - Buzzier Bees 1.18.2 & 1.19.x
-    - Clayworks 1.18.2 & 1.19.x
-    - Environmental 1.18.2 & 1.19.x
-    - Neapolitan 1.18.2 & 1.19.x
-    - Savage & Ravage 1.18.2 & 1.19.x
-    - Upgrade Aquatic 1.18.2 & 1.19.x
+  - Atmospheric 1.18.2 & 1.19.x
+  - Autumnity 1.18.2 & 1.19.x
+  - Buzzier Bees 1.18.2 & 1.19.x
+  - Clayworks 1.18.2 & 1.19.x
+  - Environmental 1.18.2 & 1.19.x
+  - Neapolitan 1.18.2 & 1.19.x
+  - Savage & Ravage 1.18.2 & 1.19.x
+  - Upgrade Aquatic 1.18.2 & 1.19.x
