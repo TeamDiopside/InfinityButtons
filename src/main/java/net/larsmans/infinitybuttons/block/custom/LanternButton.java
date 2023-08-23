@@ -1,11 +1,9 @@
 package net.larsmans.infinitybuttons.block.custom;
 
 import net.larsmans.infinitybuttons.InfinityButtonsUtil;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.LanternBlock;
-import net.minecraft.block.ShapeContext;
+import net.minecraft.block.*;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.ai.pathing.NavigationType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -25,19 +23,23 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 import static net.larsmans.infinitybuttons.InfinityButtonsUtil.checkChains;
+import static net.minecraft.block.LanternBlock.WATERLOGGED;
 
-public class LanternButton extends LanternBlock {
+public class LanternButton extends Block implements Waterloggable {
 
     public static final BooleanProperty PRESSED = BooleanProperty.of("pressed");
+    private static final VoxelShape HANGING_SHAPE = VoxelShapes.union(Block.createCuboidShape(5.0, 1.0, 5.0, 11.0, 8.0, 11.0), Block.createCuboidShape(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
     public static final VoxelShape SHAPE_PRESSED = HANGING_SHAPE.offset(0, (double) -1 / 16, 0);
     private final boolean isLever;
     public final Block jadeBlock;
@@ -46,7 +48,7 @@ public class LanternButton extends LanternBlock {
         super(settings);
         this.isLever = isLever;
         this.jadeBlock = jadeBlock;
-        this.setDefaultState(this.stateManager.getDefaultState().with(HANGING, true).with(WATERLOGGED, false).with(PRESSED, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, false).with(PRESSED, false));
     }
 
     @Override
@@ -67,7 +69,7 @@ public class LanternButton extends LanternBlock {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(HANGING, WATERLOGGED, PRESSED);
+        builder.add(WATERLOGGED, PRESSED);
     }
 
     protected int getPressTicks() {
@@ -76,7 +78,10 @@ public class LanternButton extends LanternBlock {
 
     @Override
     public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+        if (state.get(WATERLOGGED)) {
+            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
+        return direction == Direction.UP && !state.canPlaceAt(world, pos) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     @Override
@@ -171,5 +176,20 @@ public class LanternButton extends LanternBlock {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
         InfinityButtonsUtil.tooltip(tooltip, "lantern_button");
+    }
+
+    @Override
+    public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
+        return false;
+    }
+
+    @Override
+    public FluidState getFluidState(BlockState state) {
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
+    @Override
+    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
+        return Block.sideCoversSmallSquare(world, pos.offset(Direction.UP), Direction.DOWN);
     }
 }
