@@ -56,7 +56,7 @@ public class InfinityButtonsItemGroup extends ItemGroup{
 
         List<String> BEFORE_PLANKS = List.of("brick_secret_button", "stone_brick_secret_button", "mossy_stone_brick_secret_button", "cracked_stone_brick_secret_button", "chiseled_stone_brick_secret_button", "deepslate_brick_secret_button", "cracked_deepslate_brick_secret_button", "deepslate_tile_secret_button", "cracked_deepslate_tile_secret_button");
         REGISTRY_FOR_TAB.sort(Comparator.comparing(o -> {
-            Block block = Registry.BLOCK.get(Registry.ITEM.getId(o));
+            Block block = Block.getBlockFromItem(o);
             if (block instanceof AbstractSmallButton && !((AbstractSmallButton) block).isLarge()) {
                 if (block instanceof WoodenButton) {
                     return "AA";
