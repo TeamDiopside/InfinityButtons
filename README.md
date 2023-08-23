@@ -5,7 +5,10 @@
 
 [![Fabric API](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/requires/fabric-api_vector.svg)](https://modrinth.com/mod/fabric-api)
 [![Forge](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/forge_vector.svg)](https://files.minecraftforge.net/net/minecraftforge/forge/)
+
 [![RocketNode](https://teamdiopside.nl/assets/diopside/rocketnode.png)](https://billing.rocketnode.com/aff.php?aff=150440)
+
+---
 
 Ever felt like those pesky small buttons just aren't enough? Try Infinity Buttons! This mod adds a lot of new cool buttons to spice up your Minecraft experience. Keep missing the small button at your door while running? Try the Large Buttons! Want to set off some explosions? The emergency button has got you covered. Want to hide your base? Secret Buttons will do the trick! Those aren't the only buttons though, right beneath this text are some more buttons listed.
 
@@ -34,6 +37,7 @@ Install [Every Compat (Wood Good)](https://modrinth.com/mod/every-compat) for mo
 - (1.18.2) [Cloth Config API](https://www.curseforge.com/minecraft/mc-mods/cloth-config) is required!
 
 Can be played without, but has additional content with:
+
 - [Create](https://modrinth.com/mod/create) (1.18.2 & 1.19.2)
 - [Nether's Delight](https://www.curseforge.com/minecraft/mc-mods/nethers-delight-fabric) (1.18.2 & 1.19.2)
 - [Carpenter](https://www.curseforge.com/minecraft/mc-mods/carpenter) (1.18.2)
@@ -42,6 +46,7 @@ Can be played without, but has additional content with:
 - [Cloth Config API](https://modrinth.com/mod/cloth-config) is required! 
 
 Can be played without, but has additional content with:
+
 - [Quark](https://quarkmod.net/)
 - [Create](https://modrinth.com/mod/create) (1.18.2+)
 - [Nether's Delight](https://www.curseforge.com/minecraft/mc-mods/nethers-delight)
