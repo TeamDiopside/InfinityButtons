@@ -70,6 +70,10 @@ public class CreativeTabEvents {
                 output.accept(new ItemStack(InfinityButtonsBlocks.DARK_PRISMARINE_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.SAND_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.RED_SAND_BUTTON.get()));
+                if (ModList.get().isLoaded("atmospheric")) {
+                    output.accept(new ItemStack(AtmosphericBlocks.ARID_SAND_BUTTON.get()));
+                    output.accept(new ItemStack(AtmosphericBlocks.RED_ARID_SAND_BUTTON.get()));
+                }
                 output.accept(new ItemStack(InfinityButtonsBlocks.GRAVEL_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.WHITE_CONCRETE_POWDER_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.LIGHT_GRAY_CONCRETE_POWDER_BUTTON.get()));
@@ -129,6 +133,10 @@ public class CreativeTabEvents {
                 output.accept(new ItemStack(InfinityButtonsBlocks.DARK_PRISMARINE_LARGE_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.SAND_LARGE_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.RED_SAND_LARGE_BUTTON.get()));
+                if (ModList.get().isLoaded("atmospheric")) {
+                    output.accept(new ItemStack(AtmosphericBlocks.ARID_SAND_LARGE_BUTTON.get()));
+                    output.accept(new ItemStack(AtmosphericBlocks.RED_ARID_SAND_LARGE_BUTTON.get()));
+                }
                 output.accept(new ItemStack(InfinityButtonsBlocks.GRAVEL_LARGE_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.WHITE_CONCRETE_POWDER_LARGE_BUTTON.get()));
                 output.accept(new ItemStack(InfinityButtonsBlocks.LIGHT_GRAY_CONCRETE_POWDER_LARGE_BUTTON.get()));
