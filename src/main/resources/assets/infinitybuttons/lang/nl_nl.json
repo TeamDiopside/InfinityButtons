@@ -231,7 +231,7 @@
   "block.infinitybuttons.propelplant_torch_button": "Propelplantfakkelknop",
   "block.infinitybuttons.propelplant_torch_lever": "Propelplantfakkelhendel",
 
-  "itemGroup.infinityButtonsTab": "Infinity Buttons",
+  "itemGroup.infinitybuttons.infinitybuttons": "Infinity Buttons",
 
   "infinitybuttons.subtitle.alarm": "Alarm gaat af",
   "infinitybuttons.subtitle.stone_scrape": "Steen verschuift",

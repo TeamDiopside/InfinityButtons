@@ -38,7 +38,7 @@ public class InfinityButtonsItemGroup extends ItemGroup{
 
     private static ItemGroup build() {
         ((ItemGroupExtensions) ItemGroup.BUILDING_BLOCKS).fabric_expandArray();
-        return new InfinityButtonsItemGroup("infinityButtonsTab");
+        return new InfinityButtonsItemGroup("infinitybuttons.infinitybuttons");
     }
 
     @Override
