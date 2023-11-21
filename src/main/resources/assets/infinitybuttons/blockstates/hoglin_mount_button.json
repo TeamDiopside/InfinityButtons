@@ -1,18 +1,18 @@
 {
   "variants": {
     "pressed=false,facing=north": {
-      "model": "nethersdelight:block/hoglin_mount"
+      "model": "nethersdelight:block/hoglin_trophy"
     },
     "pressed=false,facing=east": {
-      "model": "nethersdelight:block/hoglin_mount",
+      "model": "nethersdelight:block/hoglin_trophy",
       "y": 90
     },
     "pressed=false,facing=south": {
-      "model": "nethersdelight:block/hoglin_mount",
+      "model": "nethersdelight:block/hoglin_trophy",
       "y": 180
     },
     "pressed=false,facing=west": {
-      "model": "nethersdelight:block/hoglin_mount",
+      "model": "nethersdelight:block/hoglin_trophy",
       "y": 270
     },
     "pressed=true,facing=north": {
