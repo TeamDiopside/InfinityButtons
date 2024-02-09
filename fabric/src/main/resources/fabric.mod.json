@@ -1,17 +1,28 @@
 {
   "schemaVersion": 1,
-  "id": "infinitybutts",
-  "version": "${version}",
+  "id": "infinitybuttons",
+  "version": "${mod_version}",
 
-  "name": "InfinityButts",
-  "description": "",
-  "authors": [],
-  "contact": {},
+  "name": "Infinity Buttons",
+  "description": "A mod which adds new exciting buttons!",
+
+  "authors": [
+    "LarsMans",
+    "curryducker"
+  ],
+  "contributors": [
+    "haoooo_"
+  ],
+
+  "contact": {
+    "homepage": "https://teamdiopside.nl/projects/InfinityButtons",
+    "issues": "https://teamdiopside.nl/projects/InfinityButtons/issues"
+  },
 
   "license": "GNU LGPL 3.0",
-  "icon": "icon.png",
-
+  "icon": "assets/infinitybuttons/icon.png",
   "environment": "*",
+
   "entrypoints": {
     "main": [
       "nl.teamdiopside.infinitybuttons.fabric.InfinityButtonsFabric"
@@ -21,8 +32,11 @@
     "infinitybutts.mixins.json",
     "infinitybutts-common.mixins.json"
   ],
+
   "depends": {
-    "fabricloader": ">=0.15.6",
-    "minecraft": ">=1.20.4"
+    "fabricloader": ">=0.14.6",
+    "fabric": "*",
+    "minecraft": ">=1.20.2",
+    "java": ">=17"
   }
 }

@@ -1,5 +1,7 @@
 plugins {
     id "com.github.johnrengelman.shadow" version "7.1.2"
+    id "com.modrinth.minotaur" version "2.+"
+    id 'net.darkhax.curseforgegradle' version '1.1.15'
 }
 loom {
     forge {
@@ -27,6 +29,49 @@ dependencies {
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
+}
+
+modrinth {
+    token = System.getenv("MODRINTH_TOKEN")
+    projectId = "infinitybuttons"
+    versionNumber = "${mod_version}-fabric-${minecraft_version}"
+    versionType = "release"
+    uploadFile = remapJar
+    gameVersions = ["1.20.2", "1.20.3", "1.20.4"]
+    dependencies {
+        required.project "yacl"
+
+        optional.project "jade"
+        optional.project "every-compat"
+        optional.project "quark"
+        optional.project "create"
+        optional.project "nethers-delight"
+        optional.project "woodworks"
+        optional.project "environmental"
+        optional.project "endergetic"
+        optional.project "autumnity"
+        optional.project "abundance"
+        optional.project "atmospheric"
+        optional.project "bayou-blues"
+        optional.project "enhanced-mushrooms"
+        optional.project "upgrade-aquatic"
+        optional.project "buzzier-bees"
+        optional.project "neapolitan"
+        optional.project "savage-and-ravage"
+    }
+}
+
+task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
+    apiToken = System.getenv("CURSEFORGE_TOKEN")
+    disableVersionDetection()
+    def mainFile = upload("661902", remapJar)
+    mainFile.displayName = "${mod_version} Forge ${minecraft_version}"
+    mainFile.changelog = rootProject.file("CHANGELOG_LATEST.md").text
+    mainFile.changelogType = "markdown"
+    mainFile.releaseType = "release"
+    mainFile.addModLoader("Forge")
+    mainFile.addGameVersion("1.20.2", "1.20.3", "1.20.4")
+    mainFile.addOptional("jade", "every-compat", "quark", "create", "nethers-delight", "woodworks", "carpenter", "environmental", "endergetic", "autumnity", "abundance", "atmospheric", "bayou-blues", "enhanced-mushrooms", "upgrade-aquatic", "buzzier-bees", "neapolitan", "savage-and-ravage")
 }
 
 processResources {
