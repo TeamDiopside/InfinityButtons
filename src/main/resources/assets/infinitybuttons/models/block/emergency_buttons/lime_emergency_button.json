@@ -1,8 +1,0 @@
-{
-	"parent": "infinitybuttons:block/emergency_button",
-	"textures": {
-		"0": "minecraft:block/smooth_stone",
-		"1": "infinitybuttons:block/emergency_buttons/lime",
-		"particle": "infinitybuttons:block/emergency_buttons/lime"
- 	}
-}

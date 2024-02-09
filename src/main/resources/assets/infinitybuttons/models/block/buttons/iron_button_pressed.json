@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/button_pressed",
-  "textures": {
-    "texture": "infinitybuttons:block/iron_small_button"
-  }
-}
