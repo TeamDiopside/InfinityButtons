@@ -29,8 +29,8 @@
     ]
   },
   "mixins": [
-    "infinitybutts.mixins.json",
-    "infinitybutts-common.mixins.json"
+    "infinitybuttons.mixins.json",
+    "infinitybuttons-common.mixins.json"
   ],
 
   "depends": {
