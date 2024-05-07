@@ -379,10 +379,6 @@ public class CreativeTabEvents {
                 }
                 if (ModList.get().isLoaded("upgrade_aquatic")) {
                     output.accept(new ItemStack(UpgradeAquaticBlocks.KELPY_STONE_BRICK_SECRET_BUTTON.get()));
-                    output.accept(new ItemStack(UpgradeAquaticBlocks.TONGUE_KELPY_STONE_BRICK_SECRET_BUTTON.get()));
-                    output.accept(new ItemStack(UpgradeAquaticBlocks.THORNY_KELPY_STONE_BRICK_SECRET_BUTTON.get()));
-                    output.accept(new ItemStack(UpgradeAquaticBlocks.OCHRE_KELPY_STONE_BRICK_SECRET_BUTTON.get()));
-                    output.accept(new ItemStack(UpgradeAquaticBlocks.POLAR_KELPY_STONE_BRICK_SECRET_BUTTON.get()));
                     output.accept(new ItemStack(UpgradeAquaticBlocks.CHISELED_TOOTH_BRICK_SECRET_BUTTON.get()));
                 }
                 if (ModList.get().isLoaded("create")) {

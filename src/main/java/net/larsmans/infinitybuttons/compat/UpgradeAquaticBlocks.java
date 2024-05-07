@@ -26,11 +26,6 @@ public class UpgradeAquaticBlocks {
     public static final RegistryObject<Block> KELPY_STONE_BRICK_SECRET_BUTTON = registerBlock("kelpy_stone_brick_secret_button",
             () -> new BigCompatSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops(), byName("kelpy_stone_bricks")));
 
-    public static final RegistryObject<Block> TONGUE_KELPY_STONE_BRICK_SECRET_BUTTON = registerKelpyBlock("tongue");
-    public static final RegistryObject<Block> THORNY_KELPY_STONE_BRICK_SECRET_BUTTON = registerKelpyBlock("thorny");
-    public static final RegistryObject<Block> OCHRE_KELPY_STONE_BRICK_SECRET_BUTTON = registerKelpyBlock("ochre");
-    public static final RegistryObject<Block> POLAR_KELPY_STONE_BRICK_SECRET_BUTTON = registerKelpyBlock("polar");
-
 
     public static final RegistryObject<Block> CHISELED_TOOTH_BRICK_SECRET_BUTTON = registerBlock("chiseled_tooth_brick_secret_button",
             () -> new ChiseledToothSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(3.0f, 9.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops(), byName("chiseled_tooth_bricks")));
@@ -47,11 +42,6 @@ public class UpgradeAquaticBlocks {
     private static RegistryObject<Block> registerBookshelf(String wood) {
         return registerBlock(wood + "_bookshelf_secret_button",
                 () -> new CompatBookshelfSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).ignitedByLava().strength(1.5f).noOcclusion().sound(SoundType.WOOD), byName(wood + "_bookshelf")));
-    }
-
-    private static RegistryObject<Block> registerKelpyBlock(String type) {
-        return registerBlock(type + "_kelpy_stone_brick_secret_button",
-                () -> new BigCompatSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops(), byName(type + "_kelpy_stone_bricks")));
     }
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

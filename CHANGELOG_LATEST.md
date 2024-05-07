@@ -1,3 +1,2 @@
 Forge:
-- Bookshelf Secret Buttons made from Abnormals wood types are now able to use Woodworks.
-- Fixed Hoglin Mount Button missing model when turned off. (1.20.1)
+- Removed Secret Buttons of Upgrade Aquatic's Kelpy Brick variants as they have been removed from the original mod.
