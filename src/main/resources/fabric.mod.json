@@ -31,9 +31,7 @@
       "com.llamalad7.mixinextras.MixinExtrasBootstrap::init"
     ],
     "jade": [
-      "net.larsmans.infinitybuttons.compat.jade.InfinityButtonsPlugin",
-      "snownee.jade.addon.vanilla.VanillaPlugin",
-      "snownee.jade.addon.universal.UniversalPlugin"
+      "net.larsmans.infinitybuttons.compat.jade.InfinityButtonsPlugin"
     ]
   },
   "mixins": [
