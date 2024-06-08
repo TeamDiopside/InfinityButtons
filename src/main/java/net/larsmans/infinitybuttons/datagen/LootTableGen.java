@@ -131,6 +131,7 @@ public class LootTableGen extends FabricBlockLootTableProvider {
         addDrop(InfinityButtonsBlocks.PURPLE_EMERGENCY_BUTTON);
         addDrop(InfinityButtonsBlocks.MAGENTA_EMERGENCY_BUTTON);
         addDrop(InfinityButtonsBlocks.PINK_EMERGENCY_BUTTON);
+        addDrop(InfinityButtonsBlocks.FANCY_EMERGENCY_BUTTON);
 
         addDrop(InfinityButtonsBlocks.WHITE_SAFE_EMERGENCY_BUTTON);
         addDrop(InfinityButtonsBlocks.LIGHT_GRAY_SAFE_EMERGENCY_BUTTON);
@@ -148,6 +149,7 @@ public class LootTableGen extends FabricBlockLootTableProvider {
         addDrop(InfinityButtonsBlocks.PURPLE_SAFE_EMERGENCY_BUTTON);
         addDrop(InfinityButtonsBlocks.MAGENTA_SAFE_EMERGENCY_BUTTON);
         addDrop(InfinityButtonsBlocks.PINK_SAFE_EMERGENCY_BUTTON);
+        addDrop(InfinityButtonsBlocks.FANCY_SAFE_EMERGENCY_BUTTON);
 
         addDrop(InfinityButtonsBlocks.BOOKSHELF_SECRET_BUTTON);
         addDrop(InfinityButtonsBlocks.BRICK_SECRET_BUTTON);
