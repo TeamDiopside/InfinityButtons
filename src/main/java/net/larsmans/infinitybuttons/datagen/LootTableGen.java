@@ -138,6 +138,7 @@ public class LootTableGen extends SimpleFabricLootTableProvider {
         generateLootTable(i, InfinityButtonsBlocks.PURPLE_EMERGENCY_BUTTON);
         generateLootTable(i, InfinityButtonsBlocks.MAGENTA_EMERGENCY_BUTTON);
         generateLootTable(i, InfinityButtonsBlocks.PINK_EMERGENCY_BUTTON);
+        generateLootTable(i, InfinityButtonsBlocks.FANCY_EMERGENCY_BUTTON);
 
         generateLootTable(i, InfinityButtonsBlocks.WHITE_SAFE_EMERGENCY_BUTTON);
         generateLootTable(i, InfinityButtonsBlocks.LIGHT_GRAY_SAFE_EMERGENCY_BUTTON);
@@ -155,6 +156,7 @@ public class LootTableGen extends SimpleFabricLootTableProvider {
         generateLootTable(i, InfinityButtonsBlocks.PURPLE_SAFE_EMERGENCY_BUTTON);
         generateLootTable(i, InfinityButtonsBlocks.MAGENTA_SAFE_EMERGENCY_BUTTON);
         generateLootTable(i, InfinityButtonsBlocks.PINK_SAFE_EMERGENCY_BUTTON);
+        generateLootTable(i, InfinityButtonsBlocks.FANCY_SAFE_EMERGENCY_BUTTON);
 
         generateLootTable(i, InfinityButtonsBlocks.BOOKSHELF_SECRET_BUTTON);
         generateLootTable(i, InfinityButtonsBlocks.BRICK_SECRET_BUTTON);
