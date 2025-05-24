@@ -1,0 +1,18 @@
+{
+  "type": "woodworks:sawmill",
+  "ingredient": {
+    "tag": "minecraft:bamboo_blocks"
+  },
+  "result": "minecraft:bamboo_button",
+  "count": 12,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "woodworks"
+    },
+    {
+      "type": "woodworks:config",
+      "value": "sawmill"
+    }
+  ]
+}

@@ -10,11 +10,11 @@
   "group": "wooden_button",
   "ingredients": [
     {
-      "item": "atmospheric:kousa_planks"
+      "item": "atmospheric:laurel_planks"
     }
   ],
   "result": {
-    "item": "atmospheric:kousa_button",
+    "item": "atmospheric:laurel_button",
     "count": 4
   }
 }

@@ -2,19 +2,22 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "atmospheric"
+      "modid": "quark"
+    },
+    {
+      "type": "quark:flag",
+      "flag": "ancient_wood"
     }
   ],
   "type": "minecraft:crafting_shapeless",
-  "category": "redstone",
   "group": "wooden_button",
   "ingredients": [
     {
-      "item": "atmospheric:kousa_planks"
+      "item": "quark:ancient_planks"
     }
   ],
   "result": {
-    "item": "atmospheric:kousa_button",
+    "item": "quark:ancient_button",
     "count": 4
   }
 }

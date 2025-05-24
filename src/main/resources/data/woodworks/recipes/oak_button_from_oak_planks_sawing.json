@@ -1,18 +1,25 @@
 {
-  "type": "woodworks:sawmill",
-  "ingredient": {
-    "item": "minecraft:oak_planks"
-  },
-  "result": "minecraft:oak_button",
-  "count": 6,
-  "conditions": [
+  "type": "forge:conditional",
+  "recipes": [
     {
-      "type": "forge:mod_loaded",
-      "modid": "woodworks"
-    },
-    {
-      "type": "woodworks:config",
-      "value": "sawmill"
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "woodworks"
+        },
+        {
+          "type": "woodworks:config",
+          "value": "sawmill"
+        }
+      ],
+      "recipe": {
+        "type": "woodworks:sawmill",
+        "count": 6,
+        "ingredient": {
+          "item": "minecraft:oak_planks"
+        },
+        "result": "minecraft:oak_button"
+      }
     }
   ]
 }

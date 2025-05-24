@@ -8,17 +8,21 @@
           "modid": "woodworks"
         },
         {
+          "type": "forge:mod_loaded",
+          "modid": "environmental"
+        },
+        {
           "type": "woodworks:config",
           "value": "sawmill"
         }
       ],
       "recipe": {
         "type": "woodworks:sawmill",
-        "count": 24,
+        "count": 6,
         "ingredient": {
-          "tag": "minecraft:oak_logs"
+          "item": "environmental:pine_planks"
         },
-        "result": "minecraft:oak_button"
+        "result": "environmental:pine_button"
       }
     }
   ]

@@ -2,7 +2,7 @@
   "conditions": [
     {
       "type": "forge:mod_loaded",
-      "modid": "atmospheric"
+      "modid": "environmental"
     }
   ],
   "type": "minecraft:crafting_shapeless",
@@ -10,11 +10,11 @@
   "group": "wooden_button",
   "ingredients": [
     {
-      "item": "atmospheric:kousa_planks"
+      "item": "environmental:plum_planks"
     }
   ],
   "result": {
-    "item": "atmospheric:kousa_button",
+    "item": "environmental:plum_button",
     "count": 4
   }
 }
