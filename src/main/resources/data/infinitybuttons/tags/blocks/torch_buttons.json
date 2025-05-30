@@ -8,6 +8,14 @@
     "infinitybuttons:redstone_torch_button",
     "infinitybuttons:redstone_torch_lever",
     {
+      "id": "infinitybuttons:ender_torch_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:ender_torch_lever",
+      "required": false
+    },
+    {
       "id": "infinitybuttons:propelplant_torch_button",
       "required": false
     },
@@ -22,6 +30,14 @@
     "infinitybuttons:soul_wall_torch_lever",
     "infinitybuttons:redstone_wall_torch_button",
     "infinitybuttons:redstone_wall_torch_lever",
+    {
+      "id": "infinitybuttons:ender_wall_torch_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:ender_wall_torch_lever",
+      "required": false
+    },
     {
       "id": "infinitybuttons:propelplant_wall_torch_button",
       "required": false

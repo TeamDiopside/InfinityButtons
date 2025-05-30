@@ -9,7 +9,7 @@ plugins {
     id 'com.matthewprenger.cursegradle' version '1.4.0'
 }
 
-version = '1.20.1-4.0.4'
+version = '1.20.1-4.0.6'
 group = 'net.larsmans.infinitybuttons' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'infinitybuttons'
 
@@ -161,6 +161,7 @@ dependencies {
     // compileOnly fg.deobf("curse.maven:upgrade-aquatic-326895:4415517")
     // compileOnly fg.deobf("curse.maven:woodworks-543610:4396958")
     compileOnly fg.deobf("curse.maven:create-328085:4626108")
+    compileOnly fg.deobf("curse.maven:endergetic-291509:6157658")
 
     implementation fg.deobf("curse.maven:jade-324717:4681833")
 
@@ -180,8 +181,8 @@ dependencies {
 modrinth {
     token = System.getenv("MODRINTH_TOKEN")
     projectId = "infinitybuttons"
-    versionNumber = "4.0.4-forge-1.20.1"
-    versionName = "Infinity Buttons [FORGE] 4.0.4 - 1.20.1"
+    versionNumber = "4.0.6-forge-1.20.1"
+    versionName = "Infinity Buttons [FORGE] 4.0.6 - 1.20.1"
     versionType = "release"
     uploadFile = jar
     gameVersions = ["1.20", "1.20.1"]
@@ -209,7 +210,7 @@ curseforge {
             optionalDependency "create"
         }
         mainArtifact(jar) {
-            displayName = "Infinity Buttons [FORGE] 4.0.4 - 1.20.1"
+            displayName = "Infinity Buttons [FORGE] 4.0.6 - 1.20.1"
         }
         options {
             javaVersionAutoDetect = false

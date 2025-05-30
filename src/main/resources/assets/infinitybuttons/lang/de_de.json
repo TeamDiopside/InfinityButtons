@@ -47,7 +47,7 @@
 
     "block.infinitybuttons.arid_sand_button": "Aridsandknopf",
     "block.infinitybuttons.red_arid_sand_button": "Roter Aridsandknopf",
-    
+
     "block.infinitybuttons.oak_large_button": "Großer Eichenholzknopf",
     "block.infinitybuttons.spruce_large_button": "Großer Fichtenholzknopf",
     "block.infinitybuttons.birch_large_button": "Großer Birkenholzknopf",
@@ -127,7 +127,7 @@
     "block.infinitybuttons.magenta_emergency_button": "Magenta Notfallknopf",
     "block.infinitybuttons.pink_emergency_button": "Rosa Notfallknopf",
     "block.infinitybuttons.fancy_emergency_button": "\u00A7cS\u00A76c\u00A7eh\u00A7ai\u00A7bc\u00A79k\u00A7de\u00A7cr \u00A76N\u00A7eo\u00A7at\u00A7bf\u00A79a\u00A7dl\u00A7cl\u00A76k\u00A7en\u00A7ao\u00A7bp\u00A79f\u00A7dl",
-    
+
     "block.infinitybuttons.white_safe_emergency_button": "Weißer Sicherheitsknopf",
     "block.infinitybuttons.light_gray_safe_emergency_button": "Hellgrauer Sicherheitsknopf",
     "block.infinitybuttons.gray_safe_emergency_button": "Grauer Sicherheitsknopf",
@@ -145,7 +145,7 @@
     "block.infinitybuttons.magenta_safe_emergency_button": "Magenta Sicherheitsknopf",
     "block.infinitybuttons.pink_safe_emergency_button": "Rosa Sicherheitsknopf",
     "block.infinitybuttons.fancy_safe_emergency_button": "\u00A7cS\u00A76c\u00A7eh\u00A7ai\u00A7bc\u00A79k\u00A7de\u00A7cr \u00A76S\u00A7ei\u00A7ac\u00A7bh\u00A79e\u00A7dr\u00A7ch\u00A76e\u00A7ei\u00A7at\u00A7bs\u00A79k\u00A7dn\u00A7co\u00A76p\u00A7ef",
-    
+
     "block.infinitybuttons.bookshelf_secret_button": "Geheimer Bücherregalknopf",
     "block.infinitybuttons.spruce_bookshelf_secret_button": "Geheimer Fichtenholzbücherregalknopf",
     "block.infinitybuttons.birch_bookshelf_secret_button": "Geheimer Birkenholzbücherregalknopf",
@@ -160,6 +160,7 @@
     "block.infinitybuttons.willow_bookshelf_secret_button": "Geheimer Weidenbücherregalknopf",
     "block.infinitybuttons.cherry_bookshelf_secret_button": "Geheimer Kirschbücherregalknopf",
     "block.infinitybuttons.wisteria_bookshelf_secret_button": "Geheimer Glyzinienbücherregalknopf",
+    "block.infinitybuttons.poise_bookshelf_secret_button": "Poise Bookshelf Secret Button",
     "block.infinitybuttons.maple_bookshelf_secret_button": "Geheimer Ahornbücherregalknopf",
     "block.infinitybuttons.rosewood_bookshelf_secret_button": "Geheimer Rosenholzbücherregalknopf",
     "block.infinitybuttons.morado_bookshelf_secret_button": "Geheimer Moradobücherregalknopf",
@@ -169,7 +170,7 @@
     "block.infinitybuttons.grimwood_bookshelf_secret_button": "Geheimer Gruselholzbücherregalknopf",
     "block.infinitybuttons.driftwood_bookshelf_secret_button": "Geheimer Treibholzbücherregalknopf",
     "block.infinitybuttons.river_bookshelf_secret_button": "Geheimer Flussbücherregalknopf",
-    
+
     "block.infinitybuttons.woodworks_spruce_bookshelf_secret_button": "Geheimer Fichtenholzbücherregalknopf",
     "block.infinitybuttons.woodworks_birch_bookshelf_secret_button": "Geheimer Birkenholzbücherregalknopf",
     "block.infinitybuttons.woodworks_jungle_bookshelf_secret_button": "Geheimer Tropenholzbücherregalknopf",
@@ -178,7 +179,7 @@
     "block.infinitybuttons.woodworks_mangrove_bookshelf_secret_button": "Geheimer Mangrovenholzbücherregalknopf",
     "block.infinitybuttons.woodworks_crimson_bookshelf_secret_button": "Geheimer Karmesinbücherregalknopf",
     "block.infinitybuttons.woodworks_warped_bookshelf_secret_button": "Geheimer Wirrbücherregalknopf",
-    
+
     "block.infinitybuttons.brick_secret_button": "Geheimer Ziegelknopf",
     "block.infinitybuttons.chiseled_brick_secret_button": "Geheimer gemeißelter Ziegelknopf",
     "block.infinitybuttons.stone_brick_secret_button": "Geheimer Steinziegelknopf",
@@ -212,7 +213,7 @@
     "block.infinitybuttons.cracked_nether_brick_secret_button": "Geheimer rissiger Netherziegelknopf",
     "block.infinitybuttons.chiseled_nether_brick_secret_button": "Geheimer gemeißelter Netherziegelknopf",
     "block.infinitybuttons.red_nether_brick_secret_button": "Geheimer roter Netherziegelknopf",
-    
+
     "block.infinitybuttons.doorbell": "Türklingel",
     "block.infinitybuttons.doorbell_button": "Türkiserknopf",
     "block.infinitybuttons.lamp_button": "Lampenknopf",
@@ -224,7 +225,9 @@
     "block.infinitybuttons.lantern_lever": "Laternenhebel",
     "block.infinitybuttons.soul_lantern_button": "Seelenlaternenknopf",
     "block.infinitybuttons.soul_lantern_lever": "Seelenlaternenhebel",
-    
+    "block.infinitybuttons.ender_lantern_button": "Ender Lantern Button",
+    "block.infinitybuttons.ender_lantern_lever": "Ender Lantern Lever",
+
     "block.infinitybuttons.small_console_button": "Kleiner Konsolenknopf",
     "block.infinitybuttons.small_console_lever": "Kleiner Konsolenhebel",
     "block.infinitybuttons.console_button": "Konsolenknopf",
@@ -233,7 +236,7 @@
     "block.infinitybuttons.large_console_lever": "Großer Konsolenhebel",
     "block.infinitybuttons.big_console_button": "Riesiger Konsolenknopf",
     "block.infinitybuttons.big_console_lever": "Riesiger Konsolenhebel",
-    
+
     "block.infinitybuttons.terracotta_brick_secret_button": "Geheimer Keramikziegelknopf",
     "block.infinitybuttons.white_terracotta_brick_secret_button": "Weißer Keramikziegelknopf",
     "block.infinitybuttons.light_gray_terracotta_brick_secret_button": "Geheimer hellgrauer Keramikziegelknopf",
@@ -251,7 +254,7 @@
     "block.infinitybuttons.purple_terracotta_brick_secret_button": "Geheimer violetter Keramikziegelknopf",
     "block.infinitybuttons.magenta_terracotta_brick_secret_button": "Geheimer magenta Keramikziegelknopf",
     "block.infinitybuttons.pink_terracotta_brick_secret_button": "Geheimer rosa Keramikziegelknopf",
-    
+
     "block.infinitybuttons.chiseled_terracotta_brick_secret_button": "Geheimer gemeißelter Keramikziegelknopf",
     "block.infinitybuttons.chiseled_white_terracotta_brick_secret_button": "Geheimer gemeißelter weißer Keramikziegelknopf",
     "block.infinitybuttons.chiseled_light_gray_terracotta_brick_secret_button": "Geheimer gemeißelter hellgrauer Keramikziegelknopf",
@@ -269,7 +272,12 @@
     "block.infinitybuttons.chiseled_purple_terracotta_brick_secret_button": "Geheimer gemeißelter violetter Keramikziegelknopf",
     "block.infinitybuttons.chiseled_magenta_terracotta_brick_secret_button": "Geheimer gemeißelter magenta Keramikziegelknopf",
     "block.infinitybuttons.chiseled_pink_terracotta_brick_secret_button": "Geheimer gemeißelter rosa Keramikziegelknopf",
-    
+
+    "block.infinitybuttons.chiseled_end_stone_brick_secret_button":  "Chiseled End Stone Brick Secret Button",
+    "block.infinitybuttons.chiseled_eumus_brick_secret_button":  "Chiseled Eumus Brick Secret Button",
+    "block.infinitybuttons.cracked_end_stone_brick_secret_button":  "Cracked End Stone Brick Secret Button",
+    "block.infinitybuttons.cracked_eumus_brick_secret_button":  "Cracked Eumus Brick Secret Button",
+    "block.infinitybuttons.eumus_brick_secret_button":  "Eumus Brick Secret Button",
     "block.infinitybuttons.honeycomb_brick_secret_button": "Geheimer Wabenziegelknopf",
     "block.infinitybuttons.chiseled_honeycomb_brick_secret_button": "Geheimer gemeißelter Wabenziegelknopf",
     "block.infinitybuttons.chiseled_chocolate_brick_secret_button": "Geheimer gemeißelter Schokoladenziegelknopf",
@@ -280,7 +288,7 @@
     "block.infinitybuttons.ochre_kelpy_stone_brick_secret_button": "Geheimer Ockrumseetangsteinziegelknopf",
     "block.infinitybuttons.polar_kelpy_stone_brick_secret_button": "Geheimer Polarseetangsteinziegelknopf",
     "block.infinitybuttons.chiseled_tooth_brick_secret_button": "Geheimer gemeißelter Zahnziegelknopf",
-    
+
     "block.infinitybuttons.permafrost_brick_secret_button": "Geheimer Permafrostziegelknopf",
     "block.infinitybuttons.blue_nether_brick_secret_button": "Geheimer blauer Netherziegelknopf",
     "block.infinitybuttons.polished_granite_brick_secret_button": "Geheimer polierter Granitziegelknopf",
@@ -292,7 +300,7 @@
     "block.infinitybuttons.polished_limestone_brick_secret_button": "Geheimer polierter Kalksteinziegelknopf",
     "block.infinitybuttons.polished_jasper_brick_secret_button": "Geheimer polierter Jaspisziegelknopf",
     "block.infinitybuttons.polished_shale_brick_secret_button": "Geheimer polierter Schieferziegelknopf",
-    
+
     "block.infinitybuttons.chiseled_polished_granite_brick_secret_button": "Geheimer gemeißelter polierter Granitziegelknopf",
     "block.infinitybuttons.chiseled_polished_diorite_brick_secret_button": "Geheimer gemeißelter polierter Dioritziegelknopf",
     "block.infinitybuttons.chiseled_polished_andesite_brick_secret_button": "Geheimer gemeißelter polierter Andesitziegelknopf",
@@ -302,7 +310,7 @@
     "block.infinitybuttons.chiseled_polished_limestone_brick_secret_button": "Geheimer gemeißelter polierter Kalksteinziegelknopf",
     "block.infinitybuttons.chiseled_polished_jasper_brick_secret_button": "Geheimer gemeißelter polierter Jaspisziegelknopf",
     "block.infinitybuttons.chiseled_polished_shale_brick_secret_button": "Geheimer gemeißelter polierter Schieferziegelknopf",
-    
+
     "block.infinitybuttons.rose_quartz_tile_secret_button": "Geheimer Rosenquarzfliesenknopf",
     "block.infinitybuttons.small_rose_quartz_tile_secret_button": "Geheimer kleiner Rosenquarzfliesenknopf",
     "block.infinitybuttons.cut_granite_brick_secret_button": "Geheimer geschnittener Granitziegelknopf",
@@ -333,23 +341,25 @@
     "block.infinitybuttons.small_scorchia_brick_secret_button": "Geheimer kleiner Scorchiaziegelknopf",
     "block.infinitybuttons.cut_veridium_brick_secret_button": "Geheimer geschnittener Veridiumziegelknopf",
     "block.infinitybuttons.small_veridium_brick_secret_button": "Geheimer kleiner Veridiumziegelknopf",
-    
+
     "block.infinitybuttons.torch_button": "Fackelknopf",
     "block.infinitybuttons.torch_lever": "Fackelhebel",
     "block.infinitybuttons.soul_torch_button": "Seelenfackelknopf",
     "block.infinitybuttons.soul_torch_lever": "Seelenfackelhebel",
     "block.infinitybuttons.redstone_torch_button": "Redstone-Fackelknopf",
     "block.infinitybuttons.redstone_torch_lever": "Redstone-Fackelhebel",
+    "block.infinitybuttons.ender_torch_button": "Ender Torch Button",
+    "block.infinitybuttons.ender_torch_lever": "Ender Torch Lever",
     "block.infinitybuttons.propelplant_torch_button": "Propelplantfackelknopf",
     "block.infinitybuttons.propelplant_torch_lever": "Propelplantfackelhebel",
-    
+
     "itemGroup.infinityButtonsTab": "Infinity Buttons",
-    
+
     "infinitybuttons.subtitle.alarm": "Alarm geht aus",
     "infinitybuttons.subtitle.stone_scrape": "Steinschrammen",
     "infinitybuttons.subtitle.wood_scrape": "Holzschrammen",
     "infinitybuttons.subtitle.doorbell": "Ding dong",
-    
+
     "infinitybuttons.tooltip.hold_shift": "[Umschalttaste halten]",
     "infinitybuttons.tooltip.sticky_copper_button": "Dieser Knopf funktioniert wie ein Hebel",
     "infinitybuttons.tooltip.emerald_button1": "Dieser Knopf bleibt zufällig lange gedrückt",
@@ -362,9 +372,9 @@
     "infinitybuttons.tooltip.doorbell_button": "Diese Türklingel gibt ein Redstone-Signal aus",
     "infinitybuttons.tooltip.letter_button": "Schleichklicken um den Buchstaben zu ändern",
     "infinitybuttons.tooltip.lantern_button": "Sendet ein Redstone-Signal an die oberste Kette über der Laterne",
-    
+
     "infinitybuttons.actionbar.closed_safety_button": "Schleiche um den Knopf zu öffnen und zu schließen",
-    
+
     "advancement.infinitybuttons.root": "Infinity Buttons",
     "advancement.infinitybuttons.root.desc": "Man muss sie alle drücken!",
     "advancement.infinitybuttons.first_button": "Erster Knopf",
@@ -381,7 +391,7 @@
     "advancement.infinitybuttons.letter_button.desc": "Überrasche dich selbst mit einem Buchstabenknopf",
     "advancement.infinitybuttons.sticky": "Klebrig!",
     "advancement.infinitybuttons.sticky.desc": "Erstelle einen klebrigen Kupferknopf, indem du Honig auf einen gewachsten Kupferknopf machst.",
-    
+
     "text.autoconfig.infinitybuttons.option.muteAlarmSound": "Alarme stummschalten",
     "text.autoconfig.infinitybuttons.option.alarmSoundType": "Alarm Typ",
     "text.autoconfig.infinitybuttons.option.alarmSoundType.@Tooltip[0]": "Die Art und Weise, wie Notfallknöpfe einen Alarm auslösen",
@@ -404,7 +414,7 @@
     "text.autoconfig.infinitybuttons.option.forceJadeHiding.@Tooltip[2]": "\u00A7cDies Clientseitig zu ändern, hat keine Auswirkungen auf den",
     "text.autoconfig.infinitybuttons.option.forceJadeHiding.@Tooltip[3]": "\u00A7cServer, es muss in den Serverkonfigurationen geändert werden",
     "text.autoconfig.infinitybuttons.title": "Infinity Buttons Konfiguration",
-    
+
     "tag.item.infinitybuttons.bookshelf_secret_buttons": "Geheime Bücherregalknöpfe",
     "tag.item.infinitybuttons.concrete_powder_buttons": "Geheime Trockenbetonknöpfe",
     "tag.item.infinitybuttons.concrete_powder_large_buttons": "Geheime große Trockenbetonknöpfe",
@@ -419,7 +429,7 @@
     "tag.item.infinitybuttons.torch_buttons": "Fackelknöpfe",
     "tag.item.infinitybuttons.wooden_large_buttons": "Große Holzknöpfe",
     "tag.item.infinitybuttons.wooden_secret_buttons": "Geheime Holzknöpfe",
-    
+
     "config.jade.plugin_infinitybuttons.hide_secret_buttons": "Verstecke geheime Knöpfe",
     "config.jade.plugin_infinitybuttons.hide_torch_buttons": "Verstecke Fackelknöpfe",
     "config.jade.plugin_infinitybuttons.hide_lantern_buttons": "Verstecke Laternenknöpfe"

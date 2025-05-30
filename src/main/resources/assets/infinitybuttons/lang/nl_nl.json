@@ -160,6 +160,7 @@
   "block.infinitybuttons.willow_bookshelf_secret_button": "Wilgenhouten boekenkast verborgen knop",
   "block.infinitybuttons.cherry_bookshelf_secret_button": "Kersenhouten boekenkast verborgen knop",
   "block.infinitybuttons.wisteria_bookshelf_secret_button": "Blauweregenhouten boekenkast verborgen knop",
+  "block.infinitybuttons.poise_bookshelf_secret_button": "Zweefhouten boekenkast verborgen knop",
   "block.infinitybuttons.maple_bookshelf_secret_button": "Esdoornhouten boekenkast verborgen knop",
   "block.infinitybuttons.rosewood_bookshelf_secret_button": "Palissander boekenkast verborgen knop",
   "block.infinitybuttons.morado_bookshelf_secret_button": "Morado boekenkast verborgen knop",
@@ -224,6 +225,8 @@
   "block.infinitybuttons.lantern_lever": "Lantaarnhendel",
   "block.infinitybuttons.soul_lantern_button": "Zielenlantaarnknop",
   "block.infinitybuttons.soul_lantern_lever": "Zielenlantaarnhendel",
+  "block.infinitybuttons.ender_lantern_button": "Enderlantaarnknop",
+  "block.infinitybuttons.ender_lantern_lever": "Enderlantaarnhendel",
 
   "block.infinitybuttons.small_console_button": "Kleine consoleknop",
   "block.infinitybuttons.small_console_lever": "Kleine consoleschakelknop",
@@ -270,6 +273,11 @@
   "block.infinitybuttons.chiseled_magenta_terracotta_brick_secret_button": "Gebeiteld magenta terracotta bakstenen verborgen knop",
   "block.infinitybuttons.chiseled_pink_terracotta_brick_secret_button": "Gebeiteld roze terracotta bakstenen verborgen knop",
 
+  "block.infinitybuttons.chiseled_end_stone_brick_secret_button": "Gebeiteld endblokstenen verborgen knop",
+  "block.infinitybuttons.chiseled_eumus_brick_secret_button": "Gebeiteld eumusblokstenen verborgen knop",
+  "block.infinitybuttons.cracked_end_stone_brick_secret_button": "Gebarsten endblokstenen verborgen knop",
+  "block.infinitybuttons.cracked_eumus_brick_secret_button": "Gebarsten eumusblokstenen verborgen knop",
+  "block.infinitybuttons.eumus_brick_secret_button": "Eumusblokstenen verborgen knop",
   "block.infinitybuttons.honeycomb_brick_secret_button": "Honingraat bakstenen verborgen knop",
   "block.infinitybuttons.chiseled_honeycomb_brick_secret_button": "Gebeiteld honingraat bakstenen verborgen knop",
   "block.infinitybuttons.chiseled_chocolate_brick_secret_button": "Gebeiteld chocolade bakstenen verborgen knop",
@@ -340,6 +348,8 @@
   "block.infinitybuttons.soul_torch_lever": "Zielenfakkelhendel",
   "block.infinitybuttons.redstone_torch_button": "Redstonefakkelknop",
   "block.infinitybuttons.redstone_torch_lever": "Redstonefakkelhendel",
+  "block.infinitybuttons.ender_torch_button": "Enderfakkelknop",
+  "block.infinitybuttons.ender_torch_lever": "Enderfakkelhendel",
   "block.infinitybuttons.propelplant_torch_button": "Propelplantfakkelknop",
   "block.infinitybuttons.propelplant_torch_lever": "Propelplantfakkelhendel",
 

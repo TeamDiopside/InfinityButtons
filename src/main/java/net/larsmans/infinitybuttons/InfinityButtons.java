@@ -54,6 +54,10 @@ public class InfinityButtons
         InfinityButtonsTriggers.register();
         CreativeTabEvents.register(eventBus);
 
+        if (ModList.get().isLoaded("endergetic")){
+            EndergeticItems.registerCompatItems();
+            EndergeticBlocks.registerCompatBlocks();
+        }
         if (ModList.get().isLoaded("nethersdelight")) {
             NethersDelightItems.registerCompatItems();
             NethersDelightBlocks.registerCompatBlocks();

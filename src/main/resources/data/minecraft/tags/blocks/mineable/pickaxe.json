@@ -227,6 +227,26 @@
     },
 
     {
+      "id": "infinitybuttons:chiseled_end_stone_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:chiseled_eumus_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:cracked_end_stone_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:cracked_eumus_brick_secret_button",
+      "required": false
+    },
+    {
+      "id": "infinitybuttons:eumus_brick_secret_button",
+      "required": false
+    },
+    {
       "id": "infinitybuttons:honeycomb_brick_secret_button",
       "required": false
     },
