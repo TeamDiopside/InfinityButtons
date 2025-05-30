@@ -1,4 +1,4 @@
-package net.larsmans.infinitybuttons.block.custom;
+package net.larsmans.infinitybuttons.block.custom.compat;
 
 import net.larsmans.infinitybuttons.block.custom.button.AbstractWallButton;
 import net.minecraft.sounds.SoundEvent;

@@ -2,7 +2,7 @@ package net.larsmans.infinitybuttons.compat;
 
 import net.larsmans.infinitybuttons.InfinityButtons;
 import net.larsmans.infinitybuttons.block.InfinityButtonsBlocks;
-import net.larsmans.infinitybuttons.block.custom.HoglinMountButton;
+import net.larsmans.infinitybuttons.block.custom.compat.HoglinMountButton;
 import net.larsmans.infinitybuttons.block.custom.torch.compat.PropelTorchButton;
 import net.larsmans.infinitybuttons.block.custom.torch.compat.PropelTorchLever;
 import net.larsmans.infinitybuttons.block.custom.torch.compat.PropelWallTorchButton;

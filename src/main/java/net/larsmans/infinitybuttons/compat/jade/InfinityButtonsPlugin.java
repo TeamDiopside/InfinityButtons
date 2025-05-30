@@ -1,7 +1,7 @@
 package net.larsmans.infinitybuttons.compat.jade;
 
 import net.larsmans.infinitybuttons.InfinityButtons;
-import net.larsmans.infinitybuttons.block.custom.HoglinMountButton;
+import net.larsmans.infinitybuttons.block.custom.compat.HoglinMountButton;
 import net.larsmans.infinitybuttons.block.custom.LanternButton;
 import net.larsmans.infinitybuttons.block.custom.secretbutton.AbstractSecretButton;
 import net.larsmans.infinitybuttons.block.custom.torch.RedstoneTorchButton;
@@ -30,7 +30,7 @@ public class InfinityButtonsPlugin implements IWailaPlugin {
     static final ResourceLocation CONFIG_HIDE_TORCH_BUTTONS = new ResourceLocation(InfinityButtons.MOD_ID, "hide_torch_buttons");
     static final ResourceLocation CONFIG_HIDE_LANTERN_BUTTONS = new ResourceLocation(InfinityButtons.MOD_ID, "hide_lantern_buttons");
 
-    private static Block HOGLIN_MOUNT = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("nethersdelight", "hoglin_mount"));
+    private static Block HOGLIN_MOUNT = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("nethersdelight", "hoglin_trophy"));
 
     @Override
     public void registerClient(IWailaClientRegistration registration) {
