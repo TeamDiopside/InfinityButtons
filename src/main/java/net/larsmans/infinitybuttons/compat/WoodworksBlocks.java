@@ -24,6 +24,8 @@ public class WoodworksBlocks {
     public static final RegistryObject<Block> ACACIA_BOOKSHELF_SECRET_BUTTON = registerBookshelf("acacia");
     public static final RegistryObject<Block> DARK_OAK_BOOKSHELF_SECRET_BUTTON = registerBookshelf("dark_oak");
     public static final RegistryObject<Block> MANGROVE_BOOKSHELF_SECRET_BUTTON = registerBookshelf("mangrove");
+    public static final RegistryObject<Block> CHERRY_BOOKSHELF_SECRET_BUTTON = registerBookshelf("cherry");
+    public static final RegistryObject<Block> BAMBOO_BOOKSHELF_SECRET_BUTTON = registerBookshelf("bamboo");
     public static final RegistryObject<Block> CRIMSON_BOOKSHELF_SECRET_BUTTON = registerBookshelf("crimson");
     public static final RegistryObject<Block> WARPED_BOOKSHELF_SECRET_BUTTON = registerBookshelf("warped");
 

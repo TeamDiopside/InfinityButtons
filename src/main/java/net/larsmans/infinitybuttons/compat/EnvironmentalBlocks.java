@@ -20,7 +20,8 @@ import java.util.function.Supplier;
 public class EnvironmentalBlocks {
 
     public static final RegistryObject<Block> WILLOW_BOOKSHELF_SECRET_BUTTON = registerBookshelf("willow");
-    public static final RegistryObject<Block> CHERRY_BOOKSHELF_SECRET_BUTTON = registerBookshelf("cherry");
+    public static final RegistryObject<Block> PINE_BOOKSHELF_SECRET_BUTTON = registerBookshelf("pine");
+    public static final RegistryObject<Block> PLUM_BOOKSHELF_SECRET_BUTTON = registerBookshelf("plum");
     public static final RegistryObject<Block> WISTERIA_BOOKSHELF_SECRET_BUTTON = registerBookshelf("wisteria");
 
     public static final RegistryObject<Block> CHISELED_MUD_BRICK_SECRET_BUTTON = registerBlock("chiseled_mud_brick_secret_button",

@@ -28,8 +28,9 @@ public class AtmosphericBlocks {
     public static final RegistryObject<Block> ROSEWOOD_BOOKSHELF_SECRET_BUTTON = registerBookshelf("rosewood");
     public static final RegistryObject<Block> MORADO_BOOKSHELF_SECRET_BUTTON = registerBookshelf("morado");
     public static final RegistryObject<Block> YUCCA_BOOKSHELF_SECRET_BUTTON = registerBookshelf("yucca");
-    public static final RegistryObject<Block> KOUSA_BOOKSHELF_SECRET_BUTTON = registerBookshelf("kousa");
+    public static final RegistryObject<Block> LAUREL_BOOKSHELF_SECRET_BUTTON = registerBookshelf("laurel");
     public static final RegistryObject<Block> ASPEN_BOOKSHELF_SECRET_BUTTON = registerBookshelf("aspen");
+    public static final RegistryObject<Block> KOUSA_BOOKSHELF_SECRET_BUTTON = registerBookshelf("kousa");
     public static final RegistryObject<Block> GRIMWOOD_BOOKSHELF_SECRET_BUTTON = registerBookshelf("grimwood");
 
     /**

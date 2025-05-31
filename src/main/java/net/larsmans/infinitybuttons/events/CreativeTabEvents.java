@@ -192,84 +192,74 @@ public class CreativeTabEvents {
                 output.accept(new ItemStack(InfinityButtonsBlocks.FANCY_SAFE_EMERGENCY_BUTTON.get()));
 
                 output.accept(new ItemStack(InfinityButtonsBlocks.BOOKSHELF_SECRET_BUTTON.get()));
-                if (ModList.get().isLoaded("quark") && !ModList.get().isLoaded("woodworks")) {
+
+                if (ModList.get().isLoaded("woodworks")) {
+                    output.accept(new ItemStack(WoodworksBlocks.SPRUCE_BOOKSHELF_SECRET_BUTTON.get()));
+                } else if (ModList.get().isLoaded("quark")) {
                     output.accept(new ItemStack(QuarkBlocks.SPRUCE_BOOKSHELF_SECRET_BUTTON.get()));
                 }
                 if (ModList.get().isLoaded("woodworks")) {
-                    output.accept(new ItemStack(WoodworksBlocks.SPRUCE_BOOKSHELF_SECRET_BUTTON.get()));
-                }
-                if (ModList.get().isLoaded("quark") && !ModList.get().isLoaded("woodworks")) {
+                    output.accept(new ItemStack(WoodworksBlocks.BIRCH_BOOKSHELF_SECRET_BUTTON.get()));
+                } else if (ModList.get().isLoaded("quark")) {
                     output.accept(new ItemStack(QuarkBlocks.BIRCH_BOOKSHELF_SECRET_BUTTON.get()));
                 }
                 if (ModList.get().isLoaded("woodworks")) {
-                    output.accept(new ItemStack(WoodworksBlocks.BIRCH_BOOKSHELF_SECRET_BUTTON.get()));
-                }
-                if (ModList.get().isLoaded("quark") && !ModList.get().isLoaded("woodworks")) {
+                    output.accept(new ItemStack(WoodworksBlocks.JUNGLE_BOOKSHELF_SECRET_BUTTON.get()));
+                } else if (ModList.get().isLoaded("quark")) {
                     output.accept(new ItemStack(QuarkBlocks.JUNGLE_BOOKSHELF_SECRET_BUTTON.get()));
                 }
                 if (ModList.get().isLoaded("woodworks")) {
-                    output.accept(new ItemStack(WoodworksBlocks.JUNGLE_BOOKSHELF_SECRET_BUTTON.get()));
-                }
-                if (ModList.get().isLoaded("quark") && !ModList.get().isLoaded("woodworks")) {
+                    output.accept(new ItemStack(WoodworksBlocks.ACACIA_BOOKSHELF_SECRET_BUTTON.get()));
+                } else if (ModList.get().isLoaded("quark")) {
                     output.accept(new ItemStack(QuarkBlocks.ACACIA_BOOKSHELF_SECRET_BUTTON.get()));
                 }
                 if (ModList.get().isLoaded("woodworks")) {
-                    output.accept(new ItemStack(WoodworksBlocks.ACACIA_BOOKSHELF_SECRET_BUTTON.get()));
-                }
-                if (ModList.get().isLoaded("quark") && !ModList.get().isLoaded("woodworks")) {
+                    output.accept(new ItemStack(WoodworksBlocks.DARK_OAK_BOOKSHELF_SECRET_BUTTON.get()));
+                } else if (ModList.get().isLoaded("quark")) {
                     output.accept(new ItemStack(QuarkBlocks.DARK_OAK_BOOKSHELF_SECRET_BUTTON.get()));
                 }
                 if (ModList.get().isLoaded("woodworks")) {
-                    output.accept(new ItemStack(WoodworksBlocks.DARK_OAK_BOOKSHELF_SECRET_BUTTON.get()));
-                }
-                if (ModList.get().isLoaded("quark") && !ModList.get().isLoaded("woodworks")) {
+                    output.accept(new ItemStack(WoodworksBlocks.MANGROVE_BOOKSHELF_SECRET_BUTTON.get()));
+                } else if (ModList.get().isLoaded("quark")) {
                     output.accept(new ItemStack(QuarkBlocks.MANGROVE_BOOKSHELF_SECRET_BUTTON.get()));
                 }
                 if (ModList.get().isLoaded("woodworks")) {
-                    output.accept(new ItemStack(WoodworksBlocks.MANGROVE_BOOKSHELF_SECRET_BUTTON.get()));
-                }
-                if (ModList.get().isLoaded("quark") && !ModList.get().isLoaded("woodworks")) {
+                    output.accept(new ItemStack(WoodworksBlocks.CHERRY_BOOKSHELF_SECRET_BUTTON.get()));
+                } else if (ModList.get().isLoaded("quark")) {
                     output.accept(new ItemStack(QuarkBlocks.CHERRY_BOOKSHELF_SECRET_BUTTON.get()));
                 }
                 if (ModList.get().isLoaded("woodworks")) {
-                    output.accept(new ItemStack(WoodworksBlocks.CHERRY_BOOKSHELF_SECRET_BUTTON.get()));
-                }
-                if (ModList.get().isLoaded("quark") && !ModList.get().isLoaded("woodworks")) {
+                    output.accept(new ItemStack(WoodworksBlocks.BAMBOO_BOOKSHELF_SECRET_BUTTON.get()));
+                } else if (ModList.get().isLoaded("quark")) {
                     output.accept(new ItemStack(QuarkBlocks.BAMBOO_BOOKSHELF_SECRET_BUTTON.get()));
                 }
                 if (ModList.get().isLoaded("woodworks")) {
-                    output.accept(new ItemStack(WoodworksBlocks.BAMBOO_BOOKSHELF_SECRET_BUTTON.get()));
-                }
-                if (ModList.get().isLoaded("quark") && !ModList.get().isLoaded("woodworks")) {
+                    output.accept(new ItemStack(WoodworksBlocks.CRIMSON_BOOKSHELF_SECRET_BUTTON.get()));
+                } else if (ModList.get().isLoaded("quark")) {
                     output.accept(new ItemStack(QuarkBlocks.CRIMSON_BOOKSHELF_SECRET_BUTTON.get()));
                 }
                 if (ModList.get().isLoaded("woodworks")) {
-                    output.accept(new ItemStack(WoodworksBlocks.CRIMSON_BOOKSHELF_SECRET_BUTTON.get()));
-                }
-                if (ModList.get().isLoaded("quark") && !ModList.get().isLoaded("woodworks")) {
+                    output.accept(new ItemStack(WoodworksBlocks.WARPED_BOOKSHELF_SECRET_BUTTON.get()));
+                } else if (ModList.get().isLoaded("quark")) {
                     output.accept(new ItemStack(QuarkBlocks.WARPED_BOOKSHELF_SECRET_BUTTON.get()));
                 }
-                if (ModList.get().isLoaded("woodworks")) {
-                    output.accept(new ItemStack(WoodworksBlocks.WARPED_BOOKSHELF_SECRET_BUTTON.get()));
-                }
                 if (ModList.get().isLoaded("quark")) {
-                    output.accept(new ItemStack(QuarkBlocks.AZALEA_BOOKSHELF_SECRET_BUTTON.get()));
                     output.accept(new ItemStack(QuarkBlocks.BLOSSOM_BOOKSHELF_SECRET_BUTTON.get()));
+                    output.accept(new ItemStack(QuarkBlocks.AZALEA_BOOKSHELF_SECRET_BUTTON.get()));
+                    output.accept(new ItemStack(QuarkBlocks.ANCIENT_BOOKSHELF_SECRET_BUTTON.get()));
                 }
                 if (ModList.get().isLoaded("quark") || ModList.get().isLoaded("woodworks")) {
-                    if (ModList.get().isLoaded("endergetic")) {
-                        output.accept(new ItemStack(EndergeticBlocks.POISE_BOOKSHELF_SECRET_BUTTON.get()));
+                    if (ModList.get().isLoaded("autumnity")) {
+                        output.accept(new ItemStack(AutumnityBlocks.MAPLE_BOOKSHELF_SECRET_BUTTON.get()));
                     }
                     if (ModList.get().isLoaded("atmospheric")) {
                         output.accept(new ItemStack(AtmosphericBlocks.ROSEWOOD_BOOKSHELF_SECRET_BUTTON.get()));
                         output.accept(new ItemStack(AtmosphericBlocks.MORADO_BOOKSHELF_SECRET_BUTTON.get()));
                         output.accept(new ItemStack(AtmosphericBlocks.YUCCA_BOOKSHELF_SECRET_BUTTON.get()));
-                        output.accept(new ItemStack(AtmosphericBlocks.KOUSA_BOOKSHELF_SECRET_BUTTON.get()));
+                        output.accept(new ItemStack(AtmosphericBlocks.LAUREL_BOOKSHELF_SECRET_BUTTON.get()));
                         output.accept(new ItemStack(AtmosphericBlocks.ASPEN_BOOKSHELF_SECRET_BUTTON.get()));
+                        output.accept(new ItemStack(AtmosphericBlocks.KOUSA_BOOKSHELF_SECRET_BUTTON.get()));
                         output.accept(new ItemStack(AtmosphericBlocks.GRIMWOOD_BOOKSHELF_SECRET_BUTTON.get()));
-                    }
-                    if (ModList.get().isLoaded("autumnity")) {
-                        output.accept(new ItemStack(AutumnityBlocks.MAPLE_BOOKSHELF_SECRET_BUTTON.get()));
                     }
                     if (ModList.get().isLoaded("environmental")) {
                         output.accept(new ItemStack(EnvironmentalBlocks.WILLOW_BOOKSHELF_SECRET_BUTTON.get()));
@@ -280,6 +270,9 @@ public class CreativeTabEvents {
                     if (ModList.get().isLoaded("upgrade_aquatic")) {
                         output.accept(new ItemStack(UpgradeAquaticBlocks.DRIFTWOOD_BOOKSHELF_SECRET_BUTTON.get()));
                         output.accept(new ItemStack(UpgradeAquaticBlocks.RIVER_BOOKSHELF_SECRET_BUTTON.get()));
+                    }
+                    if (ModList.get().isLoaded("endergetic")) {
+                        output.accept(new ItemStack(EndergeticBlocks.POISE_BOOKSHELF_SECRET_BUTTON.get()));
                     }
                 }
                 output.accept(new ItemStack(InfinityButtonsBlocks.BRICK_SECRET_BUTTON.get()));

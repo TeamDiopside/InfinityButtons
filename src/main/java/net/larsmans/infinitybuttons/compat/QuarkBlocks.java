@@ -27,10 +27,13 @@ public class QuarkBlocks {
     public static final RegistryObject<Block> ACACIA_BOOKSHELF_SECRET_BUTTON = registerBookshelf("acacia");
     public static final RegistryObject<Block> DARK_OAK_BOOKSHELF_SECRET_BUTTON = registerBookshelf("dark_oak");
     public static final RegistryObject<Block> MANGROVE_BOOKSHELF_SECRET_BUTTON = registerBookshelf("mangrove");
+    public static final RegistryObject<Block> CHERRY_BOOKSHELF_SECRET_BUTTON = registerBookshelf("cherry");
+    public static final RegistryObject<Block> BAMBOO_BOOKSHELF_SECRET_BUTTON = registerBookshelf("bamboo");
     public static final RegistryObject<Block> CRIMSON_BOOKSHELF_SECRET_BUTTON = registerBookshelf("crimson");
     public static final RegistryObject<Block> WARPED_BOOKSHELF_SECRET_BUTTON = registerBookshelf("warped");
-    public static final RegistryObject<Block> AZALEA_BOOKSHELF_SECRET_BUTTON = registerBookshelf("azalea");
     public static final RegistryObject<Block> BLOSSOM_BOOKSHELF_SECRET_BUTTON = registerBookshelf("blossom");
+    public static final RegistryObject<Block> AZALEA_BOOKSHELF_SECRET_BUTTON = registerBookshelf("azalea");
+    public static final RegistryObject<Block> ANCIENT_BOOKSHELF_SECRET_BUTTON = registerBookshelf("ancient");
 
     public static final RegistryObject<Block> PERMAFROST_BRICK_SECRET_BUTTON = registerBlock("permafrost_brick_secret_button",
             () -> new BigCompatSecretButton(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).strength(1.5f, 10.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops(), byName("permafrost_bricks")));
