@@ -267,22 +267,6 @@
       "required": false
     },
     {
-      "id": "infinitybuttons:tongue_kelpy_stone_brick_secret_button",
-      "required": false
-    },
-    {
-      "id": "infinitybuttons:thorny_kelpy_stone_brick_secret_button",
-      "required": false
-    },
-    {
-      "id": "infinitybuttons:ochre_kelpy_stone_brick_secret_button",
-      "required": false
-    },
-    {
-      "id": "infinitybuttons:polar_kelpy_stone_brick_secret_button",
-      "required": false
-    },
-    {
       "id": "infinitybuttons:chiseled_tooth_brick_secret_button",
       "required": false
     },
