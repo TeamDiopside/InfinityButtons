@@ -1,7 +1,10 @@
-- Partially added translations for:
-    - Korean ([gisellevonbingen](https://github.com/TeamDiopside/InfinityButtons/pull/33))
-    - Japanese ([Furikorifuto](https://github.com/TeamDiopside/InfinityButtons/pull/35))
-    - German ([DerCoderJo](https://github.com/TeamDiopside/InfinityButtons/pull/39))
-
-Fabric:
-- Fixed a crash using Jade ([Snownee](https://github.com/TeamDiopside/InfinityButtons/pull/40))
+### WARNING! UPDATING YOUR WORLD MIGHT BREAK IT AFTER THIS UPDATE!
+- Added more compatibility for Cherry and Bamboo wood types.
+- Added Pine Bookshelf Secret Button for Environmental.
+- Renamed Environmental's Cherry Bookshelf Secret Button to Plum Bookshelf Secret Button.
+- Fixed recipes from Every Compat breaking when Infinity Buttons and Woodworks are both installed.
+- Fixed double sawing recipes for Abnormals mods.
+- Added compat for Quark's Ashen wood.
+- Added compat for Atmospheric's Laurel wood.
+- Added compat for Endergetic Expansion.
+- Removed unused files from Upgrade Aquatic compat.
