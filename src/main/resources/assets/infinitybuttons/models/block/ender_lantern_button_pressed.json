@@ -5,6 +5,7 @@
 		"0": "infinitybuttons:block/ender_lantern_pressed",
 		"particle": "infinitybuttons:block/ender_lantern_pressed"
 	},
+	"render_type": "cutout",
 	"elements": [
 		{
 			"from": [5, 0, 5],
