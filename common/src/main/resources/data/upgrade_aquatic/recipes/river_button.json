@@ -1,0 +1,20 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "upgrade_aquatic"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "upgrade_aquatic:river_planks"
+    }
+  ],
+  "result": {
+    "item": "upgrade_aquatic:river_button",
+    "count": 4
+  }
+}

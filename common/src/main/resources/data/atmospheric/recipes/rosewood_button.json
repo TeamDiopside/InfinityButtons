@@ -1,0 +1,20 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "atmospheric"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "atmospheric:rosewood_planks"
+    }
+  ],
+  "result": {
+    "item": "atmospheric:rosewood_button",
+    "count": 4
+  }
+}

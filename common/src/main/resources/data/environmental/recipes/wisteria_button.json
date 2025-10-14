@@ -1,0 +1,20 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "environmental"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "environmental:wisteria_planks"
+    }
+  ],
+  "result": {
+    "item": "environmental:wisteria_button",
+    "count": 4
+  }
+}

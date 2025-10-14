@@ -1,0 +1,25 @@
+{
+  "type": "woodworks:sawmill",
+  "ingredient": {
+    "tag": "quark:ancient_logs"
+  },
+  "result": "quark:ancient_button",
+  "count": 24,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "quark"
+    }, {
+      "type": "forge:mod_loaded",
+      "modid": "woodworks"
+    },
+    {
+      "type": "woodworks:config",
+      "value": "sawmill"
+    },
+    {
+      "type": "quark:flag",
+      "flag": "ancient_wood"
+    }
+  ]
+}
