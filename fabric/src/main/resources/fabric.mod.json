@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "infinitybuttons",
+  "version": "${version}",
+  "name": "Infinity Buttons",
+  "description": "Infinity Buttons is a fabric and forge mod which adds exciting new buttons!",
+  "authors": [
+    "Team Diopside"
+  ],
+  "contact": {
+    "homepage": "https://teamdiopside.nl/infinitybuttons"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/infinitybuttons/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "nl.teamdiopside.infinitybuttons.fabric.InfinityButtonsFabric"
+    ],
+    "client": [
+      "nl.teamdiopside.infinitybuttons.fabric.client.InfinityButtonsFabricClient"
+    ]
+  },
+  "mixins": [
+    "infinitybuttons.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.17.3",
+    "minecraft": "~1.21.9",
+    "java": ">=21",
+    "architectury": ">=18.0.5",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

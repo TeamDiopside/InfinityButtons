@@ -1,0 +1,38 @@
+modLoader = "javafml"
+loaderVersion = "[2,)"
+#issueTrackerURL = ""
+license = "All Rights Reserved"
+
+[[mods]]
+modId = "infinitybuttons"
+version = "${version}"
+displayName = "Infinity Buttons"
+authors = "Team Diopside"
+description = '''
+Infinity Buttons is a fabric and forge mod which adds exciting new buttons!
+'''
+#logoFile = ""
+
+[[dependencies.infinitybuttons]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.infinitybuttons]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.9,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.infinitybuttons]]
+modId = "architectury"
+type = "required"
+versionRange = "[18.0.5,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[mixins]]
+config = "infinitybuttons.mixins.json"
