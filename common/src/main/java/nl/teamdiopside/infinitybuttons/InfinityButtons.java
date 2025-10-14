@@ -1,9 +1,15 @@
 package nl.teamdiopside.infinitybuttons;
 
-public final class InfinityButtons {
-    public static final String MOD_ID = "assets/infinitybuttons";
+import com.google.common.base.Suppliers;
+import dev.architectury.registry.registries.RegistrarManager;
 
-    public static void init() {
-        // Write common init code here.
-    }
+import java.util.function.Supplier;
+import java.util.logging.Logger;
+
+public final class InfinityButtons {
+    public static final String MOD_ID = "infinitybuttons";
+    public static final Supplier<RegistrarManager> MANAGER = Suppliers.memoize(() -> RegistrarManager.get(MOD_ID));
+    public static final Logger LOGGER = Logger.getLogger(MOD_ID);
+
+    public static void init() {}
 }

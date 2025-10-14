@@ -1,19 +1,21 @@
 package nl.teamdiopside.infinitybuttons.fabric.datagen;
 
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.data.models.model.ModelInstance;
-import net.minecraft.client.data.models.model.ModelTemplate;
-import net.minecraft.client.data.models.model.TextureMapping;
-import net.minecraft.client.data.models.model.TextureSlot;
+import net.minecraft.client.data.models.model.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
@@ -68,16 +70,43 @@ public class ModelAndStateGenerator extends FabricModelProvider {
     }
 
     @Override
-    public void generateBlockStateModels(BlockModelGenerators blockModels) {}
+    public void generateBlockStateModels(BlockModelGenerators blockModels) {
+
+        for (Map.Entry<BlockSetType, RegistrySupplier<Block>> entry : IBBlocks.DEFAULT_LARGE_BUTTONS.entrySet()) {
+            BlockSetType type = entry.getKey();
+            Block block = entry.getValue().get();
+
+            TextureMapping texMap = new TextureMapping()
+                    .put(TextureSlot.TEXTURE, getDefaultTexture(type));
+
+            generateLargeButton(blockModels, block, texMap);
+        }
+    }
 
     @Override
-    public void generateItemModels(ItemModelGenerators itemModels) {}
+    public void generateItemModels(ItemModelGenerators itemModels) {
+
+        // This overrides the default models that simply reference the base block model
+        for (Map.Entry<BlockSetType, RegistrySupplier<Block>> entry : IBBlocks.DEFAULT_LARGE_BUTTONS.entrySet()) {
+            BlockSetType type = entry.getKey();
+            Block block = entry.getValue().get();
+
+            TextureMapping texMap = new TextureMapping()
+                    .put(TextureSlot.TEXTURE, getDefaultTexture(type));
+
+            itemModels.itemModelOutput.accept(block.asItem(),
+                    ItemModelUtils.plainModel(
+                            defineModel(LARGE_BUTTONS, "_inventory", block, texMap, itemModels.modelOutput)
+                    )
+            );
+        }
+    }
 
     /**
      * Small helper method to simplify creating models
      */
     private static ResourceLocation defineModel(Function<String, ModelTemplate> model, String version, Block block,
-                                         TextureMapping texMap, BiConsumer<ResourceLocation, ModelInstance> output) {
+                                                TextureMapping texMap, BiConsumer<ResourceLocation, ModelInstance> output) {
         return model.apply(version).createWithSuffix(block, version, texMap, output);
     }
 }
