@@ -14,6 +14,9 @@
   "icon": "assets/infinitybuttons/icon.png",
   "environment": "*",
   "entrypoints": {
+  "fabric-datagen": [
+      "nl.teamdiopside.infinitybuttons.fabric.datagen.DataGenerator"
+  ],
     "main": [
       "nl.teamdiopside.infinitybuttons.fabric.InfinityButtonsFabric"
     ],
