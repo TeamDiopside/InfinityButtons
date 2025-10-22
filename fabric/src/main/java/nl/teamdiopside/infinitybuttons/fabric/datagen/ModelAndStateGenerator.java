@@ -12,7 +12,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import nl.teamdiopside.infinitybuttons.block.CopperButton;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
+import nl.teamdiopside.infinitybuttons.registry.RegistryUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -81,6 +83,20 @@ public class ModelAndStateGenerator extends FabricModelProvider {
 
             generateLargeButton(blockModels, block, texMap);
         }
+
+        for (HashMap<WeatheringCopper.WeatherState, RegistryUtils.LargeVariantSupplier<CopperButton>> map : IBBlocks.COPPER_BUTTONS.values()) {
+            for (RegistryUtils.LargeVariantSupplier<CopperButton> variantSupplier : map.values()) {
+                CopperButton small = variantSupplier.get(false);
+                CopperButton large = variantSupplier.get(true);
+                String state = small.getAge() == WeatheringCopper.WeatherState.UNAFFECTED ? "copper" : small.getAge().getSerializedName() + "_copper";
+
+                TextureMapping texMap = new TextureMapping()
+                        .put(TextureSlot.TEXTURE, getResource("block/" + state + "_button"));
+
+                generateSmallButton(blockModels, small, texMap);
+                generateLargeButton(blockModels, large, texMap);
+            }
+        }
     }
 
     @Override
@@ -99,6 +115,30 @@ public class ModelAndStateGenerator extends FabricModelProvider {
                             defineModel(LARGE_BUTTONS, "_inventory", block, texMap, itemModels.modelOutput)
                     )
             );
+        }
+
+        for (HashMap<WeatheringCopper.WeatherState, RegistryUtils.LargeVariantSupplier<CopperButton>> map : IBBlocks.COPPER_BUTTONS.values()) {
+            for (RegistryUtils.LargeVariantSupplier<CopperButton> variantSupplier : map.values()) {
+                CopperButton small = variantSupplier.get(false);
+                CopperButton large = variantSupplier.get(true);
+                String state = small.getAge() == WeatheringCopper.WeatherState.UNAFFECTED ? "copper" : small.getAge().getSerializedName() + "_copper";
+
+                TextureMapping texMap = new TextureMapping()
+                        .put(TextureSlot.TEXTURE, getResource("block/" + state + "_button"));
+
+
+                itemModels.itemModelOutput.accept(small.asItem(),
+                        ItemModelUtils.plainModel(
+                                defineModel(SMALL_BUTTONS, "_inventory", small, texMap, itemModels.modelOutput)
+                        )
+                );
+
+                itemModels.itemModelOutput.accept(large.asItem(),
+                        ItemModelUtils.plainModel(
+                                defineModel(LARGE_BUTTONS, "_inventory", large, texMap, itemModels.modelOutput)
+                        )
+                );
+            }
         }
     }
 
