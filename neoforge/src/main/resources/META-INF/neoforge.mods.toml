@@ -34,5 +34,12 @@ versionRange = "[18.0.5,)"
 ordering = "AFTER"
 side = "BOTH"
 
+[[dependencies.infinitybuttons]]
+modId = "diopside"
+type = "required"
+versionRange = "[1.0.0,)"
+ordering = "NONE"
+side = "BOTH"
+
 [[mixins]]
 config = "infinitybuttons.mixins.json"
