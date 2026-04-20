@@ -1,4 +1,4 @@
-package nl.teamdiopside.infinitybuttons.block;
+package nl.teamdiopside.infinitybuttons.block.normal;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -17,9 +17,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ChangeOverTimeBlock;
-import net.minecraft.world.level.block.WeatheringCopper;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -41,9 +40,9 @@ import static nl.teamdiopside.infinitybuttons.InfinityButtonsUtil.sided;
 public class CopperButton extends NormalButton implements WeatheringButton, BlockTooltip<HoldShiftTooltipComponent> {
 
     protected final WeatheringCopper.WeatherState weatherState;
-    protected final RegistryUtils.CopperButtonType buttonType;
+    protected final CopperButtonType buttonType;
 
-    public CopperButton(Properties properties, boolean large, WeatheringCopper.WeatherState weatherState, RegistryUtils.CopperButtonType buttonType) {
+    public CopperButton(BlockBehaviour.Properties properties, boolean large, WeatheringCopper.WeatherState weatherState, CopperButtonType buttonType) {
         super(BlockSetType.COPPER, 50, properties, large);
         this.weatherState = weatherState;
         this.buttonType = buttonType;
@@ -71,7 +70,7 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
             if (!closeBlockPos.equals(blockPos)) {
                 Block closeBlock = serverLevel.getBlockState(closeBlockPos).getBlock();
                 // Waxed buttons should not influence oxidization!
-                if (closeBlock instanceof CopperButton copperButton && copperButton.getButtonType() != RegistryUtils.CopperButtonType.NORMAL) continue;
+                if (closeBlock instanceof CopperButton copperButton && copperButton.getButtonType() != CopperButtonType.NORMAL) continue;
                 if (closeBlock instanceof ChangeOverTimeBlock<?> changeOverTimeBlock) {
                     Enum<?> otherBlockEnum = changeOverTimeBlock.getAge();
                     if (this.getAge().getClass() == otherBlockEnum.getClass()) {
@@ -97,7 +96,7 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
 
     @Override
     public @NotNull InteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-        if (blockState.getValue(POWERED) && getButtonType() != RegistryUtils.CopperButtonType.STICKY) {
+        if (blockState.getValue(ButtonBlock.POWERED) && getButtonType() != CopperButtonType.STICKY) {
             return InteractionResult.CONSUME;
         }
         switch (getButtonType()) {
@@ -118,7 +117,7 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
             case STICKY -> {
                 if (itemStack.getItem() instanceof AxeItem) {
                     return unSticky(blockState, level, blockPos, player, itemStack);
-                } else if (blockState.getValue(POWERED)) {
+                } else if (blockState.getValue(ButtonBlock.POWERED)) {
                     this.unpress(blockState, level, blockPos, player);
                     return sided(level.isClientSide());
                 }
@@ -129,11 +128,11 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
 
     @Override
     public void press(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
-        if (getButtonType() != RegistryUtils.CopperButtonType.STICKY) {
+        if (getButtonType() != CopperButtonType.STICKY) {
             super.press(blockState, level, blockPos, player);
             return;
         }
-        level.setBlock(blockPos, blockState.setValue(POWERED, true), 3);
+        level.setBlock(blockPos, blockState.setValue(ButtonBlock.POWERED, true), 3);
         this.updateNeighbours(blockState, level, blockPos);
         this.playSound(player, level, blockPos, true);
         level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, blockPos);
@@ -141,7 +140,7 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
     }
 
     public void unpress(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
-        level.setBlock(blockPos, blockState.setValue(POWERED, false), 3);
+        level.setBlock(blockPos, blockState.setValue(ButtonBlock.POWERED, false), 3);
         this.updateNeighbours(blockState, level, blockPos);
         this.playSound(player, level, blockPos, false);
         level.gameEvent(player, GameEvent.BLOCK_DEACTIVATE, blockPos);
@@ -149,7 +148,7 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
 
     @Override
     public boolean isRandomlyTicking(BlockState blockState) {
-        return buttonType == RegistryUtils.CopperButtonType.NORMAL && getAge() != WeatherState.OXIDIZED && !blockState.getValue(POWERED);
+        return buttonType == CopperButtonType.NORMAL && getAge() != WeatherState.OXIDIZED && !blockState.getValue(ButtonBlock.POWERED);
     }
 
     @Override
@@ -157,7 +156,7 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
         return this.weatherState;
     }
 
-    public RegistryUtils.CopperButtonType getButtonType() {
+    public CopperButtonType getButtonType() {
         return buttonType;
     }
 
@@ -172,8 +171,8 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
     }
 
     public void updateNeighbours(BlockState blockState, Level level, BlockPos blockPos) {
-        Direction direction = getConnectedDirection(blockState).getOpposite();
-        Orientation orientation = ExperimentalRedstoneUtils.initialOrientation(level, direction, direction.getAxis().isHorizontal() ? Direction.UP : blockState.getValue(FACING));
+        Direction direction = FaceAttachedHorizontalDirectionalBlock.getConnectedDirection(blockState).getOpposite();
+        Orientation orientation = ExperimentalRedstoneUtils.initialOrientation(level, direction, direction.getAxis().isHorizontal() ? Direction.UP : blockState.getValue(HorizontalDirectionalBlock.FACING));
         level.updateNeighborsAt(blockPos, this, orientation);
         level.updateNeighborsAt(blockPos.relative(direction), this, orientation);
     }
@@ -196,6 +195,6 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
     @Override
     public boolean tooltipVisible() {
         // TODO configurable!
-        return getButtonType() == RegistryUtils.CopperButtonType.STICKY;
+        return getButtonType() == CopperButtonType.STICKY;
     }
 }
