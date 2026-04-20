@@ -1,23 +1,24 @@
 package nl.teamdiopside.infinitybuttons.registry;
 
+import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import nl.teamdiopside.diopside.registry.DiopsideSounds;
 
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
+import static nl.teamdiopside.infinitybuttons.InfinityButtonsUtil.getResource;
 
 public class IBSounds {
-    public static SoundEvent ALARM = registerSoundEvent("alarm");
-    public static SoundEvent STONE_SCRAPE = registerSoundEvent("stone_scrape");
-    public static SoundEvent WOOD_SCRAPE = registerSoundEvent("wood_scrape");
-    public static SoundEvent DOORBELL = registerSoundEvent("doorbell");
+    // TODO fix subtitles (maybe making it secret? for the blocks we use vanilla events, like mud, subtitle says block placed)
+    // if we don't want it to be secret we can make our own event, give it the right subtitle but still reference the vanilla sound in sounds.json
+    public static RegistrySupplier<SoundEvent> ALARM = registerSoundEvent("block.emergency_button.alarm");
+    public static RegistrySupplier<SoundEvent> STONE_SCRAPE = registerSoundEvent("block.secret_button.stone_scrape");
+    public static RegistrySupplier<SoundEvent> WOOD_SCRAPE = registerSoundEvent("block.secret_button.wood_scrape");
+    public static RegistrySupplier<SoundEvent> DOORBELL = registerSoundEvent("block.doorbell.doorbell");
 
-    private static SoundEvent registerSoundEvent(String name) {
-//        Identifier id = new Identifier(InfinityButtons.MOD_ID, name);
-//        return Registry.register(Registry.SOUND_EVENT, id, new SoundEvent(id));
-        return SoundEvents.IRON_GOLEM_DAMAGE;
-
-        // TODO: Replace with Diopside registry method?
-        // Something very curious: Even with this placeholder, buttons already seem to play the right sound somehow.
+    private static RegistrySupplier<SoundEvent> registerSoundEvent(String name) {
+        return DiopsideSounds.registerSoundEvent(getResource(name));
     }
 
     public static void register() {

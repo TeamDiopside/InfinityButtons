@@ -1,5 +1,6 @@
 package nl.teamdiopside.infinitybuttons.block.secret;
 
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.Block;
@@ -89,5 +90,9 @@ public enum SecretButtonType {
 
     SecretButtonType(VoxelShape shapePressed, SoundEvent sound) {
         this(shapePressed, Shapes.block(), sound);
+    }
+
+    SecretButtonType(VoxelShape shapePressed, RegistrySupplier<SoundEvent> sound) {
+        this(shapePressed, Shapes.block(), sound.get());
     }
 }
