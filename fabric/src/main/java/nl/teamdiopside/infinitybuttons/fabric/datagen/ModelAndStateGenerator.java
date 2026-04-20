@@ -12,7 +12,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
-import nl.teamdiopside.infinitybuttons.block.CopperButton;
+import nl.teamdiopside.infinitybuttons.InfinityButtons;
+import nl.teamdiopside.infinitybuttons.block.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.RegistryUtils;
 
@@ -139,6 +140,17 @@ public class ModelAndStateGenerator extends FabricModelProvider {
                         )
                 );
             }
+        }
+
+        for (Map.Entry<String, RegistrySupplier<Block>> entry : IBBlocks.SECRET_BUTTONS.entrySet()) {
+            String name = entry.getKey();
+            Block block = entry.getValue().get();
+
+            itemModels.itemModelOutput.accept(block.asItem(),
+                    ItemModelUtils.plainModel(
+                            ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, "block/secret_buttons/" + name)
+                    )
+            );
         }
     }
 

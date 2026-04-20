@@ -9,9 +9,11 @@ import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import nl.teamdiopside.diopside.registry.DiopsideBlocks;
-import nl.teamdiopside.infinitybuttons.block.CopperButton;
-import nl.teamdiopside.infinitybuttons.block.NormalButton;
-import nl.teamdiopside.infinitybuttons.registry.RegistryUtils.CopperButtonType;
+import nl.teamdiopside.infinitybuttons.block.normal.CopperButton;
+import nl.teamdiopside.infinitybuttons.block.normal.NormalButton;
+import nl.teamdiopside.infinitybuttons.block.secret.SecretButton;
+import nl.teamdiopside.infinitybuttons.block.secret.SecretButtonType;
+import nl.teamdiopside.infinitybuttons.block.normal.CopperButtonType;
 import nl.teamdiopside.infinitybuttons.registry.RegistryUtils.LargeVariantSupplier;
 
 import java.util.HashMap;
@@ -26,7 +28,8 @@ public class IBBlocks {
      */
     public static final HashMap<CopperButtonType, HashMap<WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>>> COPPER_BUTTONS = registerCopperButtons();
     public static final HashMap<BlockSetType, RegistrySupplier<Block>> DEFAULT_LARGE_BUTTONS = registerDefaultLargeButtons();
-
+    public static final HashMap<String, RegistrySupplier<Block>> SECRET_BUTTONS = new HashMap<>();
+    
     /**
      * Properties
      */
@@ -74,8 +77,89 @@ public class IBBlocks {
     }
 
     /**
-     * Registry Functions
+     * Secret Buttons
      */
+    public static final RegistrySupplier<Block> BOOKSHELF_SECRET_BUTTON = registerSecretButton("bookshelf_secret_button",
+            SecretButtonType.BOOKSHELF, BlockSetType.OAK, Blocks.BOOKSHELF );
+    public static final RegistrySupplier<Block> BRICK_SECRET_BUTTON = registerSecretButton("brick_secret_button",
+            SecretButtonType.FULL_BLOCK_BRICK, BlockSetType.STONE, Blocks.BRICKS );
+    public static final RegistrySupplier<Block> STONE_BRICK_SECRET_BUTTON = registerSecretButton("stone_brick_secret_button",
+            SecretButtonType.BIG_BRICK, BlockSetType.STONE, Blocks.BRICKS );
+    public static final RegistrySupplier<Block> MOSSY_STONE_BRICK_SECRET_BUTTON = registerSecretButton("mossy_stone_brick_secret_button",
+            SecretButtonType.BIG_BRICK, BlockSetType.STONE, Blocks.MOSSY_STONE_BRICKS );
+    public static final RegistrySupplier<Block> CRACKED_STONE_BRICK_SECRET_BUTTON = registerSecretButton("cracked_stone_brick_secret_button",
+            SecretButtonType.BIG_BRICK, BlockSetType.STONE, Blocks.CRACKED_STONE_BRICKS );
+    public static final RegistrySupplier<Block> CHISELED_STONE_BRICK_SECRET_BUTTON = registerSecretButton("chiseled_stone_brick_secret_button",
+            SecretButtonType.CHISELED_STONE_BRICK, BlockSetType.STONE, Blocks.CHISELED_STONE_BRICKS );
+    public static final RegistrySupplier<Block> DEEPSLATE_BRICK_SECRET_BUTTON = registerSecretButton("deepslate_brick_secret_button",
+            SecretButtonType.BIG_BRICK, BlockSetType.STONE, Blocks.DEEPSLATE_BRICKS );
+    public static final RegistrySupplier<Block> CRACKED_DEEPSLATE_BRICK_SECRET_BUTTON = registerSecretButton("cracked_deepslate_brick_secret_button",
+            SecretButtonType.BIG_BRICK, BlockSetType.STONE, Blocks.CRACKED_DEEPSLATE_BRICKS );
+    public static final RegistrySupplier<Block> DEEPSLATE_TILE_SECRET_BUTTON = registerSecretButton("deepslate_tile_secret_button",
+            SecretButtonType.DEEPSLATE_TILE, BlockSetType.STONE, Blocks.DEEPSLATE_TILES );
+    public static final RegistrySupplier<Block> CRACKED_DEEPSLATE_TILE_SECRET_BUTTON = registerSecretButton("cracked_deepslate_tile_secret_button",
+            SecretButtonType.DEEPSLATE_TILE, BlockSetType.STONE, Blocks.CRACKED_DEEPSLATE_TILES );
+
+    public static final RegistrySupplier<Block> OAK_PLANK_SECRET_BUTTON = registerSecretButton("oak_plank_secret_button",
+            SecretButtonType.PLANK, BlockSetType.OAK, Blocks.OAK_PLANKS );
+    public static final RegistrySupplier<Block> SPRUCE_PLANK_SECRET_BUTTON = registerSecretButton("spruce_plank_secret_button",
+            SecretButtonType.PLANK, BlockSetType.SPRUCE, Blocks.SPRUCE_PLANKS );
+    public static final RegistrySupplier<Block> BIRCH_PLANK_SECRET_BUTTON = registerSecretButton("birch_plank_secret_button",
+            SecretButtonType.PLANK, BlockSetType.BIRCH, Blocks.BIRCH_PLANKS );
+    public static final RegistrySupplier<Block> JUNGLE_PLANK_SECRET_BUTTON = registerSecretButton("jungle_plank_secret_button",
+            SecretButtonType.PLANK, BlockSetType.JUNGLE, Blocks.JUNGLE_PLANKS );
+    public static final RegistrySupplier<Block> ACACIA_PLANK_SECRET_BUTTON = registerSecretButton("acacia_plank_secret_button",
+            SecretButtonType.PLANK, BlockSetType.ACACIA, Blocks.ACACIA_PLANKS );
+    public static final RegistrySupplier<Block> DARK_OAK_PLANK_SECRET_BUTTON = registerSecretButton("dark_oak_plank_secret_button",
+            SecretButtonType.PLANK, BlockSetType.DARK_OAK, Blocks.DARK_OAK_PLANKS );
+    public static final RegistrySupplier<Block> MANGROVE_PLANK_SECRET_BUTTON = registerSecretButton("mangrove_plank_secret_button",
+            SecretButtonType.PLANK, BlockSetType.MANGROVE, Blocks.MANGROVE_PLANKS );
+    public static final RegistrySupplier<Block> CRIMSON_PLANK_SECRET_BUTTON = registerSecretButton("crimson_plank_secret_button",
+            SecretButtonType.PLANK, BlockSetType.CRIMSON, Blocks.CRIMSON_PLANKS );
+    public static final RegistrySupplier<Block> WARPED_PLANK_SECRET_BUTTON = registerSecretButton("warped_plank_secret_button",
+            SecretButtonType.PLANK, BlockSetType.WARPED, Blocks.WARPED_PLANKS );
+
+    public static final RegistrySupplier<Block> MUD_BRICK_SECRET_BUTTON = registerSecretButton("mud_brick_secret_button",
+            SecretButtonType.MUD_BRICK, BlockSetType.STONE, Blocks.MUD_BRICKS );
+    public static final RegistrySupplier<Block> END_STONE_BRICK_SECRET_BUTTON = registerSecretButton("end_stone_brick_secret_button",
+            SecretButtonType.BIG_BRICK, BlockSetType.STONE, Blocks.END_STONE_BRICKS );
+    public static final RegistrySupplier<Block> PURPUR_BLOCK_SECRET_BUTTON = registerSecretButton("purpur_block_secret_button",
+            SecretButtonType.TILE, BlockSetType.STONE, Blocks.PURPUR_BLOCK );
+    public static final RegistrySupplier<Block> QUARTZ_BRICK_SECRET_BUTTON = registerSecretButton("quartz_brick_secret_button",
+            SecretButtonType.BIG_BRICK, BlockSetType.STONE, Blocks.QUARTZ_BLOCK );
+    public static final RegistrySupplier<Block> DARK_PRISMARINE_SECRET_BUTTON = registerSecretButton("dark_prismarine_secret_button",
+            SecretButtonType.FULL_BLOCK_BRICK, BlockSetType.STONE, Blocks.DARK_PRISMARINE );
+    public static final RegistrySupplier<Block> POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = registerSecretButton("polished_blackstone_brick_secret_button",
+            SecretButtonType.BIG_BRICK, BlockSetType.STONE, Blocks.POLISHED_BLACKSTONE_BRICKS );
+    public static final RegistrySupplier<Block> CRACKED_POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = registerSecretButton("cracked_polished_blackstone_brick_secret_button",
+            SecretButtonType.BIG_BRICK, BlockSetType.STONE, Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS );
+    public static final RegistrySupplier<Block> CHISELED_POLISHED_BLACKSTONE_SECRET_BUTTON = registerSecretButton("chiseled_polished_blackstone_secret_button",
+            SecretButtonType.CHISELED_STONE_BRICK, BlockSetType.STONE, Blocks.CHISELED_POLISHED_BLACKSTONE );
+    public static final RegistrySupplier<Block> NETHER_BRICK_SECRET_BUTTON = registerSecretButton("nether_brick_secret_button",
+            SecretButtonType.FULL_BLOCK_BRICK, BlockSetType.STONE, Blocks.NETHER_BRICKS );
+    public static final RegistrySupplier<Block> CRACKED_NETHER_BRICK_SECRET_BUTTON = registerSecretButton("cracked_nether_brick_secret_button",
+            SecretButtonType.FULL_BLOCK_BRICK, BlockSetType.STONE, Blocks.CRACKED_NETHER_BRICKS );
+    public static final RegistrySupplier<Block> CHISELED_NETHER_BRICK_SECRET_BUTTON = registerSecretButton("chiseled_nether_brick_secret_button",
+            SecretButtonType.CHISELED_NETHER_BRICK, BlockSetType.STONE, Blocks.CHISELED_NETHER_BRICKS );
+    public static final RegistrySupplier<Block> RED_NETHER_BRICK_SECRET_BUTTON = registerSecretButton("red_nether_brick_secret_button",
+            SecretButtonType.FULL_BLOCK_BRICK, BlockSetType.STONE, Blocks.RED_NETHER_BRICKS );
+
+
+    private static RegistrySupplier<Block> registerSecretButton(
+            String blockId,
+            SecretButtonType type,
+            BlockSetType blockSetType,
+            BlockBehaviour behaviour
+    ) {
+        RegistrySupplier<Block> blockRS = registerBlock(
+                blockId,
+                buttonProperties -> new SecretButton(buttonProperties, type),
+                BlockBehaviour.Properties.ofFullCopy(behaviour)
+        );
+        SECRET_BUTTONS.put(blockId, blockRS);
+        return blockRS;
+    }
+
     private static <T extends Block> RegistrySupplier<T> registerBlock(String blockId, Function<BlockBehaviour.Properties, T> blockFunction, BlockBehaviour.Properties properties) {
         return DiopsideBlocks.registerBlock(ResourceLocation.fromNamespaceAndPath(MOD_ID, blockId), blockFunction, properties);
     }
