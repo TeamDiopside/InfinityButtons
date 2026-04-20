@@ -1,8 +1,7 @@
-Developer
+Developers
 - LarsMans
-
-Forge port developer
 - curryducker
+- PhantomEye
 
 Chinese translator
 - haoooo_
