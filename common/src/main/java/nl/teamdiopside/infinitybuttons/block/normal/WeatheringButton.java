@@ -1,4 +1,4 @@
-package nl.teamdiopside.infinitybuttons.block;
+package nl.teamdiopside.infinitybuttons.block.normal;
 
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -27,14 +27,14 @@ import static nl.teamdiopside.infinitybuttons.InfinityButtonsUtil.sided;
 
 public interface WeatheringButton extends WeatheringCopper {
 
-    private Optional<BlockState> getOfType(RegistryUtils.CopperButtonType type, WeatherState weatherState, BlockState state) {
+    private Optional<BlockState> getOfType(CopperButtonType type, WeatherState weatherState, BlockState state) {
         if (state.getBlock() instanceof CopperButton copperButton) {
             return Optional.of(IBBlocks.COPPER_BUTTONS.get(type).get(weatherState).get(copperButton.isLarge()).withPropertiesOf(state));
         }
         return Optional.empty();
     }
 
-    private Optional<BlockState> getOfType(RegistryUtils.CopperButtonType type, BlockState state) {
+    private Optional<BlockState> getOfType(CopperButtonType type, BlockState state) {
         if (state.getBlock() instanceof CopperButton copperButton) {
             return getOfType(type, copperButton.getAge(), state);
         }
@@ -71,7 +71,7 @@ public interface WeatheringButton extends WeatheringCopper {
     }
 
     default InteractionResult wax(BlockState state, Level level, BlockPos blockPos, Player player, ItemStack itemStack) {
-        return getOfType(RegistryUtils.CopperButtonType.WAXED, state).map((waxedBlockState) -> {
+        return getOfType(CopperButtonType.WAXED, state).map((waxedBlockState) -> {
             itemUsed(blockPos, player, itemStack);
             if (!player.getAbilities().instabuild) itemStack.shrink(1);
             level.setBlock(blockPos, waxedBlockState, Block.UPDATE_ALL_IMMEDIATE);
@@ -93,7 +93,7 @@ public interface WeatheringButton extends WeatheringCopper {
     }
 
     default InteractionResult scrapeWax(BlockState blockState, Level level, BlockPos blockPos, Player player, ItemStack itemStack) {
-        return getOfType(RegistryUtils.CopperButtonType.NORMAL, blockState).map((waxedBlockState) -> {
+        return getOfType(CopperButtonType.NORMAL, blockState).map((waxedBlockState) -> {
             itemUsed(blockPos, player, itemStack);
             if (!player.getAbilities().instabuild) hurtAxe(player, itemStack);
             level.setBlock(blockPos, waxedBlockState, Block.UPDATE_ALL_IMMEDIATE);
@@ -107,7 +107,7 @@ public interface WeatheringButton extends WeatheringCopper {
     }
 
     default InteractionResult sticky(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, ItemStack itemStack) {
-        return getOfType(RegistryUtils.CopperButtonType.STICKY, blockState).map((waxedBlockState) -> {
+        return getOfType(CopperButtonType.STICKY, blockState).map((waxedBlockState) -> {
             itemUsed(blockPos, player, itemStack);
             if (!player.getAbilities().instabuild) {
                 player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.GLASS_BOTTLE)));
@@ -120,7 +120,7 @@ public interface WeatheringButton extends WeatheringCopper {
     }
 
     default InteractionResult unSticky(BlockState blockState, Level level, BlockPos blockPos, Player player, ItemStack itemStack) {
-        return getOfType(RegistryUtils.CopperButtonType.WAXED, blockState).map((waxedBlockState) -> {
+        return getOfType(CopperButtonType.WAXED, blockState).map((waxedBlockState) -> {
             itemUsed(blockPos, player, itemStack);
             if (!player.getAbilities().instabuild) hurtAxe(player, itemStack);
             level.setBlock(blockPos, waxedBlockState.setValue(ButtonBlock.POWERED, false), Block.UPDATE_ALL_IMMEDIATE);
