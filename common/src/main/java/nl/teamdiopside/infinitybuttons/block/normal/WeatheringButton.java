@@ -29,7 +29,7 @@ public interface WeatheringButton extends WeatheringCopper {
 
     private Optional<BlockState> getOfType(CopperButtonType type, WeatherState weatherState, BlockState state) {
         if (state.getBlock() instanceof CopperButton copperButton) {
-            return Optional.of(IBBlocks.COPPER_BUTTONS.get(type).get(weatherState).get(copperButton.isLarge()).withPropertiesOf(state));
+            return Optional.of(IBBlocks.COPPER_BUTTONS.get(type, weatherState).get(copperButton.isLarge()).withPropertiesOf(state));
         }
         return Optional.empty();
     }

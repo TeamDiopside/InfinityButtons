@@ -15,6 +15,8 @@ import nl.teamdiopside.infinitybuttons.block.secret.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.secret.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.block.normal.CopperButtonType;
 import nl.teamdiopside.infinitybuttons.registry.RegistryUtils.LargeVariantSupplier;
+import nl.teamdiopside.infinitybuttons.util.BiHashMap;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.function.Function;
@@ -24,22 +26,34 @@ import static nl.teamdiopside.infinitybuttons.InfinityButtons.*;
 public class IBBlocks {
 
     /**
-     * Registry Suppliers
+     * Stone Buttons
      */
-    public static final HashMap<CopperButtonType, HashMap<WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>>> COPPER_BUTTONS = registerCopperButtons();
-    public static final HashMap<BlockSetType, RegistrySupplier<Block>> DEFAULT_LARGE_BUTTONS = registerDefaultLargeButtons();
-    public static final HashMap<String, RegistrySupplier<Block>> SECRET_BUTTONS = new HashMap<>();
-    
-    /**
-     * Properties
-     */
-    private static BlockBehaviour.Properties getDefaultProperties() {
-        return BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON);
+    public static final HashMap<String, LargeVariantSupplier<Block>> STONE_BUTTONS = new HashMap<>();
+
+    public static final LargeVariantSupplier<Block> DEEPSLATE_BUTTON = registerStoneButton("deepslate");
+    public static final LargeVariantSupplier<Block> GRANITE_BUTTON = registerStoneButton("granite");
+    public static final LargeVariantSupplier<Block> DIORITE_BUTTON = registerStoneButton("diorite");
+    public static final LargeVariantSupplier<Block> ANDESITE_BUTTON = registerStoneButton("andesite");
+    public static final LargeVariantSupplier<Block> CALCITE_BUTTON = registerStoneButton("calcite");
+    public static final LargeVariantSupplier<Block> TUFF_BUTTON = registerStoneButton("tuff");
+    public static final LargeVariantSupplier<Block> DRIPSTONE_BUTTON = registerStoneButton("dripstone");
+
+    private static LargeVariantSupplier<Block> registerStoneButton(String type) {
+        LargeVariantSupplier<Block> supplier =
+                LargeVariantSupplier.registerVariants((large) -> registerBlock(
+                        type + (large ? "_large_button" : "_button"),
+                        (properties) -> new NormalButton(BlockSetType.STONE, 20, properties, large),
+                        getDefaultProperties()
+                ));
+        STONE_BUTTONS.put(type, supplier);
+        return supplier;
     }
 
     /**
-     * Helper Functions
+     * Copper Buttons
      */
+    public static final BiHashMap<CopperButtonType, WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>> COPPER_BUTTONS = registerCopperButtons();
+
     private static LargeVariantSupplier<CopperButton> registerCopperButton(CopperButtonType copperButtonType, WeatheringCopper.WeatherState weatherState) {
         String state = weatherState == WeatheringCopper.WeatherState.UNAFFECTED ? "copper" : weatherState.getSerializedName() + "_copper";
         String type = copperButtonType == CopperButtonType.NORMAL ? state : copperButtonType.getName() + "_" + state;
@@ -50,17 +64,20 @@ public class IBBlocks {
         ));
     }
 
-    private static HashMap<CopperButtonType, HashMap<WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>>> registerCopperButtons() {
-        HashMap<CopperButtonType, HashMap<WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>>> typeMap = new HashMap<>();
+    private static BiHashMap<CopperButtonType, WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>> registerCopperButtons() {
+        BiHashMap<CopperButtonType, WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>> typeMap = new BiHashMap<>();
         for (CopperButtonType type : CopperButtonType.values()) {
-            HashMap<WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>> stateMap = new HashMap<>();
             for (WeatheringCopper.WeatherState state : WeatheringCopper.WeatherState.values()) {
-                stateMap.put(state, registerCopperButton(type, state));
+                typeMap.put(type, state, registerCopperButton(type, state));
             }
-            typeMap.put(type, stateMap);
         }
         return typeMap;
     }
+
+    /**
+     * Large Vanilla Buttons
+     */
+    public static final HashMap<BlockSetType, RegistrySupplier<Block>> DEFAULT_LARGE_BUTTONS = registerDefaultLargeButtons();
 
     private static HashMap<BlockSetType, RegistrySupplier<Block>> registerDefaultLargeButtons() {
         HashMap<BlockSetType, RegistrySupplier<Block>> map = new HashMap<>();
@@ -79,6 +96,8 @@ public class IBBlocks {
     /**
      * Secret Buttons
      */
+    public static final HashMap<String, RegistrySupplier<Block>> SECRET_BUTTONS = new HashMap<>();
+
     public static final RegistrySupplier<Block> BOOKSHELF_SECRET_BUTTON = registerSecretButton("bookshelf_secret_button",
             SecretButtonType.BOOKSHELF, BlockSetType.OAK, Blocks.BOOKSHELF );
     public static final RegistrySupplier<Block> BRICK_SECRET_BUTTON = registerSecretButton("brick_secret_button",
@@ -160,6 +179,16 @@ public class IBBlocks {
         return blockRS;
     }
 
+    /**
+     * Properties
+     */
+    private static BlockBehaviour.Properties getDefaultProperties() {
+        return BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON);
+    }
+
+    /**
+     * Base Registry Functions
+     */
     private static <T extends Block> RegistrySupplier<T> registerBlock(String blockId, Function<BlockBehaviour.Properties, T> blockFunction, BlockBehaviour.Properties properties) {
         return DiopsideBlocks.registerBlock(ResourceLocation.fromNamespaceAndPath(MOD_ID, blockId), blockFunction, properties);
     }
