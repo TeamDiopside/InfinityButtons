@@ -21,25 +21,22 @@ import static nl.teamdiopside.infinitybuttons.InfinityButtons.*;
 
 public class IBBlocks {
 
-    /*
+    /**
      * Registry Suppliers
      */
-
     public static final HashMap<CopperButtonType, HashMap<WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>>> COPPER_BUTTONS = registerCopperButtons();
     public static final HashMap<BlockSetType, RegistrySupplier<Block>> DEFAULT_LARGE_BUTTONS = registerDefaultLargeButtons();
 
-    /*
+    /**
      * Properties
      */
-
     private static BlockBehaviour.Properties getDefaultProperties() {
         return BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON);
     }
 
-    /*
+    /**
      * Helper Functions
      */
-
     private static LargeVariantSupplier<CopperButton> registerCopperButton(CopperButtonType copperButtonType, WeatheringCopper.WeatherState weatherState) {
         String state = weatherState == WeatheringCopper.WeatherState.UNAFFECTED ? "copper" : weatherState.getSerializedName() + "_copper";
         String type = copperButtonType == CopperButtonType.NORMAL ? state : copperButtonType.getName() + "_" + state;
@@ -76,10 +73,9 @@ public class IBBlocks {
         return map;
     }
 
-    /*
+    /**
      * Registry Functions
      */
-
     private static <T extends Block> RegistrySupplier<T> registerBlock(String blockId, Function<BlockBehaviour.Properties, T> blockFunction, BlockBehaviour.Properties properties) {
         return DiopsideBlocks.registerBlock(ResourceLocation.fromNamespaceAndPath(MOD_ID, blockId), blockFunction, properties);
     }
