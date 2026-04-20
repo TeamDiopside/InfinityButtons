@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button_pressed",
+  "textures": {
+    "texture": "infinitybuttons:block/weathered_copper_button"
+  }
+}
