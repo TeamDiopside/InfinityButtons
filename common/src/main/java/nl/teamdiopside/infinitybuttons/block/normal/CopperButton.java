@@ -1,5 +1,8 @@
 package nl.teamdiopside.infinitybuttons.block.normal;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -28,7 +31,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import nl.teamdiopside.diopside.block.BlockTooltip;
 import nl.teamdiopside.diopside.datacomponent.HoldShiftTooltipComponent;
 import nl.teamdiopside.diopside.registry.DiopsideDataComponents;
-import nl.teamdiopside.infinitybuttons.registry.RegistryUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,6 +40,14 @@ import java.util.function.Consumer;
 import static nl.teamdiopside.infinitybuttons.InfinityButtonsUtil.sided;
 
 public class CopperButton extends NormalButton implements WeatheringButton, BlockTooltip<HoldShiftTooltipComponent> {
+
+    public static final MapCodec<CopperButton> CODEC = RecordCodecBuilder.mapCodec(instance ->
+            instance.group(propertiesCodec(),
+                    Codec.BOOL.fieldOf("large").forGetter(copperButton -> copperButton.large),
+                    WeatherState.CODEC.fieldOf("weather_state").forGetter(copperButton -> copperButton.weatherState),
+                    CopperButtonType.CODEC.fieldOf("button_type").forGetter(copperButton -> copperButton.buttonType)
+                    ).apply(instance, CopperButton::new)
+    );
 
     protected final WeatheringCopper.WeatherState weatherState;
     protected final CopperButtonType buttonType;

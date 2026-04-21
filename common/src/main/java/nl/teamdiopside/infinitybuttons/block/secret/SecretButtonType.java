@@ -1,14 +1,17 @@
 package nl.teamdiopside.infinitybuttons.block.secret;
 
+import com.mojang.serialization.Codec;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import nl.teamdiopside.infinitybuttons.registry.IBSounds;
+import org.jetbrains.annotations.NotNull;
 
-public enum SecretButtonType {
+public enum SecretButtonType implements StringRepresentable {
     BIG_BRICK(
             Shapes.or(
                     Block.box(0, 8, 3, 16, 16, 19),
@@ -78,6 +81,8 @@ public enum SecretButtonType {
             IBSounds.STONE_SCRAPE
     );
 
+    public static final Codec<SecretButtonType> CODEC = StringRepresentable.fromEnum(SecretButtonType::values);
+
     public final VoxelShape shapePressed;
     public final VoxelShape shapeUnpressed;
     public final SoundEvent sound;
@@ -94,5 +99,10 @@ public enum SecretButtonType {
 
     SecretButtonType(VoxelShape shapePressed, RegistrySupplier<SoundEvent> sound) {
         this(shapePressed, Shapes.block(), sound.get());
+    }
+
+    @Override
+    public @NotNull String getSerializedName() {
+        return name().toLowerCase();
     }
 }
