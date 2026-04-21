@@ -10,18 +10,18 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import nl.teamdiopside.diopside.registry.DiopsideBlocks;
 import nl.teamdiopside.infinitybuttons.block.normal.CopperButton;
+import nl.teamdiopside.infinitybuttons.block.normal.CopperButtonType;
 import nl.teamdiopside.infinitybuttons.block.normal.NormalButton;
 import nl.teamdiopside.infinitybuttons.block.secret.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.secret.SecretButtonType;
-import nl.teamdiopside.infinitybuttons.block.normal.CopperButtonType;
 import nl.teamdiopside.infinitybuttons.registry.RegistryUtils.LargeVariantSupplier;
 import nl.teamdiopside.infinitybuttons.util.BiHashMap;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.function.Function;
 
-import static nl.teamdiopside.infinitybuttons.InfinityButtons.*;
+import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
+import static nl.teamdiopside.infinitybuttons.InfinityButtons.MOD_ID;
 
 public class IBBlocks {
 
@@ -190,7 +190,7 @@ public class IBBlocks {
      * Base Registry Functions
      */
     private static <T extends Block> RegistrySupplier<T> registerBlock(String blockId, Function<BlockBehaviour.Properties, T> blockFunction, BlockBehaviour.Properties properties) {
-        return DiopsideBlocks.registerBlock(ResourceLocation.fromNamespaceAndPath(MOD_ID, blockId), blockFunction, properties);
+        return DiopsideBlocks.INSTANCE.registerBlock(ResourceLocation.fromNamespaceAndPath(MOD_ID, blockId), blockFunction, properties);
     }
 
     public static void register() {

@@ -5,8 +5,6 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.component.DataComponentGetter;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -15,18 +13,19 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ButtonBlock;
+import net.minecraft.world.level.block.ChangeOverTimeBlock;
+import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.redstone.ExperimentalRedstoneUtils;
-import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.BlockHitResult;
 import nl.teamdiopside.diopside.block.BlockTooltip;
 import nl.teamdiopside.diopside.datacomponent.HoldShiftTooltipComponent;
@@ -37,7 +36,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-import static nl.teamdiopside.infinitybuttons.InfinityButtonsUtil.sided;
+import static net.minecraft.world.ItemInteractionResult.sidedSuccess;
 
 public class CopperButton extends NormalButton implements WeatheringButton, BlockTooltip<HoldShiftTooltipComponent> {
 
@@ -105,9 +104,9 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
     }
 
     @Override
-    public @NotNull InteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+    public @NotNull ItemInteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
         if (blockState.getValue(ButtonBlock.POWERED) && getButtonType() != CopperButtonType.STICKY) {
-            return InteractionResult.CONSUME;
+            return ItemInteractionResult.CONSUME;
         }
         switch (getButtonType()) {
             case NORMAL -> {
@@ -129,7 +128,7 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
                     return unSticky(blockState, level, blockPos, player, itemStack);
                 } else if (blockState.getValue(ButtonBlock.POWERED)) {
                     this.unpress(blockState, level, blockPos, player);
-                    return sided(level.isClientSide());
+                    return sidedSuccess(level.isClientSide());
                 }
             }
         }
@@ -180,15 +179,13 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
         return SoundEvents.COPPER_BREAK;
     }
 
-    public void updateNeighbours(BlockState blockState, Level level, BlockPos blockPos) {
-        Direction direction = FaceAttachedHorizontalDirectionalBlock.getConnectedDirection(blockState).getOpposite();
-        Orientation orientation = ExperimentalRedstoneUtils.initialOrientation(level, direction, direction.getAxis().isHorizontal() ? Direction.UP : blockState.getValue(HorizontalDirectionalBlock.FACING));
-        level.updateNeighborsAt(blockPos, this, orientation);
-        level.updateNeighborsAt(blockPos.relative(direction), this, orientation);
+    protected void updateNeighbours(BlockState blockState, Level level, BlockPos blockPos) {
+        level.updateNeighborsAt(blockPos, this);
+        level.updateNeighborsAt(blockPos.relative(getConnectedDirection(blockState).getOpposite()), this);
     }
 
     @Override
-    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag, DataComponentGetter dataComponentGetter) {
+    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag) {
         consumer.accept(Component.translatable("infinitybuttons.tooltip.sticky_copper_button").withStyle(ChatFormatting.GRAY));
     }
 

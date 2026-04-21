@@ -1,18 +1,18 @@
 package nl.teamdiopside.infinitybuttons.fabric.datagen;
 
+import com.google.gson.JsonElement;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.minecraft.client.data.models.BlockModelGenerators;
-import net.minecraft.client.data.models.ItemModelGenerators;
-import net.minecraft.client.data.models.model.*;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.data.models.BlockModelGenerators;
+import net.minecraft.data.models.ItemModelGenerators;
+import net.minecraft.data.models.model.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
-import nl.teamdiopside.infinitybuttons.InfinityButtons;
 import nl.teamdiopside.infinitybuttons.block.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.RegistryUtils;
@@ -22,6 +22,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 import static nl.teamdiopside.infinitybuttons.InfinityButtonsUtil.getResource;
 
@@ -38,43 +39,45 @@ public class ModelAndStateGenerator extends FabricModelProvider {
         return ResourceLocation.withDefaultNamespace("block/" + type.name() + "_planks");
     }
 
-    public static final Function<String, ModelTemplate> SMALL_BUTTONS = (String suffix) -> new ModelTemplate(
-            Optional.of(ResourceLocation.withDefaultNamespace("block/button" + suffix)),
-            Optional.empty(), // The suffix to apply to the end of any model that uses this template
-            TextureSlot.TEXTURE
-    );
+    private static Function<String, ModelTemplate> template(Function<String, ResourceLocation> locationFactory) {
+        return name -> new ModelTemplate(Optional.of(locationFactory.apply(name)), Optional.empty(), TextureSlot.TEXTURE);
+    }
 
-    public static final Function<String, ModelTemplate> LARGE_BUTTONS = (String suffix) -> new ModelTemplate(
-            Optional.of(getResource("block/large_button" + suffix)),
-            Optional.empty(), // The suffix to apply to the end of any model that uses this template
-            TextureSlot.TEXTURE
-    );
+    public static final Function<String, ModelTemplate> TEMPLATE_SMALL =
+            template(name -> ResourceLocation.withDefaultNamespace("block/button" + name));
+
+    public static final Function<String, ModelTemplate> TEMPLATE_LARGE =
+            template(name -> getResource("block/large_button" + name));
+
+    public static final Function<String, ModelTemplate> TEMPLATE_INVENTORY_SMALL =
+            template(name -> ResourceLocation.withDefaultNamespace("block/button" + name));
+
+    public static final Function<String, ModelTemplate> TEMPLATE_INVENTORY_LARGE =
+            template(name -> getResource("block/large_button" + name));
+
 
     public void generateSmallButton(BlockModelGenerators blockModels, Block block, TextureMapping texMap) {
         blockModels.blockStateOutput.accept(BlockModelGenerators.createButton(block,
-                BlockModelGenerators.plainVariant(
-                        defineModel(SMALL_BUTTONS, "", block, texMap, blockModels.modelOutput)
-                ),
-                BlockModelGenerators.plainVariant(
-                        defineModel(SMALL_BUTTONS, "_pressed", block, texMap, blockModels.modelOutput)
-                )
+                defineModel(TEMPLATE_SMALL, "", block, texMap, blockModels.modelOutput),
+                defineModel(TEMPLATE_SMALL, "_pressed", block, texMap, blockModels.modelOutput)
+        ));
+        blockModels.modelOutput.accept(ModelLocationUtils.getModelLocation(block.asItem()), new DelegatedModel(
+                defineModel(TEMPLATE_INVENTORY_SMALL, "_inventory", block, texMap, blockModels.modelOutput)
         ));
     }
 
     public void generateLargeButton(BlockModelGenerators blockModels, Block block, TextureMapping texMap) {
         blockModels.blockStateOutput.accept(BlockModelGenerators.createButton(block,
-                BlockModelGenerators.plainVariant(
-                        defineModel(LARGE_BUTTONS, "", block, texMap, blockModels.modelOutput)
-                ),
-                BlockModelGenerators.plainVariant(
-                        defineModel(LARGE_BUTTONS, "_pressed", block, texMap, blockModels.modelOutput)
-                )
+                defineModel(TEMPLATE_LARGE, "", block, texMap, blockModels.modelOutput),
+                defineModel(TEMPLATE_LARGE, "_pressed", block, texMap, blockModels.modelOutput)
+        ));
+        blockModels.modelOutput.accept(ModelLocationUtils.getModelLocation(block.asItem()), new DelegatedModel(
+                defineModel(TEMPLATE_INVENTORY_LARGE, "_inventory", block, texMap, blockModels.modelOutput)
         ));
     }
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModels) {
-
         for (Map.Entry<String, RegistryUtils.LargeVariantSupplier<Block>> entry : IBBlocks.STONE_BUTTONS.entrySet()) {
             String type = entry.getKey();
             if (Objects.equals(type, "dripstone")) type = "dripstone_block"; // Dripstone wants to be special again
@@ -114,85 +117,15 @@ public class ModelAndStateGenerator extends FabricModelProvider {
     }
 
     @Override
-    public void generateItemModels(ItemModelGenerators itemModels) {
-
-        for (Map.Entry<String, RegistryUtils.LargeVariantSupplier<Block>> entry : IBBlocks.STONE_BUTTONS.entrySet()) {
-            String type = entry.getKey();
-            RegistryUtils.LargeVariantSupplier<Block> variantSupplier = entry.getValue();
-
-            Block small = variantSupplier.get(false);
-            Block large = variantSupplier.get(true);
-
-            TextureMapping texMap = new TextureMapping()
-                    .put(TextureSlot.TEXTURE, ResourceLocation.withDefaultNamespace("block/" + type));
-
-            itemModels.itemModelOutput.accept(small.asItem(),
-                    ItemModelUtils.plainModel(
-                            defineModel(SMALL_BUTTONS, "_inventory", small, texMap, itemModels.modelOutput)
-                    )
-            );
-
-            itemModels.itemModelOutput.accept(large.asItem(),
-                    ItemModelUtils.plainModel(
-                            defineModel(LARGE_BUTTONS, "_inventory", large, texMap, itemModels.modelOutput)
-                    )
-            );
-        }
-
-        // This overrides the default models that simply reference the base block model
-        for (Map.Entry<BlockSetType, RegistrySupplier<Block>> entry : IBBlocks.DEFAULT_LARGE_BUTTONS.entrySet()) {
-            BlockSetType type = entry.getKey();
-            Block block = entry.getValue().get();
-
-            TextureMapping texMap = new TextureMapping()
-                    .put(TextureSlot.TEXTURE, getDefaultTexture(type));
-
-            itemModels.itemModelOutput.accept(block.asItem(),
-                    ItemModelUtils.plainModel(
-                            defineModel(LARGE_BUTTONS, "_inventory", block, texMap, itemModels.modelOutput)
-                    )
-            );
-        }
-
-        for (RegistryUtils.LargeVariantSupplier<CopperButton> variantSupplier : IBBlocks.COPPER_BUTTONS.values()) {
-            CopperButton small = variantSupplier.get(false);
-            CopperButton large = variantSupplier.get(true);
-            String state = small.getAge() == WeatheringCopper.WeatherState.UNAFFECTED ? "copper" : small.getAge().getSerializedName() + "_copper";
-
-            TextureMapping texMap = new TextureMapping()
-                    .put(TextureSlot.TEXTURE, getResource("block/" + state + "_button"));
-
-
-            itemModels.itemModelOutput.accept(small.asItem(),
-                    ItemModelUtils.plainModel(
-                            defineModel(SMALL_BUTTONS, "_inventory", small, texMap, itemModels.modelOutput)
-                    )
-            );
-
-            itemModels.itemModelOutput.accept(large.asItem(),
-                    ItemModelUtils.plainModel(
-                            defineModel(LARGE_BUTTONS, "_inventory", large, texMap, itemModels.modelOutput)
-                    )
-            );
-        }
-
-        for (Map.Entry<String, RegistrySupplier<Block>> entry : IBBlocks.SECRET_BUTTONS.entrySet()) {
-            String name = entry.getKey();
-            Block block = entry.getValue().get();
-
-            itemModels.itemModelOutput.accept(block.asItem(),
-                    ItemModelUtils.plainModel(
-                            ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, "block/secret_buttons/" + name)
-                    )
-            );
-        }
+    public void generateItemModels(ItemModelGenerators itemModelGenerator) {
+        System.out.println("Hello :)");
     }
 
     /**
      * Small helper method to simplify creating models
      */
     private static ResourceLocation defineModel(Function<String, ModelTemplate> model, String version, Block block,
-                                                TextureMapping texMap, BiConsumer<ResourceLocation, ModelInstance> output) {
+                                                TextureMapping texMap, BiConsumer<ResourceLocation, Supplier<JsonElement>> output) {
         return model.apply(version).createWithSuffix(block, version, texMap, output);
     }
 }

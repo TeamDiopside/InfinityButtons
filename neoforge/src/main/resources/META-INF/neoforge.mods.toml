@@ -23,14 +23,14 @@ side = "BOTH"
 [[dependencies.infinitybuttons]]
 modId = "minecraft"
 type = "required"
-versionRange = "[1.21.9,)"
+versionRange = "[1.21.1,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.infinitybuttons]]
 modId = "architectury"
 type = "required"
-versionRange = "[18.0.5,)"
+versionRange = "[13.0.8,)"
 ordering = "AFTER"
 side = "BOTH"
 

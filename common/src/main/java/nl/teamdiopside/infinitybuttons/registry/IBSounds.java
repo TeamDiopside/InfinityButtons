@@ -1,9 +1,7 @@
 package nl.teamdiopside.infinitybuttons.registry;
 
 import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import nl.teamdiopside.diopside.registry.DiopsideSounds;
 
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
@@ -18,7 +16,7 @@ public class IBSounds {
     public static RegistrySupplier<SoundEvent> DOORBELL = registerSoundEvent("block.doorbell.doorbell");
 
     private static RegistrySupplier<SoundEvent> registerSoundEvent(String name) {
-        return DiopsideSounds.registerSoundEvent(getResource(name));
+        return DiopsideSounds.INSTANCE.registerSoundEvent(getResource(name));
     }
 
     public static void register() {
