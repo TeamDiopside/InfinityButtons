@@ -14,10 +14,13 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -31,20 +34,11 @@ import java.util.HashMap;
 /**
  * A button NOT extending vanilla buttons that can be placed on 4 sides
  */
-public abstract class ButtonFaced4 extends HorizontalDirectionalBlock {
-    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-
-    public final VoxelShape shapePressed;
-    public final VoxelShape shapeUnpressed;
-
-    protected final HashMap<Direction, VoxelShape> SHAPES_PRESSED = new HashMap<>();
-    protected final HashMap<Direction, VoxelShape> SHAPES_UNPRESSED = new HashMap<>();
+public abstract class ButtonFaced4 extends Button {
+    public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
 
     protected ButtonFaced4(Properties properties, VoxelShape shapePressed, VoxelShape shapeUnpressed) {
-        super(properties);
-
-        this.shapePressed = shapePressed;
-        this.shapeUnpressed = shapeUnpressed;
+        super(properties, shapePressed, shapeUnpressed);
 
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
@@ -54,38 +48,12 @@ public abstract class ButtonFaced4 extends HorizontalDirectionalBlock {
         this.initShapes();
     }
 
-    private void initShapes() {
+    protected void initShapes() {
         for (Direction dir : Direction.values()) {
             if (dir.getAxis() == Direction.Axis.Y) continue;
 
             this.SHAPES_PRESSED.put(dir, ShapeManipulator.rotateY(this.shapePressed, (int) (dir.toYRot() / 90) + 2));
             this.SHAPES_UNPRESSED.put(dir, ShapeManipulator.rotateY(this.shapeUnpressed, (int) (dir.toYRot() / 90) + 2));
-        }
-    }
-
-    public void press(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
-        level.setBlockAndUpdate(blockPos, blockState.setValue(POWERED, true));
-        level.scheduleTick(blockPos, this, getPressTicks());
-
-        this.playSound(player, level, blockPos);
-        level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, blockPos);
-    }
-
-    protected void playSound(@Nullable Player player, LevelAccessor levelAccessor, BlockPos blockPos) {
-        levelAccessor.playSound(player, blockPos, this.getSound(), SoundSource.BLOCKS);
-    }
-
-    protected abstract SoundEvent getSound();
-
-    protected abstract int getPressTicks();
-
-    @Override
-    protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
-        if (blockState.getValue(POWERED)) {
-            return InteractionResult.CONSUME;
-        } else {
-            this.press(blockState, level, blockPos, player);
-            return InteractionResult.SUCCESS;
         }
     }
 
@@ -98,29 +66,22 @@ public abstract class ButtonFaced4 extends HorizontalDirectionalBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(POWERED, FACING);
+        super.createBlockStateDefinition(builder);
+        builder.add(FACING);
     }
 
     @Override
-    protected void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
-        if (blockState.getValue(POWERED)) {
-            serverLevel.setBlockAndUpdate(blockPos, blockState.setValue(POWERED, false));
-            playSound(null, serverLevel, blockPos);
-        }
-    }
-
-    @Override
-    protected boolean isSignalSource(BlockState blockState) {
-        return true;
-    }
-
-    @Override
-    protected int getSignal(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, Direction direction) {
-        return blockState.getValue(POWERED) ? 15 : 0;
-    }
-
-    @Override
-    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
+    protected MapCodec<? extends ButtonFaced4> codec() {
         return null; // TODO ?
+    }
+
+    @Override
+    protected BlockState rotate(BlockState blockState, Rotation rotation) {
+        return blockState.setValue(FACING, rotation.rotate(blockState.getValue(FACING)));
+    }
+
+    @Override
+    protected BlockState mirror(BlockState blockState, Mirror mirror) {
+        return blockState.rotate(mirror.getRotation(blockState.getValue(FACING)));
     }
 }
