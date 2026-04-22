@@ -114,6 +114,8 @@ public class ModelAndStateGenerator extends FabricModelProvider {
             generateSmallButton(blockModels, small, texMap);
             generateLargeButton(blockModels, large, texMap);
         }
+
+        // TODO: Emergency Buttons
     }
 
     @Override

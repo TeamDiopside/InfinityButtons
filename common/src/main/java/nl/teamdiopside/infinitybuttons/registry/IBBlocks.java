@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.PushReaction;
 import nl.teamdiopside.diopside.registry.DiopsideBlocks;
+import nl.teamdiopside.infinitybuttons.block.emergency.EmergencyButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.block.faced4.TorchButton;
@@ -232,6 +233,32 @@ public class IBBlocks {
             new LanternButton(properties, false), lanternProperties(10));
     public static final RegistrySupplier<Block> SOUL_LANTERN_LEVER = registerBlock("soul_lantern_lever", properties ->
             new LanternButton(properties, true), lanternProperties(10));
+
+    /**
+     * Emergency Buttons
+     */
+    public static final RegistrySupplier<Block> WHITE_EMERGENCY_BUTTON = registerEmergencyButton("white");
+    public static final RegistrySupplier<Block> LIGHT_GRAY_EMERGENCY_BUTTON = registerEmergencyButton("light_gray");
+    public static final RegistrySupplier<Block> GRAY_EMERGENCY_BUTTON = registerEmergencyButton("gray");
+    public static final RegistrySupplier<Block> BLACK_EMERGENCY_BUTTON = registerEmergencyButton("black");
+    public static final RegistrySupplier<Block> BROWN_EMERGENCY_BUTTON = registerEmergencyButton("brown");
+    public static final RegistrySupplier<Block> RED_EMERGENCY_BUTTON = registerEmergencyButton("red");
+    public static final RegistrySupplier<Block> ORANGE_EMERGENCY_BUTTON = registerEmergencyButton("orange");
+    public static final RegistrySupplier<Block> YELLOW_EMERGENCY_BUTTON = registerEmergencyButton("yellow");
+    public static final RegistrySupplier<Block> LIME_EMERGENCY_BUTTON = registerEmergencyButton("lime");
+    public static final RegistrySupplier<Block> GREEN_EMERGENCY_BUTTON = registerEmergencyButton("green");
+    public static final RegistrySupplier<Block> CYAN_EMERGENCY_BUTTON = registerEmergencyButton("cyan");
+    public static final RegistrySupplier<Block> LIGHT_BLUE_EMERGENCY_BUTTON = registerEmergencyButton("light_blue");
+    public static final RegistrySupplier<Block> BLUE_EMERGENCY_BUTTON = registerEmergencyButton("blue");
+    public static final RegistrySupplier<Block> PURPLE_EMERGENCY_BUTTON = registerEmergencyButton("purple");
+    public static final RegistrySupplier<Block> MAGENTA_EMERGENCY_BUTTON = registerEmergencyButton("magenta");
+    public static final RegistrySupplier<Block> PINK_EMERGENCY_BUTTON = registerEmergencyButton("pink");
+    public static final RegistrySupplier<Block> FANCY_EMERGENCY_BUTTON = registerEmergencyButton("fancy");
+
+    public static RegistrySupplier<Block> registerEmergencyButton(String name) {
+        return registerBlock(name + "_emergency_button", EmergencyButton::new,
+                BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.METAL));
+    }
 
     /**
      * Properties
