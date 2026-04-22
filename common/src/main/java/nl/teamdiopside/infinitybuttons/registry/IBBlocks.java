@@ -1,24 +1,32 @@
 package nl.teamdiopside.infinitybuttons.registry;
 
 import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.material.PushReaction;
 import nl.teamdiopside.diopside.registry.DiopsideBlocks;
+import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
+import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
+import nl.teamdiopside.infinitybuttons.block.faced4.TorchButton;
 import nl.teamdiopside.infinitybuttons.block.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.block.normal.CopperButtonType;
 import nl.teamdiopside.infinitybuttons.block.normal.NormalButton;
-import nl.teamdiopside.infinitybuttons.block.secret.SecretButton;
-import nl.teamdiopside.infinitybuttons.block.secret.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.registry.RegistryUtils.LargeVariantSupplier;
 import nl.teamdiopside.infinitybuttons.util.BiHashMap;
+import org.joml.Vector3f;
 
 import java.util.HashMap;
 import java.util.function.Function;
+import java.util.function.ToIntFunction;
 
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.MOD_ID;
@@ -180,6 +188,47 @@ public class IBBlocks {
     }
 
     /**
+     * Torches
+     */
+    public static final RegistrySupplier<Block> TORCH_BUTTON = registerOnlyBlock("torch_button",
+            new TorchButton(torchSettings(14), ParticleTypes.FLAME, false, false, false));
+    public static final RegistrySupplier<Block> WALL_TORCH_BUTTON = registerOnlyBlock("wall_torch_button",
+            new TorchButton(torchSettings(14).dropsLike(TORCH_BUTTON.get()), ParticleTypes.FLAME, false, true, false));
+
+    public static final RegistrySupplier<Block> TORCH_LEVER = registerOnlyBlock("torch_lever",
+            new TorchButton(torchSettings(14), ParticleTypes.FLAME, true, false, false));
+    public static final RegistrySupplier<Block> WALL_TORCH_LEVER = registerOnlyBlock("wall_torch_lever",
+            new TorchButton(torchSettings(14).dropsLike(TORCH_LEVER.get()), ParticleTypes.FLAME, true, true, false));
+
+    public static final RegistrySupplier<Block> SOUL_TORCH_BUTTON = registerOnlyBlock("soul_torch_button",
+            new TorchButton(torchSettings(10), ParticleTypes.SOUL_FIRE_FLAME, false, false, false));
+    public static final RegistrySupplier<Block> SOUL_WALL_TORCH_BUTTON = registerOnlyBlock("soul_wall_torch_button",
+            new TorchButton(torchSettings(10).dropsLike(SOUL_TORCH_BUTTON.get()), ParticleTypes.SOUL_FIRE_FLAME, false, true, false));
+
+    public static final RegistrySupplier<Block> SOUL_TORCH_LEVER = registerOnlyBlock("soul_torch_lever",
+            new TorchButton(torchSettings(10), ParticleTypes.SOUL_FIRE_FLAME, true, false, false));
+    public static final RegistrySupplier<Block> SOUL_WALL_TORCH_LEVER = registerOnlyBlock("soul_wall_torch_lever",
+            new TorchButton(torchSettings(10).dropsLike(SOUL_TORCH_LEVER.get()), ParticleTypes.SOUL_FIRE_FLAME, true, true, false));
+
+    public static final RegistrySupplier<Block> REDSTONE_TORCH_BUTTON = registerOnlyBlock("redstone_torch_button",
+            new TorchButton(torchSettings(7), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), false, false, true));
+    public static final RegistrySupplier<Block> REDSTONE_WALL_TORCH_BUTTON = registerOnlyBlock("redstone_wall_torch_button",
+            new TorchButton(torchSettings(7).dropsLike(REDSTONE_TORCH_BUTTON.get()), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), false, true, true));
+
+    public static final RegistrySupplier<Block> REDSTONE_TORCH_LEVER = registerOnlyBlock("redstone_torch_lever",
+            new TorchButton(torchSettings(7), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), true, false, true));
+    public static final RegistrySupplier<Block> REDSTONE_WALL_TORCH_LEVER = registerOnlyBlock("redstone_wall_torch_lever",
+            new TorchButton(torchSettings(7).dropsLike(REDSTONE_TORCH_LEVER.get()), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), true, true, true));
+
+    private static BlockBehaviour.Properties torchSettings(int light) {
+        return BlockBehaviour.Properties.of().noCollission().instabreak().lightLevel(litBlockEmission(light)).sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY);
+    }
+
+    private static ToIntFunction<BlockState> litBlockEmission(int i) {
+        return blockState -> blockState.getValue(BlockStateProperties.POWERED) ? i : 0;
+    }
+
+    /**
      * Properties
      */
     private static BlockBehaviour.Properties getDefaultProperties() {
@@ -191,6 +240,10 @@ public class IBBlocks {
      */
     private static <T extends Block> RegistrySupplier<T> registerBlock(String blockId, Function<BlockBehaviour.Properties, T> blockFunction, BlockBehaviour.Properties properties) {
         return DiopsideBlocks.INSTANCE.registerBlock(ResourceLocation.fromNamespaceAndPath(MOD_ID, blockId), blockFunction, properties);
+    }
+
+    private static RegistrySupplier<Block> registerOnlyBlock(String blockId, Block block) {
+        return DiopsideBlocks.INSTANCE.registerBlockWithoutItem(ResourceLocation.fromNamespaceAndPath(MOD_ID, blockId), (BlockBehaviour.Properties h) -> block, block.properties());
     }
 
     public static void register() {

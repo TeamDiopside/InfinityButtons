@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "minecraft:block/redstone_torch_off"
+    },
+    "powered=true": {
+      "model": "minecraft:block/redstone_torch"
+    }
+  }
+}
