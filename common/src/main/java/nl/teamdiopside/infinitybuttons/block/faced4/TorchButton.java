@@ -11,7 +11,10 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import nl.teamdiopside.infinitybuttons.block.ButtonFaced4;
@@ -63,6 +66,20 @@ public class TorchButton extends ButtonFaced4 {
             return super.getStateForPlacement(blockPlaceContext);
         }
         return this.defaultBlockState().setValue(FACING, blockPlaceContext.getClickedFace());
+    }
+
+    @Override
+    protected boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
+        BlockPos blockPos2 = blockPos.relative(blockState.getValue(FACING).getOpposite());
+        BlockState otherState = levelReader.getBlockState(blockPos2);
+        return otherState.isFaceSturdy(levelReader, blockPos2, blockState.getValue(FACING));
+    }
+    @Override
+    protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor levelAccessor, BlockPos pos, BlockPos neighborPos) {
+        if (direction == state.getValue(FACING).getOpposite() && !this.canSurvive(state, levelAccessor, pos)) {
+            return Blocks.AIR.defaultBlockState();
+        }
+        return super.updateShape(state, direction, neighborState, levelAccessor, pos, neighborPos);
     }
 
     @Override // Particles
