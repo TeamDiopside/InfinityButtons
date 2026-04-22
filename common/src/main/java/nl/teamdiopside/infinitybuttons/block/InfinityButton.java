@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -46,8 +47,6 @@ public abstract class InfinityButton extends Block {
                 .setValue(POWERED, false)
         );
     }
-
-    abstract protected void initShapes();
 
     protected abstract SoundEvent getSound(boolean press);
 
@@ -108,4 +107,8 @@ public abstract class InfinityButton extends Block {
         return blockState.getValue(POWERED) ? 15 : 0;
     }
 
+    @Override
+    protected VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
+        return blockState.getValue(POWERED) ? this.shapePressed : this.shapeUnpressed;
+    }
 }
