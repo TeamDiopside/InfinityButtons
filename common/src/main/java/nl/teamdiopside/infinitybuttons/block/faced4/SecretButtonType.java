@@ -1,4 +1,4 @@
-package nl.teamdiopside.infinitybuttons.block.secret;
+package nl.teamdiopside.infinitybuttons.block.faced4;
 
 import com.mojang.serialization.Codec;
 import dev.architectury.registry.registries.RegistrySupplier;

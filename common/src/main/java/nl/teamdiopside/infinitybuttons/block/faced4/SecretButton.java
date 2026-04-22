@@ -1,4 +1,4 @@
-package nl.teamdiopside.infinitybuttons.block.secret;
+package nl.teamdiopside.infinitybuttons.block.faced4;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -6,13 +6,11 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import nl.teamdiopside.infinitybuttons.block.ButtonFaced4;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 public class SecretButton extends ButtonFaced4 {
 
@@ -27,16 +25,8 @@ public class SecretButton extends ButtonFaced4 {
     public final SecretButtonType type;
 
     public SecretButton(Properties properties, SecretButtonType type) {
-        super(properties, type.shapePressed, type.shapeUnpressed);
+        super(properties, type.shapePressed, type.shapeUnpressed, false);
         this.type = type;
-    }
-
-    @Override
-    public @Nullable BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
-        Player player = blockPlaceContext.getPlayer();
-        return (player == null) ? this.defaultBlockState() : this.defaultBlockState().setValue(
-                FACING, player.getDirection().getOpposite()
-        );
     }
 
     @Override
@@ -49,7 +39,7 @@ public class SecretButton extends ButtonFaced4 {
     }
 
     @Override
-    protected SoundEvent getSound() {
+    protected SoundEvent getSound(boolean press) {
         return this.type.sound;
     }
 
