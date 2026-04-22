@@ -1,6 +1,7 @@
 package nl.teamdiopside.infinitybuttons.block.emergency;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -31,12 +32,24 @@ public class EmergencyButton extends ButtonFaced6 {
 
     public static final int PRESS_TICKS = 10;
 
+    public EmergencyButton(BlockSetType blockSetType, Properties properties, VoxelShape shapePressed, VoxelShape shapeUnpressed) {
+        super(blockSetType, PRESS_TICKS, properties, shapePressed, shapeUnpressed);
+    }
+
     public EmergencyButton(Properties properties) {
         super(BlockSetType.STONE, PRESS_TICKS, properties, SHAPE_PRESSED, SHAPE_UNPRESSED);
     }
 
     public static void emergencySound(Level level, BlockPos pos) {
         // TODO: WEEEEEEOOEOEOOOOOOOH !!!!!!
+    }
+
+    protected static Direction getDirection(BlockState state) {
+        return switch (state.getValue(FACE)) {
+            case CEILING -> Direction.DOWN;
+            case FLOOR -> Direction.UP;
+            default -> state.getValue(FACING);
+        };
     }
 
     @Override

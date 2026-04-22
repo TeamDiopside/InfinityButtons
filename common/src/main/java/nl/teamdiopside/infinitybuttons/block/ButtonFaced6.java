@@ -30,10 +30,11 @@ public abstract class ButtonFaced6 extends ButtonBlock {
         this.shapePressed = shapePressed;
         this.shapeUnpressed = shapeUnpressed;
 
-        initShapes();
+        initShapes(this.shapePressed, SHAPES_PRESSED);
+        initShapes(this.shapeUnpressed, SHAPES_UNPRESSED);
     }
 
-    private void initShapes() {
+    protected void initShapes(VoxelShape inputShape, BiHashMap<Direction, AttachFace, VoxelShape> outputMap) {
         for (Direction dir : Direction.values()) {
             for (AttachFace face : AttachFace.values()) {
                 if (dir.getAxis() == Direction.Axis.Y) continue;
@@ -45,8 +46,7 @@ public abstract class ButtonFaced6 extends ButtonBlock {
                 };
                 int yTurns = (int) (dir.toYRot() / 90) + 2;
 
-                this.SHAPES_PRESSED.put(dir, face, ShapeManipulator.rotate(this.shapePressed, xTurns, yTurns));
-                this.SHAPES_UNPRESSED.put(dir, face, ShapeManipulator.rotate(this.shapeUnpressed, xTurns, yTurns));
+                outputMap.put(dir, face, ShapeManipulator.rotate(inputShape, xTurns, yTurns));
             }
         }
     }

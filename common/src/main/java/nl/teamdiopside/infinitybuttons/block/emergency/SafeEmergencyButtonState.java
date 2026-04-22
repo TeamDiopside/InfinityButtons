@@ -14,8 +14,9 @@ public enum SafeEmergencyButtonState implements StringRepresentable {
         this.name = name;
     }
 
+
     @Override
     public @NotNull String getSerializedName() {
-            return this.name;
-        }
+        return name;
+    }
 }
