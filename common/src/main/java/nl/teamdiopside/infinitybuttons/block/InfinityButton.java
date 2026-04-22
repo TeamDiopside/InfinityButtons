@@ -25,20 +25,22 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 
-public abstract class Button extends Block {
+public abstract class InfinityButton extends Block {
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
-
-    public final VoxelShape shapePressed;
-    public final VoxelShape shapeUnpressed;
 
     protected final HashMap<StringRepresentable, VoxelShape> SHAPES_PRESSED = new HashMap<>();
     protected final HashMap<StringRepresentable, VoxelShape> SHAPES_UNPRESSED = new HashMap<>();
 
-    public Button(Properties properties, VoxelShape shapePressed, VoxelShape shapeUnpressed) {
+    public final VoxelShape shapePressed;
+    public final VoxelShape shapeUnpressed;
+    public final boolean isLever;
+
+    public InfinityButton(Properties properties, VoxelShape shapePressed, VoxelShape shapeUnpressed, boolean isLever) {
         super(properties);
 
         this.shapePressed = shapePressed;
         this.shapeUnpressed = shapeUnpressed;
+        this.isLever = isLever;
 
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(POWERED, false)
@@ -47,25 +49,36 @@ public abstract class Button extends Block {
 
     abstract protected void initShapes();
 
-    protected abstract SoundEvent getSound();
+    protected abstract SoundEvent getSound(boolean press);
 
     protected abstract int getPressTicks();
 
     public void press(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
         level.setBlockAndUpdate(blockPos, blockState.setValue(POWERED, true));
-        level.scheduleTick(blockPos, this, getPressTicks());
+        if (!this.isLever) level.scheduleTick(blockPos, this, getPressTicks());
 
-        this.playSound(player, level, blockPos);
+        this.playSound(player, level, blockPos, true);
         level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, blockPos);
     }
 
-    protected void playSound(@Nullable Player player, LevelAccessor levelAccessor, BlockPos blockPos) {
-        levelAccessor.playSound(player, blockPos, this.getSound(), SoundSource.BLOCKS);
+    public void unpress(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
+        level.setBlockAndUpdate(blockPos, blockState.setValue(POWERED, false));
+        playSound(player, level, blockPos, false);
+
+        level.gameEvent(player, GameEvent.BLOCK_DEACTIVATE, blockPos);
+    }
+
+    protected void playSound(@Nullable Player player, LevelAccessor levelAccessor, BlockPos blockPos, boolean press) {
+        levelAccessor.playSound(player, blockPos, this.getSound(press), SoundSource.BLOCKS);
     }
 
     @Override
     protected @NotNull InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
         if (blockState.getValue(POWERED)) {
+            if (this.isLever) {
+                this.unpress(blockState, level, blockPos, player);
+                return InteractionResult.SUCCESS;
+            }
             return InteractionResult.CONSUME;
         } else {
             this.press(blockState, level, blockPos, player);
@@ -81,8 +94,7 @@ public abstract class Button extends Block {
     @Override
     protected void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
         if (blockState.getValue(POWERED)) {
-            serverLevel.setBlockAndUpdate(blockPos, blockState.setValue(POWERED, false));
-            playSound(null, serverLevel, blockPos);
+            unpress(blockState, serverLevel, blockPos, null);
         }
     }
 
