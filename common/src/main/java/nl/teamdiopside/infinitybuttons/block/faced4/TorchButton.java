@@ -70,13 +70,17 @@ public class TorchButton extends ButtonFaced4 {
 
     @Override
     protected boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
-        BlockPos blockPos2 = blockPos.relative(blockState.getValue(FACING).getOpposite());
+        Direction horse = this.isWall ? blockState.getValue(FACING).getOpposite() : Direction.DOWN;
+
+        BlockPos blockPos2 = blockPos.relative(horse);
         BlockState otherState = levelReader.getBlockState(blockPos2);
-        return otherState.isFaceSturdy(levelReader, blockPos2, blockState.getValue(FACING));
+
+        return otherState.isFaceSturdy(levelReader, blockPos2, horse.getOpposite());
     }
     @Override
     protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor levelAccessor, BlockPos pos, BlockPos neighborPos) {
-        if (direction == state.getValue(FACING).getOpposite() && !this.canSurvive(state, levelAccessor, pos)) {
+        Direction horse = this.isWall ? state.getValue(FACING).getOpposite() : Direction.DOWN;
+        if (direction == horse && !this.canSurvive(state, levelAccessor, pos)) {
             return Blocks.AIR.defaultBlockState();
         }
         return super.updateShape(state, direction, neighborState, levelAccessor, pos, neighborPos);
