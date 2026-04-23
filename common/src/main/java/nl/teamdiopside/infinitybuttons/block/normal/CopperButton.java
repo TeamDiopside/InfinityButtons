@@ -25,7 +25,6 @@ import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
 import nl.teamdiopside.diopside.block.BlockTooltip;
 import nl.teamdiopside.diopside.datacomponent.HoldShiftTooltipComponent;
@@ -36,10 +35,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-import static net.minecraft.world.ItemInteractionResult.sidedSuccess;
-
 public class CopperButton extends NormalButton implements WeatheringButton, BlockTooltip<HoldShiftTooltipComponent> {
 
+    public static final int PRESS_TICKS = 50;
     public static final MapCodec<CopperButton> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(propertiesCodec(),
                     Codec.BOOL.fieldOf("large").forGetter(copperButton -> copperButton.large),
@@ -52,7 +50,7 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
     protected final CopperButtonType buttonType;
 
     public CopperButton(BlockBehaviour.Properties properties, boolean large, WeatheringCopper.WeatherState weatherState, CopperButtonType buttonType) {
-        super(BlockSetType.COPPER, 50, properties, large);
+        super(BlockSetType.COPPER, PRESS_TICKS, properties, large, buttonType == CopperButtonType.STICKY);
         this.weatherState = weatherState;
         this.buttonType = buttonType;
     }
@@ -62,8 +60,7 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
         this.changeOverTime(pState, pLevel, pPos, pRandom);
     }
 
-    @Override
-    // Slightly modified version, original in ChangeOverTimeBlock.class
+    @Override // Slightly modified version, original in ChangeOverTimeBlock.class
     public @NotNull Optional<BlockState> getNextState(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
         int age = this.getAge().ordinal();
         int j = 0;
@@ -126,33 +123,10 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
             case STICKY -> {
                 if (itemStack.getItem() instanceof AxeItem) {
                     return unSticky(blockState, level, blockPos, player, itemStack);
-                } else if (blockState.getValue(ButtonBlock.POWERED)) {
-                    this.unpress(blockState, level, blockPos, player);
-                    return sidedSuccess(level.isClientSide());
                 }
             }
         }
         return super.useItemOn(itemStack, blockState, level, blockPos, player, interactionHand, blockHitResult);
-    }
-
-    @Override
-    public void press(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
-        if (getButtonType() != CopperButtonType.STICKY) {
-            super.press(blockState, level, blockPos, player);
-            return;
-        }
-        level.setBlock(blockPos, blockState.setValue(ButtonBlock.POWERED, true), 3);
-        this.updateNeighbours(blockState, level, blockPos);
-        this.playSound(player, level, blockPos, true);
-        level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, blockPos);
-
-    }
-
-    public void unpress(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
-        level.setBlock(blockPos, blockState.setValue(ButtonBlock.POWERED, false), 3);
-        this.updateNeighbours(blockState, level, blockPos);
-        this.playSound(player, level, blockPos, false);
-        level.gameEvent(player, GameEvent.BLOCK_DEACTIVATE, blockPos);
     }
 
     @Override
@@ -179,11 +153,6 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
         return SoundEvents.COPPER_BREAK;
     }
 
-    protected void updateNeighbours(BlockState blockState, Level level, BlockPos blockPos) {
-        level.updateNeighborsAt(blockPos, this);
-        level.updateNeighborsAt(blockPos.relative(getConnectedDirection(blockState).getOpposite()), this);
-    }
-
     @Override
     public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag) {
         consumer.accept(Component.translatable("infinitybuttons.tooltip.sticky_copper_button").withStyle(ChatFormatting.GRAY));
@@ -203,5 +172,10 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
     public boolean tooltipVisible() {
         // TODO configurable!
         return getButtonType() == CopperButtonType.STICKY;
+    }
+
+    @Override
+    protected int getPressTicks() {
+        return PRESS_TICKS;
     }
 }

@@ -74,4 +74,9 @@ public abstract class ButtonFaced4 extends InfinityButton {
     protected @NotNull BlockState mirror(BlockState blockState, Mirror mirror) {
         return blockState.rotate(mirror.getRotation(blockState.getValue(FACING)));
     }
+
+    @Override
+    protected Direction getConnectedDirection(BlockState state) {
+        return state.getValue(FACING).getOpposite();
+    }
 }

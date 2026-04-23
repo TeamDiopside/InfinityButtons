@@ -9,7 +9,6 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
@@ -52,11 +51,11 @@ public class TorchButton extends ButtonFaced4 {
         return 50;
     }
 
-    @Override
-    protected int getSignal(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, Direction direction) {
-        boolean properDirectionPower = blockState.getValue(POWERED) && direction == Direction.UP;
-        return properDirectionPower ? 15 : 0;
-    }
+//    @Override
+//    protected int getSignal(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, Direction direction) {
+//        boolean properDirectionPower = blockState.getValue(POWERED) && direction == Direction.UP;
+//        return properDirectionPower ? 15 : 0;
+//    }
 
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {

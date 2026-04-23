@@ -14,6 +14,9 @@ public class IBSounds {
     public static RegistrySupplier<SoundEvent> STONE_SCRAPE = registerSoundEvent("block.secret_button.stone_scrape");
     public static RegistrySupplier<SoundEvent> WOOD_SCRAPE = registerSoundEvent("block.secret_button.wood_scrape");
     public static RegistrySupplier<SoundEvent> DOORBELL = registerSoundEvent("block.doorbell.doorbell");
+    public static RegistrySupplier<SoundEvent> CONSOLE_BEEP = registerSoundEvent("block.console_button.beep");
+    public static RegistrySupplier<SoundEvent> CONSOLE_UNBEEP = registerSoundEvent("block.console_button.unbeep");
+    public static RegistrySupplier<SoundEvent> SILENT = registerSoundEvent("block.silent");
 
     private static RegistrySupplier<SoundEvent> registerSoundEvent(String name) {
         return DiopsideSounds.INSTANCE.registerSoundEvent(getResource(name));

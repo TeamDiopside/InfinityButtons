@@ -2,29 +2,43 @@
   "block.emergency_button.alarm": {
     "category": "block",
     "sounds": [
-      "infinitybuttons:block/emergency_button/alarm"
+      "infinitybuttons:block/alarm"
     ],
     "subtitle": "block.emergency_button.alarm"
   },
   "block.secret_button.stone_scrape": {
     "category": "block",
     "sounds": [
-      "infinitybuttons:block/secret_button/stone_scrape"
+      "infinitybuttons:block/stone_scrape"
     ],
     "subtitle": "block.secret_button.stone_scrape"
   },
   "block.secret_button.wood_scrape": {
     "category": "block",
     "sounds": [
-      "infinitybuttons:block/secret_button/wood_scrape"
+      "infinitybuttons:block/wood_scrape"
     ],
     "subtitle": "block.secret_button.wood_scrape"
   },
   "block.doorbell.doorbell": {
     "category": "block",
     "sounds": [
-      "infinitybuttons:block/doorbell/doorbell"
+      "infinitybuttons:block/doorbell"
     ],
     "subtitle": "block.doorbell.doorbell"
+  },
+  "block.console_button.beep": {
+    "category": "block",
+    "sounds": [
+      "infinitybuttons:block/console"
+    ],
+    "subtitle": "block.console_button.beep"
+  },
+  "block.console_button.unbeep": {
+    "category": "block",
+    "sounds": [
+      "infinitybuttons:block/console_negative"
+    ],
+    "subtitle": "block.console_button.beep"
   }
 }

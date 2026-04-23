@@ -62,7 +62,7 @@ public class SafeEmergencyButton extends EmergencyButton {
     }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
+    protected @NotNull InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
         if (!player.isShiftKeyDown()) {
             if (blockState.getValue(CLOSED)) return InteractionResult.FAIL; // TODO: Show actionbar
             return super.useWithoutItem(blockState, level, blockPos, player, blockHitResult);

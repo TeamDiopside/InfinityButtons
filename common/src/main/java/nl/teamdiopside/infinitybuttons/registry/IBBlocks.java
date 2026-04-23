@@ -22,6 +22,8 @@ import nl.teamdiopside.infinitybuttons.block.faced4.TorchButton;
 import nl.teamdiopside.infinitybuttons.block.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.block.normal.CopperButtonType;
 import nl.teamdiopside.infinitybuttons.block.normal.NormalButton;
+import nl.teamdiopside.infinitybuttons.block.normal.console.ConsoleButton;
+import nl.teamdiopside.infinitybuttons.block.normal.console.ConsoleButtonType;
 import nl.teamdiopside.infinitybuttons.block.simple.LanternButton;
 import nl.teamdiopside.infinitybuttons.registry.RegistryUtils.LargeVariantSupplier;
 import nl.teamdiopside.infinitybuttons.util.BiHashMap;
@@ -53,7 +55,7 @@ public class IBBlocks {
         LargeVariantSupplier<Block> supplier =
                 LargeVariantSupplier.registerVariants((large) -> registerBlock(
                         type + (large ? "_large_button" : "_button"),
-                        (properties) -> new NormalButton(BlockSetType.STONE, 20, properties, large),
+                        (properties) -> new NormalButton(BlockSetType.STONE, 20, properties, large, false),
                         getDefaultProperties()
                 ));
         STONE_BUTTONS.put(type, supplier);
@@ -96,7 +98,7 @@ public class IBBlocks {
             if (type == BlockSetType.COPPER || type == BlockSetType.GOLD || type == BlockSetType.IRON) continue;
             map.put(type, registerBlock(
                             type.name() + "_large_button",
-                            (properties) -> new NormalButton(type, type == BlockSetType.STONE ? 20 : 30, properties, true),
+                            (properties) -> new NormalButton(type, type == BlockSetType.STONE ? 20 : 30, properties, true, false),
                             BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)
                     )
             );
@@ -234,6 +236,27 @@ public class IBBlocks {
             new LanternButton(properties, false), lanternProperties(10));
     public static final RegistrySupplier<Block> SOUL_LANTERN_LEVER = registerBlock("soul_lantern_lever", properties ->
             new LanternButton(properties, true), lanternProperties(10));
+
+    /**
+     * Console Buttons
+     */
+    public static final RegistrySupplier<Block> SMALL_CONSOLE_BUTTON = registerBlock("small_console_button", properties ->
+            new ConsoleButton(properties, ConsoleButtonType.SMALL, false), lanternProperties(5));
+    public static final RegistrySupplier<Block> SMALL_CONSOLE_LEVER = registerBlock("small_console_lever", properties ->
+            new ConsoleButton(properties, ConsoleButtonType.SMALL, true), lanternProperties(5));
+
+    public static final RegistrySupplier<Block> CONSOLE_BUTTON = registerBlock("console_button", properties ->
+            new ConsoleButton(properties, ConsoleButtonType.NORMAL, false), lanternProperties(5));
+    public static final RegistrySupplier<Block> CONSOLE_LEVER = registerBlock("console_lever", properties ->
+            new ConsoleButton(properties, ConsoleButtonType.NORMAL, true), lanternProperties(5));
+    public static final RegistrySupplier<Block> LARGE_CONSOLE_BUTTON = registerBlock("large_console_button", properties ->
+            new ConsoleButton(properties, ConsoleButtonType.LARGE, false), lanternProperties(5));
+    public static final RegistrySupplier<Block> LARGE_CONSOLE_LEVER = registerBlock("large_console_lever", properties ->
+            new ConsoleButton(properties, ConsoleButtonType.LARGE, true), lanternProperties(5));
+    public static final RegistrySupplier<Block> BIG_CONSOLE_BUTTON = registerBlock("big_console_button", properties ->
+            new ConsoleButton(properties, ConsoleButtonType.LARGE, false), lanternProperties(5));
+    public static final RegistrySupplier<Block> BIG_CONSOLE_LEVER = registerBlock("big_console_lever", properties ->
+            new ConsoleButton(properties, ConsoleButtonType.LARGE, true), lanternProperties(5));
 
     /**
      * Emergency Buttons

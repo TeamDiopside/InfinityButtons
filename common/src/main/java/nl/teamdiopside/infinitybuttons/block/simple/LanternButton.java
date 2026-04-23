@@ -121,4 +121,9 @@ public class LanternButton extends InfinityButton implements SimpleWaterloggedBl
     protected boolean isPathfindable(BlockState blockState, PathComputationType pathComputationType) {
         return false;
     }
+
+    @Override
+    protected Direction getConnectedDirection(BlockState state) {
+        return Direction.DOWN;
+    }
 }

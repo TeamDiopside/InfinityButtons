@@ -11,18 +11,27 @@ public class NormalButton extends ButtonFaced6 {
 
     private static final VoxelShape SMALL_PRESSED = Block.box(5, 6, 15, 11, 10, 16);
     private static final VoxelShape SMALL_UNPRESSED = Block.box(5, 6, 14, 11, 10, 16);
-    protected boolean large;
+    protected final boolean large;
+    protected final int pressTicks;
 
-    public NormalButton(BlockSetType blockSetType, int ticks, Properties properties, boolean large) {
+
+    public NormalButton(BlockSetType blockSetType, int ticks, Properties properties, boolean large, boolean isLever) {
         super(blockSetType, ticks, properties,
                 large ? LARGE_PRESSED   : SMALL_PRESSED,
-                large ? LARGE_UNPRESSED : SMALL_UNPRESSED
+                large ? LARGE_UNPRESSED : SMALL_UNPRESSED,
+                isLever
         );
         this.large = large;
+        this.pressTicks = ticks;
     }
 
     public boolean isLarge() {
         return large;
+    }
+
+    @Override
+    protected int getPressTicks() {
+        return this.pressTicks;
     }
 
     // TODO ARROW PRESSABLE (ligt ineens aan blocksettype gedoe)
