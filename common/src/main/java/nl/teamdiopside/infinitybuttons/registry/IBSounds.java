@@ -5,7 +5,7 @@ import net.minecraft.sounds.SoundEvent;
 import nl.teamdiopside.diopside.registry.DiopsideSounds;
 
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
-import static nl.teamdiopside.infinitybuttons.InfinityButtonsUtil.getResource;
+import static nl.teamdiopside.infinitybuttons.InfinityButtons.getResource;
 
 public class IBSounds {
     // TODO fix subtitles (maybe making it secret? for the blocks we use vanilla events, like mud, subtitle says block placed)

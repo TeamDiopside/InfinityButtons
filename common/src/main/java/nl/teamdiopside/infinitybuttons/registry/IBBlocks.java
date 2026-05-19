@@ -24,6 +24,7 @@ import nl.teamdiopside.infinitybuttons.block.faced4.TorchButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.ConsoleButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.ConsoleButtonType;
 import nl.teamdiopside.infinitybuttons.block.faced6.LampButton;
+import nl.teamdiopside.infinitybuttons.block.faced6.LetterButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.*;
 import nl.teamdiopside.infinitybuttons.block.simple.LanternButton;
 import nl.teamdiopside.infinitybuttons.registry.RegistryUtils.LargeVariantSupplier;
@@ -354,6 +355,16 @@ public class IBBlocks {
     public static final RegistrySupplier<Block> LAMP_LEVER = registerBlock("lamp_lever",
             (properties) -> new LampButton(BlockSetType.STONE, properties, true),
             lampProperties(15));
+
+    /**
+     * Letter buttons
+     */
+    public static final RegistrySupplier<Block> LETTER_BUTTON = registerBlock("letter_button",
+            (properties) -> new LetterButton(properties, false),
+            BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.METAL));
+    public static final RegistrySupplier<Block> LETTER_LEVER = registerBlock("letter_lever",
+            (properties) -> new LetterButton(properties, true),
+            BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.METAL));
 
     /**
      * Properties

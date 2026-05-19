@@ -25,7 +25,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import static nl.teamdiopside.infinitybuttons.InfinityButtonsUtil.getResource;
+import static nl.teamdiopside.infinitybuttons.InfinityButtons.getResource;
 
 @Environment(EnvType.CLIENT)
 public class ModelAndStateGenerator extends FabricModelProvider {

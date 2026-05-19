@@ -1,5 +1,6 @@
 package nl.teamdiopside.infinitybuttons;
 
+import net.minecraft.resources.ResourceLocation;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBItems;
 import nl.teamdiopside.infinitybuttons.registry.IBParticles;
@@ -14,5 +15,10 @@ public final class InfinityButtons {
         IBBlocks.register();
         IBItems.register();
         IBParticles.register();
+        IBNetworking.register();
+    }
+
+    public static ResourceLocation getResource(String path) {
+        return ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, path);
     }
 }
