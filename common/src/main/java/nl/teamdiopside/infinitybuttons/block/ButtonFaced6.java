@@ -6,6 +6,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.ButtonBlock;
@@ -24,7 +25,7 @@ import org.jetbrains.annotations.Nullable;
 /**
  * A button extending vanilla buttons that can be placed on 6 sides
  */
-public abstract class ButtonFaced6 extends ButtonBlock {
+public abstract class ButtonFaced6 extends ButtonBlock implements MaybeButtonActivated {
 
     public final VoxelShape shapePressed;
     public final VoxelShape shapeUnpressed;
@@ -87,6 +88,17 @@ public abstract class ButtonFaced6 extends ButtonBlock {
         level.updateNeighborsAt(blockPos.relative(getConnectedDirection(blockState).getOpposite()), this);
     }
 
+    // Copied from ButtonBlock.checkPressed
+    public boolean arrowPressing(BlockState blockState, ServerLevel level, BlockPos blockPos) {
+        AbstractArrow abstractArrow = this.infinityButtons$activatedByArrows()
+                ? level.getEntitiesOfClass(AbstractArrow.class, blockState.getShape(level, blockPos).bounds().move(blockPos))
+                        .stream()
+                        .findFirst()
+                        .orElse(null)
+                : null;
+        return abstractArrow != null;
+    }
+
     @Override
     protected @NotNull InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
         if (blockState.getValue(POWERED)) {
@@ -103,6 +115,11 @@ public abstract class ButtonFaced6 extends ButtonBlock {
 
     @Override
     protected void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
+        if (arrowPressing(blockState, serverLevel, blockPos)) {
+            serverLevel.scheduleTick(blockPos, this, getPressTicks());
+            return;
+        }
+
         if (blockState.getValue(POWERED)) {
             unpress(blockState, serverLevel, blockPos, null);
         }
@@ -113,5 +130,10 @@ public abstract class ButtonFaced6 extends ButtonBlock {
         AttachFace face = blockState.getValue(FACE);
         Direction dir = blockState.getValue(FACING);
         return blockState.getValue(ButtonBlock.POWERED) ? this.SHAPES_PRESSED.get(dir, face) : this.SHAPES_UNPRESSED.get(dir, face);
+    }
+
+    @Override
+    public boolean infinityButtons$activatedByArrows() {
+        return false;
     }
 }

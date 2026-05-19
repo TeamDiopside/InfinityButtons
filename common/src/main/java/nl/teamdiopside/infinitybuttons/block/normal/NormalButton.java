@@ -34,5 +34,4 @@ public class NormalButton extends ButtonFaced6 {
         return this.pressTicks;
     }
 
-    // TODO ARROW PRESSABLE (ligt ineens aan blocksettype gedoe)
 }

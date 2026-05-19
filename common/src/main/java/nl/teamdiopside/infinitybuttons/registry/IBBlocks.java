@@ -102,6 +102,11 @@ public class IBBlocks {
     public static final LargeVariantSupplier<Block> DIAMOND_BUTTON = registerLargeVariantButton("diamond",
             (properties, large) -> new SparklingButton(BlockSetType.STONE, properties, large, false));
 
+    public static final LargeVariantSupplier<Block> IRON_BUTTON = registerLargeVariantButton("iron",
+            (properties, large) -> new ArrowOnlyButton(BlockSetType.STONE, properties, large, false));
+    public static final LargeVariantSupplier<Block> GOLD_BUTTON = registerLargeVariantButton("gold",
+            (properties, large) -> new ArrowOnlyButton(BlockSetType.STONE, properties, large, false));
+
     /**
      * Copper Buttons
      */
