@@ -1,8 +1,10 @@
 package nl.teamdiopside.infinitybuttons.fabric.client;
 
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.world.level.block.Block;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 
 public final class InfinityButtonsFabricClient implements ClientModInitializer {
@@ -25,7 +27,7 @@ public final class InfinityButtonsFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.SOUL_WALL_TORCH_BUTTON.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.SOUL_WALL_TORCH_LEVER.get(), RenderType.cutout());
 
-        // Consoles
+        // Console buttons
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.CONSOLE_BUTTON.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.CONSOLE_LEVER.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.SMALL_CONSOLE_BUTTON.get(), RenderType.cutout());
@@ -34,5 +36,9 @@ public final class InfinityButtonsFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.BIG_CONSOLE_LEVER.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.LARGE_CONSOLE_BUTTON.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.LARGE_CONSOLE_LEVER.get(), RenderType.cutout());
+
+        // Safety buttons
+        for (RegistrySupplier<Block> blockRS : IBBlocks.SAFETY_BUTTONS.values())
+            BlockRenderLayerMap.INSTANCE.putBlock(blockRS.get(), RenderType.cutout());
     }
 }

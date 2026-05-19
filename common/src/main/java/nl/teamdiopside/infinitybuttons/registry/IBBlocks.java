@@ -4,6 +4,7 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -261,50 +262,57 @@ public class IBBlocks {
     /**
      * Emergency Buttons
      */
-    public static final RegistrySupplier<Block> WHITE_EMERGENCY_BUTTON = registerEmergencyButton("white");
-    public static final RegistrySupplier<Block> LIGHT_GRAY_EMERGENCY_BUTTON = registerEmergencyButton("light_gray");
-    public static final RegistrySupplier<Block> GRAY_EMERGENCY_BUTTON = registerEmergencyButton("gray");
-    public static final RegistrySupplier<Block> BLACK_EMERGENCY_BUTTON = registerEmergencyButton("black");
-    public static final RegistrySupplier<Block> BROWN_EMERGENCY_BUTTON = registerEmergencyButton("brown");
-    public static final RegistrySupplier<Block> RED_EMERGENCY_BUTTON = registerEmergencyButton("red");
-    public static final RegistrySupplier<Block> ORANGE_EMERGENCY_BUTTON = registerEmergencyButton("orange");
-    public static final RegistrySupplier<Block> YELLOW_EMERGENCY_BUTTON = registerEmergencyButton("yellow");
-    public static final RegistrySupplier<Block> LIME_EMERGENCY_BUTTON = registerEmergencyButton("lime");
-    public static final RegistrySupplier<Block> GREEN_EMERGENCY_BUTTON = registerEmergencyButton("green");
-    public static final RegistrySupplier<Block> CYAN_EMERGENCY_BUTTON = registerEmergencyButton("cyan");
-    public static final RegistrySupplier<Block> LIGHT_BLUE_EMERGENCY_BUTTON = registerEmergencyButton("light_blue");
-    public static final RegistrySupplier<Block> BLUE_EMERGENCY_BUTTON = registerEmergencyButton("blue");
-    public static final RegistrySupplier<Block> PURPLE_EMERGENCY_BUTTON = registerEmergencyButton("purple");
-    public static final RegistrySupplier<Block> MAGENTA_EMERGENCY_BUTTON = registerEmergencyButton("magenta");
-    public static final RegistrySupplier<Block> PINK_EMERGENCY_BUTTON = registerEmergencyButton("pink");
-    public static final RegistrySupplier<Block> FANCY_EMERGENCY_BUTTON = registerEmergencyButton("fancy");
+    public static final HashMap<DyeColor, RegistrySupplier<Block>> EMERGENCY_BUTTONS = new HashMap<>();
+    public static final HashMap<DyeColor, RegistrySupplier<Block>> SAFETY_BUTTONS = new HashMap<>();
 
-    public static final RegistrySupplier<Block> WHITE_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton("white");
-    public static final RegistrySupplier<Block> LIGHT_GRAY_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton("light_gray");
-    public static final RegistrySupplier<Block> GRAY_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton("gray");
-    public static final RegistrySupplier<Block> BLACK_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton("black");
-    public static final RegistrySupplier<Block> BROWN_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton("brown");
-    public static final RegistrySupplier<Block> RED_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton("red");
-    public static final RegistrySupplier<Block> ORANGE_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton("orange");
-    public static final RegistrySupplier<Block> YELLOW_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton("yellow");
-    public static final RegistrySupplier<Block> LIME_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton("lime");
-    public static final RegistrySupplier<Block> GREEN_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton("green");
-    public static final RegistrySupplier<Block> CYAN_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton("cyan");
-    public static final RegistrySupplier<Block> LIGHT_BLUE_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton("light_blue");
-    public static final RegistrySupplier<Block> BLUE_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton("blue");
-    public static final RegistrySupplier<Block> PURPLE_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton("purple");
-    public static final RegistrySupplier<Block> MAGENTA_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton("magenta");
-    public static final RegistrySupplier<Block> PINK_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton("pink");
-    public static final RegistrySupplier<Block> FANCY_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton("fancy");
+    public static final RegistrySupplier<Block> WHITE_EMERGENCY_BUTTON = registerEmergencyButton(DyeColor.WHITE, "white");
+    public static final RegistrySupplier<Block> LIGHT_GRAY_EMERGENCY_BUTTON = registerEmergencyButton(DyeColor.LIGHT_GRAY, "light_gray");
+    public static final RegistrySupplier<Block> GRAY_EMERGENCY_BUTTON = registerEmergencyButton(DyeColor.GRAY, "gray");
+    public static final RegistrySupplier<Block> BLACK_EMERGENCY_BUTTON = registerEmergencyButton(DyeColor.BLACK, "black");
+    public static final RegistrySupplier<Block> BROWN_EMERGENCY_BUTTON = registerEmergencyButton(DyeColor.BROWN, "brown");
+    public static final RegistrySupplier<Block> RED_EMERGENCY_BUTTON = registerEmergencyButton(DyeColor.RED, "red");
+    public static final RegistrySupplier<Block> ORANGE_EMERGENCY_BUTTON = registerEmergencyButton(DyeColor.ORANGE, "orange");
+    public static final RegistrySupplier<Block> YELLOW_EMERGENCY_BUTTON = registerEmergencyButton(DyeColor.YELLOW, "yellow");
+    public static final RegistrySupplier<Block> LIME_EMERGENCY_BUTTON = registerEmergencyButton(DyeColor.LIME, "lime");
+    public static final RegistrySupplier<Block> GREEN_EMERGENCY_BUTTON = registerEmergencyButton(DyeColor.GREEN, "green");
+    public static final RegistrySupplier<Block> CYAN_EMERGENCY_BUTTON = registerEmergencyButton(DyeColor.CYAN, "cyan");
+    public static final RegistrySupplier<Block> LIGHT_BLUE_EMERGENCY_BUTTON = registerEmergencyButton(DyeColor.LIGHT_BLUE, "light_blue");
+    public static final RegistrySupplier<Block> BLUE_EMERGENCY_BUTTON = registerEmergencyButton(DyeColor.BLUE, "blue");
+    public static final RegistrySupplier<Block> PURPLE_EMERGENCY_BUTTON = registerEmergencyButton(DyeColor.PURPLE, "purple");
+    public static final RegistrySupplier<Block> MAGENTA_EMERGENCY_BUTTON = registerEmergencyButton(DyeColor.MAGENTA, "magenta");
+    public static final RegistrySupplier<Block> PINK_EMERGENCY_BUTTON = registerEmergencyButton(DyeColor.PINK, "pink");
+    public static final RegistrySupplier<Block> FANCY_EMERGENCY_BUTTON = registerEmergencyButton(null, "fancy");
 
-    public static RegistrySupplier<Block> registerEmergencyButton(String name) {
-        return registerBlock(name + "_emergency_button", EmergencyButton::new,
+    public static final RegistrySupplier<Block> WHITE_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(DyeColor.WHITE, "white");
+    public static final RegistrySupplier<Block> LIGHT_GRAY_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(DyeColor.LIGHT_GRAY, "light_gray");
+    public static final RegistrySupplier<Block> GRAY_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(DyeColor.GRAY, "gray");
+    public static final RegistrySupplier<Block> BLACK_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(DyeColor.BLACK, "black");
+    public static final RegistrySupplier<Block> BROWN_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(DyeColor.BROWN, "brown");
+    public static final RegistrySupplier<Block> RED_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(DyeColor.RED, "red");
+    public static final RegistrySupplier<Block> ORANGE_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(DyeColor.ORANGE, "orange");
+    public static final RegistrySupplier<Block> YELLOW_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(DyeColor.YELLOW, "yellow");
+    public static final RegistrySupplier<Block> LIME_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(DyeColor.LIME, "lime");
+    public static final RegistrySupplier<Block> GREEN_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(DyeColor.GREEN, "green");
+    public static final RegistrySupplier<Block> CYAN_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(DyeColor.CYAN, "cyan");
+    public static final RegistrySupplier<Block> LIGHT_BLUE_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(DyeColor.LIGHT_BLUE, "light_blue");
+    public static final RegistrySupplier<Block> BLUE_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(DyeColor.BLUE, "blue");
+    public static final RegistrySupplier<Block> PURPLE_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(DyeColor.PURPLE, "purple");
+    public static final RegistrySupplier<Block> MAGENTA_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(DyeColor.MAGENTA, "magenta");
+    public static final RegistrySupplier<Block> PINK_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(DyeColor.PINK, "pink");
+    public static final RegistrySupplier<Block> FANCY_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(null, "fancy");
+
+    public static RegistrySupplier<Block> registerEmergencyButton(DyeColor color, String name) {
+        RegistrySupplier<Block> blockRS = registerBlock(name + "_emergency_button", EmergencyButton::new,
                 BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.METAL));
+        EMERGENCY_BUTTONS.put(color, blockRS);
+        return blockRS;
     }
 
-    public static RegistrySupplier<Block> registerSafeEmergencyButton(String name) {
-        return registerBlock(name + "_safe_emergency_button", SafeEmergencyButton::new,
+    public static RegistrySupplier<Block> registerSafeEmergencyButton(DyeColor color, String name) {
+        RegistrySupplier<Block> blockRS = registerBlock(name + "_safe_emergency_button", SafeEmergencyButton::new,
                 BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.METAL));
+        SAFETY_BUTTONS.put(color, blockRS);
+        return blockRS;
     }
 
     /**
