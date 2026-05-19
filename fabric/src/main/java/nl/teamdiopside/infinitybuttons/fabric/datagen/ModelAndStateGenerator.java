@@ -80,7 +80,7 @@ public class ModelAndStateGenerator extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModels) {
 
-        Set<String> CUSTOM_TEXTURE = Set.of("emerald", "gold", "iron");
+        Set<String> CUSTOM_TEXTURE = Set.of("emerald", "gold", "iron", "prismarine_brick");
 
         for (Map.Entry<String, RegistryUtils.LargeVariantSupplier<Block>> entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) {
             String type = entry.getKey();

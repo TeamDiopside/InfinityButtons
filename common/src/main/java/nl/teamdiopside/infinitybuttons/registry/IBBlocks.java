@@ -85,9 +85,18 @@ public class IBBlocks {
         CONCRETE_POWDER_BUTTONS.put(color, supplier);
     }
 
+    /**
+     * Super-duper special buttons
+     */
     public static final LargeVariantSupplier<Block> EMERALD_BUTTON = registerLargeVariantButton("emerald",
             (properties, large) -> new RandomTimeButton(BlockSetType.STONE, properties, large, false));
 
+    public static final LargeVariantSupplier<Block> PRISMARINE_BUTTON = registerLargeVariantButton("prismarine",
+            (properties, large) -> new WaterloggableButton(BlockSetType.STONE, properties, large, false));
+    public static final LargeVariantSupplier<Block> DARK_PRISMARINE_BUTTON = registerLargeVariantButton("dark_prismarine",
+            (properties, large) -> new WaterloggableButton(BlockSetType.STONE, properties, large, false));
+    public static final LargeVariantSupplier<Block> PRISMARINE_BRICK_BUTTON = registerLargeVariantButton("prismarine_brick",
+            (properties, large) -> new WaterloggableButton(BlockSetType.STONE, properties, large, false));
 
     /**
      * Copper Buttons

@@ -34,7 +34,7 @@ public abstract class ButtonFaced6 extends ButtonBlock {
     protected final BiHashMap<Direction, AttachFace, VoxelShape> SHAPES_UNPRESSED = new BiHashMap<>();
 
     public ButtonFaced6(BlockSetType blockSetType, int ticks, Properties properties, VoxelShape shapePressed, VoxelShape shapeUnpressed, boolean isLever) {
-        super(blockSetType, ticks, properties);
+        super(blockSetType, ticks, properties); // TODO: `ticks` could just be defaulted to 20 here, with getPressTicks() being used anyway.
 
         this.shapePressed = shapePressed;
         this.shapeUnpressed = shapeUnpressed;
