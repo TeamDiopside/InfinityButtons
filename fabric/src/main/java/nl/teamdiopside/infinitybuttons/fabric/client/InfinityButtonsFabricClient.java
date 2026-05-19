@@ -38,6 +38,12 @@ public final class InfinityButtonsFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.SOUL_WALL_TORCH_BUTTON.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.SOUL_WALL_TORCH_LEVER.get(), RenderType.cutout());
 
+        // Lanterns
+        BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.LANTERN_BUTTON.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.LANTERN_LEVER.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.SOUL_LANTERN_BUTTON.get(), RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.SOUL_LANTERN_LEVER.get(), RenderType.cutout());
+
         // Console buttons
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.CONSOLE_BUTTON.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.CONSOLE_LEVER.get(), RenderType.cutout());
