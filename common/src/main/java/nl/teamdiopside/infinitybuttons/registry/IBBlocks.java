@@ -344,14 +344,29 @@ public class IBBlocks {
             BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.METAL));
 
     /**
+     * Lamp buttons
+     */
+    public static final RegistrySupplier<Block> LAMP_BUTTON = registerBlock("lamp_button",
+            (properties) -> new LampButton(BlockSetType.STONE, properties, false),
+            lampProperties(15));
+
+    public static final RegistrySupplier<Block> LAMP_LEVER = registerBlock("lamp_lever",
+            (properties) -> new LampButton(BlockSetType.STONE, properties, true),
+            lampProperties(15));
+
+    /**
      * Properties
      */
     private static BlockBehaviour.Properties getDefaultProperties() {
         return BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON);
     }
 
+    private static BlockBehaviour.Properties lampProperties(int light) {
+        return BlockBehaviour.Properties.of().lightLevel(litBlockEmission(light)).sound(SoundType.GLASS).pushReaction(PushReaction.DESTROY);
+    }
+
     private static BlockBehaviour.Properties torchProperties(int light) {
-        return BlockBehaviour.Properties.of().noCollission().instabreak().lightLevel(litBlockEmission(light)).sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY);
+        return BlockBehaviour.Properties.of().noCollission().strength(0.3f).instabreak().lightLevel(litBlockEmission(light)).sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY);
     }
 
     private static BlockBehaviour.Properties lanternProperties(int light) {
