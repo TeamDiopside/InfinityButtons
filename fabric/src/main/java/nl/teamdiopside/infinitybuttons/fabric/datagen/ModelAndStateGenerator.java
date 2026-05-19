@@ -78,7 +78,8 @@ public class ModelAndStateGenerator extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModels) {
-        for (Map.Entry<String, RegistryUtils.LargeVariantSupplier<Block>> entry : IBBlocks.STONE_BUTTONS.entrySet()) {
+
+        for (Map.Entry<String, RegistryUtils.LargeVariantSupplier<Block>> entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) {
             String type = entry.getKey();
             if (Objects.equals(type, "dripstone")) type = "dripstone_block"; // Dripstone wants to be special again
             RegistryUtils.LargeVariantSupplier<Block> variantSupplier = entry.getValue();

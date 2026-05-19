@@ -23,6 +23,7 @@ import nl.teamdiopside.infinitybuttons.block.faced4.TorchButton;
 import nl.teamdiopside.infinitybuttons.block.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.block.normal.CopperButtonType;
 import nl.teamdiopside.infinitybuttons.block.normal.NormalButton;
+import nl.teamdiopside.infinitybuttons.block.normal.OneUseButton;
 import nl.teamdiopside.infinitybuttons.block.normal.console.ConsoleButton;
 import nl.teamdiopside.infinitybuttons.block.normal.console.ConsoleButtonType;
 import nl.teamdiopside.infinitybuttons.block.simple.LanternButton;
@@ -31,6 +32,7 @@ import nl.teamdiopside.infinitybuttons.util.BiHashMap;
 import org.joml.Vector3f;
 
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
@@ -38,6 +40,7 @@ import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.MOD_ID;
 
 public class IBBlocks {
+    public static final HashMap<String, LargeVariantSupplier<Block>> SMALL_LARGE_BUTTONS = new HashMap<>();
 
     /**
      * Stone Buttons
@@ -60,6 +63,38 @@ public class IBBlocks {
                         getDefaultProperties()
                 ));
         STONE_BUTTONS.put(type, supplier);
+        SMALL_LARGE_BUTTONS.put(type, supplier);
+        return supplier;
+    }
+
+    public static final HashMap<String, LargeVariantSupplier<Block>> ONE_USE_BUTTONS = new HashMap<>();
+    public static final HashMap<DyeColor, LargeVariantSupplier<Block>> CONCRETE_POWDER_BUTTONS = new HashMap<>(); // Subset of above
+
+    public static final LargeVariantSupplier<Block> SAND_BUTTON = registerOneUseButton("sand");
+    public static final LargeVariantSupplier<Block> RED_SAND_BUTTON = registerOneUseButton("red_sand");
+    public static final LargeVariantSupplier<Block> GRAVEL_BUTTON = registerOneUseButton("gravel"); // Special case in-method
+
+    static {
+        for (DyeColor color : DyeColor.values()) {
+            registerOneUseButton(color.name().toLowerCase() + "_concrete_powder");
+        }
+    }
+
+    private static LargeVariantSupplier<Block> registerOneUseButton(String type) {
+        LargeVariantSupplier<Block> supplier =
+                LargeVariantSupplier.registerVariants((large) -> registerBlock(
+                        type + (large ? "_large_button" : "_button"),
+                        (properties) -> new OneUseButton(BlockSetType.STONE, properties, large, false, Objects.equals(type, "gravel")),
+                        getDefaultProperties()
+                ));
+        ONE_USE_BUTTONS.put(type, supplier);
+        SMALL_LARGE_BUTTONS.put(type, supplier);
+        return supplier;
+    }
+
+    private static LargeVariantSupplier<Block> registerConcretePowderButton(DyeColor color, String type) {
+        LargeVariantSupplier<Block> supplier = registerOneUseButton(type);
+        CONCRETE_POWDER_BUTTONS.put(color, supplier);
         return supplier;
     }
 
