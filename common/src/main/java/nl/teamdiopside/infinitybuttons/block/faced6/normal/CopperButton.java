@@ -1,4 +1,4 @@
-package nl.teamdiopside.infinitybuttons.block.normal;
+package nl.teamdiopside.infinitybuttons.block.faced6.normal;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;

@@ -1,4 +1,4 @@
-package nl.teamdiopside.infinitybuttons.block.normal;
+package nl.teamdiopside.infinitybuttons.block.faced6.normal;
 
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;

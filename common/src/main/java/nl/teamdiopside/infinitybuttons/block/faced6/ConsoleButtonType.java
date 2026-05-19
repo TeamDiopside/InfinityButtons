@@ -1,4 +1,4 @@
-package nl.teamdiopside.infinitybuttons.block.normal.console;
+package nl.teamdiopside.infinitybuttons.block.faced6;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.util.StringRepresentable;

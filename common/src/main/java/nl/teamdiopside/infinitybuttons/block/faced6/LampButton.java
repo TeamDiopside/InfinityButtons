@@ -1,4 +1,4 @@
-package nl.teamdiopside.infinitybuttons.block.normal;
+package nl.teamdiopside.infinitybuttons.block.faced6;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockSetType;

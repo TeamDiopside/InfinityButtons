@@ -1,4 +1,4 @@
-package nl.teamdiopside.infinitybuttons.block.normal.console;
+package nl.teamdiopside.infinitybuttons.block.faced6;
 
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.level.block.state.properties.BlockSetType;

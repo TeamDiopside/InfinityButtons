@@ -13,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
-import nl.teamdiopside.infinitybuttons.block.normal.CopperButton;
+import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.RegistryUtils;
 
