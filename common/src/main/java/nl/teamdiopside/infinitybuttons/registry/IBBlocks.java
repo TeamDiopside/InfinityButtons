@@ -99,6 +99,9 @@ public class IBBlocks {
     public static final LargeVariantSupplier<Block> PRISMARINE_BRICK_BUTTON = registerLargeVariantButton("prismarine_brick",
             (properties, large) -> new WaterloggableButton(BlockSetType.STONE, properties, large, false));
 
+    public static final LargeVariantSupplier<Block> DIAMOND_BUTTON = registerLargeVariantButton("diamond",
+            (properties, large) -> new SparklingButton(BlockSetType.STONE, properties, large, false));
+
     /**
      * Copper Buttons
      */

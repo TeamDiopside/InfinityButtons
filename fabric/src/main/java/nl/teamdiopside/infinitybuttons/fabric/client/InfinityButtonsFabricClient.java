@@ -3,15 +3,26 @@ package nl.teamdiopside.infinitybuttons.fabric.client;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
+import nl.teamdiopside.infinitybuttons.particle.DiamondSparkleParticle;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
+import nl.teamdiopside.infinitybuttons.registry.IBParticles;
 
 public final class InfinityButtonsFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        // This entrypoint is suitable for setting up client-specific logic, such as rendering.
+        // Diamond particle
+        ParticleFactoryRegistry.getInstance().register(
+                IBParticles.DIAMOND_SPARKLE.get(),
+                DiamondSparkleParticle.Provider::new
+        );
 
+        setRenderMaps();
+    }
+
+    public void setRenderMaps() {
         // Torches
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.TORCH_BUTTON.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.TORCH_LEVER.get(), RenderType.cutout());
