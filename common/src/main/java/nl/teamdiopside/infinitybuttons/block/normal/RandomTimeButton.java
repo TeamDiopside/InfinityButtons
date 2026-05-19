@@ -3,11 +3,8 @@ package nl.teamdiopside.infinitybuttons.block.normal;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 
 public class RandomTimeButton extends NormalButton {
-    public final boolean gravelSound;
-
-    public RandomTimeButton(BlockSetType blockSetType, Properties properties, boolean large, boolean isLever, boolean gravelSound) {
+    public RandomTimeButton(BlockSetType blockSetType, Properties properties, boolean large, boolean isLever) {
         super(blockSetType, 10, properties, large, isLever);
-        this.gravelSound = gravelSound;
     }
 
     @Override

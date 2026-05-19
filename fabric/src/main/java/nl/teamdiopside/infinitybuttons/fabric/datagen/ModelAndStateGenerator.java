@@ -20,6 +20,7 @@ import nl.teamdiopside.infinitybuttons.registry.RegistryUtils;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -79,19 +80,29 @@ public class ModelAndStateGenerator extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModels) {
 
+        Set<String> CUSTOM_TEXTURE = Set.of("emerald", "gold", "iron");
+
         for (Map.Entry<String, RegistryUtils.LargeVariantSupplier<Block>> entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) {
             String type = entry.getKey();
+
             if (Objects.equals(type, "dripstone")) type = "dripstone_block"; // Dripstone wants to be special again
+
             RegistryUtils.LargeVariantSupplier<Block> variantSupplier = entry.getValue();
 
             Block small = variantSupplier.get(false);
             Block large = variantSupplier.get(true);
 
-            TextureMapping texMap = new TextureMapping()
-                    .put(TextureSlot.TEXTURE, ResourceLocation.withDefaultNamespace("block/" + type));
+            final String finalType = type;
+            Function<Boolean, TextureMapping> texMap = (isLarge) -> (
+                    CUSTOM_TEXTURE.contains(finalType)
+                            ? new TextureMapping().put(TextureSlot.TEXTURE, getResource("block/" + finalType + (isLarge ? "_large" : "") + "_button"))
+                            : new TextureMapping().put(TextureSlot.TEXTURE, ResourceLocation.withDefaultNamespace("block/" + finalType))
+            );
 
-            generateSmallButton(blockModels, small, texMap);
-            generateLargeButton(blockModels, large, texMap);
+            System.out.println(finalType + " - " + CUSTOM_TEXTURE.contains(finalType));
+
+            generateSmallButton(blockModels, small, texMap.apply(false));
+            generateLargeButton(blockModels, large, texMap.apply(true));
         }
 
         for (Map.Entry<BlockSetType, RegistrySupplier<Block>> entry : IBBlocks.DEFAULT_LARGE_BUTTONS.entrySet()) {

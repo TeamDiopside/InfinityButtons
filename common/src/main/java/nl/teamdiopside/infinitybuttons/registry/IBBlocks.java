@@ -20,10 +20,7 @@ import nl.teamdiopside.infinitybuttons.block.emergency.SafeEmergencyButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.block.faced4.TorchButton;
-import nl.teamdiopside.infinitybuttons.block.normal.CopperButton;
-import nl.teamdiopside.infinitybuttons.block.normal.CopperButtonType;
-import nl.teamdiopside.infinitybuttons.block.normal.NormalButton;
-import nl.teamdiopside.infinitybuttons.block.normal.OneUseButton;
+import nl.teamdiopside.infinitybuttons.block.normal.*;
 import nl.teamdiopside.infinitybuttons.block.normal.console.ConsoleButton;
 import nl.teamdiopside.infinitybuttons.block.normal.console.ConsoleButtonType;
 import nl.teamdiopside.infinitybuttons.block.simple.LanternButton;
@@ -32,7 +29,6 @@ import nl.teamdiopside.infinitybuttons.util.BiHashMap;
 import org.joml.Vector3f;
 
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
@@ -56,12 +52,9 @@ public class IBBlocks {
     public static final LargeVariantSupplier<Block> DRIPSTONE_BUTTON = registerStoneButton("dripstone");
 
     private static LargeVariantSupplier<Block> registerStoneButton(String type) {
-        LargeVariantSupplier<Block> supplier =
-                LargeVariantSupplier.registerVariants((large) -> registerBlock(
-                        type + (large ? "_large_button" : "_button"),
-                        (properties) -> new NormalButton(BlockSetType.STONE, 20, properties, large, false),
-                        getDefaultProperties()
-                ));
+        LargeVariantSupplier<Block> supplier = registerLargeVariantButton(type,
+                (properties, large) -> new NormalButton(BlockSetType.STONE, 20, properties, large, false));
+
         STONE_BUTTONS.put(type, supplier);
         SMALL_LARGE_BUTTONS.put(type, supplier);
         return supplier;
@@ -76,27 +69,25 @@ public class IBBlocks {
 
     static {
         for (DyeColor color : DyeColor.values()) {
-            registerOneUseButton(color.name().toLowerCase() + "_concrete_powder");
+            registerConcretePowderButton(color, color.name().toLowerCase() + "_concrete_powder");
         }
     }
 
     private static LargeVariantSupplier<Block> registerOneUseButton(String type) {
-        LargeVariantSupplier<Block> supplier =
-                LargeVariantSupplier.registerVariants((large) -> registerBlock(
-                        type + (large ? "_large_button" : "_button"),
-                        (properties) -> new OneUseButton(BlockSetType.STONE, properties, large, false, Objects.equals(type, "gravel")),
-                        getDefaultProperties()
-                ));
+        LargeVariantSupplier<Block> supplier = registerLargeVariantButton(type,
+                (properties, large) -> new OneUseButton(BlockSetType.STONE, properties, large, false, type.equals("gravel")));
         ONE_USE_BUTTONS.put(type, supplier);
-        SMALL_LARGE_BUTTONS.put(type, supplier);
         return supplier;
     }
 
-    private static LargeVariantSupplier<Block> registerConcretePowderButton(DyeColor color, String type) {
+    private static void registerConcretePowderButton(DyeColor color, String type) {
         LargeVariantSupplier<Block> supplier = registerOneUseButton(type);
         CONCRETE_POWDER_BUTTONS.put(color, supplier);
-        return supplier;
     }
+
+    public static final LargeVariantSupplier<Block> EMERALD_BUTTON = registerLargeVariantButton("emerald",
+            (properties, large) -> new RandomTimeButton(BlockSetType.STONE, properties, large, false));
+
 
     /**
      * Copper Buttons
@@ -353,6 +344,25 @@ public class IBBlocks {
 
     private static RegistrySupplier<Block> registerOnlyBlock(String blockId, Block block) {
         return DiopsideBlocks.INSTANCE.registerBlockWithoutItem(ResourceLocation.fromNamespaceAndPath(MOD_ID, blockId), (BlockBehaviour.Properties h) -> block, block.properties());
+    }
+
+
+    @FunctionalInterface
+    private interface LargeButtonConstructor<T extends Block> {
+        T create(BlockBehaviour.Properties properties, boolean large);
+    }
+
+    private static <T extends Block> LargeVariantSupplier<T> registerLargeVariantButton(
+            String type,
+            LargeButtonConstructor<T> constructor
+    ) {
+        LargeVariantSupplier<T> supplier = LargeVariantSupplier.registerVariants((large) -> registerBlock(
+                type + (large ? "_large_button" : "_button"),
+                properties -> constructor.create(properties, large),
+                getDefaultProperties()
+        ));
+        SMALL_LARGE_BUTTONS.put(type, (LargeVariantSupplier<Block>) supplier);
+        return supplier;
     }
 
     public static void register() {
