@@ -59,14 +59,14 @@ public abstract class InfinityButton extends Block {
         if (!this.isLever) level.scheduleTick(blockPos, this, getPressTicks());
 
         this.playSound(player, level, blockPos, true);
-        level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, blockPos);
+        if (this.isSignalSource(blockState)) level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, blockPos);
     }
 
     public void unpress(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
         level.setBlockAndUpdate(blockPos, blockState.setValue(POWERED, false));
         playSound(player, level, blockPos, false);
 
-        level.gameEvent(player, GameEvent.BLOCK_DEACTIVATE, blockPos);
+        if (this.isSignalSource(blockState)) level.gameEvent(player, GameEvent.BLOCK_DEACTIVATE, blockPos);
     }
 
     // Copied from vanilla

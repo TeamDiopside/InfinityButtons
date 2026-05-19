@@ -17,6 +17,7 @@ import net.minecraft.world.level.material.PushReaction;
 import nl.teamdiopside.diopside.registry.DiopsideBlocks;
 import nl.teamdiopside.infinitybuttons.block.emergency.EmergencyButton;
 import nl.teamdiopside.infinitybuttons.block.emergency.SafeEmergencyButton;
+import nl.teamdiopside.infinitybuttons.block.faced4.Doorbell;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.block.faced4.TorchButton;
@@ -323,6 +324,16 @@ public class IBBlocks {
         SAFETY_BUTTONS.put(color, blockRS);
         return blockRS;
     }
+
+    /**
+     * Doorbells
+     */
+    public static final RegistrySupplier<Block> DOORBELL = registerBlock("doorbell",
+            (properties) -> new Doorbell(properties, false),
+            BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.METAL));
+    public static final RegistrySupplier<Block> DOORBELL_BUTTON = registerBlock("doorbell_button",
+            (properties) -> new Doorbell(properties, true),
+            BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.METAL));
 
     /**
      * Properties
