@@ -3,14 +3,14 @@
   "category": "redstone",
   "ingredients": [
     {
-      "item": "minecraft:waxed_weathered_copper"
+      "item": "infinitybuttons:weathered_copper_button"
     },
     {
-      "item": "minecraft:stone_button"
+      "item": "minecraft:honeycomb"
     }
   ],
   "result": {
-    "count": 2,
+    "count": 1,
     "id": "infinitybuttons:waxed_weathered_copper_button"
   }
 }

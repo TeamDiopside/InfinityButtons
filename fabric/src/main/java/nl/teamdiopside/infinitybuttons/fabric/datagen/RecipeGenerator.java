@@ -15,9 +15,13 @@ import nl.teamdiopside.infinitybuttons.InfinityButtons;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButtonType;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.RegistryUtils;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
+
+import static net.minecraft.data.recipes.RecipeBuilder.getDefaultRecipeId;
 
 public class RecipeGenerator extends FabricRecipeProvider {
 
@@ -44,10 +48,10 @@ public class RecipeGenerator extends FabricRecipeProvider {
             Item materialItem = RegistryUtils.getItemByID(key);
 
             if (!yearnsToBeANugget) {
-                smallLargeButton(recipes, entry.getValue(), materialItem);
+                smallLargeButton(recipes, entry.getValue(), materialItem, "", null);
             } else {
-                convertingRecipe(recipes, materialItem, entry.getValue().getSmall(), false, 2);
-                largeButton(recipes, entry.getValue(), materialItem);
+                convertingRecipe(recipes, materialItem, entry.getValue().getSmall(), false, 2, "", null);
+                largeButton(recipes, entry.getValue(), materialItem, "", null);
             }
         }
 
@@ -55,28 +59,47 @@ public class RecipeGenerator extends FabricRecipeProvider {
         for (var entry : IBBlocks.DEFAULT_LARGE_BUTTONS.entrySet()) {
             Item itemByID = RegistryUtils.getItemByID(entry.getKey().name() + "_button");
 
-            largeButton(recipes, itemByID, entry.getValue().get().asItem(), entry.getValue().get());
+            largeButton(recipes, itemByID, entry.getValue().get().asItem(), entry.getValue().get(), "", null);
         }
 
         // Copper Buttons
         for (var copperType : CopperButtonType.values()) {
             for (var weatherState : WeatheringCopper.WeatherState.values()) {
                 String state = weatherState == WeatheringCopper.WeatherState.UNAFFECTED ? "copper" : weatherState.getSerializedName() + "_copper";
-
-                Item materialItem = RegistryUtils.getItemByID(state +
-                        (weatherState == WeatheringCopper.WeatherState.UNAFFECTED ? "_block" : "")
-                ); // WTF Mojang
+                String type = copperType == CopperButtonType.NORMAL ? state : copperType.getName() + "_" + state;
 
                 RegistryUtils.LargeVariantSupplier<Block> buttons = IBBlocks.COPPER_BUTTONS.get(copperType, weatherState);
 
-                convertingRecipe(recipes, materialItem, buttons.getSmall(), false, 2);
-                largeButton(recipes, buttons, materialItem);
+                if (copperType != CopperButtonType.STICKY) {
+                    Item materialItem = RegistryUtils.getItemByID(type +
+                            (weatherState == WeatheringCopper.WeatherState.UNAFFECTED ? "_block" : "") // WTF Mojang
+                    );
+
+                    largeButton(recipes, buttons, materialItem, "", null);
+
+                    convertingRecipe(recipes, materialItem, buttons.getSmall(), false, 2, "", null);
+
+                    if (copperType == CopperButtonType.WAXED) {
+                        simpleShapelessRecipe(recipes, materialItem, buttons.getSmall(), 1, "_honeycomb", null,
+                                IBBlocks.COPPER_BUTTONS.get(CopperButtonType.NORMAL, weatherState).getSmall(), Items.HONEYCOMB);
+                        simpleShapelessRecipe(recipes, materialItem, buttons.getLarge(), 1, "_honeycomb", null,
+                                IBBlocks.COPPER_BUTTONS.get(CopperButtonType.NORMAL, weatherState).getLarge(), Items.HONEYCOMB);
+                    }
+
+                } else { // copperType == CopperButtonType.STICKY
+                    largeButton(recipes, buttons, Items.COPPER_BLOCK, "", null);
+
+                    simpleShapelessRecipe(recipes, Items.COPPER_BLOCK, buttons.getSmall(), 1, "_honey", null,
+                            IBBlocks.COPPER_BUTTONS.get(CopperButtonType.NORMAL, weatherState).getSmall(), Items.HONEY_BOTTLE);
+                    simpleShapelessRecipe(recipes, Items.COPPER_BLOCK, buttons.getLarge(), 1, "_honey", null,
+                            IBBlocks.COPPER_BUTTONS.get(CopperButtonType.NORMAL, weatherState).getLarge(), Items.HONEY_BOTTLE);
+                }
             }
         }
 
         // Secret Buttons
         for (var entry : IBBlocks.SECRET_BUTTONS.entrySet()) {
-            convertingRecipe(recipes, entry.getKey(), entry.getValue().get(), false, 1);
+            convertingRecipe(recipes, entry.getKey(), entry.getValue().get(), false, 1, "", null);
         }
 
         // Emergency & Safety Buttons
@@ -86,7 +109,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
             Item emergencyButton = IBBlocks.EMERGENCY_BUTTONS.get(dyeColor).get().asItem();
             Item safetyButton = IBBlocks.SAFETY_BUTTONS.get(dyeColor).get().asItem();
 
-            convertingRecipe(recipes, dyeItem, emergencyButton, false, 1);
+            convertingRecipe(recipes, dyeItem, emergencyButton, false, 1, "", null);
 
             ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, safetyButton)
                     .pattern("OOO")
@@ -99,18 +122,18 @@ public class RecipeGenerator extends FabricRecipeProvider {
         }
 
         // Lanterns, Torches etc.
-        convertingRecipes(recipes, Items.LANTERN,        IBBlocks.LANTERN_BUTTON.get(),        IBBlocks.LANTERN_LEVER.get(),        1);
-        convertingRecipes(recipes, Items.SOUL_LANTERN,   IBBlocks.SOUL_LANTERN_BUTTON.get(),   IBBlocks.SOUL_LANTERN_LEVER.get(),   1);
-        convertingRecipes(recipes, Items.TORCH,          IBBlocks.TORCH_BUTTON.get(),          IBBlocks.TORCH_LEVER.get(),          1);
-        convertingRecipes(recipes, Items.SOUL_TORCH,     IBBlocks.SOUL_TORCH_BUTTON.get(),     IBBlocks.SOUL_TORCH_LEVER.get(),     1);
-        convertingRecipes(recipes, Items.REDSTONE_TORCH, IBBlocks.REDSTONE_TORCH_BUTTON.get(), IBBlocks.REDSTONE_TORCH_LEVER.get(), 1);
+        convertingRecipes(recipes, Items.LANTERN,        IBBlocks.LANTERN_BUTTON.get(),        IBBlocks.LANTERN_LEVER.get(),        1, "", null);
+        convertingRecipes(recipes, Items.SOUL_LANTERN,   IBBlocks.SOUL_LANTERN_BUTTON.get(),   IBBlocks.SOUL_LANTERN_LEVER.get(),   1, "", null);
+        convertingRecipes(recipes, Items.TORCH,          IBBlocks.TORCH_BUTTON.get(),          IBBlocks.TORCH_LEVER.get(),          1, "", null);
+        convertingRecipes(recipes, Items.SOUL_TORCH,     IBBlocks.SOUL_TORCH_BUTTON.get(),     IBBlocks.SOUL_TORCH_LEVER.get(),     1, "", null);
+        convertingRecipes(recipes, Items.REDSTONE_TORCH, IBBlocks.REDSTONE_TORCH_BUTTON.get(), IBBlocks.REDSTONE_TORCH_LEVER.get(), 1, "", null);
 
-        convertingRecipes(recipes, Items.REDSTONE_LAMP, IBBlocks.LAMP_BUTTON.get(), IBBlocks.LAMP_LEVER.get(), 2);
+        convertingRecipes(recipes, Items.REDSTONE_LAMP, IBBlocks.LAMP_BUTTON.get(), IBBlocks.LAMP_LEVER.get(), 2, "", null);
 
         // Doorbells
-        simpleShapelessRecipe(recipes, Items.DARK_OAK_PLANKS, IBBlocks.DOORBELL.get(), 1,
+        simpleShapelessRecipe(recipes, Items.DARK_OAK_PLANKS, IBBlocks.DOORBELL.get(), 1, "", null,
                 Items.GOLD_NUGGET, RegistryUtils.getItemByID(InfinityButtons.MOD_ID, "dark_oak_large_button"));
-        simpleShapelessRecipe(recipes, Items.DARK_OAK_PLANKS, IBBlocks.DOORBELL_BUTTON.get(), 1,
+        simpleShapelessRecipe(recipes, Items.DARK_OAK_PLANKS, IBBlocks.DOORBELL_BUTTON.get(), 1, "", null,
                 Items.REDSTONE, Items.GOLD_NUGGET, RegistryUtils.getItemByID(InfinityButtons.MOD_ID, "dark_oak_large_button"));
 
         // Console Buttons
@@ -122,17 +145,17 @@ public class RecipeGenerator extends FabricRecipeProvider {
                 .unlockedBy("has_thing", RecipeProvider.has(Items.IRON_INGOT))
                 .save(recipes);
 
-        simpleShapelessRecipe(recipes, IBBlocks.SMALL_CONSOLE_BUTTON.get(), IBBlocks.CONSOLE_BUTTON.get(), 1,
+        simpleShapelessRecipe(recipes, IBBlocks.SMALL_CONSOLE_BUTTON.get(), IBBlocks.CONSOLE_BUTTON.get(), 1, "", null,
                 IBBlocks.SMALL_CONSOLE_BUTTON.get(), Items.IRON_INGOT); // Small -> Normal
-        simpleShapelessRecipe(recipes, IBBlocks.CONSOLE_BUTTON.get(), IBBlocks.LARGE_CONSOLE_BUTTON.get(), 1,
+        simpleShapelessRecipe(recipes, IBBlocks.CONSOLE_BUTTON.get(), IBBlocks.LARGE_CONSOLE_BUTTON.get(), 1, "", null,
                 IBBlocks.CONSOLE_BUTTON.get(), Items.IRON_INGOT); // Normal -> Large
-        simpleShapelessRecipe(recipes, IBBlocks.LARGE_CONSOLE_BUTTON.get(), IBBlocks.BIG_CONSOLE_BUTTON.get(), 1,
+        simpleShapelessRecipe(recipes, IBBlocks.LARGE_CONSOLE_BUTTON.get(), IBBlocks.BIG_CONSOLE_BUTTON.get(), 1, "", null,
                 IBBlocks.LARGE_CONSOLE_BUTTON.get(), Items.IRON_INGOT); // Large -> Big
 
-        convertingRecipe(recipes, IBBlocks.SMALL_CONSOLE_BUTTON.get(), IBBlocks.SMALL_CONSOLE_LEVER.get(), true, 1);
-        convertingRecipe(recipes, IBBlocks.CONSOLE_BUTTON.get(),       IBBlocks.CONSOLE_LEVER.get(),       true, 1);
-        convertingRecipe(recipes, IBBlocks.BIG_CONSOLE_BUTTON.get(),   IBBlocks.BIG_CONSOLE_LEVER.get(),   true, 1);
-        convertingRecipe(recipes, IBBlocks.LARGE_CONSOLE_BUTTON.get(), IBBlocks.LARGE_CONSOLE_LEVER.get(), true, 1);
+        convertingRecipe(recipes, IBBlocks.SMALL_CONSOLE_BUTTON.get(), IBBlocks.SMALL_CONSOLE_LEVER.get(), true, 1, "", null);
+        convertingRecipe(recipes, IBBlocks.CONSOLE_BUTTON.get(),       IBBlocks.CONSOLE_LEVER.get(),       true, 1, "", null);
+        convertingRecipe(recipes, IBBlocks.BIG_CONSOLE_BUTTON.get(),   IBBlocks.BIG_CONSOLE_LEVER.get(),   true, 1, "", null);
+        convertingRecipe(recipes, IBBlocks.LARGE_CONSOLE_BUTTON.get(), IBBlocks.LARGE_CONSOLE_LEVER.get(), true, 1, "", null);
 
         // Letter Buttons
         ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, IBBlocks.LETTER_BUTTON.get())
@@ -143,7 +166,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                 .unlockedBy("has_thing", RecipeProvider.has(Items.IRON_INGOT))
                 .save(recipes);
 
-        convertingRecipe(recipes, IBBlocks.LETTER_BUTTON.get(), IBBlocks.LETTER_LEVER.get(), true, 1);
+        convertingRecipe(recipes, IBBlocks.LETTER_BUTTON.get(), IBBlocks.LETTER_LEVER.get(), true, 1, "", null);
     }
 
     /* TODO: groups:
@@ -164,33 +187,32 @@ public class RecipeGenerator extends FabricRecipeProvider {
      * wooden_large_buttons
      */
 
-
     /**
      * Generate a small and large button recipe: 1 material -> 4 small, 2 small -> 1 big
      * @param material The material item that unlocks both recipes and creates the small button
      */
-    protected void smallLargeButton(RecipeOutput recipes, RegistryUtils.LargeVariantSupplier<Block> button, ItemLike material) {
+    protected void smallLargeButton(RecipeOutput recipes, RegistryUtils.LargeVariantSupplier<Block> button, ItemLike material, String suffix, @Nullable String group) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, button.getSmall(), 4)
                 .requires(material)
                 .unlockedBy("has_thing", RecipeProvider.has(material))
                 .save(recipes);
 
-        largeButton(recipes, button.getSmall(), button.getLarge(), material);
+        largeButton(recipes, button.getSmall(), button.getLarge(), material, suffix, group);
     }
 
     /**
      * Generate a large button recipe: 2 small -> 1 big
      * @param material The material item that unlocks the recipe
      */
-    protected void largeButton(RecipeOutput recipes, RegistryUtils.LargeVariantSupplier<Block> button, ItemLike material) {
-        largeButton(recipes, button.getSmall(), button.getLarge(), material);
+    protected void largeButton(RecipeOutput recipes, RegistryUtils.LargeVariantSupplier<Block> button, ItemLike material, String suffix, @Nullable String group) {
+        largeButton(recipes, button.getSmall(), button.getLarge(), material, suffix, group);
     }
 
     /**
      * Generate a large button recipe: 2 small -> 1 big
      * @param material The material item that unlocks the recipe
      */
-    protected void largeButton(RecipeOutput recipes, ItemLike small, ItemLike large, ItemLike material) {
+    protected void largeButton(RecipeOutput recipes, ItemLike small, ItemLike large, ItemLike material, String suffix, @Nullable String group) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, large)
                 .requires(small, 2)
                 .unlockedBy("has_thing", RecipeProvider.has(material))
@@ -200,7 +222,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
     /**
      * Generate a simple recipe to convert an item into another
      */
-    protected void convertingRecipe(RecipeOutput recipes, ItemLike input, ItemLike output) {
+    protected void convertingRecipe(RecipeOutput recipes, ItemLike input, ItemLike output, String suffix, @Nullable String group) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, output)
                 .requires(input)
                 .unlockedBy("has_thing", RecipeProvider.has(input))
@@ -212,8 +234,8 @@ public class RecipeGenerator extends FabricRecipeProvider {
      * @param withLever Whether to use a Lever (otherwise Stone Button)
      * @param outputCount How many of this item this recipe grants
      */
-    protected void convertingRecipe(RecipeOutput recipes, ItemLike input, ItemLike output, boolean withLever, int outputCount) {
-        simpleShapelessRecipe(recipes, input, output, outputCount, input, withLever ? Items.LEVER : Items.STONE_BUTTON);
+    protected void convertingRecipe(RecipeOutput recipes, ItemLike input, ItemLike output, boolean withLever, int outputCount, String suffix, @Nullable String group) {
+        simpleShapelessRecipe(recipes, input, output, outputCount, suffix, group, input, withLever ? Items.LEVER : Items.STONE_BUTTON);
     }
 
     /**
@@ -222,14 +244,20 @@ public class RecipeGenerator extends FabricRecipeProvider {
      * @param outputCount - How many of this item this recipe grants
      * @param ingredient - Ingredients to be included in the recipe
      */
-    protected void simpleShapelessRecipe(RecipeOutput recipes, ItemLike unlock, ItemLike output, int outputCount, ItemLike... ingredient) {
-        ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, output, outputCount);
+    protected void simpleShapelessRecipe(RecipeOutput recipes, ItemLike unlock, ItemLike output, int outputCount, String suffix, @Nullable String group, ItemLike... ingredient) {
+        ShapelessRecipeBuilder builder = ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.REDSTONE, output, outputCount)
+                .unlockedBy("has_thing", RecipeProvider.has(unlock));
 
         for (ItemLike item : ingredient) {
             builder.requires(item);
         }
 
-        builder.unlockedBy("has_thing", RecipeProvider.has(unlock)).save(recipes);
+        if (!Objects.equals(suffix, "")) {
+            builder.save(recipes, getDefaultRecipeId(output) + suffix);
+        } else {
+            builder.save(recipes);
+        }
     }
 
     /**
@@ -238,8 +266,8 @@ public class RecipeGenerator extends FabricRecipeProvider {
      * @param button The output when combining with a Button
      * @param outputCount How many of this item this recipe grants
      */
-    protected void convertingRecipes(RecipeOutput recipes, ItemLike input, ItemLike button, ItemLike lever, int outputCount) {
-        simpleShapelessRecipe(recipes, input, lever, outputCount, input, Items.LEVER);
-        simpleShapelessRecipe(recipes, input, button, outputCount, input, Items.STONE_BUTTON);
+    protected void convertingRecipes(RecipeOutput recipes, ItemLike input, ItemLike button, ItemLike lever, int outputCount, String suffix, @Nullable String group) {
+        simpleShapelessRecipe(recipes, input, lever, outputCount, suffix, group, input, Items.LEVER);
+        simpleShapelessRecipe(recipes, input, button, outputCount, suffix, group, input, Items.STONE_BUTTON);
     }
 }

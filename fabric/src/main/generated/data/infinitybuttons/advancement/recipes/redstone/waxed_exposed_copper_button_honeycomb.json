@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "infinitybuttons:waxed_exposed_copper_button"
+        "recipe": "infinitybuttons:waxed_exposed_copper_button_honeycomb"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "infinitybuttons:waxed_exposed_copper_button"
+      "infinitybuttons:waxed_exposed_copper_button_honeycomb"
     ]
   }
 }

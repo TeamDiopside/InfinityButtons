@@ -3,14 +3,14 @@
   "category": "redstone",
   "ingredients": [
     {
-      "item": "minecraft:exposed_copper"
+      "item": "infinitybuttons:exposed_copper_button"
     },
     {
-      "item": "minecraft:stone_button"
+      "item": "minecraft:honey_bottle"
     }
   ],
   "result": {
-    "count": 2,
+    "count": 1,
     "id": "infinitybuttons:sticky_exposed_copper_button"
   }
 }
