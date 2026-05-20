@@ -115,9 +115,9 @@ public class ModelAndStateGenerator extends FabricModelProvider {
             generateLargeButton(blockModels, block, texMap);
         }
 
-        for (RegistryUtils.LargeVariantSupplier<CopperButton> variantSupplier : IBBlocks.COPPER_BUTTONS.values()) {
-            CopperButton small = variantSupplier.get(false);
-            CopperButton large = variantSupplier.get(true);
+        for (RegistryUtils.LargeVariantSupplier<Block> variantSupplier : IBBlocks.COPPER_BUTTONS.values()) {
+            CopperButton small = (CopperButton) variantSupplier.get(false);
+            CopperButton large = (CopperButton) variantSupplier.get(true);
             String state = small.getAge() == WeatheringCopper.WeatherState.UNAFFECTED ? "copper" : small.getAge().getSerializedName() + "_copper";
 
             TextureMapping texMap = new TextureMapping()

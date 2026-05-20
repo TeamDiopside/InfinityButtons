@@ -1,0 +1,245 @@
+package nl.teamdiopside.infinitybuttons.fabric.datagen;
+
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.recipes.*;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.WeatheringCopper;
+import nl.teamdiopside.infinitybuttons.InfinityButtons;
+import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButtonType;
+import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
+import nl.teamdiopside.infinitybuttons.registry.RegistryUtils;
+
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+
+public class RecipeGenerator extends FabricRecipeProvider {
+
+    public RecipeGenerator(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+        super(output, registriesFuture);
+    }
+
+    @Override
+    public void buildRecipes(RecipeOutput recipes) {
+        // Basic Small / Large Buttons
+        for (var entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) { // Does NOT include copper buttons because gay
+            String key = entry.getKey();
+
+            boolean yearnsToBeANugget = false;
+            if (key.equals("dripstone")) key = "dripstone_block"; // Fuck you Mojang
+            if (key.equals("prismarine_brick")) key = "prismarine_bricks"; // Fuck you Lars
+
+            if (Set.of("gold", "iron", "diamond", "emerald").contains(key)) { // Materials
+                if (Set.of("gold", "iron").contains(key)) key += "_ingot";
+
+                yearnsToBeANugget = true; // All materials for consistency
+            }
+
+            Item materialItem = RegistryUtils.getItemByID(key);
+
+            if (!yearnsToBeANugget) {
+                smallLargeButton(recipes, entry.getValue(), materialItem);
+            } else {
+                convertingRecipe(recipes, materialItem, entry.getValue().getSmall(), false, 2);
+                largeButton(recipes, entry.getValue(), materialItem);
+            }
+        }
+
+        // Vanilla Large variants
+        for (var entry : IBBlocks.DEFAULT_LARGE_BUTTONS.entrySet()) {
+            Item itemByID = RegistryUtils.getItemByID(entry.getKey().name() + "_button");
+
+            largeButton(recipes, itemByID, entry.getValue().get().asItem(), entry.getValue().get());
+        }
+
+        // Copper Buttons
+        for (var copperType : CopperButtonType.values()) {
+            for (var weatherState : WeatheringCopper.WeatherState.values()) {
+                String state = weatherState == WeatheringCopper.WeatherState.UNAFFECTED ? "copper" : weatherState.getSerializedName() + "_copper";
+
+                Item materialItem = RegistryUtils.getItemByID(state +
+                        (weatherState == WeatheringCopper.WeatherState.UNAFFECTED ? "_block" : "")
+                ); // WTF Mojang
+
+                RegistryUtils.LargeVariantSupplier<Block> buttons = IBBlocks.COPPER_BUTTONS.get(copperType, weatherState);
+
+                convertingRecipe(recipes, materialItem, buttons.getSmall(), false, 2);
+                largeButton(recipes, buttons, materialItem);
+            }
+        }
+
+        // Secret Buttons
+        for (var entry : IBBlocks.SECRET_BUTTONS.entrySet()) {
+            convertingRecipe(recipes, entry.getKey(), entry.getValue().get(), false, 1);
+        }
+
+        // Emergency & Safety Buttons
+        for (var dyeColor : DyeColor.values()) { // TODO: fancy
+            Item dyeItem = RegistryUtils.getItemByID(dyeColor.name().toLowerCase() + "_dye");
+
+            Item emergencyButton = IBBlocks.EMERGENCY_BUTTONS.get(dyeColor).get().asItem();
+            Item safetyButton = IBBlocks.SAFETY_BUTTONS.get(dyeColor).get().asItem();
+
+            convertingRecipe(recipes, dyeItem, emergencyButton, false, 1);
+
+            ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, safetyButton)
+                    .pattern("OOO")
+                    .pattern("O.O")
+                    .define('O', ConventionalItemTags.GLASS_PANES)
+                    .define('.', emergencyButton)
+                    .group("safe_emergency_buttons") // TODO: eh?
+                    .unlockedBy("has_thing", RecipeProvider.has(dyeItem))
+                    .save(recipes);
+        }
+
+        // Lanterns, Torches etc.
+        convertingRecipes(recipes, Items.LANTERN,        IBBlocks.LANTERN_BUTTON.get(),        IBBlocks.LANTERN_LEVER.get(),        1);
+        convertingRecipes(recipes, Items.SOUL_LANTERN,   IBBlocks.SOUL_LANTERN_BUTTON.get(),   IBBlocks.SOUL_LANTERN_LEVER.get(),   1);
+        convertingRecipes(recipes, Items.TORCH,          IBBlocks.TORCH_BUTTON.get(),          IBBlocks.TORCH_LEVER.get(),          1);
+        convertingRecipes(recipes, Items.SOUL_TORCH,     IBBlocks.SOUL_TORCH_BUTTON.get(),     IBBlocks.SOUL_TORCH_LEVER.get(),     1);
+        convertingRecipes(recipes, Items.REDSTONE_TORCH, IBBlocks.REDSTONE_TORCH_BUTTON.get(), IBBlocks.REDSTONE_TORCH_LEVER.get(), 1);
+
+        convertingRecipes(recipes, Items.REDSTONE_LAMP, IBBlocks.LAMP_BUTTON.get(), IBBlocks.LAMP_LEVER.get(), 2);
+
+        // Doorbells
+        simpleShapelessRecipe(recipes, Items.DARK_OAK_PLANKS, IBBlocks.DOORBELL.get(), 1,
+                Items.GOLD_NUGGET, RegistryUtils.getItemByID(InfinityButtons.MOD_ID, "dark_oak_large_button"));
+        simpleShapelessRecipe(recipes, Items.DARK_OAK_PLANKS, IBBlocks.DOORBELL_BUTTON.get(), 1,
+                Items.REDSTONE, Items.GOLD_NUGGET, RegistryUtils.getItemByID(InfinityButtons.MOD_ID, "dark_oak_large_button"));
+
+        // Console Buttons
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, IBBlocks.SMALL_CONSOLE_BUTTON.get(), 4)
+                .pattern("iri")
+                .pattern("iii")
+                .define('i', Items.IRON_INGOT)
+                .define('r', Items.REDSTONE)
+                .unlockedBy("has_thing", RecipeProvider.has(Items.IRON_INGOT))
+                .save(recipes);
+
+        simpleShapelessRecipe(recipes, IBBlocks.SMALL_CONSOLE_BUTTON.get(), IBBlocks.CONSOLE_BUTTON.get(), 1,
+                IBBlocks.SMALL_CONSOLE_BUTTON.get(), Items.IRON_INGOT); // Small -> Normal
+        simpleShapelessRecipe(recipes, IBBlocks.CONSOLE_BUTTON.get(), IBBlocks.LARGE_CONSOLE_BUTTON.get(), 1,
+                IBBlocks.CONSOLE_BUTTON.get(), Items.IRON_INGOT); // Normal -> Large
+        simpleShapelessRecipe(recipes, IBBlocks.LARGE_CONSOLE_BUTTON.get(), IBBlocks.BIG_CONSOLE_BUTTON.get(), 1,
+                IBBlocks.LARGE_CONSOLE_BUTTON.get(), Items.IRON_INGOT); // Large -> Big
+
+        convertingRecipe(recipes, IBBlocks.SMALL_CONSOLE_BUTTON.get(), IBBlocks.SMALL_CONSOLE_LEVER.get(), true, 1);
+        convertingRecipe(recipes, IBBlocks.CONSOLE_BUTTON.get(),       IBBlocks.CONSOLE_LEVER.get(),       true, 1);
+        convertingRecipe(recipes, IBBlocks.BIG_CONSOLE_BUTTON.get(),   IBBlocks.BIG_CONSOLE_LEVER.get(),   true, 1);
+        convertingRecipe(recipes, IBBlocks.LARGE_CONSOLE_BUTTON.get(), IBBlocks.LARGE_CONSOLE_LEVER.get(), true, 1);
+
+        // Letter Buttons
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, IBBlocks.LETTER_BUTTON.get())
+                .pattern("i.i")
+                .pattern(" i ")
+                .define('i', Items.IRON_INGOT)
+                .define('.', RegistryUtils.getItemByID(InfinityButtons.MOD_ID, "spruce_large_button"))
+                .unlockedBy("has_thing", RecipeProvider.has(Items.IRON_INGOT))
+                .save(recipes);
+
+        convertingRecipe(recipes, IBBlocks.LETTER_BUTTON.get(), IBBlocks.LETTER_LEVER.get(), true, 1);
+    }
+
+    /* TODO: groups:
+     * console_buttons
+     * emergency_buttons
+     * safe_emergency_buttons
+     * secret_buttons
+     * concrete_powder_buttons
+     * concrete_powder_large_buttons
+     *
+     * copper_buttons
+     * copper_large_buttons
+     * sticky_copper_buttons
+     * sticky_copper_large_buttons
+     * waxed_copper_buttons
+     * waxed_copper_large_buttons
+     *
+     * wooden_large_buttons
+     */
+
+
+    /**
+     * Generate a small and large button recipe: 1 material -> 4 small, 2 small -> 1 big
+     * @param material The material item that unlocks both recipes and creates the small button
+     */
+    protected void smallLargeButton(RecipeOutput recipes, RegistryUtils.LargeVariantSupplier<Block> button, ItemLike material) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, button.getSmall(), 4)
+                .requires(material)
+                .unlockedBy("has_thing", RecipeProvider.has(material))
+                .save(recipes);
+
+        largeButton(recipes, button.getSmall(), button.getLarge(), material);
+    }
+
+    /**
+     * Generate a large button recipe: 2 small -> 1 big
+     * @param material The material item that unlocks the recipe
+     */
+    protected void largeButton(RecipeOutput recipes, RegistryUtils.LargeVariantSupplier<Block> button, ItemLike material) {
+        largeButton(recipes, button.getSmall(), button.getLarge(), material);
+    }
+
+    /**
+     * Generate a large button recipe: 2 small -> 1 big
+     * @param material The material item that unlocks the recipe
+     */
+    protected void largeButton(RecipeOutput recipes, ItemLike small, ItemLike large, ItemLike material) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, large)
+                .requires(small, 2)
+                .unlockedBy("has_thing", RecipeProvider.has(material))
+                .save(recipes);
+    }
+
+    /**
+     * Generate a simple recipe to convert an item into another
+     */
+    protected void convertingRecipe(RecipeOutput recipes, ItemLike input, ItemLike output) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, output)
+                .requires(input)
+                .unlockedBy("has_thing", RecipeProvider.has(input))
+                .save(recipes);
+    }
+
+    /**
+     * Generate a simple recipe to convert an item into a Lever or Button variant
+     * @param withLever Whether to use a Lever (otherwise Stone Button)
+     * @param outputCount How many of this item this recipe grants
+     */
+    protected void convertingRecipe(RecipeOutput recipes, ItemLike input, ItemLike output, boolean withLever, int outputCount) {
+        simpleShapelessRecipe(recipes, input, output, outputCount, input, withLever ? Items.LEVER : Items.STONE_BUTTON);
+    }
+
+    /**
+     * Generate a simple shapeless recipe with multiple ingredients
+     * @param unlock The item that unlocks this recipe
+     * @param outputCount - How many of this item this recipe grants
+     * @param ingredient - Ingredients to be included in the recipe
+     */
+    protected void simpleShapelessRecipe(RecipeOutput recipes, ItemLike unlock, ItemLike output, int outputCount, ItemLike... ingredient) {
+        ShapelessRecipeBuilder builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, output, outputCount);
+
+        for (ItemLike item : ingredient) {
+            builder.requires(item);
+        }
+
+        builder.unlockedBy("has_thing", RecipeProvider.has(unlock)).save(recipes);
+    }
+
+    /**
+     * Generate simple recipes to convert an item into a Lever and Button variant
+     * @param lever The output when combining with a Lever
+     * @param button The output when combining with a Button
+     * @param outputCount How many of this item this recipe grants
+     */
+    protected void convertingRecipes(RecipeOutput recipes, ItemLike input, ItemLike button, ItemLike lever, int outputCount) {
+        simpleShapelessRecipe(recipes, input, lever, outputCount, input, Items.LEVER);
+        simpleShapelessRecipe(recipes, input, button, outputCount, input, Items.STONE_BUTTON);
+    }
+}

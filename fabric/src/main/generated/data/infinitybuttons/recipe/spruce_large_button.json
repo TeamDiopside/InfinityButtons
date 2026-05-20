@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "minecraft:spruce_button"
+    },
+    {
+      "item": "minecraft:spruce_button"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "infinitybuttons:spruce_large_button"
+  }
+}

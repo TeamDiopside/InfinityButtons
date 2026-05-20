@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "minecraft:soul_torch"
+    },
+    {
+      "item": "minecraft:lever"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "infinitybuttons:soul_torch_lever"
+  }
+}

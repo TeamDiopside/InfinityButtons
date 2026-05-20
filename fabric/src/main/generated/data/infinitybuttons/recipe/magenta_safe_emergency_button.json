@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "group": "safe_emergency_buttons",
+  "key": {
+    ".": {
+      "item": "infinitybuttons:magenta_emergency_button"
+    },
+    "O": {
+      "tag": "c:glass_panes"
+    }
+  },
+  "pattern": [
+    "OOO",
+    "O.O"
+  ],
+  "result": {
+    "count": 1,
+    "id": "infinitybuttons:magenta_safe_emergency_button"
+  }
+}

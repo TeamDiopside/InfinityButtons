@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "minecraft:crimson_button"
+    },
+    {
+      "item": "minecraft:crimson_button"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "infinitybuttons:crimson_large_button"
+  }
+}

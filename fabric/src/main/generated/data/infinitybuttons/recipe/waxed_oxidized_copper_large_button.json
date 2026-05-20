@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "infinitybuttons:waxed_oxidized_copper_button"
+    },
+    {
+      "item": "infinitybuttons:waxed_oxidized_copper_button"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "infinitybuttons:waxed_oxidized_copper_large_button"
+  }
+}

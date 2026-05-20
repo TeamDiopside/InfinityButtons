@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "minecraft:birch_button"
+    },
+    {
+      "item": "minecraft:birch_button"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "infinitybuttons:birch_large_button"
+  }
+}
