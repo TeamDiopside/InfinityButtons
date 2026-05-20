@@ -2,5 +2,6 @@
  "parent": "infinitybuttons:block/wall_torch_pressed",
   "textures": {
     "torch": "minecraft:block/torch"
-  }
+  },
+  "render_type": "cutout"
 }

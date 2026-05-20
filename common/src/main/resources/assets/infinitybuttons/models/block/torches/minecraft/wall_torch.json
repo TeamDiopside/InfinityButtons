@@ -1,5 +1,5 @@
 {
- "parent": "infinitybuttons:block/torch_pressed",
+  "parent": "minecraft:block/template_torch_wall",
   "textures": {
     "torch": "minecraft:block/torch"
   },

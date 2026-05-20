@@ -1,33 +1,33 @@
 {
   "variants": {
-    "powered=false,facing=north": {
-      "model": "minecraft:block/redstone_wall_torch_off",
+    "lit=false,facing=north": {
+      "model": "infinitybuttons:block/torches/minecraft/redstone_wall_torch_off",
       "y": 270
     },
-    "powered=false,facing=east": {
-      "model": "minecraft:block/redstone_wall_torch_off"
+    "lit=false,facing=east": {
+      "model": "infinitybuttons:block/torches/minecraft/redstone_wall_torch_off"
     },
-    "powered=false,facing=west": {
-      "model": "minecraft:block/redstone_wall_torch_off",
+    "lit=false,facing=west": {
+      "model": "infinitybuttons:block/torches/minecraft/redstone_wall_torch_off",
       "y": 180
     },
-    "powered=false,facing=south": {
-      "model": "minecraft:block/redstone_wall_torch_off",
+    "lit=false,facing=south": {
+      "model": "infinitybuttons:block/torches/minecraft/redstone_wall_torch_off",
       "y": 90
     },
-    "powered=true,facing=north": {
-      "model": "minecraft:block/redstone_wall_torch",
+    "lit=true,facing=north": {
+      "model": "infinitybuttons:block/torches/minecraft/redstone_wall_torch",
       "y": 270
     },
-    "powered=true,facing=east": {
-      "model": "minecraft:block/redstone_wall_torch"
+    "lit=true,facing=east": {
+      "model": "infinitybuttons:block/torches/minecraft/redstone_wall_torch"
     },
-    "powered=true,facing=west": {
-      "model": "minecraft:block/redstone_wall_torch",
+    "lit=true,facing=west": {
+      "model": "infinitybuttons:block/torches/minecraft/redstone_wall_torch",
       "y": 180
     },
-    "powered=true,facing=south": {
-      "model": "minecraft:block/redstone_wall_torch",
+    "lit=true,facing=south": {
+      "model": "infinitybuttons:block/torches/minecraft/redstone_wall_torch",
       "y": 90
     }
   }
