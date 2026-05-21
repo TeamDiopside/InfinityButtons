@@ -35,8 +35,7 @@ import java.util.HashMap;
 import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
-import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
-import static nl.teamdiopside.infinitybuttons.InfinityButtons.MOD_ID;
+import static nl.teamdiopside.infinitybuttons.InfinityButtons.*;
 
 public class IBBlocks {
     public static final HashMap<String, LargeVariantSupplier<Block>> SMALL_LARGE_BUTTONS = new HashMap<>();
@@ -193,6 +192,8 @@ public class IBBlocks {
             SecretButtonType.PLANK, Blocks.DARK_OAK_PLANKS );
     public static final RegistrySupplier<Block> MANGROVE_PLANK_SECRET_BUTTON = registerSecretButton("mangrove_plank_secret_button",
             SecretButtonType.PLANK, Blocks.MANGROVE_PLANKS );
+    public static final RegistrySupplier<Block> CHERRY_PLANK_SECRET_BUTTON = registerSecretButton("cherry_plank_secret_button",
+            SecretButtonType.PLANK, Blocks.CHERRY_PLANKS );
     public static final RegistrySupplier<Block> CRIMSON_PLANK_SECRET_BUTTON = registerSecretButton("crimson_plank_secret_button",
             SecretButtonType.PLANK, Blocks.CRIMSON_PLANKS );
     public static final RegistrySupplier<Block> WARPED_PLANK_SECRET_BUTTON = registerSecretButton("warped_plank_secret_button",
@@ -393,7 +394,7 @@ public class IBBlocks {
      * Base Registry Functions
      */
     private static <T extends Block> RegistrySupplier<T> registerBlock(String blockId, Function<BlockBehaviour.Properties, T> blockFunction, BlockBehaviour.Properties properties) {
-        return DiopsideBlocks.INSTANCE.registerBlock(ResourceLocation.fromNamespaceAndPath(MOD_ID, blockId), blockFunction, properties);
+        return DiopsideBlocks.INSTANCE.registerBlock(getResource(blockId), blockFunction, properties);
     }
 
     private static RegistrySupplier<Block> registerOnlyBlock(String blockId, Block block) {
