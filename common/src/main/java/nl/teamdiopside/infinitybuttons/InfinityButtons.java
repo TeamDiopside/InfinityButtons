@@ -2,6 +2,7 @@ package nl.teamdiopside.infinitybuttons;
 
 import net.minecraft.resources.ResourceLocation;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
+import nl.teamdiopside.infinitybuttons.registry.IBCreativeTabs;
 import nl.teamdiopside.infinitybuttons.registry.IBItems;
 import nl.teamdiopside.infinitybuttons.registry.IBParticles;
 
@@ -14,6 +15,7 @@ public final class InfinityButtons {
     public static void init() {
         IBBlocks.register();
         IBItems.register();
+        IBCreativeTabs.register();
         IBParticles.register();
         IBNetworking.register();
     }
