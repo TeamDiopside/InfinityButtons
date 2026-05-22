@@ -11,6 +11,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import nl.teamdiopside.infinitybuttons.registry.IBSounds;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.function.Supplier;
+
 public enum SecretButtonType implements StringRepresentable {
     BIG_BRICK(
             Shapes.or(
@@ -85,20 +87,20 @@ public enum SecretButtonType implements StringRepresentable {
 
     public final VoxelShape shapePressed;
     public final VoxelShape shapeUnpressed;
-    public final SoundEvent sound;
+    public final Supplier<SoundEvent> sound;
 
-    SecretButtonType(VoxelShape shapePressed, VoxelShape shapeUnpressed, SoundEvent sound) {
+    SecretButtonType(VoxelShape shapePressed, VoxelShape shapeUnpressed, Supplier<SoundEvent> sound) {
         this.shapePressed = shapePressed;
         this.shapeUnpressed = shapeUnpressed;
         this.sound = sound;
     }
 
     SecretButtonType(VoxelShape shapePressed, SoundEvent sound) {
-        this(shapePressed, Shapes.block(), sound);
+        this(shapePressed, Shapes.block(), () -> sound);
     }
 
     SecretButtonType(VoxelShape shapePressed, RegistrySupplier<SoundEvent> sound) {
-        this(shapePressed, Shapes.block(), sound.get());
+        this(shapePressed, Shapes.block(), sound);
     }
 
     @Override

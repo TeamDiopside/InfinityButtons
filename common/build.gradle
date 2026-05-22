@@ -12,3 +12,5 @@ dependencies {
 
     modImplementation files('libs/diopside-fabric-1.0.0.jar')
 }
+
+sourceSets.main.resources.srcDir "src/main/generated"

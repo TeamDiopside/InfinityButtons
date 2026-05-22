@@ -3,6 +3,7 @@
   "textures": {
     "0": "infinitybuttons:block/letter_button/characters_color"
   },
+  "render_type": "cutout",
   "elements": [
     {
       "from": [6, 2.01, 6],

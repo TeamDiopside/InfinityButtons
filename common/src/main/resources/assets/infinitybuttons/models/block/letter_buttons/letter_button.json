@@ -5,6 +5,7 @@
 		"0": "infinitybuttons:block/letter_button/letter_button",
 		"particle": "infinitybuttons:block/letter_button/letter_button"
 	},
+	"render_type": "cutout",
 	"elements": [
 		{
 			"from": [4, 0, 4],

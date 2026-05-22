@@ -1,8 +1,11 @@
 plugins {
-    id 'dev.architectury.loom' version '1.11-SNAPSHOT' apply false
+    id 'dev.architectury.loom' version '1.14-SNAPSHOT' apply false
     id 'architectury-plugin' version '3.4-SNAPSHOT'
     id 'com.github.johnrengelman.shadow' version '8.1.1' apply false
+    id 'idea'
 }
+
+apply plugin: 'base'
 
 architectury {
     minecraft = project.minecraft_version
@@ -17,6 +20,7 @@ subprojects {
     apply plugin: 'dev.architectury.loom'
     apply plugin: 'architectury-plugin'
     apply plugin: 'maven-publish'
+    apply plugin: 'idea'
 
     base {
         // Set up a suffixed format for the mod jar names, e.g. `example-fabric`.
@@ -67,4 +71,19 @@ subprojects {
             // retrieving dependencies.
         }
     }
+
+    idea {
+        module {
+            downloadSources = true
+            downloadJavadoc = true
+        }
+    }
+}
+
+clean.doFirst {
+    delete "$rootDir/.idea/runConfigurations"
+}
+
+clean.doLast {
+    project.mkdir(project.file("$rootDir/fabric/build/datagen"))
 }

@@ -40,7 +40,7 @@ public class SecretButton extends ButtonFaced4 {
 
     @Override
     protected SoundEvent getSound(boolean press) {
-        return this.type.sound;
+        return this.type.sound.get();
     }
 
     @Override

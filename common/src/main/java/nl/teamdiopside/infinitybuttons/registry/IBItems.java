@@ -16,20 +16,20 @@ import static nl.teamdiopside.infinitybuttons.InfinityButtons.MOD_ID;
 public class IBItems {
 
 
-    public static final RegistrySupplier<Item> TORCH_BUTTON = registerTorch("torch_button", IBBlocks.TORCH_BUTTON.get(), IBBlocks.WALL_TORCH_BUTTON.get());
+    public static final RegistrySupplier<Item> TORCH_BUTTON = registerTorch("torch_button", IBBlocks.TORCH_BUTTON, IBBlocks.WALL_TORCH_BUTTON);
 
-    public static final RegistrySupplier<Item> TORCH_LEVER = registerTorch("torch_lever", IBBlocks.TORCH_LEVER.get(), IBBlocks.WALL_TORCH_LEVER.get());
+    public static final RegistrySupplier<Item> TORCH_LEVER = registerTorch("torch_lever", IBBlocks.TORCH_LEVER, IBBlocks.WALL_TORCH_LEVER);
 
-    public static final RegistrySupplier<Item> SOUL_TORCH_BUTTON = registerTorch("soul_torch_button", IBBlocks.SOUL_TORCH_BUTTON.get(), IBBlocks.SOUL_WALL_TORCH_BUTTON.get());
+    public static final RegistrySupplier<Item> SOUL_TORCH_BUTTON = registerTorch("soul_torch_button", IBBlocks.SOUL_TORCH_BUTTON, IBBlocks.SOUL_WALL_TORCH_BUTTON);
 
-    public static final RegistrySupplier<Item> SOUL_TORCH_LEVER = registerTorch("soul_torch_lever", IBBlocks.SOUL_TORCH_LEVER.get(), IBBlocks.SOUL_WALL_TORCH_LEVER.get());
+    public static final RegistrySupplier<Item> SOUL_TORCH_LEVER = registerTorch("soul_torch_lever", IBBlocks.SOUL_TORCH_LEVER, IBBlocks.SOUL_WALL_TORCH_LEVER);
 
-    public static final RegistrySupplier<Item> REDSTONE_TORCH_BUTTON = registerTorch("redstone_torch_button", IBBlocks.REDSTONE_TORCH_BUTTON.get(), IBBlocks.REDSTONE_WALL_TORCH_BUTTON.get());
+    public static final RegistrySupplier<Item> REDSTONE_TORCH_BUTTON = registerTorch("redstone_torch_button", IBBlocks.REDSTONE_TORCH_BUTTON, IBBlocks.REDSTONE_WALL_TORCH_BUTTON);
 
-    public static final RegistrySupplier<Item> REDSTONE_TORCH_LEVER = registerTorch("redstone_torch_lever", IBBlocks.REDSTONE_TORCH_LEVER.get(), IBBlocks.REDSTONE_WALL_TORCH_LEVER.get());
+    public static final RegistrySupplier<Item> REDSTONE_TORCH_LEVER = registerTorch("redstone_torch_lever", IBBlocks.REDSTONE_TORCH_LEVER, IBBlocks.REDSTONE_WALL_TORCH_LEVER);
 
-    public static RegistrySupplier<Item> registerTorch(String name, Block standing, Block wall) {
-        return registerItem(name, () -> new StandingAndWallBlockItem(standing, wall, new Item.Properties(), Direction.DOWN));
+    public static RegistrySupplier<Item> registerTorch(String name, Supplier<Block> standing, Supplier<Block> wall) {
+        return registerItem(name, () -> new StandingAndWallBlockItem(standing.get(), wall.get(), new Item.Properties(), Direction.DOWN));
     }
 
     /**

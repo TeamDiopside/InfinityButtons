@@ -1,7 +1,7 @@
 {
   "variants": {
     "powered=false": {
-      "model": "minecraft:block/soul_lantern_hanging"
+      "model": "infinitybuttons:block/lanterns/minecraft/soul_lantern_hanging"
     },
     "powered=true": {
       "model": "infinitybuttons:block/lanterns/soul_lantern_button_pressed"

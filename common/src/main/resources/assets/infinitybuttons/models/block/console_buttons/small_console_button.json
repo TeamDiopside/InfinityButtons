@@ -5,6 +5,7 @@
 		"0": "infinitybuttons:block/console/small_console",
 		"particle": "infinitybuttons:block/console/small_console"
 	},
+	"render_type": "cutout",
 	"elements": [
 		{
 			"from": [3, 0, 5],

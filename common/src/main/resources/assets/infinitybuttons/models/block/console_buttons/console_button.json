@@ -6,6 +6,7 @@
 		"2": "infinitybuttons:block/console/console_top",
 		"particle": "infinitybuttons:block/console/console"
 	},
+	"render_type": "cutout",
 	"elements": [
 		{
 			"from": [4, 0, 3],

@@ -59,5 +59,6 @@ remapJar {
 fabricApi {
     configureDataGeneration() {
         client = true
+        outputDirectory = project.file("$rootDir/common/src/main/generated")
     }
 }

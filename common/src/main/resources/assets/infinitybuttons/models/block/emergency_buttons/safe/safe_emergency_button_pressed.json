@@ -6,6 +6,7 @@
 		"4": "infinitybuttons:block/emergency_buttons/glass",
 		"particle": "#2"
 	},
+    "render_type": "cutout",
 	"elements": [
 		{
 			"from": [3, 0, 3],

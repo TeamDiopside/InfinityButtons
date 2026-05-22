@@ -6,6 +6,7 @@
 		"1": "infinitybuttons:block/letter_button/letter_button",
 		"particle": "infinitybuttons:block/letter_button/characters_color"
 	},
+	"render_type": "cutout",
 	"elements": [
 		{
 			"from": [4, 6, 4],

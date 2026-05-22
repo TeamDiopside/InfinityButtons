@@ -1,7 +1,7 @@
 {
   "variants": {
     "powered=false": {
-      "model": "minecraft:block/lantern_hanging"
+      "model": "infinitybuttons:block/lanterns/minecraft/lantern_hanging"
     },
     "powered=true": {
       "model": "infinitybuttons:block/lanterns/lantern_button_pressed"
