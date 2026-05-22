@@ -3,18 +3,19 @@
   "category": "redstone",
   "key": {
     ".": {
-      "item": "infinitybuttons:light_blue_emergency_button"
+      "tag": "infinitybuttons:normal_emergency_buttons"
     },
     "O": {
-      "tag": "c:glass_panes"
+      "item": "minecraft:glowstone_dust"
     }
   },
   "pattern": [
     "OOO",
-    "O.O"
+    "O.O",
+    "OOO"
   ],
   "result": {
     "count": 1,
-    "id": "infinitybuttons:light_blue_safe_emergency_button"
+    "id": "infinitybuttons:fancy_emergency_button"
   }
 }

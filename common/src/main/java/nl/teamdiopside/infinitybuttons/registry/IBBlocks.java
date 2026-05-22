@@ -309,7 +309,7 @@ public class IBBlocks {
      * Emergency Buttons
      */
     public static final HashMap<DyeColor, RegistrySupplier<Block>> EMERGENCY_BUTTONS = new HashMap<>();
-    public static final HashMap<DyeColor, RegistrySupplier<Block>> SAFETY_BUTTONS = new HashMap<>();
+    public static final HashMap<DyeColor, RegistrySupplier<Block>> SAFE_EMERGENCY_BUTTONS = new HashMap<>();
 
     public static final RegistrySupplier<Block> FANCY_EMERGENCY_BUTTON = registerEmergencyButton(null, "fancy");
     public static final RegistrySupplier<Block> FANCY_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(null, "fancy");
@@ -331,7 +331,7 @@ public class IBBlocks {
     public static RegistrySupplier<Block> registerSafeEmergencyButton(DyeColor color, String name) {
         RegistrySupplier<Block> blockRS = registerBlock(name + "_safe_emergency_button", SafeEmergencyButton::new,
                 BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.METAL));
-        SAFETY_BUTTONS.put(color, blockRS);
+        SAFE_EMERGENCY_BUTTONS.put(color, blockRS);
         return blockRS;
     }
 

@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.*;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -103,11 +104,26 @@ public class RecipeGenerator extends FabricRecipeProvider {
         }
 
         // Emergency & Safety Buttons
-        for (var dyeColor : DyeColor.values()) { // TODO: fancy
+        for (var button : Set.of(IBBlocks.FANCY_EMERGENCY_BUTTON, IBBlocks.FANCY_SAFE_EMERGENCY_BUTTON)) {
+            TagKey<Item> itemTag = button == IBBlocks.FANCY_EMERGENCY_BUTTON
+                    ? ItemTagGenerator.NORMAL_EMERGENCY_BUTTONS
+                    : ItemTagGenerator.NORMAL_SAFE_EMERGENCY_BUTTONS;
+
+            ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, button.get())
+                    .pattern("OOO")
+                    .pattern("O.O")
+                    .pattern("OOO")
+                    .define('O', Items.GLOWSTONE_DUST)
+                    .define('.', itemTag)
+                    .unlockedBy("has_thing", RecipeProvider.has(itemTag))
+                    .save(recipes);
+        }
+
+        for (var dyeColor : DyeColor.values()) {
             Item dyeItem = RegistryUtils.getItemByID(dyeColor.name().toLowerCase() + "_dye");
 
             Item emergencyButton = IBBlocks.EMERGENCY_BUTTONS.get(dyeColor).get().asItem();
-            Item safetyButton = IBBlocks.SAFETY_BUTTONS.get(dyeColor).get().asItem();
+            Item safetyButton = IBBlocks.SAFE_EMERGENCY_BUTTONS.get(dyeColor).get().asItem();
 
             convertingRecipe(recipes, dyeItem, emergencyButton, false, 1, "", null);
 
@@ -116,7 +132,6 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .pattern("O.O")
                     .define('O', ConventionalItemTags.GLASS_PANES)
                     .define('.', emergencyButton)
-                    .group("safe_emergency_buttons") // TODO: eh?
                     .unlockedBy("has_thing", RecipeProvider.has(dyeItem))
                     .save(recipes);
         }

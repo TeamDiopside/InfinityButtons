@@ -55,7 +55,7 @@ public final class InfinityButtonsFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.LARGE_CONSOLE_LEVER.get(), RenderType.cutout());
 
         // Safety buttons
-        for (RegistrySupplier<Block> blockRS : IBBlocks.SAFETY_BUTTONS.values())
+        for (RegistrySupplier<Block> blockRS : IBBlocks.SAFE_EMERGENCY_BUTTONS.values())
             BlockRenderLayerMap.INSTANCE.putBlock(blockRS.get(), RenderType.cutout());
 
         // Letter Buttons
