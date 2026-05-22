@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
+  "group": "emergency_buttons",
   "ingredients": [
     {
       "item": "minecraft:light_gray_dye"

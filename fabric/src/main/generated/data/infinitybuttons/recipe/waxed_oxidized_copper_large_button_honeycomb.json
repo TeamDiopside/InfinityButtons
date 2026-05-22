@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
+  "group": "copper_large_buttons",
   "ingredients": [
     {
       "item": "infinitybuttons:oxidized_copper_large_button"

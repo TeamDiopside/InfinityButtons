@@ -94,7 +94,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
 
                     convertingRecipe(recipes, materialItem, buttons.getSmall(), false, 2, "", group.apply(""));
 
-                    largeButton(recipes, buttons, materialItem, "", group.apply("large"));
+                    largeButton(recipes, buttons, materialItem, "", group.apply("_large"));
 
                     if (copperType == CopperButtonType.WAXED) {
                         simpleShapelessRecipe(recipes, materialItem, buttons.getSmall(), 1, "_honeycomb", group.apply(""),
@@ -295,6 +295,8 @@ public class RecipeGenerator extends FabricRecipeProvider {
         for (ItemLike item : ingredient) {
             builder.requires(item);
         }
+
+        if (group != null) builder.group(group);
 
         if (!Objects.equals(suffix, "")) {
             builder.save(recipes, getDefaultRecipeId(output) + suffix);

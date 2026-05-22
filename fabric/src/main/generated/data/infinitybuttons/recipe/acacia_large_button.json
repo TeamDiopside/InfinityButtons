@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
+  "group": "wooden_large_buttons",
   "ingredients": [
     {
       "item": "minecraft:acacia_button"

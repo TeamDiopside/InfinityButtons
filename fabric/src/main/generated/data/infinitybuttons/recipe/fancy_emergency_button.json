@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
+  "group": "emergency_buttons",
   "key": {
     ".": {
       "tag": "infinitybuttons:normal_emergency_buttons"

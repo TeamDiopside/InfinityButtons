@@ -172,7 +172,7 @@ public class IBCreativeTabs {
         }
         addBlock(output, IBBlocks.FANCY_EMERGENCY_BUTTON.get());
         for (DyeColor color : sortedDyeColors()) {
-            addBlock(output, IBBlocks.SAFETY_BUTTONS.get(color).get());
+            addBlock(output, IBBlocks.SAFE_EMERGENCY_BUTTONS.get(color).get());
         }
         addBlock(output, IBBlocks.FANCY_SAFE_EMERGENCY_BUTTON.get());
     }

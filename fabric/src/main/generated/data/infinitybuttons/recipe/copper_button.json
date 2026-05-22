@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "redstone",
+  "group": "normal_copper_buttons",
   "ingredients": [
     {
       "item": "minecraft:copper_block"
