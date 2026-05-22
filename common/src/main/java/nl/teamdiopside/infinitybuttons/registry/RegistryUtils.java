@@ -8,6 +8,7 @@ import nl.teamdiopside.diopside.registry.DiopsideItems;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
 
 public class RegistryUtils {
@@ -51,5 +52,21 @@ public class RegistryUtils {
         }
 
         return item;
+    }
+
+    public static boolean isWoodType(String name) {
+        return Set.of(
+                "oak",
+                "spruce",
+                "birch",
+                "jungle",
+                "acacia",
+                "dark_oak",
+                "mangrove",
+                "cherry",
+                "bamboo",
+                "crimson",
+                "warped"
+        ).contains(name);
     }
 }
