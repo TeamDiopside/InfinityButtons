@@ -44,6 +44,12 @@ public class RegistryUtils {
     }
 
     public static Item getItemByID(String namespace, String id) {
-        return DiopsideItems.INSTANCE.getById(ResourceLocation.fromNamespaceAndPath(namespace, id));
+        Item item = DiopsideItems.INSTANCE.getById(ResourceLocation.fromNamespaceAndPath(namespace, id));
+
+        if (item == null) {
+            throw new NoSuchElementException("Could not find item \"" + id + "\"!");
+        }
+
+        return item;
     }
 }
