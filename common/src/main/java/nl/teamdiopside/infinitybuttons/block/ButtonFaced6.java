@@ -25,7 +25,7 @@ import org.jetbrains.annotations.Nullable;
 /**
  * A button extending vanilla buttons that can be placed on 6 sides
  */
-public abstract class ButtonFaced6 extends ButtonBlock implements MaybeButtonActivated {
+public abstract class ButtonFaced6 extends ButtonBlock implements MaybeArrowActivated {
 
     public final VoxelShape shapePressed;
     public final VoxelShape shapeUnpressed;

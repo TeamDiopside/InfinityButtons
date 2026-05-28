@@ -1,5 +1,5 @@
 package nl.teamdiopside.infinitybuttons.block;
 
-public interface MaybeButtonActivated {
+public interface MaybeArrowActivated {
     boolean infinityButtons$activatedByArrows();
 }

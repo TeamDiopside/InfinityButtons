@@ -2,7 +2,7 @@ package nl.teamdiopside.infinitybuttons.mixin;
 
 import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
-import nl.teamdiopside.infinitybuttons.block.MaybeButtonActivated;
+import nl.teamdiopside.infinitybuttons.block.MaybeArrowActivated;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(ButtonBlock.class)
-public class ButtonBlockMixin implements MaybeButtonActivated {
+public class ButtonBlockMixin implements MaybeArrowActivated {
     @Shadow
     @Final
     private BlockSetType type;
