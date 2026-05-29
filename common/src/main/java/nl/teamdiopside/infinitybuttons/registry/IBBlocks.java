@@ -39,6 +39,7 @@ import static nl.teamdiopside.infinitybuttons.InfinityButtons.getResource;
 
 public class IBBlocks {
     public static final HashMap<String, LargeVariantSupplier<Block>> SMALL_LARGE_BUTTONS = new HashMap<>();
+    public static final HashMap<String, Block> ALL_BUTTONS = new HashMap<>();
 
     /**
      * Stone Buttons
@@ -394,11 +395,17 @@ public class IBBlocks {
      * Base Registry Functions
      */
     private static <T extends Block> RegistrySupplier<T> registerBlock(String blockId, Function<BlockBehaviour.Properties, T> blockFunction, BlockBehaviour.Properties properties) {
-        return DiopsideBlocks.INSTANCE.registerBlock(getResource(blockId), blockFunction, properties);
+        RegistrySupplier<T> registry = DiopsideBlocks.INSTANCE.registerBlock(getResource(blockId), blockFunction, properties);
+
+        ALL_BUTTONS.put(blockId, registry.get());
+        return registry;
     }
 
     private static RegistrySupplier<Block> registerOnlyBlock(String blockId, Function<BlockBehaviour.Properties, Block> blockFunction, BlockBehaviour.Properties properties) {
-        return DiopsideBlocks.INSTANCE.registerBlockWithoutItem(getResource(blockId), blockFunction, properties);
+        RegistrySupplier<Block> registry = DiopsideBlocks.INSTANCE.registerBlockWithoutItem(getResource(blockId), blockFunction, properties);
+
+        ALL_BUTTONS.put(blockId, registry.get());
+        return registry;
     }
 
 
@@ -411,11 +418,18 @@ public class IBBlocks {
             String type,
             LargeButtonConstructor<T> constructor
     ) {
-        LargeVariantSupplier<T> supplier = LargeVariantSupplier.registerVariants((large) -> registerBlock(
-                type + (large ? "_large_button" : "_button"),
-                properties -> constructor.create(properties, large),
-                getDefaultProperties()
-        ));
+        LargeVariantSupplier<T> supplier = LargeVariantSupplier.registerVariants((large) -> {
+            String blockId = type + (large ? "_large_button" : "_button");
+
+            RegistrySupplier<T> registry = registerBlock(
+                    blockId,
+                    properties -> constructor.create(properties, large),
+                    getDefaultProperties()
+            );
+
+            ALL_BUTTONS.put(blockId, registry.get());
+            return registry;
+        });
         SMALL_LARGE_BUTTONS.put(type, (LargeVariantSupplier<Block>) supplier);
         return supplier;
     }
