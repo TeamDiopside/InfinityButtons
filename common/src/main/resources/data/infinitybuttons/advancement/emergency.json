@@ -1,0 +1,57 @@
+{
+  "parent": "infinitybuttons:first_button",
+  "display": {
+    "icon": {
+      "id": "infinitybuttons:red_emergency_button"
+    },
+    "title": {
+      "translate": "advancement.infinitybuttons.emergency"
+    },
+    "description": {
+      "translate": "advancement.infinitybuttons.emergency.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "ding": {
+      "trigger": "minecraft:any_block_use",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": [
+                  "infinitybuttons:white_emergency_button",
+                  "infinitybuttons:light_gray_emergency_button",
+                  "infinitybuttons:gray_emergency_button",
+                  "infinitybuttons:black_emergency_button",
+                  "infinitybuttons:brown_emergency_button",
+                  "infinitybuttons:red_emergency_button",
+                  "infinitybuttons:orange_emergency_button",
+                  "infinitybuttons:yellow_emergency_button",
+                  "infinitybuttons:lime_emergency_button",
+                  "infinitybuttons:green_emergency_button",
+                  "infinitybuttons:cyan_emergency_button",
+                  "infinitybuttons:light_blue_emergency_button",
+                  "infinitybuttons:blue_emergency_button",
+                  "infinitybuttons:purple_emergency_button",
+                  "infinitybuttons:magenta_emergency_button",
+                  "infinitybuttons:pink_emergency_button"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ding"
+    ]
+  ]
+}

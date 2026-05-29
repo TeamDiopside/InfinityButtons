@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "infinitybuttons:black_concrete_powder_button"
+    },
+    {
+      "item": "infinitybuttons:black_concrete_powder_button"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "infinitybuttons:black_concrete_powder_large_button"
+  }
+}

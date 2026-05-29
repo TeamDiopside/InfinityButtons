@@ -4,6 +4,8 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import nl.teamdiopside.diopside.registry.DiopsideBlocks;
 import nl.teamdiopside.diopside.registry.DiopsideItems;
 
 import java.util.NoSuchElementException;
@@ -52,6 +54,26 @@ public class RegistryUtils {
         }
 
         return item;
+    }
+
+    public static Block getBlockByID(String id) {
+        Optional<Block> block = BuiltInRegistries.BLOCK.getOptional(ResourceLocation.parse(id));
+
+        if (block.isEmpty()) {
+            throw new NoSuchElementException("Could not find black \"" + id + "\"!");
+        }
+
+        return block.get();
+    }
+
+    public static Block getBlockByID(String namespace, String id) {
+        Block block = DiopsideBlocks.INSTANCE.getById(ResourceLocation.fromNamespaceAndPath(namespace, id));
+
+        if (block == null) {
+            throw new NoSuchElementException("Could not find black \"" + id + "\"!");
+        }
+
+        return block;
     }
 
     public static boolean isWoodType(String name) {

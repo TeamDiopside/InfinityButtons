@@ -11,6 +11,7 @@ public class DataGenerator implements DataGeneratorEntrypoint {
 
         pack.addProvider(ModelAndStateGenerator::new);
         pack.addProvider(ItemTagGenerator::new);
+        pack.addProvider(BlockTagGenerator::new);
         pack.addProvider(RecipeGenerator::new);
     }
 

@@ -1,0 +1,43 @@
+{
+  "parent": "infinitybuttons:first_button",
+  "display": {
+    "icon": {
+      "id": "infinitybuttons:doorbell"
+    },
+    "title": {
+      "translate": "advancement.infinitybuttons.ding_dong"
+    },
+    "description": {
+      "translate": "advancement.infinitybuttons.ding_dong.desc"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "ding": {
+      "trigger": "minecraft:any_block_use",
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": [
+                  "infinitybuttons:doorbell",
+                  "infinitybuttons:doorbell_button"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "ding"
+    ]
+  ]
+}

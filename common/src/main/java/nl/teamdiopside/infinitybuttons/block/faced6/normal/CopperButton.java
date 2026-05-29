@@ -170,7 +170,6 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
 
     @Override
     public boolean tooltipVisible() {
-        // TODO configurable!
         return getButtonType() == CopperButtonType.STICKY;
     }
 
