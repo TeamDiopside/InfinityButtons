@@ -1,0 +1,12 @@
+{
+  "values": [
+    "infinitybuttons:sand_large_button",
+    "infinitybuttons:red_sand_large_button",
+    "infinitybuttons:gravel_large_button",
+    "infinitybuttons:sand_button",
+    "infinitybuttons:red_sand_button",
+    "infinitybuttons:gravel_button",
+    "#infinitybuttons:concrete_powder_buttons",
+    "#infinitybuttons:concrete_powder_large_buttons"
+  ]
+}

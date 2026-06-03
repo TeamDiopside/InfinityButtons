@@ -66,6 +66,7 @@ public class RegistryUtils {
     }
 
     public static Block getBlockByID(String namespace, String id) {
+        System.out.println("get " + id);
         Block block = DiopsideRegistries.BLOCK.getById(ResourceLocation.fromNamespaceAndPath(namespace, id));
 
         if (block == null) {

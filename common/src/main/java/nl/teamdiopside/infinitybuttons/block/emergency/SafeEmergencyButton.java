@@ -22,10 +22,10 @@ import org.jetbrains.annotations.NotNull;
 public class SafeEmergencyButton extends EmergencyButton {
     public static final BooleanProperty CLOSED = BooleanProperty.create("closed");
 
-    private static final VoxelShape BASE = Block.box(3, 3, 15, 13, 13, 16);
-    private static final VoxelShape SHAPE_CLOSED = Shapes.or(Block.box(4, 4, 8, 12, 12, 15), BASE);
-    private static final VoxelShape SHAPE_OPEN = Shapes.or(Block.box(5, 5, 11, 11, 11, 15), BASE);
-    private static final VoxelShape SHAPE_PRESSED = Shapes.or(Block.box(5, 5, 13, 11, 11, 15), BASE);
+    private static final VoxelShape BASE = Block.box(3, 3, 14, 13, 13, 16);
+    private static final VoxelShape SHAPE_CLOSED = Shapes.or(Block.box(4, 4, 7, 12, 12, 14), BASE);
+    private static final VoxelShape SHAPE_OPEN = Shapes.or(Block.box(5, 5, 10, 11, 11, 14), BASE);
+    private static final VoxelShape SHAPE_PRESSED = Shapes.or(Block.box(5, 5, 12, 11, 11, 14), BASE);
 
     protected final BiHashMap<Direction, AttachFace, VoxelShape> SHAPES_CLOSED = new BiHashMap<>();
 
