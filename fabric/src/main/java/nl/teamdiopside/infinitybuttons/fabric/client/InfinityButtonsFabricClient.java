@@ -5,7 +5,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.world.level.block.Block;
+import nl.teamdiopside.infinitybuttons.block.emergency.SafeEmergencyButton;
 import nl.teamdiopside.infinitybuttons.particle.DiamondSparkleParticle;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBParticles;
@@ -55,7 +55,7 @@ public final class InfinityButtonsFabricClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.LARGE_CONSOLE_LEVER.get(), RenderType.cutout());
 
         // Safety buttons
-        for (RegistrySupplier<Block> blockRS : IBBlocks.SAFE_EMERGENCY_BUTTONS.values())
+        for (RegistrySupplier<SafeEmergencyButton> blockRS : IBBlocks.SAFE_EMERGENCY_BUTTONS.values())
             BlockRenderLayerMap.INSTANCE.putBlock(blockRS.get(), RenderType.cutout());
 
         // Letter Buttons

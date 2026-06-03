@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButton;
+import nl.teamdiopside.infinitybuttons.block.faced6.normal.NormalButton;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.RegistryUtils;
 
@@ -82,12 +83,12 @@ public class ModelAndStateGenerator extends FabricModelProvider {
 
         Set<String> CUSTOM_TEXTURE = Set.of("emerald", "gold", "iron", "prismarine_brick", "diamond");
 
-        for (Map.Entry<String, RegistryUtils.LargeVariantSupplier<Block>> entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) {
+        for (Map.Entry<String, RegistryUtils.LargeVariantSupplier<? extends Block>> entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) {
             String type = entry.getKey();
 
             if (Objects.equals(type, "dripstone")) type = "dripstone_block"; // Dripstone wants to be special again
 
-            RegistryUtils.LargeVariantSupplier<Block> variantSupplier = entry.getValue();
+            RegistryUtils.LargeVariantSupplier<? extends Block> variantSupplier = entry.getValue();
 
             Block small = variantSupplier.get(false);
             Block large = variantSupplier.get(true);
@@ -105,7 +106,7 @@ public class ModelAndStateGenerator extends FabricModelProvider {
             generateLargeButton(blockModels, large, texMap.apply(true));
         }
 
-        for (Map.Entry<BlockSetType, RegistrySupplier<Block>> entry : IBBlocks.DEFAULT_LARGE_BUTTONS.entrySet()) {
+        for (Map.Entry<BlockSetType, RegistrySupplier<NormalButton>> entry : IBBlocks.DEFAULT_LARGE_BUTTONS.entrySet()) {
             BlockSetType type = entry.getKey();
             Block block = entry.getValue().get();
 
@@ -115,9 +116,9 @@ public class ModelAndStateGenerator extends FabricModelProvider {
             generateLargeButton(blockModels, block, texMap);
         }
 
-        for (RegistryUtils.LargeVariantSupplier<Block> variantSupplier : IBBlocks.COPPER_BUTTONS.values()) {
-            CopperButton small = (CopperButton) variantSupplier.get(false);
-            CopperButton large = (CopperButton) variantSupplier.get(true);
+        for (RegistryUtils.LargeVariantSupplier<CopperButton> variantSupplier : IBBlocks.COPPER_BUTTONS.values()) {
+            CopperButton small = variantSupplier.get(false);
+            CopperButton large = variantSupplier.get(true);
             String state = small.getAge() == WeatheringCopper.WeatherState.UNAFFECTED ? "copper" : small.getAge().getSerializedName() + "_copper";
 
             TextureMapping texMap = new TextureMapping()

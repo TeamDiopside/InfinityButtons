@@ -2,7 +2,7 @@ package nl.teamdiopside.infinitybuttons.registry;
 
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.sounds.SoundEvent;
-import nl.teamdiopside.diopside.registry.DiopsideSounds;
+import nl.teamdiopside.diopside.registry.SoundEventEntryBuilder;
 
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.getResource;
@@ -19,7 +19,7 @@ public class IBSounds {
     public static RegistrySupplier<SoundEvent> SILENT = registerSoundEvent("block.silent");
 
     private static RegistrySupplier<SoundEvent> registerSoundEvent(String name) {
-        return DiopsideSounds.INSTANCE.registerSoundEvent(getResource(name));
+        return SoundEventEntryBuilder.create().register(getResource(name));
     }
 
     public static void register() {

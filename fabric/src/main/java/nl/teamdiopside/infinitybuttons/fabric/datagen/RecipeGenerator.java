@@ -13,6 +13,7 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WeatheringCopper;
 import nl.teamdiopside.infinitybuttons.InfinityButtons;
+import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButtonType;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.RegistryUtils;
@@ -36,7 +37,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
         // Basic Small / Large Buttons
         for (var entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) { // Does NOT include copper buttons because gay
             String key = entry.getKey();
-            RegistryUtils.LargeVariantSupplier<Block> value = entry.getValue();
+            RegistryUtils.LargeVariantSupplier<? extends Block> value = entry.getValue();
 
             String id = value.getSmall().getDescriptionId();
 
@@ -82,7 +83,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                 String state = weatherState == WeatheringCopper.WeatherState.UNAFFECTED ? "copper" : weatherState.getSerializedName() + "_copper";
                 String type = copperType == CopperButtonType.NORMAL ? state : copperType.getName() + "_" + state;
 
-                RegistryUtils.LargeVariantSupplier<Block> buttons = IBBlocks.COPPER_BUTTONS.get(copperType, weatherState);
+                RegistryUtils.LargeVariantSupplier<CopperButton> buttons = IBBlocks.COPPER_BUTTONS.get(copperType, weatherState);
 
                 Function<String, String> group = (infix) -> (copperType == CopperButtonType.NORMAL ? copperType.getName() + "_" : "")
                         + "copper" + infix + "_buttons";
@@ -210,7 +211,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
      * Generate a small and large button recipe: 1 material -> 4 small, 2 small -> 1 big
      * @param material The material item that unlocks both recipes and creates the small button
      */
-    protected void smallLargeButton(RecipeOutput recipes, RegistryUtils.LargeVariantSupplier<Block> button, ItemLike material, String suffix, @Nullable Function<String, String> group) {
+    protected void smallLargeButton(RecipeOutput recipes, RegistryUtils.LargeVariantSupplier<? extends Block> button, ItemLike material, String suffix, @Nullable Function<String, String> group) {
         var builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, button.getSmall(), 4)
                 .requires(material)
                 .unlockedBy("has_thing", RecipeProvider.has(material));
@@ -233,7 +234,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
      * Generate a large button recipe: 2 small -> 1 big
      * @param material The material item that unlocks the recipe
      */
-    protected void largeButton(RecipeOutput recipes, RegistryUtils.LargeVariantSupplier<Block> button, ItemLike material, String suffix, @Nullable String group) {
+    protected void largeButton(RecipeOutput recipes, RegistryUtils.LargeVariantSupplier<? extends Block> button, ItemLike material, String suffix, @Nullable String group) {
         largeButton(recipes, button.getSmall(), button.getLarge(), material, suffix, group);
     }
 

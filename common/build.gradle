@@ -10,6 +10,8 @@ dependencies {
 
     modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
 
+    modCompileOnly "dev.isxander:yet-another-config-lib:${rootProject.yacl_version}-fabric"
+
     modImplementation files('libs/diopside-fabric-1.0.0.jar')
 }
 
