@@ -3,6 +3,7 @@ package nl.teamdiopside.infinitybuttons.block.emergency;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.protocol.game.ClientboundSoundPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -22,8 +23,8 @@ import nl.teamdiopside.infinitybuttons.block.ButtonFaced6;
 import nl.teamdiopside.infinitybuttons.registry.IBSounds;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class EmergencyButton extends ButtonFaced6 {
     private static final VoxelShape BASE = Block.box(4, 4, 15, 12, 12, 16);
@@ -53,6 +54,39 @@ public class EmergencyButton extends ButtonFaced6 {
         }
     }
 
+    public static void scareVillagers(ServerLevel level, BlockPos pos) {
+
+        Set<LivingEntity> villagersToScare = new HashSet<>();
+
+        // TODO: IBConfig.alarmSoundType() == AlarmEnum.GLOBAL
+        if (true) {
+            for (Player player : level.players()) {
+                villagersToScare.addAll(level.getEntitiesOfClass(
+                        LivingEntity.class,
+                        new AABB(player.blockPosition()).inflate(512),
+                        entity -> entity.getType() == EntityType.VILLAGER
+                ));
+            }
+        }
+
+        double alarm_range = 16; // TODO: IBConfig.alarmSoundRange()
+
+        // TODO: IBConfig.alarmSoundType() == AlarmEnum.RANGE
+        if (true) {
+            villagersToScare.addAll(level.getEntitiesOfClass(
+                    LivingEntity.class,
+                    new AABB(pos).inflate(alarm_range), entity -> entity.getType() == EntityType.VILLAGER
+            ));
+        }
+
+        // Scare them!!!
+        for (LivingEntity villagerEntity : villagersToScare) {
+            if (villagerEntity instanceof Villager villager) {
+                villager.getBrain().setMemory(MemoryModuleType.HEARD_BELL_TIME, level.dayTime());
+            }
+        }
+    }
+
     protected static Direction getDirection(BlockState state) {
         return switch (state.getValue(FACE)) {
             case CEILING -> Direction.DOWN;
@@ -70,33 +104,14 @@ public class EmergencyButton extends ButtonFaced6 {
     public void press(BlockState state, Level level, BlockPos pos, @Nullable Player player) {
         super.press(state, level, pos, player);
 
-        emergencySound(level, pos);
+        // TODO: IBConfig.muteAlarmSound()
+        if (true) {
+            emergencySound(level, pos);
+        }
 
-        if (!level.isClientSide) { // TODO: Config - InfinityButtonsInit.CONFIG.alarmVillagerPanic()
-            List<LivingEntity> villagers = new ArrayList<>();
-            if (true) { // TODO: Config - InfinityButtonsInit.CONFIG.alarmSoundType() == AlarmEnum.GLOBAL
-                villagers = new ArrayList<>();
-                List<LivingEntity> villagersDup = level.getEntitiesOfClass(LivingEntity.class, new AABB(pos).inflate(512), entity -> entity.getType() == EntityType.VILLAGER);
-                for (Player player1 : level.players()) {
-                    villagersDup.addAll(level.getEntitiesOfClass(LivingEntity.class, new AABB(player1.blockPosition()).inflate(512), entity -> entity.getType() == EntityType.VILLAGER));
-                }
-                for (LivingEntity villager : villagersDup) {
-                    if (!villagers.contains(villager)) {
-                        villagers.add(villager);
-                    }
-                }
-            }
-            if (true) { // TODO: Config - InfinityButtonsInit.CONFIG.alarmSoundType() == AlarmEnum.RANGE
-                villagers = level.getEntitiesOfClass(
-                        LivingEntity.class,
-                        new AABB(pos).inflate(16), entity -> entity.getType() == EntityType.VILLAGER // TODO: Config - InfinityButtonsInit.CONFIG.alarmSoundRange()
-                );
-            }
-            for (LivingEntity villagerEntity : villagers) {
-                if (villagerEntity instanceof Villager villager) {
-                    villager.getBrain().setMemory(MemoryModuleType.HEARD_BELL_TIME, level.dayTime());
-                }
-            }
+        // TODO: IBConfig.alarmVillagerPanic()
+        if (level instanceof ServerLevel) {
+            scareVillagers((ServerLevel) level, pos);
         }
     }
 
