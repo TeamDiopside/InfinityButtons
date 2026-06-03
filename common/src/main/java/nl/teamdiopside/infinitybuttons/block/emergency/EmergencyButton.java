@@ -2,9 +2,10 @@ package nl.teamdiopside.infinitybuttons.block.emergency;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.network.protocol.game.ClientboundSoundPacket;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
@@ -18,6 +19,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import nl.teamdiopside.infinitybuttons.block.ButtonFaced6;
+import nl.teamdiopside.infinitybuttons.registry.IBSounds;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -41,7 +43,14 @@ public class EmergencyButton extends ButtonFaced6 {
     }
 
     public static void emergencySound(Level level, BlockPos pos) {
-        // TODO: WEEEEEEOOEOEOOOOOOOH !!!!!!
+        if (!level.isClientSide && level.getServer() != null) {
+            // Weewooh all players
+            for (var player : level.getServer().getPlayerList().getPlayers()) {
+                player.connection.send(new ClientboundSoundPacket(IBSounds.ALARM, SoundSource.BLOCKS,
+                        pos.getX(), pos.getY(), pos.getZ(), 1.0F, 1.0F, level.getRandom().nextLong()
+                ));
+            } // TODO: different config options
+        }
     }
 
     protected static Direction getDirection(BlockState state) {
@@ -62,9 +71,7 @@ public class EmergencyButton extends ButtonFaced6 {
         super.press(state, level, pos, player);
 
         emergencySound(level, pos);
-        if (player instanceof ServerPlayer) {
-            // TODO: Advancement trigger - InfinityButtonsTriggers.EMERGENCY_TRIGGER.trigger((ServerPlayer) player);
-        }
+
         if (!level.isClientSide) { // TODO: Config - InfinityButtonsInit.CONFIG.alarmVillagerPanic()
             List<LivingEntity> villagers = new ArrayList<>();
             if (true) { // TODO: Config - InfinityButtonsInit.CONFIG.alarmSoundType() == AlarmEnum.GLOBAL
