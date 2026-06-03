@@ -11,11 +11,12 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
-import nl.teamdiopside.diopside.registry.DiopsideCreativeTabs;
+import nl.teamdiopside.diopside.registry.RegistryUtils;
+import nl.teamdiopside.diopside.registry.TabEntryBuilder;
 import nl.teamdiopside.infinitybuttons.InfinityButtons;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButtonType;
 
-import java.util.function.Supplier;
+import java.util.function.Consumer;
 
 import static nl.teamdiopside.diopside.registry.RegistryUtils.sortedDyeColors;
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
@@ -23,17 +24,17 @@ import static nl.teamdiopside.infinitybuttons.InfinityButtons.getResource;
 
 public class IBCreativeTabs {
 
-    public static final RegistrySupplier<CreativeModeTab> INFINITYBUTTONS = registerTab(tabSupplier());
+    public static final RegistrySupplier<CreativeModeTab> INFINITYBUTTONS = registerTab(tabConsumer());
 
     /**
-     * @return The supplier for the Infinity Buttons creative mode tab.
+     * @return The consumer for the Infinity Buttons creative mode tab.
      */
-    private static Supplier<CreativeModeTab> tabSupplier() {
-        return DiopsideCreativeTabs.INSTANCE.buildTab(builder ->
-                builder.icon(() -> new ItemStack(IBBlocks.DEFAULT_LARGE_BUTTONS.get(BlockSetType.OAK).get()))
-                        .displayItems(itemsGenerator())
-                        .title(Component.translatable("itemGroup.infinityButtonsTab"))
-                        .build());
+    private static Consumer<CreativeModeTab.Builder> tabConsumer() {
+        return builder -> builder
+                .icon(() -> new ItemStack(IBBlocks.DEFAULT_LARGE_BUTTONS.get(BlockSetType.OAK).get()))
+                .displayItems(itemsGenerator())
+                .title(Component.translatable("itemGroup.infinityButtonsTab")
+                );
     }
 
     /**
@@ -288,7 +289,7 @@ public class IBCreativeTabs {
      */
     @SuppressWarnings("all")
     public static void modifyBuildingBlocks() {
-        DiopsideCreativeTabs.INSTANCE.modifyTab(CreativeModeTabs.BUILDING_BLOCKS, (features, output, canUseGameMasterBlocks) -> {
+        RegistryUtils.modifyTab(CreativeModeTabs.BUILDING_BLOCKS, (features, output, canUseGameMasterBlocks) -> {
             output.acceptAfter(Blocks.OAK_BUTTON, IBBlocks.DEFAULT_LARGE_BUTTONS.get(BlockSetType.OAK).get());
             output.acceptAfter(Blocks.SPRUCE_BUTTON, IBBlocks.DEFAULT_LARGE_BUTTONS.get(BlockSetType.SPRUCE).get());
             output.acceptAfter(Blocks.BIRCH_BUTTON, IBBlocks.DEFAULT_LARGE_BUTTONS.get(BlockSetType.BIRCH).get());
@@ -360,7 +361,7 @@ public class IBCreativeTabs {
      */
     @SuppressWarnings("all")
     public static void modifyRedstoneBlocks() {
-        DiopsideCreativeTabs.INSTANCE.modifyTab(CreativeModeTabs.REDSTONE_BLOCKS, (features, output, canUseGameMasterBlocks) -> {
+        RegistryUtils.modifyTab(CreativeModeTabs.REDSTONE_BLOCKS, (features, output, canUseGameMasterBlocks) -> {
             output.acceptAfter(Blocks.OAK_BUTTON, IBBlocks.DEFAULT_LARGE_BUTTONS.get(BlockSetType.OAK).get());
             output.acceptAfter(Blocks.STONE_BUTTON, IBBlocks.DEFAULT_LARGE_BUTTONS.get(BlockSetType.STONE).get());
 
@@ -377,7 +378,7 @@ public class IBCreativeTabs {
      */
     @SuppressWarnings("all")
     public static void modifyColoredBlocks() {
-        DiopsideCreativeTabs.INSTANCE.modifyTab(CreativeModeTabs.COLORED_BLOCKS, (features, output, canUseGameMasterBlocks) -> {
+        RegistryUtils.modifyTab(CreativeModeTabs.COLORED_BLOCKS, (features, output, canUseGameMasterBlocks) -> {
             addConcretePowderButtons(output, false);
             addConcretePowderButtons(output, true);
             addEmergencyButtons(output);
@@ -393,9 +394,9 @@ public class IBCreativeTabs {
      * @param tab A supplier for the tab to register.
      * @return A registry supplier for the tab.
      */
-    private static <T extends CreativeModeTab> RegistrySupplier<T> registerTab(Supplier<T> tab) {
+    private static RegistrySupplier<CreativeModeTab> registerTab(Consumer<CreativeModeTab.Builder> tab) {
         ResourceLocation id = getResource(InfinityButtons.MOD_ID);
-        return DiopsideCreativeTabs.INSTANCE.registerTab(id, tab);
+        return TabEntryBuilder.ofTab(tab).register(id);
     }
 
     /**

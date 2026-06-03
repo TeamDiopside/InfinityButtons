@@ -38,15 +38,25 @@ dependencies {
 
     modImplementation files('libs/diopside-neoforge-1.0.0.jar')
 
+    modImplementation "dev.isxander:yet-another-config-lib:${rootProject.yacl_version}-neoforge"
+
+    // Bundled with YACL in production
+    forgeRuntimeLibrary "org.quiltmc.parsers:json:${rootProject.gson_version}"
+    forgeRuntimeLibrary "org.quiltmc.parsers:gson:${rootProject.gson_version}"
+
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
 }
 
 processResources {
-    inputs.property 'version', project.version
+    Properties props = new Properties()
+    rootProject.file("gradle.properties").withInputStream {
+        props.load(it)
+    }
+    inputs.properties props
 
     filesMatching('META-INF/neoforge.mods.toml') {
-        expand version: project.version
+        expand rootProject.properties
     }
 }
 

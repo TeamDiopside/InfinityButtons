@@ -5,8 +5,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import nl.teamdiopside.diopside.registry.DiopsideBlocks;
-import nl.teamdiopside.diopside.registry.DiopsideItems;
+import nl.teamdiopside.diopside.registry.DiopsideRegistries;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -47,7 +46,7 @@ public class RegistryUtils {
     }
 
     public static Item getItemByID(String namespace, String id) {
-        Item item = DiopsideItems.INSTANCE.getById(ResourceLocation.fromNamespaceAndPath(namespace, id));
+        Item item = DiopsideRegistries.ITEM.getById(ResourceLocation.fromNamespaceAndPath(namespace, id));
 
         if (item == null) {
             throw new NoSuchElementException("Could not find item \"" + id + "\"!");
@@ -67,7 +66,7 @@ public class RegistryUtils {
     }
 
     public static Block getBlockByID(String namespace, String id) {
-        Block block = DiopsideBlocks.INSTANCE.getById(ResourceLocation.fromNamespaceAndPath(namespace, id));
+        Block block = DiopsideRegistries.BLOCK.getById(ResourceLocation.fromNamespaceAndPath(namespace, id));
 
         if (block == null) {
             throw new NoSuchElementException("Could not find black \"" + id + "\"!");

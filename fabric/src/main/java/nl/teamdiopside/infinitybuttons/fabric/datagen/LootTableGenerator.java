@@ -1,5 +1,6 @@
 package nl.teamdiopside.infinitybuttons.fabric.datagen;
 
+import dev.architectury.registry.registries.RegistrySupplier;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.core.HolderLookup;
@@ -16,7 +17,8 @@ public class LootTableGenerator extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
-        for (Block block : IBBlocks.ALL_BUTTONS.values()) {
+        for (RegistrySupplier<? extends Block> blockSupplier : IBBlocks.ALL_BUTTONS.values()) {
+            Block block = blockSupplier.get();
 //            if (block.defaultBlockState().is(BlockTagGenerator.MINEABLE_SHOVEL)) continue;
             dropSelf(block);
         }

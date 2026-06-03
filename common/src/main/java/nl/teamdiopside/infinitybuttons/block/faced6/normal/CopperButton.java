@@ -3,10 +3,7 @@ package nl.teamdiopside.infinitybuttons.block.faced6.normal;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -15,7 +12,9 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -26,16 +25,12 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.phys.BlockHitResult;
-import nl.teamdiopside.diopside.block.BlockTooltip;
-import nl.teamdiopside.diopside.datacomponent.HoldShiftTooltipComponent;
-import nl.teamdiopside.diopside.registry.DiopsideDataComponents;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
-import java.util.function.Consumer;
 
-public class CopperButton extends NormalButton implements WeatheringButton, BlockTooltip<HoldShiftTooltipComponent> {
+public class CopperButton extends NormalButton implements WeatheringButton {
 
     public static final int PRESS_TICKS = 50;
     public static final MapCodec<CopperButton> CODEC = RecordCodecBuilder.mapCodec(instance ->
@@ -151,26 +146,6 @@ public class CopperButton extends NormalButton implements WeatheringButton, Bloc
     @Override
     protected @NotNull SoundEvent getSound(boolean isOn) {
         return SoundEvents.COPPER_BREAK;
-    }
-
-    @Override
-    public void addToTooltip(Item.TooltipContext tooltipContext, Consumer<Component> consumer, TooltipFlag tooltipFlag) {
-        consumer.accept(Component.translatable("infinitybuttons.tooltip.sticky_copper_button").withStyle(ChatFormatting.GRAY));
-    }
-
-    @Override
-    public DataComponentType<HoldShiftTooltipComponent> getDataComponentType() {
-        return DiopsideDataComponents.HOLD_SHIFT_TOOLTIP.get();
-    }
-
-    @Override
-    public HoldShiftTooltipComponent getTooltipProvider() {
-        return new HoldShiftTooltipComponent(this);
-    }
-
-    @Override
-    public boolean tooltipVisible() {
-        return getButtonType() == CopperButtonType.STICKY;
     }
 
     @Override
