@@ -27,11 +27,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class EmergencyButton extends ButtonFaced6 {
-    private static final VoxelShape BASE = Block.box(4, 4, 15, 12, 12, 16);
-    private static final VoxelShape SHAPE_UNPRESSED = Shapes.or(
-            Block.box(5, 5, 11, 11, 11, 15), BASE);
-    private static final VoxelShape SHAPE_PRESSED = Shapes.or(
-            Block.box(5, 5, 13, 11, 11, 15), BASE);
+    private static final VoxelShape BASE = Block.box(3, 3, 14, 13, 13, 16);
+    private static final VoxelShape SHAPE_UNPRESSED = Shapes.or(Block.box(5, 5, 10, 11, 11, 14), BASE);
+    private static final VoxelShape SHAPE_PRESSED = Shapes.or(Block.box(5, 5, 12, 11, 11, 14), BASE);
 
     public static final int PRESS_TICKS = 10;
 

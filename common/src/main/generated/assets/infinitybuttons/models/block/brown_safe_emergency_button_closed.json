@@ -1,0 +1,6 @@
+{
+  "parent": "infinitybuttons:block/safe_emergency_button_closed",
+  "textures": {
+    "texture": "infinitybuttons:block/emergency_buttons/brown"
+  }
+}

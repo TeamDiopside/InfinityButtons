@@ -19,8 +19,7 @@ import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButtonType;
 import java.util.function.Consumer;
 
 import static nl.teamdiopside.diopside.registry.RegistryUtils.sortedDyeColors;
-import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
-import static nl.teamdiopside.infinitybuttons.InfinityButtons.getResource;
+import static nl.teamdiopside.infinitybuttons.InfinityButtons.*;
 
 public class IBCreativeTabs {
 
@@ -31,7 +30,7 @@ public class IBCreativeTabs {
      */
     private static Consumer<CreativeModeTab.Builder> tabConsumer() {
         return builder -> builder
-                .icon(() -> new ItemStack(IBBlocks.DEFAULT_LARGE_BUTTONS.get(BlockSetType.OAK).get()))
+                .icon(() -> new ItemStack(RegistryUtils.getItemByID(MOD_ID, "red_safe_emergency_button")))
                 .displayItems(itemsGenerator())
                 .title(Component.translatable("itemGroup.infinityButtonsTab")
                 );
