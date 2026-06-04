@@ -19,7 +19,6 @@ public class LootTableGenerator extends FabricBlockLootTableProvider {
     public void generate() {
         for (RegistrySupplier<? extends Block> blockSupplier : IBBlocks.ALL_BUTTONS.values()) {
             Block block = blockSupplier.get();
-//            if (block.defaultBlockState().is(BlockTagGenerator.MINEABLE_SHOVEL)) continue;
             dropSelf(block);
         }
     }
