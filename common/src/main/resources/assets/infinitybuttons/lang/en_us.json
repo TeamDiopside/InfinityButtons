@@ -435,5 +435,22 @@
 
   "config.jade.plugin_infinitybuttons.hide_secret_buttons": "Hide Secret Buttons",
   "config.jade.plugin_infinitybuttons.hide_torch_buttons": "Hide Torch Buttons",
-  "config.jade.plugin_infinitybuttons.hide_lantern_buttons": "Hide Lantern Buttons"
+  "config.jade.plugin_infinitybuttons.hide_lantern_buttons": "Hide Lantern Buttons",
+
+  "config.infinitybuttons.title": "Infinity Buttons",
+  "config.infinitybuttons.alarm_type.name": "Emergency Alarm Sound Type",
+  "config.infinitybuttons.alarm_type.description": "Determine how Emergency Buttons play their sound:\n- RANGE: Play within a certain range\n- GLOBAL: Play it to all players on the server",
+  "config.infinitybuttons.alarm_range.name": "Emergency Alarm Range",
+  "config.infinitybuttons.alarm_range.description": "Range of the Emergency Button sounds, only if sound type is set to RANGE",
+  "config.infinitybuttons.alarm.mute.name": "Mute Emergency Alarms",
+  "config.infinitybuttons.alarm.mute.description": "Prevent Emergency Buttons from playing a sound to your client",
+  "config.infinitybuttons.alarm.villager_panic.name": "Villager Panic after Emergency Alarm",
+  "config.infinitybuttons.alarm.villager_panic.description": "Have Villagers that hear the emergency alarm sound panic",
+  "config.infinitybuttons.diamond_particles.name": "Diamond Button Particles",
+  "config.infinitybuttons.diamond_particles.description": "Make the Diamond Button & Large Button shine sparkles",
+  "config.infinitybuttons.force_jade_camouflage.name": "Force Jade Camouflage",
+  "config.infinitybuttons.force_jade_camouflage.description": "God only knows what this setting does",
+
+  "config.infinitybuttons.config.name": "Infinity Buttons Config",
+  "config.infinitybuttons.config.description": "Need your Buttons to be more Infinity? Changing these settings can make your Buttons 1024x more infinite!"
 }

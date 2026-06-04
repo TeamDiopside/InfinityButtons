@@ -16,6 +16,7 @@ public final class InfinityButtons {
         IBCreativeTabs.register();
         IBParticles.register();
         IBNetworking.register();
+        IBConfig.register();
     }
 
     public static ResourceLocation getResource(String path) {

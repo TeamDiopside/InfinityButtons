@@ -22,6 +22,9 @@
     ],
     "client": [
       "nl.teamdiopside.infinitybuttons.fabric.client.InfinityButtonsFabricClient"
+    ],
+    "modmenu": [
+      "nl.teamdiopside.infinitybuttons.fabric.IBModMenu"
     ]
   },
   "mixins": [
