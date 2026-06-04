@@ -43,13 +43,18 @@ public class EmergencyButton extends ButtonFaced6 {
     }
 
     public static void emergencySound(Level level, BlockPos pos) {
-        if (!level.isClientSide && level.getServer() != null) {
+        if (level.isClientSide) return;
+
+        if (level.getServer() != null && IBConfig.alarmSoundType() == IBConfig.AlarmSoundType.GLOBAL) {
             // Weewooh all players
             for (var player : level.getServer().getPlayerList().getPlayers()) {
                 player.connection.send(new ClientboundSoundPacket(IBSounds.ALARM, SoundSource.BLOCKS,
                         pos.getX(), pos.getY(), pos.getZ(), 1.0F, 1.0F, level.getRandom().nextLong()
                 ));
-            } // TODO: global vs ranged sound
+            }
+        }
+        if (IBConfig.alarmSoundType() == IBConfig.AlarmSoundType.RANGE) {
+            level.playSound(null, pos, IBSounds.ALARM.get(), SoundSource.BLOCKS, IBConfig.alarmSoundRange(), 1.0F);
         }
     }
 
