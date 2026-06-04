@@ -122,6 +122,30 @@ public class IBConfig {
     @SerialEntry
     public boolean forceJadeHiding = true;
 
+    public static AlarmSoundType alarmSoundType() {
+        return HANDLER.instance().alarmSoundType;
+    }
+
+    public static int alarmSoundRange() {
+        return HANDLER.instance().alarmSoundRange;
+    }
+
+    public static boolean muteAlarmSound() {
+        return HANDLER.instance().muteAlarmSound;
+    }
+
+    public static boolean alarmVillagerPanic() {
+        return HANDLER.instance().alarmVillagerPanic;
+    }
+
+    public static boolean diamondParticles() {
+        return HANDLER.instance().diamondParticles;
+    }
+
+    public static boolean forceJadeHiding() {
+        return HANDLER.instance().forceJadeHiding;
+    }
+
     public static void register() {
         HANDLER.save();
         LOGGER.info("Registering Config options for Infinity Buttons");

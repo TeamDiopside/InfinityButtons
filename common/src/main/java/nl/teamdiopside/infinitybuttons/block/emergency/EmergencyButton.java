@@ -20,6 +20,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import nl.teamdiopside.infinitybuttons.block.ButtonFaced6;
+import nl.teamdiopside.infinitybuttons.registry.IBConfig;
 import nl.teamdiopside.infinitybuttons.registry.IBSounds;
 import org.jetbrains.annotations.Nullable;
 
@@ -48,7 +49,7 @@ public class EmergencyButton extends ButtonFaced6 {
                 player.connection.send(new ClientboundSoundPacket(IBSounds.ALARM, SoundSource.BLOCKS,
                         pos.getX(), pos.getY(), pos.getZ(), 1.0F, 1.0F, level.getRandom().nextLong()
                 ));
-            } // TODO: different config options
+            } // TODO: global vs ranged sound
         }
     }
 
@@ -56,8 +57,7 @@ public class EmergencyButton extends ButtonFaced6 {
 
         Set<LivingEntity> villagersToScare = new HashSet<>();
 
-        // TODO: IBConfig.alarmSoundType() == AlarmEnum.GLOBAL
-        if (true) {
+        if (IBConfig.alarmSoundType() == IBConfig.AlarmSoundType.GLOBAL) {
             for (Player player : level.players()) {
                 villagersToScare.addAll(level.getEntitiesOfClass(
                         LivingEntity.class,
@@ -67,10 +67,9 @@ public class EmergencyButton extends ButtonFaced6 {
             }
         }
 
-        double alarm_range = 16; // TODO: IBConfig.alarmSoundRange()
+        double alarm_range = IBConfig.alarmSoundRange();
 
-        // TODO: IBConfig.alarmSoundType() == AlarmEnum.RANGE
-        if (true) {
+        if (IBConfig.alarmSoundType() == IBConfig.AlarmSoundType.RANGE) {
             villagersToScare.addAll(level.getEntitiesOfClass(
                     LivingEntity.class,
                     new AABB(pos).inflate(alarm_range), entity -> entity.getType() == EntityType.VILLAGER
@@ -102,13 +101,11 @@ public class EmergencyButton extends ButtonFaced6 {
     public void press(BlockState state, Level level, BlockPos pos, @Nullable Player player) {
         super.press(state, level, pos, player);
 
-        // TODO: IBConfig.muteAlarmSound()
-        if (true) {
+        if (!IBConfig.muteAlarmSound()) {
             emergencySound(level, pos);
         }
 
-        // TODO: IBConfig.alarmVillagerPanic()
-        if (level instanceof ServerLevel) {
+        if (level instanceof ServerLevel && IBConfig.alarmVillagerPanic()) {
             scareVillagers((ServerLevel) level, pos);
         }
     }
