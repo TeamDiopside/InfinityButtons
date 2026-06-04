@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import nl.teamdiopside.infinitybuttons.registry.IBConfig;
 import nl.teamdiopside.infinitybuttons.registry.IBParticles;
 import org.joml.Vector3f;
 
@@ -22,6 +23,8 @@ public class SparklingButton extends NormalButton {
     public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
         super.animateTick(blockState, level, blockPos, randomSource);
 
+        if (!IBConfig.diamondParticles()) return;
+
         if (randomSource.nextInt(5) != 0) return;
 
         VoxelShape test = this.getShape(blockState, level, blockPos, null);
@@ -32,8 +35,6 @@ public class SparklingButton extends NormalButton {
         Vec3 particleCenter = center.add(step.x, step.y, step.z);
 
         Direction.Axis axis = normalDir.getAxis();
-
-        // TODO: config
 
         double spread = this.large ? 0.55 : 0.35;
 
