@@ -29,7 +29,7 @@ import nl.teamdiopside.infinitybuttons.block.faced6.LampButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.LetterButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.*;
 import nl.teamdiopside.infinitybuttons.block.simple.LanternButton;
-import nl.teamdiopside.infinitybuttons.registry.RegistryUtils.LargeVariantSupplier;
+import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils.LargeVariantSupplier;
 import nl.teamdiopside.infinitybuttons.util.BiHashMap;
 import org.joml.Vector3f;
 

@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 
-public class RegistryUtils {
+public class IBRegistryUtils {
     public record LargeVariantSupplier<T>(RegistrySupplier<T> small, RegistrySupplier<T> large) {
         public static <T> LargeVariantSupplier<T> registerVariants(Function<Boolean, RegistrySupplier<T>> supplier) {
             return new LargeVariantSupplier<>(supplier.apply(false), supplier.apply(true));

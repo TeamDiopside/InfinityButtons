@@ -10,7 +10,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import nl.teamdiopside.infinitybuttons.InfinityButtons;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
-import nl.teamdiopside.infinitybuttons.registry.RegistryUtils;
+import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -64,8 +64,8 @@ public class ItemTagGenerator extends FabricTagProvider<Item> {
         }
 
         getOrCreateTagBuilder(NON_FLAMMABLE_WOOD)
-                .add(RegistryUtils.getItemByID(InfinityButtons.MOD_ID, "crimson_large_button").asItem())
-                .add(RegistryUtils.getItemByID(InfinityButtons.MOD_ID, "warped_large_button").asItem())
+                .add(IBRegistryUtils.getItemByID(InfinityButtons.MOD_ID, "crimson_large_button").asItem())
+                .add(IBRegistryUtils.getItemByID(InfinityButtons.MOD_ID, "warped_large_button").asItem())
                 .add(IBBlocks.CRIMSON_PLANK_SECRET_BUTTON.get().asItem())
                 .add(IBBlocks.WARPED_PLANK_SECRET_BUTTON.get().asItem());
 
@@ -84,12 +84,12 @@ public class ItemTagGenerator extends FabricTagProvider<Item> {
         // Concrete Powder
         for (var value : DyeColor.values()) {
             getOrCreateTagBuilder(CONCRETE_POWDER_BUTTONS)
-                    .add(RegistryUtils.getItemByID(InfinityButtons.MOD_ID,
+                    .add(IBRegistryUtils.getItemByID(InfinityButtons.MOD_ID,
                             value.name().toLowerCase() + "concrete_powder_button").asItem()
                     );
 
             getOrCreateTagBuilder(CONCRETE_POWDER_LARGE_BUTTONS)
-                    .add(RegistryUtils.getItemByID(InfinityButtons.MOD_ID,
+                    .add(IBRegistryUtils.getItemByID(InfinityButtons.MOD_ID,
                             value.name().toLowerCase() + "concrete_powder_large_button").asItem()
                     );
         }

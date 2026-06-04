@@ -10,7 +10,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import nl.teamdiopside.infinitybuttons.InfinityButtons;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
-import nl.teamdiopside.infinitybuttons.registry.RegistryUtils;
+import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -67,12 +67,12 @@ public class BlockTagGenerator extends FabricTagProvider<Block> {
     protected void generateInfinityButtonsTags() {
         for (var value : DyeColor.values()) {
             getOrCreateTagBuilder(CONCRETE_POWDER_BUTTONS)
-                    .add(RegistryUtils.getBlockByID(InfinityButtons.MOD_ID,
+                    .add(IBRegistryUtils.getBlockByID(InfinityButtons.MOD_ID,
                             value.name().toLowerCase() + "_concrete_powder_button")
                     );
 
             getOrCreateTagBuilder(CONCRETE_POWDER_LARGE_BUTTONS)
-                    .add(RegistryUtils.getBlockByID(InfinityButtons.MOD_ID,
+                    .add(IBRegistryUtils.getBlockByID(InfinityButtons.MOD_ID,
                             value.name().toLowerCase() + "_concrete_powder_large_button")
                     );
         }
@@ -297,8 +297,8 @@ public class BlockTagGenerator extends FabricTagProvider<Block> {
                 .add(IBBlocks.GOLD_BUTTON.get(true));
 
         getOrCreateTagBuilder(NON_FLAMMABLE_WOOD)
-                .add(RegistryUtils.getBlockByID(InfinityButtons.MOD_ID, "crimson_large_button"))
-                .add(RegistryUtils.getBlockByID(InfinityButtons.MOD_ID, "warped_large_button"))
+                .add(IBRegistryUtils.getBlockByID(InfinityButtons.MOD_ID, "crimson_large_button"))
+                .add(IBRegistryUtils.getBlockByID(InfinityButtons.MOD_ID, "warped_large_button"))
                 .add(IBBlocks.CRIMSON_PLANK_SECRET_BUTTON.get())
                 .add(IBBlocks.WARPED_PLANK_SECRET_BUTTON.get());
 

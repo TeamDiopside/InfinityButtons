@@ -16,7 +16,7 @@ import nl.teamdiopside.infinitybuttons.InfinityButtons;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButtonType;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
-import nl.teamdiopside.infinitybuttons.registry.RegistryUtils;
+import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
@@ -37,7 +37,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
         // Basic Small / Large Buttons
         for (var entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) { // Does NOT include copper buttons because gay
             String key = entry.getKey();
-            RegistryUtils.LargeVariantSupplier<? extends Block> value = entry.getValue();
+            IBRegistryUtils.LargeVariantSupplier<? extends Block> value = entry.getValue();
 
             String id = value.getSmall().getDescriptionId();
 
@@ -57,7 +57,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                 yearnsToBeANugget = true; // All materials for consistency
             }
 
-            Item materialItem = RegistryUtils.getItemByID(key);
+            Item materialItem = IBRegistryUtils.getItemByID(key);
 
             if (!yearnsToBeANugget) {
                 smallLargeButton(recipes, value, materialItem, "", null);
@@ -69,9 +69,9 @@ public class RecipeGenerator extends FabricRecipeProvider {
 
         // Vanilla Large variants
         for (var entry : IBBlocks.DEFAULT_LARGE_BUTTONS.entrySet()) {
-            Item itemByID = RegistryUtils.getItemByID(entry.getKey().name() + "_button");
+            Item itemByID = IBRegistryUtils.getItemByID(entry.getKey().name() + "_button");
 
-            boolean isWood = RegistryUtils.isWoodType(entry.getKey().name());
+            boolean isWood = IBRegistryUtils.isWoodType(entry.getKey().name());
             String group = isWood ? "wooden_large_buttons" : null;
 
             largeButton(recipes, itemByID, entry.getValue().get().asItem(), entry.getValue().get(), "", group);
@@ -83,13 +83,13 @@ public class RecipeGenerator extends FabricRecipeProvider {
                 String state = weatherState == WeatheringCopper.WeatherState.UNAFFECTED ? "copper" : weatherState.getSerializedName() + "_copper";
                 String type = copperType == CopperButtonType.NORMAL ? state : copperType.getName() + "_" + state;
 
-                RegistryUtils.LargeVariantSupplier<CopperButton> buttons = IBBlocks.COPPER_BUTTONS.get(copperType, weatherState);
+                IBRegistryUtils.LargeVariantSupplier<CopperButton> buttons = IBBlocks.COPPER_BUTTONS.get(copperType, weatherState);
 
                 Function<String, String> group = (infix) -> (copperType == CopperButtonType.NORMAL ? copperType.getName() + "_" : "")
                         + "copper" + infix + "_buttons";
 
                 if (copperType != CopperButtonType.STICKY) {
-                    Item materialItem = RegistryUtils.getItemByID(type +
+                    Item materialItem = IBRegistryUtils.getItemByID(type +
                             (weatherState == WeatheringCopper.WeatherState.UNAFFECTED ? "_block" : "") // WTF Mojang
                     );
 
@@ -122,7 +122,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
 
         // Emergency & Safety Buttons
         for (var dyeColor : DyeColor.values()) {
-            Item dyeItem = RegistryUtils.getItemByID(dyeColor.name().toLowerCase() + "_dye");
+            Item dyeItem = IBRegistryUtils.getItemByID(dyeColor.name().toLowerCase() + "_dye");
 
             Item emergencyButton = IBBlocks.EMERGENCY_BUTTONS.get(dyeColor).get().asItem();
             Item safetyButton = IBBlocks.SAFE_EMERGENCY_BUTTONS.get(dyeColor).get().asItem();
@@ -170,9 +170,9 @@ public class RecipeGenerator extends FabricRecipeProvider {
 
         // Doorbells
         simpleShapelessRecipe(recipes, Items.DARK_OAK_PLANKS, IBBlocks.DOORBELL.get(), 1, "", null,
-                Items.GOLD_NUGGET, RegistryUtils.getItemByID(InfinityButtons.MOD_ID, "dark_oak_large_button"));
+                Items.GOLD_NUGGET, IBRegistryUtils.getItemByID(InfinityButtons.MOD_ID, "dark_oak_large_button"));
         simpleShapelessRecipe(recipes, Items.DARK_OAK_PLANKS, IBBlocks.DOORBELL_BUTTON.get(), 1, "", null,
-                Items.REDSTONE, Items.GOLD_NUGGET, RegistryUtils.getItemByID(InfinityButtons.MOD_ID, "dark_oak_large_button"));
+                Items.REDSTONE, Items.GOLD_NUGGET, IBRegistryUtils.getItemByID(InfinityButtons.MOD_ID, "dark_oak_large_button"));
 
         // Console Buttons
         ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, IBBlocks.SMALL_CONSOLE_BUTTON.get(), 4)
@@ -200,7 +200,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                 .pattern("i.i")
                 .pattern(" i ")
                 .define('i', Items.IRON_INGOT)
-                .define('.', RegistryUtils.getItemByID(InfinityButtons.MOD_ID, "spruce_large_button"))
+                .define('.', IBRegistryUtils.getItemByID(InfinityButtons.MOD_ID, "spruce_large_button"))
                 .unlockedBy("has_thing", RecipeProvider.has(Items.IRON_INGOT))
                 .save(recipes);
 
@@ -211,7 +211,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
      * Generate a small and large button recipe: 1 material -> 4 small, 2 small -> 1 big
      * @param material The material item that unlocks both recipes and creates the small button
      */
-    protected void smallLargeButton(RecipeOutput recipes, RegistryUtils.LargeVariantSupplier<? extends Block> button, ItemLike material, String suffix, @Nullable Function<String, String> group) {
+    protected void smallLargeButton(RecipeOutput recipes, IBRegistryUtils.LargeVariantSupplier<? extends Block> button, ItemLike material, String suffix, @Nullable Function<String, String> group) {
         var builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, button.getSmall(), 4)
                 .requires(material)
                 .unlockedBy("has_thing", RecipeProvider.has(material));
@@ -234,7 +234,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
      * Generate a large button recipe: 2 small -> 1 big
      * @param material The material item that unlocks the recipe
      */
-    protected void largeButton(RecipeOutput recipes, RegistryUtils.LargeVariantSupplier<? extends Block> button, ItemLike material, String suffix, @Nullable String group) {
+    protected void largeButton(RecipeOutput recipes, IBRegistryUtils.LargeVariantSupplier<? extends Block> button, ItemLike material, String suffix, @Nullable String group) {
         largeButton(recipes, button.getSmall(), button.getLarge(), material, suffix, group);
     }
 

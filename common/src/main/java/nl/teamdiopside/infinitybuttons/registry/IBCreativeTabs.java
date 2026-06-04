@@ -30,7 +30,7 @@ public class IBCreativeTabs {
      */
     private static Consumer<CreativeModeTab.Builder> tabConsumer() {
         return builder -> builder
-                .icon(() -> new ItemStack(RegistryUtils.getItemByID(MOD_ID, "red_safe_emergency_button")))
+                .icon(() -> new ItemStack(IBRegistryUtils.getItemByID(MOD_ID, "red_safe_emergency_button")))
                 .displayItems(itemsGenerator())
                 .title(Component.translatable("itemGroup.infinityButtonsTab")
                 );

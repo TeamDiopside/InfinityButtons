@@ -26,7 +26,7 @@ import nl.teamdiopside.infinitybuttons.block.emergency.SafeEmergencyButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.NormalButton;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
-import nl.teamdiopside.infinitybuttons.registry.RegistryUtils;
+import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 
 import java.util.*;
 import java.util.function.BiConsumer;
@@ -94,12 +94,12 @@ public class ModelAndStateGenerator extends FabricModelProvider {
 
         Set<String> CUSTOM_TEXTURE = Set.of("emerald", "gold", "iron", "prismarine_brick", "diamond");
 
-        for (Map.Entry<String, RegistryUtils.LargeVariantSupplier<? extends Block>> entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) {
+        for (Map.Entry<String, IBRegistryUtils.LargeVariantSupplier<? extends Block>> entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) {
             String type = entry.getKey();
 
             if (Objects.equals(type, "dripstone")) type = "dripstone_block"; // Dripstone wants to be special again
 
-            RegistryUtils.LargeVariantSupplier<? extends Block> variantSupplier = entry.getValue();
+            IBRegistryUtils.LargeVariantSupplier<? extends Block> variantSupplier = entry.getValue();
 
             Block small = variantSupplier.get(false);
             Block large = variantSupplier.get(true);
@@ -127,7 +127,7 @@ public class ModelAndStateGenerator extends FabricModelProvider {
             generateLargeButton(blockModels, block, texMap);
         }
 
-        for (RegistryUtils.LargeVariantSupplier<CopperButton> variantSupplier : IBBlocks.COPPER_BUTTONS.values()) {
+        for (IBRegistryUtils.LargeVariantSupplier<CopperButton> variantSupplier : IBBlocks.COPPER_BUTTONS.values()) {
             CopperButton small = variantSupplier.get(false);
             CopperButton large = variantSupplier.get(true);
             String state = small.getAge() == WeatheringCopper.WeatherState.UNAFFECTED ? "copper" : small.getAge().getSerializedName() + "_copper";
@@ -147,8 +147,8 @@ public class ModelAndStateGenerator extends FabricModelProvider {
             TextureMapping colorMap = new TextureMapping()
                     .put(TextureSlot.TEXTURE, getResource("block/emergency_buttons/" + color));
 
-            Block emergencyButton = RegistryUtils.getBlockByID(InfinityButtons.MOD_ID, color + "_emergency_button");
-            Block safetyButton = RegistryUtils.getBlockByID(InfinityButtons.MOD_ID, color + "_safe_emergency_button");
+            Block emergencyButton = IBRegistryUtils.getBlockByID(InfinityButtons.MOD_ID, color + "_emergency_button");
+            Block safetyButton = IBRegistryUtils.getBlockByID(InfinityButtons.MOD_ID, color + "_safe_emergency_button");
 
             blockModels.modelOutput.accept(ModelLocationUtils.getModelLocation(emergencyButton.asItem()), new DelegatedModel(
                     ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, "block/" + color + "_emergency_button")
