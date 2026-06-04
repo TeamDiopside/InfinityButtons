@@ -1,6 +1,0 @@
-{
-  "parent": "infinitybuttons:block/emergency_button",
-  "textures": {
-    "texture": "infinitybuttons:block/emergency_buttons/red"
-  }
-}

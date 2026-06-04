@@ -120,3 +120,4 @@ runs/
 
 # Defeat the cache
 *.cache/
+/common/src/main/generated/
