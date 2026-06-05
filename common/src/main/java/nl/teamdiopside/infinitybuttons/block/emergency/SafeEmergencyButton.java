@@ -3,6 +3,7 @@ package nl.teamdiopside.infinitybuttons.block.emergency;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
@@ -13,6 +14,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -53,8 +55,15 @@ public class SafeEmergencyButton extends EmergencyButton {
         level.setBlockAndUpdate(pos, state.setValue(CLOSED, true));
         this.updateNeighbors(state, level, pos);
 
-        Block.pushEntitiesUp(state, level.getBlockState(pos), level, pos);
+        BlockState newState = level.getBlockState(pos);
+        Block.pushEntitiesUp(state, newState, level, pos);
         playSound(null, level, pos, false);
+
+        // If pressed, early unpress
+        if (newState.getValue(POWERED) && level instanceof ServerLevel serverLevel) {
+            unpress(newState, level, pos, null);
+            serverLevel.getBlockTicks().clearArea(new BoundingBox(pos));
+        }
     }
 
     private void updateNeighbors(BlockState state, Level level, BlockPos pos) {
