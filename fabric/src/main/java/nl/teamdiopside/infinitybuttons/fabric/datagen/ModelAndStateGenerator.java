@@ -181,7 +181,7 @@ public class ModelAndStateGenerator extends FabricModelProvider {
                     for (Direction facing : Direction.Plane.HORIZONTAL) {
 
                         ResourceLocation emergencyModel = powered ? emergencyPressed : emergencyNormal;
-                        ResourceLocation safetyModel    = powered ? safetyPressed : (closed ? safetyClosed : safetyOpen);
+                        ResourceLocation safetyModel    = closed ? safetyClosed : (powered ? safetyPressed : safetyOpen);
 
                         Variant emergencyVariant = Variant.variant().with(VariantProperties.MODEL, emergencyModel);
                         Variant safetyVariant = Variant.variant().with(VariantProperties.MODEL, safetyModel);
