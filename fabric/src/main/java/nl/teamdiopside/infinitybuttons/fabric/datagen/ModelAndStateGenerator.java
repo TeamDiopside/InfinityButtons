@@ -154,7 +154,7 @@ public class ModelAndStateGenerator extends FabricModelProvider {
                     ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, "block/" + color + "_emergency_button")
             ));
             blockModels.modelOutput.accept(ModelLocationUtils.getModelLocation(safetyButton.asItem()), new DelegatedModel(
-                    ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, "block/" + color + "_safe_emergency_button_open")
+                    ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, "block/" + color + "_safe_emergency_button_closed")
             ));
 
             // Generate safe variant states/models dynamically
