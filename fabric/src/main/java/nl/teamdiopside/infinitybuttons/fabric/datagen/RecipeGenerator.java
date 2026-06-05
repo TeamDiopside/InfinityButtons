@@ -37,6 +37,8 @@ public class RecipeGenerator extends FabricRecipeProvider {
         // Basic Small / Large Buttons
         for (var entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) { // Does NOT include copper buttons because gay
             String key = entry.getKey();
+            if (key.equals("netherite")) continue;
+
             IBRegistryUtils.LargeVariantSupplier<? extends Block> value = entry.getValue();
 
             String id = value.getSmall().getDescriptionId();

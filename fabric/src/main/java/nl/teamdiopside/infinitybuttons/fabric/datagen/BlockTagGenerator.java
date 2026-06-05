@@ -237,6 +237,7 @@ public class BlockTagGenerator extends FabricTagProvider<Block> {
                     .add(IBBlocks.GOLD_BUTTON.get(bool))
                     .add(IBBlocks.EMERALD_BUTTON.get(bool))
                     .add(IBBlocks.DIAMOND_BUTTON.get(bool))
+                    .add(IBBlocks.NETHERITE_BUTTON.get(bool))
                     .add(IBBlocks.PRISMARINE_BUTTON.get(bool))
                     .add(IBBlocks.PRISMARINE_BRICK_BUTTON.get(bool))
                     .add(IBBlocks.DARK_PRISMARINE_BUTTON.get(bool));
@@ -277,6 +278,7 @@ public class BlockTagGenerator extends FabricTagProvider<Block> {
                     .add(IBBlocks.GOLD_BUTTON.get(bool))
                     .add(IBBlocks.EMERALD_BUTTON.get(bool))
                     .add(IBBlocks.DIAMOND_BUTTON.get(bool))
+                    .add(IBBlocks.NETHERITE_BUTTON.get(bool))
                     .add(IBBlocks.PRISMARINE_BUTTON.get(bool))
                     .add(IBBlocks.PRISMARINE_BRICK_BUTTON.get(bool))
                     .add(IBBlocks.DARK_PRISMARINE_BUTTON.get(bool))

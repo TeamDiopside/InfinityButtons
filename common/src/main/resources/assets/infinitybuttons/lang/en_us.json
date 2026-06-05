@@ -22,6 +22,7 @@
   "block.infinitybuttons.gold_button": "Gold Button",
   "block.infinitybuttons.emerald_button": "Emerald Button",
   "block.infinitybuttons.diamond_button": "Diamond Button",
+  "block.infinitybuttons.netherite_button": "Netherite Button",
   "block.infinitybuttons.prismarine_button": "Prismarine Button",
   "block.infinitybuttons.prismarine_brick_button": "Prismarine Brick Button",
   "block.infinitybuttons.dark_prismarine_button": "Dark Prismarine Button",
@@ -84,6 +85,7 @@
   "block.infinitybuttons.gold_large_button": "Gold Large Button",
   "block.infinitybuttons.emerald_large_button": "Emerald Large Button",
   "block.infinitybuttons.diamond_large_button": "Diamond Large Button",
+  "block.infinitybuttons.netherite_large_button": "Netherite Large Button",
   "block.infinitybuttons.prismarine_large_button": "Prismarine Large Button",
   "block.infinitybuttons.prismarine_brick_large_button": "Prismarine Brick Large Button",
   "block.infinitybuttons.dark_prismarine_large_button": "Dark Prismarine Large Button",
@@ -370,6 +372,7 @@
   "infinitybuttons.tooltip.emerald_button2": "between 0.5 and 5 seconds",
   "infinitybuttons.tooltip.arrow_button": "This button can only be pressed with an arrow",
   "infinitybuttons.tooltip.diamond_button": "The biggest flex in the west",
+  "infinitybuttons.tooltip.netherite_button": "Too heavy to press",
   "infinitybuttons.tooltip.prismarine_button": "This button can be waterlogged",
   "infinitybuttons.tooltip.falling_button": "This button can only be pressed once",
   "infinitybuttons.tooltip.safe_emergency_button": "Sneak to open and close",
@@ -380,6 +383,7 @@
   "infinitybuttons.tooltip.secret_button": "This block-camouflaged button can only be pressed from the front side",
 
   "infinitybuttons.actionbar.closed_safety_button": "Sneak to open and close",
+  "infinitybuttons.actionbar.jammed_button": "Ugh! Too heavy!",
 
   "advancement.infinitybuttons.root": "Infinity Buttons",
   "advancement.infinitybuttons.root.desc": "Gotta press them all!",

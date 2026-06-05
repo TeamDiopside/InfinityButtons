@@ -133,6 +133,7 @@ public class IBCreativeTabs {
         output.accept(new ItemStack(IBBlocks.GOLD_BUTTON.get(large)));
         output.accept(new ItemStack(IBBlocks.EMERALD_BUTTON.get(large)));
         output.accept(new ItemStack(IBBlocks.DIAMOND_BUTTON.get(large)));
+        output.accept(new ItemStack(IBBlocks.NETHERITE_BUTTON.get(large)));
         output.accept(new ItemStack(IBBlocks.PRISMARINE_BUTTON.get(large)));
         output.accept(new ItemStack(IBBlocks.PRISMARINE_BRICK_BUTTON.get(large)));
         output.accept(new ItemStack(IBBlocks.DARK_PRISMARINE_BUTTON.get(large)));

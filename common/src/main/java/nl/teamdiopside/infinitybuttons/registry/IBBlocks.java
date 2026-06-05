@@ -113,6 +113,9 @@ public class IBBlocks {
     public static final LargeVariantSupplier<ArrowOnlyButton> GOLD_BUTTON = registerLargeVariantButton("gold",
             (properties, large) -> new ArrowOnlyButton(BlockSetType.STONE, properties, large, false), "arrow_button");
 
+    public static final LargeVariantSupplier<JammedButton> NETHERITE_BUTTON = registerLargeVariantButton("netherite",
+            (properties, large) -> new JammedButton(BlockSetType.STONE, properties, large, false), "netherite_button");
+
     /**
      * Copper Buttons
      */
