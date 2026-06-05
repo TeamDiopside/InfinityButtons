@@ -201,6 +201,7 @@ public class IBCreativeTabs {
         addBlock(output, IBBlocks.DARK_OAK_PLANK_SECRET_BUTTON.get());
         addBlock(output, IBBlocks.MANGROVE_PLANK_SECRET_BUTTON.get());
         addBlock(output, IBBlocks.CHERRY_PLANK_SECRET_BUTTON.get());
+        addBlock(output, IBBlocks.BAMBOO_PLANK_SECRET_BUTTON.get());
         addBlock(output, IBBlocks.CRIMSON_PLANK_SECRET_BUTTON.get());
         addBlock(output, IBBlocks.WARPED_PLANK_SECRET_BUTTON.get());
         addBlock(output, IBBlocks.MUD_BRICK_SECRET_BUTTON.get());

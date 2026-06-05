@@ -150,6 +150,8 @@ public class BlockTagGenerator extends FabricTagProvider<Block> {
                 .add(IBBlocks.DARK_OAK_PLANK_SECRET_BUTTON.get())
                 .add(IBBlocks.MANGROVE_PLANK_SECRET_BUTTON.get())
                 .add(IBBlocks.CRIMSON_PLANK_SECRET_BUTTON.get())
+                .add(IBBlocks.CHERRY_PLANK_SECRET_BUTTON.get())
+                .add(IBBlocks.BAMBOO_PLANK_SECRET_BUTTON.get())
                 .add(IBBlocks.WARPED_PLANK_SECRET_BUTTON.get());
 
         getOrCreateTagBuilder(BOOKSHELF_SECRET_BUTTONS)

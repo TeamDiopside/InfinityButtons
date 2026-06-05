@@ -207,6 +207,8 @@ public class IBBlocks {
             SecretButtonType.PLANK, Blocks.CRIMSON_PLANKS );
     public static final RegistrySupplier<SecretButton> WARPED_PLANK_SECRET_BUTTON = registerSecretButton("warped_plank_secret_button",
             SecretButtonType.PLANK, Blocks.WARPED_PLANKS );
+    public static final RegistrySupplier<SecretButton> BAMBOO_PLANK_SECRET_BUTTON = registerSecretButton("bamboo_plank_secret_button",
+            SecretButtonType.PLANK, Blocks.BAMBOO_PLANKS );
 
     public static final RegistrySupplier<SecretButton> MUD_BRICK_SECRET_BUTTON = registerSecretButton("mud_brick_secret_button",
             SecretButtonType.MUD_BRICK, Blocks.MUD_BRICKS );

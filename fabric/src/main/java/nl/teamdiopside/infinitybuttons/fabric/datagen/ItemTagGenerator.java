@@ -195,6 +195,8 @@ public class ItemTagGenerator extends FabricTagProvider<Item> {
                 .add(IBBlocks.ACACIA_PLANK_SECRET_BUTTON.get().asItem())
                 .add(IBBlocks.DARK_OAK_PLANK_SECRET_BUTTON.get().asItem())
                 .add(IBBlocks.MANGROVE_PLANK_SECRET_BUTTON.get().asItem())
+                .add(IBBlocks.CHERRY_PLANK_SECRET_BUTTON.get().asItem())
+                .add(IBBlocks.BAMBOO_PLANK_SECRET_BUTTON.get().asItem())
                 .add(IBBlocks.CRIMSON_PLANK_SECRET_BUTTON.get().asItem())
                 .add(IBBlocks.WARPED_PLANK_SECRET_BUTTON.get().asItem());
 
