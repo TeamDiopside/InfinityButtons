@@ -1,6 +1,8 @@
 package nl.teamdiopside.infinitybuttons.block.faced6.normal;
 
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import nl.teamdiopside.infinitybuttons.block.ButtonFaced6;
@@ -14,8 +16,13 @@ public class NormalButton extends ButtonFaced6 {
     protected final boolean large;
     protected final int pressTicks;
 
+    protected final SoundType soundType;
 
     public NormalButton(BlockSetType blockSetType, int ticks, Properties properties, boolean large, boolean isLever) {
+        this(blockSetType, ticks, properties, large, isLever, SoundType.STONE);
+    }
+
+    public NormalButton(BlockSetType blockSetType, int ticks, Properties properties, boolean large, boolean isLever, SoundType soundType) {
         super(blockSetType, ticks, properties,
                 large ? LARGE_PRESSED   : SMALL_PRESSED,
                 large ? LARGE_UNPRESSED : SMALL_UNPRESSED,
@@ -23,6 +30,7 @@ public class NormalButton extends ButtonFaced6 {
         );
         this.large = large;
         this.pressTicks = ticks;
+        this.soundType = soundType;
     }
 
     public boolean isLarge() {
@@ -34,4 +42,8 @@ public class NormalButton extends ButtonFaced6 {
         return this.pressTicks;
     }
 
+    @Override
+    protected SoundType getSoundType(BlockState blockState) {
+        return this.soundType;
+    }
 }

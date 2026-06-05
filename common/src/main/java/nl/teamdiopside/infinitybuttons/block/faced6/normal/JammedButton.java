@@ -5,6 +5,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.phys.BlockHitResult;
@@ -12,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class JammedButton extends NormalButton {
     public JammedButton(BlockSetType blockSetType, Properties properties, boolean large, boolean isLever) {
-        super(blockSetType, 20, properties, large, isLever);
+        super(blockSetType, 20, properties, large, isLever, SoundType.NETHERITE_BLOCK);
     }
 
     @Override

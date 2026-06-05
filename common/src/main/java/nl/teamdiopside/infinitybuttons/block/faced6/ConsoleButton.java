@@ -1,6 +1,8 @@
 package nl.teamdiopside.infinitybuttons.block.faced6;
 
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import nl.teamdiopside.infinitybuttons.block.ButtonFaced6;
 import nl.teamdiopside.infinitybuttons.registry.IBSounds;
@@ -22,4 +24,8 @@ public class ConsoleButton extends ButtonFaced6 {
         return press ? IBSounds.CONSOLE_BEEP.get() : isLever ? IBSounds.CONSOLE_UNBEEP.get() : IBSounds.SILENT.get();
     }
 
+    @Override
+    protected SoundType getSoundType(BlockState blockState) {
+        return SoundType.METAL;
+    }
 }

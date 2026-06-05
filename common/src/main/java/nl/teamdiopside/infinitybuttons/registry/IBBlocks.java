@@ -50,17 +50,17 @@ public class IBBlocks {
      */
     public static final HashMap<String, LargeVariantSupplier<NormalButton>> STONE_BUTTONS = new HashMap<>();
 
-    public static final LargeVariantSupplier<NormalButton> DEEPSLATE_BUTTON = registerStoneButton("deepslate");
-    public static final LargeVariantSupplier<NormalButton> GRANITE_BUTTON = registerStoneButton("granite");
-    public static final LargeVariantSupplier<NormalButton> DIORITE_BUTTON = registerStoneButton("diorite");
-    public static final LargeVariantSupplier<NormalButton> ANDESITE_BUTTON = registerStoneButton("andesite");
-    public static final LargeVariantSupplier<NormalButton> CALCITE_BUTTON = registerStoneButton("calcite");
-    public static final LargeVariantSupplier<NormalButton> TUFF_BUTTON = registerStoneButton("tuff");
-    public static final LargeVariantSupplier<NormalButton> DRIPSTONE_BUTTON = registerStoneButton("dripstone");
+    public static final LargeVariantSupplier<NormalButton> DEEPSLATE_BUTTON = registerStoneButton("deepslate", SoundType.DEEPSLATE);
+    public static final LargeVariantSupplier<NormalButton> GRANITE_BUTTON = registerStoneButton("granite", SoundType.STONE);
+    public static final LargeVariantSupplier<NormalButton> DIORITE_BUTTON = registerStoneButton("diorite", SoundType.STONE);
+    public static final LargeVariantSupplier<NormalButton> ANDESITE_BUTTON = registerStoneButton("andesite", SoundType.STONE);
+    public static final LargeVariantSupplier<NormalButton> CALCITE_BUTTON = registerStoneButton("calcite", SoundType.CALCITE);
+    public static final LargeVariantSupplier<NormalButton> TUFF_BUTTON = registerStoneButton("tuff", SoundType.TUFF);
+    public static final LargeVariantSupplier<NormalButton> DRIPSTONE_BUTTON = registerStoneButton("dripstone", SoundType.DRIPSTONE_BLOCK);
 
-    private static LargeVariantSupplier<NormalButton> registerStoneButton(String type) {
+    private static LargeVariantSupplier<NormalButton> registerStoneButton(String type, SoundType soundType) {
         LargeVariantSupplier<NormalButton> supplier = registerLargeVariantButton(type,
-                (properties, large) -> new NormalButton(BlockSetType.STONE, 20, properties, large, false), null);
+                (properties, large) -> new NormalButton(BlockSetType.STONE, 20, properties, large, false, soundType), null);
 
         STONE_BUTTONS.put(type, supplier);
         SMALL_LARGE_BUTTONS.put(type, supplier);
@@ -109,9 +109,9 @@ public class IBBlocks {
             (properties, large) -> new SparklingButton(BlockSetType.STONE, properties, large, false), "diamond_button");
 
     public static final LargeVariantSupplier<ArrowOnlyButton> IRON_BUTTON = registerLargeVariantButton("iron",
-            (properties, large) -> new ArrowOnlyButton(BlockSetType.STONE, properties, large, false), "arrow_button");
+            (properties, large) -> new ArrowOnlyButton(BlockSetType.IRON, properties, large, false, SoundType.METAL), "arrow_button");
     public static final LargeVariantSupplier<ArrowOnlyButton> GOLD_BUTTON = registerLargeVariantButton("gold",
-            (properties, large) -> new ArrowOnlyButton(BlockSetType.STONE, properties, large, false), "arrow_button");
+            (properties, large) -> new ArrowOnlyButton(BlockSetType.GOLD, properties, large, false, SoundType.STONE), "arrow_button");
 
     public static final LargeVariantSupplier<JammedButton> NETHERITE_BUTTON = registerLargeVariantButton("netherite",
             (properties, large) -> new JammedButton(BlockSetType.STONE, properties, large, false), "netherite_button");

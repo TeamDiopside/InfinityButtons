@@ -4,14 +4,15 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 
 public class ArrowOnlyButton extends NormalButton {
-    public ArrowOnlyButton(BlockSetType blockSetType, Properties properties, boolean large, boolean isLever) {
-        super(blockSetType, 20, properties, large, isLever);
+    public ArrowOnlyButton(BlockSetType blockSetType, Properties properties, boolean large, boolean isLever, SoundType soundType) {
+        super(blockSetType, 20, properties, large, isLever, soundType);
     }
 
     @Override

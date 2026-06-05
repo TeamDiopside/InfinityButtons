@@ -1,6 +1,8 @@
 package nl.teamdiopside.infinitybuttons.block.faced6;
 
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -18,5 +20,10 @@ public class LampButton extends ButtonFaced6 {
     @Override
     protected int getPressTicks() {
         return 20;
+    }
+
+    @Override
+    protected SoundType getSoundType(BlockState blockState) {
+        return SoundType.GLASS;
     }
 }
