@@ -416,6 +416,8 @@
   "config.jade.plugin_infinitybuttons.hide_torch_buttons": "Hide Torch Buttons",
   "config.jade.plugin_infinitybuttons.hide_lantern_buttons": "Hide Lantern Buttons",
 
+  "config.infinitybuttons.title": "Infinity Buttons",
+
   "config.infinitybuttons.alarm.mute.name": "Mute Emergency Alarms",
   "config.infinitybuttons.alarm.mute.description": "Prevent Emergency Buttons from playing a sound to your client",
 
