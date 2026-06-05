@@ -397,36 +397,6 @@
   "advancement.infinitybuttons.sticky": "Sticky!",
   "advancement.infinitybuttons.sticky.desc": "Create a Sticky Copper Button by pouring honey over a Waxed Copper Button",
 
-  "text.autoconfig.infinitybuttons.option.muteAlarmSound": "Mute Alarms",
-
-  "text.autoconfig.infinitybuttons.option.alarmSoundType": "Alarm Type",
-  "text.autoconfig.infinitybuttons.option.alarmSoundType.@Tooltip[0]": "The way in which Emergency Buttons produce an alarm",
-  "text.autoconfig.infinitybuttons.option.alarmSoundType.@Tooltip[1]": "RANGE: Alarms are audible up to a certain radius",
-  "text.autoconfig.infinitybuttons.option.alarmSoundType.@Tooltip[2]": "GLOBAL: Alarms are audible from anywhere in the world",
-  "text.autoconfig.infinitybuttons.option.alarmSoundType.@Tooltip[3]": " ",
-  "text.autoconfig.infinitybuttons.option.alarmSoundType.@Tooltip[4]": "§cChanging this client-side has no effect on a server,",
-  "text.autoconfig.infinitybuttons.option.alarmSoundType.@Tooltip[5]": "§cit has to be changed in the server's config",
-
-  "text.autoconfig.infinitybuttons.option.alarmSoundRange": "Alarm Range",
-  "text.autoconfig.infinitybuttons.option.alarmSoundRange.@Tooltip": "The distance in chunks in which the alarm is heard when 'Alarm Type' is set to 'RANGE'",
-
-  "text.autoconfig.infinitybuttons.option.alarmVillagerPanic": "Villager Panic",
-  "text.autoconfig.infinitybuttons.option.alarmVillagerPanic.@Tooltip": "Makes villagers run to their beds when hearing an alarm",
-
-  "text.autoconfig.infinitybuttons.option.tooltips": "Tooltips",
-  "text.autoconfig.infinitybuttons.option.tooltips.@Tooltip": "Whether tooltips show up",
-
-  "text.autoconfig.infinitybuttons.option.diamondParticles": "Diamond Button Particles",
-  "text.autoconfig.infinitybuttons.option.diamondParticles.@Tooltip": "Whether Diamond Buttons have particles around them",
-
-  "text.autoconfig.infinitybuttons.option.forceJadeHiding": "Force Hiding In Jade",
-  "text.autoconfig.infinitybuttons.option.forceJadeHiding.@Tooltip[0]": "Whether a server should force clients to hide secret buttons when using Jade",
-  "text.autoconfig.infinitybuttons.option.forceJadeHiding.@Tooltip[1]": " ",
-  "text.autoconfig.infinitybuttons.option.forceJadeHiding.@Tooltip[2]": "§cChanging this client-side has no effect on a server,",
-  "text.autoconfig.infinitybuttons.option.forceJadeHiding.@Tooltip[3]": "§cit has to be changed in the server's config",
-
-  "text.autoconfig.infinitybuttons.title": "Infinity Buttons Config",
-
   "tag.item.infinitybuttons.bookshelf_secret_buttons": "Bookshelf Secret Buttons",
   "tag.item.infinitybuttons.concrete_powder_buttons": "Concrete Powder Buttons",
   "tag.item.infinitybuttons.concrete_powder_large_buttons": "Concrete Powder Large Buttons",
@@ -446,20 +416,24 @@
   "config.jade.plugin_infinitybuttons.hide_torch_buttons": "Hide Torch Buttons",
   "config.jade.plugin_infinitybuttons.hide_lantern_buttons": "Hide Lantern Buttons",
 
-  "config.infinitybuttons.title": "Infinity Buttons",
-  "config.infinitybuttons.alarm_type.name": "Emergency Alarm Sound Type",
-  "config.infinitybuttons.alarm_type.description": "Determine how Emergency Buttons play their sound:\n- RANGE: Play within a certain range\n- GLOBAL: Play it to all players on the server",
-  "config.infinitybuttons.alarm_range.name": "Emergency Alarm Range",
-  "config.infinitybuttons.alarm_range.description": "Range of the Emergency Button sounds, only if sound type is set to RANGE",
   "config.infinitybuttons.alarm.mute.name": "Mute Emergency Alarms",
   "config.infinitybuttons.alarm.mute.description": "Prevent Emergency Buttons from playing a sound to your client",
-  "config.infinitybuttons.alarm.villager_panic.name": "Villager Panic after Emergency Alarm",
-  "config.infinitybuttons.alarm.villager_panic.description": "Have Villagers that hear the emergency alarm sound panic",
+
+  "config.infinitybuttons.alarm_type.name": "Alarm Type",
+  "config.infinitybuttons.alarm_type.description": "The way in which Emergency Buttons produce an alarm\nRANGE: Alarms are audible up to a certain radius\nGLOBAL: Alarms are audible from anywhere in the world\n \n§cChanging this client-side has no effect on a server,\n§cit has to be changed in the server's config",
+
+  "config.infinitybuttons.alarm_range.name": "Alarm Range",
+  "config.infinitybuttons.alarm_range.description": "The distance in chunks in which the alarm is heard when 'Alarm Type' is set to 'RANGE'",
+
+  "config.infinitybuttons.alarm.villager_panic.name": "Villager Panic",
+  "config.infinitybuttons.alarm.villager_panic.description": "Makes villagers panic and run to their beds when hearing an alarm",
+
   "config.infinitybuttons.diamond_particles.name": "Diamond Button Particles",
-  "config.infinitybuttons.diamond_particles.description": "Make the Diamond Button & Large Button shine sparkles",
-  "config.infinitybuttons.force_jade_camouflage.name": "Force Jade Camouflage",
-  "config.infinitybuttons.force_jade_camouflage.description": "God only knows what this setting does",
+  "config.infinitybuttons.diamond_particles.description": "Whether Diamond Buttons have shiny particles around them",
+
+  "config.infinitybuttons.force_jade_camouflage.name": "Force Hiding In Jade",
+  "config.infinitybuttons.force_jade_camouflage.description": "Whether a server should force clients to hide secret buttons when using Jade\n \n§cChanging this client-side has no effect on a server,\n§cit has to be changed in the server's config",
 
   "config.infinitybuttons.config.name": "Infinity Buttons Config",
-  "config.infinitybuttons.config.description": "Need your Buttons to be more Infinity? Changing these settings can make your Buttons 1024x more infinite!"
+  "config.infinitybuttons.config.description": "Need your Buttons to be more Infinity? Changing these settings can make your Buttons 1024x more infinite!\n \n§7More common options such as Tooltips can be found in the config of Diopside Lib"
 }
