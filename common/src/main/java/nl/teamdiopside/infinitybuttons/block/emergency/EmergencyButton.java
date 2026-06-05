@@ -32,7 +32,7 @@ public class EmergencyButton extends ButtonFaced6 {
     private static final VoxelShape SHAPE_UNPRESSED = Shapes.or(Block.box(5, 5, 10, 11, 11, 14), BASE);
     private static final VoxelShape SHAPE_PRESSED = Shapes.or(Block.box(5, 5, 12, 11, 11, 14), BASE);
 
-    public static final int PRESS_TICKS = 10;
+    public static final int PRESS_TICKS = 20;
 
     public EmergencyButton(BlockSetType blockSetType, Properties properties, VoxelShape shapePressed, VoxelShape shapeUnpressed) {
         super(blockSetType, PRESS_TICKS, properties, shapePressed, shapeUnpressed, false);
@@ -40,6 +40,13 @@ public class EmergencyButton extends ButtonFaced6 {
 
     public EmergencyButton(Properties properties) {
         super(BlockSetType.STONE, PRESS_TICKS, properties, SHAPE_PRESSED, SHAPE_UNPRESSED, false);
+    }
+
+    @Override
+    public void unpress(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
+        super.unpress(blockState, level, blockPos, player);
+
+        Block.pushEntitiesUp(blockState, level.getBlockState(blockPos), level, blockPos);
     }
 
     public static void emergencySound(Level level, BlockPos pos) {

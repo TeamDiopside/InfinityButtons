@@ -2,6 +2,7 @@ package nl.teamdiopside.infinitybuttons.block.emergency;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
@@ -44,11 +45,16 @@ public class SafeEmergencyButton extends EmergencyButton {
     public void openCase(BlockState state, Level level, BlockPos pos) {
         level.setBlockAndUpdate(pos, state.setValue(CLOSED, false));
         this.updateNeighbors(state, level, pos);
+
+        playSound(null, level, pos, true);
     }
 
     public void closeCase(BlockState state, Level level, BlockPos pos) {
         level.setBlockAndUpdate(pos, state.setValue(CLOSED, true));
         this.updateNeighbors(state, level, pos);
+
+        Block.pushEntitiesUp(state, level.getBlockState(pos), level, pos);
+        playSound(null, level, pos, false);
     }
 
     private void updateNeighbors(BlockState state, Level level, BlockPos pos) {
@@ -64,17 +70,19 @@ public class SafeEmergencyButton extends EmergencyButton {
     @Override
     protected @NotNull InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
         if (!player.isShiftKeyDown()) {
-            if (blockState.getValue(CLOSED)) return InteractionResult.FAIL; // TODO: Show actionbar
+            if (blockState.getValue(CLOSED)) {
+                player.displayClientMessage(Component.translatable("infinitybuttons.actionbar.closed_safety_button"), true);
+                return InteractionResult.FAIL;
+            }
             return super.useWithoutItem(blockState, level, blockPos, player, blockHitResult);
         }
 
         if (blockState.getValue(CLOSED)) {
             this.openCase(blockState, level, blockPos);
-            return InteractionResult.SUCCESS;
         } else {
             this.closeCase(blockState, level, blockPos);
-            return InteractionResult.SUCCESS;
         }
+        return InteractionResult.SUCCESS;
     }
 
     @Override
