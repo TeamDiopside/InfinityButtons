@@ -2,11 +2,14 @@ package nl.teamdiopside.infinitybuttons.registry;
 
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.StandingAndWallBlockItem;
 import nl.teamdiopside.diopside.registry.ItemEntryBuilder;
 import nl.teamdiopside.infinitybuttons.block.faced4.TorchButton;
+import nl.teamdiopside.infinitybuttons.item.SafeEmergencyButtonItem;
 
+import java.util.HashMap;
 import java.util.function.Supplier;
 
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
@@ -29,6 +32,21 @@ public class IBItems {
 
     public static RegistrySupplier<StandingAndWallBlockItem> registerTorch(String name, Supplier<TorchButton> standing, Supplier<TorchButton> wall) {
         return registerItem(name, ItemEntryBuilder.ofItem(properties -> new StandingAndWallBlockItem(standing.get(), wall.get(), properties, Direction.DOWN)), new Item.Properties());
+    }
+
+    public static HashMap<DyeColor, RegistrySupplier<SafeEmergencyButtonItem>> SAFETY_BUTTONS = registerSafetyButtons();
+
+    public static RegistrySupplier<SafeEmergencyButtonItem> registerSafetyButton(DyeColor color) {
+        var safeEmergencyButton = IBBlocks.SAFE_EMERGENCY_BUTTONS.get(color);
+        return registerItem(safeEmergencyButton.getId().getPath(), ItemEntryBuilder.ofItem(properties -> new SafeEmergencyButtonItem(safeEmergencyButton.get(), properties)), new Item.Properties());
+    }
+
+    public static HashMap<DyeColor, RegistrySupplier<SafeEmergencyButtonItem>> registerSafetyButtons() {
+        HashMap<DyeColor, RegistrySupplier<SafeEmergencyButtonItem>> map = new HashMap<>();
+        for (DyeColor color : DyeColor.values()) {
+            map.put(color, registerSafetyButton(color));
+        }
+        return map;
     }
 
     /**

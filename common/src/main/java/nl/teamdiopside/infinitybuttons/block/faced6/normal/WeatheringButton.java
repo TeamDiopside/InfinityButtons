@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockState;
+import nl.teamdiopside.infinitybuttons.registry.IBAdvancementTriggers;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import org.jetbrains.annotations.NotNull;
 
@@ -132,9 +133,8 @@ public interface WeatheringButton extends WeatheringCopper {
             level.setBlock(blockPos, waxedBlockState, Block.UPDATE_ALL_IMMEDIATE);
             level.levelEvent(player, 3004, blockPos, 0);
             level.playSound(player, blockPos, SoundEvents.AXE_WAX_OFF, SoundSource.BLOCKS, 1.0f, 1.0f);
-            // TODO, advancement
-//            if (player instanceof ServerPlayer serverPlayer)
-//                InfinityButtonsTriggers.WAX_OFF_TRIGGER.trigger(serverPlayer);
+            if (player instanceof ServerPlayer serverPlayer)
+                IBAdvancementTriggers.WAX_OFF_TRIGGER.get().trigger(serverPlayer);
             return sidedSuccess(level.isClientSide());
         }).orElse(sidedSuccess(level.isClientSide()));
     }

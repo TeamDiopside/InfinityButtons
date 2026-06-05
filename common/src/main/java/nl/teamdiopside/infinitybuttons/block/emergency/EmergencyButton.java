@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.protocol.game.ClientboundSoundPacket;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -20,8 +21,10 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import nl.teamdiopside.infinitybuttons.block.ButtonFaced6;
+import nl.teamdiopside.infinitybuttons.registry.IBAdvancementTriggers;
 import nl.teamdiopside.infinitybuttons.registry.IBConfig;
 import nl.teamdiopside.infinitybuttons.registry.IBSounds;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashSet;
@@ -117,13 +120,17 @@ public class EmergencyButton extends ButtonFaced6 {
             emergencySound(level, pos);
         }
 
+        if (player instanceof ServerPlayer serverPlayer) {
+            IBAdvancementTriggers.EMERGENCY_TRIGGER.get().trigger(serverPlayer);
+        }
+
         if (level instanceof ServerLevel && IBConfig.alarmVillagerPanic()) {
             scareVillagers((ServerLevel) level, pos);
         }
     }
 
     @Override
-    protected SoundEvent getSound(boolean press) {
+    protected @NotNull SoundEvent getSound(boolean press) {
         return SoundEvents.BONE_BLOCK_BREAK;
     }
 }

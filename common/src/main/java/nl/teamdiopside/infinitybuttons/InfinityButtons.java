@@ -15,6 +15,7 @@ public final class InfinityButtons {
         IBItems.register();
         IBCreativeTabs.register();
         IBParticles.register();
+        IBAdvancementTriggers.register();
         IBNetworking.register();
         IBConfig.register();
     }
