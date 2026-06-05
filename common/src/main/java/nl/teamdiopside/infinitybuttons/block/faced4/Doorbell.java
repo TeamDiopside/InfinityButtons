@@ -15,12 +15,12 @@ import nl.teamdiopside.infinitybuttons.registry.IBSounds;
 public class Doorbell extends ButtonFaced4 {
 
     protected static final VoxelShape PRESSED_SHAPE = Block.box(6, 4, 14, 10, 12, 16);
-    protected static final VoxelShape SHAPE = Shapes.or(PRESSED_SHAPE, Block.box(7, 6, 13, 9, 10, 14));
+    protected static final VoxelShape FULL_SHAPE = Shapes.or(PRESSED_SHAPE, Block.box(7, 7, 13, 9, 9, 14));
 
     public final boolean emitsPower;
 
     public Doorbell(Properties properties, boolean emitsPower) {
-        super(properties, PRESSED_SHAPE, SHAPE, false);
+        super(properties, PRESSED_SHAPE, FULL_SHAPE, false);
         this.emitsPower = emitsPower;
     }
 
