@@ -378,10 +378,10 @@ public class IBBlocks {
      */
     public static final RegistrySupplier<LetterButton> LETTER_BUTTON = registerBlock("letter_button",
             BlockEntryBuilder.ofBlock((properties) -> new LetterButton(properties, false)),
-            BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.METAL), null);
+            BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.METAL), null);
     public static final RegistrySupplier<LetterButton> LETTER_LEVER = registerBlock("letter_lever",
             BlockEntryBuilder.ofBlock((properties) -> new LetterButton(properties, true)),
-            BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.METAL), null);
+            BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.METAL), null);
 
     /**
      * Properties
