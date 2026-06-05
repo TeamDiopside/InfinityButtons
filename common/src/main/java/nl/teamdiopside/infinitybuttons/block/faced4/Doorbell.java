@@ -3,6 +3,7 @@ package nl.teamdiopside.infinitybuttons.block.faced4;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -11,6 +12,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import nl.teamdiopside.infinitybuttons.block.ButtonFaced4;
 import nl.teamdiopside.infinitybuttons.registry.IBSounds;
+import org.jetbrains.annotations.Nullable;
 
 public class Doorbell extends ButtonFaced4 {
 
@@ -22,6 +24,14 @@ public class Doorbell extends ButtonFaced4 {
     public Doorbell(Properties properties, boolean emitsPower) {
         super(properties, PRESSED_SHAPE, FULL_SHAPE, false);
         this.emitsPower = emitsPower;
+    }
+
+    @Override
+    public @Nullable BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
+        if (blockPlaceContext.getClickedFace().getAxis().isVertical()) {
+            return null;
+        }
+        return defaultBlockState().setValue(FACING, blockPlaceContext.getClickedFace());
     }
 
     @Override
