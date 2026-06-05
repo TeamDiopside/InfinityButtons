@@ -153,7 +153,7 @@ public class BlockTagGenerator extends FabricTagProvider<Block> {
                 .add(IBBlocks.WARPED_PLANK_SECRET_BUTTON.get());
 
         getOrCreateTagBuilder(BOOKSHELF_SECRET_BUTTONS)
-                .add(IBBlocks.BOOKSHELF_SECRET_BUTTON.get());
+                .add(IBBlocks.BOOKSHELF_SECRET_BUTTON.get()); // TODO: Mod compat bookshelves
 
         getOrCreateTagBuilder(TORCH_BUTTONS)
                 .add(IBBlocks.TORCH_BUTTON.get())
