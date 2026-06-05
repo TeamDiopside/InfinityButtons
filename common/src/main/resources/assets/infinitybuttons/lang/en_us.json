@@ -375,6 +375,8 @@
   "infinitybuttons.tooltip.doorbell_button": "This doorbell emits a redstone signal",
   "infinitybuttons.tooltip.letter_button": "Sneak-click to change the character",
   "infinitybuttons.tooltip.lantern_button": "Emits a redstone signal at the top most chain above the lantern",
+  "infinitybuttons.tooltip.emergency_button": "Plays a loud sound to all players on the server",
+  "infinitybuttons.tooltip.secret_button": "This block-camouflaged button can only be pressed from the front side",
 
   "infinitybuttons.actionbar.closed_safety_button": "Sneak to open and close",
 
@@ -396,6 +398,7 @@
   "advancement.infinitybuttons.sticky.desc": "Create a Sticky Copper Button by pouring honey over a Waxed Copper Button",
 
   "text.autoconfig.infinitybuttons.option.muteAlarmSound": "Mute Alarms",
+
   "text.autoconfig.infinitybuttons.option.alarmSoundType": "Alarm Type",
   "text.autoconfig.infinitybuttons.option.alarmSoundType.@Tooltip[0]": "The way in which Emergency Buttons produce an alarm",
   "text.autoconfig.infinitybuttons.option.alarmSoundType.@Tooltip[1]": "RANGE: Alarms are audible up to a certain radius",
@@ -403,19 +406,25 @@
   "text.autoconfig.infinitybuttons.option.alarmSoundType.@Tooltip[3]": " ",
   "text.autoconfig.infinitybuttons.option.alarmSoundType.@Tooltip[4]": "§cChanging this client-side has no effect on a server,",
   "text.autoconfig.infinitybuttons.option.alarmSoundType.@Tooltip[5]": "§cit has to be changed in the server's config",
+
   "text.autoconfig.infinitybuttons.option.alarmSoundRange": "Alarm Range",
   "text.autoconfig.infinitybuttons.option.alarmSoundRange.@Tooltip": "The distance in chunks in which the alarm is heard when 'Alarm Type' is set to 'RANGE'",
+
   "text.autoconfig.infinitybuttons.option.alarmVillagerPanic": "Villager Panic",
   "text.autoconfig.infinitybuttons.option.alarmVillagerPanic.@Tooltip": "Makes villagers run to their beds when hearing an alarm",
+
   "text.autoconfig.infinitybuttons.option.tooltips": "Tooltips",
   "text.autoconfig.infinitybuttons.option.tooltips.@Tooltip": "Whether tooltips show up",
+
   "text.autoconfig.infinitybuttons.option.diamondParticles": "Diamond Button Particles",
   "text.autoconfig.infinitybuttons.option.diamondParticles.@Tooltip": "Whether Diamond Buttons have particles around them",
+
   "text.autoconfig.infinitybuttons.option.forceJadeHiding": "Force Hiding In Jade",
   "text.autoconfig.infinitybuttons.option.forceJadeHiding.@Tooltip[0]": "Whether a server should force clients to hide secret buttons when using Jade",
   "text.autoconfig.infinitybuttons.option.forceJadeHiding.@Tooltip[1]": " ",
   "text.autoconfig.infinitybuttons.option.forceJadeHiding.@Tooltip[2]": "§cChanging this client-side has no effect on a server,",
   "text.autoconfig.infinitybuttons.option.forceJadeHiding.@Tooltip[3]": "§cit has to be changed in the server's config",
+
   "text.autoconfig.infinitybuttons.title": "Infinity Buttons Config",
 
   "tag.item.infinitybuttons.bookshelf_secret_buttons": "Bookshelf Secret Buttons",
