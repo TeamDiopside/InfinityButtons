@@ -12,8 +12,8 @@ public class AtmosphericBlocks extends IBModdedBlocks {
     public static final AtmosphericBlocks INSTANCE = new AtmosphericBlocks();
     public static final String NAMESPACE = "atmospheric";
 
-    public static final IBRegistryUtils.LargeVariantSupplier<OneUseButton> SAND_BUTTON = registerOneUseButton("sand");
-    public static final IBRegistryUtils.LargeVariantSupplier<OneUseButton> RED_SAND_BUTTON = registerOneUseButton("red_sand");
+    public static final IBRegistryUtils.LargeVariantSupplier<OneUseButton> ARID_SAND_BUTTON = INSTANCE.registerOneUseButton("arid_sand");
+    public static final IBRegistryUtils.LargeVariantSupplier<OneUseButton> RED_ARID_SAND_BUTTON = INSTANCE.registerOneUseButton("red_arid_sand");
 
     public static final RegistrySupplier<SecretButton> ROSEWOOD_BOOKSHELF_SECRET_BUTTON = INSTANCE.registerBookshelf("rosewood");
     public static final RegistrySupplier<SecretButton> MORADO_BOOKSHELF_SECRET_BUTTON = INSTANCE.registerBookshelf("morado");
