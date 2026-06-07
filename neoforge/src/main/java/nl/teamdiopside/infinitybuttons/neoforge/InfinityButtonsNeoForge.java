@@ -3,8 +3,8 @@ package nl.teamdiopside.infinitybuttons.neoforge;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+import nl.teamdiopside.infinitybuttons.IBConfig;
 import nl.teamdiopside.infinitybuttons.InfinityButtons;
-import nl.teamdiopside.infinitybuttons.registry.IBConfig;
 
 @Mod(InfinityButtons.MOD_ID)
 public final class InfinityButtonsNeoForge {

@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import nl.teamdiopside.infinitybuttons.registry.IBConfig;
+import nl.teamdiopside.infinitybuttons.IBConfig;
 import nl.teamdiopside.infinitybuttons.registry.IBParticles;
 import org.joml.Vector3f;
 

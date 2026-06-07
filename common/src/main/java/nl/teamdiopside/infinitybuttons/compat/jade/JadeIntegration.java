@@ -4,7 +4,6 @@ import net.minecraft.resources.ResourceLocation;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.TorchButton;
 import nl.teamdiopside.infinitybuttons.block.simple.LanternButton;
-import nl.teamdiopside.infinitybuttons.registry.IBConfig;
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaPlugin;
@@ -20,11 +19,16 @@ public class JadeIntegration implements IWailaPlugin {
     static final ResourceLocation CONFIG_HIDE_TORCH_BUTTONS = ResourceLocation.fromNamespaceAndPath(MOD_ID, "hide_torch_buttons");
     static final ResourceLocation CONFIG_HIDE_LANTERN_BUTTONS = ResourceLocation.fromNamespaceAndPath(MOD_ID, "hide_lantern_buttons");
 
+    private static boolean serverMandatesCamouflage = false;
+
+    public static void setServerMandatesCamouflage(boolean value) {
+        serverMandatesCamouflage = value;
+    }
+
     private boolean shouldHide(ResourceLocation config) {
-        if (IBConfig.forceJadeHiding())
-            return true;
-        else
-            return IWailaConfig.get().getPlugin().get(config);
+        if (serverMandatesCamouflage) return true;
+
+        return IWailaConfig.get().getPlugin().get(config);
     }
 
     @Override
