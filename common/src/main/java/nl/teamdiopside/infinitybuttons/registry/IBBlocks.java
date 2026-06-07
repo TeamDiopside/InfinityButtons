@@ -58,7 +58,7 @@ public class IBBlocks {
     public static final LargeVariantSupplier<NormalButton> TUFF_BUTTON = registerStoneButton("tuff", SoundType.TUFF);
     public static final LargeVariantSupplier<NormalButton> DRIPSTONE_BUTTON = registerStoneButton("dripstone", SoundType.DRIPSTONE_BLOCK);
 
-    private static LargeVariantSupplier<NormalButton> registerStoneButton(String type, SoundType soundType) {
+    protected static LargeVariantSupplier<NormalButton> registerStoneButton(String type, SoundType soundType) {
         LargeVariantSupplier<NormalButton> supplier = registerLargeVariantButton(type,
                 (properties, large) -> new NormalButton(BlockSetType.STONE, 20, properties, large, false, soundType), null);
 
@@ -80,14 +80,14 @@ public class IBBlocks {
         }
     }
 
-    private static LargeVariantSupplier<OneUseButton> registerOneUseButton(String type) {
+    protected static LargeVariantSupplier<OneUseButton> registerOneUseButton(String type) {
         LargeVariantSupplier<OneUseButton> supplier = registerLargeVariantButton(type,
                 (properties, large) -> new OneUseButton(BlockSetType.STONE, properties, large, false, type.equals("gravel")), "falling_button");
         ONE_USE_BUTTONS.put(type, supplier);
         return supplier;
     }
 
-    private static void registerConcretePowderButton(DyeColor color, String type) {
+    protected static void registerConcretePowderButton(DyeColor color, String type) {
         LargeVariantSupplier<OneUseButton> supplier = registerOneUseButton(type);
         CONCRETE_POWDER_BUTTONS.put(color, supplier);
     }
@@ -121,7 +121,7 @@ public class IBBlocks {
      */
     public static final BiHashMap<CopperButtonType, WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>> COPPER_BUTTONS = registerCopperButtons();
 
-    private static LargeVariantSupplier<CopperButton> registerCopperButton(CopperButtonType copperButtonType, WeatheringCopper.WeatherState weatherState) {
+    protected static LargeVariantSupplier<CopperButton> registerCopperButton(CopperButtonType copperButtonType, WeatheringCopper.WeatherState weatherState) {
         String state = weatherState == WeatheringCopper.WeatherState.UNAFFECTED ? "copper" : weatherState.getSerializedName() + "_copper";
         String type = copperButtonType == CopperButtonType.NORMAL ? state : copperButtonType.getName() + "_" + state;
 
@@ -134,7 +134,7 @@ public class IBBlocks {
         ));
     }
 
-    private static BiHashMap<CopperButtonType, WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>> registerCopperButtons() {
+    protected static BiHashMap<CopperButtonType, WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>> registerCopperButtons() {
         BiHashMap<CopperButtonType, WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>> typeMap = new BiHashMap<>();
         for (CopperButtonType type : CopperButtonType.values()) {
             for (WeatheringCopper.WeatherState state : WeatheringCopper.WeatherState.values()) {
@@ -149,7 +149,7 @@ public class IBBlocks {
      */
     public static final HashMap<BlockSetType, RegistrySupplier<NormalButton>> DEFAULT_LARGE_BUTTONS = registerDefaultLargeButtons();
 
-    private static HashMap<BlockSetType, RegistrySupplier<NormalButton>> registerDefaultLargeButtons() {
+    protected static HashMap<BlockSetType, RegistrySupplier<NormalButton>> registerDefaultLargeButtons() {
         HashMap<BlockSetType, RegistrySupplier<NormalButton>> map = new HashMap<>();
         for (BlockSetType type : BlockSetType.values().toList()) {
             if (type == BlockSetType.COPPER || type == BlockSetType.GOLD || type == BlockSetType.IRON) continue;
@@ -239,7 +239,7 @@ public class IBBlocks {
             SecretButtonType.FULL_BLOCK_BRICK, Blocks.RED_NETHER_BRICKS );
 
 
-    private static RegistrySupplier<SecretButton> registerSecretButton(
+    protected static RegistrySupplier<SecretButton> registerSecretButton(
             String blockId,
             SecretButtonType type,
             Block originalBlock
@@ -398,35 +398,35 @@ public class IBBlocks {
     /**
      * Properties
      */
-    private static BlockBehaviour.Properties getDefaultProperties() {
+    protected static BlockBehaviour.Properties getDefaultProperties() {
         return BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON);
     }
 
-    private static BlockBehaviour.Properties lampProperties(int light) {
+    protected static BlockBehaviour.Properties lampProperties(int light) {
         return BlockBehaviour.Properties.of().lightLevel(litBlockEmission(light)).sound(SoundType.GLASS).pushReaction(PushReaction.DESTROY);
     }
 
-    private static BlockBehaviour.Properties torchProperties(int light) {
+    protected static BlockBehaviour.Properties torchProperties(int light) {
         return BlockBehaviour.Properties.of().noCollission().strength(0.3f).instabreak().lightLevel(litBlockEmission(light)).sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY);
     }
 
-    private static BlockBehaviour.Properties lanternProperties(int light) {
+    protected static BlockBehaviour.Properties lanternProperties(int light) {
         return BlockBehaviour.Properties.of().lightLevel((p) -> light).sound(SoundType.LANTERN)
                 .pushReaction(PushReaction.DESTROY).requiresCorrectToolForDrops().strength(3.5f);
     }
 
-    private static ToIntFunction<BlockState> litBlockEmission(int light) {
+    protected static ToIntFunction<BlockState> litBlockEmission(int light) {
         return blockState -> blockState.getValue(BlockStateProperties.POWERED) ? light : 0;
     }
 
     /**
      * Base Registry Functions
      */
-    private static <T extends Block> RegistrySupplier<T> registerBlock(String blockId, BlockEntryBuilder<T> builder, BlockBehaviour.Properties properties, String tooltipKey) {
+    protected static <T extends Block> RegistrySupplier<T> registerBlock(String blockId, BlockEntryBuilder<T> builder, BlockBehaviour.Properties properties, String tooltipKey) {
         return registerBlock(blockId, builder, properties, tooltipKey, ignored -> tooltipKey != null);
     }
 
-    private static <T extends Block> RegistrySupplier<T> registerBlock(String blockId, BlockEntryBuilder<T> builder, BlockBehaviour.Properties properties, String tooltipKey, Function<ItemStack, Boolean> tooltipCondition) {
+    protected static <T extends Block> RegistrySupplier<T> registerBlock(String blockId, BlockEntryBuilder<T> builder, BlockBehaviour.Properties properties, String tooltipKey, Function<ItemStack, Boolean> tooltipCondition) {
         RegistrySupplier<T> registry = builder.withTooltip(TooltipBuilder
                 .builder("infinitybuttons.tooltip." + tooltipKey)
                 .setTooltipClass(HoldKeyTooltip.class)
@@ -440,11 +440,11 @@ public class IBBlocks {
 
 
     @FunctionalInterface
-    private interface LargeButtonConstructor<T extends Block> {
+    protected interface LargeButtonConstructor<T extends Block> {
         T create(BlockBehaviour.Properties properties, boolean large);
     }
 
-    private static <T extends Block> LargeVariantSupplier<T> registerLargeVariantButton(String type, LargeButtonConstructor<T> constructor, String tooltipKey) {
+    protected static <T extends Block> LargeVariantSupplier<T> registerLargeVariantButton(String type, LargeButtonConstructor<T> constructor, String tooltipKey) {
         LargeVariantSupplier<T> supplier = LargeVariantSupplier.registerVariants((large) -> {
             String blockId = type + (large ? "_large_button" : "_button");
 
