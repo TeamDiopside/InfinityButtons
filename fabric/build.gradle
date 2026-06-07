@@ -42,6 +42,9 @@ dependencies {
     modRuntimeOnly files('libs/jei-1.21.1-fabric-19.27.0.340.jar')
     modRuntimeOnly files('libs/emi-1.1.24+1.21.1+fabric.jar')
 
+    modCompileOnly files("libs/Jade-1.21.1-Fabric-15.10.5.jar")
+    modLocalRuntime files("libs/Jade-1.21.1-Fabric-15.10.5.jar")
+
     modImplementation "dev.isxander:yet-another-config-lib:${rootProject.yacl_version}-fabric"
     modImplementation "com.terraformersmc:modmenu:${rootProject.modmenu_version}"
 

@@ -44,6 +44,9 @@ dependencies {
     forgeRuntimeLibrary "org.quiltmc.parsers:json:${rootProject.gson_version}"
     forgeRuntimeLibrary "org.quiltmc.parsers:gson:${rootProject.gson_version}"
 
+    modCompileOnly files("libs/Jade-1.21.1-NeoForge-15.10.5.jar")
+    modLocalRuntime files("libs/Jade-1.21.1-NeoForge-15.10.5.jar")
+
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
 }
