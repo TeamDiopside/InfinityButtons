@@ -174,7 +174,7 @@ public class IBBlocks {
     public static final RegistrySupplier<SecretButton> BRICK_SECRET_BUTTON = registerSecretButton("brick_secret_button",
             SecretButtonType.FULL_BLOCK_BRICK, Blocks.BRICKS );
     public static final RegistrySupplier<SecretButton> STONE_BRICK_SECRET_BUTTON = registerSecretButton("stone_brick_secret_button",
-            SecretButtonType.BIG_BRICK, Blocks.BRICKS );
+            SecretButtonType.BIG_BRICK, Blocks.STONE_BRICKS );
     public static final RegistrySupplier<SecretButton> MOSSY_STONE_BRICK_SECRET_BUTTON = registerSecretButton("mossy_stone_brick_secret_button",
             SecretButtonType.BIG_BRICK, Blocks.MOSSY_STONE_BRICKS );
     public static final RegistrySupplier<SecretButton> CRACKED_STONE_BRICK_SECRET_BUTTON = registerSecretButton("cracked_stone_brick_secret_button",
@@ -246,7 +246,7 @@ public class IBBlocks {
     ) {
         RegistrySupplier<SecretButton> blockRS = registerBlock(
                 blockId,
-                BlockEntryBuilder.ofBlock(buttonProperties -> new SecretButton(buttonProperties, type)),
+                BlockEntryBuilder.ofBlock(buttonProperties -> new SecretButton(buttonProperties, type, originalBlock)),
                 BlockBehaviour.Properties.ofFullCopy(originalBlock),
                 "secret_button"
         );
@@ -258,46 +258,58 @@ public class IBBlocks {
      * Torches
      */
     public static final RegistrySupplier<TorchButton> TORCH_BUTTON = registerBlock("torch_button", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(properties, ParticleTypes.FLAME, false, false, false)).withoutItem(), torchProperties(14), null);
+            new TorchButton(properties, ParticleTypes.FLAME, false, false, false, Blocks.TORCH)
+    ).withoutItem(), torchProperties(14), null);
     public static final RegistrySupplier<TorchButton> WALL_TORCH_BUTTON = registerBlock("wall_torch_button", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(properties.dropsLike(TORCH_BUTTON.get()), ParticleTypes.FLAME, false, true, false)).withoutItem(), torchProperties(14), null);
+            new TorchButton(properties.dropsLike(TORCH_BUTTON.get()), ParticleTypes.FLAME, false, true, false, Blocks.TORCH)
+    ).withoutItem(), torchProperties(14), null);
 
     public static final RegistrySupplier<TorchButton> TORCH_LEVER = registerBlock("torch_lever", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(properties, ParticleTypes.FLAME, true, false, false)).withoutItem(), torchProperties(14), null);
+            new TorchButton(properties, ParticleTypes.FLAME, true, false, false, Blocks.TORCH)
+    ).withoutItem(), torchProperties(14), null);
     public static final RegistrySupplier<TorchButton> WALL_TORCH_LEVER = registerBlock("wall_torch_lever", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(properties.dropsLike(TORCH_LEVER.get()), ParticleTypes.FLAME, true, true, false)), torchProperties(14), null);
+            new TorchButton(properties.dropsLike(TORCH_LEVER.get()), ParticleTypes.FLAME, true, true, false, Blocks.TORCH)
+    ), torchProperties(14), null);
 
     public static final RegistrySupplier<TorchButton> SOUL_TORCH_BUTTON = registerBlock("soul_torch_button", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(properties, ParticleTypes.SOUL_FIRE_FLAME, false, false, false)).withoutItem(), torchProperties(10), null);
+            new TorchButton(properties, ParticleTypes.SOUL_FIRE_FLAME, false, false, false, Blocks.SOUL_TORCH)
+    ).withoutItem(), torchProperties(10), null);
     public static final RegistrySupplier<TorchButton> SOUL_WALL_TORCH_BUTTON = registerBlock("soul_wall_torch_button", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(properties.dropsLike(SOUL_TORCH_BUTTON.get()), ParticleTypes.SOUL_FIRE_FLAME, false, true, false)), torchProperties(10), null);
+            new TorchButton(properties.dropsLike(SOUL_TORCH_BUTTON.get()), ParticleTypes.SOUL_FIRE_FLAME, false, true, false, Blocks.SOUL_TORCH)
+    ), torchProperties(10), null);
 
     public static final RegistrySupplier<TorchButton> SOUL_TORCH_LEVER = registerBlock("soul_torch_lever", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(properties, ParticleTypes.SOUL_FIRE_FLAME, true, false, false)).withoutItem(), torchProperties(10), null);
+            new TorchButton(properties, ParticleTypes.SOUL_FIRE_FLAME, true, false, false, Blocks.SOUL_TORCH)
+    ).withoutItem(), torchProperties(10), null);
     public static final RegistrySupplier<TorchButton> SOUL_WALL_TORCH_LEVER = registerBlock("soul_wall_torch_lever", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(properties.dropsLike(SOUL_TORCH_LEVER.get()), ParticleTypes.SOUL_FIRE_FLAME, true, true, false)), torchProperties(10), null);
+            new TorchButton(properties.dropsLike(SOUL_TORCH_LEVER.get()), ParticleTypes.SOUL_FIRE_FLAME, true, true, false, Blocks.SOUL_TORCH)
+    ), torchProperties(10), null);
 
     public static final RegistrySupplier<TorchButton> REDSTONE_TORCH_BUTTON = registerBlock("redstone_torch_button", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(properties, new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), false, false, true)).withoutItem(), torchProperties(7), null);
+            new TorchButton(properties, new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), false, false, true, Blocks.REDSTONE_TORCH)
+    ).withoutItem(), torchProperties(7), null);
     public static final RegistrySupplier<TorchButton> REDSTONE_WALL_TORCH_BUTTON = registerBlock("redstone_wall_torch_button", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(properties.dropsLike(REDSTONE_TORCH_BUTTON.get()), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), false, true, true)), torchProperties(7), null);
+            new TorchButton(properties.dropsLike(REDSTONE_TORCH_BUTTON.get()), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), false, true, true, Blocks.REDSTONE_TORCH)
+    ), torchProperties(7), null);
 
     public static final RegistrySupplier<TorchButton> REDSTONE_TORCH_LEVER = registerBlock("redstone_torch_lever", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(properties, new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), true, false, true)).withoutItem(), torchProperties(7), null);
+            new TorchButton(properties, new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), true, false, true, Blocks.REDSTONE_TORCH)
+    ).withoutItem(), torchProperties(7), null);
     public static final RegistrySupplier<TorchButton> REDSTONE_WALL_TORCH_LEVER = registerBlock("redstone_wall_torch_lever", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(properties.dropsLike(REDSTONE_TORCH_LEVER.get()), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), true, true, true)).withoutItem(), torchProperties(7), null);
+            new TorchButton(properties.dropsLike(REDSTONE_TORCH_LEVER.get()), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), true, true, true, Blocks.REDSTONE_TORCH)
+    ).withoutItem(), torchProperties(7), null);
 
     /**
      * Lanterns
      */
     public static final RegistrySupplier<LanternButton> LANTERN_BUTTON = registerBlock("lantern_button", BlockEntryBuilder.ofBlock(properties ->
-            new LanternButton(properties, false)), lanternProperties(15), "lantern_button");
+            new LanternButton(properties, false, Blocks.LANTERN)), lanternProperties(15), "lantern_button");
     public static final RegistrySupplier<LanternButton> LANTERN_LEVER = registerBlock("lantern_lever", BlockEntryBuilder.ofBlock(properties ->
-            new LanternButton(properties, true)), lanternProperties(15), "lantern_button");
+            new LanternButton(properties, true, Blocks.LANTERN)), lanternProperties(15), "lantern_button");
     public static final RegistrySupplier<LanternButton> SOUL_LANTERN_BUTTON = registerBlock("soul_lantern_button", BlockEntryBuilder.ofBlock(properties ->
-            new LanternButton(properties, false)), lanternProperties(10), "lantern_button");
+            new LanternButton(properties, false, Blocks.SOUL_LANTERN)), lanternProperties(10), "lantern_button");
     public static final RegistrySupplier<LanternButton> SOUL_LANTERN_LEVER = registerBlock("soul_lantern_lever", BlockEntryBuilder.ofBlock(properties ->
-            new LanternButton(properties, true)), lanternProperties(10), "lantern_button");
+            new LanternButton(properties, true, Blocks.SOUL_LANTERN)), lanternProperties(10), "lantern_button");
 
     /**
      * Console Buttons
