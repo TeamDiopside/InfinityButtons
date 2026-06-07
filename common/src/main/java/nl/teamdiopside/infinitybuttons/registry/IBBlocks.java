@@ -42,6 +42,8 @@ import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.getResource;
 
 public class IBBlocks {
+    public static final IBBlocks INSTANCE = new IBBlocks();
+
     public static final HashMap<String, LargeVariantSupplier<? extends Block>> SMALL_LARGE_BUTTONS = new HashMap<>();
     public static final HashMap<String, RegistrySupplier<? extends Block>> ALL_BUTTONS = new HashMap<>();
 
@@ -50,15 +52,15 @@ public class IBBlocks {
      */
     public static final HashMap<String, LargeVariantSupplier<NormalButton>> STONE_BUTTONS = new HashMap<>();
 
-    public static final LargeVariantSupplier<NormalButton> DEEPSLATE_BUTTON = registerStoneButton("deepslate", SoundType.DEEPSLATE);
-    public static final LargeVariantSupplier<NormalButton> GRANITE_BUTTON = registerStoneButton("granite", SoundType.STONE);
-    public static final LargeVariantSupplier<NormalButton> DIORITE_BUTTON = registerStoneButton("diorite", SoundType.STONE);
-    public static final LargeVariantSupplier<NormalButton> ANDESITE_BUTTON = registerStoneButton("andesite", SoundType.STONE);
-    public static final LargeVariantSupplier<NormalButton> CALCITE_BUTTON = registerStoneButton("calcite", SoundType.CALCITE);
-    public static final LargeVariantSupplier<NormalButton> TUFF_BUTTON = registerStoneButton("tuff", SoundType.TUFF);
-    public static final LargeVariantSupplier<NormalButton> DRIPSTONE_BUTTON = registerStoneButton("dripstone", SoundType.DRIPSTONE_BLOCK);
+    public static final LargeVariantSupplier<NormalButton> DEEPSLATE_BUTTON = INSTANCE.registerStoneButton("deepslate", SoundType.DEEPSLATE);
+    public static final LargeVariantSupplier<NormalButton> GRANITE_BUTTON = INSTANCE.registerStoneButton("granite", SoundType.STONE);
+    public static final LargeVariantSupplier<NormalButton> DIORITE_BUTTON = INSTANCE.registerStoneButton("diorite", SoundType.STONE);
+    public static final LargeVariantSupplier<NormalButton> ANDESITE_BUTTON = INSTANCE.registerStoneButton("andesite", SoundType.STONE);
+    public static final LargeVariantSupplier<NormalButton> CALCITE_BUTTON = INSTANCE.registerStoneButton("calcite", SoundType.CALCITE);
+    public static final LargeVariantSupplier<NormalButton> TUFF_BUTTON = INSTANCE.registerStoneButton("tuff", SoundType.TUFF);
+    public static final LargeVariantSupplier<NormalButton> DRIPSTONE_BUTTON = INSTANCE.registerStoneButton("dripstone", SoundType.DRIPSTONE_BLOCK);
 
-    protected static LargeVariantSupplier<NormalButton> registerStoneButton(String type, SoundType soundType) {
+    protected LargeVariantSupplier<NormalButton> registerStoneButton(String type, SoundType soundType) {
         LargeVariantSupplier<NormalButton> supplier = registerLargeVariantButton(type,
                 (properties, large) -> new NormalButton(BlockSetType.STONE, 20, properties, large, false, soundType), null);
 
@@ -70,24 +72,24 @@ public class IBBlocks {
     public static final HashMap<String, LargeVariantSupplier<OneUseButton>> ONE_USE_BUTTONS = new HashMap<>();
     public static final HashMap<DyeColor, LargeVariantSupplier<OneUseButton>> CONCRETE_POWDER_BUTTONS = new HashMap<>(); // Subset of above
 
-    public static final LargeVariantSupplier<OneUseButton> SAND_BUTTON = registerOneUseButton("sand");
-    public static final LargeVariantSupplier<OneUseButton> RED_SAND_BUTTON = registerOneUseButton("red_sand");
-    public static final LargeVariantSupplier<OneUseButton> GRAVEL_BUTTON = registerOneUseButton("gravel"); // Special case in-method
+    public static final LargeVariantSupplier<OneUseButton> SAND_BUTTON = INSTANCE.registerOneUseButton("sand");
+    public static final LargeVariantSupplier<OneUseButton> RED_SAND_BUTTON = INSTANCE.registerOneUseButton("red_sand");
+    public static final LargeVariantSupplier<OneUseButton> GRAVEL_BUTTON = INSTANCE.registerOneUseButton("gravel"); // Special case in-method
 
     static {
         for (DyeColor color : DyeColor.values()) {
-            registerConcretePowderButton(color, color.name().toLowerCase() + "_concrete_powder");
+            INSTANCE.registerConcretePowderButton(color, color.name().toLowerCase() + "_concrete_powder");
         }
     }
 
-    protected static LargeVariantSupplier<OneUseButton> registerOneUseButton(String type) {
+    protected LargeVariantSupplier<OneUseButton> registerOneUseButton(String type) {
         LargeVariantSupplier<OneUseButton> supplier = registerLargeVariantButton(type,
                 (properties, large) -> new OneUseButton(BlockSetType.STONE, properties, large, false, type.equals("gravel")), "falling_button");
         ONE_USE_BUTTONS.put(type, supplier);
         return supplier;
     }
 
-    protected static void registerConcretePowderButton(DyeColor color, String type) {
+    protected void registerConcretePowderButton(DyeColor color, String type) {
         LargeVariantSupplier<OneUseButton> supplier = registerOneUseButton(type);
         CONCRETE_POWDER_BUTTONS.put(color, supplier);
     }
@@ -95,33 +97,33 @@ public class IBBlocks {
     /**
      * Super-duper special buttons
      */
-    public static final LargeVariantSupplier<RandomTimeButton> EMERALD_BUTTON = registerLargeVariantButton("emerald",
+    public static final LargeVariantSupplier<RandomTimeButton> EMERALD_BUTTON = INSTANCE.registerLargeVariantButton("emerald",
             (properties, large) -> new RandomTimeButton(BlockSetType.STONE, properties, large, false), "emerald_button");
 
-    public static final LargeVariantSupplier<WaterloggableButton> PRISMARINE_BUTTON = registerLargeVariantButton("prismarine",
+    public static final LargeVariantSupplier<WaterloggableButton> PRISMARINE_BUTTON = INSTANCE.registerLargeVariantButton("prismarine",
             (properties, large) -> new WaterloggableButton(BlockSetType.STONE, properties, large, false), "prismarine_button");
-    public static final LargeVariantSupplier<WaterloggableButton> DARK_PRISMARINE_BUTTON = registerLargeVariantButton("dark_prismarine",
+    public static final LargeVariantSupplier<WaterloggableButton> DARK_PRISMARINE_BUTTON = INSTANCE.registerLargeVariantButton("dark_prismarine",
             (properties, large) -> new WaterloggableButton(BlockSetType.STONE, properties, large, false), "prismarine_button");
-    public static final LargeVariantSupplier<WaterloggableButton> PRISMARINE_BRICK_BUTTON = registerLargeVariantButton("prismarine_brick",
+    public static final LargeVariantSupplier<WaterloggableButton> PRISMARINE_BRICK_BUTTON = INSTANCE.registerLargeVariantButton("prismarine_brick",
             (properties, large) -> new WaterloggableButton(BlockSetType.STONE, properties, large, false), "prismarine_button");
 
-    public static final LargeVariantSupplier<SparklingButton> DIAMOND_BUTTON = registerLargeVariantButton("diamond",
+    public static final LargeVariantSupplier<SparklingButton> DIAMOND_BUTTON = INSTANCE.registerLargeVariantButton("diamond",
             (properties, large) -> new SparklingButton(BlockSetType.STONE, properties, large, false), "diamond_button");
 
-    public static final LargeVariantSupplier<ArrowOnlyButton> IRON_BUTTON = registerLargeVariantButton("iron",
+    public static final LargeVariantSupplier<ArrowOnlyButton> IRON_BUTTON = INSTANCE.registerLargeVariantButton("iron",
             (properties, large) -> new ArrowOnlyButton(BlockSetType.IRON, properties, large, false, SoundType.METAL), "arrow_button");
-    public static final LargeVariantSupplier<ArrowOnlyButton> GOLD_BUTTON = registerLargeVariantButton("gold",
+    public static final LargeVariantSupplier<ArrowOnlyButton> GOLD_BUTTON = INSTANCE.registerLargeVariantButton("gold",
             (properties, large) -> new ArrowOnlyButton(BlockSetType.GOLD, properties, large, false, SoundType.STONE), "arrow_button");
 
-    public static final LargeVariantSupplier<JammedButton> NETHERITE_BUTTON = registerLargeVariantButton("netherite",
+    public static final LargeVariantSupplier<JammedButton> NETHERITE_BUTTON = INSTANCE.registerLargeVariantButton("netherite",
             (properties, large) -> new JammedButton(BlockSetType.STONE, properties, large), "netherite_button");
 
     /**
      * Copper Buttons
      */
-    public static final BiHashMap<CopperButtonType, WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>> COPPER_BUTTONS = registerCopperButtons();
+    public static final BiHashMap<CopperButtonType, WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>> COPPER_BUTTONS = INSTANCE.registerCopperButtons();
 
-    protected static LargeVariantSupplier<CopperButton> registerCopperButton(CopperButtonType copperButtonType, WeatheringCopper.WeatherState weatherState) {
+    protected LargeVariantSupplier<CopperButton> registerCopperButton(CopperButtonType copperButtonType, WeatheringCopper.WeatherState weatherState) {
         String state = weatherState == WeatheringCopper.WeatherState.UNAFFECTED ? "copper" : weatherState.getSerializedName() + "_copper";
         String type = copperButtonType == CopperButtonType.NORMAL ? state : copperButtonType.getName() + "_" + state;
 
@@ -134,7 +136,7 @@ public class IBBlocks {
         ));
     }
 
-    protected static BiHashMap<CopperButtonType, WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>> registerCopperButtons() {
+    protected BiHashMap<CopperButtonType, WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>> registerCopperButtons() {
         BiHashMap<CopperButtonType, WeatheringCopper.WeatherState, LargeVariantSupplier<CopperButton>> typeMap = new BiHashMap<>();
         for (CopperButtonType type : CopperButtonType.values()) {
             for (WeatheringCopper.WeatherState state : WeatheringCopper.WeatherState.values()) {
@@ -147,9 +149,9 @@ public class IBBlocks {
     /**
      * Large Vanilla Buttons
      */
-    public static final HashMap<BlockSetType, RegistrySupplier<NormalButton>> DEFAULT_LARGE_BUTTONS = registerDefaultLargeButtons();
+    public static final HashMap<BlockSetType, RegistrySupplier<NormalButton>> DEFAULT_LARGE_BUTTONS = INSTANCE.registerDefaultLargeButtons();
 
-    protected static HashMap<BlockSetType, RegistrySupplier<NormalButton>> registerDefaultLargeButtons() {
+    protected HashMap<BlockSetType, RegistrySupplier<NormalButton>> registerDefaultLargeButtons() {
         HashMap<BlockSetType, RegistrySupplier<NormalButton>> map = new HashMap<>();
         for (BlockSetType type : BlockSetType.values().toList()) {
             if (type == BlockSetType.COPPER || type == BlockSetType.GOLD || type == BlockSetType.IRON) continue;
@@ -169,77 +171,77 @@ public class IBBlocks {
      */
     public static final HashMap<Block, RegistrySupplier<SecretButton>> SECRET_BUTTONS = new HashMap<>();
 
-    public static final RegistrySupplier<SecretButton> BOOKSHELF_SECRET_BUTTON = registerSecretButton("bookshelf_secret_button",
+    public static final RegistrySupplier<SecretButton> BOOKSHELF_SECRET_BUTTON = INSTANCE.registerSecretButton("bookshelf_secret_button",
             SecretButtonType.BOOKSHELF, Blocks.BOOKSHELF );
-    public static final RegistrySupplier<SecretButton> BRICK_SECRET_BUTTON = registerSecretButton("brick_secret_button",
+    public static final RegistrySupplier<SecretButton> BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("brick_secret_button",
             SecretButtonType.FULL_BLOCK_BRICK, Blocks.BRICKS );
-    public static final RegistrySupplier<SecretButton> STONE_BRICK_SECRET_BUTTON = registerSecretButton("stone_brick_secret_button",
+    public static final RegistrySupplier<SecretButton> STONE_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("stone_brick_secret_button",
             SecretButtonType.BIG_BRICK, Blocks.STONE_BRICKS );
-    public static final RegistrySupplier<SecretButton> MOSSY_STONE_BRICK_SECRET_BUTTON = registerSecretButton("mossy_stone_brick_secret_button",
+    public static final RegistrySupplier<SecretButton> MOSSY_STONE_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("mossy_stone_brick_secret_button",
             SecretButtonType.BIG_BRICK, Blocks.MOSSY_STONE_BRICKS );
-    public static final RegistrySupplier<SecretButton> CRACKED_STONE_BRICK_SECRET_BUTTON = registerSecretButton("cracked_stone_brick_secret_button",
+    public static final RegistrySupplier<SecretButton> CRACKED_STONE_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("cracked_stone_brick_secret_button",
             SecretButtonType.BIG_BRICK, Blocks.CRACKED_STONE_BRICKS );
-    public static final RegistrySupplier<SecretButton> CHISELED_STONE_BRICK_SECRET_BUTTON = registerSecretButton("chiseled_stone_brick_secret_button",
+    public static final RegistrySupplier<SecretButton> CHISELED_STONE_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("chiseled_stone_brick_secret_button",
             SecretButtonType.CHISELED_STONE_BRICK, Blocks.CHISELED_STONE_BRICKS );
-    public static final RegistrySupplier<SecretButton> DEEPSLATE_BRICK_SECRET_BUTTON = registerSecretButton("deepslate_brick_secret_button",
+    public static final RegistrySupplier<SecretButton> DEEPSLATE_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("deepslate_brick_secret_button",
             SecretButtonType.BIG_BRICK, Blocks.DEEPSLATE_BRICKS );
-    public static final RegistrySupplier<SecretButton> CRACKED_DEEPSLATE_BRICK_SECRET_BUTTON = registerSecretButton("cracked_deepslate_brick_secret_button",
+    public static final RegistrySupplier<SecretButton> CRACKED_DEEPSLATE_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("cracked_deepslate_brick_secret_button",
             SecretButtonType.BIG_BRICK, Blocks.CRACKED_DEEPSLATE_BRICKS );
-    public static final RegistrySupplier<SecretButton> DEEPSLATE_TILE_SECRET_BUTTON = registerSecretButton("deepslate_tile_secret_button",
+    public static final RegistrySupplier<SecretButton> DEEPSLATE_TILE_SECRET_BUTTON = INSTANCE.registerSecretButton("deepslate_tile_secret_button",
             SecretButtonType.DEEPSLATE_TILE, Blocks.DEEPSLATE_TILES );
-    public static final RegistrySupplier<SecretButton> CRACKED_DEEPSLATE_TILE_SECRET_BUTTON = registerSecretButton("cracked_deepslate_tile_secret_button",
+    public static final RegistrySupplier<SecretButton> CRACKED_DEEPSLATE_TILE_SECRET_BUTTON = INSTANCE.registerSecretButton("cracked_deepslate_tile_secret_button",
             SecretButtonType.DEEPSLATE_TILE, Blocks.CRACKED_DEEPSLATE_TILES );
 
-    public static final RegistrySupplier<SecretButton> OAK_PLANK_SECRET_BUTTON = registerSecretButton("oak_plank_secret_button",
+    public static final RegistrySupplier<SecretButton> OAK_PLANK_SECRET_BUTTON = INSTANCE.registerSecretButton("oak_plank_secret_button",
             SecretButtonType.PLANK, Blocks.OAK_PLANKS );
-    public static final RegistrySupplier<SecretButton> SPRUCE_PLANK_SECRET_BUTTON = registerSecretButton("spruce_plank_secret_button",
+    public static final RegistrySupplier<SecretButton> SPRUCE_PLANK_SECRET_BUTTON = INSTANCE.registerSecretButton("spruce_plank_secret_button",
             SecretButtonType.PLANK, Blocks.SPRUCE_PLANKS );
-    public static final RegistrySupplier<SecretButton> BIRCH_PLANK_SECRET_BUTTON = registerSecretButton("birch_plank_secret_button",
+    public static final RegistrySupplier<SecretButton> BIRCH_PLANK_SECRET_BUTTON = INSTANCE.registerSecretButton("birch_plank_secret_button",
             SecretButtonType.PLANK, Blocks.BIRCH_PLANKS );
-    public static final RegistrySupplier<SecretButton> JUNGLE_PLANK_SECRET_BUTTON = registerSecretButton("jungle_plank_secret_button",
+    public static final RegistrySupplier<SecretButton> JUNGLE_PLANK_SECRET_BUTTON = INSTANCE.registerSecretButton("jungle_plank_secret_button",
             SecretButtonType.PLANK, Blocks.JUNGLE_PLANKS );
-    public static final RegistrySupplier<SecretButton> ACACIA_PLANK_SECRET_BUTTON = registerSecretButton("acacia_plank_secret_button",
+    public static final RegistrySupplier<SecretButton> ACACIA_PLANK_SECRET_BUTTON = INSTANCE.registerSecretButton("acacia_plank_secret_button",
             SecretButtonType.PLANK, Blocks.ACACIA_PLANKS );
-    public static final RegistrySupplier<SecretButton> DARK_OAK_PLANK_SECRET_BUTTON = registerSecretButton("dark_oak_plank_secret_button",
+    public static final RegistrySupplier<SecretButton> DARK_OAK_PLANK_SECRET_BUTTON = INSTANCE.registerSecretButton("dark_oak_plank_secret_button",
             SecretButtonType.PLANK, Blocks.DARK_OAK_PLANKS );
-    public static final RegistrySupplier<SecretButton> MANGROVE_PLANK_SECRET_BUTTON = registerSecretButton("mangrove_plank_secret_button",
+    public static final RegistrySupplier<SecretButton> MANGROVE_PLANK_SECRET_BUTTON = INSTANCE.registerSecretButton("mangrove_plank_secret_button",
             SecretButtonType.PLANK, Blocks.MANGROVE_PLANKS );
-    public static final RegistrySupplier<SecretButton> CHERRY_PLANK_SECRET_BUTTON = registerSecretButton("cherry_plank_secret_button",
+    public static final RegistrySupplier<SecretButton> CHERRY_PLANK_SECRET_BUTTON = INSTANCE.registerSecretButton("cherry_plank_secret_button",
             SecretButtonType.PLANK, Blocks.CHERRY_PLANKS );
-    public static final RegistrySupplier<SecretButton> CRIMSON_PLANK_SECRET_BUTTON = registerSecretButton("crimson_plank_secret_button",
+    public static final RegistrySupplier<SecretButton> CRIMSON_PLANK_SECRET_BUTTON = INSTANCE.registerSecretButton("crimson_plank_secret_button",
             SecretButtonType.PLANK, Blocks.CRIMSON_PLANKS );
-    public static final RegistrySupplier<SecretButton> WARPED_PLANK_SECRET_BUTTON = registerSecretButton("warped_plank_secret_button",
+    public static final RegistrySupplier<SecretButton> WARPED_PLANK_SECRET_BUTTON = INSTANCE.registerSecretButton("warped_plank_secret_button",
             SecretButtonType.PLANK, Blocks.WARPED_PLANKS );
-    public static final RegistrySupplier<SecretButton> BAMBOO_PLANK_SECRET_BUTTON = registerSecretButton("bamboo_plank_secret_button",
+    public static final RegistrySupplier<SecretButton> BAMBOO_PLANK_SECRET_BUTTON = INSTANCE.registerSecretButton("bamboo_plank_secret_button",
             SecretButtonType.PLANK, Blocks.BAMBOO_PLANKS );
 
-    public static final RegistrySupplier<SecretButton> MUD_BRICK_SECRET_BUTTON = registerSecretButton("mud_brick_secret_button",
+    public static final RegistrySupplier<SecretButton> MUD_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("mud_brick_secret_button",
             SecretButtonType.MUD_BRICK, Blocks.MUD_BRICKS );
-    public static final RegistrySupplier<SecretButton> END_STONE_BRICK_SECRET_BUTTON = registerSecretButton("end_stone_brick_secret_button",
+    public static final RegistrySupplier<SecretButton> END_STONE_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("end_stone_brick_secret_button",
             SecretButtonType.BIG_BRICK, Blocks.END_STONE_BRICKS );
-    public static final RegistrySupplier<SecretButton> PURPUR_BLOCK_SECRET_BUTTON = registerSecretButton("purpur_block_secret_button",
+    public static final RegistrySupplier<SecretButton> PURPUR_BLOCK_SECRET_BUTTON = INSTANCE.registerSecretButton("purpur_block_secret_button",
             SecretButtonType.PURPUR_BLOCK, Blocks.PURPUR_BLOCK );
-    public static final RegistrySupplier<SecretButton> QUARTZ_BRICK_SECRET_BUTTON = registerSecretButton("quartz_brick_secret_button",
+    public static final RegistrySupplier<SecretButton> QUARTZ_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("quartz_brick_secret_button",
             SecretButtonType.BIG_BRICK, Blocks.QUARTZ_BRICKS );
-    public static final RegistrySupplier<SecretButton> DARK_PRISMARINE_SECRET_BUTTON = registerSecretButton("dark_prismarine_secret_button",
+    public static final RegistrySupplier<SecretButton> DARK_PRISMARINE_SECRET_BUTTON = INSTANCE.registerSecretButton("dark_prismarine_secret_button",
             SecretButtonType.FULL_BLOCK_BRICK, Blocks.DARK_PRISMARINE );
-    public static final RegistrySupplier<SecretButton> POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = registerSecretButton("polished_blackstone_brick_secret_button",
+    public static final RegistrySupplier<SecretButton> POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("polished_blackstone_brick_secret_button",
             SecretButtonType.BIG_BRICK, Blocks.POLISHED_BLACKSTONE_BRICKS );
-    public static final RegistrySupplier<SecretButton> CRACKED_POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = registerSecretButton("cracked_polished_blackstone_brick_secret_button",
+    public static final RegistrySupplier<SecretButton> CRACKED_POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("cracked_polished_blackstone_brick_secret_button",
             SecretButtonType.BIG_BRICK, Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS );
-    public static final RegistrySupplier<SecretButton> CHISELED_POLISHED_BLACKSTONE_SECRET_BUTTON = registerSecretButton("chiseled_polished_blackstone_secret_button",
+    public static final RegistrySupplier<SecretButton> CHISELED_POLISHED_BLACKSTONE_SECRET_BUTTON = INSTANCE.registerSecretButton("chiseled_polished_blackstone_secret_button",
             SecretButtonType.CHISELED_STONE_BRICK, Blocks.CHISELED_POLISHED_BLACKSTONE );
-    public static final RegistrySupplier<SecretButton> NETHER_BRICK_SECRET_BUTTON = registerSecretButton("nether_brick_secret_button",
+    public static final RegistrySupplier<SecretButton> NETHER_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("nether_brick_secret_button",
             SecretButtonType.FULL_BLOCK_BRICK, Blocks.NETHER_BRICKS );
-    public static final RegistrySupplier<SecretButton> CRACKED_NETHER_BRICK_SECRET_BUTTON = registerSecretButton("cracked_nether_brick_secret_button",
+    public static final RegistrySupplier<SecretButton> CRACKED_NETHER_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("cracked_nether_brick_secret_button",
             SecretButtonType.FULL_BLOCK_BRICK, Blocks.CRACKED_NETHER_BRICKS );
-    public static final RegistrySupplier<SecretButton> CHISELED_NETHER_BRICK_SECRET_BUTTON = registerSecretButton("chiseled_nether_brick_secret_button",
+    public static final RegistrySupplier<SecretButton> CHISELED_NETHER_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("chiseled_nether_brick_secret_button",
             SecretButtonType.CHISELED_NETHER_BRICK, Blocks.CHISELED_NETHER_BRICKS );
-    public static final RegistrySupplier<SecretButton> RED_NETHER_BRICK_SECRET_BUTTON = registerSecretButton("red_nether_brick_secret_button",
+    public static final RegistrySupplier<SecretButton> RED_NETHER_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("red_nether_brick_secret_button",
             SecretButtonType.FULL_BLOCK_BRICK, Blocks.RED_NETHER_BRICKS );
 
 
-    protected static RegistrySupplier<SecretButton> registerSecretButton(
+    protected RegistrySupplier<SecretButton> registerSecretButton(
             String blockId,
             SecretButtonType type,
             Block originalBlock
@@ -257,79 +259,79 @@ public class IBBlocks {
     /**
      * Torches
      */
-    public static final RegistrySupplier<TorchButton> TORCH_BUTTON = registerBlock("torch_button", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<TorchButton> TORCH_BUTTON = INSTANCE.registerBlock("torch_button", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(properties, ParticleTypes.FLAME, false, false, false, Blocks.TORCH)
     ).withoutItem(), torchProperties(14), null);
-    public static final RegistrySupplier<TorchButton> WALL_TORCH_BUTTON = registerBlock("wall_torch_button", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<TorchButton> WALL_TORCH_BUTTON = INSTANCE.registerBlock("wall_torch_button", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(properties.dropsLike(TORCH_BUTTON.get()), ParticleTypes.FLAME, false, true, false, Blocks.TORCH)
     ).withoutItem(), torchProperties(14), null);
 
-    public static final RegistrySupplier<TorchButton> TORCH_LEVER = registerBlock("torch_lever", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<TorchButton> TORCH_LEVER = INSTANCE.registerBlock("torch_lever", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(properties, ParticleTypes.FLAME, true, false, false, Blocks.TORCH)
     ).withoutItem(), torchProperties(14), null);
-    public static final RegistrySupplier<TorchButton> WALL_TORCH_LEVER = registerBlock("wall_torch_lever", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<TorchButton> WALL_TORCH_LEVER = INSTANCE.registerBlock("wall_torch_lever", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(properties.dropsLike(TORCH_LEVER.get()), ParticleTypes.FLAME, true, true, false, Blocks.TORCH)
     ), torchProperties(14), null);
 
-    public static final RegistrySupplier<TorchButton> SOUL_TORCH_BUTTON = registerBlock("soul_torch_button", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<TorchButton> SOUL_TORCH_BUTTON = INSTANCE.registerBlock("soul_torch_button", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(properties, ParticleTypes.SOUL_FIRE_FLAME, false, false, false, Blocks.SOUL_TORCH)
     ).withoutItem(), torchProperties(10), null);
-    public static final RegistrySupplier<TorchButton> SOUL_WALL_TORCH_BUTTON = registerBlock("soul_wall_torch_button", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<TorchButton> SOUL_WALL_TORCH_BUTTON = INSTANCE.registerBlock("soul_wall_torch_button", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(properties.dropsLike(SOUL_TORCH_BUTTON.get()), ParticleTypes.SOUL_FIRE_FLAME, false, true, false, Blocks.SOUL_TORCH)
     ), torchProperties(10), null);
 
-    public static final RegistrySupplier<TorchButton> SOUL_TORCH_LEVER = registerBlock("soul_torch_lever", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<TorchButton> SOUL_TORCH_LEVER = INSTANCE.registerBlock("soul_torch_lever", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(properties, ParticleTypes.SOUL_FIRE_FLAME, true, false, false, Blocks.SOUL_TORCH)
     ).withoutItem(), torchProperties(10), null);
-    public static final RegistrySupplier<TorchButton> SOUL_WALL_TORCH_LEVER = registerBlock("soul_wall_torch_lever", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<TorchButton> SOUL_WALL_TORCH_LEVER = INSTANCE.registerBlock("soul_wall_torch_lever", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(properties.dropsLike(SOUL_TORCH_LEVER.get()), ParticleTypes.SOUL_FIRE_FLAME, true, true, false, Blocks.SOUL_TORCH)
     ), torchProperties(10), null);
 
-    public static final RegistrySupplier<TorchButton> REDSTONE_TORCH_BUTTON = registerBlock("redstone_torch_button", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<TorchButton> REDSTONE_TORCH_BUTTON = INSTANCE.registerBlock("redstone_torch_button", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(properties, new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), false, false, true, Blocks.REDSTONE_TORCH)
     ).withoutItem(), torchProperties(7), null);
-    public static final RegistrySupplier<TorchButton> REDSTONE_WALL_TORCH_BUTTON = registerBlock("redstone_wall_torch_button", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<TorchButton> REDSTONE_WALL_TORCH_BUTTON = INSTANCE.registerBlock("redstone_wall_torch_button", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(properties.dropsLike(REDSTONE_TORCH_BUTTON.get()), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), false, true, true, Blocks.REDSTONE_TORCH)
     ), torchProperties(7), null);
 
-    public static final RegistrySupplier<TorchButton> REDSTONE_TORCH_LEVER = registerBlock("redstone_torch_lever", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<TorchButton> REDSTONE_TORCH_LEVER = INSTANCE.registerBlock("redstone_torch_lever", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(properties, new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), true, false, true, Blocks.REDSTONE_TORCH)
     ).withoutItem(), torchProperties(7), null);
-    public static final RegistrySupplier<TorchButton> REDSTONE_WALL_TORCH_LEVER = registerBlock("redstone_wall_torch_lever", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<TorchButton> REDSTONE_WALL_TORCH_LEVER = INSTANCE.registerBlock("redstone_wall_torch_lever", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(properties.dropsLike(REDSTONE_TORCH_LEVER.get()), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), true, true, true, Blocks.REDSTONE_TORCH)
     ).withoutItem(), torchProperties(7), null);
 
     /**
      * Lanterns
      */
-    public static final RegistrySupplier<LanternButton> LANTERN_BUTTON = registerBlock("lantern_button", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<LanternButton> LANTERN_BUTTON = INSTANCE.registerBlock("lantern_button", BlockEntryBuilder.ofBlock(properties ->
             new LanternButton(properties, false, Blocks.LANTERN)), lanternProperties(15), "lantern_button");
-    public static final RegistrySupplier<LanternButton> LANTERN_LEVER = registerBlock("lantern_lever", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<LanternButton> LANTERN_LEVER = INSTANCE.registerBlock("lantern_lever", BlockEntryBuilder.ofBlock(properties ->
             new LanternButton(properties, true, Blocks.LANTERN)), lanternProperties(15), "lantern_button");
-    public static final RegistrySupplier<LanternButton> SOUL_LANTERN_BUTTON = registerBlock("soul_lantern_button", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<LanternButton> SOUL_LANTERN_BUTTON = INSTANCE.registerBlock("soul_lantern_button", BlockEntryBuilder.ofBlock(properties ->
             new LanternButton(properties, false, Blocks.SOUL_LANTERN)), lanternProperties(10), "lantern_button");
-    public static final RegistrySupplier<LanternButton> SOUL_LANTERN_LEVER = registerBlock("soul_lantern_lever", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<LanternButton> SOUL_LANTERN_LEVER = INSTANCE.registerBlock("soul_lantern_lever", BlockEntryBuilder.ofBlock(properties ->
             new LanternButton(properties, true, Blocks.SOUL_LANTERN)), lanternProperties(10), "lantern_button");
 
     /**
      * Console Buttons
      */
-    public static final RegistrySupplier<ConsoleButton> SMALL_CONSOLE_BUTTON = registerBlock("small_console_button", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<ConsoleButton> SMALL_CONSOLE_BUTTON = INSTANCE.registerBlock("small_console_button", BlockEntryBuilder.ofBlock(properties ->
             new ConsoleButton(properties, ConsoleButtonType.SMALL, false)), lanternProperties(5), null);
-    public static final RegistrySupplier<ConsoleButton> SMALL_CONSOLE_LEVER = registerBlock("small_console_lever", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<ConsoleButton> SMALL_CONSOLE_LEVER = INSTANCE.registerBlock("small_console_lever", BlockEntryBuilder.ofBlock(properties ->
             new ConsoleButton(properties, ConsoleButtonType.SMALL, true)), lanternProperties(5), null);
 
-    public static final RegistrySupplier<ConsoleButton> CONSOLE_BUTTON = registerBlock("console_button", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<ConsoleButton> CONSOLE_BUTTON = INSTANCE.registerBlock("console_button", BlockEntryBuilder.ofBlock(properties ->
             new ConsoleButton(properties, ConsoleButtonType.NORMAL, false)), lanternProperties(5), null);
-    public static final RegistrySupplier<ConsoleButton> CONSOLE_LEVER = registerBlock("console_lever", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<ConsoleButton> CONSOLE_LEVER = INSTANCE.registerBlock("console_lever", BlockEntryBuilder.ofBlock(properties ->
             new ConsoleButton(properties, ConsoleButtonType.NORMAL, true)), lanternProperties(5), null);
-    public static final RegistrySupplier<ConsoleButton> LARGE_CONSOLE_BUTTON = registerBlock("large_console_button", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<ConsoleButton> LARGE_CONSOLE_BUTTON = INSTANCE.registerBlock("large_console_button", BlockEntryBuilder.ofBlock(properties ->
             new ConsoleButton(properties, ConsoleButtonType.LARGE, false)), lanternProperties(5), null);
-    public static final RegistrySupplier<ConsoleButton> LARGE_CONSOLE_LEVER = registerBlock("large_console_lever", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<ConsoleButton> LARGE_CONSOLE_LEVER = INSTANCE.registerBlock("large_console_lever", BlockEntryBuilder.ofBlock(properties ->
             new ConsoleButton(properties, ConsoleButtonType.LARGE, true)), lanternProperties(5), null);
-    public static final RegistrySupplier<ConsoleButton> BIG_CONSOLE_BUTTON = registerBlock("big_console_button", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<ConsoleButton> BIG_CONSOLE_BUTTON = INSTANCE.registerBlock("big_console_button", BlockEntryBuilder.ofBlock(properties ->
             new ConsoleButton(properties, ConsoleButtonType.LARGE, false)), lanternProperties(5), null);
-    public static final RegistrySupplier<ConsoleButton> BIG_CONSOLE_LEVER = registerBlock("big_console_lever", BlockEntryBuilder.ofBlock(properties ->
+    public static final RegistrySupplier<ConsoleButton> BIG_CONSOLE_LEVER = INSTANCE.registerBlock("big_console_lever", BlockEntryBuilder.ofBlock(properties ->
             new ConsoleButton(properties, ConsoleButtonType.LARGE, true)), lanternProperties(5), null);
 
     /**
@@ -338,17 +340,17 @@ public class IBBlocks {
     public static final HashMap<DyeColor, RegistrySupplier<EmergencyButton>> EMERGENCY_BUTTONS = new HashMap<>();
     public static final HashMap<DyeColor, RegistrySupplier<SafeEmergencyButton>> SAFE_EMERGENCY_BUTTONS = new HashMap<>();
 
-    public static final RegistrySupplier<EmergencyButton> FANCY_EMERGENCY_BUTTON = registerEmergencyButton(null, "fancy");
-    public static final RegistrySupplier<SafeEmergencyButton> FANCY_SAFE_EMERGENCY_BUTTON = registerSafeEmergencyButton(null, "fancy");
+    public static final RegistrySupplier<EmergencyButton> FANCY_EMERGENCY_BUTTON = INSTANCE.registerEmergencyButton(null, "fancy");
+    public static final RegistrySupplier<SafeEmergencyButton> FANCY_SAFE_EMERGENCY_BUTTON = INSTANCE.registerSafeEmergencyButton(null, "fancy");
 
     static {
         for (DyeColor color : DyeColor.values()) {
-            registerEmergencyButton(color, color.name().toLowerCase());
-            registerSafeEmergencyButton(color, color.name().toLowerCase());
+            INSTANCE.registerEmergencyButton(color, color.name().toLowerCase());
+            INSTANCE.registerSafeEmergencyButton(color, color.name().toLowerCase());
         }
     }
 
-    public static RegistrySupplier<EmergencyButton> registerEmergencyButton(DyeColor color, String name) {
+    public RegistrySupplier<EmergencyButton> registerEmergencyButton(DyeColor color, String name) {
         RegistrySupplier<EmergencyButton> blockRS = registerBlock(name + "_emergency_button",
                 BlockEntryBuilder.ofBlock(EmergencyButton::new),
                 BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.METAL), "emergency_button");
@@ -356,7 +358,7 @@ public class IBBlocks {
         return blockRS;
     }
 
-    public static RegistrySupplier<SafeEmergencyButton> registerSafeEmergencyButton(DyeColor color, String name) {
+    public RegistrySupplier<SafeEmergencyButton> registerSafeEmergencyButton(DyeColor color, String name) {
         RegistrySupplier<SafeEmergencyButton> blockRS = registerBlock(name + "_safe_emergency_button",
                 BlockEntryBuilder.ofBlock(SafeEmergencyButton::new),
                 BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.METAL), "safe_emergency_button");
@@ -367,31 +369,31 @@ public class IBBlocks {
     /**
      * Doorbells
      */
-    public static final RegistrySupplier<Doorbell> DOORBELL = registerBlock("doorbell",
+    public static final RegistrySupplier<Doorbell> DOORBELL = INSTANCE.registerBlock("doorbell",
             BlockEntryBuilder.ofBlock((properties) -> new Doorbell(properties, false)),
             BlockBehaviour.Properties.of().noCollission().strength(0.5f).sound(SoundType.METAL), null);
-    public static final RegistrySupplier<Doorbell> DOORBELL_BUTTON = registerBlock("doorbell_button",
+    public static final RegistrySupplier<Doorbell> DOORBELL_BUTTON = INSTANCE.registerBlock("doorbell_button",
             BlockEntryBuilder.ofBlock((properties) -> new Doorbell(properties, true)),
             BlockBehaviour.Properties.of().noCollission().strength(0.5f).sound(SoundType.METAL), null);
 
     /**
      * Lamp buttons
      */
-    public static final RegistrySupplier<LampButton> LAMP_BUTTON = registerBlock("lamp_button",
+    public static final RegistrySupplier<LampButton> LAMP_BUTTON = INSTANCE.registerBlock("lamp_button",
             BlockEntryBuilder.ofBlock((properties) -> new LampButton(BlockSetType.STONE, properties, false)),
             lampProperties(15), null);
 
-    public static final RegistrySupplier<LampButton> LAMP_LEVER = registerBlock("lamp_lever",
+    public static final RegistrySupplier<LampButton> LAMP_LEVER = INSTANCE.registerBlock("lamp_lever",
             BlockEntryBuilder.ofBlock((properties) -> new LampButton(BlockSetType.STONE, properties, true)),
             lampProperties(15), null);
 
     /**
      * Letter buttons
      */
-    public static final RegistrySupplier<LetterButton> LETTER_BUTTON = registerBlock("letter_button",
+    public static final RegistrySupplier<LetterButton> LETTER_BUTTON = INSTANCE.registerBlock("letter_button",
             BlockEntryBuilder.ofBlock((properties) -> new LetterButton(properties, false)),
             BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.METAL), null);
-    public static final RegistrySupplier<LetterButton> LETTER_LEVER = registerBlock("letter_lever",
+    public static final RegistrySupplier<LetterButton> LETTER_LEVER = INSTANCE.registerBlock("letter_lever",
             BlockEntryBuilder.ofBlock((properties) -> new LetterButton(properties, true)),
             BlockBehaviour.Properties.of().strength(0.5f).noCollission().sound(SoundType.METAL), null);
 
@@ -422,11 +424,11 @@ public class IBBlocks {
     /**
      * Base Registry Functions
      */
-    protected static <T extends Block> RegistrySupplier<T> registerBlock(String blockId, BlockEntryBuilder<T> builder, BlockBehaviour.Properties properties, String tooltipKey) {
+    protected <T extends Block> RegistrySupplier<T> registerBlock(String blockId, BlockEntryBuilder<T> builder, BlockBehaviour.Properties properties, String tooltipKey) {
         return registerBlock(blockId, builder, properties, tooltipKey, ignored -> tooltipKey != null);
     }
 
-    protected static <T extends Block> RegistrySupplier<T> registerBlock(String blockId, BlockEntryBuilder<T> builder, BlockBehaviour.Properties properties, String tooltipKey, Function<ItemStack, Boolean> tooltipCondition) {
+    protected <T extends Block> RegistrySupplier<T> registerBlock(String blockId, BlockEntryBuilder<T> builder, BlockBehaviour.Properties properties, String tooltipKey, Function<ItemStack, Boolean> tooltipCondition) {
         RegistrySupplier<T> registry = builder.withTooltip(TooltipBuilder
                 .builder("infinitybuttons.tooltip." + tooltipKey)
                 .setTooltipClass(HoldKeyTooltip.class)
@@ -444,7 +446,7 @@ public class IBBlocks {
         T create(BlockBehaviour.Properties properties, boolean large);
     }
 
-    protected static <T extends Block> LargeVariantSupplier<T> registerLargeVariantButton(String type, LargeButtonConstructor<T> constructor, String tooltipKey) {
+    protected <T extends Block> LargeVariantSupplier<T> registerLargeVariantButton(String type, LargeButtonConstructor<T> constructor, String tooltipKey) {
         LargeVariantSupplier<T> supplier = LargeVariantSupplier.registerVariants((large) -> {
             String blockId = type + (large ? "_large_button" : "_button");
 
