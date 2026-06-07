@@ -17,17 +17,19 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import nl.teamdiopside.infinitybuttons.block.ButtonFaced4;
+import nl.teamdiopside.infinitybuttons.compat.jade.JadeCamouflaged;
 import org.jetbrains.annotations.Nullable;
 
-public class TorchButton extends ButtonFaced4 {
+public class TorchButton extends ButtonFaced4 implements JadeCamouflaged {
     protected static final VoxelShape TORCH_SHAPE = Block.box(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
     protected static final VoxelShape WALL_TORCH_SHAPE = Block.box(5.5, 3.0, 11.0, 10.5, 13.0, 16.0);
 
     protected final ParticleOptions particle;
     public final boolean isWall;
     public final boolean isRedstone;
+    protected final Block camouflage;
 
-    public TorchButton(Properties properties, ParticleOptions particle, boolean isLever, boolean isWall, boolean isRedstone) {
+    public TorchButton(Properties properties, ParticleOptions particle, boolean isLever, boolean isWall, boolean isRedstone, Block camouflage) {
         super(
                 properties,
                 isWall ? WALL_TORCH_SHAPE : TORCH_SHAPE,
@@ -38,6 +40,7 @@ public class TorchButton extends ButtonFaced4 {
         this.particle = particle;
         this.isWall = isWall;
         this.isRedstone = isRedstone;
+        this.camouflage = camouflage;
     }
 
 
@@ -129,5 +132,10 @@ public class TorchButton extends ButtonFaced4 {
                 z + offset * opposite.getStepZ(),
                 0.0, 0.0, 0.0
         );
+    }
+
+    @Override
+    public Block getCamouflage() {
+        return this.camouflage;
     }
 }
