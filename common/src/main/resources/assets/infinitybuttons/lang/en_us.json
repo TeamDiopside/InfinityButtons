@@ -424,23 +424,23 @@
   "config.infinitybuttons.title": "Infinity Buttons",
 
   "config.infinitybuttons.alarm.mute.name": "Mute Emergency Alarms",
-  "config.infinitybuttons.alarm.mute.description": "Prevent Emergency Buttons from playing a sound to your client",
+  "config.infinitybuttons.alarm.mute.description": "Prevent Emergency Buttons from playing a sound to your client\n \n§7Perfect for preventing that annoying friend from interrupting your zen farming session.",
 
   "config.infinitybuttons.alarm_type.name": "Alarm Type",
-  "config.infinitybuttons.alarm_type.description": "The way in which Emergency Buttons produce an alarm\nRANGE: Alarms are audible up to a certain radius\nGLOBAL: Alarms are audible from anywhere in the world\n \n§cChanging this client-side has no effect on a server,\n§cit has to be changed in the server's config",
+  "config.infinitybuttons.alarm_type.description": "The way in which Emergency Buttons produce an alarm.\nRANGE: Alarms are audible up to a certain radius\nGLOBAL: Alarms are audible from anywhere in the world\n \n§cChanging this client-side has no effect on a server,\n§cit has to be changed in the server's config.",
 
   "config.infinitybuttons.alarm_range.name": "Alarm Range",
-  "config.infinitybuttons.alarm_range.description": "The distance in chunks in which the alarm is heard when 'Alarm Type' is set to 'RANGE'",
+  "config.infinitybuttons.alarm_range.description": "The distance in chunks in which the alarm is heard.\n§cThis setting only applies when the above 'Alarm Type' is set to 'RANGE'",
 
   "config.infinitybuttons.alarm.villager_panic.name": "Villager Panic",
-  "config.infinitybuttons.alarm.villager_panic.description": "Makes villagers panic and run to their beds when hearing an alarm",
+  "config.infinitybuttons.alarm.villager_panic.description": "Makes villagers panic and run to their beds when hearing an alarm.\n \n§7If the 'Alarm Type' is set to 'GLOBAL', this will apply to all villagers in range of all players on the server. Those poor workers.",
 
   "config.infinitybuttons.diamond_particles.name": "Diamond Button Particles",
-  "config.infinitybuttons.diamond_particles.description": "Whether Diamond Buttons have shiny particles around them",
+  "config.infinitybuttons.diamond_particles.description": "Whether Diamond Buttons have shiny particles around them.\n \n§7I mean, they'll still be there, you just won't be able to comprehend their coolness.",
 
   "config.infinitybuttons.force_jade_camouflage.name": "Force Hiding In Jade",
-  "config.infinitybuttons.force_jade_camouflage.description": "Whether a server should force clients to hide secret buttons when using Jade\n \n§cChanging this client-side has no effect on a server,\n§cit has to be changed in the server's config",
+  "config.infinitybuttons.force_jade_camouflage.description": "Whether a server should force clients to hide secret buttons when using Jade.\n \n§cChanging this client-side has no effect on a server,\n§cit has to be changed in the server's config\n \n§7If this is disabled on the server, you can configure buttons are camouflaged in the config of Jade.",
 
   "config.infinitybuttons.config.name": "Infinity Buttons Config",
-  "config.infinitybuttons.config.description": "Need your Buttons to be more Infinity? Changing these settings can make your Buttons 1024x more infinite!\n \n§7More common options such as Tooltips can be found in the config of Diopside Lib"
+  "config.infinitybuttons.config.description": "Need your Buttons to be more Infinity? Changing these settings can make your Buttons 1024x more infinite!\n \n§7More common options such as Tooltips can be found in the config of Diopside Lib."
 }
