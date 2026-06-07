@@ -218,9 +218,9 @@ public class IBBlocks {
     public static final RegistrySupplier<SecretButton> END_STONE_BRICK_SECRET_BUTTON = registerSecretButton("end_stone_brick_secret_button",
             SecretButtonType.BIG_BRICK, Blocks.END_STONE_BRICKS );
     public static final RegistrySupplier<SecretButton> PURPUR_BLOCK_SECRET_BUTTON = registerSecretButton("purpur_block_secret_button",
-            SecretButtonType.TILE, Blocks.PURPUR_BLOCK );
+            SecretButtonType.PURPUR_BLOCK, Blocks.PURPUR_BLOCK );
     public static final RegistrySupplier<SecretButton> QUARTZ_BRICK_SECRET_BUTTON = registerSecretButton("quartz_brick_secret_button",
-            SecretButtonType.BIG_BRICK, Blocks.QUARTZ_BLOCK );
+            SecretButtonType.BIG_BRICK, Blocks.QUARTZ_BRICKS );
     public static final RegistrySupplier<SecretButton> DARK_PRISMARINE_SECRET_BUTTON = registerSecretButton("dark_prismarine_secret_button",
             SecretButtonType.FULL_BLOCK_BRICK, Blocks.DARK_PRISMARINE );
     public static final RegistrySupplier<SecretButton> POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = registerSecretButton("polished_blackstone_brick_secret_button",

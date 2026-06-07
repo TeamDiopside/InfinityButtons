@@ -25,6 +25,7 @@ public final class InfinityButtons {
         IBConfig.load();
     }
 
+    @Deprecated // TODO: remove
     public static ResourceLocation getResource(String path) {
         return ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, path);
     }

@@ -21,10 +21,11 @@ import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import nl.teamdiopside.infinitybuttons.InfinityButtons;
 import nl.teamdiopside.infinitybuttons.block.emergency.SafeEmergencyButton;
+import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.NormalButton;
+import nl.teamdiopside.infinitybuttons.fabric.datagen.simplifier.SimpleReferenceModel;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 
@@ -33,6 +34,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import static nl.teamdiopside.infinitybuttons.InfinityButtons.MOD_ID;
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.getResource;
 
 @Environment(EnvType.CLIENT)
@@ -111,8 +113,6 @@ public class ModelAndStateGenerator extends FabricModelProvider {
                             : new TextureMapping().put(TextureSlot.TEXTURE, ResourceLocation.withDefaultNamespace("block/" + finalType))
             );
 
-            System.out.println(finalType + " - " + CUSTOM_TEXTURE.contains(finalType));
-
             generateSmallButton(blockModels, small, texMap.apply(false));
             generateLargeButton(blockModels, large, texMap.apply(true));
         }
@@ -143,34 +143,44 @@ public class ModelAndStateGenerator extends FabricModelProvider {
         colors.add("fancy");
 
         for (String color : colors) {
+            Block emergencyButton = IBRegistryUtils.getBlockByID(MOD_ID, color + "_emergency_button");
+            Block safetyButton = IBRegistryUtils.getBlockByID(MOD_ID, color + "_safe_emergency_button");
 
-            TextureMapping colorMap = new TextureMapping()
-                    .put(TextureSlot.TEXTURE, getResource("block/emergency_buttons/" + color));
-
-            Block emergencyButton = IBRegistryUtils.getBlockByID(InfinityButtons.MOD_ID, color + "_emergency_button");
-            Block safetyButton = IBRegistryUtils.getBlockByID(InfinityButtons.MOD_ID, color + "_safe_emergency_button");
-
-            blockModels.modelOutput.accept(ModelLocationUtils.getModelLocation(emergencyButton.asItem()), new DelegatedModel(
-                    ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, "block/" + color + "_emergency_button")
-            ));
-            blockModels.modelOutput.accept(ModelLocationUtils.getModelLocation(safetyButton.asItem()), new DelegatedModel(
-                    ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, "block/" + color + "_safe_emergency_button_closed")
-            ));
+            // Parenting item models
+            new SimpleReferenceModel("item/" + color + "_emergency_button", "block/" + color + "_emergency_button")
+                    .build(blockModels.modelOutput);
+            new SimpleReferenceModel("item/" + color + "_safe_emergency_button", "block/" + color + "_safe_emergency_button_closed")
+                    .build(blockModels.modelOutput);
 
             // Generate safe variant states/models dynamically
-            generateSafeEmergencyButton(blockModels, emergencyButton, safetyButton, colorMap);
+            generateSafeEmergencyButton(blockModels, emergencyButton, safetyButton, color);
+        }
+
+        for (RegistrySupplier<SecretButton> secretButton : IBBlocks.SECRET_BUTTONS.values()) {
+            generateSecretButton(blockModels, secretButton.get());
         }
     }
 
+    /**
+     * <h1>Emergency Buttons & Safety Buttons</h1>
+     */
+
+    private SimpleReferenceModel emergencyButtonRefModel(String variant, String color, boolean safe) {
+        String safeSuffix = safe ? "safe_" : "";
+        return new SimpleReferenceModel("block/" + color + "_" + safeSuffix + "emergency_button" + variant,
+                                        "block/" + safeSuffix + "emergency_button" + variant)
+                .withTexture(ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/emergency_buttons/" + color));
+    }
+
     @SuppressWarnings("all")
-    public void generateSafeEmergencyButton(BlockModelGenerators blockModels, Block emergencyBlock, Block safetyBlock, TextureMapping colorMap) {
-        ResourceLocation emergencyNormal  = defineModel(TEMPLATE_EMERGENCY, "", emergencyBlock, colorMap, blockModels.modelOutput);
+    public void generateSafeEmergencyButton(BlockModelGenerators blockModels, Block emergencyBlock, Block safetyBlock, String color) {
+        ResourceLocation emergencyNormal = emergencyButtonRefModel("", color, false).build(blockModels.modelOutput);
 
-        ResourceLocation emergencyPressed = defineModel(TEMPLATE_EMERGENCY, "_pressed", emergencyBlock, colorMap, blockModels.modelOutput);
-        ResourceLocation safetyPressed    = defineModel(TEMPLATE_SAFETY, "_pressed", safetyBlock, colorMap, blockModels.modelOutput);
+        ResourceLocation emergencyPressed = emergencyButtonRefModel("_pressed", color, false).build(blockModels.modelOutput);
+        ResourceLocation safetyPressed    = emergencyButtonRefModel("_pressed", color, true).build(blockModels.modelOutput);
 
-        ResourceLocation safetyOpen       = defineModel(TEMPLATE_SAFETY, "_open", safetyBlock, colorMap, blockModels.modelOutput);
-        ResourceLocation safetyClosed     = defineModel(TEMPLATE_SAFETY, "_closed", safetyBlock, colorMap, blockModels.modelOutput);
+        ResourceLocation safetyOpen       = emergencyButtonRefModel("_open", color, true).build(blockModels.modelOutput);
+        ResourceLocation safetyClosed     = emergencyButtonRefModel("_closed", color, true).build(blockModels.modelOutput);
 
         var emergencyButtonBuilder = PropertyDispatch.properties(BlockStateProperties.ATTACH_FACE, BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.POWERED);
         var safetyButtonBuilder = PropertyDispatch.properties(SafeEmergencyButton.CLOSED, BlockStateProperties.ATTACH_FACE, BlockStateProperties.HORIZONTAL_FACING, BlockStateProperties.POWERED);
@@ -209,6 +219,54 @@ public class ModelAndStateGenerator extends FabricModelProvider {
                     }
         blockModels.blockStateOutput.accept(MultiVariantGenerator.multiVariant(emergencyBlock).with(emergencyButtonBuilder));
         blockModels.blockStateOutput.accept(MultiVariantGenerator.multiVariant(safetyBlock).with(safetyButtonBuilder));
+    }
+
+    /**
+     * <h1>Secret Buttons</h1>
+     */
+
+    private static void generateSecretButton(BlockModelGenerators blockModels, SecretButton secretButton) {
+        var camouflage = IBRegistryUtils.BlockInfo.from(secretButton.getCamouflage());
+        var button = IBRegistryUtils.BlockInfo.from(secretButton);
+
+        var camouflageLocation = ResourceLocation.fromNamespaceAndPath(camouflage.namespace(), "block/" + camouflage.id());
+        var buttonLocation = ResourceLocation.fromNamespaceAndPath(button.namespace(), "block/" + button.id());
+
+        ResourceLocation parentLocation = ResourceLocation.fromNamespaceAndPath(MOD_ID,
+                "block/secret_buttons/" + secretButton.type.getSerializedName() + "_secret_button");
+
+        new SimpleReferenceModel(buttonLocation, parentLocation)
+                .withTexture(camouflageLocation) // Model location == Texture location
+                .build(blockModels.modelOutput);
+
+
+        MultiVariantGenerator generator = MultiVariantGenerator.multiVariant(secretButton);
+
+        PropertyDispatch.C2<Boolean, Direction> poweredFacingDispatch = PropertyDispatch.properties(
+                BlockStateProperties.POWERED,
+                BlockStateProperties.HORIZONTAL_FACING
+        );
+
+        Direction[] directions = { Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST };
+        int[] rotations = { 0, 90, 180, 270 };
+
+        for (int i = 0; i < directions.length; i++) {
+            poweredFacingDispatch.select(false, directions[i], Variant.variant().with(VariantProperties.MODEL, camouflageLocation));
+
+            Variant activeVariant = Variant.variant()
+                    .with(VariantProperties.MODEL, buttonLocation)
+                    .with(VariantProperties.UV_LOCK, true);
+
+            if (rotations[i] != 0) {
+                activeVariant.with(VariantProperties.Y_ROT, VariantProperties.Rotation.values()[rotations[i] / 90]);
+            }
+
+            poweredFacingDispatch.select(true, directions[i], activeVariant);
+        }
+
+        generator.with(poweredFacingDispatch);
+
+        blockModels.blockStateOutput.accept(generator);
     }
 
     @Override
