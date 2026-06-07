@@ -25,6 +25,9 @@
     ],
     "modmenu": [
       "nl.teamdiopside.infinitybuttons.fabric.IBModMenu"
+    ],
+    "jade": [
+      "nl.teamdiopside.infinitybuttons.compat.jade.JadeIntegration"
     ]
   },
   "mixins": [

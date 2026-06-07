@@ -11,6 +11,7 @@ dependencies {
     modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
 
     modCompileOnly "dev.isxander:yet-another-config-lib:${rootProject.yacl_version}-fabric"
+    modCompileOnly "maven.modrinth:jade:15.10.5+fabric"
 
     modImplementation files('libs/diopside-fabric-1.0.0.jar')
 }
