@@ -1,6 +1,7 @@
 package nl.teamdiopside.infinitybuttons;
 
 import net.minecraft.resources.ResourceLocation;
+import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
 import nl.teamdiopside.infinitybuttons.registry.*;
 
 import java.util.logging.Logger;
@@ -13,6 +14,9 @@ public final class InfinityButtons {
         IBSounds.register();
         IBBlocks.register();
         IBItems.register();
+
+        IBModdedBlocks.register();
+
         IBCreativeTabs.register();
         IBParticles.register();
         IBAdvancementTriggers.register();
