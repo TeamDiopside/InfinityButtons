@@ -90,4 +90,13 @@ public class IBRegistryUtils {
                 "warped"
         ).contains(name);
     }
+
+    public record BlockInfo(String namespace, String id) {
+
+        public static BlockInfo from(Block block) {
+            String[] description = block.getDescriptionId().split("\\.");
+
+            return new BlockInfo(description[1], description[2]);
+        }
+    }
 }

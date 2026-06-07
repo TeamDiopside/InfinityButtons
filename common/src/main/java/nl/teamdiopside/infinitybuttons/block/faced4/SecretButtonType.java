@@ -74,7 +74,7 @@ public enum SecretButtonType implements StringRepresentable {
             ),
             IBSounds.WOOD_SCRAPE
     ),
-    TILE(
+    PURPUR_BLOCK(
             Shapes.or(
                     Block.box(0, 0, 0, 16, 8, 16),
                     Block.box(0, 8, 0, 8, 16, 16),

@@ -19,8 +19,14 @@ public abstract class IBModdedBlocks extends IBBlocks {
 
     public abstract void registerMine();
 
+    private static boolean shouldRegister(String modId) {
+        if (Platform.isModLoaded(modId)) return true;
+
+        return true;
+    }
+
     public static void register() {
-        if (Platform.isModLoaded(AtmosphericBlocks.NAMESPACE)) AtmosphericBlocks.INSTANCE.registerMine();
+        if (shouldRegister(AtmosphericBlocks.NAMESPACE)) AtmosphericBlocks.INSTANCE.registerMine();
 
         // TODO: Autumnity
         // TODO: BuzzierBees
