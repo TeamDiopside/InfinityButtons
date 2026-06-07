@@ -25,6 +25,7 @@ import nl.teamdiopside.infinitybuttons.block.emergency.SafeEmergencyButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.NormalButton;
+import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
 import nl.teamdiopside.infinitybuttons.fabric.datagen.simplifier.SimpleReferenceModel;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
@@ -156,7 +157,10 @@ public class ModelAndStateGenerator extends FabricModelProvider {
             generateSafeEmergencyButton(blockModels, emergencyButton, safetyButton, color);
         }
 
-        for (RegistrySupplier<SecretButton> secretButton : IBBlocks.SECRET_BUTTONS.values()) {
+        var secret_buttons = new ArrayList<>(IBBlocks.SECRET_BUTTONS.values());
+        secret_buttons.addAll(IBModdedBlocks.MOD_SECRET_BUTTONS.values());
+
+        for (RegistrySupplier<SecretButton> secretButton : secret_buttons) {
             generateSecretButton(blockModels, secretButton.get());
         }
     }
