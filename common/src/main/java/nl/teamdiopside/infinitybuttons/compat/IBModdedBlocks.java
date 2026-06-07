@@ -9,6 +9,8 @@ import nl.teamdiopside.infinitybuttons.compat.blocks.AtmosphericBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 
+import java.util.HashMap;
+
 public abstract class IBModdedBlocks extends IBBlocks {
 
     protected String namespace;
@@ -43,15 +45,23 @@ public abstract class IBModdedBlocks extends IBBlocks {
     }
 
     protected RegistrySupplier<SecretButton> registerBookshelf(String wood) {
-        return registerSecretButton(wood + "_bookshelf_secret_button",
-                SecretButtonType.BOOKSHELF, getByID(wood + "_bookshelf") );
+        var registry = registerSecretButton(wood + "_bookshelf_secret_button",
+                SecretButtonType.BOOKSHELF, blockFromMod(wood + "_bookshelf") );
+
+        return registry;
     }
 
-    protected Block getByID(String id) {
-        return IBRegistryUtils.getBlockByID(getNamespace(), id);
+    protected Block blockFromMod(String id) {
+        return IBRegistryUtils.getBlockByID(this.namespace, id);
     }
 
-    protected String getNamespace() {
-        return this.namespace;
+
+    public static final HashMap<String, RegistrySupplier<SecretButton>> MOD_SECRET_BUTTONS = new HashMap<>();
+    @Override
+    protected RegistrySupplier<SecretButton> registerSecretButton(String blockId, SecretButtonType type, Block originalBlock) {
+        var registry = super.registerSecretButton(blockId, type, originalBlock);
+
+        MOD_SECRET_BUTTONS.put(blockId, registry);
+        return registry;
     }
 }
