@@ -1,4 +1,4 @@
-package nl.teamdiopside.infinitybuttons.registry;
+package nl.teamdiopside.infinitybuttons;
 
 import dev.isxander.yacl3.api.*;
 import dev.isxander.yacl3.api.controller.EnumControllerBuilder;
@@ -7,6 +7,7 @@ import dev.isxander.yacl3.api.controller.TickBoxControllerBuilder;
 import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
 import dev.isxander.yacl3.config.v2.api.SerialEntry;
 import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -33,30 +34,37 @@ public class IBConfig {
                 .name(createName("config"))
                 .description(createDescription("config"));
 
-        createBooleanConfigOption(optionBuilder, "alarm.mute", false,
+        var muteAlarmSoundOption = createBooleanConfigOption("alarm.mute", false,
                 () -> this.muteAlarmSound, (newVal) -> this.muteAlarmSound = newVal);
-        createBooleanConfigOption(optionBuilder, "alarm.villager_panic", true,
+        var alarmVillagerPanicOption = createBooleanConfigOption("alarm.villager_panic", true,
                 () -> this.alarmVillagerPanic, (newVal) -> this.alarmVillagerPanic = newVal);
-        createBooleanConfigOption(optionBuilder, "diamond_particles", false,
+        var diamondParticlesOption = createBooleanConfigOption("diamond_particles", false,
                 () -> this.diamondParticles, (newVal) -> this.diamondParticles = newVal);
-        createBooleanConfigOption(optionBuilder, "force_jade_camouflage", false,
-                () -> this.forceJadeHiding, (newVal) -> this.forceJadeHiding = newVal);
+        var forceJadeCamouflageOption = createBooleanConfigOption("force_jade_camouflage", false,
+                () -> this.forceJadeCamouflage, (newVal) -> this.forceJadeCamouflage = newVal);
 
-        optionBuilder.option(Option.<AlarmSoundType>createBuilder()
+        var alarmTypeOption = Option.<AlarmSoundType>createBuilder()
                         .name(createName("alarm_type"))
                         .description(createDescription("alarm_type"))
 
                         .binding(AlarmSoundType.GLOBAL, () -> this.alarmSoundType, newVal -> this.alarmSoundType = newVal)
-                        .controller(o -> EnumControllerBuilder.create(o).enumClass(AlarmSoundType.class))
-                        .build());
+                        .controller(o -> EnumControllerBuilder.create(o).enumClass(AlarmSoundType.class));
 
-        optionBuilder.option(Option.<Integer>createBuilder()
+        var alarmRangeOption = Option.<Integer>createBuilder()
                 .name(createName("alarm_range"))
                 .description(createDescription("alarm_range"))
 
                 .binding(6, () -> this.alarmSoundRange, newVal -> this.alarmSoundRange = newVal)
-                .controller(o -> IntegerFieldControllerBuilder.create(o).min(1).max(32))
-                .build());
+                .controller(o -> IntegerFieldControllerBuilder.create(o).min(1).max(32));
+
+        optionBuilder.option(muteAlarmSoundOption.build());
+
+        optionBuilder.option(alarmVillagerPanicOption.build());
+        optionBuilder.option(alarmTypeOption.build());
+        optionBuilder.option(alarmRangeOption.build());
+
+        optionBuilder.option(diamondParticlesOption.build());
+        optionBuilder.option(forceJadeCamouflageOption.build());
 
         configBuilder.group(optionBuilder.build());
         return configBuilder;
@@ -72,17 +80,13 @@ public class IBConfig {
         );
     }
 
-    private void createBooleanConfigOption(OptionGroup.Builder optionBuilder, String key, boolean defaultVal,
+    private Option.Builder<Boolean> createBooleanConfigOption(String key, boolean defaultVal,
                                            Supplier<Boolean> getter, Consumer<Boolean> setter) {
-        optionBuilder.option(Option.<Boolean>createBuilder()
+        return Option.<Boolean>createBuilder()
                 .name(createName(key))
                 .description(createDescription(key))
-
-                .binding(defaultVal, getter::get, setter::accept)
-
-                .controller(TickBoxControllerBuilder::create)
-                .build()
-        );
+                .binding(defaultVal, getter, setter)
+                .controller(TickBoxControllerBuilder::create);
     }
 
     public Screen generateScreen(Screen parentScreen) {
@@ -92,7 +96,15 @@ public class IBConfig {
                         .name(Component.translatable("config.infinitybuttons.title"))
                         .build()
                 )
-                .save(HANDLER::save)
+                .save(() -> {
+                    HANDLER.save();
+
+                    // Tell all clients about this hip new Force Jade Camouflage thing
+                    Minecraft mc = Minecraft.getInstance();
+                    if (mc.getSingleplayerServer() != null) {
+                        IBNetworking.sendJadeSyncToAll(mc.getSingleplayerServer());
+                    }
+                })
                 .build()
                 .generateScreen(parentScreen);
     }
@@ -119,8 +131,8 @@ public class IBConfig {
     @SerialEntry(comment = "Client side")
     public boolean diamondParticles = true;
 
-    @SerialEntry
-    public boolean forceJadeHiding = true;
+    @SerialEntry(comment = "Server Side")
+    public boolean forceJadeCamouflage = true;
 
     public static AlarmSoundType alarmSoundType() {
         return HANDLER.instance().alarmSoundType;
@@ -142,12 +154,12 @@ public class IBConfig {
         return HANDLER.instance().diamondParticles;
     }
 
-    public static boolean forceJadeHiding() {
-        return HANDLER.instance().forceJadeHiding;
+    public static boolean forceJadeCamouflage() {
+        return HANDLER.instance().forceJadeCamouflage;
     }
 
-    public static void register() {
-        HANDLER.save();
-        LOGGER.info("Registering Config options for Infinity Buttons");
+    public static void load() {
+        HANDLER.load();
+        LOGGER.info("Loading Config options for Infinity Buttons");
     }
 }
