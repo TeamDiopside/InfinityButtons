@@ -7,26 +7,31 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import nl.teamdiopside.infinitybuttons.block.ButtonFaced4;
+import nl.teamdiopside.infinitybuttons.compat.jade.JadeCamouflaged;
 import org.jetbrains.annotations.NotNull;
 
-public class SecretButton extends ButtonFaced4 {
+public class SecretButton extends ButtonFaced4 implements JadeCamouflaged {
 
     public static final MapCodec<SecretButton> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(propertiesCodec(),
-                    SecretButtonType.CODEC.fieldOf("type").forGetter(secretButton -> secretButton.type)
+                    SecretButtonType.CODEC.fieldOf("type").forGetter(secretButton -> secretButton.type),
+                    Block.CODEC.fieldOf("camouflage").forGetter(secretButton -> secretButton.camouflage)
             ).apply(instance, SecretButton::new)
     );
 
     public static final int PRESS_TICKS = 50;
 
     public final SecretButtonType type;
+    protected final Block camouflage;
 
-    public SecretButton(Properties properties, SecretButtonType type) {
+    public SecretButton(Properties properties, SecretButtonType type, Block camouflage) {
         super(properties, type.shapePressed, type.shapeUnpressed, false);
         this.type = type;
+        this.camouflage = camouflage;
     }
 
     @Override
@@ -51,5 +56,10 @@ public class SecretButton extends ButtonFaced4 {
     @Override
     protected @NotNull MapCodec<? extends SecretButton> codec() {
         return CODEC;
+    }
+
+    @Override
+    public Block getCamouflage() {
+        return this.camouflage;
     }
 }
