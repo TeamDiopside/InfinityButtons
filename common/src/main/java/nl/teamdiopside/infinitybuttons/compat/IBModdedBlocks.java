@@ -7,6 +7,7 @@ import net.minecraft.world.level.block.Blocks;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.compat.blocks.AtmosphericBlocks;
+import nl.teamdiopside.infinitybuttons.compat.blocks.AutumnityBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 
 import java.util.HashMap;
@@ -30,6 +31,7 @@ public abstract class IBModdedBlocks extends IBBlocks {
 
     public static void register() {
         if (shouldRegister(AtmosphericBlocks.NAMESPACE)) AtmosphericBlocks.INSTANCE.registerMine();
+        if (shouldRegister(AutumnityBlocks.NAMESPACE)) AutumnityBlocks.INSTANCE.registerMine();
 
         // TODO: Atmospheric      - alleen NeoForge 1.21.1
         // TODO: Autumnity        - alleen NeoForge 1.21.1
