@@ -1,10 +1,10 @@
-package nl.teamdiopside.infinitybuttons.fabric.datagen;
+package nl.teamdiopside.infinitybuttons.datagen;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
@@ -26,10 +26,11 @@ import java.util.function.Function;
 
 import static net.minecraft.data.recipes.RecipeBuilder.getDefaultRecipeId;
 
-public class RecipeGenerator extends FabricRecipeProvider {
+public class RecipeGenerator extends RecipeProvider {
 
-    public RecipeGenerator(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
-        super(output, registriesFuture);
+    // Sub-provider instance constructor
+    public RecipeGenerator(CompletableFuture<HolderLookup.Provider> registries, PackOutput output) {
+        super(output, registries);
     }
 
     @Override
@@ -131,10 +132,15 @@ public class RecipeGenerator extends FabricRecipeProvider {
 
             convertingRecipe(recipes, dyeItem, emergencyButton, false, 1, "", "emergency_buttons");
 
+            TagKey<Item> glassPaneTag = TagKey.create(
+                    Registries.ITEM,
+                    ResourceLocation.fromNamespaceAndPath("c",  "glass_panes")
+            );
+
             ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, safetyButton)
                     .pattern("OOO")
                     .pattern("O.O")
-                    .define('O', ConventionalItemTags.GLASS_PANES)
+                    .define('O', glassPaneTag)
                     .group("safe_emergency_buttons")
                     .define('.', emergencyButton)
                     .unlockedBy("has_thing", RecipeProvider.has(dyeItem))

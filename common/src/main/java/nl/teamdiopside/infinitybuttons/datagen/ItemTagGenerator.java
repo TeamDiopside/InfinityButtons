@@ -1,23 +1,25 @@
-package nl.teamdiopside.infinitybuttons.fabric.datagen;
+package nl.teamdiopside.infinitybuttons.datagen;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
-import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import nl.teamdiopside.infinitybuttons.InfinityButtons;
+import net.minecraft.world.level.block.Block;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ItemTagGenerator extends FabricTagProvider<Item> {
+import static nl.teamdiopside.infinitybuttons.InfinityButtons.MOD_ID;
 
-    public ItemTagGenerator(FabricDataOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
-        super(output, Registries.ITEM, registriesFuture);
+public class ItemTagGenerator extends ItemTagsProvider {
+
+    public ItemTagGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture, CompletableFuture<TagLookup<Block>> blockTags) {
+        super(output, registriesFuture, blockTags);
     }
 
     public static final TagKey<Item> CONCRETE_POWDER_BUTTONS = add("concrete_powder_buttons");
@@ -38,7 +40,7 @@ public class ItemTagGenerator extends FabricTagProvider<Item> {
     public static final TagKey<Item> COPPER_LARGE_BUTTONS = add("copper_large_buttons");
 
     static TagKey<Item> add(String name) {
-        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("infinitybuttons", name));
+        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
     }
 
     public static final TagKey<Item> BUTTONS = edit("buttons");
@@ -53,29 +55,29 @@ public class ItemTagGenerator extends FabricTagProvider<Item> {
     @Override
     protected void addTags(HolderLookup.Provider wrapperLookup) {
         // Vanilla Tags
-        getOrCreateTagBuilder(BUTTONS)
+        this.tag(BUTTONS)
                 .addTag(COPPER_BUTTONS)
                 .addTag(CONCRETE_POWDER_BUTTONS);
 
         for (var entry : IBBlocks.SMALL_LARGE_BUTTONS.values()) {
-            getOrCreateTagBuilder(BUTTONS)
+            this.tag(BUTTONS)
                     .add(entry.getSmall().asItem())
                     .add(entry.getLarge().asItem());
         }
 
-        getOrCreateTagBuilder(NON_FLAMMABLE_WOOD)
-                .add(IBRegistryUtils.getItemByID(InfinityButtons.MOD_ID, "crimson_large_button").asItem())
-                .add(IBRegistryUtils.getItemByID(InfinityButtons.MOD_ID, "warped_large_button").asItem())
+        this.tag(NON_FLAMMABLE_WOOD)
+                .add(IBRegistryUtils.getItemByID(MOD_ID, "crimson_large_button").asItem())
+                .add(IBRegistryUtils.getItemByID(MOD_ID, "warped_large_button").asItem())
                 .add(IBBlocks.CRIMSON_PLANK_SECRET_BUTTON.get().asItem())
                 .add(IBBlocks.WARPED_PLANK_SECRET_BUTTON.get().asItem());
 
-        getOrCreateTagBuilder(PIGLIN_REPELLENTS)
+        this.tag(PIGLIN_REPELLENTS)
                 .add(IBBlocks.SOUL_TORCH_BUTTON.get().asItem())
                 .add(IBBlocks.SOUL_TORCH_LEVER.get().asItem())
                 .add(IBBlocks.SOUL_LANTERN_BUTTON.get().asItem())
                 .add(IBBlocks.SOUL_LANTERN_LEVER.get().asItem());
 
-        getOrCreateTagBuilder(STONE_BRICKS)
+        this.tag(STONE_BRICKS)
                 .add(IBBlocks.STONE_BRICK_SECRET_BUTTON.get().asItem())
                 .add(IBBlocks.MOSSY_STONE_BRICK_SECRET_BUTTON.get().asItem())
                 .add(IBBlocks.CRACKED_STONE_BRICK_SECRET_BUTTON.get().asItem())
@@ -83,18 +85,18 @@ public class ItemTagGenerator extends FabricTagProvider<Item> {
 
         // Concrete Powder
         for (var value : DyeColor.values()) {
-            getOrCreateTagBuilder(CONCRETE_POWDER_BUTTONS)
-                    .add(IBRegistryUtils.getItemByID(InfinityButtons.MOD_ID,
+            this.tag(CONCRETE_POWDER_BUTTONS)
+                    .add(IBRegistryUtils.getItemByID(MOD_ID,
                             value.name().toLowerCase() + "concrete_powder_button").asItem()
                     );
 
-            getOrCreateTagBuilder(CONCRETE_POWDER_LARGE_BUTTONS)
-                    .add(IBRegistryUtils.getItemByID(InfinityButtons.MOD_ID,
+            this.tag(CONCRETE_POWDER_LARGE_BUTTONS)
+                    .add(IBRegistryUtils.getItemByID(MOD_ID,
                             value.name().toLowerCase() + "concrete_powder_large_button").asItem()
                     );
         }
 
-        getOrCreateTagBuilder(LARGE_BUTTONS)
+        this.tag(LARGE_BUTTONS)
                 .addTag(WOODEN_LARGE_BUTTONS)
                 .addTag(COPPER_LARGE_BUTTONS)
                 .addTag(CONCRETE_POWDER_LARGE_BUTTONS); // TODO
@@ -118,7 +120,7 @@ public class ItemTagGenerator extends FabricTagProvider<Item> {
 //                .add(IBBlocks.RED_SAND_LARGE_BUTTON.get().asItem())
 //                .add(IBBlocks.GRAVEL_LARGE_BUTTON.get().asItem());
 
-        getOrCreateTagBuilder(WOODEN_LARGE_BUTTONS); // TODO
+        this.tag(WOODEN_LARGE_BUTTONS); // TODO
 //                .add(IBBlocks.OAK_LARGE_BUTTON.get().asItem())
 //                .add(IBBlocks.SPRUCE_LARGE_BUTTON.get().asItem())
 //                .add(IBBlocks.BIRCH_LARGE_BUTTON.get().asItem())
@@ -131,23 +133,23 @@ public class ItemTagGenerator extends FabricTagProvider<Item> {
 
         // Emergency Buttons
         for (var entry : IBBlocks.EMERGENCY_BUTTONS.values()) {
-            getOrCreateTagBuilder(EMERGENCY_BUTTONS)
+            this.tag(EMERGENCY_BUTTONS)
                     .add(entry.get().asItem());
 
             if (entry == IBBlocks.FANCY_EMERGENCY_BUTTON) continue;
-            getOrCreateTagBuilder(NORMAL_EMERGENCY_BUTTONS)
+            this.tag(NORMAL_EMERGENCY_BUTTONS)
                     .add(entry.get().asItem());
         }
         for (var entry : IBBlocks.SAFE_EMERGENCY_BUTTONS.values()) {
-            getOrCreateTagBuilder(SAFE_EMERGENCY_BUTTONS)
+            this.tag(SAFE_EMERGENCY_BUTTONS)
                     .add(entry.get().asItem());
             if (entry == IBBlocks.FANCY_SAFE_EMERGENCY_BUTTON) continue;
-            getOrCreateTagBuilder(NORMAL_SAFE_EMERGENCY_BUTTONS)
+            this.tag(NORMAL_SAFE_EMERGENCY_BUTTONS)
                     .add(entry.get().asItem());
         }
 
         // Secret Buttons
-        getOrCreateTagBuilder(SECRET_BUTTONS)
+        this.tag(SECRET_BUTTONS)
                 .addTag(WOODEN_SECRET_BUTTONS)
 
                 .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "rose_quartz_tile_secret_button"))
@@ -182,11 +184,11 @@ public class ItemTagGenerator extends FabricTagProvider<Item> {
                 .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_veridium_brick_secret_button"));
 
         for (var entry : IBBlocks.SECRET_BUTTONS.values()) {
-            getOrCreateTagBuilder(SECRET_BUTTONS)
+            this.tag(SECRET_BUTTONS)
                     .add(entry.get().asItem());
         }
 
-        getOrCreateTagBuilder(WOODEN_SECRET_BUTTONS)
+        this.tag(WOODEN_SECRET_BUTTONS)
                 .addTag(BOOKSHELF_SECRET_BUTTONS)
                 .add(IBBlocks.OAK_PLANK_SECRET_BUTTON.get().asItem())
                 .add(IBBlocks.SPRUCE_PLANK_SECRET_BUTTON.get().asItem())
@@ -200,11 +202,11 @@ public class ItemTagGenerator extends FabricTagProvider<Item> {
                 .add(IBBlocks.CRIMSON_PLANK_SECRET_BUTTON.get().asItem())
                 .add(IBBlocks.WARPED_PLANK_SECRET_BUTTON.get().asItem());
 
-        getOrCreateTagBuilder(BOOKSHELF_SECRET_BUTTONS)
+        this.tag(BOOKSHELF_SECRET_BUTTONS)
                 .add(IBBlocks.BOOKSHELF_SECRET_BUTTON.get().asItem());
 
 
-        getOrCreateTagBuilder(TORCH_BUTTONS)
+        this.tag(TORCH_BUTTONS)
                 .add(IBBlocks.TORCH_BUTTON.get().asItem())
                 .add(IBBlocks.TORCH_LEVER.get().asItem())
                 .add(IBBlocks.SOUL_TORCH_BUTTON.get().asItem())
@@ -214,7 +216,7 @@ public class ItemTagGenerator extends FabricTagProvider<Item> {
                 .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "propelplant_torch_button"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "propelplant_torch_lever"));
 
-        getOrCreateTagBuilder(CONSOLE_BUTTONS)
+        this.tag(CONSOLE_BUTTONS)
                 .add(IBBlocks.SMALL_CONSOLE_BUTTON.get().asItem())
                 .add(IBBlocks.SMALL_CONSOLE_LEVER.get().asItem())
                 .add(IBBlocks.CONSOLE_BUTTON.get().asItem())
@@ -224,16 +226,16 @@ public class ItemTagGenerator extends FabricTagProvider<Item> {
                 .add(IBBlocks.BIG_CONSOLE_BUTTON.get().asItem())
                 .add(IBBlocks.BIG_CONSOLE_LEVER.get().asItem());
 
-        getOrCreateTagBuilder(LANTERN_BUTTONS)
+        this.tag(LANTERN_BUTTONS)
                 .add(IBBlocks.LANTERN_BUTTON.get().asItem())
                 .add(IBBlocks.LANTERN_LEVER.get().asItem())
                 .add(IBBlocks.SOUL_LANTERN_BUTTON.get().asItem())
                 .add(IBBlocks.SOUL_LANTERN_LEVER.get().asItem());
 
         for (var entry : IBBlocks.COPPER_BUTTONS.values()) {
-            getOrCreateTagBuilder(COPPER_BUTTONS)
+            this.tag(COPPER_BUTTONS)
                     .add(entry.getSmall().asItem());
-            getOrCreateTagBuilder(COPPER_LARGE_BUTTONS)
+            this.tag(COPPER_LARGE_BUTTONS)
                     .add(entry.getLarge().asItem());
         }
     }

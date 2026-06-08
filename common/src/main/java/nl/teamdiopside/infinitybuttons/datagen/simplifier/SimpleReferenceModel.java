@@ -1,4 +1,4 @@
-package nl.teamdiopside.infinitybuttons.fabric.datagen.simplifier;
+package nl.teamdiopside.infinitybuttons.datagen.simplifier;
 
 import com.google.gson.JsonElement;
 import net.minecraft.data.models.model.ModelTemplate;
