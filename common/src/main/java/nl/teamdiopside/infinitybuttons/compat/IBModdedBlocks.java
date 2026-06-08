@@ -7,10 +7,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
-import nl.teamdiopside.infinitybuttons.compat.blocks.AtmosphericBlocks;
-import nl.teamdiopside.infinitybuttons.compat.blocks.AutumnityBlocks;
-import nl.teamdiopside.infinitybuttons.compat.blocks.BuzzierBeesBlocks;
-import nl.teamdiopside.infinitybuttons.compat.blocks.ClayworksBlocks;
+import nl.teamdiopside.infinitybuttons.compat.blocks.*;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 
 import java.util.HashMap;
@@ -33,14 +30,13 @@ public abstract class IBModdedBlocks extends IBBlocks {
         if (Platform.isModLoaded(ClayworksBlocks.NAMESPACE))   ClayworksBlocks.INSTANCE.registerMine();
 
         // TODO: Create           - alleen NeoForge 1.21.1
-        // TODO: Endergetic       - ---
         // TODO: Environmental    - alleen NeoForge 1.21.1
         // TODO: Neapolitan       - alleen NeoForge 1.21.1
         // TODO: Nether's Delight - alleen NeoForge 1.21.1 -> Nieuwe mod
         // TODO: Quark            - alleen NeoForge 1.21.1
-        // TODO: Savage & Ravage  - --- (discontinued)
         // TODO: Upgrade Aquatic  - alleen NeoForge 1.21.1
-        // TODO: Woodworks        - alleen NeoForge 1.21.1
+
+        if (Platform.isModLoaded(WoodworksBlocks.NAMESPACE))   WoodworksBlocks.INSTANCE.registerMine();
     }
 
     public static final HashSet<RegistrySupplier<SecretButton>> MOD_BOOKSHELVES = new HashSet<>();
