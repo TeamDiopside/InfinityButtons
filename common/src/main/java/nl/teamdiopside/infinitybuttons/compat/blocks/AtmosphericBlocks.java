@@ -1,6 +1,7 @@
 package nl.teamdiopside.infinitybuttons.compat.blocks;
 
 import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.resources.ResourceLocation;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.OneUseButton;
 import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
@@ -12,8 +13,10 @@ public class AtmosphericBlocks extends IBModdedBlocks {
     public static final AtmosphericBlocks INSTANCE = new AtmosphericBlocks();
     public static final String NAMESPACE = "atmospheric";
 
-    public static final IBRegistryUtils.LargeVariantSupplier<OneUseButton> ARID_SAND_BUTTON = INSTANCE.registerOneUseButton("arid_sand");
-    public static final IBRegistryUtils.LargeVariantSupplier<OneUseButton> RED_ARID_SAND_BUTTON = INSTANCE.registerOneUseButton("red_arid_sand");
+    public static final IBRegistryUtils.LargeVariantSupplier<OneUseButton> ARID_SAND_BUTTON = INSTANCE.registerOneUseButton(
+            ResourceLocation.fromNamespaceAndPath(NAMESPACE, "arid_sand"), "arid_sand");
+    public static final IBRegistryUtils.LargeVariantSupplier<OneUseButton> RED_ARID_SAND_BUTTON = INSTANCE.registerOneUseButton(
+            ResourceLocation.fromNamespaceAndPath(NAMESPACE, "red_arid_sand"), "red_arid_sand");
 
     public static final RegistrySupplier<SecretButton> ROSEWOOD_BOOKSHELF_SECRET_BUTTON = INSTANCE.registerBookshelf("rosewood");
     public static final RegistrySupplier<SecretButton> MORADO_BOOKSHELF_SECRET_BUTTON = INSTANCE.registerBookshelf("morado");

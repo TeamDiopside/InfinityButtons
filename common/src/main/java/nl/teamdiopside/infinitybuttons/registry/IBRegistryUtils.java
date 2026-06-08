@@ -5,7 +5,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import nl.teamdiopside.diopside.registry.DiopsideRegistries;
 
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -35,44 +34,54 @@ public class IBRegistryUtils {
         }
     }
 
+    @Deprecated
     public static Item getItemByID(String id) {
         Optional<Item> item = BuiltInRegistries.ITEM.getOptional(ResourceLocation.parse(id));
 
         if (item.isEmpty()) {
-            throw new NoSuchElementException("Could not find item \"" + id + "\"!");
+            throw new NoSuchElementException("Could not find item 'minecraft:" + id + "'!");
         }
 
         return item.get();
     }
 
-    public static Item getItemByID(String namespace, String id) {
-        Item item = DiopsideRegistries.ITEM.getById(ResourceLocation.fromNamespaceAndPath(namespace, id));
-
-        if (item == null) {
-            throw new NoSuchElementException("Could not find item \"" + id + "\"!");
-        }
-
-        return item;
+    public static Item getItemByID(ResourceLocation reference) {
+        return getItemByID(reference.getNamespace(), reference.getPath());
     }
 
+    public static Item getItemByID(String namespace, String id) {
+        Optional<Item> item = BuiltInRegistries.ITEM.getOptional(ResourceLocation.fromNamespaceAndPath(namespace, id));
+
+        if (item.isEmpty()) {
+            throw new NoSuchElementException("Could not find item '" + namespace + ":" + id + "'!");
+        }
+
+        return item.get();
+    }
+
+    @Deprecated
     public static Block getBlockByID(String id) {
         Optional<Block> block = BuiltInRegistries.BLOCK.getOptional(ResourceLocation.parse(id));
 
         if (block.isEmpty()) {
-            throw new NoSuchElementException("Could not find black \"" + id + "\"!");
+            throw new NoSuchElementException("Could not find block 'minecraft:" + id + "'!");
         }
 
         return block.get();
     }
 
-    public static Block getBlockByID(String namespace, String id) {
-        Block block = DiopsideRegistries.BLOCK.getById(ResourceLocation.fromNamespaceAndPath(namespace, id));
+    public static Block getBlockByID(ResourceLocation reference) {
+        return getBlockByID(reference.getNamespace(), reference.getPath());
+    }
 
-        if (block == null) {
-            throw new NoSuchElementException("Could not find black \"" + id + "\"!");
+    public static Block getBlockByID(String namespace, String id) {
+        Optional<Block> block = BuiltInRegistries.BLOCK.getOptional(ResourceLocation.fromNamespaceAndPath(namespace, id));
+
+        if (block.isEmpty()) {
+            throw new NoSuchElementException("Could not find block '" + namespace + ":" + id + "'!");
         }
 
-        return block;
+        return block.get();
     }
 
     public static boolean isWoodType(String name) {
@@ -97,6 +106,14 @@ public class IBRegistryUtils {
             String[] description = block.getDescriptionId().split("\\.");
 
             return new BlockInfo(description[1], description[2]);
+        }
+
+        public static String getID(Block block) {
+            return BlockInfo.from(block).id();
+        }
+
+        public static String getNamespace(Block block) {
+            return BlockInfo.from(block).namespace();
         }
     }
 }

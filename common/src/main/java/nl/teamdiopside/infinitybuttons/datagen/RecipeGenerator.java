@@ -37,8 +37,8 @@ public class RecipeGenerator extends RecipeProvider {
     public void buildRecipes(RecipeOutput recipes) {
         // Basic Small / Large Buttons
         for (var entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) { // Does NOT include copper buttons because gay
-            String key = entry.getKey();
-            if (key.equals("netherite")) continue;
+            ResourceLocation key = entry.getKey();
+            if (key.getPath().equals("netherite")) continue;
 
             IBRegistryUtils.LargeVariantSupplier<? extends Block> value = entry.getValue();
 
@@ -51,16 +51,16 @@ public class RecipeGenerator extends RecipeProvider {
             };
 
             boolean yearnsToBeANugget = false;
-            if (key.equals("dripstone")) key = "dripstone_block"; // Fuck you Mojang
-            if (key.equals("prismarine_brick")) key = "prismarine_bricks"; // Fuck you Lars
+            if (key.getPath().equals("dripstone")) key.withPath("dripstone_block"); // Fuck you Mojang
+            if (key.getPath().equals("prismarine_brick")) key.withPath("prismarine_bricks"); // Fuck you Lars
 
-            if (Set.of("gold", "iron", "diamond", "emerald").contains(key)) { // Materials
-                if (Set.of("gold", "iron").contains(key)) key += "_ingot";
+            if (Set.of("gold", "iron", "diamond", "emerald").contains(key.getPath())) { // Materials
+                if (Set.of("gold", "iron").contains(key.getPath())) key.withPath(key.getPath() + "_ingot");
 
                 yearnsToBeANugget = true; // All materials for consistency
             }
 
-            Item materialItem = IBRegistryUtils.getItemByID(key);
+            Item materialItem = IBRegistryUtils.getItemByID(key.getNamespace(), key.getPath());
 
             if (!yearnsToBeANugget) {
                 smallLargeButton(recipes, value, materialItem, "", null);
@@ -120,7 +120,8 @@ public class RecipeGenerator extends RecipeProvider {
 
         // Secret Buttons
         for (var entry : IBBlocks.SECRET_BUTTONS.entrySet()) {
-            convertingRecipe(recipes, entry.getKey(), entry.getValue().get(), false, 1, "", "secret_buttons");
+            Block originalBlock = IBRegistryUtils.getBlockByID(entry.getKey().getNamespace(), entry.getKey().getPath());
+            convertingRecipe(recipes, originalBlock, entry.getValue().get(), false, 1, "", "secret_buttons");
         }
 
         // Emergency & Safety Buttons

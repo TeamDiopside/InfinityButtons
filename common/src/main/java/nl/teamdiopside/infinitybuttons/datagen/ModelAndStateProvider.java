@@ -9,7 +9,9 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.blockstates.*;
-import net.minecraft.data.models.model.*;
+import net.minecraft.data.models.model.ModelTemplate;
+import net.minecraft.data.models.model.TextureMapping;
+import net.minecraft.data.models.model.TextureSlot;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
@@ -23,6 +25,8 @@ import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.NormalButton;
 import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
+import nl.teamdiopside.infinitybuttons.datagen.simplifier.ButtonVariant;
+import nl.teamdiopside.infinitybuttons.datagen.simplifier.OutFolder;
 import nl.teamdiopside.infinitybuttons.datagen.simplifier.SimpleReferenceModel;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
@@ -91,71 +95,45 @@ public class ModelAndStateProvider implements DataProvider {
             return name -> new ModelTemplate(Optional.of(locationFactory.apply(name)), Optional.empty(), TextureSlot.TEXTURE);
         }
 
-        public static final Function<String, ModelTemplate> TEMPLATE_SMALL =
-                template(name -> ResourceLocation.withDefaultNamespace("block/button" + name));
+        public void generateButton(String button_name, ResourceLocation textureLocation, boolean isLarge) {
+            Block block = IBRegistryUtils.getBlockByID(MOD_ID, button_name);
 
-        public static final Function<String, ModelTemplate> TEMPLATE_LARGE =
-                template(name -> ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/large_button" + name));
-
-        public static final Function<String, ModelTemplate> TEMPLATE_INVENTORY_SMALL =
-                template(name -> ResourceLocation.withDefaultNamespace("block/button" + name));
-
-        public static final Function<String, ModelTemplate> TEMPLATE_INVENTORY_LARGE =
-                template(name -> ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/large_button" + name));
-
-        public void generateSmallButton(Block block, TextureMapping texMap) {
             this.blockStateOutput.accept(BlockModelGenerators.createButton(block,
-                    defineModel(TEMPLATE_SMALL, "", block, texMap, this.modelOutput),
-                    defineModel(TEMPLATE_SMALL, "_pressed", block, texMap, this.modelOutput)
+                    SimpleReferenceModel.makeButton(OutFolder.BLOCK, button_name, textureLocation, isLarge, ButtonVariant.BASE).build(this.modelOutput),
+                    SimpleReferenceModel.makeButton(OutFolder.BLOCK, button_name, textureLocation, isLarge, ButtonVariant.PRESSED).build(this.modelOutput)
             ));
-            this.modelOutput.accept(ModelLocationUtils.getModelLocation(block.asItem()), new DelegatedModel(
-                    defineModel(TEMPLATE_INVENTORY_SMALL, "_inventory", block, texMap, this.modelOutput)
-            ));
-        }
 
-        public void generateLargeButton(Block block, TextureMapping texMap) {
-            this.blockStateOutput.accept(BlockModelGenerators.createButton(block,
-                    defineModel(TEMPLATE_LARGE, "", block, texMap, this.modelOutput),
-                    defineModel(TEMPLATE_LARGE, "_pressed", block, texMap, this.modelOutput)
-            ));
-            this.modelOutput.accept(ModelLocationUtils.getModelLocation(block.asItem()), new DelegatedModel(
-                    defineModel(TEMPLATE_INVENTORY_LARGE, "_inventory", block, texMap, this.modelOutput)
-            ));
+            SimpleReferenceModel.makeButton(OutFolder.ITEM, button_name, textureLocation, isLarge, ButtonVariant.INVENTORY).build(this.modelOutput);
         }
 
         @Override
         public void run() {
             Set<String> CUSTOM_TEXTURE = Set.of("emerald", "gold", "iron", "prismarine_brick", "diamond", "netherite");
 
-            for (Map.Entry<String, IBRegistryUtils.LargeVariantSupplier<? extends Block>> entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) {
-                String type = entry.getKey();
-
-                if (Objects.equals(type, "dripstone")) type = "dripstone_block"; // Dripstone wants to be special again
+            for (Map.Entry<ResourceLocation, IBRegistryUtils.LargeVariantSupplier<? extends Block>> entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) {
+                String type = entry.getKey().getPath();
 
                 IBRegistryUtils.LargeVariantSupplier<? extends Block> variantSupplier = entry.getValue();
 
-                Block small = variantSupplier.get(false);
-                Block large = variantSupplier.get(true);
+                String smallName = IBRegistryUtils.BlockInfo.getID(variantSupplier.get(false));
+                String largeName = IBRegistryUtils.BlockInfo.getID(variantSupplier.get(true));
 
-                final String finalType = type;
-                Function<Boolean, TextureMapping> texMap = (isLarge) -> (
-                        CUSTOM_TEXTURE.contains(finalType)
-                                ? new TextureMapping().put(TextureSlot.TEXTURE, ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/" + finalType + (isLarge ? "_large" : "") + "_button"))
-                                : new TextureMapping().put(TextureSlot.TEXTURE, ResourceLocation.withDefaultNamespace("block/" + finalType))
+                boolean hasCustomTexture = CUSTOM_TEXTURE.contains(type);
+
+                Function<Boolean, ResourceLocation> texture = (isLarge) -> (
+                        hasCustomTexture ? ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/" + type + (isLarge ? "_large" : "") + "_button")
+                                         : ResourceLocation.fromNamespaceAndPath(entry.getKey().getNamespace(), "block/" + type)
                 );
 
-                generateSmallButton(small, texMap.apply(false));
-                generateLargeButton(large, texMap.apply(true));
+                generateButton(smallName, texture.apply(false), false);
+                generateButton(largeName, texture.apply(true), true);
             }
 
             for (Map.Entry<BlockSetType, RegistrySupplier<NormalButton>> entry : IBBlocks.DEFAULT_LARGE_BUTTONS.entrySet()) {
                 BlockSetType type = entry.getKey();
-                Block block = entry.getValue().get();
+                String name = IBRegistryUtils.BlockInfo.getID(entry.getValue().get());
 
-                TextureMapping texMap = new TextureMapping()
-                        .put(TextureSlot.TEXTURE, getDefaultTexture(type));
-
-                generateLargeButton(block, texMap);
+                generateButton(name, getDefaultTexture(type), true);
             }
 
             for (IBRegistryUtils.LargeVariantSupplier<CopperButton> variantSupplier : IBBlocks.COPPER_BUTTONS.values()) {
@@ -163,11 +141,10 @@ public class ModelAndStateProvider implements DataProvider {
                 CopperButton large = variantSupplier.get(true);
                 String state = small.getAge() == WeatheringCopper.WeatherState.UNAFFECTED ? "copper" : small.getAge().getSerializedName() + "_copper";
 
-                TextureMapping texMap = new TextureMapping()
-                        .put(TextureSlot.TEXTURE, ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/" + state + "_button"));
+                ResourceLocation texture = ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/" + state + "_button");
 
-                generateSmallButton(small, texMap);
-                generateLargeButton(large, texMap);
+                generateButton(IBRegistryUtils.BlockInfo.getID(small), texture, false);
+                generateButton(IBRegistryUtils.BlockInfo.getID(large), texture, true);
             }
 
             List<String> colors = new ArrayList<>(Arrays.stream(DyeColor.values()).map(DyeColor::getName).toList());
@@ -269,9 +246,14 @@ public class ModelAndStateProvider implements DataProvider {
             ResourceLocation parentLocation = ResourceLocation.fromNamespaceAndPath(MOD_ID,
                     "block/secret_buttons/" + secretButton.type.getSerializedName() + "_secret_button");
 
-            new SimpleReferenceModel(buttonLocation, parentLocation)
-                    .withTexture(camouflageLocation) // Model location == Texture location
-                    .build(this.modelOutput);
+            SimpleReferenceModel blockModel = new SimpleReferenceModel(buttonLocation, parentLocation)
+                    .withTexture(camouflageLocation); // Model location == Texture location
+
+            // Bookshelves have a separate top/bottom texture
+            if (button.id().contains("bookshelf") && !camouflage.namespace().equals("minecraft"))
+                blockModel.withTexture(TextureSlot.TOP, IBModdedBlocks.BOOKSHELF_TOP_TEXTURES.get(button.id()));
+
+            blockModel.build(this.modelOutput);
 
             // Item model
             new SimpleReferenceModel(ResourceLocation.fromNamespaceAndPath(MOD_ID, "item/" + button.id()), buttonLocation)
