@@ -68,6 +68,7 @@ dependencies {
     modLocalRuntime "maven.modrinth:autumnity:9jUNvDKx" // 6.0.1
     modLocalRuntime "maven.modrinth:buzzier-bees:Y12rtT96" // 7.0.1
     modLocalRuntime "maven.modrinth:clayworks:SpFNxWZa" // 4.0.3
+    modLocalRuntime "maven.modrinth:environmental:NdDV1AM8" // 5.0.1
     modLocalRuntime "maven.modrinth:woodworks:aJd8UVN0" // 4.0.2
 
     // Team Abnormals mods that are loaded unconditionally for some reason
