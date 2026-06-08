@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
-public enum SecretButtonType implements StringRepresentable {
+public enum SecretButtonShape implements StringRepresentable {
     BIG_BRICK(
             Shapes.or(
                     Block.box(0, 8, 3, 16, 16, 19),
@@ -83,23 +83,23 @@ public enum SecretButtonType implements StringRepresentable {
             IBSounds.STONE_SCRAPE
     );
 
-    public static final Codec<SecretButtonType> CODEC = StringRepresentable.fromEnum(SecretButtonType::values);
+    public static final Codec<SecretButtonShape> CODEC = StringRepresentable.fromEnum(SecretButtonShape::values);
 
     public final VoxelShape shapePressed;
     public final VoxelShape shapeUnpressed;
     public final Supplier<SoundEvent> sound;
 
-    SecretButtonType(VoxelShape shapePressed, VoxelShape shapeUnpressed, Supplier<SoundEvent> sound) {
+    SecretButtonShape(VoxelShape shapePressed, VoxelShape shapeUnpressed, Supplier<SoundEvent> sound) {
         this.shapePressed = shapePressed;
         this.shapeUnpressed = shapeUnpressed;
         this.sound = sound;
     }
 
-    SecretButtonType(VoxelShape shapePressed, SoundEvent sound) {
+    SecretButtonShape(VoxelShape shapePressed, SoundEvent sound) {
         this(shapePressed, Shapes.block(), () -> sound);
     }
 
-    SecretButtonType(VoxelShape shapePressed, RegistrySupplier<SoundEvent> sound) {
+    SecretButtonShape(VoxelShape shapePressed, RegistrySupplier<SoundEvent> sound) {
         this(shapePressed, Shapes.block(), sound);
     }
 
