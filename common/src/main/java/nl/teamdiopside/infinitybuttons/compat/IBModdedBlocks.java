@@ -32,9 +32,9 @@ public abstract class IBModdedBlocks extends IBBlocks {
         // TODO: Create
 
         if (Platform.isModLoaded(EnvironmentalBlocks.NAMESPACE)) EnvironmentalBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(NeapolitanBlocks.NAMESPACE))    NeapolitanBlocks.INSTANCE.registerMine();
 
-        // TODO: Neapolitan       - alleen NeoForge 1.21.1
-        // TODO: Nether's Delight - alleen NeoForge 1.21.1 -> Nieuwe mod
+        // TODO: My Nether's Delight
         // TODO: Quark            - alleen NeoForge 1.21.1
         // TODO: Upgrade Aquatic  - alleen NeoForge 1.21.1
 
