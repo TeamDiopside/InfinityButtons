@@ -70,6 +70,7 @@ dependencies {
     modLocalRuntime "maven.modrinth:clayworks:SpFNxWZa" // 4.0.3
     modLocalRuntime "maven.modrinth:environmental:NdDV1AM8" // 5.0.1
     modLocalRuntime "maven.modrinth:neapolitan:RQ5qgaUC" // 6.0.1
+    modLocalRuntime "maven.modrinth:upgrade-aquatic:3ZycbXog" // 7.0.1
     modLocalRuntime "maven.modrinth:woodworks:aJd8UVN0" // 4.0.2
 
     // Team Abnormals mods that are loaded unconditionally for some reason

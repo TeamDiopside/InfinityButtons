@@ -24,21 +24,21 @@ public abstract class IBModdedBlocks extends IBBlocks {
     public abstract void registerMine();
 
     public static void register() {
-        if (Platform.isModLoaded(AtmosphericBlocks.NAMESPACE))   AtmosphericBlocks.INSTANCE.registerMine();
-        if (Platform.isModLoaded(AutumnityBlocks.NAMESPACE))     AutumnityBlocks.INSTANCE.registerMine();
-        if (Platform.isModLoaded(BuzzierBeesBlocks.NAMESPACE))   BuzzierBeesBlocks.INSTANCE.registerMine();
-        if (Platform.isModLoaded(ClayworksBlocks.NAMESPACE))     ClayworksBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(AtmosphericBlocks.NAMESPACE))    AtmosphericBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(AutumnityBlocks.NAMESPACE))      AutumnityBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(BuzzierBeesBlocks.NAMESPACE))    BuzzierBeesBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(ClayworksBlocks.NAMESPACE))      ClayworksBlocks.INSTANCE.registerMine();
 
         // TODO: Create
 
-        if (Platform.isModLoaded(EnvironmentalBlocks.NAMESPACE)) EnvironmentalBlocks.INSTANCE.registerMine();
-        if (Platform.isModLoaded(NeapolitanBlocks.NAMESPACE))    NeapolitanBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(EnvironmentalBlocks.NAMESPACE))  EnvironmentalBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(NeapolitanBlocks.NAMESPACE))     NeapolitanBlocks.INSTANCE.registerMine();
 
         // TODO: My Nether's Delight
-        // TODO: Quark            - alleen NeoForge 1.21.1
-        // TODO: Upgrade Aquatic  - alleen NeoForge 1.21.1
+        // TODO: Quark
 
-        if (Platform.isModLoaded(WoodworksBlocks.NAMESPACE))     WoodworksBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(UpgradeAquaticBlocks.NAMESPACE)) UpgradeAquaticBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(WoodworksBlocks.NAMESPACE))      WoodworksBlocks.INSTANCE.registerMine();
     }
 
     public static final HashSet<RegistrySupplier<SecretButton>> MOD_BOOKSHELVES = new HashSet<>();
