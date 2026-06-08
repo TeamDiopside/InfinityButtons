@@ -87,12 +87,12 @@ public class ItemTagGenerator extends ItemTagsProvider {
         for (var value : DyeColor.values()) {
             this.tag(CONCRETE_POWDER_BUTTONS)
                     .add(IBRegistryUtils.getItemByID(MOD_ID,
-                            value.name().toLowerCase() + "concrete_powder_button").asItem()
+                            value.name().toLowerCase() + "_concrete_powder_button").asItem()
                     );
 
             this.tag(CONCRETE_POWDER_LARGE_BUTTONS)
                     .add(IBRegistryUtils.getItemByID(MOD_ID,
-                            value.name().toLowerCase() + "concrete_powder_large_button").asItem()
+                            value.name().toLowerCase() + "_concrete_powder_large_button").asItem()
                     );
         }
 

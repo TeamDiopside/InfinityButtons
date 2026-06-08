@@ -31,10 +31,7 @@ loom {
 
             programArgs "--mod", "infinitybuttons"
             programArgs "--all"
-            programArgs "--output", project(":common").file("src/main/generated/resources").getAbsolutePath()
-
-            vmArg "-Dnet.neoforged.fml.loading.targets.NeoForgeDataDevLaunchHandler.exit=true"
-//            property "neoforge.force_no_discovery_packages", "com.teamabnormals"
+            programArgs "--output", project(":common").file("src/main/generated").getAbsolutePath()
         }
     }
 }
@@ -66,9 +63,12 @@ dependencies {
     modImplementation "maven.modrinth:emi:1.1.24+1.21.1+neoforge"
     modImplementation "maven.modrinth:jade:15.10.5+neoforge"
 
-//    modCompileOnly "maven.modrinth:atmospheric:XIvPRE4O" // 7.0.1
-//    modCompileOnly "maven.modrinth:blueprint:5JOCYuQM" // 8.1.0
-//    modCompileOnly "maven.modrinth:woodworks:aJd8UVN0" // 4.0.2
+    modLocalRuntime "maven.modrinth:atmospheric:XIvPRE4O" // 7.0.1
+    modLocalRuntime "maven.modrinth:blueprint:5JOCYuQM" // 8.1.0
+    modLocalRuntime "maven.modrinth:woodworks:aJd8UVN0" // 4.0.2
+
+    // Team Abnormals mods that are loaded unconditionally for some reason
+    modLocalRuntime "maven.modrinth:gallery:HzOpAks9" // 2.0.1
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')

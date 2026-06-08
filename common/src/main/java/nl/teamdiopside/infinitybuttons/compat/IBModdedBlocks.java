@@ -2,14 +2,15 @@ package nl.teamdiopside.infinitybuttons.compat;
 
 import dev.architectury.platform.Platform;
 import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Blocks;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.compat.blocks.AtmosphericBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
-import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public abstract class IBModdedBlocks extends IBBlocks {
 
@@ -45,24 +46,25 @@ public abstract class IBModdedBlocks extends IBBlocks {
         // TODO: Woodworks        - alleen NeoForge 1.21.1
     }
 
-    protected RegistrySupplier<SecretButton> registerBookshelf(String wood) {
-        var registry = registerSecretButton(wood + "_bookshelf_secret_button",
-                SecretButtonType.BOOKSHELF, blockFromMod(wood + "_bookshelf") );
+    public static final HashSet<RegistrySupplier<SecretButton>> MOD_BOOKSHELVES = new HashSet<>();
 
+    protected RegistrySupplier<SecretButton> registerBookshelf(String wood) {
+        var registry = registerModBookshelfSecretButton(wood + "_bookshelf_secret_button",
+                ResourceLocation.fromNamespaceAndPath(this.namespace, wood + "_bookshelf"),
+                ResourceLocation.fromNamespaceAndPath(this.namespace, "block/" + wood + "_planks"));
+
+        MOD_BOOKSHELVES.add(registry);
         return registry;
     }
 
-    protected Block blockFromMod(String id) {
-        return IBRegistryUtils.getBlockByID(this.namespace, id);
-    }
+    public static final HashMap<String, RegistrySupplier<SecretButton>> MOD_SECRET_BUTTONS = new HashMap<>(); // TODO needed??
+    public static final HashMap<String, ResourceLocation> BOOKSHELF_TOP_TEXTURES = new HashMap<>();
 
-
-    public static final HashMap<String, RegistrySupplier<SecretButton>> MOD_SECRET_BUTTONS = new HashMap<>();
-    @Override
-    protected RegistrySupplier<SecretButton> registerSecretButton(String blockId, SecretButtonType type, Block originalBlock) {
-        var registry = super.registerSecretButton(blockId, type, originalBlock);
+    protected RegistrySupplier<SecretButton> registerModBookshelfSecretButton(String blockId, ResourceLocation originalBlock, ResourceLocation topTexture) {
+        var registry = super.registerSecretButton(blockId, SecretButtonType.BOOKSHELF, Blocks.BOOKSHELF, originalBlock);
 
         MOD_SECRET_BUTTONS.put(blockId, registry);
+        BOOKSHELF_TOP_TEXTURES.put(blockId, topTexture);
         return registry;
     }
 }

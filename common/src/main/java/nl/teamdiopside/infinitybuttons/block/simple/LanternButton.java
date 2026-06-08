@@ -2,6 +2,7 @@ package nl.teamdiopside.infinitybuttons.block.simple;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.player.Player;
@@ -25,18 +26,19 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import nl.teamdiopside.infinitybuttons.block.InfinityButton;
 import nl.teamdiopside.infinitybuttons.compat.jade.JadeCamouflaged;
+import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 import org.jetbrains.annotations.Nullable;
 
 public class LanternButton extends InfinityButton implements SimpleWaterloggedBlock, JadeCamouflaged {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED; // TODO: Fix :)
-    protected final Block camouflage;
+    protected final ResourceLocation camouflage;
 
     private static final VoxelShape SHAPE = Shapes.or(
             Block.box(5.0, 1.0, 5.0, 11.0, 8.0, 11.0),
             Block.box(6.0, 8.0, 6.0, 10.0, 10.0, 10.0));
     public static final VoxelShape SHAPE_PRESSED = SHAPE.move(0, (double) -1 / 16, 0);
 
-    public LanternButton(Properties properties, boolean isLever, Block camouflage) {
+    public LanternButton(Properties properties, boolean isLever, ResourceLocation camouflage) {
         super(properties, SHAPE_PRESSED, SHAPE, isLever);
         this.camouflage = camouflage;
     }
@@ -132,6 +134,6 @@ public class LanternButton extends InfinityButton implements SimpleWaterloggedBl
 
     @Override
     public Block getCamouflage() {
-        return this.camouflage;
+        return IBRegistryUtils.getBlockByID(this.camouflage);
     }
 }

@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
+import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 
@@ -41,6 +42,12 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
 
     static TagKey<Block> add(String name) {
         return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
+    }
+
+    public static final TagKey<Block> BOOKSHELVES = addCommon("bookshelves");
+
+    static TagKey<Block> addCommon(String name) {
+        return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("c", name));
     }
 
     public static final TagKey<Block> MINEABLE_AXE = edit("mineable/axe");
@@ -144,8 +151,7 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
                 .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_veridium_brick_secret_button"));
 
         for (var entry : IBBlocks.SECRET_BUTTONS.values()) {
-            this.tag(SECRET_BUTTONS)
-                    .add(entry.get());
+            this.tag(SECRET_BUTTONS).add(entry.get());
         }
 
         this.tag(WOODEN_SECRET_BUTTONS)
@@ -162,8 +168,14 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
                 .add(IBBlocks.BAMBOO_PLANK_SECRET_BUTTON.get())
                 .add(IBBlocks.WARPED_PLANK_SECRET_BUTTON.get());
 
-        this.tag(BOOKSHELF_SECRET_BUTTONS)
-                .add(IBBlocks.BOOKSHELF_SECRET_BUTTON.get()); // TODO: Mod compat bookshelves
+        // Bookshelves
+        this.tag(BOOKSHELF_SECRET_BUTTONS).add(IBBlocks.BOOKSHELF_SECRET_BUTTON.get());
+        this.tag(BOOKSHELVES).add(IBBlocks.BOOKSHELF_SECRET_BUTTON.get());
+
+        for (var entry : IBModdedBlocks.MOD_BOOKSHELVES) {
+            this.tag(BOOKSHELF_SECRET_BUTTONS).add(entry.get());
+            this.tag(BOOKSHELVES).add(entry.get());
+        }
 
         this.tag(TORCH_BUTTONS)
                 .add(IBBlocks.TORCH_BUTTON.get())

@@ -6,9 +6,7 @@ import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.data.models.model.TextureSlot;
 import net.minecraft.resources.ResourceLocation;
 
-import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
@@ -19,7 +17,6 @@ public class SimpleReferenceModel {
     private final ResourceLocation parentLocation;
 
     private final TextureMapping textureMapping = new TextureMapping();
-    private final Set<TextureSlot> slots = new HashSet<>();
 
     public SimpleReferenceModel(ResourceLocation modelLocation, ResourceLocation parentLocation) {
         this.modelLocation = modelLocation;
@@ -30,15 +27,10 @@ public class SimpleReferenceModel {
         this(ResourceLocation.fromNamespaceAndPath(MOD_ID, modelLocation), ResourceLocation.fromNamespaceAndPath(MOD_ID, parentLocation));
     }
 
-    private ModelTemplate generateTemplate() {
-        TextureSlot[] requiredSlots = this.slots.toArray(new TextureSlot[0]);
-
-        return new ModelTemplate(Optional.of(this.parentLocation), Optional.empty(), requiredSlots);
-    }
-
     public SimpleReferenceModel withTexture(TextureSlot slot, ResourceLocation texture) {
-        this.textureMapping.put(slot, texture);
-        this.slots.add(slot);
+        if (texture == null) throw new NullPointerException("Input texture is undefined!");
+
+        this.textureMapping.putForced(slot, texture);
         return this;
     }
 
@@ -46,7 +38,24 @@ public class SimpleReferenceModel {
         return this.withTexture(TextureSlot.TEXTURE, texture);
     }
 
+    private ModelTemplate generateTemplate() {
+        return new ModelTemplate(Optional.of(this.parentLocation), Optional.empty());
+    }
+
     public ResourceLocation build(BiConsumer<ResourceLocation, Supplier<JsonElement>> modelOutput) {
-        return this.generateTemplate().create(this.modelLocation, this.textureMapping, modelOutput);
+        return this.generateTemplate().create(this.modelLocation, textureMapping, modelOutput);
+    }
+
+    // Special types
+    public static SimpleReferenceModel makeButton(OutFolder outDir, String buttonName, ResourceLocation textureLocation, boolean isLarge, ButtonVariant variant) {
+        String modelName = buttonName + (variant == ButtonVariant.INVENTORY ? "" : variant.suffix);
+        String parentName = (isLarge ? "large_button" : "button") + variant.suffix;
+
+        ResourceLocation parent = isLarge
+                ? ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/" + parentName)
+                : ResourceLocation.withDefaultNamespace("block/" + parentName);
+
+        return new SimpleReferenceModel(ResourceLocation.fromNamespaceAndPath(MOD_ID, outDir.name + "/" + modelName), parent)
+                .withTexture(textureLocation);
     }
 }

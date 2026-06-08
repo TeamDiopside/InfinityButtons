@@ -5,6 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
@@ -18,6 +19,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import nl.teamdiopside.infinitybuttons.block.ButtonFaced4;
 import nl.teamdiopside.infinitybuttons.compat.jade.JadeCamouflaged;
+import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -28,9 +30,9 @@ public class TorchButton extends ButtonFaced4 implements JadeCamouflaged {
     protected final ParticleOptions particle;
     public final boolean isWall;
     public final boolean isRedstone;
-    protected final Block camouflage;
+    protected final ResourceLocation camouflage;
 
-    public TorchButton(Properties properties, ParticleOptions particle, boolean isLever, boolean isWall, boolean isRedstone, Block camouflage) {
+    public TorchButton(Properties properties, ParticleOptions particle, boolean isLever, boolean isWall, boolean isRedstone, ResourceLocation camouflage) {
         super(
                 properties,
                 isWall ? WALL_TORCH_SHAPE : TORCH_SHAPE,
@@ -138,6 +140,6 @@ public class TorchButton extends ButtonFaced4 implements JadeCamouflaged {
 
     @Override
     public Block getCamouflage() {
-        return this.camouflage;
+        return IBRegistryUtils.getBlockByID(this.camouflage);
     }
 }
