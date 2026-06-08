@@ -10,6 +10,7 @@ import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.compat.blocks.AtmosphericBlocks;
 import nl.teamdiopside.infinitybuttons.compat.blocks.AutumnityBlocks;
 import nl.teamdiopside.infinitybuttons.compat.blocks.BuzzierBeesBlocks;
+import nl.teamdiopside.infinitybuttons.compat.blocks.ClayworksBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 
 import java.util.HashMap;
@@ -25,18 +26,12 @@ public abstract class IBModdedBlocks extends IBBlocks {
 
     public abstract void registerMine();
 
-    private static boolean shouldRegister(String modId) {
-        if (Platform.isModLoaded(modId)) return true;
-
-        return false;
-    }
-
     public static void register() {
-        if (shouldRegister(AtmosphericBlocks.NAMESPACE)) AtmosphericBlocks.INSTANCE.registerMine();
-        if (shouldRegister(AutumnityBlocks.NAMESPACE)) AutumnityBlocks.INSTANCE.registerMine();
-        if (shouldRegister(BuzzierBeesBlocks.NAMESPACE)) BuzzierBeesBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(AtmosphericBlocks.NAMESPACE)) AtmosphericBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(AutumnityBlocks.NAMESPACE))   AutumnityBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(BuzzierBeesBlocks.NAMESPACE)) BuzzierBeesBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(ClayworksBlocks.NAMESPACE))   ClayworksBlocks.INSTANCE.registerMine();
 
-        // TODO: Clayworks        - alleen NeoForge 1.21.1
         // TODO: Create           - alleen NeoForge 1.21.1
         // TODO: Endergetic       - ---
         // TODO: Environmental    - alleen NeoForge 1.21.1
