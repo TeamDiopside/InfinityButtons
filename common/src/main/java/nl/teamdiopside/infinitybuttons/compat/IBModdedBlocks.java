@@ -24,19 +24,21 @@ public abstract class IBModdedBlocks extends IBBlocks {
     public abstract void registerMine();
 
     public static void register() {
-        if (Platform.isModLoaded(AtmosphericBlocks.NAMESPACE)) AtmosphericBlocks.INSTANCE.registerMine();
-        if (Platform.isModLoaded(AutumnityBlocks.NAMESPACE))   AutumnityBlocks.INSTANCE.registerMine();
-        if (Platform.isModLoaded(BuzzierBeesBlocks.NAMESPACE)) BuzzierBeesBlocks.INSTANCE.registerMine();
-        if (Platform.isModLoaded(ClayworksBlocks.NAMESPACE))   ClayworksBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(AtmosphericBlocks.NAMESPACE))   AtmosphericBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(AutumnityBlocks.NAMESPACE))     AutumnityBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(BuzzierBeesBlocks.NAMESPACE))   BuzzierBeesBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(ClayworksBlocks.NAMESPACE))     ClayworksBlocks.INSTANCE.registerMine();
 
-        // TODO: Create           - alleen NeoForge 1.21.1
-        // TODO: Environmental    - alleen NeoForge 1.21.1
+        // TODO: Create
+
+        if (Platform.isModLoaded(EnvironmentalBlocks.NAMESPACE)) EnvironmentalBlocks.INSTANCE.registerMine();
+
         // TODO: Neapolitan       - alleen NeoForge 1.21.1
         // TODO: Nether's Delight - alleen NeoForge 1.21.1 -> Nieuwe mod
         // TODO: Quark            - alleen NeoForge 1.21.1
         // TODO: Upgrade Aquatic  - alleen NeoForge 1.21.1
 
-        if (Platform.isModLoaded(WoodworksBlocks.NAMESPACE))   WoodworksBlocks.INSTANCE.registerMine();
+        if (Platform.isModLoaded(WoodworksBlocks.NAMESPACE))     WoodworksBlocks.INSTANCE.registerMine();
     }
 
     public static final HashSet<RegistrySupplier<SecretButton>> MOD_BOOKSHELVES = new HashSet<>();
