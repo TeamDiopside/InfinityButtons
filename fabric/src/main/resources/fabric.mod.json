@@ -15,7 +15,7 @@
   "environment": "*",
   "entrypoints": {
   "fabric-datagen": [
-      "nl.teamdiopside.infinitybuttons.fabric.datagen.DataGenerator"
+    "nl.teamdiopside.infinitybuttons.fabric.datagen.FabricDataGen"
   ],
     "main": [
       "nl.teamdiopside.infinitybuttons.fabric.InfinityButtonsFabric"

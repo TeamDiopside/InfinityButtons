@@ -24,24 +24,25 @@ public abstract class IBModdedBlocks extends IBBlocks {
     private static boolean shouldRegister(String modId) {
         if (Platform.isModLoaded(modId)) return true;
 
-        return true;
+        return false;
     }
 
     public static void register() {
         if (shouldRegister(AtmosphericBlocks.NAMESPACE)) AtmosphericBlocks.INSTANCE.registerMine();
 
-        // TODO: Autumnity
-        // TODO: BuzzierBees
-        // TODO: Clayworks
-        // TODO: Create
-        // TODO: Endergetic
-        // TODO: Environmental
-        // TODO: Neapolitan
-        // TODO: Nether's Delight
-        // TODO: Quark
-        // TODO: Savage & Ravage
-        // TODO: Upgrade Aquatic
-        // TODO: Woodworks
+        // TODO: Atmospheric      - alleen NeoForge 1.21.1
+        // TODO: Autumnity        - alleen NeoForge 1.21.1
+        // TODO: BuzzierBees      - alleen NeoForge 1.21.1
+        // TODO: Clayworks        - alleen NeoForge 1.21.1
+        // TODO: Create           - alleen NeoForge 1.21.1
+        // TODO: Endergetic       - ---
+        // TODO: Environmental    - alleen NeoForge 1.21.1
+        // TODO: Neapolitan       - alleen NeoForge 1.21.1
+        // TODO: Nether's Delight - alleen NeoForge 1.21.1 -> Nieuwe mod
+        // TODO: Quark            - alleen NeoForge 1.21.1
+        // TODO: Savage & Ravage  - --- (discontinued)
+        // TODO: Upgrade Aquatic  - alleen NeoForge 1.21.1
+        // TODO: Woodworks        - alleen NeoForge 1.21.1
     }
 
     protected RegistrySupplier<SecretButton> registerBookshelf(String wood) {
