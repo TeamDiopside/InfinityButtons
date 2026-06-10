@@ -35,8 +35,8 @@ public abstract class IBModdedBlocks extends IBBlocks {
         if (Platform.isModLoaded(NeapolitanBlocks.NAMESPACE))     NeapolitanBlocks.INSTANCE.registerMine();
 
         // TODO: My Nether's Delight
-        // TODO: Quark
 
+        if (Platform.isModLoaded(QuarkBlocks.NAMESPACE))          QuarkBlocks.INSTANCE.registerMine();
         if (Platform.isModLoaded(UpgradeAquaticBlocks.NAMESPACE)) UpgradeAquaticBlocks.INSTANCE.registerMine();
         if (Platform.isModLoaded(WoodworksBlocks.NAMESPACE))      WoodworksBlocks.INSTANCE.registerMine();
     }
@@ -44,6 +44,10 @@ public abstract class IBModdedBlocks extends IBBlocks {
     public static final HashSet<RegistrySupplier<SecretButton>> MOD_BOOKSHELVES = new HashSet<>();
 
     protected RegistrySupplier<SecretButton> registerBookshelf(String wood) {
+        return registerBookshelf(wood, wood);
+    }
+
+    protected RegistrySupplier<SecretButton> registerBookshelf(String name, String wood) {
         var registry = registerModBookshelfSecretButton(wood + "_bookshelf_secret_button",
                 ResourceLocation.fromNamespaceAndPath(this.namespace, wood + "_bookshelf"),
                 ResourceLocation.fromNamespaceAndPath(this.namespace, "block/" + wood + "_planks"));
