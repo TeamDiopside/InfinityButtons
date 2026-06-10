@@ -26,6 +26,11 @@ public class WoodworksBlocks extends IBModdedBlocks {
     }
 
     @Override
+    protected RegistrySupplier<SecretButton> registerBookshelf(String wood) {
+        return super.registerBookshelf("woodworks_" + wood, wood);
+    }
+
+    @Override
     public void registerMine() {
         LOGGER.info("Infinity Buttons: Registering Woodworks buttons");
     }
