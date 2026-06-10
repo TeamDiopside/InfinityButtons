@@ -24,7 +24,7 @@ public class UpgradeAquaticBlocks extends IBModdedBlocks {
             SecretButtonShape.BIG_BRICK, properties.strength(1.5f, 6.0f), ResourceLocation.fromNamespaceAndPath(NAMESPACE, "kelpy_stone_bricks"));
 
     public static final RegistrySupplier<SecretButton> CHISELED_TOOTH_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("chiseled_tooth_brick_secret_button",
-            SecretButtonShape.CHISELED_NETHER_BRICK, properties.strength(3.0f, 9.0f), ResourceLocation.fromNamespaceAndPath(NAMESPACE, "chiseled_tooth_bricks"));
+            SecretButtonShape.CHISELED_TOOTH, properties.strength(3.0f, 9.0f), ResourceLocation.fromNamespaceAndPath(NAMESPACE, "chiseled_tooth_bricks"));
 
     private UpgradeAquaticBlocks() {
         super(NAMESPACE);

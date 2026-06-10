@@ -22,7 +22,7 @@ public class BuzzierBeesBlocks extends IBModdedBlocks {
             SecretButtonShape.FULL_BLOCK_BRICK, properties, ResourceLocation.fromNamespaceAndPath(NAMESPACE, "honeycomb_bricks"));
 
     public static final RegistrySupplier<SecretButton> CHISELED_HONEYCOMB_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("chiseled_honeycomb_brick_secret_button",
-            SecretButtonShape.FULL_BLOCK_BRICK, properties, ResourceLocation.fromNamespaceAndPath(NAMESPACE, "chiseled_honeycomb_bricks"));
+            SecretButtonShape.CHISELED_NETHER_BRICK, properties, ResourceLocation.fromNamespaceAndPath(NAMESPACE, "chiseled_honeycomb_bricks"));
 
     private BuzzierBeesBlocks() {
         super(NAMESPACE);

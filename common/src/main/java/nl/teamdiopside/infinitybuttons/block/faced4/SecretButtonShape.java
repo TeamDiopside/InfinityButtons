@@ -45,6 +45,16 @@ public enum SecretButtonShape implements StringRepresentable {
             ),
             IBSounds.STONE_SCRAPE
     ),
+    CHISELED_TOOTH(
+            Shapes.or(
+                    Block.box(0, 0, 0, 16, 1, 16),
+                    Block.box(0, 15, 0, 16, 16, 16),
+                    Block.box(0, 1, 0, 1, 15, 16),
+                    Block.box(1, 1, 3, 15, 15, 16),
+                    Block.box(15, 1, 0, 16, 15, 16)
+            ),
+            IBSounds.STONE_SCRAPE
+    ),
     DEEPSLATE_TILE(
             Shapes.or(
                     Block.box(0, 0, 0, 16, 10, 16),
@@ -74,7 +84,7 @@ public enum SecretButtonShape implements StringRepresentable {
             ),
             IBSounds.WOOD_SCRAPE
     ),
-    PURPUR_BLOCK(
+    EIGHTS_TILES(
             Shapes.or(
                     Block.box(0, 0, 0, 16, 8, 16),
                     Block.box(0, 8, 0, 8, 16, 16),

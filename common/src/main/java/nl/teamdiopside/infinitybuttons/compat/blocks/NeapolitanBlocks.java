@@ -19,7 +19,7 @@ public class NeapolitanBlocks extends IBModdedBlocks {
             .ignitedByLava().strength(2.0f, 3.0f).noOcclusion().sound(SoundType.WOOD).requiresCorrectToolForDrops();
 
     public static final RegistrySupplier<SecretButton> CHISELED_CHOCOLATE_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("chiseled_chocolate_brick_secret_button",
-            SecretButtonShape.CHISELED_STONE_BRICK, properties, ResourceLocation.fromNamespaceAndPath(NAMESPACE, "chiseled_chocolate_bricks"));
+            SecretButtonShape.CHISELED_NETHER_BRICK, properties, ResourceLocation.fromNamespaceAndPath(NAMESPACE, "chiseled_chocolate_bricks"));
 
     private NeapolitanBlocks() {
         super(NAMESPACE);
