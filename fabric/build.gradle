@@ -39,11 +39,10 @@ dependencies {
     modImplementation "dev.architectury:architectury-fabric:$rootProject.architectury_api_version"
 
     modImplementation files('libs/diopside-fabric-1.0.0.jar')
-    modRuntimeOnly files('libs/jei-1.21.1-fabric-19.27.0.340.jar')
-    modRuntimeOnly files('libs/emi-1.1.24+1.21.1+fabric.jar')
+    modImplementation "maven.modrinth:jei:19.27.0.343"
+    modImplementation "maven.modrinth:emi:1.1.24+1.21.1+fabric"
 
-    modCompileOnly files("libs/Jade-1.21.1-Fabric-15.10.5.jar")
-    modLocalRuntime files("libs/Jade-1.21.1-Fabric-15.10.5.jar")
+    modImplementation "maven.modrinth:jade:15.10.5+fabric"
 
     modImplementation "dev.isxander:yet-another-config-lib:${rootProject.yacl_version}-fabric"
     modImplementation "com.terraformersmc:modmenu:${rootProject.modmenu_version}"
