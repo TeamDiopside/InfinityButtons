@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import nl.teamdiopside.infinitybuttons.block.simple.LanternButton;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(ChainBlock.class)
 public class ChainBlockMixin extends RotatedPillarBlock implements SimpleWaterloggedBlock {
@@ -20,13 +21,13 @@ public class ChainBlockMixin extends RotatedPillarBlock implements SimpleWaterlo
     }
 
     @Override
-    public int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
-        return checkAround(state, level, pos) ? 15 : 0; // && direction == Direction.DOWN ? 15 : 0;
+    protected int getSignal(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, Direction direction) {
+        return infinityButtons$emitsRedstone(blockState, blockGetter, blockPos) && direction == Direction.DOWN ? 15 : 0;
     }
 
     @Override
-    public int getDirectSignal(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        return checkAround(state, level, pos) && direction == Direction.DOWN ? 15 : 0;
+    public int getDirectSignal(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, Direction direction) {
+        return getSignal(blockState, blockGetter, blockPos, direction);
     }
 
     @Override
@@ -34,7 +35,8 @@ public class ChainBlockMixin extends RotatedPillarBlock implements SimpleWaterlo
         return true;
     }
 
-    public boolean checkAround(BlockState state, BlockGetter level, BlockPos pos) {
+    @Unique
+    public boolean infinityButtons$emitsRedstone(BlockState state, BlockGetter level, BlockPos pos) {
         if (state.getValue(AXIS) != Direction.Axis.Y || level.getBlockState(pos.above()).getBlock() instanceof ChainBlock) {
             return false;
         }
