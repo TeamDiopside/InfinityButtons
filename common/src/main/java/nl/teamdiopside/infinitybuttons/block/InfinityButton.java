@@ -56,6 +56,7 @@ public abstract class InfinityButton extends Block {
 
     public void press(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
         level.setBlockAndUpdate(blockPos, blockState.setValue(POWERED, true));
+        this.updateNeighbours(blockState, level, blockPos);
         if (!this.isLever) level.scheduleTick(blockPos, this, getPressTicks());
 
         this.playSound(player, level, blockPos, true);
@@ -64,13 +65,14 @@ public abstract class InfinityButton extends Block {
 
     public void unpress(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
         level.setBlockAndUpdate(blockPos, blockState.setValue(POWERED, false));
+        this.updateNeighbours(blockState, level, blockPos);
         playSound(player, level, blockPos, false);
 
         if (this.isSignalSource(blockState)) level.gameEvent(player, GameEvent.BLOCK_DEACTIVATE, blockPos);
     }
 
     // Copied from vanilla
-    public void updateNeighbours(BlockState blockState, Level level, BlockPos blockPos) {
+    protected void updateNeighbours(BlockState blockState, Level level, BlockPos blockPos) {
         level.updateNeighborsAt(blockPos, this);
         level.updateNeighborsAt(blockPos.relative(getConnectedDirection(blockState).getOpposite()), this);
     }
@@ -116,7 +118,12 @@ public abstract class InfinityButton extends Block {
     }
 
     @Override
-    protected VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
+    protected int getDirectSignal(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, Direction direction) {
+        return getSignal(blockState, blockGetter, blockPos, direction);
+    }
+
+    @Override
+    protected @NotNull VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
         return blockState.getValue(POWERED) ? this.shapePressed : this.shapeUnpressed;
     }
 }

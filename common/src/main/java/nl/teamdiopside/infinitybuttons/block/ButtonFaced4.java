@@ -77,6 +77,6 @@ public abstract class ButtonFaced4 extends InfinityButton {
 
     @Override
     protected Direction getConnectedDirection(BlockState state) {
-        return state.getValue(FACING).getOpposite();
+        return state.getValue(FACING);
     }
 }

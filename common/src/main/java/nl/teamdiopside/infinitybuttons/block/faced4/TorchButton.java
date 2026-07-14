@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import nl.teamdiopside.infinitybuttons.block.ButtonFaced4;
 import nl.teamdiopside.infinitybuttons.compat.jade.JadeCamouflaged;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class TorchButton extends ButtonFaced4 implements JadeCamouflaged {
@@ -79,8 +80,9 @@ public class TorchButton extends ButtonFaced4 implements JadeCamouflaged {
 
         return otherState.isFaceSturdy(levelReader, blockPos2, horse.getOpposite());
     }
+
     @Override
-    protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor levelAccessor, BlockPos pos, BlockPos neighborPos) {
+    protected @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor levelAccessor, BlockPos pos, BlockPos neighborPos) {
         Direction horse = this.isWall ? state.getValue(FACING).getOpposite() : Direction.DOWN;
         if (direction == horse && !this.canSurvive(state, levelAccessor, pos)) {
             return Blocks.AIR.defaultBlockState();
