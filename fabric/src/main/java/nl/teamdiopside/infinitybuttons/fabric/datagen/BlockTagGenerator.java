@@ -58,10 +58,17 @@ public class BlockTagGenerator extends FabricTagProvider<Block> {
         return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("minecraft", name));
     }
 
+    public static final TagKey<Block> FAF_COPPER_BUTTONS = edit("friendsandfoes", "copper_buttons");
+
+    static TagKey<Block> edit(String namespace, String name) {
+        return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(namespace, name));
+    }
+
     @Override
     protected void addTags(HolderLookup.Provider wrapperLookup) {
         generateVanillaTags();
         generateInfinityButtonsTags();
+        generateFriendsFoesTags();
     }
 
     protected void generateInfinityButtonsTags() {
@@ -342,5 +349,11 @@ public class BlockTagGenerator extends FabricTagProvider<Block> {
                     .add(IBBlocks.GOLD_BUTTON.get(bool))
                     .add(IBBlocks.EMERALD_BUTTON.get(bool));
         }
+    }
+
+    protected void generateFriendsFoesTags() {
+        getOrCreateTagBuilder(FAF_COPPER_BUTTONS)
+                .addTag(COPPER_BUTTONS)
+                .addTag(COPPER_LARGE_BUTTONS);
     }
 }
