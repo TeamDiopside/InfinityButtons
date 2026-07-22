@@ -365,7 +365,7 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
     }
 
     protected void generateFriendsFoesTags() {
-        getOrCreateTagBuilder(FAF_COPPER_BUTTONS)
+        this.tag(FAF_COPPER_BUTTONS)
                 .addTag(COPPER_BUTTONS)
                 .addTag(COPPER_LARGE_BUTTONS);
     }
