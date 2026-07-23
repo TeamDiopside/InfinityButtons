@@ -46,6 +46,8 @@ repositories {
         name = "Modrinth"
         url = "https://api.modrinth.com/maven"
     }
+    maven { url = "https://maven.createmod.net" }
+    maven { url = "https://maven.ithundxr.dev/snapshots" }
 }
 
 dependencies {
@@ -68,6 +70,7 @@ dependencies {
     modLocalRuntime "maven.modrinth:autumnity:9jUNvDKx" // 6.0.1
     modLocalRuntime "maven.modrinth:buzzier-bees:Y12rtT96" // 7.0.1
     modLocalRuntime "maven.modrinth:clayworks:SpFNxWZa" // 4.0.3
+    modLocalRuntime "maven.modrinth:create:6.0.10+mc1.21.1" // 6.0.10
     modLocalRuntime "maven.modrinth:environmental:NdDV1AM8" // 5.0.1
     modLocalRuntime "maven.modrinth:neapolitan:RQ5qgaUC" // 6.0.1
     modLocalRuntime "maven.modrinth:quark:hMLnxKZx" // 480
@@ -75,6 +78,9 @@ dependencies {
     modLocalRuntime "maven.modrinth:woodworks:aJd8UVN0" // 4.0.2
 
     // Dependency dependencies
+    modLocalRuntime "net.createmod.ponder:ponder-neoforge:1.0.82+mc1.21.1"
+    modLocalRuntime "dev.engine-room.flywheel:flywheel-neoforge-1.21.1:1.0.6"
+    modLocalRuntime "com.tterrag.registrate:Registrate:MC1.21-1.3.0+67"
     modLocalRuntime "maven.modrinth:biolith:1ZfKhpFg" // 3.0.11
     modLocalRuntime "maven.modrinth:zeta:9GjNW2Gf" // 1.1-40
 
