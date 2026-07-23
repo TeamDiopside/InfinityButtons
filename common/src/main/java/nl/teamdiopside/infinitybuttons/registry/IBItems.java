@@ -12,8 +12,10 @@ import nl.teamdiopside.infinitybuttons.item.SafeEmergencyButtonItem;
 import java.util.HashMap;
 import java.util.function.Supplier;
 
+import net.minecraft.resources.ResourceLocation;
+import nl.teamdiopside.infinitybuttons.InfinityButtons;
+
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
-import static nl.teamdiopside.infinitybuttons.InfinityButtons.getResource;
 
 public class IBItems {
 
@@ -53,7 +55,7 @@ public class IBItems {
      * Methods
      */
     private static <T extends Item> RegistrySupplier<T> registerItem(String name, ItemEntryBuilder<T> builder, Item.Properties properties) {
-        return builder.register(getResource(name), properties);
+        return builder.register(ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, name), properties);
     }
 
     public static void register() {

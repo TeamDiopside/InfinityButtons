@@ -4,8 +4,10 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.sounds.SoundEvent;
 import nl.teamdiopside.diopside.registry.SoundEventEntryBuilder;
 
+import net.minecraft.resources.ResourceLocation;
+import nl.teamdiopside.infinitybuttons.InfinityButtons;
+
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
-import static nl.teamdiopside.infinitybuttons.InfinityButtons.getResource;
 
 public class IBSounds {
     // TODO fix subtitles (maybe making it secret? for the blocks we use vanilla events, like mud, subtitle says block placed)
@@ -19,7 +21,7 @@ public class IBSounds {
     public static RegistrySupplier<SoundEvent> SILENT = registerSoundEvent("block.silent");
 
     private static RegistrySupplier<SoundEvent> registerSoundEvent(String name) {
-        return SoundEventEntryBuilder.create().register(getResource(name));
+        return SoundEventEntryBuilder.create().register(ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, name));
     }
 
     public static void register() {

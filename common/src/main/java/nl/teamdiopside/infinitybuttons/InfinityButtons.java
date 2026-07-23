@@ -1,6 +1,5 @@
 package nl.teamdiopside.infinitybuttons;
 
-import net.minecraft.resources.ResourceLocation;
 import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
 import nl.teamdiopside.infinitybuttons.registry.*;
 
@@ -25,8 +24,4 @@ public final class InfinityButtons {
         IBConfig.load();
     }
 
-    @Deprecated // TODO: remove
-    public static ResourceLocation getResource(String path) {
-        return ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, path);
-    }
 }
