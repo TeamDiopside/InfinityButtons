@@ -48,7 +48,7 @@ public abstract class IBModdedBlocks extends IBBlocks {
     }
 
     protected RegistrySupplier<SecretButton> registerBookshelf(String name, String wood) {
-        var registry = registerModBookshelfSecretButton(wood + "_bookshelf_secret_button",
+        var registry = registerModBookshelfSecretButton(name + "_bookshelf_secret_button",
                 ResourceLocation.fromNamespaceAndPath(this.namespace, wood + "_bookshelf"),
                 ResourceLocation.fromNamespaceAndPath(this.namespace, "block/" + wood + "_planks"));
 
