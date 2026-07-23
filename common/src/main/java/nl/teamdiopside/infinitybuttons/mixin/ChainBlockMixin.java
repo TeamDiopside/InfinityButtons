@@ -78,6 +78,4 @@ public class ChainBlockMixin extends RotatedPillarBlock implements SimpleWaterlo
         super.onRemove(state, level, pos, newState, moved);
     }
 
-    // TODO: Placing a Redstone lamp directly above a set of chains and powering them does NOT power the lamp on
-    // TODO:     for some reason, I urge someone who understands redstone to fix this.
 }
