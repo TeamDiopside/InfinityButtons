@@ -15,6 +15,8 @@ public class QuarkBlocks extends IBModdedBlocks {
     public static final QuarkBlocks INSTANCE = new QuarkBlocks();
     public static final String NAMESPACE = "quark";
 
+    private static final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops();
+
     public static final RegistrySupplier<SecretButton> SPRUCE_BOOKSHELF_SECRET_BUTTON = INSTANCE.registerBookshelf("spruce");
     public static final RegistrySupplier<SecretButton> BIRCH_BOOKSHELF_SECRET_BUTTON = INSTANCE.registerBookshelf("birch");
     public static final RegistrySupplier<SecretButton> JUNGLE_BOOKSHELF_SECRET_BUTTON = INSTANCE.registerBookshelf("jungle");
@@ -37,15 +39,15 @@ public class QuarkBlocks extends IBModdedBlocks {
             SecretButtonShape.FULL_BLOCK_BRICK, BlockBehaviour.Properties.of().mapColor(MapColor.NETHER).strength(2.0f, 6.0f).noOcclusion()
                     .sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops(), ResourceLocation.fromNamespaceAndPath(NAMESPACE, "blue_nether_bricks"));
 
-    public static final RegistrySupplier<SecretButton> POLISHED_GRANITE_BRICK_SECRET_BUTTON = INSTANCE.registerPolishedButton("granite", MapColor.DIRT);
-    public static final RegistrySupplier<SecretButton> POLISHED_DIORITE_BRICK_SECRET_BUTTON = INSTANCE.registerPolishedButton("diorite", MapColor.QUARTZ);
-    public static final RegistrySupplier<SecretButton> POLISHED_ANDESITE_BRICK_SECRET_BUTTON = INSTANCE.registerPolishedButton("andesite", MapColor.STONE);
-    public static final RegistrySupplier<SecretButton> POLISHED_CALCITE_BRICK_SECRET_BUTTON = INSTANCE.registerPolishedButton("calcite", MapColor.TERRACOTTA_WHITE);
-    public static final RegistrySupplier<SecretButton> POLISHED_DRIPSTONE_BRICK_SECRET_BUTTON = INSTANCE.registerPolishedButton("dripstone", MapColor.TERRACOTTA_BROWN);
-    public static final RegistrySupplier<SecretButton> POLISHED_TUFF_BRICK_SECRET_BUTTON = INSTANCE.registerPolishedButton("tuff", MapColor.TERRACOTTA_GRAY);
-    public static final RegistrySupplier<SecretButton> POLISHED_LIMESTONE_BRICK_SECRET_BUTTON = INSTANCE.registerPolishedButton("limestone", MapColor.STONE);
-    public static final RegistrySupplier<SecretButton> POLISHED_JASPER_BRICK_SECRET_BUTTON = INSTANCE.registerPolishedButton("jasper", MapColor.TERRACOTTA_RED);
-    public static final RegistrySupplier<SecretButton> POLISHED_SHALE_BRICK_SECRET_BUTTON = INSTANCE.registerPolishedButton("shale", MapColor.ICE);
+    public static final RegistrySupplier<SecretButton> GRANITE_BRICK_SECRET_BUTTON = INSTANCE.registerBrickButton("granite", MapColor.DIRT);
+    public static final RegistrySupplier<SecretButton> DIORITE_BRICK_SECRET_BUTTON = INSTANCE.registerBrickButton("diorite", MapColor.QUARTZ);
+    public static final RegistrySupplier<SecretButton> ANDESITE_BRICK_SECRET_BUTTON = INSTANCE.registerBrickButton("andesite", MapColor.STONE);
+    public static final RegistrySupplier<SecretButton> CALCITE_BRICK_SECRET_BUTTON = INSTANCE.registerBrickButton("calcite", MapColor.TERRACOTTA_WHITE);
+    public static final RegistrySupplier<SecretButton> DRIPSTONE_BRICK_SECRET_BUTTON = INSTANCE.registerBrickButton("dripstone", MapColor.TERRACOTTA_BROWN);
+    public static final RegistrySupplier<SecretButton> TUFF_BRICK_SECRET_BUTTON = INSTANCE.registerBrickButton("tuff", MapColor.TERRACOTTA_GRAY);
+    public static final RegistrySupplier<SecretButton> LIMESTONE_BRICK_SECRET_BUTTON = INSTANCE.registerBrickButton("limestone", MapColor.STONE);
+    public static final RegistrySupplier<SecretButton> JASPER_BRICK_SECRET_BUTTON = INSTANCE.registerBrickButton("jasper", MapColor.TERRACOTTA_RED);
+    public static final RegistrySupplier<SecretButton> SHALE_BRICK_SECRET_BUTTON = INSTANCE.registerBrickButton("shale", MapColor.ICE);
 
     public static final RegistrySupplier<SecretButton> CHISELED_POLISHED_GRANITE_BRICK_SECRET_BUTTON = INSTANCE.registerChiseledPolishedButton("granite", MapColor.DIRT);
     public static final RegistrySupplier<SecretButton> CHISELED_POLISHED_DIORITE_BRICK_SECRET_BUTTON = INSTANCE.registerChiseledPolishedButton("diorite", MapColor.QUARTZ);
@@ -57,16 +59,14 @@ public class QuarkBlocks extends IBModdedBlocks {
     public static final RegistrySupplier<SecretButton> CHISELED_POLISHED_JASPER_BRICK_SECRET_BUTTON = INSTANCE.registerChiseledPolishedButton("jasper", MapColor.TERRACOTTA_RED);
     public static final RegistrySupplier<SecretButton> CHISELED_POLISHED_SHALE_BRICK_SECRET_BUTTON = INSTANCE.registerChiseledPolishedButton("shale", MapColor.ICE);
 
-    private static final BlockBehaviour.Properties properties = BlockBehaviour.Properties.of().strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops();
-
     private RegistrySupplier<SecretButton> registerChiseledPolishedButton(String type, MapColor mapColor) {
         return registerSecretButton("chiseled_polished_" + type + "_brick_secret_button", SecretButtonShape.CHISELED_STONE_BRICK,
                 properties.mapColor(mapColor), ResourceLocation.fromNamespaceAndPath(NAMESPACE, "chiseled_" + type + "_bricks"));
     }
 
-    private RegistrySupplier<SecretButton> registerPolishedButton(String type, MapColor mapColor) {
-        return registerSecretButton("chiseled_polished_" + type + "_brick_secret_button", SecretButtonShape.CHISELED_STONE_BRICK,
-                properties.mapColor(mapColor), ResourceLocation.fromNamespaceAndPath(NAMESPACE, "chiseled_" + type + "_bricks"));
+    private RegistrySupplier<SecretButton> registerBrickButton(String type, MapColor mapColor) {
+        return registerSecretButton(type + "_brick_secret_button", SecretButtonShape.BIG_BRICK,
+                properties.mapColor(mapColor), ResourceLocation.fromNamespaceAndPath(NAMESPACE, type + "_bricks"));
     }
 
     private QuarkBlocks() {
