@@ -28,9 +28,7 @@ public abstract class IBModdedBlocks extends IBBlocks {
         if (Platform.isModLoaded(AutumnityBlocks.NAMESPACE))      AutumnityBlocks.INSTANCE.registerMine();
         if (Platform.isModLoaded(BuzzierBeesBlocks.NAMESPACE))    BuzzierBeesBlocks.INSTANCE.registerMine();
         if (Platform.isModLoaded(ClayworksBlocks.NAMESPACE))      ClayworksBlocks.INSTANCE.registerMine();
-
-        // TODO: Create
-
+        if (Platform.isModLoaded(CreateBlocks.NAMESPACE))         CreateBlocks.INSTANCE.registerMine();
         if (Platform.isModLoaded(EnvironmentalBlocks.NAMESPACE))  EnvironmentalBlocks.INSTANCE.registerMine();
         if (Platform.isModLoaded(NeapolitanBlocks.NAMESPACE))     NeapolitanBlocks.INSTANCE.registerMine();
 
