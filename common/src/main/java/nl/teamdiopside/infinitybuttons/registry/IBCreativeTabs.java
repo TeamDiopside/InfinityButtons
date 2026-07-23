@@ -396,7 +396,7 @@ public class IBCreativeTabs {
      * @return A registry supplier for the tab.
      */
     private static RegistrySupplier<CreativeModeTab> registerTab(Consumer<CreativeModeTab.Builder> tab) {
-        ResourceLocation id = getResource(InfinityButtons.MOD_ID);
+        ResourceLocation id = ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, InfinityButtons.MOD_ID);
         return TabEntryBuilder.ofTab(tab).register(id);
     }
 

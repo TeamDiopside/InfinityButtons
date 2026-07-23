@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
 
 public class LetterButtonGUI extends Screen {
-    private static final ResourceLocation LETTER_TEXTURE = InfinityButtons.getResource("textures/block/letter_button/characters.png");
+    private static final ResourceLocation LETTER_TEXTURE = ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, "textures/block/letter_button/characters.png");
 
     private static final int BUTTON_WIDTH = 24;
     private static final int BUTTON_HEIGHT = 24;

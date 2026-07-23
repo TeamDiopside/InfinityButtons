@@ -12,6 +12,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.block.state.BlockState;
 import nl.teamdiopside.infinitybuttons.block.faced6.LetterButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.LetterButtonState;
+import net.minecraft.resources.ResourceLocation;
 import nl.teamdiopside.infinitybuttons.compat.jade.JadeIntegration;
 
 public class IBNetworking {
@@ -60,7 +61,7 @@ public class IBNetworking {
     }
 
     public record SetLetterButtonPayload(BlockPos pos, LetterButtonState letterButtonState) implements CustomPacketPayload {
-        public static final Type<SetLetterButtonPayload> TYPE = new Type<>(InfinityButtons.getResource("set_letter_button"));
+        public static final Type<SetLetterButtonPayload> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, "set_letter_button"));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, SetLetterButtonPayload> STREAM_CODEC = StreamCodec.of(
                 (buf, payload) -> {
@@ -85,7 +86,7 @@ public class IBNetworking {
     }
 
     public record JadeSyncPayload(boolean forceHide) implements CustomPacketPayload {
-        public static final Type<JadeSyncPayload> TYPE = new Type<>(InfinityButtons.getResource("jade_sync"));
+        public static final Type<JadeSyncPayload> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, "jade_sync"));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, JadeSyncPayload> STREAM_CODEC = StreamCodec.of(
                 (buf, payload) -> buf.writeBoolean(payload.forceHide()),

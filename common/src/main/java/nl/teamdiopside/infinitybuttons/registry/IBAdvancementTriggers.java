@@ -9,8 +9,10 @@ import nl.teamdiopside.infinitybuttons.advancement.WaxOffTrigger;
 
 import java.util.function.Supplier;
 
+import net.minecraft.resources.ResourceLocation;
+import nl.teamdiopside.infinitybuttons.InfinityButtons;
+
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
-import static nl.teamdiopside.infinitybuttons.InfinityButtons.getResource;
 
 public class IBAdvancementTriggers {
 
@@ -19,7 +21,7 @@ public class IBAdvancementTriggers {
     public static RegistrySupplier<WaxOffTrigger> WAX_OFF_TRIGGER = registerTrigger("wax_off", WaxOffTrigger::new);
 
     public static <T extends CriterionTrigger<?>> RegistrySupplier<T> registerTrigger(String name, Supplier<T> supplier) {
-        return TriggerEntryBuilder.<T>builder().register(getResource(name), supplier);
+        return TriggerEntryBuilder.<T>builder().register(ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, name), supplier);
     }
 
     public static void register() {
