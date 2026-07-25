@@ -27,12 +27,11 @@ public class TorchButton extends ButtonFaced4 implements JadeCamouflaged {
     protected static final VoxelShape TORCH_SHAPE = Block.box(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
     protected static final VoxelShape WALL_TORCH_SHAPE = Block.box(5.5, 3.0, 11.0, 10.5, 13.0, 16.0);
 
-    protected final ParticleOptions particle;
+    protected final @Nullable ParticleOptions particle;
     public final boolean isWall;
-    public final boolean isRedstone;
     protected final ResourceLocation camouflage;
 
-    public TorchButton(Properties properties, ParticleOptions particle, boolean isLever, boolean isWall, boolean isRedstone, ResourceLocation camouflage) {
+    public TorchButton(Properties properties, @Nullable ParticleOptions particle, boolean isLever, boolean isWall, ResourceLocation camouflage) {
         super(
                 properties,
                 isWall ? WALL_TORCH_SHAPE : TORCH_SHAPE,
@@ -42,7 +41,6 @@ public class TorchButton extends ButtonFaced4 implements JadeCamouflaged {
 
         this.particle = particle;
         this.isWall = isWall;
-        this.isRedstone = isRedstone;
         this.camouflage = camouflage;
     }
 
@@ -94,6 +92,7 @@ public class TorchButton extends ButtonFaced4 implements JadeCamouflaged {
 
     @Override // Particles
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (this.particle == null) return; // No Particle
         boolean isRedstone = this.particle instanceof DustParticleOptions;
         Direction direction = state.getValue(FACING);
         Direction opposite = direction.getOpposite();
