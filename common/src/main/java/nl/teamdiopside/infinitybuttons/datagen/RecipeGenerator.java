@@ -27,7 +27,7 @@ import java.util.function.Function;
 import static net.minecraft.data.recipes.RecipeBuilder.getDefaultRecipeId;
 
 public class RecipeGenerator extends RecipeProvider {
-
+// TODO Find out how to make conditional recipes and add missing recipes (like hoglin trophy)
     // Sub-provider instance constructor
     public RecipeGenerator(CompletableFuture<HolderLookup.Provider> registries, PackOutput output) {
         super(output, registries);
