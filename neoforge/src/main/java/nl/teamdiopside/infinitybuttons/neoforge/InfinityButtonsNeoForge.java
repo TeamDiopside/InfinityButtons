@@ -1,11 +1,15 @@
 package nl.teamdiopside.infinitybuttons.neoforge;
 
+import dev.architectury.platform.Platform;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import nl.teamdiopside.infinitybuttons.IBConfig;
 import nl.teamdiopside.infinitybuttons.InfinityButtons;
+import nl.teamdiopside.infinitybuttons.compat.blocks.QuarkBlocks;
+import nl.teamdiopside.infinitybuttons.neoforge.compat.MyaliteColorHandler;
 import nl.teamdiopside.infinitybuttons.neoforge.datagen.NeoForgeDataGen;
 
 @Mod(InfinityButtons.MOD_ID)
@@ -15,6 +19,8 @@ public final class InfinityButtonsNeoForge {
         InfinityButtons.init();
 
         modEventBus.addListener(NeoForgeDataGen::gatherData);
+        modEventBus.addListener(this::registerBlockColorHandlers);
+        modEventBus.addListener(this::registerItemColorHandlers);
 
         // Register config screen
         ModLoadingContext.get().registerExtensionPoint(
@@ -22,5 +28,19 @@ public final class InfinityButtonsNeoForge {
                 () -> (client, parent) ->
                         IBConfig.HANDLER.instance().generateScreen(parent)
         );
+    }
+
+    private void registerBlockColorHandlers(RegisterColorHandlersEvent.Block event) {
+        if (!Platform.isModLoaded(QuarkBlocks.NAMESPACE)) return;
+        event.register(MyaliteColorHandler.INSTANCE, QuarkBlocks.MYALITE_BRICK_SECRET_BUTTON.get());
+        event.register(MyaliteColorHandler.INSTANCE, QuarkBlocks.CHISELED_MYALITE_BRICK_SECRET_BUTTON.get());
+
+    }
+
+    private void registerItemColorHandlers(RegisterColorHandlersEvent.Item event) {
+        if (!Platform.isModLoaded(QuarkBlocks.NAMESPACE)) return;
+        event.register(MyaliteColorHandler.INSTANCE, QuarkBlocks.MYALITE_BRICK_SECRET_BUTTON.get());
+        event.register(MyaliteColorHandler.INSTANCE, QuarkBlocks.CHISELED_MYALITE_BRICK_SECRET_BUTTON.get());
+
     }
 }

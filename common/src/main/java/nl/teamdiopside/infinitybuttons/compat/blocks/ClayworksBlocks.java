@@ -8,7 +8,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
-import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonShape;
+import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
 
 import java.util.EnumMap;
@@ -21,17 +21,17 @@ public class ClayworksBlocks extends IBModdedBlocks {
     public static final String NAMESPACE = "clayworks";
 
     public static final RegistrySupplier<SecretButton> CHISELED_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton(
-            "chiseled_brick_secret_button", SecretButtonShape.CHISELED_NETHER_BRICK,
+            "chiseled_brick_secret_button", SecretButtonType.CHISELED_NETHER_BRICK,
             BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(2.0f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops(),
             ResourceLocation.fromNamespaceAndPath(NAMESPACE, "chiseled_bricks"));
 
     public static final RegistrySupplier<SecretButton> TERRACOTTA_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton(
-            "terracotta_brick_secret_button", SecretButtonShape.FULL_BLOCK_BRICK,
+            "terracotta_brick_secret_button", SecretButtonType.FULL_BLOCK_BRICK,
             BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(1.25f, 4.2f).noOcclusion().requiresCorrectToolForDrops(),
             ResourceLocation.fromNamespaceAndPath(NAMESPACE, "terracotta_bricks"));
 
     public static final RegistrySupplier<SecretButton> CHISELED_TERRACOTTA_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton(
-            "chiseled_terracotta_brick_secret_button", SecretButtonShape.CHISELED_NETHER_BRICK,
+            "chiseled_terracotta_brick_secret_button", SecretButtonType.CHISELED_NETHER_BRICK,
             BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(1.25f, 4.2f).noOcclusion().requiresCorrectToolForDrops(),
             ResourceLocation.fromNamespaceAndPath(NAMESPACE, "chiseled_terracotta_bricks"));
 
@@ -66,14 +66,14 @@ public class ClayworksBlocks extends IBModdedBlocks {
 
     public static void registerTerracotta(String color, MapColor mapColor) {
         INSTANCE.registerSecretButton(
-                color + "_terracotta_brick_secret_button", SecretButtonShape.FULL_BLOCK_BRICK,
+                color + "_terracotta_brick_secret_button", SecretButtonType.FULL_BLOCK_BRICK,
                 BlockBehaviour.Properties.of().mapColor(mapColor).strength(1.25f, 4.2f).noOcclusion().requiresCorrectToolForDrops(),
                 ResourceLocation.fromNamespaceAndPath(NAMESPACE, color + "_terracotta_bricks"));
     }
 
     public static void registerChiseledTerracotta(String color, MapColor mapColor) {
         INSTANCE.registerSecretButton(
-                "chiseled_" + color + "_terracotta_brick_secret_button", SecretButtonShape.CHISELED_NETHER_BRICK,
+                "chiseled_" + color + "_terracotta_brick_secret_button", SecretButtonType.CHISELED_NETHER_BRICK,
                 BlockBehaviour.Properties.of().mapColor(mapColor).strength(1.25f, 4.2f).noOcclusion().requiresCorrectToolForDrops(),
                 ResourceLocation.fromNamespaceAndPath(NAMESPACE, "chiseled_" + color + "_terracotta_bricks"));
     }

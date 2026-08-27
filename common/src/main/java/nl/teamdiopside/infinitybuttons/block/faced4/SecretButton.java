@@ -20,17 +20,17 @@ public class SecretButton extends ButtonFaced4 implements JadeCamouflaged {
 
     public static final MapCodec<SecretButton> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(propertiesCodec(),
-                    SecretButtonShape.CODEC.fieldOf("type").forGetter(secretButton -> secretButton.type),
+                    SecretButtonType.CODEC.fieldOf("type").forGetter(secretButton -> secretButton.type),
                     ResourceLocation.CODEC.fieldOf("camouflage").forGetter(secretButton -> secretButton.camouflage)
             ).apply(instance, SecretButton::new)
     );
 
     public static final int PRESS_TICKS = 50;
 
-    public final SecretButtonShape type;
+    public final SecretButtonType type;
     protected final ResourceLocation camouflage;
 
-    public SecretButton(Properties properties, SecretButtonShape type, ResourceLocation camouflage) {
+    public SecretButton(Properties properties, SecretButtonType type, ResourceLocation camouflage) {
         super(properties, type.shapePressed, type.shapeUnpressed, false);
         this.type = type;
         this.camouflage = camouflage;

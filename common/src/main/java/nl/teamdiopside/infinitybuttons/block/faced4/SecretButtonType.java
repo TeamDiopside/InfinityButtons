@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
-public enum SecretButtonShape implements StringRepresentable {
+public enum SecretButtonType implements StringRepresentable {
     BIG_BRICK(
             Shapes.or(
                     Block.box(0, 8, 3, 16, 16, 19),
@@ -63,6 +63,14 @@ public enum SecretButtonShape implements StringRepresentable {
             ),
             IBSounds.STONE_SCRAPE
     ),
+    EIGHTS_TILES(
+            Shapes.or(
+                    Block.box(0, 0, 0, 16, 8, 16),
+                    Block.box(0, 8, 0, 8, 16, 16),
+                    Block.box(8, 8, 3, 16, 16, 19)
+            ),
+            IBSounds.STONE_SCRAPE
+    ),
     FULL_BLOCK_BRICK(
             Shapes.block(),
             IBSounds.STONE_SCRAPE
@@ -84,32 +92,41 @@ public enum SecretButtonShape implements StringRepresentable {
             ),
             IBSounds.WOOD_SCRAPE
     ),
-    EIGHTS_TILES(
+    TINTED_BIG_BRICK(
             Shapes.or(
-                    Block.box(0, 0, 0, 16, 8, 16),
-                    Block.box(0, 8, 0, 8, 16, 16),
-                    Block.box(8, 8, 3, 16, 16, 19)
+                    Block.box(0, 8, 3, 16, 16, 19),
+                    Block.box(0, 0, 0, 16, 8, 16)
+            ),
+            IBSounds.STONE_SCRAPE
+    ),
+    TINTED_CHISELED_STONE_BRICK(
+            Shapes.or(
+                    Block.box(0, 0, 0, 16, 3, 16),
+                    Block.box(0, 14, 0, 16, 16, 16),
+                    Block.box(0, 3, 0, 2, 14, 16),
+                    Block.box(2, 3, 0, 13, 14, 13),
+                    Block.box(13, 3, 0, 16, 14, 16)
             ),
             IBSounds.STONE_SCRAPE
     );
 
-    public static final Codec<SecretButtonShape> CODEC = StringRepresentable.fromEnum(SecretButtonShape::values);
+    public static final Codec<SecretButtonType> CODEC = StringRepresentable.fromEnum(SecretButtonType::values);
 
     public final VoxelShape shapePressed;
     public final VoxelShape shapeUnpressed;
     public final Supplier<SoundEvent> sound;
 
-    SecretButtonShape(VoxelShape shapePressed, VoxelShape shapeUnpressed, Supplier<SoundEvent> sound) {
+    SecretButtonType(VoxelShape shapePressed, VoxelShape shapeUnpressed, Supplier<SoundEvent> sound) {
         this.shapePressed = shapePressed;
         this.shapeUnpressed = shapeUnpressed;
         this.sound = sound;
     }
 
-    SecretButtonShape(VoxelShape shapePressed, SoundEvent sound) {
+    SecretButtonType(VoxelShape shapePressed, SoundEvent sound) {
         this(shapePressed, Shapes.block(), () -> sound);
     }
 
-    SecretButtonShape(VoxelShape shapePressed, RegistrySupplier<SoundEvent> sound) {
+    SecretButtonType(VoxelShape shapePressed, RegistrySupplier<SoundEvent> sound) {
         this(shapePressed, Shapes.block(), sound);
     }
 

@@ -30,6 +30,7 @@ import nl.teamdiopside.infinitybuttons.datagen.simplifier.OutFolder;
 import nl.teamdiopside.infinitybuttons.datagen.simplifier.SimpleReferenceModel;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
@@ -50,7 +51,7 @@ public class ModelAndStateProvider implements DataProvider {
     }
 
     @Override
-    public CompletableFuture<?> run(CachedOutput cache) {
+    public @NotNull CompletableFuture<?> run(CachedOutput cache) {
         Map<Block, BlockStateGenerator> blockStateOutputs = new HashMap<>();
         Map<ResourceLocation, Supplier<JsonElement>> modelOutputs = new HashMap<>();
 
@@ -299,7 +300,7 @@ public class ModelAndStateProvider implements DataProvider {
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return "Models and Blockstates";
     }
 }
