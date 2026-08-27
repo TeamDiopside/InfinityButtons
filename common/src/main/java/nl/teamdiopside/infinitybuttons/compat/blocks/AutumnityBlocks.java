@@ -10,7 +10,7 @@ public class AutumnityBlocks extends IBModdedBlocks {
     public static final AutumnityBlocks INSTANCE = new AutumnityBlocks();
     public static final String NAMESPACE = "autumnity";
 
-    public static final RegistrySupplier<SecretButton> ROSEWOOD_BOOKSHELF_SECRET_BUTTON = INSTANCE.registerBookshelf("maple");
+    public static final RegistrySupplier<SecretButton> MAPLE_BOOKSHELF_SECRET_BUTTON = INSTANCE.registerBookshelf("maple");
 
     private AutumnityBlocks() {
         super(NAMESPACE);
