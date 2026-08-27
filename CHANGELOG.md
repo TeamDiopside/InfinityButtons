@@ -6,3 +6,5 @@
 
 ## Content
 - Added (Chiseled) Myalite Brick Secret Buttons from Quark
+- Removed Tuff Brick Secret Buttons from Quark
+- Added Tuff Brick Secret Button from Minecraft
