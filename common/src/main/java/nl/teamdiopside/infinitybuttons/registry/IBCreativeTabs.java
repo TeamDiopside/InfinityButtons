@@ -1,5 +1,6 @@
 package nl.teamdiopside.infinitybuttons.registry;
 
+import dev.architectury.platform.Platform;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -15,11 +16,13 @@ import nl.teamdiopside.diopside.registry.RegistryUtils;
 import nl.teamdiopside.diopside.registry.TabEntryBuilder;
 import nl.teamdiopside.infinitybuttons.InfinityButtons;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButtonType;
+import nl.teamdiopside.infinitybuttons.compat.blocks.*;
 
 import java.util.function.Consumer;
 
 import static nl.teamdiopside.diopside.registry.RegistryUtils.sortedDyeColors;
-import static nl.teamdiopside.infinitybuttons.InfinityButtons.*;
+import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
+import static nl.teamdiopside.infinitybuttons.InfinityButtons.MOD_ID;
 
 public class IBCreativeTabs {
 
@@ -179,21 +182,97 @@ public class IBCreativeTabs {
     }
 
     /**
-     * Adds secret buttons to the creative tab.
+     * Adds bookshelf secret buttons to the creative tab.
      * @param output The output instance to add the blocks to.
      */
-    public static void addSecretButtons(CreativeModeTab.Output output) {
-        // TODO compat secret buttons
+    public static void addBookshelfSecretButtons(CreativeModeTab.Output output) {
         addBlock(output, IBBlocks.BOOKSHELF_SECRET_BUTTON.get());
-        addBlock(output, IBBlocks.BRICK_SECRET_BUTTON.get());
-        addBlock(output, IBBlocks.STONE_BRICK_SECRET_BUTTON.get());
-        addBlock(output, IBBlocks.MOSSY_STONE_BRICK_SECRET_BUTTON.get());
-        addBlock(output, IBBlocks.CRACKED_STONE_BRICK_SECRET_BUTTON.get());
-        addBlock(output, IBBlocks.CHISELED_STONE_BRICK_SECRET_BUTTON.get());
-        addBlock(output, IBBlocks.DEEPSLATE_BRICK_SECRET_BUTTON.get());
-        addBlock(output, IBBlocks.CRACKED_DEEPSLATE_BRICK_SECRET_BUTTON.get());
-        addBlock(output, IBBlocks.DEEPSLATE_TILE_SECRET_BUTTON.get());
-        addBlock(output, IBBlocks.CRACKED_DEEPSLATE_TILE_SECRET_BUTTON.get());
+        if (!Platform.isModLoaded(QuarkBlocks.NAMESPACE) && !Platform.isModLoaded(WoodworksBlocks.NAMESPACE)) return;
+
+        if (Platform.isModLoaded(WoodworksBlocks.NAMESPACE)) {
+            addBlock(output, WoodworksBlocks.SPRUCE_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, WoodworksBlocks.BIRCH_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, WoodworksBlocks.JUNGLE_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, WoodworksBlocks.ACACIA_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, WoodworksBlocks.DARK_OAK_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, WoodworksBlocks.MANGROVE_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, WoodworksBlocks.CHERRY_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, WoodworksBlocks.BAMBOO_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, WoodworksBlocks.CRIMSON_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, WoodworksBlocks.WARPED_BOOKSHELF_SECRET_BUTTON.get());
+
+        } else if (Platform.isModLoaded(QuarkBlocks.NAMESPACE)) {
+            addBlock(output, QuarkBlocks.SPRUCE_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.BIRCH_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.JUNGLE_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.ACACIA_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.DARK_OAK_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.MANGROVE_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.CHERRY_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.BAMBOO_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.CRIMSON_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.WARPED_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.BLOSSOM_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.AZALEA_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.ANCIENT_BOOKSHELF_SECRET_BUTTON.get());
+        }
+
+        if (Platform.isModLoaded(AutumnityBlocks.NAMESPACE)) {
+            output.accept(new ItemStack(AutumnityBlocks.MAPLE_BOOKSHELF_SECRET_BUTTON.get()));
+        }
+        if (Platform.isModLoaded(AtmosphericBlocks.NAMESPACE)) {
+            addBlock(output, AtmosphericBlocks.ROSEWOOD_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, AtmosphericBlocks.MORADO_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, AtmosphericBlocks.YUCCA_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, AtmosphericBlocks.LAUREL_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, AtmosphericBlocks.ASPEN_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, AtmosphericBlocks.KOUSA_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, AtmosphericBlocks.GRIMWOOD_BOOKSHELF_SECRET_BUTTON.get());
+        }
+        if (Platform.isModLoaded(EnvironmentalBlocks.NAMESPACE)) {
+            addBlock(output, EnvironmentalBlocks.WILLOW_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, EnvironmentalBlocks.PINE_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, EnvironmentalBlocks.PLUM_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, EnvironmentalBlocks.WISTERIA_BOOKSHELF_SECRET_BUTTON.get());
+        }
+        if (Platform.isModLoaded(UpgradeAquaticBlocks.NAMESPACE)) {
+            addBlock(output, UpgradeAquaticBlocks.DRIFTWOOD_BOOKSHELF_SECRET_BUTTON.get());
+            addBlock(output, UpgradeAquaticBlocks.RIVER_BOOKSHELF_SECRET_BUTTON.get());
+        }
+    }
+
+    /**
+     * Adds Quark's bricks secret buttons to the creative tab.
+     * @param output The output instance to add the blocks to.
+     */
+    public static void addQuarkBricksSecretButtons(CreativeModeTab.Output output) {
+        if (Platform.isModLoaded(QuarkBlocks.NAMESPACE)) {
+            addBlock(output, QuarkBlocks.GRANITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.CHISELED_GRANITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.DIORITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.CHISELED_DIORITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.ANDESITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.CHISELED_ANDESITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.CALCITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.CHISELED_CALCITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.DRIPSTONE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.CHISELED_DRIPSTONE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.LIMESTONE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.CHISELED_LIMESTONE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.JASPER_BRICK_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.CHISELED_JASPER_BRICK_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.SHALE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.CHISELED_SHALE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.MYALITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, QuarkBlocks.CHISELED_MYALITE_BRICK_SECRET_BUTTON.get());
+        }
+    }
+
+    /**
+     * Adds plank secret buttons to the creative tab.
+     * @param output The output instance to add the blocks to.
+     */
+    public static void addPlankSecretButtons(CreativeModeTab.Output output) {
         addBlock(output, IBBlocks.OAK_PLANK_SECRET_BUTTON.get());
         addBlock(output, IBBlocks.SPRUCE_PLANK_SECRET_BUTTON.get());
         addBlock(output, IBBlocks.BIRCH_PLANK_SECRET_BUTTON.get());
@@ -205,7 +284,99 @@ public class IBCreativeTabs {
         addBlock(output, IBBlocks.BAMBOO_PLANK_SECRET_BUTTON.get());
         addBlock(output, IBBlocks.CRIMSON_PLANK_SECRET_BUTTON.get());
         addBlock(output, IBBlocks.WARPED_PLANK_SECRET_BUTTON.get());
+    }
+
+    /**
+     * Adds terracotta brick secret buttons from Clayworks to the creative tab.
+     * @param output The output instance to add the blocks to.
+     */
+    public static void addTerracottaBrickSecretButtons(CreativeModeTab.Output output) {
+        if (Platform.isModLoaded(ClayworksBlocks.NAMESPACE)) {
+            addBlock(output, ClayworksBlocks.TERRACOTTA_BRICK_SECRET_BUTTON.get());
+            addBlock(output, ClayworksBlocks.CHISELED_TERRACOTTA_BRICK_SECRET_BUTTON.get());
+            for (DyeColor color : RegistryUtils.sortedDyeColors()) {
+                ResourceLocation normalId = ResourceLocation.fromNamespaceAndPath(ClayworksBlocks.NAMESPACE, color + "_terracotta_bricks");
+                ResourceLocation chiseledId = ResourceLocation.fromNamespaceAndPath(ClayworksBlocks.NAMESPACE, "chiseled_" + color + "_terracotta_bricks");
+                Block normalBlock = IBBlocks.SECRET_BUTTONS.get(normalId).get();
+                Block chiseledBlock = IBBlocks.SECRET_BUTTONS.get(chiseledId).get();
+                addBlock(output, normalBlock);
+                addBlock(output, chiseledBlock);
+            }
+        }
+    }
+
+    /**
+     * Adds Create's bricks secret buttons to the creative tab.
+     * @param output The output instance to add the blocks to.
+     */
+    public static void addCreateBricksSecretButtons(CreativeModeTab.Output output) {
+        if (Platform.isModLoaded(CreateBlocks.NAMESPACE)) {
+            addBlock(output, CreateBlocks.ROSE_QUARTZ_TILE_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.SMALL_ROSE_QUARTZ_TILE_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.CUT_GRANITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.SMALL_GRANITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.CUT_DIORITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.SMALL_DIORITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.CUT_ANDESITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.SMALL_ANDESITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.CUT_CALCITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.SMALL_CALCITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.CUT_DRIPSTONE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.SMALL_DRIPSTONE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.CUT_DEEPSLATE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.SMALL_DEEPSLATE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.CUT_TUFF_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.SMALL_TUFF_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.CUT_ASURINE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.SMALL_ASURINE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.CUT_CRIMSITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.SMALL_CRIMSITE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.CUT_LIMESTONE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.SMALL_LIMESTONE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.CUT_OCHRUM_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.SMALL_OCHRUM_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.CUT_SCORIA_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.SMALL_SCORIA_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.CUT_SCORCHIA_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.SMALL_SCORCHIA_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.CUT_VERIDIUM_BRICK_SECRET_BUTTON.get());
+            addBlock(output, CreateBlocks.SMALL_VERIDIUM_BRICK_SECRET_BUTTON.get());
+        }
+    }
+
+    /**
+     * Adds secret buttons to the creative tab.
+     * @param output The output instance to add the blocks to.
+     */
+    public static void addSecretButtons(CreativeModeTab.Output output) {
+        addBookshelfSecretButtons(output);
+
+        addBlock(output, IBBlocks.BRICK_SECRET_BUTTON.get());
+        if (Platform.isModLoaded(ClayworksBlocks.NAMESPACE)) {
+            addBlock(output, ClayworksBlocks.CHISELED_BRICK_SECRET_BUTTON.get());
+        }
+        if (Platform.isModLoaded(QuarkBlocks.NAMESPACE)) {
+            addBlock(output, QuarkBlocks.PERMAFROST_BRICK_SECRET_BUTTON.get());
+        }
+        addBlock(output, IBBlocks.STONE_BRICK_SECRET_BUTTON.get());
+        addBlock(output, IBBlocks.MOSSY_STONE_BRICK_SECRET_BUTTON.get());
+        addBlock(output, IBBlocks.CRACKED_STONE_BRICK_SECRET_BUTTON.get());
+        addBlock(output, IBBlocks.CHISELED_STONE_BRICK_SECRET_BUTTON.get());
+
+        addQuarkBricksSecretButtons(output);
+
+        addBlock(output, IBBlocks.DEEPSLATE_BRICK_SECRET_BUTTON.get());
+        addBlock(output, IBBlocks.CRACKED_DEEPSLATE_BRICK_SECRET_BUTTON.get());
+        addBlock(output, IBBlocks.DEEPSLATE_TILE_SECRET_BUTTON.get());
+        addBlock(output, IBBlocks.CRACKED_DEEPSLATE_TILE_SECRET_BUTTON.get());
+        addBlock(output, IBBlocks.TUFF_BRICK_SECRET_BUTTON.get());
+
+        addPlankSecretButtons(output);
+
         addBlock(output, IBBlocks.MUD_BRICK_SECRET_BUTTON.get());
+        if (Platform.isModLoaded(EnvironmentalBlocks.NAMESPACE)) {
+            addBlock(output, EnvironmentalBlocks.CHISELED_MUD_BRICK_SECRET_BUTTON.get());
+        }
         addBlock(output, IBBlocks.END_STONE_BRICK_SECRET_BUTTON.get());
         addBlock(output, IBBlocks.PURPUR_BLOCK_SECRET_BUTTON.get());
         addBlock(output, IBBlocks.QUARTZ_BRICK_SECRET_BUTTON.get());
@@ -217,6 +388,24 @@ public class IBCreativeTabs {
         addBlock(output, IBBlocks.CRACKED_NETHER_BRICK_SECRET_BUTTON.get());
         addBlock(output, IBBlocks.CHISELED_NETHER_BRICK_SECRET_BUTTON.get());
         addBlock(output, IBBlocks.RED_NETHER_BRICK_SECRET_BUTTON.get());
+        if (Platform.isModLoaded(QuarkBlocks.NAMESPACE)) {
+            addBlock(output, QuarkBlocks.BLUE_NETHER_BRICK_SECRET_BUTTON.get());
+        }
+
+        addTerracottaBrickSecretButtons(output);
+
+        if (Platform.isModLoaded(BuzzierBeesBlocks.NAMESPACE)) {
+            addBlock(output, BuzzierBeesBlocks.HONEYCOMB_BRICK_SECRET_BUTTON.get());
+            addBlock(output, BuzzierBeesBlocks.CHISELED_HONEYCOMB_BRICK_SECRET_BUTTON.get());
+        }
+        if (Platform.isModLoaded(NeapolitanBlocks.NAMESPACE)) {
+            addBlock(output, NeapolitanBlocks.CHISELED_CHOCOLATE_BRICK_SECRET_BUTTON.get());
+        }
+        if (Platform.isModLoaded(UpgradeAquaticBlocks.NAMESPACE)) {
+            addBlock(output, UpgradeAquaticBlocks.KELPY_STONE_BRICK_SECRET_BUTTON.get());
+            addBlock(output, UpgradeAquaticBlocks.CHISELED_TOOTH_BRICK_SECRET_BUTTON.get());
+        }
+        addCreateBricksSecretButtons(output);
     }
 
     /**
@@ -226,7 +415,11 @@ public class IBCreativeTabs {
     public static void addCoolButtons(CreativeModeTab.Output output) {
         addBlock(output, IBBlocks.DOORBELL.get());
         addBlock(output, IBBlocks.DOORBELL_BUTTON.get());
-        // TODO HOGLIN MOUNT BUTTON
+
+        if (Platform.isModLoaded(MyNethersDelightBlocks.NAMESPACE)) {
+            addBlock(output, MyNethersDelightBlocks.HOGLIN_TROPHY_BUTTON.get());
+        }
+
         addBlock(output, IBBlocks.LAMP_BUTTON.get());
         addBlock(output, IBBlocks.LAMP_LEVER.get());
         addBlock(output, IBBlocks.LETTER_BUTTON.get());
@@ -236,7 +429,6 @@ public class IBCreativeTabs {
         addBlock(output, IBBlocks.LANTERN_LEVER.get());
         addBlock(output, IBBlocks.SOUL_LANTERN_BUTTON.get());
         addBlock(output, IBBlocks.SOUL_LANTERN_LEVER.get());
-        // TODO ENDER LANTERN
 
         addBlock(output, IBBlocks.SMALL_CONSOLE_BUTTON.get());
         addBlock(output, IBBlocks.SMALL_CONSOLE_LEVER.get());
@@ -259,8 +451,10 @@ public class IBCreativeTabs {
         addBlock(output, IBBlocks.SOUL_TORCH_LEVER.get());
         addBlock(output, IBBlocks.REDSTONE_TORCH_BUTTON.get());
         addBlock(output, IBBlocks.REDSTONE_TORCH_LEVER.get());
-        // TODO PROPELPLANT TORCH
-        // TODO ENDER TORCH
+        if (Platform.isModLoaded(MyNethersDelightBlocks.NAMESPACE)) {
+            addBlock(output, MyNethersDelightBlocks.PROPELPLANT_TORCH_BUTTON.get());
+            addBlock(output, MyNethersDelightBlocks.PROPELPLANT_TORCH_LEVER.get());
+        }
     }
 
     /**
