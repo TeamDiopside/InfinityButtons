@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
-import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonShape;
+import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
 
 import static com.mojang.text2speech.Narrator.LOGGER;
@@ -17,9 +17,9 @@ public class CreateBlocks extends IBModdedBlocks {
     public static final String NAMESPACE = "create";
 
     public static final RegistrySupplier<SecretButton> ROSE_QUARTZ_TILE_SECRET_BUTTON =
-            INSTANCE.registerSecretButton("rose_quartz_tile_secret_button", SecretButtonShape.DEEPSLATE_TILE, Blocks.DEEPSLATE);
+            INSTANCE.registerSecretButton("rose_quartz_tile_secret_button", SecretButtonType.DEEPSLATE_TILE, Blocks.DEEPSLATE);
     public static final RegistrySupplier<SecretButton> SMALL_ROSE_QUARTZ_TILE_SECRET_BUTTON =
-            INSTANCE.registerSecretButton("small_rose_quartz_tile_secret_button", SecretButtonShape.FULL_BLOCK_BRICK, Blocks.DEEPSLATE);
+            INSTANCE.registerSecretButton("small_rose_quartz_tile_secret_button", SecretButtonType.FULL_BLOCK_BRICK, Blocks.DEEPSLATE);
 
     public static final RegistrySupplier<SecretButton> CUT_GRANITE_BRICK_SECRET_BUTTON = INSTANCE.registerCut("granite", Blocks.GRANITE);
     public static final RegistrySupplier<SecretButton> SMALL_GRANITE_BRICK_SECRET_BUTTON = INSTANCE.registerSmall("granite", Blocks.GRANITE);
@@ -77,7 +77,7 @@ public class CreateBlocks extends IBModdedBlocks {
 
     private RegistrySupplier<SecretButton> registerCut(String type, Block properties) {
         return this.registerSecretButton("cut_" + type + "_brick_secret_button", 
-                SecretButtonShape.BIG_BRICK,
+                SecretButtonType.BIG_BRICK,
                 BlockBehaviour.Properties.ofFullCopy(properties).noOcclusion(),
                 ResourceLocation.fromNamespaceAndPath(NAMESPACE, "cut_" + type + "_bricks")
         );
@@ -85,7 +85,7 @@ public class CreateBlocks extends IBModdedBlocks {
 
     private RegistrySupplier<SecretButton> registerCut(String type, BlockBehaviour.Properties properties) {
         return this.registerSecretButton("cut_" + type + "_brick_secret_button",
-                SecretButtonShape.BIG_BRICK,
+                SecretButtonType.BIG_BRICK,
                 properties.noOcclusion(),
                 ResourceLocation.fromNamespaceAndPath(NAMESPACE, "cut_" + type + "_bricks")
         );
@@ -93,7 +93,7 @@ public class CreateBlocks extends IBModdedBlocks {
 
     private RegistrySupplier<SecretButton> registerSmall(String type, Block properties) {
         return this.registerSecretButton("small_" + type + "_brick_secret_button",
-                SecretButtonShape.FULL_BLOCK_BRICK,
+                SecretButtonType.FULL_BLOCK_BRICK,
                 BlockBehaviour.Properties.ofFullCopy(properties).noOcclusion(),
                 ResourceLocation.fromNamespaceAndPath(NAMESPACE, "small_" + type + "_bricks")
         );
@@ -101,7 +101,7 @@ public class CreateBlocks extends IBModdedBlocks {
 
     private RegistrySupplier<SecretButton> registerSmall(String type, BlockBehaviour.Properties properties) {
         return this.registerSecretButton("small_" + type + "_brick_secret_button",
-                SecretButtonShape.FULL_BLOCK_BRICK,
+                SecretButtonType.FULL_BLOCK_BRICK,
                 properties.noOcclusion(),
                 ResourceLocation.fromNamespaceAndPath(NAMESPACE, "small_" + type + "_bricks")
         );

@@ -6,7 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
-import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonShape;
+import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.compat.blocks.*;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 
@@ -56,7 +56,7 @@ public abstract class IBModdedBlocks extends IBBlocks {
     public static final HashMap<String, ResourceLocation> BOOKSHELF_TOP_TEXTURES = new HashMap<>();
 
     protected RegistrySupplier<SecretButton> registerModBookshelfSecretButton(String blockId, ResourceLocation originalBlock, ResourceLocation topTexture) {
-        var registry = super.registerSecretButton(blockId, SecretButtonShape.BOOKSHELF, BlockBehaviour.Properties.ofFullCopy(Blocks.BOOKSHELF), originalBlock);
+        var registry = super.registerSecretButton(blockId, SecretButtonType.BOOKSHELF, BlockBehaviour.Properties.ofFullCopy(Blocks.BOOKSHELF), originalBlock);
 
         MOD_SECRET_BUTTONS.put(blockId, registry);
         BOOKSHELF_TOP_TEXTURES.put(blockId, topTexture);

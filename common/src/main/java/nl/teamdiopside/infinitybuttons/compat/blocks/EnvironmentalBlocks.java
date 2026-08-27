@@ -6,7 +6,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
-import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonShape;
+import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
 
 import static com.mojang.text2speech.Narrator.LOGGER;
@@ -24,7 +24,7 @@ public class EnvironmentalBlocks extends IBModdedBlocks {
             .noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops();
 
     public static final RegistrySupplier<SecretButton> CHISELED_MUD_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("chiseled_mud_brick_secret_button",
-            SecretButtonShape.CHISELED_NETHER_BRICK, properties, ResourceLocation.fromNamespaceAndPath(NAMESPACE, "chiseled_mud_bricks"));
+            SecretButtonType.CHISELED_NETHER_BRICK, properties, ResourceLocation.fromNamespaceAndPath(NAMESPACE, "chiseled_mud_bricks"));
 
     private EnvironmentalBlocks() {
         super(NAMESPACE);
