@@ -1,6 +1,7 @@
 package nl.teamdiopside.infinitybuttons;
 
 import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
+import nl.teamdiopside.infinitybuttons.compat.IBModdedItems;
 import nl.teamdiopside.infinitybuttons.registry.*;
 
 import java.util.logging.Logger;
@@ -15,6 +16,7 @@ public final class InfinityButtons {
         IBItems.register();
 
         IBModdedBlocks.register();
+        IBModdedItems.register();
 
         IBCreativeTabs.register();
         IBParticles.register();

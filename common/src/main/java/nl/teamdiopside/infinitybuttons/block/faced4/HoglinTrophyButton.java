@@ -40,6 +40,6 @@ public class HoglinTrophyButton extends ButtonFaced4 implements JadeCamouflaged 
 
     @Override
     public Block getCamouflage() {
-        return IBRegistryUtils.getBlockByID(ResourceLocation.fromNamespaceAndPath("mynethersdelight", "hoglin_trophy"));
+        return IBRegistryUtils.getBlockByID(ResourceLocation.fromNamespaceAndPath("mynethersdelight", "waxed_hoglin_trophy"));
     }
 }

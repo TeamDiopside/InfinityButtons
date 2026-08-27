@@ -1,6 +1,7 @@
 package nl.teamdiopside.infinitybuttons.compat.blocks;
 
 import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -20,22 +21,22 @@ public class MyNethersDelightBlocks extends IBModdedBlocks {
     public static final MyNethersDelightBlocks INSTANCE = new MyNethersDelightBlocks();
     public static final String NAMESPACE = "mynethersdelight";
 
-    public static UnaryOperator<BlockBehaviour.Properties> PROPELPLANT_PROPERTIES = properties -> properties.mapColor(MapColor.PLANT).noCollission().instabreak().lightLevel((state) -> 12).sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY);
+    public static UnaryOperator<BlockBehaviour.Properties> POWDERY_PROPERTIES = properties -> properties.mapColor(MapColor.PLANT).noCollission().instabreak().lightLevel((state) -> 8).sound(SoundType.BAMBOO).pushReaction(PushReaction.DESTROY);
 
     public static final RegistrySupplier<HoglinTrophyButton> HOGLIN_TROPHY_BUTTON = INSTANCE.registerBlock("hoglin_trophy_button", BlockEntryBuilder.ofBlock(properties ->
             new HoglinTrophyButton(BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_PLANKS).mapColor(MapColor.TERRACOTTA_PINK))), null);
 
-    public static final RegistrySupplier<TorchButton> PROPELPLANT_TORCH_BUTTON = INSTANCE.registerBlock("propelplant_torch_button", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(PROPELPLANT_PROPERTIES.apply(properties), null, false, false, ResourceLocation.fromNamespaceAndPath(NAMESPACE, "propelplant_torch"))), null);
+    public static final RegistrySupplier<TorchButton> POWDERY_TORCH_BUTTON = INSTANCE.registerBlock("powdery_torch_button", BlockEntryBuilder.ofBlock(properties ->
+            new TorchButton(POWDERY_PROPERTIES.apply(properties), ParticleTypes.FLAME, false, false, ResourceLocation.fromNamespaceAndPath(NAMESPACE, "powdery_torch"))).withoutItem(), null);
 
-    public static final RegistrySupplier<TorchButton> PROPELPLANT_WALL_TORCH_BUTTON = INSTANCE.registerBlock("propelplant_wall_torch_button", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(PROPELPLANT_PROPERTIES.apply(properties), null, false, true, ResourceLocation.fromNamespaceAndPath(NAMESPACE, "propelplant_torch"))), null);
+    public static final RegistrySupplier<TorchButton> POWDERY_WALL_TORCH_BUTTON = INSTANCE.registerBlock("powdery_wall_torch_button", BlockEntryBuilder.ofBlock(properties ->
+            new TorchButton(POWDERY_PROPERTIES.apply(properties).dropsLike(POWDERY_TORCH_BUTTON.get()), ParticleTypes.FLAME, false, true, ResourceLocation.fromNamespaceAndPath(NAMESPACE, "powdery_torch"))).withoutItem(), null);
 
-    public static final RegistrySupplier<TorchButton> PROPELPLANT_TORCH_LEVER = INSTANCE.registerBlock("propelplant_torch_lever", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(PROPELPLANT_PROPERTIES.apply(properties), null, true, false, ResourceLocation.fromNamespaceAndPath(NAMESPACE, "propelplant_torch"))), null);
+    public static final RegistrySupplier<TorchButton> POWDERY_TORCH_LEVER = INSTANCE.registerBlock("powdery_torch_lever", BlockEntryBuilder.ofBlock(properties ->
+            new TorchButton(POWDERY_PROPERTIES.apply(properties), ParticleTypes.FLAME, true, false, ResourceLocation.fromNamespaceAndPath(NAMESPACE, "powdery_torch"))).withoutItem(), null);
 
-    public static final RegistrySupplier<TorchButton> PROPELPLANT_WALL_TORCH_LEVER = INSTANCE.registerBlock("propelplant_wall_torch_lever", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(PROPELPLANT_PROPERTIES.apply(properties), null, true, true, ResourceLocation.fromNamespaceAndPath(NAMESPACE, "propelplant_torch"))), null);
+    public static final RegistrySupplier<TorchButton> POWDERY_WALL_TORCH_LEVER = INSTANCE.registerBlock("powdery_wall_torch_lever", BlockEntryBuilder.ofBlock(properties ->
+            new TorchButton(POWDERY_PROPERTIES.apply(properties).dropsLike(POWDERY_TORCH_LEVER.get()), ParticleTypes.FLAME, true, true, ResourceLocation.fromNamespaceAndPath(NAMESPACE, "powdery_torch"))).withoutItem(), null);
 
     private MyNethersDelightBlocks() {
         super(NAMESPACE);

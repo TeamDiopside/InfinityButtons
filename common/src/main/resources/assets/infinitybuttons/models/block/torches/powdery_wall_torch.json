@@ -1,7 +1,7 @@
 {
  "parent": "infinitybuttons:block/wall_torch_pressed",
   "textures": {
-    "torch": "nethersdelight:block/propelplant_torch"
+    "torch": "mynethersdelight:block/powdery_torch"
   },
   "render_type": "cutout"
 }

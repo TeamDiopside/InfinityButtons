@@ -452,8 +452,8 @@ public class IBCreativeTabs {
         addBlock(output, IBBlocks.REDSTONE_TORCH_BUTTON.get());
         addBlock(output, IBBlocks.REDSTONE_TORCH_LEVER.get());
         if (Platform.isModLoaded(MyNethersDelightBlocks.NAMESPACE)) {
-            addBlock(output, MyNethersDelightBlocks.PROPELPLANT_TORCH_BUTTON.get());
-            addBlock(output, MyNethersDelightBlocks.PROPELPLANT_TORCH_LEVER.get());
+            addBlock(output, MyNethersDelightBlocks.POWDERY_TORCH_BUTTON.get());
+            addBlock(output, MyNethersDelightBlocks.POWDERY_TORCH_LEVER.get());
         }
     }
 
