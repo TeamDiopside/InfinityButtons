@@ -181,7 +181,8 @@ public class ItemTagGenerator extends ItemTagsProvider {
                 .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "cut_scorchia_brick_secret_button"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_scorchia_brick_secret_button"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "cut_veridium_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_veridium_brick_secret_button"));
+                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_veridium_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "hoglin_trophy_button"));
 
         for (var entry : IBBlocks.SECRET_BUTTONS.values()) {
             this.tag(SECRET_BUTTONS)
@@ -214,7 +215,9 @@ public class ItemTagGenerator extends ItemTagsProvider {
                 .add(IBBlocks.REDSTONE_TORCH_BUTTON.get().asItem())
                 .add(IBBlocks.REDSTONE_TORCH_LEVER.get().asItem())
                 .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "propelplant_torch_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "propelplant_torch_lever"));
+                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "propelplant_torch_lever"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "powdery_torch_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "powdery_torch_lever"));
 
         this.tag(CONSOLE_BUTTONS)
                 .add(IBBlocks.SMALL_CONSOLE_BUTTON.get().asItem())

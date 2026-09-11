@@ -148,7 +148,8 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
                 .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_scorchia_brick_secret_button"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_scorchia_brick_secret_button"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_veridium_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_veridium_brick_secret_button"));
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_veridium_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "hoglin_trophy_button"));
 
         for (var entry : IBBlocks.SECRET_BUTTONS.values()) {
             this.tag(SECRET_BUTTONS).add(entry.get());
@@ -193,7 +194,11 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
                 .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "propelplant_torch_button"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "propelplant_torch_lever"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "propelplant_wall_torch_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "propelplant_wall_torch_lever"));
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "propelplant_wall_torch_lever"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "powdery_torch_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "powdery_torch_lever"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "powdery_wall_torch_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "powdery_wall_torch_lever"));
 
         this.tag(CONSOLE_BUTTONS)
                 .add(IBBlocks.SMALL_CONSOLE_BUTTON.get())
@@ -224,7 +229,8 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
                 .addTag(WOODEN_LARGE_BUTTONS)
                 .addTag(WOODEN_SECRET_BUTTONS)
                 .add(IBBlocks.LETTER_BUTTON.get())
-                .add(IBBlocks.LETTER_LEVER.get());
+                .add(IBBlocks.LETTER_LEVER.get())
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "hoglin_trophy_button"));
 
         this.tag(MINEABLE_PICKAXE)
                 .addTag(COPPER_BUTTONS)
@@ -278,7 +284,11 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
                 .add(IBBlocks.RED_SAND_BUTTON.get(false))
                 .add(IBBlocks.GRAVEL_BUTTON.get(false))
                 .addTag(CONCRETE_POWDER_BUTTONS)
-                .addTag(CONCRETE_POWDER_LARGE_BUTTONS);
+                .addTag(CONCRETE_POWDER_LARGE_BUTTONS)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "arid_sand_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "arid_sand_large_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "red_arid_sand_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "red_arid_sand_large_button"));
 
         this.tag(BUTTONS)
                 .addTag(COPPER_BUTTONS)
@@ -311,9 +321,13 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
             this.tag(BUTTONS)
                     .add(entry.getSmall())
                     .add(entry.getLarge());
-            this.tag(MINEABLE_PICKAXE)
-                    .add(entry.getSmall())
-                    .add(entry.getLarge());
+
+            // Non-gravity buttons get pickaxed
+            if (!IBBlocks.ONE_USE_BUTTONS.containsValue(entry)) {
+                this.tag(MINEABLE_PICKAXE)
+                        .add(entry.getSmall())
+                        .add(entry.getLarge());
+            }
         }
 
         this.tag(GUARDED_BY_PIGLINS)
@@ -348,7 +362,9 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
                 .add(IBBlocks.REDSTONE_TORCH_BUTTON.get())
                 .add(IBBlocks.REDSTONE_TORCH_LEVER.get())
                 .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "propelplant_torch_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "propelplant_torch_lever"));
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "propelplant_torch_lever"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "powdery_torch_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "powdery_torch_lever"));
 
         this.tag(NEEDS_STONE_TOOL)
                 .addTag(COPPER_BUTTONS)
