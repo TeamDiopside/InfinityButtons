@@ -29,5 +29,7 @@ public class LootTableGenerator extends BlockLootSubProvider {
     @Override
     public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> biConsumer) {
         // Just don't
+        this.generate();
+        this.map.forEach(biConsumer);
     }
 }
