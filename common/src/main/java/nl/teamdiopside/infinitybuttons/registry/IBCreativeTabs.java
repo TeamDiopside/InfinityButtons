@@ -151,7 +151,12 @@ public class IBCreativeTabs {
         addBlock(output, IBBlocks.SAND_BUTTON.get(large));
         addBlock(output, IBBlocks.RED_SAND_BUTTON.get(large));
         addBlock(output, IBBlocks.GRAVEL_BUTTON.get(large));
-        // TODO ATMOSPHERIC SAND BUTTONS
+
+        if (Platform.isModLoaded(AtmosphericBlocks.NAMESPACE)) {
+            addBlock(output, AtmosphericBlocks.ARID_SAND_BUTTON.get(large));
+            addBlock(output, AtmosphericBlocks.RED_ARID_SAND_BUTTON.get(large));
+        }
+
         addConcretePowderButtons(output, large);
     }
 
