@@ -244,11 +244,14 @@ public class ModelAndStateProvider implements DataProvider {
             var camouflageLocation = ResourceLocation.fromNamespaceAndPath(camouflage.namespace(), "block/" + camouflage.id());
             var buttonLocation = ResourceLocation.fromNamespaceAndPath(button.namespace(), "block/" + button.id());
 
+            // Some camouflages don't keep their texture at the naive <namespace>:block/<id> path
+            ResourceLocation textureLocation = IBModdedBlocks.SECRET_BUTTON_TEXTURE_OVERRIDES.getOrDefault(button.id(), camouflageLocation);
+
             ResourceLocation parentLocation = ResourceLocation.fromNamespaceAndPath(MOD_ID,
                     "block/secret_buttons/" + secretButton.type.getSerializedName() + "_secret_button");
 
             SimpleReferenceModel blockModel = new SimpleReferenceModel(buttonLocation, parentLocation)
-                    .withTexture(camouflageLocation); // Model location == Texture location
+                    .withTexture(textureLocation); // Model location == Texture location (unless overridden)
 
             // Bookshelves have a separate top/bottom texture
             if (button.id().contains("bookshelf") && !camouflage.namespace().equals("minecraft"))

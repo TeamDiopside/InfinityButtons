@@ -9,6 +9,7 @@ import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.compat.blocks.*;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
+import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -44,9 +45,11 @@ public abstract class IBModdedBlocks extends IBBlocks {
     }
 
     protected RegistrySupplier<SecretButton> registerBookshelf(String name, String wood) {
+        String topTextureNamespace = IBRegistryUtils.isWoodType(wood) ? "minecraft" : this.namespace;
+
         var registry = registerModBookshelfSecretButton(name + "_bookshelf_secret_button",
                 ResourceLocation.fromNamespaceAndPath(this.namespace, wood + "_bookshelf"),
-                ResourceLocation.fromNamespaceAndPath(this.namespace, "block/" + wood + "_planks"));
+                ResourceLocation.fromNamespaceAndPath(topTextureNamespace, "block/" + wood + "_planks"));
 
         MOD_BOOKSHELVES.add(registry);
         return registry;
@@ -60,6 +63,16 @@ public abstract class IBModdedBlocks extends IBBlocks {
 
         MOD_SECRET_BUTTONS.put(blockId, registry);
         BOOKSHELF_TOP_TEXTURES.put(blockId, topTexture);
+        return registry;
+    }
+
+    // For camouflages whose texture doesn't live where it's supposed to. Stupid blocks.
+    public static final HashMap<String, ResourceLocation> SECRET_BUTTON_TEXTURE_OVERRIDES = new HashMap<>();
+
+    protected RegistrySupplier<SecretButton> registerSecretButton(String blockId, SecretButtonType type, BlockBehaviour.Properties properties, ResourceLocation material, ResourceLocation textureOverride) {
+        var registry = registerSecretButton(blockId, type, properties, material);
+
+        SECRET_BUTTON_TEXTURE_OVERRIDES.put(blockId, textureOverride);
         return registry;
     }
 }
