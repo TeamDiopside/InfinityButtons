@@ -379,16 +379,16 @@ public class IBBlocks {
     }
 
     public RegistrySupplier<EmergencyButton> registerEmergencyButton(DyeColor color, String name) {
-        var registry = registerBlock(name + "_emergency_button", BlockEntryBuilder.ofBlock(properties ->
-                new EmergencyButton(properties.strength(0.5f).sound(SoundType.METAL))),"emergency_button");
+        var registry = registerBlock(name + "_emergency_button", BlockEntryBuilder.ofBlock(EmergencyButton::new),
+                BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.METAL), "emergency_button");
 
         EMERGENCY_BUTTONS.put(color, registry);
         return registry;
     }
 
     public RegistrySupplier<SafeEmergencyButton> registerSafeEmergencyButton(DyeColor color, String name) {
-        var registry = registerBlock(name + "_safe_emergency_button", BlockEntryBuilder.ofBlock(properties ->
-                new SafeEmergencyButton(properties.strength(0.5f).sound(SoundType.METAL))),"safe_emergency_button");
+        var registry = registerBlock(name + "_safe_emergency_button", BlockEntryBuilder.ofBlock(SafeEmergencyButton::new),
+                BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.METAL), "safe_emergency_button");
 
         SAFE_EMERGENCY_BUTTONS.put(color, registry);
         return registry;
@@ -426,12 +426,21 @@ public class IBBlocks {
     }
 
     protected <T extends Block> RegistrySupplier<T> registerBlock(String blockId, BlockEntryBuilder<T> builder, String tooltipKey, Function<ItemStack, Boolean> tooltipCondition) {
+        return registerBlock(blockId, builder, getDefaultProperties(), tooltipKey, tooltipCondition);
+    }
+
+    // Bypasses getDefaultProperties() (a copy of the collision-less OAK_BUTTON) for blocks that need real collision
+    protected <T extends Block> RegistrySupplier<T> registerBlock(String blockId, BlockEntryBuilder<T> builder, BlockBehaviour.Properties properties, String tooltipKey) {
+        return registerBlock(blockId, builder, properties, tooltipKey, ignored -> tooltipKey != null);
+    }
+
+    protected <T extends Block> RegistrySupplier<T> registerBlock(String blockId, BlockEntryBuilder<T> builder, BlockBehaviour.Properties properties, String tooltipKey, Function<ItemStack, Boolean> tooltipCondition) {
         RegistrySupplier<T> registry = builder.withTooltip(TooltipBuilder
                 .builder("infinitybuttons.tooltip." + tooltipKey)
                 .setTooltipClass(HoldKeyTooltip.class)
                 .setTooltipVisible(tooltipCondition)
                 .withStyle(ChatFormatting.GRAY)
-        ).register(ResourceLocation.fromNamespaceAndPath(MOD_ID, blockId), getDefaultProperties());
+        ).register(ResourceLocation.fromNamespaceAndPath(MOD_ID, blockId), properties);
 
         ALL_BUTTONS.put(blockId, registry);
         return registry;
