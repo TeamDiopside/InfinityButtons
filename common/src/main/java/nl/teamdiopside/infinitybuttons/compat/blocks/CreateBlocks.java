@@ -4,6 +4,7 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
@@ -16,10 +17,20 @@ public class CreateBlocks extends IBModdedBlocks {
     public static final CreateBlocks INSTANCE = new CreateBlocks();
     public static final String NAMESPACE = "create";
 
-    public static final RegistrySupplier<SecretButton> ROSE_QUARTZ_TILE_SECRET_BUTTON =
-            INSTANCE.registerSecretButton("rose_quartz_tile_secret_button", SecretButtonType.DEEPSLATE_TILE, Blocks.DEEPSLATE);
-    public static final RegistrySupplier<SecretButton> SMALL_ROSE_QUARTZ_TILE_SECRET_BUTTON =
-            INSTANCE.registerSecretButton("small_rose_quartz_tile_secret_button", SecretButtonType.FULL_BLOCK_BRICK, Blocks.DEEPSLATE);
+    private static final BlockBehaviour.Properties ROSE_QUARTZ_PROPERTIES = BlockBehaviour.Properties.of()
+            .mapColor(MapColor.TERRACOTTA_PINK).strength(1.5f, 6.0f).noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops();
+
+    // Create's rose quartz tiles don't keep their texture at the naive create:block/<id> path either
+    public static final RegistrySupplier<SecretButton> ROSE_QUARTZ_TILE_SECRET_BUTTON = INSTANCE.registerSecretButton(
+            "rose_quartz_tile_secret_button", SecretButtonType.DEEPSLATE_TILE, ROSE_QUARTZ_PROPERTIES,
+            ResourceLocation.fromNamespaceAndPath(NAMESPACE, "rose_quartz_tiles"),
+            ResourceLocation.fromNamespaceAndPath(NAMESPACE, "block/palettes/rose_quartz_tiles")
+    );
+    public static final RegistrySupplier<SecretButton> SMALL_ROSE_QUARTZ_TILE_SECRET_BUTTON = INSTANCE.registerSecretButton(
+            "small_rose_quartz_tile_secret_button", SecretButtonType.FULL_BLOCK_BRICK, ROSE_QUARTZ_PROPERTIES,
+            ResourceLocation.fromNamespaceAndPath(NAMESPACE, "small_rose_quartz_tiles"),
+            ResourceLocation.fromNamespaceAndPath(NAMESPACE, "block/palettes/small_rose_quartz_tiles")
+    );
 
     public static final RegistrySupplier<SecretButton> CUT_GRANITE_BRICK_SECRET_BUTTON = INSTANCE.registerCut("granite", Blocks.GRANITE);
     public static final RegistrySupplier<SecretButton> SMALL_GRANITE_BRICK_SECRET_BUTTON = INSTANCE.registerSmall("granite", Blocks.GRANITE);
