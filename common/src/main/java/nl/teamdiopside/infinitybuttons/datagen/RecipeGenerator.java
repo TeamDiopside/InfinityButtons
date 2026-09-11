@@ -1,5 +1,6 @@
 package nl.teamdiopside.infinitybuttons.datagen;
 
+import dev.architectury.platform.Platform;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
@@ -15,6 +16,8 @@ import net.minecraft.world.level.block.WeatheringCopper;
 import nl.teamdiopside.infinitybuttons.InfinityButtons;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButtonType;
+import nl.teamdiopside.infinitybuttons.compat.blocks.MyNethersDelightBlocks;
+import nl.teamdiopside.infinitybuttons.compat.items.MyNethersDelightItems;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 import org.jetbrains.annotations.Nullable;
@@ -27,7 +30,6 @@ import java.util.function.Function;
 import static net.minecraft.data.recipes.RecipeBuilder.getDefaultRecipeId;
 
 public class RecipeGenerator extends RecipeProvider {
-// TODO Find out how to make conditional recipes and add missing recipes (like hoglin trophy)
     // Sub-provider instance constructor
     public RecipeGenerator(CompletableFuture<HolderLookup.Provider> registries, PackOutput output) {
         super(output, registries);
@@ -122,6 +124,15 @@ public class RecipeGenerator extends RecipeProvider {
         for (var entry : IBBlocks.SECRET_BUTTONS.entrySet()) {
             Block originalBlock = IBRegistryUtils.getBlockByID(entry.getKey().getNamespace(), entry.getKey().getPath());
             convertingRecipe(recipes, originalBlock, entry.getValue().get(), false, 1, "", "secret_buttons");
+        }
+
+        // Nether's Delight recipes
+        if (Platform.isModLoaded(MyNethersDelightBlocks.NAMESPACE)) {
+            Item waxedHoglinTrophy = IBRegistryUtils.getItemByID(MyNethersDelightBlocks.NAMESPACE, "waxed_hoglin_trophy");
+            convertingRecipe(recipes, waxedHoglinTrophy, MyNethersDelightBlocks.HOGLIN_TROPHY_BUTTON.get(), false, 1, "", "secret_buttons");
+
+            Item powderyTorch = IBRegistryUtils.getItemByID(MyNethersDelightBlocks.NAMESPACE, "powdery_torch");
+            convertingRecipes(recipes, powderyTorch, MyNethersDelightItems.POWDERY_TORCH_BUTTON.get(), MyNethersDelightItems.POWDERY_TORCH_LEVER.get(), 1, "", null);
         }
 
         // Emergency & Safety Buttons
