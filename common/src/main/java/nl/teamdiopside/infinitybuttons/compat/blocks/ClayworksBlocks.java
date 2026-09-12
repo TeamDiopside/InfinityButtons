@@ -26,7 +26,7 @@ public class ClayworksBlocks extends IBModdedBlocks {
             ResourceLocation.fromNamespaceAndPath(NAMESPACE, "chiseled_bricks"));
 
     public static final RegistrySupplier<SecretButton> TERRACOTTA_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton(
-            "terracotta_brick_secret_button", SecretButtonType.FULL_BLOCK_BRICK,
+            "terracotta_brick_secret_button", SecretButtonType.BRICK,
             BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(1.25f, 4.2f).noOcclusion().requiresCorrectToolForDrops(),
             ResourceLocation.fromNamespaceAndPath(NAMESPACE, "terracotta_bricks"));
 
@@ -66,7 +66,7 @@ public class ClayworksBlocks extends IBModdedBlocks {
 
     public static void registerTerracotta(String color, MapColor mapColor) {
         INSTANCE.registerSecretButton(
-                color + "_terracotta_brick_secret_button", SecretButtonType.FULL_BLOCK_BRICK,
+                color + "_terracotta_brick_secret_button", SecretButtonType.BRICK,
                 BlockBehaviour.Properties.of().mapColor(mapColor).strength(1.25f, 4.2f).noOcclusion().requiresCorrectToolForDrops(),
                 ResourceLocation.fromNamespaceAndPath(NAMESPACE, color + "_terracotta_bricks"));
     }
