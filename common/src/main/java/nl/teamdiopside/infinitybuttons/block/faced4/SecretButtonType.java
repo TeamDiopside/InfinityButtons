@@ -25,6 +25,10 @@ public enum SecretButtonType implements StringRepresentable {
             Shapes.block(),
             SoundEvents.BAMBOO_PLACE
     ),
+    BRICK(
+            Shapes.block(),
+            IBSounds.STONE_SCRAPE
+    ),
     CHISELED_NETHER_BRICK(
             Shapes.or(
                     Block.box(0, 0, 0, 16, 3, 16),
@@ -71,7 +75,7 @@ public enum SecretButtonType implements StringRepresentable {
             ),
             IBSounds.STONE_SCRAPE
     ),
-    FULL_BLOCK_BRICK(
+    LONG_SMALL_BRICK(
             Shapes.block(),
             IBSounds.STONE_SCRAPE
     ),
@@ -84,6 +88,10 @@ public enum SecretButtonType implements StringRepresentable {
             ),
             SoundEvents.MUD_BRICKS_PLACE
     ),
+    NETHER_BRICK(
+            Shapes.block(),
+            IBSounds.STONE_SCRAPE
+    ),
     PLANK(
             Shapes.or(
                     Block.box(0, 0, 0, 16, 4, 16),
@@ -91,6 +99,14 @@ public enum SecretButtonType implements StringRepresentable {
                     Block.box(0, 4, 3, 16, 9, 16)
             ),
             IBSounds.WOOD_SCRAPE
+    ),
+    SMALL_BRICK(
+            Shapes.block(),
+            IBSounds.STONE_SCRAPE
+    ),
+    SMALL_TILE(
+            Shapes.block(),
+            IBSounds.STONE_SCRAPE
     ),
     TINTED_BIG_BRICK(
             Shapes.or(

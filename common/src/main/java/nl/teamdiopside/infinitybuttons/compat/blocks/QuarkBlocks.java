@@ -36,7 +36,7 @@ public class QuarkBlocks extends IBModdedBlocks {
                     .sound(SoundType.STONE).requiresCorrectToolForDrops(), ResourceLocation.fromNamespaceAndPath(NAMESPACE, "permafrost_bricks"));
 
     public static final RegistrySupplier<SecretButton> BLUE_NETHER_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("blue_nether_brick_secret_button",
-            SecretButtonType.FULL_BLOCK_BRICK, BlockBehaviour.Properties.of().mapColor(MapColor.NETHER).strength(2.0f, 6.0f).noOcclusion()
+            SecretButtonType.NETHER_BRICK, BlockBehaviour.Properties.of().mapColor(MapColor.NETHER).strength(2.0f, 6.0f).noOcclusion()
                     .sound(SoundType.NETHER_BRICKS).requiresCorrectToolForDrops(), ResourceLocation.fromNamespaceAndPath(NAMESPACE, "blue_nether_bricks"));
 
     public static final RegistrySupplier<SecretButton> GRANITE_BRICK_SECRET_BUTTON = INSTANCE.registerBrickButton("granite", MapColor.DIRT, false);

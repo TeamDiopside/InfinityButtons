@@ -22,12 +22,12 @@ public class CreateBlocks extends IBModdedBlocks {
 
     // Create's rose quartz tiles don't keep their texture at the naive create:block/<id> path either
     public static final RegistrySupplier<SecretButton> ROSE_QUARTZ_TILE_SECRET_BUTTON = INSTANCE.registerSecretButton(
-            "rose_quartz_tile_secret_button", SecretButtonType.DEEPSLATE_TILE, ROSE_QUARTZ_PROPERTIES,
+            "rose_quartz_tile_secret_button", SecretButtonType.EIGHTS_TILES, ROSE_QUARTZ_PROPERTIES,
             ResourceLocation.fromNamespaceAndPath(NAMESPACE, "rose_quartz_tiles"),
             ResourceLocation.fromNamespaceAndPath(NAMESPACE, "block/palettes/rose_quartz_tiles")
     );
     public static final RegistrySupplier<SecretButton> SMALL_ROSE_QUARTZ_TILE_SECRET_BUTTON = INSTANCE.registerSecretButton(
-            "small_rose_quartz_tile_secret_button", SecretButtonType.FULL_BLOCK_BRICK, ROSE_QUARTZ_PROPERTIES,
+            "small_rose_quartz_tile_secret_button", SecretButtonType.SMALL_TILE, ROSE_QUARTZ_PROPERTIES,
             ResourceLocation.fromNamespaceAndPath(NAMESPACE, "small_rose_quartz_tiles"),
             ResourceLocation.fromNamespaceAndPath(NAMESPACE, "block/palettes/small_rose_quartz_tiles")
     );
@@ -86,19 +86,11 @@ public class CreateBlocks extends IBModdedBlocks {
         return registerSmall(type, BlockBehaviour.Properties.ofFullCopy(properties).destroyTime(1.25F).mapColor(color));
     }
 
-    // Create doing whatever it wants
-    private ResourceLocation createTexture(String type, boolean small) {
-        return ResourceLocation.fromNamespaceAndPath(NAMESPACE, small
-                ? "block/palettes/stone_types/small_brick/" + type + "_cut_small_brick"
-                : "block/palettes/stone_types/brick/" + type + "_cut_brick");
-    }
-
     private RegistrySupplier<SecretButton> registerCut(String type, Block properties) {
-        return this.registerSecretButton("cut_" + type + "_brick_secret_button",
+        return this.registerSecretButton("cut_" + type + "_brick_secret_button", 
                 SecretButtonType.BIG_BRICK,
                 BlockBehaviour.Properties.ofFullCopy(properties).noOcclusion(),
-                ResourceLocation.fromNamespaceAndPath(NAMESPACE, "cut_" + type + "_bricks"),
-                createTexture(type, false)
+                ResourceLocation.fromNamespaceAndPath(NAMESPACE, "cut_" + type + "_bricks")
         );
     }
 
@@ -106,26 +98,23 @@ public class CreateBlocks extends IBModdedBlocks {
         return this.registerSecretButton("cut_" + type + "_brick_secret_button",
                 SecretButtonType.BIG_BRICK,
                 properties.noOcclusion(),
-                ResourceLocation.fromNamespaceAndPath(NAMESPACE, "cut_" + type + "_bricks"),
-                createTexture(type, false)
+                ResourceLocation.fromNamespaceAndPath(NAMESPACE, "cut_" + type + "_bricks")
         );
     }
 
     private RegistrySupplier<SecretButton> registerSmall(String type, Block properties) {
         return this.registerSecretButton("small_" + type + "_brick_secret_button",
-                SecretButtonType.FULL_BLOCK_BRICK,
+                SecretButtonType.SMALL_BRICK,
                 BlockBehaviour.Properties.ofFullCopy(properties).noOcclusion(),
-                ResourceLocation.fromNamespaceAndPath(NAMESPACE, "small_" + type + "_bricks"),
-                createTexture(type, true)
+                ResourceLocation.fromNamespaceAndPath(NAMESPACE, "small_" + type + "_bricks")
         );
     }
 
     private RegistrySupplier<SecretButton> registerSmall(String type, BlockBehaviour.Properties properties) {
         return this.registerSecretButton("small_" + type + "_brick_secret_button",
-                SecretButtonType.FULL_BLOCK_BRICK,
+                SecretButtonType.SMALL_BRICK,
                 properties.noOcclusion(),
-                ResourceLocation.fromNamespaceAndPath(NAMESPACE, "small_" + type + "_bricks"),
-                createTexture(type, true)
+                ResourceLocation.fromNamespaceAndPath(NAMESPACE, "small_" + type + "_bricks")
         );
     }
 
