@@ -4,7 +4,11 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import nl.teamdiopside.infinitybuttons.datagen.*;
+import nl.teamdiopside.infinitybuttons.datagen.BlockTagGenerator;
+import nl.teamdiopside.infinitybuttons.datagen.ItemTagGenerator;
+import nl.teamdiopside.infinitybuttons.datagen.LootTableGenerator;
+import nl.teamdiopside.infinitybuttons.datagen.RecipeGenerator;
+import nl.teamdiopside.infinitybuttons.datagen.modelstate.ModelAndStateProvider;
 
 import java.util.Collections;
 import java.util.List;
