@@ -1,4 +1,4 @@
-package nl.teamdiopside.infinitybuttons.datagen;
+package nl.teamdiopside.infinitybuttons.datagen.modelstate;
 
 import com.google.gson.JsonElement;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import nl.teamdiopside.infinitybuttons.block.emergency.SafeEmergencyButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
+import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.NormalButton;
 import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
@@ -237,6 +238,10 @@ public class ModelAndStateProvider implements DataProvider {
          * <h1>Secret Buttons</h1>
          */
 
+        private void generateBrickSecretButton(SecretButton secretButton) {
+
+        }
+
         private void generateSecretButton(SecretButton secretButton) {
             var camouflage = IBRegistryUtils.BlockInfo.from(secretButton.getCamouflage());
             var button = IBRegistryUtils.BlockInfo.from(secretButton);
@@ -259,38 +264,20 @@ public class ModelAndStateProvider implements DataProvider {
 
             blockModel.build(this.modelOutput);
 
+            if (secretButton.type == SecretButtonType.BRICK) {
+                // Normal Bricks need an extra top model.
+                SimpleReferenceModel topModel = new SimpleReferenceModel(buttonLocation.withSuffix("_top"), parentLocation.withSuffix("_top"))
+                        .withTexture(textureLocation); // Model location == Texture location (unless overridden)
+                topModel.build(this.modelOutput);
+            }
+
             // Item model
-            new SimpleReferenceModel(ResourceLocation.fromNamespaceAndPath(MOD_ID, "item/" + button.id()), buttonLocation)
+            new SimpleReferenceModel(ResourceLocation.fromNamespaceAndPath(MOD_ID, "item/" + button.id()), buttonLocation) // TODO brick model
                     .build(this.modelOutput);
 
 
-            MultiVariantGenerator generator = MultiVariantGenerator.multiVariant(secretButton);
-
-            PropertyDispatch.C2<Boolean, Direction> poweredFacingDispatch = PropertyDispatch.properties(
-                    BlockStateProperties.POWERED,
-                    BlockStateProperties.HORIZONTAL_FACING
-            );
-
-            Direction[] directions = { Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST };
-            int[] rotations = { 0, 90, 180, 270 };
-
-            for (int i = 0; i < directions.length; i++) {
-                poweredFacingDispatch.select(false, directions[i], Variant.variant().with(VariantProperties.MODEL, camouflageLocation));
-
-                Variant activeVariant = Variant.variant()
-                        .with(VariantProperties.MODEL, buttonLocation)
-                        .with(VariantProperties.UV_LOCK, true);
-
-                if (rotations[i] != 0) {
-                    activeVariant.with(VariantProperties.Y_ROT, VariantProperties.Rotation.values()[rotations[i] / 90]);
-                }
-
-                poweredFacingDispatch.select(true, directions[i], activeVariant);
-            }
-
-            generator.with(poweredFacingDispatch);
-
-            this.blockStateOutput.accept(generator);
+            StateGenerator generator = new SecretButtonStateGenerator(secretButton);
+            generator.generate(this.blockStateOutput);
         }
 
         /**

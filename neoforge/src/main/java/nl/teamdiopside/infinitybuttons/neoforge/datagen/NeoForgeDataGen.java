@@ -6,7 +6,11 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import nl.teamdiopside.infinitybuttons.datagen.*;
+import nl.teamdiopside.infinitybuttons.datagen.BlockTagGenerator;
+import nl.teamdiopside.infinitybuttons.datagen.ItemTagGenerator;
+import nl.teamdiopside.infinitybuttons.datagen.LootTableGenerator;
+import nl.teamdiopside.infinitybuttons.datagen.RecipeGenerator;
+import nl.teamdiopside.infinitybuttons.datagen.modelstate.ModelAndStateProvider;
 
 import java.util.Collections;
 import java.util.List;
