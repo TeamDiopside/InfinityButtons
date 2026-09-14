@@ -86,11 +86,19 @@ public class CreateBlocks extends IBModdedBlocks {
         return registerSmall(type, BlockBehaviour.Properties.ofFullCopy(properties).destroyTime(1.25F).mapColor(color));
     }
 
+    // Create doing whatever it wants
+    private ResourceLocation createTexture(String type, boolean small) {
+        return ResourceLocation.fromNamespaceAndPath(NAMESPACE, small
+                ? "block/palettes/stone_types/small_brick/" + type + "_cut_small_brick"
+                : "block/palettes/stone_types/brick/" + type + "_cut_brick");
+    }
+
     private RegistrySupplier<SecretButton> registerCut(String type, Block properties) {
         return this.registerSecretButton("cut_" + type + "_brick_secret_button", 
                 SecretButtonType.BIG_BRICK,
                 BlockBehaviour.Properties.ofFullCopy(properties).noOcclusion(),
-                ResourceLocation.fromNamespaceAndPath(NAMESPACE, "cut_" + type + "_bricks")
+                ResourceLocation.fromNamespaceAndPath(NAMESPACE, "cut_" + type + "_bricks"),
+                createTexture(type, false)
         );
     }
 
@@ -98,7 +106,8 @@ public class CreateBlocks extends IBModdedBlocks {
         return this.registerSecretButton("cut_" + type + "_brick_secret_button",
                 SecretButtonType.BIG_BRICK,
                 properties.noOcclusion(),
-                ResourceLocation.fromNamespaceAndPath(NAMESPACE, "cut_" + type + "_bricks")
+                ResourceLocation.fromNamespaceAndPath(NAMESPACE, "cut_" + type + "_bricks"),
+                createTexture(type, false)
         );
     }
 
@@ -106,7 +115,8 @@ public class CreateBlocks extends IBModdedBlocks {
         return this.registerSecretButton("small_" + type + "_brick_secret_button",
                 SecretButtonType.SMALL_BRICK,
                 BlockBehaviour.Properties.ofFullCopy(properties).noOcclusion(),
-                ResourceLocation.fromNamespaceAndPath(NAMESPACE, "small_" + type + "_bricks")
+                ResourceLocation.fromNamespaceAndPath(NAMESPACE, "small_" + type + "_bricks"),
+                createTexture(type, true)
         );
     }
 
@@ -114,7 +124,8 @@ public class CreateBlocks extends IBModdedBlocks {
         return this.registerSecretButton("small_" + type + "_brick_secret_button",
                 SecretButtonType.SMALL_BRICK,
                 properties.noOcclusion(),
-                ResourceLocation.fromNamespaceAndPath(NAMESPACE, "small_" + type + "_bricks")
+                ResourceLocation.fromNamespaceAndPath(NAMESPACE, "small_" + type + "_bricks"),
+                createTexture(type, true)
         );
     }
 
