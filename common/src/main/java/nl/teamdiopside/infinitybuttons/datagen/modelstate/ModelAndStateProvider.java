@@ -22,7 +22,6 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import nl.teamdiopside.infinitybuttons.block.emergency.SafeEmergencyButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
-import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.NormalButton;
 import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
@@ -166,10 +165,10 @@ public class ModelAndStateProvider implements DataProvider {
                 generateSafeEmergencyButton(emergencyButton, safetyButton, color);
             }
 
-            var secret_buttons = new ArrayList<>(IBBlocks.SECRET_BUTTONS.values());
-            secret_buttons.addAll(IBModdedBlocks.MOD_SECRET_BUTTONS.values());
+            var secretButtons = new ArrayList<>(IBBlocks.SECRET_BUTTONS.values());
+            secretButtons.addAll(IBModdedBlocks.MOD_SECRET_BUTTONS.values()); // TODO Aren't these already in?
 
-            for (RegistrySupplier<SecretButton> secretButton : secret_buttons) {
+            for (RegistrySupplier<SecretButton> secretButton : secretButtons) {
                 generateSecretButton(secretButton.get());
             }
         }
@@ -238,46 +237,11 @@ public class ModelAndStateProvider implements DataProvider {
          * <h1>Secret Buttons</h1>
          */
 
-        private void generateBrickSecretButton(SecretButton secretButton) {
-
-        }
-
         private void generateSecretButton(SecretButton secretButton) {
-            var camouflage = IBRegistryUtils.BlockInfo.from(secretButton.getCamouflage());
-            var button = IBRegistryUtils.BlockInfo.from(secretButton);
-
-            var camouflageLocation = ResourceLocation.fromNamespaceAndPath(camouflage.namespace(), "block/" + camouflage.id());
-            var buttonLocation = ResourceLocation.fromNamespaceAndPath(button.namespace(), "block/" + button.id());
-
-            // Some camouflages don't keep their texture at the naive <namespace>:block/<id> path
-            ResourceLocation textureLocation = IBModdedBlocks.SECRET_BUTTON_TEXTURE_OVERRIDES.getOrDefault(button.id(), camouflageLocation);
-
-            ResourceLocation parentLocation = ResourceLocation.fromNamespaceAndPath(MOD_ID,
-                    "block/secret_buttons/" + secretButton.type.getSerializedName() + "_secret_button");
-
-            SimpleReferenceModel blockModel = new SimpleReferenceModel(buttonLocation, parentLocation)
-                    .withTexture(textureLocation); // Model location == Texture location (unless overridden)
-
-            // Bookshelves have a separate top/bottom texture
-            if (button.id().contains("bookshelf") && !camouflage.namespace().equals("minecraft"))
-                blockModel.withTexture(TextureSlot.TOP, IBModdedBlocks.BOOKSHELF_TOP_TEXTURES.get(button.id()));
-
-            blockModel.build(this.modelOutput);
-
-            if (secretButton.type == SecretButtonType.BRICK) {
-                // Normal Bricks need an extra top model.
-                SimpleReferenceModel topModel = new SimpleReferenceModel(buttonLocation.withSuffix("_top"), parentLocation.withSuffix("_top"))
-                        .withTexture(textureLocation); // Model location == Texture location (unless overridden)
-                topModel.build(this.modelOutput);
-            }
-
-            // Item model
-            new SimpleReferenceModel(ResourceLocation.fromNamespaceAndPath(MOD_ID, "item/" + button.id()), buttonLocation) // TODO brick model
-                    .build(this.modelOutput);
-
-
-            StateGenerator generator = new SecretButtonStateGenerator(secretButton);
-            generator.generate(this.blockStateOutput);
+            ModelStateGenerator generator = new SecretButtonGenerator(secretButton);
+            generator.generateBlockModels(this.modelOutput);
+            generator.generateItemModels(this.modelOutput);
+            generator.generateState(this.blockStateOutput);
         }
 
         /**
