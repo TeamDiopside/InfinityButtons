@@ -12,3 +12,4 @@
 - Hoglin Mount Button is now called Hoglin Trophy Button
 - Hoglin Trophy Button now has the same item model as the Hoglin Trophy
 - Hoglin Trophy must now be crafted using Waxed Hoglin Trophy and a button. (TODO: FIX RECIPE GEN)
+- Revisited the textures of the emergency buttons
