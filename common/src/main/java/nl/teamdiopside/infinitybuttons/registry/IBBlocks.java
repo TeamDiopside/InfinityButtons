@@ -163,7 +163,7 @@ public class IBBlocks {
     public static final RegistrySupplier<SecretButton> QUARTZ_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton(
             "quartz_brick_secret_button", SecretButtonType.BIG_BRICK, Blocks.QUARTZ_BRICKS );
     public static final RegistrySupplier<SecretButton> DARK_PRISMARINE_SECRET_BUTTON = INSTANCE.registerSecretButton(
-            "dark_prismarine_secret_button", SecretButtonType.NETHER_BRICK, Blocks.DARK_PRISMARINE ); // TODO CHECK SHAPE
+            "dark_prismarine_secret_button", SecretButtonType.SMALL_TILE, Blocks.DARK_PRISMARINE );
     public static final RegistrySupplier<SecretButton> POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton(
             "polished_blackstone_brick_secret_button", SecretButtonType.BIG_BRICK, Blocks.POLISHED_BLACKSTONE_BRICKS );
     public static final RegistrySupplier<SecretButton> CRACKED_POLISHED_BLACKSTONE_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton(
