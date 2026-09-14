@@ -75,7 +75,7 @@ public enum SecretButtonType implements StringRepresentable {
             ),
             IBSounds.STONE_SCRAPE
     ),
-    LONG_SMALL_BRICK(
+    MEDIUM_BRICK(
             Shapes.block(),
             IBSounds.STONE_SCRAPE
     ),
@@ -100,7 +100,7 @@ public enum SecretButtonType implements StringRepresentable {
             ),
             IBSounds.WOOD_SCRAPE
     ),
-    SMALL_BRICK(
+    VERTICAL_BRICK(
             Shapes.block(),
             IBSounds.STONE_SCRAPE
     ),

@@ -66,10 +66,10 @@ public class CreateBlocks extends IBModdedBlocks {
     public static final RegistrySupplier<SecretButton> SMALL_OCHRUM_BRICK_SECRET_BUTTON = INSTANCE.registerSmallMineral("ochrum", Blocks.CALCITE, MapColor.TERRACOTTA_YELLOW);
 
     public static final RegistrySupplier<SecretButton> CUT_SCORIA_BRICK_SECRET_BUTTON = INSTANCE.registerCut("scoria", BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_BROWN));
-    public static final RegistrySupplier<SecretButton> SMALL_SCORIA_BRICK_SECRET_BUTTON = INSTANCE.registerSmall("scoria", BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_BROWN));
+    public static final RegistrySupplier<SecretButton> SMALL_SCORIA_BRICK_SECRET_BUTTON = INSTANCE.registerCenterSmall("scoria", BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.COLOR_BROWN));
 
     public static final RegistrySupplier<SecretButton> CUT_SCORCHIA_BRICK_SECRET_BUTTON = INSTANCE.registerCut("scorchia", BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.TERRACOTTA_GRAY));
-    public static final RegistrySupplier<SecretButton> SMALL_SCORCHIA_BRICK_SECRET_BUTTON = INSTANCE.registerSmall("scorchia", BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.TERRACOTTA_GRAY));
+    public static final RegistrySupplier<SecretButton> SMALL_SCORCHIA_BRICK_SECRET_BUTTON = INSTANCE.registerCenterSmall("scorchia", BlockBehaviour.Properties.ofFullCopy(Blocks.BLACKSTONE).mapColor(MapColor.TERRACOTTA_GRAY));
 
     public static final RegistrySupplier<SecretButton> CUT_VERIDIUM_BRICK_SECRET_BUTTON = INSTANCE.registerCutMineral("veridium", Blocks.TUFF, MapColor.WARPED_NYLIUM);
     public static final RegistrySupplier<SecretButton> SMALL_VERIDIUM_BRICK_SECRET_BUTTON = INSTANCE.registerSmallMineral("veridium", Blocks.TUFF, MapColor.WARPED_NYLIUM);
@@ -111,9 +111,18 @@ public class CreateBlocks extends IBModdedBlocks {
         );
     }
 
+    private RegistrySupplier<SecretButton> registerCenterSmall(String type, BlockBehaviour.Properties properties) {
+        return this.registerSecretButton("small_" + type + "_brick_secret_button",
+                SecretButtonType.MEDIUM_BRICK,
+                properties.noOcclusion(),
+                ResourceLocation.fromNamespaceAndPath(NAMESPACE, "small_" + type + "_bricks"),
+                createTexture(type, true)
+        );
+    }
+
     private RegistrySupplier<SecretButton> registerSmall(String type, Block properties) {
         return this.registerSecretButton("small_" + type + "_brick_secret_button",
-                SecretButtonType.SMALL_BRICK,
+                SecretButtonType.VERTICAL_BRICK,
                 BlockBehaviour.Properties.ofFullCopy(properties).noOcclusion(),
                 ResourceLocation.fromNamespaceAndPath(NAMESPACE, "small_" + type + "_bricks"),
                 createTexture(type, true)
@@ -122,7 +131,7 @@ public class CreateBlocks extends IBModdedBlocks {
 
     private RegistrySupplier<SecretButton> registerSmall(String type, BlockBehaviour.Properties properties) {
         return this.registerSecretButton("small_" + type + "_brick_secret_button",
-                SecretButtonType.SMALL_BRICK,
+                SecretButtonType.VERTICAL_BRICK,
                 properties.noOcclusion(),
                 ResourceLocation.fromNamespaceAndPath(NAMESPACE, "small_" + type + "_bricks"),
                 createTexture(type, true)
