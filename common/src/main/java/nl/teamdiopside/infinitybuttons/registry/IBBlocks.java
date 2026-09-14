@@ -194,28 +194,28 @@ public class IBBlocks {
     ).withoutItem(), null);
     public static final RegistrySupplier<TorchButton> WALL_TORCH_LEVER = INSTANCE.registerBlock("wall_torch_lever", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(torchProperties(properties, 14).dropsLike(TORCH_LEVER.get()), ParticleTypes.FLAME, true, true, material(Blocks.TORCH))
-    ), null);
+    ).withoutItem(), null);
 
     public static final RegistrySupplier<TorchButton> SOUL_TORCH_BUTTON = INSTANCE.registerBlock("soul_torch_button", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(torchProperties(properties, 10), ParticleTypes.SOUL_FIRE_FLAME, false, false, material(Blocks.SOUL_TORCH))
     ).withoutItem(), null);
     public static final RegistrySupplier<TorchButton> SOUL_WALL_TORCH_BUTTON = INSTANCE.registerBlock("soul_wall_torch_button", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(torchProperties(properties, 10).dropsLike(SOUL_TORCH_BUTTON.get()), ParticleTypes.SOUL_FIRE_FLAME, false, true, material(Blocks.SOUL_TORCH))
-    ), null);
+    ).withoutItem(), null);
 
     public static final RegistrySupplier<TorchButton> SOUL_TORCH_LEVER = INSTANCE.registerBlock("soul_torch_lever", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(torchProperties(properties, 10), ParticleTypes.SOUL_FIRE_FLAME, true, false, material(Blocks.SOUL_TORCH))
     ).withoutItem(), null);
     public static final RegistrySupplier<TorchButton> SOUL_WALL_TORCH_LEVER = INSTANCE.registerBlock("soul_wall_torch_lever", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(torchProperties(properties, 10).dropsLike(SOUL_TORCH_LEVER.get()), ParticleTypes.SOUL_FIRE_FLAME, true, true, material(Blocks.SOUL_TORCH))
-    ), null);
+    ).withoutItem(), null);
 
     public static final RegistrySupplier<TorchButton> REDSTONE_TORCH_BUTTON = INSTANCE.registerBlock("redstone_torch_button", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(torchProperties(properties, 7), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), false, false, material(Blocks.REDSTONE_TORCH))
     ).withoutItem(), null);
     public static final RegistrySupplier<TorchButton> REDSTONE_WALL_TORCH_BUTTON = INSTANCE.registerBlock("redstone_wall_torch_button", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(torchProperties(properties, 7).dropsLike(REDSTONE_TORCH_BUTTON.get()), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), false, true, material(Blocks.REDSTONE_TORCH))
-    ), null);
+    ).withoutItem(), null);
 
     public static final RegistrySupplier<TorchButton> REDSTONE_TORCH_LEVER = INSTANCE.registerBlock("redstone_torch_lever", BlockEntryBuilder.ofBlock(properties ->
             new TorchButton(torchProperties(properties, 7), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), true, false, material(Blocks.REDSTONE_TORCH))
