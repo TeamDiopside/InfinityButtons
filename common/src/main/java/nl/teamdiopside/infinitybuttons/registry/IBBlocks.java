@@ -111,7 +111,7 @@ public class IBBlocks {
     public static final RegistrySupplier<SecretButton> BOOKSHELF_SECRET_BUTTON = INSTANCE.registerSecretButton(
             "bookshelf_secret_button", SecretButtonType.BOOKSHELF, Blocks.BOOKSHELF );
     public static final RegistrySupplier<SecretButton> BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton(
-            "brick_secret_button", SecretButtonType.BRICK, Blocks.BRICKS );
+            "brick_secret_button", SecretButtonType.HORIZONTAL_BRICK, Blocks.BRICKS );
     public static final RegistrySupplier<SecretButton> STONE_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton(
             "stone_brick_secret_button", SecretButtonType.BIG_BRICK, Blocks.STONE_BRICKS );
     public static final RegistrySupplier<SecretButton> MOSSY_STONE_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton(
@@ -175,7 +175,7 @@ public class IBBlocks {
     public static final RegistrySupplier<SecretButton> CRACKED_NETHER_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton(
             "cracked_nether_brick_secret_button", SecretButtonType.NETHER_BRICK, Blocks.CRACKED_NETHER_BRICKS );
     public static final RegistrySupplier<SecretButton> CHISELED_NETHER_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton(
-            "chiseled_nether_brick_secret_button", SecretButtonType.CHISELED_NETHER_BRICK, Blocks.CHISELED_NETHER_BRICKS );
+            "chiseled_nether_brick_secret_button", SecretButtonType.CHISELED_BRICK, Blocks.CHISELED_NETHER_BRICKS );
     public static final RegistrySupplier<SecretButton> RED_NETHER_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton(
             "red_nether_brick_secret_button", SecretButtonType.NETHER_BRICK, Blocks.RED_NETHER_BRICKS );
 

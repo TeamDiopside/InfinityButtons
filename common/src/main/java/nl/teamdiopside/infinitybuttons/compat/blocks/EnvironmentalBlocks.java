@@ -24,7 +24,7 @@ public class EnvironmentalBlocks extends IBModdedBlocks {
             .noOcclusion().sound(SoundType.STONE).requiresCorrectToolForDrops();
 
     public static final RegistrySupplier<SecretButton> CHISELED_MUD_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton("chiseled_mud_brick_secret_button",
-            SecretButtonType.CHISELED_NETHER_BRICK, properties, ResourceLocation.fromNamespaceAndPath(NAMESPACE, "chiseled_mud_bricks"));
+            SecretButtonType.CHISELED_BRICK, properties, ResourceLocation.fromNamespaceAndPath(NAMESPACE, "chiseled_mud_bricks"));
 
     private EnvironmentalBlocks() {
         super(NAMESPACE);
