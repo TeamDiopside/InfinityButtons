@@ -3,7 +3,6 @@ package nl.teamdiopside.infinitybuttons.datagen.modelstate;
 import com.google.gson.JsonElement;
 import net.minecraft.core.Direction;
 import net.minecraft.data.models.blockstates.*;
-import net.minecraft.data.models.model.TextureSlot;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
@@ -36,7 +35,7 @@ public class SecretButtonGenerator implements ModelStateGenerator {
         this.originalBlockInfo = IBRegistryUtils.BlockInfo.from(secretButton.getCamouflage());
         this.originalBlockModel = ResourceLocation.fromNamespaceAndPath(originalBlockInfo.namespace(), "block/" + originalBlockInfo.id());
         this.buttonBlockInfo = IBRegistryUtils.BlockInfo.from(secretButton);
-        this.buttonModel = ResourceLocation.fromNamespaceAndPath(buttonBlockInfo.namespace(), "block/" + buttonBlockInfo.id());
+        this.buttonModel = ResourceLocation.fromNamespaceAndPath(buttonBlockInfo.namespace(), "block/secret_buttons/" + buttonBlockInfo.id());
 
         // Some camouflages don't keep their texture at the naive <namespace>:block/<id> path
         this.textureLocation = IBModdedBlocks.SECRET_BUTTON_TEXTURE_OVERRIDES.getOrDefault(buttonBlockInfo.id(), originalBlockModel);
@@ -111,7 +110,7 @@ public class SecretButtonGenerator implements ModelStateGenerator {
 
     @Override
     public void generateState(Consumer<BlockStateGenerator> consumer) {
-        BlockStateGenerator generator = secretButton.type == SecretButtonType.BRICK ? brickStateGenerator() : genericStateGenerator();
+        BlockStateGenerator generator = secretButton.type == SecretButtonType.HORIZONTAL_BRICK ? brickStateGenerator() : genericStateGenerator();
         consumer.accept(generator);
     }
 
@@ -119,14 +118,8 @@ public class SecretButtonGenerator implements ModelStateGenerator {
      * <h1>Block Models</h1>
      */
 
-    private void addBookshelfTextures(SimpleReferenceModel blockModel) {
-        // Bookshelves have a separate top/bottom texture
-        if (buttonBlockInfo.id().contains("bookshelf") && !originalBlockInfo.namespace().equals("minecraft"))
-            blockModel.withTexture(TextureSlot.TOP, IBModdedBlocks.BOOKSHELF_TOP_TEXTURES.get(buttonBlockInfo.id()));
-    }
-
     private void generateBrickTop(BiConsumer<ResourceLocation, Supplier<JsonElement>> consumer, ResourceLocation parentLocation) {
-        if (secretButton.type == SecretButtonType.BRICK) {
+        if (secretButton.type == SecretButtonType.HORIZONTAL_BRICK) {
             // Normal Bricks need an extra top model.
             SimpleReferenceModel topModel = new SimpleReferenceModel(buttonModel.withSuffix("_top"), parentLocation.withSuffix("_top"))
                     .withTexture(textureLocation); // Model location == Texture location (unless overridden)
@@ -136,13 +129,13 @@ public class SecretButtonGenerator implements ModelStateGenerator {
 
     @Override
     public void generateBlockModels(BiConsumer<ResourceLocation, Supplier<JsonElement>> consumer) {
+        if (secretButton.type == SecretButtonType.BOOKSHELF) return; // SKIP BOOKSHELFS
         ResourceLocation parentLocation = ResourceLocation.fromNamespaceAndPath(MOD_ID,
-                "block/secret_buttons/" + secretButton.type.getSerializedName() + "_secret_button");
+                "block/secret_buttons/types/" + secretButton.type.getSerializedName() + "_secret_button");
 
         SimpleReferenceModel blockModel = new SimpleReferenceModel(buttonModel, parentLocation)
                 .withTexture(textureLocation); // Model location == Texture location (unless overridden)
 
-        addBookshelfTextures(blockModel);
         blockModel.build(consumer);
         generateBrickTop(consumer, parentLocation);
     }
@@ -154,7 +147,7 @@ public class SecretButtonGenerator implements ModelStateGenerator {
     @Override
     public void generateItemModels(BiConsumer<ResourceLocation, Supplier<JsonElement>> consumer) {
         var itemLocation = ResourceLocation.fromNamespaceAndPath(MOD_ID, "item/" + buttonBlockInfo.id());
-        if (secretButton.type != SecretButtonType.BRICK) {
+        if (secretButton.type != SecretButtonType.HORIZONTAL_BRICK) {
             new SimpleReferenceModel(itemLocation, buttonModel).build(consumer);
             return;
         }

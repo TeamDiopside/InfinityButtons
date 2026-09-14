@@ -25,11 +25,7 @@ public enum SecretButtonType implements StringRepresentable {
             Shapes.block(),
             SoundEvents.BAMBOO_PLACE
     ),
-    BRICK(
-            Shapes.block(),
-            IBSounds.STONE_SCRAPE
-    ),
-    CHISELED_NETHER_BRICK(
+    CHISELED_BRICK(
             Shapes.or(
                     Block.box(0, 0, 0, 16, 3, 16),
                     Block.box(0, 13, 0, 16, 16, 16),
@@ -38,6 +34,16 @@ public enum SecretButtonType implements StringRepresentable {
                     Block.box(0, 3, 0, 3, 13, 16)
             ),
             IBSounds.STONE_SCRAPE
+    ),
+    CHISELED_HONEYCOMB_BRICK(
+            Shapes.or(
+                    Block.box(0, 0, 0, 16, 3, 16),
+                    Block.box(0, 13, 0, 16, 16, 16),
+                    Block.box(13, 3, 0, 16, 13, 16),
+                    Block.box(3, 3, 3, 13, 13, 16),
+                    Block.box(0, 3, 0, 3, 13, 16)
+            ),
+            SoundEvents.CORAL_BLOCK_PLACE
     ),
     CHISELED_STONE_BRICK(
             Shapes.or(
@@ -75,6 +81,14 @@ public enum SecretButtonType implements StringRepresentable {
             ),
             IBSounds.STONE_SCRAPE
     ),
+    HONEYCOMB_BRICK(
+            Shapes.block(),
+            SoundEvents.CORAL_BLOCK_PLACE
+    ),
+    HORIZONTAL_BRICK(
+            Shapes.block(),
+            IBSounds.STONE_SCRAPE
+    ),
     MEDIUM_BRICK(
             Shapes.block(),
             IBSounds.STONE_SCRAPE
@@ -100,10 +114,6 @@ public enum SecretButtonType implements StringRepresentable {
             ),
             IBSounds.WOOD_SCRAPE
     ),
-    VERTICAL_BRICK(
-            Shapes.block(),
-            IBSounds.STONE_SCRAPE
-    ),
     SMALL_TILE(
             Shapes.block(),
             IBSounds.STONE_SCRAPE
@@ -123,6 +133,10 @@ public enum SecretButtonType implements StringRepresentable {
                     Block.box(2, 3, 0, 13, 14, 13),
                     Block.box(13, 3, 0, 16, 14, 16)
             ),
+            IBSounds.STONE_SCRAPE
+    ),
+    VERTICAL_BRICK(
+            Shapes.block(),
             IBSounds.STONE_SCRAPE
     );
 
