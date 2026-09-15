@@ -192,7 +192,6 @@ public class IBCreativeTabs {
      */
     public static void addBookshelfSecretButtons(CreativeModeTab.Output output) {
         addBlock(output, IBBlocks.BOOKSHELF_SECRET_BUTTON.get());
-        if (!Platform.isModLoaded(QuarkBlocks.NAMESPACE) && !Platform.isModLoaded(WoodworksBlocks.NAMESPACE)) return;
 
         if (Platform.isModLoaded(WoodworksBlocks.NAMESPACE)) {
             addBlock(output, WoodworksBlocks.SPRUCE_BOOKSHELF_SECRET_BUTTON.get());
@@ -217,13 +216,15 @@ public class IBCreativeTabs {
             addBlock(output, QuarkBlocks.BAMBOO_BOOKSHELF_SECRET_BUTTON.get());
             addBlock(output, QuarkBlocks.CRIMSON_BOOKSHELF_SECRET_BUTTON.get());
             addBlock(output, QuarkBlocks.WARPED_BOOKSHELF_SECRET_BUTTON.get());
-            addBlock(output, QuarkBlocks.BLOSSOM_BOOKSHELF_SECRET_BUTTON.get());
-            addBlock(output, QuarkBlocks.AZALEA_BOOKSHELF_SECRET_BUTTON.get());
-            addBlock(output, QuarkBlocks.ANCIENT_BOOKSHELF_SECRET_BUTTON.get());
         }
+        if (!Platform.isModLoaded(QuarkBlocks.NAMESPACE)) return;
+
+        addBlock(output, QuarkBlocks.BLOSSOM_BOOKSHELF_SECRET_BUTTON.get());
+        addBlock(output, QuarkBlocks.AZALEA_BOOKSHELF_SECRET_BUTTON.get());
+        addBlock(output, QuarkBlocks.ANCIENT_BOOKSHELF_SECRET_BUTTON.get());
 
         if (Platform.isModLoaded(AutumnityBlocks.NAMESPACE)) {
-            output.accept(new ItemStack(AutumnityBlocks.MAPLE_BOOKSHELF_SECRET_BUTTON.get()));
+            addBlock(output, AutumnityBlocks.MAPLE_BOOKSHELF_SECRET_BUTTON.get());
         }
         if (Platform.isModLoaded(AtmosphericBlocks.NAMESPACE)) {
             addBlock(output, AtmosphericBlocks.ROSEWOOD_BOOKSHELF_SECRET_BUTTON.get());

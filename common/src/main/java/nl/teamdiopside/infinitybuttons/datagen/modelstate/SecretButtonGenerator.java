@@ -45,6 +45,29 @@ public class SecretButtonGenerator implements ModelStateGenerator {
      * <h1>Blockstates</h1>
      */
 
+    private BlockStateGenerator bookshelfStateGenerator() {
+        MultiPartGenerator generator = MultiPartGenerator.multiPart(secretButton);
+        ResourceLocation bookLocation = ResourceLocation.fromNamespaceAndPath(buttonBlockInfo.namespace(), "block/secret_buttons/books/" + buttonBlockInfo.id());
+
+        Variant shelf = Variant.variant()
+                .with(VariantProperties.MODEL, originalBlockModel);
+        generator.with(shelf);
+
+        for (Direction dir : Direction.Plane.HORIZONTAL) {
+            Variant book = Variant.variant()
+                    .with(VariantProperties.MODEL, bookLocation);
+
+            int rotation = (((int)(dir.toYRot() / 90f)) + 2) % 4;
+            if (rotation > 0) {
+                book.with(VariantProperties.Y_ROT, VariantProperties.Rotation.values()[rotation]);
+            }
+            Condition isPressed = Condition.condition().term(BlockStateProperties.POWERED, true);
+            Condition facing = Condition.condition().term(BlockStateProperties.HORIZONTAL_FACING, dir);
+            generator.with(Condition.and(isPressed, facing), book);
+        }
+        return generator;
+    }
+
     private BlockStateGenerator brickStateGenerator() {
         MultiPartGenerator generator = MultiPartGenerator.multiPart(secretButton);
         ResourceLocation topModel = buttonModel.withSuffix("_top");
@@ -110,7 +133,11 @@ public class SecretButtonGenerator implements ModelStateGenerator {
 
     @Override
     public void generateState(Consumer<BlockStateGenerator> consumer) {
-        BlockStateGenerator generator = secretButton.type == SecretButtonType.HORIZONTAL_BRICK ? brickStateGenerator() : genericStateGenerator();
+        BlockStateGenerator generator = switch (secretButton.type) {
+            case HORIZONTAL_BRICK -> brickStateGenerator();
+            case BOOKSHELF -> bookshelfStateGenerator();
+            default -> genericStateGenerator();
+        };
         consumer.accept(generator);
     }
 
@@ -146,6 +173,7 @@ public class SecretButtonGenerator implements ModelStateGenerator {
 
     @Override
     public void generateItemModels(BiConsumer<ResourceLocation, Supplier<JsonElement>> consumer) {
+        if (secretButton.type == SecretButtonType.BOOKSHELF) return; // SKIP BOOKSHELFS
         var itemLocation = ResourceLocation.fromNamespaceAndPath(MOD_ID, "item/" + buttonBlockInfo.id());
         if (secretButton.type != SecretButtonType.HORIZONTAL_BRICK) {
             new SimpleReferenceModel(itemLocation, buttonModel).build(consumer);
