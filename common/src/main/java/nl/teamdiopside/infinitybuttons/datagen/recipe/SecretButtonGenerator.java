@@ -9,7 +9,7 @@ import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 
 import java.util.Objects;
 
-public class SecretButtonGenerator extends RecipeGenerator<SecretButton> {
+public class SecretButtonGenerator extends RecipeGenerator {
 
     public SecretButtonGenerator(IBRecipeOutput output) {
         super(output);
@@ -25,7 +25,6 @@ public class SecretButtonGenerator extends RecipeGenerator<SecretButton> {
         }
     }
 
-    @Override
     public void generate(SecretButton block) {
         Block originalBlock = block.getCamouflage();
         runConditions(block);

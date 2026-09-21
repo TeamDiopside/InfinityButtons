@@ -124,27 +124,9 @@ public class IBRecipeProvider extends RecipeProvider {
         }
 
         // Emergency & Safety Buttons
+        EmergencyButtonGenerator emergencyButtonGenerator = new EmergencyButtonGenerator(ibRecipeOutput);
         for (var dyeColor : DyeColor.values()) {
-            Item dyeItem = IBRegistryUtils.getItemByID("minecraft", dyeColor.name().toLowerCase() + "_dye");
-
-            Item emergencyButton = IBBlocks.EMERGENCY_BUTTONS.get(dyeColor).get().asItem();
-            Item safetyButton = IBBlocks.SAFE_EMERGENCY_BUTTONS.get(dyeColor).get().asItem();
-
-            convertingRecipe(recipes, dyeItem, emergencyButton, false, 1, "", "emergency_buttons");
-
-            TagKey<Item> glassPaneTag = TagKey.create(
-                    Registries.ITEM,
-                    ResourceLocation.fromNamespaceAndPath("c",  "glass_panes")
-            );
-
-            ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, safetyButton)
-                    .pattern("OOO")
-                    .pattern("O.O")
-                    .define('O', glassPaneTag)
-                    .group("safe_emergency_buttons")
-                    .define('.', emergencyButton)
-                    .unlockedBy("has_thing", RecipeProvider.has(dyeItem))
-                    .save(recipes);
+            emergencyButtonGenerator.generate(dyeColor);
         }
 
         // Fancy
@@ -197,11 +179,6 @@ public class IBRecipeProvider extends RecipeProvider {
                 IBBlocks.CONSOLE_BUTTON.get(), Items.IRON_INGOT); // Normal -> Large
         simpleShapelessRecipe(recipes, IBBlocks.LARGE_CONSOLE_BUTTON.get(), IBBlocks.BIG_CONSOLE_BUTTON.get(), 1, "", null,
                 IBBlocks.LARGE_CONSOLE_BUTTON.get(), Items.IRON_INGOT); // Large -> Big
-
-        convertingRecipe(recipes, IBBlocks.SMALL_CONSOLE_BUTTON.get(), IBBlocks.SMALL_CONSOLE_LEVER.get(), true, 1, "", null);
-        convertingRecipe(recipes, IBBlocks.CONSOLE_BUTTON.get(),       IBBlocks.CONSOLE_LEVER.get(),       true, 1, "", null);
-        convertingRecipe(recipes, IBBlocks.BIG_CONSOLE_BUTTON.get(),   IBBlocks.BIG_CONSOLE_LEVER.get(),   true, 1, "", null);
-        convertingRecipe(recipes, IBBlocks.LARGE_CONSOLE_BUTTON.get(), IBBlocks.LARGE_CONSOLE_LEVER.get(), true, 1, "", null);
 
         // Letter Buttons
         ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, IBBlocks.LETTER_BUTTON.get())

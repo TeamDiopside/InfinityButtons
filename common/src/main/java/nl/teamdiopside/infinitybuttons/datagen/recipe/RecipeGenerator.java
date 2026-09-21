@@ -21,15 +21,13 @@ import java.util.Objects;
 
 import static net.minecraft.data.recipes.RecipeBuilder.getDefaultRecipeId;
 
-public abstract class RecipeGenerator<T> {
+public abstract class RecipeGenerator {
 
     protected final IBRecipeOutput output;
 
     protected RecipeGenerator(IBRecipeOutput output) {
         this.output = output;
     }
-
-    public abstract void generate(T block);
 
     public void addConditions(Block block, DataCondition... conditions) {
         IBRegistryUtils.BlockInfo info = IBRegistryUtils.BlockInfo.from(block);

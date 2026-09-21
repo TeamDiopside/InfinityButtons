@@ -22,7 +22,7 @@ import java.util.function.Function;
 
 import static net.minecraft.data.recipes.RecipeBuilder.getDefaultRecipeId;
 
-public class SmallLargeGenerator extends RecipeGenerator<Map.Entry<ResourceLocation, IBRegistryUtils.LargeVariantSupplier<? extends Block>>> {
+public class SmallLargeGenerator extends RecipeGenerator {
     protected SmallLargeGenerator(IBRecipeOutput output) {
         super(output);
     }
@@ -104,7 +104,6 @@ public class SmallLargeGenerator extends RecipeGenerator<Map.Entry<ResourceLocat
         };
     }
 
-    @Override
     public void generate(Map.Entry<ResourceLocation, IBRegistryUtils.LargeVariantSupplier<? extends Block>> entry) {
         ResourceLocation textureMaterial = entry.getKey();
         if (textureMaterial.getPath().equals("netherite")) return;
