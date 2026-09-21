@@ -9,6 +9,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 
@@ -43,6 +44,12 @@ public class ItemTagGenerator extends ItemTagsProvider {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
     }
 
+    public static final TagKey<Item> BOOKSHELVES = addCommon("bookshelves");
+
+    static TagKey<Item> addCommon(String name) {
+        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", name));
+    }
+
     public static final TagKey<Item> BUTTONS = edit("buttons");
     public static final TagKey<Item> NON_FLAMMABLE_WOOD = edit("non_flammable_wood");
     public static final TagKey<Item> PIGLIN_REPELLENTS = edit("piglin_repellents");
@@ -52,86 +59,43 @@ public class ItemTagGenerator extends ItemTagsProvider {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("minecraft", name));
     }
 
+    public static final TagKey<Item> FAF_COPPER_BUTTONS = edit("friendsandfoes", "copper_buttons");
+
+    static TagKey<Item> edit(String namespace, String name) {
+        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(namespace, name));
+    }
+
     @Override
     protected void addTags(HolderLookup.Provider wrapperLookup) {
-        // Vanilla Tags
-        this.tag(BUTTONS)
-                .addTag(COPPER_BUTTONS)
-                .addTag(CONCRETE_POWDER_BUTTONS);
+        generateVanillaTags();
+        generateInfinityButtonsTags();
+        generateFriendsFoesTags();
+    }
 
-        for (var entry : IBBlocks.SMALL_LARGE_BUTTONS.values()) {
-            this.tag(BUTTONS)
-                    .add(entry.getSmall().asItem())
-                    .add(entry.getLarge().asItem());
-        }
-
-        this.tag(NON_FLAMMABLE_WOOD)
-                .add(IBRegistryUtils.getItemByID(MOD_ID, "crimson_large_button").asItem())
-                .add(IBRegistryUtils.getItemByID(MOD_ID, "warped_large_button").asItem())
-                .add(IBBlocks.CRIMSON_PLANK_SECRET_BUTTON.get().asItem())
-                .add(IBBlocks.WARPED_PLANK_SECRET_BUTTON.get().asItem());
-
-        this.tag(PIGLIN_REPELLENTS)
-                .add(IBBlocks.SOUL_TORCH_BUTTON.get().asItem())
-                .add(IBBlocks.SOUL_TORCH_LEVER.get().asItem())
-                .add(IBBlocks.SOUL_LANTERN_BUTTON.get().asItem())
-                .add(IBBlocks.SOUL_LANTERN_LEVER.get().asItem());
-
-        this.tag(STONE_BRICKS)
-                .add(IBBlocks.STONE_BRICK_SECRET_BUTTON.get().asItem())
-                .add(IBBlocks.MOSSY_STONE_BRICK_SECRET_BUTTON.get().asItem())
-                .add(IBBlocks.CRACKED_STONE_BRICK_SECRET_BUTTON.get().asItem())
-                .add(IBBlocks.CHISELED_STONE_BRICK_SECRET_BUTTON.get().asItem());
-
-        // Concrete Powder
+    protected void generateInfinityButtonsTags() {
         for (var value : DyeColor.values()) {
             this.tag(CONCRETE_POWDER_BUTTONS)
                     .add(IBRegistryUtils.getItemByID(MOD_ID,
-                            value.name().toLowerCase() + "_concrete_powder_button").asItem()
+                            value.name().toLowerCase() + "_concrete_powder_button")
                     );
 
             this.tag(CONCRETE_POWDER_LARGE_BUTTONS)
                     .add(IBRegistryUtils.getItemByID(MOD_ID,
-                            value.name().toLowerCase() + "_concrete_powder_large_button").asItem()
+                            value.name().toLowerCase() + "_concrete_powder_large_button")
                     );
+        }
+
+        for (var value : IBBlocks.DEFAULT_LARGE_BUTTONS.entrySet()) {
+            if (!IBRegistryUtils.isWoodType(value.getKey().name())) return;
+            this.tag(WOODEN_LARGE_BUTTONS)
+                    .add(value.getValue().get().asItem());
         }
 
         this.tag(LARGE_BUTTONS)
                 .addTag(WOODEN_LARGE_BUTTONS)
                 .addTag(COPPER_LARGE_BUTTONS)
-                .addTag(CONCRETE_POWDER_LARGE_BUTTONS); // TODO
-//                .add(IBBlocks.STONE_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.DEEPSLATE_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.GRANITE_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.DIORITE_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.ANDESITE_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.TUFF_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.DRIPSTONE_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.CALCITE_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.POLISHED_BLACKSTONE_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.IRON_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.GOLD_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.EMERALD_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.DIAMOND_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.PRISMARINE_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.PRISMARINE_BRICK_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.DARK_PRISMARINE_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.SAND_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.RED_SAND_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.GRAVEL_LARGE_BUTTON.get().asItem());
+                .addTag(CONCRETE_POWDER_LARGE_BUTTONS);
 
-        this.tag(WOODEN_LARGE_BUTTONS); // TODO
-//                .add(IBBlocks.OAK_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.SPRUCE_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.BIRCH_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.JUNGLE_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.ACACIA_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.DARK_OAK_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.MANGROVE_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.CRIMSON_LARGE_BUTTON.get().asItem())
-//                .add(IBBlocks.WARPED_LARGE_BUTTON.get().asItem());
-
-        // Emergency Buttons
         for (var entry : IBBlocks.EMERGENCY_BUTTONS.values()) {
             this.tag(EMERGENCY_BUTTONS)
                     .add(entry.get().asItem());
@@ -140,53 +104,52 @@ public class ItemTagGenerator extends ItemTagsProvider {
             this.tag(NORMAL_EMERGENCY_BUTTONS)
                     .add(entry.get().asItem());
         }
+
         for (var entry : IBBlocks.SAFE_EMERGENCY_BUTTONS.values()) {
             this.tag(SAFE_EMERGENCY_BUTTONS)
                     .add(entry.get().asItem());
+
             if (entry == IBBlocks.FANCY_SAFE_EMERGENCY_BUTTON) continue;
             this.tag(NORMAL_SAFE_EMERGENCY_BUTTONS)
                     .add(entry.get().asItem());
         }
 
-        // Secret Buttons
         this.tag(SECRET_BUTTONS)
                 .addTag(WOODEN_SECRET_BUTTONS)
-
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "rose_quartz_tile_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_rose_quartz_tile_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "cut_granite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_granite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "cut_diorite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_diorite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "cut_andesite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_andesite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "cut_calcite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_calcite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "cut_dripstone_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_dripstone_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "cut_deepslate_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_deepslate_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "cut_tuff_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_tuff_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "cut_asurine_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_asurine_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "cut_crimsite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_crimsite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "cut_limestone_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_limestone_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "cut_ochrum_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_ochrum_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "cut_scoria_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_scoria_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "cut_scorchia_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_scorchia_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "cut_veridium_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "small_veridium_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "hoglin_trophy_button"));
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "rose_quartz_tile_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_rose_quartz_tile_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_granite_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_granite_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_diorite_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_diorite_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_andesite_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_andesite_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_calcite_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_calcite_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_dripstone_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_dripstone_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_deepslate_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_deepslate_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_tuff_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_tuff_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_asurine_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_asurine_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_crimsite_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_crimsite_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_limestone_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_limestone_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_ochrum_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_ochrum_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_scoria_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_scoria_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_scorchia_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_scorchia_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_veridium_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_veridium_brick_secret_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "hoglin_trophy_button"));
 
         for (var entry : IBBlocks.SECRET_BUTTONS.values()) {
-            this.tag(SECRET_BUTTONS)
-                    .add(entry.get().asItem());
+            this.tag(SECRET_BUTTONS).add(entry.get().asItem());
         }
 
         this.tag(WOODEN_SECRET_BUTTONS)
@@ -198,14 +161,19 @@ public class ItemTagGenerator extends ItemTagsProvider {
                 .add(IBBlocks.ACACIA_PLANK_SECRET_BUTTON.get().asItem())
                 .add(IBBlocks.DARK_OAK_PLANK_SECRET_BUTTON.get().asItem())
                 .add(IBBlocks.MANGROVE_PLANK_SECRET_BUTTON.get().asItem())
+                .add(IBBlocks.CRIMSON_PLANK_SECRET_BUTTON.get().asItem())
                 .add(IBBlocks.CHERRY_PLANK_SECRET_BUTTON.get().asItem())
                 .add(IBBlocks.BAMBOO_PLANK_SECRET_BUTTON.get().asItem())
-                .add(IBBlocks.CRIMSON_PLANK_SECRET_BUTTON.get().asItem())
                 .add(IBBlocks.WARPED_PLANK_SECRET_BUTTON.get().asItem());
 
-        this.tag(BOOKSHELF_SECRET_BUTTONS)
-                .add(IBBlocks.BOOKSHELF_SECRET_BUTTON.get().asItem());
+        // Bookshelves
+        this.tag(BOOKSHELF_SECRET_BUTTONS).add(IBBlocks.BOOKSHELF_SECRET_BUTTON.get().asItem());
+        this.tag(BOOKSHELVES).add(IBBlocks.BOOKSHELF_SECRET_BUTTON.get().asItem());
 
+        for (var entry : IBModdedBlocks.MOD_BOOKSHELVES) {
+            this.tag(BOOKSHELF_SECRET_BUTTONS).add(entry.get().asItem());
+            this.tag(BOOKSHELVES).add(entry.get().asItem());
+        }
 
         this.tag(TORCH_BUTTONS)
                 .add(IBBlocks.TORCH_BUTTON.get().asItem())
@@ -214,10 +182,20 @@ public class ItemTagGenerator extends ItemTagsProvider {
                 .add(IBBlocks.SOUL_TORCH_LEVER.get().asItem())
                 .add(IBBlocks.REDSTONE_TORCH_BUTTON.get().asItem())
                 .add(IBBlocks.REDSTONE_TORCH_LEVER.get().asItem())
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "propelplant_torch_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "propelplant_torch_lever"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "powdery_torch_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath("infinitybuttons", "powdery_torch_lever"));
+                .add(IBBlocks.WALL_TORCH_BUTTON.get().asItem())
+                .add(IBBlocks.WALL_TORCH_LEVER.get().asItem())
+                .add(IBBlocks.SOUL_WALL_TORCH_BUTTON.get().asItem())
+                .add(IBBlocks.SOUL_WALL_TORCH_LEVER.get().asItem())
+                .add(IBBlocks.REDSTONE_WALL_TORCH_BUTTON.get().asItem())
+                .add(IBBlocks.REDSTONE_WALL_TORCH_LEVER.get().asItem())
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "propelplant_torch_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "propelplant_torch_lever"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "propelplant_wall_torch_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "propelplant_wall_torch_lever"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "powdery_torch_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "powdery_torch_lever"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "powdery_wall_torch_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "powdery_wall_torch_lever"));
 
         this.tag(CONSOLE_BUTTONS)
                 .add(IBBlocks.SMALL_CONSOLE_BUTTON.get().asItem())
@@ -241,5 +219,51 @@ public class ItemTagGenerator extends ItemTagsProvider {
             this.tag(COPPER_LARGE_BUTTONS)
                     .add(entry.getLarge().asItem());
         }
+    }
+
+    protected void generateVanillaTags() {
+        this.tag(BUTTONS)
+                .addTag(COPPER_BUTTONS)
+                .addTag(CONCRETE_POWDER_BUTTONS);
+
+        this.tag(BUTTONS)
+                .add(IBBlocks.DEEPSLATE_BUTTON.get(false).asItem())
+                .add(IBBlocks.GRANITE_BUTTON.get(false).asItem())
+                .add(IBBlocks.DIORITE_BUTTON.get(false).asItem())
+                .add(IBBlocks.ANDESITE_BUTTON.get(false).asItem())
+                .add(IBBlocks.TUFF_BUTTON.get(false).asItem())
+                .add(IBBlocks.DRIPSTONE_BUTTON.get(false).asItem())
+                .add(IBBlocks.CALCITE_BUTTON.get(false).asItem());
+
+        for (var entry : IBBlocks.SMALL_LARGE_BUTTONS.values()) {
+            this.tag(BUTTONS)
+                    .add(entry.getSmall().asItem());
+        }
+
+        this.tag(NON_FLAMMABLE_WOOD)
+                .add(IBRegistryUtils.getItemByID(MOD_ID, "crimson_large_button"))
+                .add(IBRegistryUtils.getItemByID(MOD_ID, "warped_large_button"))
+                .add(IBBlocks.CRIMSON_PLANK_SECRET_BUTTON.get().asItem())
+                .add(IBBlocks.WARPED_PLANK_SECRET_BUTTON.get().asItem());
+
+        this.tag(PIGLIN_REPELLENTS)
+                .add(IBBlocks.SOUL_TORCH_BUTTON.get().asItem())
+                .add(IBBlocks.SOUL_WALL_TORCH_BUTTON.get().asItem())
+                .add(IBBlocks.SOUL_TORCH_LEVER.get().asItem())
+                .add(IBBlocks.SOUL_WALL_TORCH_LEVER.get().asItem())
+                .add(IBBlocks.SOUL_LANTERN_BUTTON.get().asItem())
+                .add(IBBlocks.SOUL_LANTERN_LEVER.get().asItem());
+
+        this.tag(STONE_BRICKS)
+                .add(IBBlocks.STONE_BRICK_SECRET_BUTTON.get().asItem())
+                .add(IBBlocks.MOSSY_STONE_BRICK_SECRET_BUTTON.get().asItem())
+                .add(IBBlocks.CRACKED_STONE_BRICK_SECRET_BUTTON.get().asItem())
+                .add(IBBlocks.CHISELED_STONE_BRICK_SECRET_BUTTON.get().asItem());
+    }
+
+    protected void generateFriendsFoesTags() {
+        this.tag(FAF_COPPER_BUTTONS)
+                .addTag(COPPER_BUTTONS)
+                .addTag(COPPER_LARGE_BUTTONS);
     }
 }
