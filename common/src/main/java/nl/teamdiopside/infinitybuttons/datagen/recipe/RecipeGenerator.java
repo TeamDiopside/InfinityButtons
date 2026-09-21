@@ -16,7 +16,7 @@ import java.util.Objects;
 
 import static net.minecraft.data.recipes.RecipeBuilder.getDefaultRecipeId;
 
-public abstract class RecipeGenerator<T extends Block> {
+public abstract class RecipeGenerator<T> {
 
     protected final IBRecipeOutput output;
 

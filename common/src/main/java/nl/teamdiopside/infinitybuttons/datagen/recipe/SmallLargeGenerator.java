@@ -8,17 +8,17 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import nl.teamdiopside.infinitybuttons.block.faced6.normal.NormalButton;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.Function;
 
 import static net.minecraft.data.recipes.RecipeBuilder.getDefaultRecipeId;
 
-public class SmallLargeGenerator extends RecipeGenerator<NormalButton> {
+public class SmallLargeGenerator extends RecipeGenerator<Map.Entry<ResourceLocation, IBRegistryUtils.LargeVariantSupplier<? extends Block>>> {
     protected SmallLargeGenerator(IBRecipeOutput output) {
         super(output);
     }
@@ -73,7 +73,7 @@ public class SmallLargeGenerator extends RecipeGenerator<NormalButton> {
     }
 
     @Override
-    public void generate(NormalButton block) {
+    public void generate(Map.Entry<ResourceLocation, IBRegistryUtils.LargeVariantSupplier<? extends Block>> entry) {
         ResourceLocation material = entry.getKey();
         if (material.getPath().equals("netherite")) return;
 
