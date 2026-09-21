@@ -86,7 +86,7 @@ public class ItemTagGenerator extends ItemTagsProvider {
         }
 
         for (var value : IBBlocks.DEFAULT_LARGE_BUTTONS.entrySet()) {
-            if (!IBRegistryUtils.isWoodType(value.getKey().name())) return;
+            if (!IBRegistryUtils.isWoodType(value.getKey().name())) continue;
             this.tag(WOODEN_LARGE_BUTTONS)
                     .add(value.getValue().get().asItem());
         }
@@ -113,6 +113,20 @@ public class ItemTagGenerator extends ItemTagsProvider {
             this.tag(NORMAL_SAFE_EMERGENCY_BUTTONS)
                     .add(entry.get().asItem());
         }
+
+        this.tag(WOODEN_SECRET_BUTTONS)
+                .addTag(BOOKSHELF_SECRET_BUTTONS)
+                .add(IBBlocks.OAK_PLANK_SECRET_BUTTON.get().asItem())
+                .add(IBBlocks.SPRUCE_PLANK_SECRET_BUTTON.get().asItem())
+                .add(IBBlocks.BIRCH_PLANK_SECRET_BUTTON.get().asItem())
+                .add(IBBlocks.JUNGLE_PLANK_SECRET_BUTTON.get().asItem())
+                .add(IBBlocks.ACACIA_PLANK_SECRET_BUTTON.get().asItem())
+                .add(IBBlocks.DARK_OAK_PLANK_SECRET_BUTTON.get().asItem())
+                .add(IBBlocks.MANGROVE_PLANK_SECRET_BUTTON.get().asItem())
+                .add(IBBlocks.CRIMSON_PLANK_SECRET_BUTTON.get().asItem())
+                .add(IBBlocks.CHERRY_PLANK_SECRET_BUTTON.get().asItem())
+                .add(IBBlocks.BAMBOO_PLANK_SECRET_BUTTON.get().asItem())
+                .add(IBBlocks.WARPED_PLANK_SECRET_BUTTON.get().asItem());
 
         this.tag(SECRET_BUTTONS)
                 .addTag(WOODEN_SECRET_BUTTONS)
@@ -152,27 +166,15 @@ public class ItemTagGenerator extends ItemTagsProvider {
             this.tag(SECRET_BUTTONS).add(entry.get().asItem());
         }
 
-        this.tag(WOODEN_SECRET_BUTTONS)
-                .addTag(BOOKSHELF_SECRET_BUTTONS)
-                .add(IBBlocks.OAK_PLANK_SECRET_BUTTON.get().asItem())
-                .add(IBBlocks.SPRUCE_PLANK_SECRET_BUTTON.get().asItem())
-                .add(IBBlocks.BIRCH_PLANK_SECRET_BUTTON.get().asItem())
-                .add(IBBlocks.JUNGLE_PLANK_SECRET_BUTTON.get().asItem())
-                .add(IBBlocks.ACACIA_PLANK_SECRET_BUTTON.get().asItem())
-                .add(IBBlocks.DARK_OAK_PLANK_SECRET_BUTTON.get().asItem())
-                .add(IBBlocks.MANGROVE_PLANK_SECRET_BUTTON.get().asItem())
-                .add(IBBlocks.CRIMSON_PLANK_SECRET_BUTTON.get().asItem())
-                .add(IBBlocks.CHERRY_PLANK_SECRET_BUTTON.get().asItem())
-                .add(IBBlocks.BAMBOO_PLANK_SECRET_BUTTON.get().asItem())
-                .add(IBBlocks.WARPED_PLANK_SECRET_BUTTON.get().asItem());
-
         // Bookshelves
         this.tag(BOOKSHELF_SECRET_BUTTONS).add(IBBlocks.BOOKSHELF_SECRET_BUTTON.get().asItem());
         this.tag(BOOKSHELVES).add(IBBlocks.BOOKSHELF_SECRET_BUTTON.get().asItem());
 
         for (var entry : IBModdedBlocks.MOD_BOOKSHELVES) {
-            this.tag(BOOKSHELF_SECRET_BUTTONS).add(entry.get().asItem());
-            this.tag(BOOKSHELVES).add(entry.get().asItem());
+            IBRegistryUtils.BlockInfo info = IBRegistryUtils.BlockInfo.from(entry.get());
+            ResourceLocation location = ResourceLocation.fromNamespaceAndPath(info.namespace(), info.id());
+            this.tag(BOOKSHELF_SECRET_BUTTONS).addOptional(location);
+            this.tag(BOOKSHELVES).addOptional(location);
         }
 
         this.tag(TORCH_BUTTONS)
