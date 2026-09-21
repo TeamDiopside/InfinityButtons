@@ -31,7 +31,7 @@ public class SecretButton extends ButtonFaced4 implements JadeCamouflaged {
     protected final ResourceLocation camouflage;
 
     public SecretButton(Properties properties, SecretButtonType type, ResourceLocation camouflage) {
-        super(properties, type.shapePressed, type.shapeUnpressed, false);
+        super(properties, type.shapePressed, type.shapeUnpressed);
         this.type = type;
         this.camouflage = camouflage;
     }

@@ -29,17 +29,15 @@ public abstract class ButtonFaced6 extends ButtonBlock implements MaybeArrowActi
 
     public final VoxelShape shapePressed;
     public final VoxelShape shapeUnpressed;
-    public final boolean isLever;
 
     protected final BiHashMap<Direction, AttachFace, VoxelShape> SHAPES_PRESSED = new BiHashMap<>();
     protected final BiHashMap<Direction, AttachFace, VoxelShape> SHAPES_UNPRESSED = new BiHashMap<>();
 
-    public ButtonFaced6(BlockSetType blockSetType, int ticks, Properties properties, VoxelShape shapePressed, VoxelShape shapeUnpressed, boolean isLever) {
+    public ButtonFaced6(BlockSetType blockSetType, int ticks, Properties properties, VoxelShape shapePressed, VoxelShape shapeUnpressed) {
         super(blockSetType, ticks, properties); // TODO: `ticks` could just be defaulted to 20 here, with getPressTicks() being used anyway.
 
         this.shapePressed = shapePressed;
         this.shapeUnpressed = shapeUnpressed;
-        this.isLever = isLever;
 
         initShapes(this.shapePressed, SHAPES_PRESSED);
         initShapes(this.shapeUnpressed, SHAPES_UNPRESSED);
@@ -62,13 +60,17 @@ public abstract class ButtonFaced6 extends ButtonBlock implements MaybeArrowActi
         }
     }
 
-    protected abstract int getPressTicks();
+    protected abstract int getPressTicks(Level level, BlockPos blockPos);
+
+    protected boolean isLever(Level level, BlockPos blockPos) {
+        return false;
+    }
 
     @Override
     public void press(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
         level.setBlockAndUpdate(blockPos, blockState.setValue(POWERED, true));
         this.updateNeighbours(blockState, level, blockPos);
-        if (!this.isLever) level.scheduleTick(blockPos, this, getPressTicks());
+        if (!this.isLever(level, blockPos)) level.scheduleTick(blockPos, this, getPressTicks(level, blockPos));
 
         this.playSound(player, level, blockPos, true);
         level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, blockPos);
@@ -102,7 +104,7 @@ public abstract class ButtonFaced6 extends ButtonBlock implements MaybeArrowActi
     @Override
     protected @NotNull InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
         if (blockState.getValue(POWERED)) {
-            if (this.isLever) {
+            if (this.isLever(level, blockPos)) {
                 this.unpress(blockState, level, blockPos, player);
                 return InteractionResult.SUCCESS;
             }
@@ -116,7 +118,7 @@ public abstract class ButtonFaced6 extends ButtonBlock implements MaybeArrowActi
     @Override
     protected void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
         if (arrowPressing(blockState, serverLevel, blockPos)) {
-            serverLevel.scheduleTick(blockPos, this, getPressTicks());
+            serverLevel.scheduleTick(blockPos, this, getPressTicks(serverLevel, blockPos));
             return;
         }
 

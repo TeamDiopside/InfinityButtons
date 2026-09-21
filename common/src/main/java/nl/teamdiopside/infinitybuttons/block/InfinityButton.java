@@ -34,14 +34,12 @@ public abstract class InfinityButton extends Block {
 
     public final VoxelShape shapePressed;
     public final VoxelShape shapeUnpressed;
-    public final boolean isLever;
 
-    public InfinityButton(Properties properties, VoxelShape shapePressed, VoxelShape shapeUnpressed, boolean isLever) {
+    public InfinityButton(Properties properties, VoxelShape shapePressed, VoxelShape shapeUnpressed) {
         super(properties);
 
         this.shapePressed = shapePressed;
         this.shapeUnpressed = shapeUnpressed;
-        this.isLever = isLever;
 
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(POWERED, false)
@@ -54,10 +52,14 @@ public abstract class InfinityButton extends Block {
 
     protected abstract Direction getConnectedDirection(BlockState state);
 
+    protected boolean isLever(Level level, BlockPos blockPos) {
+        return false;
+    }
+
     public void press(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
         level.setBlockAndUpdate(blockPos, blockState.setValue(POWERED, true));
         this.updateNeighbours(blockState, level, blockPos);
-        if (!this.isLever) level.scheduleTick(blockPos, this, getPressTicks());
+        if (!this.isLever(level, blockPos)) level.scheduleTick(blockPos, this, getPressTicks());
 
         this.playSound(player, level, blockPos, true);
         if (this.isSignalSource(blockState)) level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, blockPos);
@@ -84,7 +86,7 @@ public abstract class InfinityButton extends Block {
     @Override
     protected @NotNull InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
         if (blockState.getValue(POWERED)) {
-            if (this.isLever) {
+            if (this.isLever(level, blockPos)) {
                 this.unpress(blockState, level, blockPos, player);
                 return InteractionResult.SUCCESS;
             }

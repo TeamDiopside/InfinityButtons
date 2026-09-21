@@ -5,6 +5,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -20,7 +21,7 @@ public class OneUseButton extends NormalButton {
     }
 
     @Override
-    protected int getPressTicks() {
+    protected int getPressTicks(Level level, BlockPos blockPos) {
         return PRESS_TICKS;
     }
 

@@ -38,7 +38,7 @@ public class EmergencyButton extends ButtonFaced6 {
     public static final int PRESS_TICKS = 20;
 
     public EmergencyButton(Properties properties, VoxelShape shapePressed, VoxelShape shapeUnpressed) {
-        super(BlockSetType.STONE, PRESS_TICKS, properties, shapePressed, shapeUnpressed, false);
+        super(BlockSetType.STONE, PRESS_TICKS, properties, shapePressed, shapeUnpressed);
     }
 
     public EmergencyButton(Properties properties) {
@@ -108,7 +108,7 @@ public class EmergencyButton extends ButtonFaced6 {
     }
 
     @Override
-    protected int getPressTicks() {
+    protected int getPressTicks(Level level, BlockPos blockPos) {
         return PRESS_TICKS;
     }
 

@@ -1,29 +1,6 @@
 {
-	"parent": "block/block",
+	"parent": "infinitybuttons:block/console_buttons/small_console_button",
 	"textures": {
-		"texture": "infinitybuttons:block/console/small_console",
-		"texture2": "infinitybuttons:block/console/small_console_pressed",
-		"particle": "infinitybuttons:block/console/small_console"
-	},
-	"render_type": "cutout",
-	"elements": [
-		{
-			"from": [3, 0, 5], "to": [13, 2, 11],
-			"faces": {
-				"north": {"uv": [ 0, 12, 10, 14], "texture": "#texture"},
-				"east":  {"uv": [16,  0, 10,  2], "texture": "#texture"},
-				"south": {"uv": [ 0, 14, 10, 16], "texture": "#texture"},
-				"west":  {"uv": [10,  0, 16,  2], "texture": "#texture"},
-				"up":    {"uv": [ 0,  0, 10,  6], "texture": "#texture2"},
-				"down":  {"uv": [ 0,  6, 10, 12], "texture": "#texture", "rotation": 180}
-			}
-		},
-		{
-			"from": [3, 1, -1], "to": [13, 1, 5],
-			"faces": {
-				"up":    {"uv": [10, 2, 16, 12], "texture": "#texture", "rotation": 270},
-				"down":  {"uv": [16, 2, 10, 12], "texture": "#texture", "rotation": 270}
-			}
-		}
-	]
+		"button": "infinitybuttons:block/console/small_console_button_on"
+	}
 }

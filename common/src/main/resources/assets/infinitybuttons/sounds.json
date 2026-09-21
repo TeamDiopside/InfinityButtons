@@ -40,5 +40,12 @@
       "infinitybuttons:block/console_negative"
     ],
     "subtitle": "block.console_button.beep"
+  },
+  "block.console_button.error": {
+    "category": "block",
+    "sounds": [
+      "infinitybuttons:block/console_negative"
+    ],
+    "subtitle": "block.console_button.error"
   }
 }

@@ -25,7 +25,7 @@ public class HoglinTrophyButton extends ButtonFaced4 implements JadeCamouflaged 
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 
     public HoglinTrophyButton(Properties properties) {
-        super(properties, SHAPE, SHAPE, false);
+        super(properties, SHAPE, SHAPE);
     }
 
     @Override

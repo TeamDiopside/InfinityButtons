@@ -1,28 +1,28 @@
 {
-	"parent": "block/block",
-	"textures": {
-		"texture": "infinitybuttons:block/console/large_console",
-		"texture3": "infinitybuttons:block/console/large_console_top",
-		"particle": "infinitybuttons:block/console/large_console"
-	},
+	"parent": "infinitybuttons:block/console_buttons/inventory",
 	"render_type": "cutout",
+	"textures": {
+		"button": "infinitybuttons:block/console/large_console_button",
+		"back": "infinitybuttons:block/console/large_console_button_back",
+		"particle": "#button"
+	},
 	"elements": [
 		{
 			"from": [1, 0, 3], "to": [15, 2, 13],
 			"faces": {
-				"north": {"uv": [0, 10, 14, 12], "texture": "#texture"},
-				"east":  {"uv": [0, 12, 10, 14], "texture": "#texture"},
-				"south": {"uv": [0, 10, 14, 12], "texture": "#texture"},
-				"west":  {"uv": [0, 12, 10, 14], "texture": "#texture"},
-				"up":    {"uv": [0,  0, 14, 10], "texture": "#texture3"},
-				"down":  {"uv": [0, 10, 14,  0], "texture": "#texture"}
+				"north": {"uv": [16,  2,  2,  4], "texture": "#back"},
+				"east":  {"uv": [16,  2,  6,  0], "texture": "#back"},
+				"south": {"uv": [ 2, 16, 16, 14], "texture": "#back"},
+				"west":  {"uv": [ 0, 14,  2,  4], "texture": "#back", "rotation": 90},
+				"up":    {"uv": [ 1,  5, 15, 15], "texture": "#button"},
+				"down":  {"uv": [ 2, 14, 16,  4], "texture": "#back"}
 			}
 		},
 		{
-			"from": [1, 1, -2], "to": [15, 1, 3],
+			"from": [1, 1, -2], "to": [15, 1, 14],
 			"faces": {
-				"up":    {"uv": [0, 10, 14, 15], "texture": "#texture3"},
-				"down":  {"uv": [0, 15, 14, 10], "texture": "#texture3"}
+				"up":   {"uv": [1, 0, 15, 16], "texture": "#button"},
+				"down": {"uv": [1, 16, 15, 0], "texture": "#button"}
 			}
 		}
 	]

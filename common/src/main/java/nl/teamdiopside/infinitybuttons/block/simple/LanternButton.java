@@ -32,6 +32,7 @@ import org.jetbrains.annotations.Nullable;
 public class LanternButton extends InfinityButton implements SimpleWaterloggedBlock, JadeCamouflaged {
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED; // TODO: Fix :)
     protected final ResourceLocation camouflage;
+    protected final boolean isLever;
 
     private static final VoxelShape SHAPE = Shapes.or(
             Block.box(5.0, 1.0, 5.0, 11.0, 8.0, 11.0),
@@ -39,8 +40,14 @@ public class LanternButton extends InfinityButton implements SimpleWaterloggedBl
     public static final VoxelShape SHAPE_PRESSED = SHAPE.move(0, (double) -1 / 16, 0);
 
     public LanternButton(Properties properties, boolean isLever, ResourceLocation camouflage) {
-        super(properties, SHAPE_PRESSED, SHAPE, isLever);
+        super(properties, SHAPE_PRESSED, SHAPE);
         this.camouflage = camouflage;
+        this.isLever = isLever;
+    }
+
+    @Override
+    protected boolean isLever(Level level, BlockPos blockPos) {
+        return this.isLever;
     }
 
     public void updateThings(Level level, BlockPos pos) {

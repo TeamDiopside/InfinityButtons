@@ -24,8 +24,8 @@ import org.jetbrains.annotations.Nullable;
 public abstract class ButtonFaced4 extends InfinityButton {
     public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    protected ButtonFaced4(Properties properties, VoxelShape shapePressed, VoxelShape shapeUnpressed, boolean isLever) {
-        super(properties, shapePressed, shapeUnpressed, isLever);
+    protected ButtonFaced4(Properties properties, VoxelShape shapePressed, VoxelShape shapeUnpressed) {
+        super(properties, shapePressed, shapeUnpressed);
 
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
