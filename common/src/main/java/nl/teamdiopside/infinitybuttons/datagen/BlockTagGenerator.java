@@ -92,12 +92,16 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
                     );
         }
 
+        for (var value : IBBlocks.DEFAULT_LARGE_BUTTONS.entrySet()) {
+            if (!IBRegistryUtils.isWoodType(value.getKey().name())) return;
+            this.tag(WOODEN_LARGE_BUTTONS)
+                    .add(value.getValue().get());
+        }
+
         this.tag(LARGE_BUTTONS)
                 .addTag(WOODEN_LARGE_BUTTONS)
                 .addTag(COPPER_LARGE_BUTTONS)
                 .addTag(CONCRETE_POWDER_LARGE_BUTTONS);
-
-        this.tag(WOODEN_LARGE_BUTTONS);
 
         for (var entry : IBBlocks.EMERGENCY_BUTTONS.values()) {
             this.tag(EMERGENCY_BUTTONS)
@@ -294,33 +298,18 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
                 .addTag(COPPER_BUTTONS)
                 .addTag(CONCRETE_POWDER_BUTTONS);
 
-
-        for (boolean bool : Set.of(true, false)) {
-            this.tag(BUTTONS)
-                    .add(IBBlocks.DEEPSLATE_BUTTON.get(bool))
-                    .add(IBBlocks.GRANITE_BUTTON.get(bool))
-                    .add(IBBlocks.DIORITE_BUTTON.get(bool))
-                    .add(IBBlocks.ANDESITE_BUTTON.get(bool))
-                    .add(IBBlocks.TUFF_BUTTON.get(bool))
-                    .add(IBBlocks.DRIPSTONE_BUTTON.get(bool))
-                    .add(IBBlocks.CALCITE_BUTTON.get(bool))
-                    .add(IBBlocks.IRON_BUTTON.get(bool))
-                    .add(IBBlocks.GOLD_BUTTON.get(bool))
-                    .add(IBBlocks.EMERALD_BUTTON.get(bool))
-                    .add(IBBlocks.DIAMOND_BUTTON.get(bool))
-                    .add(IBBlocks.NETHERITE_BUTTON.get(bool))
-                    .add(IBBlocks.PRISMARINE_BUTTON.get(bool))
-                    .add(IBBlocks.PRISMARINE_BRICK_BUTTON.get(bool))
-                    .add(IBBlocks.DARK_PRISMARINE_BUTTON.get(bool))
-                    .add(IBBlocks.SAND_BUTTON.get(bool))
-                    .add(IBBlocks.RED_SAND_BUTTON.get(bool))
-                    .add(IBBlocks.GRAVEL_BUTTON.get(bool));
-        }
+        this.tag(BUTTONS)
+                .add(IBBlocks.DEEPSLATE_BUTTON.get(false))
+                .add(IBBlocks.GRANITE_BUTTON.get(false))
+                .add(IBBlocks.DIORITE_BUTTON.get(false))
+                .add(IBBlocks.ANDESITE_BUTTON.get(false))
+                .add(IBBlocks.TUFF_BUTTON.get(false))
+                .add(IBBlocks.DRIPSTONE_BUTTON.get(false))
+                .add(IBBlocks.CALCITE_BUTTON.get(false));
 
         for (var entry : IBBlocks.SMALL_LARGE_BUTTONS.values()) {
             this.tag(BUTTONS)
-                    .add(entry.getSmall())
-                    .add(entry.getLarge());
+                    .add(entry.getSmall());
 
             // Non-gravity buttons get pickaxed
             if (!IBBlocks.ONE_USE_BUTTONS.containsValue(entry)) {
