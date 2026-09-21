@@ -1,19 +1,22 @@
 package nl.teamdiopside.infinitybuttons.datagen.recipe;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import nl.teamdiopside.infinitybuttons.block.faced6.normal.NormalButton;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import java.util.function.Function;
 
 import static net.minecraft.data.recipes.RecipeBuilder.getDefaultRecipeId;
@@ -58,6 +61,14 @@ public class SmallLargeGenerator extends RecipeGenerator<Map.Entry<ResourceLocat
      * Generate a large button recipe: 2 small -> 1 big
      * @param material The material item that unlocks the recipe
      */
+    protected void largeButton(RecipeOutput recipes, IBRegistryUtils.LargeVariantSupplier<? extends Block> button, TagKey<Item> material, String suffix, @Nullable String group) {
+        largeButton(recipes, button.getSmall(), button.getLarge(), material, suffix, group);
+    }
+
+    /**
+     * Generate a large button recipe: 2 small -> 1 big
+     * @param material The material item that unlocks the recipe
+     */
     protected void largeButton(RecipeOutput recipes, ItemLike small, ItemLike large, ItemLike material, String suffix, @Nullable String group) {
         var builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, large)
                 .requires(small, 2)
@@ -72,38 +83,68 @@ public class SmallLargeGenerator extends RecipeGenerator<Map.Entry<ResourceLocat
         }
     }
 
-    @Override
-    public void generate(Map.Entry<ResourceLocation, IBRegistryUtils.LargeVariantSupplier<? extends Block>> entry) {
-        ResourceLocation material = entry.getKey();
-        if (material.getPath().equals("netherite")) return;
+    /**
+     * Generate a large button recipe: 2 small -> 1 big
+     * @param material The material item that unlocks the recipe
+     */
+    protected void largeButton(RecipeOutput recipes, ItemLike small, ItemLike large, TagKey<Item> material, String suffix, @Nullable String group) {
+        var builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, large)
+                .requires(small, 2)
+                .unlockedBy("has_thing", RecipeProvider.has(material));
 
-        IBRegistryUtils.LargeVariantSupplier<? extends Block> value = entry.getValue();
+        if (group != null) builder.group(group);
 
-        String id = value.getSmall().getDescriptionId();
+        if (!Objects.equals(suffix, "")) {
+            builder.save(recipes, getDefaultRecipeId(large) + suffix);
+        } else {
+            builder.save(recipes);
+        }
+    }
 
-        // I WILL use a pattern matching switch statement because it is COOL
-        Function<String, String> group = infix -> switch (id) {
-            case String s when s.contains("concrete_powder") -> "concrete_powder" + infix + "_buttons";
+    private @Nullable TagKey<Item> getInputTag(ResourceLocation textureMaterial) {
+        Function<String, TagKey<Item>> gemKey = s -> TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "gems/" + s));
+        Function<String, TagKey<Item>> ingotKey = s -> TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "ingots/" + s));
+        return switch (textureMaterial.getPath()) {
+            case "gold_block" -> ingotKey.apply("gold");
+            case "iron_block" -> ingotKey.apply("iron");
+            case "diamond_block" -> gemKey.apply("diamond");
+            case "emerald_block" -> gemKey.apply("emerald");
             default -> null;
         };
+    }
 
-        boolean yearnsToBeANugget = false;
-        if (material.getPath().equals("dripstone")) material.withPath("dripstone_block"); // Fuck you Mojang
-        if (material.getPath().equals("prismarine_brick")) material.withPath("prismarine_bricks"); // Fuck you Lars
+    @Override
+    public void generate(Map.Entry<ResourceLocation, IBRegistryUtils.LargeVariantSupplier<? extends Block>> entry) {
+        ResourceLocation textureMaterial = entry.getKey();
+        if (textureMaterial.getPath().equals("netherite")) return;
+        IBRegistryUtils.LargeVariantSupplier<? extends Block> supplier = entry.getValue();
+        String id = supplier.getSmall().getDescriptionId();
 
-        if (Set.of("gold", "iron", "diamond", "emerald").contains(material.getPath())) { // Materials
-            if (Set.of("gold", "iron").contains(material.getPath())) material.withPath(material.getPath() + "_ingot");
+        Function<String, String> group = infix ->
+                id.contains("concrete_powder") ? "concrete_powder" + infix + "_buttons" : null;
 
-            yearnsToBeANugget = true; // All materials for consistency
-        }
+        if (textureMaterial.getPath().equals("dripstone")) textureMaterial.withPath("dripstone_block"); // Fuck you Mojang
+        if (textureMaterial.getPath().equals("prismarine_brick")) textureMaterial.withPath("prismarine_bricks"); // Fuck you Lars
+        TagKey<Item> materialTag = getInputTag(textureMaterial);
 
-        Item materialItem = IBRegistryUtils.getItemByID(material.getNamespace(), material.getPath());
+        Item materialItem = IBRegistryUtils.getItemByID(textureMaterial.getNamespace(), textureMaterial.getPath());
 
-        if (!yearnsToBeANugget) {
-            smallLargeButton(output, value, materialItem, "", null);
+        if (materialTag == null) {
+            // Create small button from just the material
+            smallLargeButton(output, supplier, materialItem, "", null);
         } else {
-            convertingRecipe(output, materialItem, value.getSmall(), false, 2, "", group.apply(""));
-            largeButton(output, value, materialItem, "", group.apply("_large"));
+            // Create small button from material and stone button
+            convertingRecipe(output, materialTag, supplier.getSmall(), false, 2, "", group.apply(""));
+            largeButton(output, supplier, materialTag, "", group.apply("_large"));
         }
+    }
+
+    public void generateVanillaLargeVariant(BlockSetType vanillaType, NormalButton large) {
+        Item itemByID = IBRegistryUtils.getItemByID("minecraft", vanillaType.name() + "_button");
+
+        boolean isWood = IBRegistryUtils.isWoodType(vanillaType.name());
+        String group = isWood ? "wooden_large_buttons" : null;
+
+        largeButton(output, itemByID, large.asItem(), large, "", group);
     }
 }

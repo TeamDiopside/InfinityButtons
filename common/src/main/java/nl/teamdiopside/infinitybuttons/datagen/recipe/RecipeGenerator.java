@@ -1,17 +1,22 @@
 package nl.teamdiopside.infinitybuttons.datagen.recipe;
 
+import net.minecraft.advancements.Criterion;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import nl.teamdiopside.infinitybuttons.datagen.conditions.DataCondition;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 import static net.minecraft.data.recipes.RecipeBuilder.getDefaultRecipeId;
@@ -32,23 +37,6 @@ public abstract class RecipeGenerator<T> {
     }
 
     /**
-     * Generate a simple recipe to convert an item into another
-     */
-    protected void convertingRecipe(RecipeOutput recipes, ItemLike input, ItemLike output, String suffix, @Nullable String group) {
-        var builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, output)
-                .requires(input)
-                .unlockedBy("has_thing", RecipeProvider.has(input));
-
-        if (group != null) builder.group(group);
-
-        if (!Objects.equals(suffix, "")) {
-            builder.save(recipes, getDefaultRecipeId(output) + suffix);
-        } else {
-            builder.save(recipes);
-        }
-    }
-
-    /**
      * Generate a simple recipe to convert an item into a Lever or Button variant
      * @param withLever Whether to use a Lever (otherwise Stone Button)
      * @param outputCount How many of this item this recipe grants
@@ -58,17 +46,68 @@ public abstract class RecipeGenerator<T> {
     }
 
     /**
+     * Generate a simple recipe to convert an item into a Lever or Button variant
+     * @param withLever Whether to use a Lever (otherwise Stone Button)
+     * @param outputCount How many of this item this recipe grants
+     */
+    protected void convertingRecipe(RecipeOutput recipes, TagKey<Item> input, ItemLike output, boolean withLever, int outputCount, String suffix, @Nullable String group) {
+        simpleShapelessRecipe(recipes, input, output, outputCount, suffix, group, Ingredient.of(input), Ingredient.of(withLever ? Items.LEVER : Items.STONE_BUTTON));
+    }
+
+    /**
      * Generate a simple shapeless recipe with multiple ingredients
      * @param unlock The item that unlocks this recipe
      * @param outputCount - How many of this item this recipe grants
-     * @param ingredient - Ingredients to be included in the recipe
+     * @param itemLikes - Ingredients to be included in the recipe
      */
-    protected void simpleShapelessRecipe(RecipeOutput recipes, ItemLike unlock, ItemLike output, int outputCount, String suffix, @Nullable String group, ItemLike... ingredient) {
+    protected void simpleShapelessRecipe(RecipeOutput recipes, ItemLike unlock, ItemLike output, int outputCount, String suffix, @Nullable String group, ItemLike... itemLikes) {
+        Ingredient[] ingredients = Arrays.stream(itemLikes).map(Ingredient::of).toArray(Ingredient[]::new);
+        simpleShapelessRecipe(recipes, unlock, output, outputCount, suffix, group, ingredients);
+    }
+
+    /**
+     * Generate a simple shapeless recipe with multiple ingredients
+     * @param unlock The item that unlocks this recipe
+     * @param outputCount - How many of this item this recipe grants
+     * @param itemLikes - Ingredients to be included in the recipe
+     */
+    protected void simpleShapelessRecipe(RecipeOutput recipes, TagKey<Item> unlock, ItemLike output, int outputCount, String suffix, @Nullable String group, ItemLike... itemLikes) {
+        Ingredient[] ingredients = Arrays.stream(itemLikes).map(Ingredient::of).toArray(Ingredient[]::new);
+        simpleShapelessRecipe(recipes, unlock, output, outputCount, suffix, group, ingredients);
+    }
+
+    /**
+     * Generate a simple shapeless recipe with multiple ingredients
+     * @param unlock The item that unlocks this recipe
+     * @param outputCount - How many of this item this recipe grants
+     * @param ingredients - Ingredients to be included in the recipe
+     */
+    protected void simpleShapelessRecipe(RecipeOutput recipes, ItemLike unlock, ItemLike output, int outputCount, String suffix, @Nullable String group, Ingredient... ingredients) {
+        simpleShapelessRecipe(recipes, RecipeProvider.has(unlock), output, outputCount, suffix, group, ingredients);
+    }
+
+    /**
+     * Generate a simple shapeless recipe with multiple ingredients
+     * @param unlock The item that unlocks this recipe
+     * @param outputCount - How many of this item this recipe grants
+     * @param ingredients - Ingredients to be included in the recipe
+     */
+    protected void simpleShapelessRecipe(RecipeOutput recipes, TagKey<Item> unlock, ItemLike output, int outputCount, String suffix, @Nullable String group, Ingredient... ingredients) {
+        simpleShapelessRecipe(recipes, RecipeProvider.has(unlock), output, outputCount, suffix, group, ingredients);
+    }
+
+    /**
+     * Generate a simple shapeless recipe with multiple ingredients
+     * @param criterion The criterion that unlocks the recipe
+     * @param outputCount - How many of this item this recipe grants
+     * @param ingredients - Ingredients to be included in the recipe
+     */
+    private void simpleShapelessRecipe(RecipeOutput recipes, Criterion<?> criterion, ItemLike output, int outputCount, String suffix, @Nullable String group, Ingredient... ingredients) {
         ShapelessRecipeBuilder builder = ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.REDSTONE, output, outputCount)
-                .unlockedBy("has_thing", RecipeProvider.has(unlock));
+                .unlockedBy("has_thing", criterion);
 
-        for (ItemLike item : ingredient) {
+        for (Ingredient item : ingredients) {
             builder.requires(item);
         }
 
@@ -79,16 +118,5 @@ public abstract class RecipeGenerator<T> {
         } else {
             builder.save(recipes);
         }
-    }
-
-    /**
-     * Generate simple recipes to convert an item into a Lever and Button variant
-     * @param lever The output when combining with a Lever
-     * @param button The output when combining with a Button
-     * @param outputCount How many of this item this recipe grants
-     */
-    protected void convertingRecipes(RecipeOutput recipes, ItemLike input, ItemLike button, ItemLike lever, int outputCount, String suffix, @Nullable String group) {
-        simpleShapelessRecipe(recipes, input, lever, outputCount, suffix, group, input, Items.LEVER);
-        simpleShapelessRecipe(recipes, input, button, outputCount, suffix, group, input, Items.STONE_BUTTON);
     }
 }

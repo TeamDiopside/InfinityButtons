@@ -65,13 +65,10 @@ public class IBRecipeProvider extends RecipeProvider {
 
         // Vanilla Large variants
         for (var entry : IBBlocks.DEFAULT_LARGE_BUTTONS.entrySet()) {
-            Item itemByID = IBRegistryUtils.getItemByID(entry.getKey().name() + "_button");
-
-            boolean isWood = IBRegistryUtils.isWoodType(entry.getKey().name());
-            String group = isWood ? "wooden_large_buttons" : null;
-
-            largeButton(recipes, itemByID, entry.getValue().get().asItem(), entry.getValue().get(), "", group);
+            smallLargeGenerator.generateVanillaLargeVariant(entry.getKey(), entry.getValue().get());
         }
+
+        // TODO MORE GENERATOR CLASSES
 
         // Copper Buttons
         for (var copperType : CopperButtonType.values()) {
@@ -85,7 +82,7 @@ public class IBRecipeProvider extends RecipeProvider {
                         + "copper" + infix + "_buttons";
 
                 if (copperType != CopperButtonType.STICKY) {
-                    Item materialItem = IBRegistryUtils.getItemByID(type +
+                    Item materialItem = IBRegistryUtils.getItemByID("minecraft", type +
                             (weatherState == WeatheringCopper.WeatherState.UNAFFECTED ? "_block" : "") // WTF Mojang
                     );
 
@@ -128,7 +125,7 @@ public class IBRecipeProvider extends RecipeProvider {
 
         // Emergency & Safety Buttons
         for (var dyeColor : DyeColor.values()) {
-            Item dyeItem = IBRegistryUtils.getItemByID(dyeColor.name().toLowerCase() + "_dye");
+            Item dyeItem = IBRegistryUtils.getItemByID("minecraft", dyeColor.name().toLowerCase() + "_dye");
 
             Item emergencyButton = IBBlocks.EMERGENCY_BUTTONS.get(dyeColor).get().asItem();
             Item safetyButton = IBBlocks.SAFE_EMERGENCY_BUTTONS.get(dyeColor).get().asItem();
@@ -219,29 +216,6 @@ public class IBRecipeProvider extends RecipeProvider {
     }
 
     /**
-     * Generate a small and large button recipe: 1 material -> 4 small, 2 small -> 1 big
-     * @param material The material item that unlocks both recipes and creates the small button
-     */
-    protected void smallLargeButton(RecipeOutput recipes, IBRegistryUtils.LargeVariantSupplier<? extends Block> button, ItemLike material, String suffix, @Nullable Function<String, String> group) {
-        var builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, button.getSmall(), 4)
-                .requires(material)
-                .unlockedBy("has_thing", RecipeProvider.has(material));
-
-        String largeGroup = null;
-        if (group != null) {
-            builder.group(group.apply(""));
-            largeGroup = group.apply("_large");
-        }
-
-        if (!Objects.equals(suffix, "")) {
-            builder.save(recipes, getDefaultRecipeId(button.getSmall()) + suffix);
-        } else {
-            builder.save(recipes);
-        }
-        largeButton(recipes, button.getSmall(), button.getLarge(), material, suffix, largeGroup);
-    }
-
-    /**
      * Generate a large button recipe: 2 small -> 1 big
      * @param material The material item that unlocks the recipe
      */
@@ -262,23 +236,6 @@ public class IBRecipeProvider extends RecipeProvider {
 
         if (!Objects.equals(suffix, "")) {
             builder.save(recipes, getDefaultRecipeId(large) + suffix);
-        } else {
-            builder.save(recipes);
-        }
-    }
-
-    /**
-     * Generate a simple recipe to convert an item into another
-     */
-    protected void convertingRecipe(RecipeOutput recipes, ItemLike input, ItemLike output, String suffix, @Nullable String group) {
-        var builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, output)
-                .requires(input)
-                .unlockedBy("has_thing", RecipeProvider.has(input));
-
-        if (group != null) builder.group(group);
-
-        if (!Objects.equals(suffix, "")) {
-            builder.save(recipes, getDefaultRecipeId(output) + suffix);
         } else {
             builder.save(recipes);
         }
