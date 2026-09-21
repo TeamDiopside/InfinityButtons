@@ -1,5 +1,6 @@
 package nl.teamdiopside.infinitybuttons.datagen.recipe;
 
+import net.minecraft.advancements.Criterion;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -53,14 +54,6 @@ public class SmallLargeGenerator extends RecipeGenerator<Map.Entry<ResourceLocat
      * Generate a large button recipe: 2 small -> 1 big
      * @param material The material item that unlocks the recipe
      */
-    protected void largeButton(RecipeOutput recipes, IBRegistryUtils.LargeVariantSupplier<? extends Block> button, ItemLike material, String suffix, @Nullable String group) {
-        largeButton(recipes, button.getSmall(), button.getLarge(), material, suffix, group);
-    }
-
-    /**
-     * Generate a large button recipe: 2 small -> 1 big
-     * @param material The material item that unlocks the recipe
-     */
     protected void largeButton(RecipeOutput recipes, IBRegistryUtils.LargeVariantSupplier<? extends Block> button, TagKey<Item> material, String suffix, @Nullable String group) {
         largeButton(recipes, button.getSmall(), button.getLarge(), material, suffix, group);
     }
@@ -70,17 +63,7 @@ public class SmallLargeGenerator extends RecipeGenerator<Map.Entry<ResourceLocat
      * @param material The material item that unlocks the recipe
      */
     protected void largeButton(RecipeOutput recipes, ItemLike small, ItemLike large, ItemLike material, String suffix, @Nullable String group) {
-        var builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, large)
-                .requires(small, 2)
-                .unlockedBy("has_thing", RecipeProvider.has(material));
-
-        if (group != null) builder.group(group);
-
-        if (!Objects.equals(suffix, "")) {
-            builder.save(recipes, getDefaultRecipeId(large) + suffix);
-        } else {
-            builder.save(recipes);
-        }
+        largeButton(recipes, small ,large, RecipeProvider.has(material), suffix, group);
     }
 
     /**
@@ -88,9 +71,17 @@ public class SmallLargeGenerator extends RecipeGenerator<Map.Entry<ResourceLocat
      * @param material The material item that unlocks the recipe
      */
     protected void largeButton(RecipeOutput recipes, ItemLike small, ItemLike large, TagKey<Item> material, String suffix, @Nullable String group) {
+        largeButton(recipes, small ,large, RecipeProvider.has(material), suffix, group);
+    }
+
+    /**
+     * Generate a large button recipe: 2 small -> 1 big
+     * @param criterion The criterion that unlocks the recipe
+     */
+    private void largeButton(RecipeOutput recipes, ItemLike small, ItemLike large, Criterion<?> criterion, String suffix, @Nullable String group) {
         var builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, large)
                 .requires(small, 2)
-                .unlockedBy("has_thing", RecipeProvider.has(material));
+                .unlockedBy("has_thing", criterion);
 
         if (group != null) builder.group(group);
 
