@@ -58,8 +58,10 @@ public class IBRecipeProvider extends RecipeProvider {
         // Basic Small / Large Buttons
         SmallLargeGenerator smallLargeGenerator = new SmallLargeGenerator(ibRecipeOutput);
         for (var entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) { // Does NOT include copper buttons because gay
-            smallLargeGenerator.generate(entry.getValue());
+            smallLargeGenerator.generate(entry);
         }
+
+        // TODO MORE GENERATOR CLASSES
 
         // Vanilla Large variants
         for (var entry : IBBlocks.DEFAULT_LARGE_BUTTONS.entrySet()) {
