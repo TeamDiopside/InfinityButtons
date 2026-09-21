@@ -365,8 +365,8 @@
 
   "infinitybuttons.tooltip.hold_shift": "[Hold Shift]",
   "infinitybuttons.tooltip.sticky_copper_button": "This button acts like a lever",
-  "infinitybuttons.tooltip.emerald_button1": "This button stays pressed randomly",
-  "infinitybuttons.tooltip.emerald_button2": "between 0.5 and 5 seconds",
+  "infinitybuttons.tooltip.emerald_button_1": "This button stays pressed randomly",
+  "infinitybuttons.tooltip.emerald_button_2": "between 0.5 and 5 seconds",
   "infinitybuttons.tooltip.arrow_button": "This button can only be pressed with an arrow",
   "infinitybuttons.tooltip.diamond_button": "The biggest flex in the west",
   "infinitybuttons.tooltip.netherite_button": "Too heavy to press",
