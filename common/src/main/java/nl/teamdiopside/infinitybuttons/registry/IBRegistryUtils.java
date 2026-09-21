@@ -34,54 +34,32 @@ public class IBRegistryUtils {
         }
     }
 
-    @Deprecated
-    public static Item getItemByID(String id) {
-        Optional<Item> item = BuiltInRegistries.ITEM.getOptional(ResourceLocation.parse(id));
+    public static Item getItemByID(ResourceLocation reference) {
+        Optional<Item> item = BuiltInRegistries.ITEM.getOptional(reference);
 
         if (item.isEmpty()) {
-            throw new NoSuchElementException("Could not find item 'minecraft:" + id + "'!");
+            throw new NoSuchElementException("Could not find item '" + reference.getNamespace() + ":" + reference.getPath() + "'!");
         }
 
         return item.get();
-    }
-
-    public static Item getItemByID(ResourceLocation reference) {
-        return getItemByID(reference.getNamespace(), reference.getPath());
     }
 
     public static Item getItemByID(String namespace, String id) {
-        Optional<Item> item = BuiltInRegistries.ITEM.getOptional(ResourceLocation.fromNamespaceAndPath(namespace, id));
-
-        if (item.isEmpty()) {
-            throw new NoSuchElementException("Could not find item '" + namespace + ":" + id + "'!");
-        }
-
-        return item.get();
-    }
-
-    @Deprecated
-    public static Block getBlockByID(String id) {
-        Optional<Block> block = BuiltInRegistries.BLOCK.getOptional(ResourceLocation.parse(id));
-
-        if (block.isEmpty()) {
-            throw new NoSuchElementException("Could not find block 'minecraft:" + id + "'!");
-        }
-
-        return block.get();
+        return getItemByID(ResourceLocation.fromNamespaceAndPath(namespace, id));
     }
 
     public static Block getBlockByID(ResourceLocation reference) {
-        return getBlockByID(reference.getNamespace(), reference.getPath());
-    }
-
-    public static Block getBlockByID(String namespace, String id) {
-        Optional<Block> block = BuiltInRegistries.BLOCK.getOptional(ResourceLocation.fromNamespaceAndPath(namespace, id));
+        Optional<Block> block = BuiltInRegistries.BLOCK.getOptional(reference);
 
         if (block.isEmpty()) {
-            throw new NoSuchElementException("Could not find block '" + namespace + ":" + id + "'!");
+            throw new NoSuchElementException("Could not find block '" + reference.getNamespace() + ":" + reference.getPath() + "'!");
         }
 
         return block.get();
+    }
+
+    public static Block getBlockByID(String namespace, String id) {
+        return getBlockByID(ResourceLocation.fromNamespaceAndPath(namespace, id));
     }
 
     public static boolean isWoodType(String name) {
