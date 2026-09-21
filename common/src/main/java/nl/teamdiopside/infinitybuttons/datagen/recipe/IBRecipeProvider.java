@@ -1,8 +1,9 @@
-package nl.teamdiopside.infinitybuttons.datagen;
+package nl.teamdiopside.infinitybuttons.datagen.recipe;
 
 import dev.architectury.platform.Platform;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.CachedOutput;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -18,58 +19,46 @@ import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButtonType;
 import nl.teamdiopside.infinitybuttons.compat.blocks.MyNethersDelightBlocks;
 import nl.teamdiopside.infinitybuttons.compat.items.MyNethersDelightItems;
+import nl.teamdiopside.infinitybuttons.datagen.ItemTagGenerator;
+import nl.teamdiopside.infinitybuttons.datagen.conditions.DataCondition;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 
 import static net.minecraft.data.recipes.RecipeBuilder.getDefaultRecipeId;
 
-public class RecipeGenerator extends RecipeProvider {
+public class IBRecipeProvider extends RecipeProvider {
+    final PackOutput.PathProvider recipePathProvider;
+    final PackOutput.PathProvider advancementPathProvider;
+    private final Map<ResourceLocation, HashSet<DataCondition>> conditions;
+
     // Sub-provider instance constructor
-    public RecipeGenerator(CompletableFuture<HolderLookup.Provider> registries, PackOutput output) {
+    public IBRecipeProvider(CompletableFuture<HolderLookup.Provider> registries, PackOutput output) {
         super(output, registries);
+        this.recipePathProvider = output.createRegistryElementsPathProvider(Registries.RECIPE);
+        this.advancementPathProvider = output.createRegistryElementsPathProvider(Registries.ADVANCEMENT);
+        this.conditions = new HashMap<>();
+    }
+
+    @Override
+    public @NotNull CompletableFuture<?> run(CachedOutput cachedOutput, HolderLookup.Provider provider) {
+        final List<CompletableFuture<?>> futures = new ArrayList<>();
+        this.buildRecipes(new IBRecipeOutput(conditions, futures, this.recipePathProvider, this.advancementPathProvider, cachedOutput, provider));
+        return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
     }
 
     @Override
     public void buildRecipes(RecipeOutput recipes) {
+        if (!(recipes instanceof IBRecipeOutput ibRecipeOutput)) throw new RuntimeException("Wrong instance of RecipeOutput detected!");
         // Basic Small / Large Buttons
+        SmallLargeGenerator smallLargeGenerator = new SmallLargeGenerator(ibRecipeOutput);
         for (var entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) { // Does NOT include copper buttons because gay
-            ResourceLocation key = entry.getKey();
-            if (key.getPath().equals("netherite")) continue;
-
-            IBRegistryUtils.LargeVariantSupplier<? extends Block> value = entry.getValue();
-
-            String id = value.getSmall().getDescriptionId();
-
-            // I WILL use a pattern matching switch statement because it is COOL
-            Function<String, String> group = infix -> switch (id) {
-                case String s when s.contains("concrete_powder") -> "concrete_powder" + infix + "_buttons";
-                default -> null;
-            };
-
-            boolean yearnsToBeANugget = false;
-            if (key.getPath().equals("dripstone")) key.withPath("dripstone_block"); // Fuck you Mojang
-            if (key.getPath().equals("prismarine_brick")) key.withPath("prismarine_bricks"); // Fuck you Lars
-
-            if (Set.of("gold", "iron", "diamond", "emerald").contains(key.getPath())) { // Materials
-                if (Set.of("gold", "iron").contains(key.getPath())) key.withPath(key.getPath() + "_ingot");
-
-                yearnsToBeANugget = true; // All materials for consistency
-            }
-
-            Item materialItem = IBRegistryUtils.getItemByID(key.getNamespace(), key.getPath());
-
-            if (!yearnsToBeANugget) {
-                smallLargeButton(recipes, value, materialItem, "", null);
-            } else {
-                convertingRecipe(recipes, materialItem, value.getSmall(), false, 2, "", group.apply(""));
-                largeButton(recipes, value, materialItem, "", group.apply("_large"));
-            }
+            smallLargeGenerator.generate(entry.getValue());
         }
 
         // Vanilla Large variants
@@ -121,9 +110,9 @@ public class RecipeGenerator extends RecipeProvider {
         }
 
         // Secret Buttons
+        SecretButtonGenerator secretButtonGenerator = new SecretButtonGenerator(ibRecipeOutput);
         for (var entry : IBBlocks.SECRET_BUTTONS.entrySet()) {
-            Block originalBlock = IBRegistryUtils.getBlockByID(entry.getKey().getNamespace(), entry.getKey().getPath());
-            convertingRecipe(recipes, originalBlock, entry.getValue().get(), false, 1, "", "secret_buttons");
+            secretButtonGenerator.generate(entry.getValue().get());
         }
 
         // Nether's Delight recipes

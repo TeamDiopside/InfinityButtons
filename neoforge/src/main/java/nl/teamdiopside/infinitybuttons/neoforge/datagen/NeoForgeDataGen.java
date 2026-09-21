@@ -9,8 +9,8 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 import nl.teamdiopside.infinitybuttons.datagen.BlockTagGenerator;
 import nl.teamdiopside.infinitybuttons.datagen.ItemTagGenerator;
 import nl.teamdiopside.infinitybuttons.datagen.LootTableGenerator;
-import nl.teamdiopside.infinitybuttons.datagen.RecipeGenerator;
 import nl.teamdiopside.infinitybuttons.datagen.modelstate.ModelAndStateProvider;
+import nl.teamdiopside.infinitybuttons.datagen.recipe.IBRecipeProvider;
 
 import java.util.Collections;
 import java.util.List;
@@ -28,7 +28,7 @@ public class NeoForgeDataGen {
             generator.addProvider(true, blockTags);
             generator.addProvider(true, new ItemTagGenerator(output, registries, blockTags.contentsGetter()));
 
-            generator.addProvider(true, new RecipeGenerator(registries, output));
+            generator.addProvider(true, new IBRecipeProvider(registries, output));
 
             generator.addProvider(true, new LootTableProvider(
                     output,
