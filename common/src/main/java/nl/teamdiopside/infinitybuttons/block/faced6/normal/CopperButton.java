@@ -146,7 +146,7 @@ public class CopperButton extends NormalButton implements WeatheringButton {
     }
 
     @Override
-    protected int getPressTicks() {
+    protected int getPressTicks(Level level, BlockPos blockPos) {
         return PRESS_TICKS;
     }
 

@@ -14,6 +14,8 @@ public final class InfinityButtons {
         IBSounds.register();
         IBBlocks.register();
         IBItems.register();
+        IBBlockEntities.register();
+        IBMenus.register();
 
         IBModdedBlocks.register();
         IBModdedItems.register();

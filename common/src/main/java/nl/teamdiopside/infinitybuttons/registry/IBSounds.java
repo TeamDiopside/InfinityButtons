@@ -1,10 +1,9 @@
 package nl.teamdiopside.infinitybuttons.registry;
 
 import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import nl.teamdiopside.diopside.registry.SoundEventEntryBuilder;
-
-import net.minecraft.resources.ResourceLocation;
 import nl.teamdiopside.infinitybuttons.InfinityButtons;
 
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
@@ -18,6 +17,7 @@ public class IBSounds {
     public static RegistrySupplier<SoundEvent> DOORBELL = registerSoundEvent("block.doorbell.doorbell");
     public static RegistrySupplier<SoundEvent> CONSOLE_BEEP = registerSoundEvent("block.console_button.beep");
     public static RegistrySupplier<SoundEvent> CONSOLE_UNBEEP = registerSoundEvent("block.console_button.unbeep");
+    public static RegistrySupplier<SoundEvent> CONSOLE_ERROR = registerSoundEvent("block.console_button.error");
     public static RegistrySupplier<SoundEvent> SILENT = registerSoundEvent("block.silent");
 
     private static RegistrySupplier<SoundEvent> registerSoundEvent(String name) {

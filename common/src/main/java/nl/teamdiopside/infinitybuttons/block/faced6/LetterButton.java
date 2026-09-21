@@ -1,5 +1,7 @@
 package nl.teamdiopside.infinitybuttons.block.faced6;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -14,8 +16,11 @@ public class LetterButton extends ButtonFaced6 {
     private static final VoxelShape SHAPE_PRESSED = Block.box(4, 4, 15, 12, 12, 16);
     private static final VoxelShape SHAPE_UNPRESSED = Block.box(4, 4, 14, 12, 12, 16);
 
+    protected final boolean isLever;
+
     public LetterButton(Properties properties, boolean isLever) {
-        super(BlockSetType.STONE, 30, properties, SHAPE_PRESSED, SHAPE_UNPRESSED, isLever);
+        super(BlockSetType.STONE, 30, properties, SHAPE_PRESSED, SHAPE_UNPRESSED);
+        this.isLever = isLever;
 
         this.registerDefaultState(this.defaultBlockState()
                 .setValue(CHARACTER, LetterButtonState.NONE)
@@ -23,7 +28,12 @@ public class LetterButton extends ButtonFaced6 {
     }
 
     @Override
-    protected int getPressTicks() {
+    protected boolean isLever(Level level, BlockPos blockPos) {
+        return this.isLever;
+    }
+
+    @Override
+    protected int getPressTicks(Level level, BlockPos blockPos) {
         return 30;
     }
 

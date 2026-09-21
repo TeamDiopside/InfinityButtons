@@ -22,7 +22,7 @@ public class Doorbell extends ButtonFaced4 {
     public final boolean emitsPower;
 
     public Doorbell(Properties properties, boolean emitsPower) {
-        super(properties, PRESSED_SHAPE, FULL_SHAPE, false);
+        super(properties, PRESSED_SHAPE, FULL_SHAPE);
         this.emitsPower = emitsPower;
     }
 

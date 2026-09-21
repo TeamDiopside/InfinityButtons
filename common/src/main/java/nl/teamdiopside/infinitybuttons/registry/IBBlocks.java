@@ -26,10 +26,10 @@ import nl.teamdiopside.infinitybuttons.block.faced4.Doorbell;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.block.faced4.TorchButton;
-import nl.teamdiopside.infinitybuttons.block.faced6.ConsoleButton;
-import nl.teamdiopside.infinitybuttons.block.faced6.ConsoleButtonType;
 import nl.teamdiopside.infinitybuttons.block.faced6.LampButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.LetterButton;
+import nl.teamdiopside.infinitybuttons.block.faced6.console.ConsoleButton;
+import nl.teamdiopside.infinitybuttons.block.faced6.console.ConsoleButtonShape;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.*;
 import nl.teamdiopside.infinitybuttons.block.simple.LanternButton;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils.LargeVariantSupplier;
@@ -240,21 +240,23 @@ public class IBBlocks {
      * Console Buttons
      */
     public static final RegistrySupplier<ConsoleButton> SMALL_CONSOLE_BUTTON = INSTANCE.registerBlock("small_console_button", BlockEntryBuilder.ofBlock(properties ->
-            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonType.SMALL, false)), null);
-    public static final RegistrySupplier<ConsoleButton> SMALL_CONSOLE_LEVER = INSTANCE.registerBlock("small_console_lever", BlockEntryBuilder.ofBlock(properties ->
-            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonType.SMALL, true)), null);
+            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonShape.SMALL)), null);
     public static final RegistrySupplier<ConsoleButton> CONSOLE_BUTTON = INSTANCE.registerBlock("console_button", BlockEntryBuilder.ofBlock(properties ->
-            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonType.NORMAL, false)), null);
-    public static final RegistrySupplier<ConsoleButton> CONSOLE_LEVER = INSTANCE.registerBlock("console_lever", BlockEntryBuilder.ofBlock(properties ->
-            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonType.NORMAL, true)), null);
+            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonShape.NORMAL)), null);
     public static final RegistrySupplier<ConsoleButton> LARGE_CONSOLE_BUTTON = INSTANCE.registerBlock("large_console_button", BlockEntryBuilder.ofBlock(properties ->
-            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonType.LARGE, false)), null);
-    public static final RegistrySupplier<ConsoleButton> LARGE_CONSOLE_LEVER = INSTANCE.registerBlock("large_console_lever", BlockEntryBuilder.ofBlock(properties ->
-            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonType.LARGE, true)), null);
+            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonShape.LARGE)), null);
     public static final RegistrySupplier<ConsoleButton> BIG_CONSOLE_BUTTON = INSTANCE.registerBlock("big_console_button", BlockEntryBuilder.ofBlock(properties ->
-            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonType.LARGE, false)), null);
+            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonShape.LARGE)), null);
+
+    // These console buttons are only still registered for reverse compatibility reasons
+    public static final RegistrySupplier<ConsoleButton> SMALL_CONSOLE_LEVER = INSTANCE.registerBlock("small_console_lever", BlockEntryBuilder.ofBlock(properties ->
+            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonShape.SMALL)), null);
+    public static final RegistrySupplier<ConsoleButton> CONSOLE_LEVER = INSTANCE.registerBlock("console_lever", BlockEntryBuilder.ofBlock(properties ->
+            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonShape.NORMAL)), null);
+    public static final RegistrySupplier<ConsoleButton> LARGE_CONSOLE_LEVER = INSTANCE.registerBlock("large_console_lever", BlockEntryBuilder.ofBlock(properties ->
+            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonShape.LARGE)), null);
     public static final RegistrySupplier<ConsoleButton> BIG_CONSOLE_LEVER = INSTANCE.registerBlock("big_console_lever", BlockEntryBuilder.ofBlock(properties ->
-            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonType.LARGE, true)), null);
+            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonShape.LARGE)), null);
 
     /**
      * Doorbells

@@ -1,13 +1,16 @@
 package nl.teamdiopside.infinitybuttons.fabric.client;
 
+import dev.architectury.registry.menu.MenuRegistry;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.minecraft.client.renderer.RenderType;
 import nl.teamdiopside.infinitybuttons.block.emergency.SafeEmergencyButton;
+import nl.teamdiopside.infinitybuttons.gui.ConsoleButtonGUI;
 import nl.teamdiopside.infinitybuttons.particle.DiamondSparkleParticle;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
+import nl.teamdiopside.infinitybuttons.registry.IBMenus;
 import nl.teamdiopside.infinitybuttons.registry.IBParticles;
 
 public final class InfinityButtonsFabricClient implements ClientModInitializer {
@@ -20,6 +23,8 @@ public final class InfinityButtonsFabricClient implements ClientModInitializer {
         );
 
         setRenderMaps();
+
+        MenuRegistry.registerScreenFactory(IBMenus.CONSOLE_INVENTORY.get(), ConsoleButtonGUI::new);
     }
 
     public void setRenderMaps() {

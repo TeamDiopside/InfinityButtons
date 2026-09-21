@@ -30,18 +30,24 @@ public class TorchButton extends ButtonFaced4 implements JadeCamouflaged {
     protected final @Nullable ParticleOptions particle;
     public final boolean isWall;
     protected final ResourceLocation camouflage;
+    protected final boolean isLever;
 
     public TorchButton(Properties properties, @Nullable ParticleOptions particle, boolean isLever, boolean isWall, ResourceLocation camouflage) {
         super(
                 properties,
                 isWall ? WALL_TORCH_SHAPE : TORCH_SHAPE,
-                isWall ? WALL_TORCH_SHAPE : TORCH_SHAPE,
-                isLever
+                isWall ? WALL_TORCH_SHAPE : TORCH_SHAPE
         );
 
         this.particle = particle;
         this.isWall = isWall;
         this.camouflage = camouflage;
+        this.isLever = isLever;
+    }
+
+    @Override
+    protected boolean isLever(Level level, BlockPos blockPos) {
+        return this.isLever;
     }
 
 
