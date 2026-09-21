@@ -7,8 +7,8 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import nl.teamdiopside.infinitybuttons.datagen.BlockTagGenerator;
 import nl.teamdiopside.infinitybuttons.datagen.ItemTagGenerator;
 import nl.teamdiopside.infinitybuttons.datagen.LootTableGenerator;
-import nl.teamdiopside.infinitybuttons.datagen.RecipeGenerator;
 import nl.teamdiopside.infinitybuttons.datagen.modelstate.ModelAndStateProvider;
+import nl.teamdiopside.infinitybuttons.datagen.recipe.IBRecipeProvider;
 
 import java.util.Collections;
 import java.util.List;
@@ -22,7 +22,7 @@ public class FabricDataGen implements DataGeneratorEntrypoint {
         BlockTagGenerator blockTags = pack.addProvider(BlockTagGenerator::new);
         pack.addProvider((output, registries) -> new ItemTagGenerator(output, registries, blockTags.contentsGetter()));
 
-        pack.addProvider((output, registries) -> new RecipeGenerator(registries, output));
+        pack.addProvider((output, registries) -> new IBRecipeProvider(registries, output));
 
         pack.addProvider((output, registries) -> new LootTableProvider(
                 output,
