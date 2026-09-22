@@ -44,9 +44,9 @@ public class CopperButtonGenerator extends SmallLargeGenerator {
                     largeButton(output, buttons, Items.COPPER_BLOCK, "", group.apply("_large"));
 
                     simpleShapelessRecipe(output, Items.COPPER_BLOCK, buttons.getSmall(), 1, "_honey", group.apply(""),
-                            IBBlocks.COPPER_BUTTONS.get(CopperButtonType.NORMAL, weatherState).getSmall(), Items.HONEY_BOTTLE);
+                            IBBlocks.COPPER_BUTTONS.get(CopperButtonType.WAXED, weatherState).getSmall(), Items.HONEY_BOTTLE);
                     simpleShapelessRecipe(output, Items.COPPER_BLOCK, buttons.getLarge(), 1, "_honey", group.apply("_large"),
-                            IBBlocks.COPPER_BUTTONS.get(CopperButtonType.NORMAL, weatherState).getLarge(), Items.HONEY_BOTTLE);
+                            IBBlocks.COPPER_BUTTONS.get(CopperButtonType.WAXED, weatherState).getLarge(), Items.HONEY_BOTTLE);
                 }
             }
         }
