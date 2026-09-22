@@ -27,10 +27,10 @@ public class ConsoleButtonGUI extends AbstractContainerScreen<PlainInventoryMenu
     private static final int TERMINAL_INPUT_COLOR = 0x2dcf4f;
     private static final int TERMINAL_ERROR_COLOR = 0xbb4967;
 
-    private static final Component LEVER_LABEL = Component.literal("Act as lever:");
-    private static final Component KEYCARD_LABEL = Component.literal("Keycard item:");
-    private static final Component DURATION_LABEL = Component.literal("Button duration:");
-    private static final Component INFO_LABEL = Component.literal("num or random(min, max)");
+    private static final Component LEVER_LABEL = Component.translatable("infinitybuttons.gui.console_button.lever_label");
+    private static final Component KEYCARD_LABEL = Component.translatable("infinitybuttons.gui.console_button.keycard_label");
+    private static final Component DURATION_LABEL = Component.translatable("infinitybuttons.gui.console_button.duration_label");
+    private static final Component INFO_LABEL = Component.translatable("infinitybuttons.gui.console_button.duration_info");
 
     private EditBox leverInput;
     private EditBox pressDurationInput;
@@ -46,13 +46,14 @@ public class ConsoleButtonGUI extends AbstractContainerScreen<PlainInventoryMenu
     protected void init() {
         super.init();
 
-        this.leverInput = new EditBox(this.font, this.leftPos + 24, this.topPos + 27, 110, 10, Component.literal("Act as lever"));
+        this.leverInput = new EditBox(this.font, this.leftPos + 24, this.topPos + 27, 110, 10, LEVER_LABEL);
         this.leverInput.setBordered(false);
         this.leverInput.setTextColor(TERMINAL_INPUT_COLOR);
         this.leverInput.setValue("false");
         this.addRenderableWidget(this.leverInput);
 
-        this.pressDurationInput = new EditBox(this.font, this.leftPos + 24, this.topPos + 53, 110, 10, Component.literal("Press duration"));
+        this.pressDurationInput = new EditBox(this.font, this.leftPos + 24, this.topPos + 53, 110, 10,
+                Component.translatable("infinitybuttons.gui.console_button.duration_narration"));
         this.pressDurationInput.setBordered(false);
         this.pressDurationInput.setTextColor(TERMINAL_INPUT_COLOR);
         this.pressDurationInput.setValue("40");
