@@ -381,6 +381,12 @@
   "infinitybuttons.tooltip.secret_button": "Block-camouflaged button that can only be pressed from the front side",
   "infinitybuttons.tooltip.console_button": "Can be configured with various settings and a keycard item",
 
+  "infinitybuttons.gui.console_button.lever_label": "Act as lever:",
+  "infinitybuttons.gui.console_button.keycard_label": "Keycard item:",
+  "infinitybuttons.gui.console_button.duration_label": "Button duration:",
+  "infinitybuttons.gui.console_button.duration_info": "num or random(min, max)",
+  "infinitybuttons.gui.console_button.duration_narration": "Press duration",
+
   "infinitybuttons.actionbar.closed_safety_button": "Sneak to open and close",
   "infinitybuttons.actionbar.jammed_button": "Oww oof! Too heavy!",
   "infinitybuttons.actionbar.console_button": "You need the right keycard for this button!",
