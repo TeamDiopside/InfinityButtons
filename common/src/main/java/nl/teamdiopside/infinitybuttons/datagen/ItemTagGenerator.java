@@ -201,13 +201,9 @@ public class ItemTagGenerator extends ItemTagsProvider {
 
         this.tag(CONSOLE_BUTTONS)
                 .add(IBBlocks.SMALL_CONSOLE_BUTTON.get().asItem())
-                .add(IBBlocks.SMALL_CONSOLE_LEVER.get().asItem())
                 .add(IBBlocks.CONSOLE_BUTTON.get().asItem())
-                .add(IBBlocks.CONSOLE_LEVER.get().asItem())
                 .add(IBBlocks.LARGE_CONSOLE_BUTTON.get().asItem())
-                .add(IBBlocks.LARGE_CONSOLE_LEVER.get().asItem())
-                .add(IBBlocks.BIG_CONSOLE_BUTTON.get().asItem())
-                .add(IBBlocks.BIG_CONSOLE_LEVER.get().asItem());
+                .add(IBBlocks.BIG_CONSOLE_BUTTON.get().asItem());
 
         this.tag(LANTERN_BUTTONS)
                 .add(IBBlocks.LANTERN_BUTTON.get().asItem())

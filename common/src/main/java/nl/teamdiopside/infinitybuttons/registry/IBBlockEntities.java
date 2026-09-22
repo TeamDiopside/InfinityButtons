@@ -15,13 +15,9 @@ public class IBBlockEntities {
     public static final RegistrySupplier<BlockEntityType<ConsoleButtonBlockEntity>> CONSOLE_BUTTON = BLOCK_ENTITIES.register("console_button",
             () -> BlockEntityType.Builder.of(ConsoleButtonBlockEntity::new,
                     IBBlocks.CONSOLE_BUTTON.get(),
-                    IBBlocks.CONSOLE_LEVER.get(),
                     IBBlocks.SMALL_CONSOLE_BUTTON.get(),
-                    IBBlocks.SMALL_CONSOLE_LEVER.get(),
                     IBBlocks.LARGE_CONSOLE_BUTTON.get(),
-                    IBBlocks.LARGE_CONSOLE_LEVER.get(),
-                    IBBlocks.BIG_CONSOLE_BUTTON.get(),
-                    IBBlocks.BIG_CONSOLE_LEVER.get()
+                    IBBlocks.BIG_CONSOLE_BUTTON.get()
             ).build(null));
 
     public static void register() {

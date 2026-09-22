@@ -208,13 +208,9 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
 
         this.tag(CONSOLE_BUTTONS)
                 .add(IBBlocks.SMALL_CONSOLE_BUTTON.get())
-                .add(IBBlocks.SMALL_CONSOLE_LEVER.get())
                 .add(IBBlocks.CONSOLE_BUTTON.get())
-                .add(IBBlocks.CONSOLE_LEVER.get())
                 .add(IBBlocks.LARGE_CONSOLE_BUTTON.get())
-                .add(IBBlocks.LARGE_CONSOLE_LEVER.get())
-                .add(IBBlocks.BIG_CONSOLE_BUTTON.get())
-                .add(IBBlocks.BIG_CONSOLE_LEVER.get());
+                .add(IBBlocks.BIG_CONSOLE_BUTTON.get());
 
         this.tag(LANTERN_BUTTONS)
                 .add(IBBlocks.LANTERN_BUTTON.get())
@@ -248,13 +244,9 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
                 .add(IBBlocks.SOUL_LANTERN_BUTTON.get())
                 .add(IBBlocks.SOUL_LANTERN_LEVER.get())
                 .add(IBBlocks.SMALL_CONSOLE_BUTTON.get())
-                .add(IBBlocks.SMALL_CONSOLE_LEVER.get())
                 .add(IBBlocks.CONSOLE_BUTTON.get())
-                .add(IBBlocks.CONSOLE_LEVER.get())
                 .add(IBBlocks.LARGE_CONSOLE_BUTTON.get())
-                .add(IBBlocks.LARGE_CONSOLE_LEVER.get())
-                .add(IBBlocks.BIG_CONSOLE_BUTTON.get())
-                .add(IBBlocks.BIG_CONSOLE_LEVER.get());
+                .add(IBBlocks.BIG_CONSOLE_BUTTON.get());
 
         for (boolean bool : Set.of(true, false)) {
             this.tag(MINEABLE_PICKAXE)
