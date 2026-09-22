@@ -37,19 +37,6 @@ public class ConsoleButtonBlockEntity extends BlockEntity {
         return (int) Math.floor(Math.random() * (maxPressTicks - minPressTicks) + minPressTicks);
     }
 
-    public int getMinPressTicks() {
-        return this.minPressTicks;
-    }
-
-    public int getMaxPressTicks() {
-        return this.maxPressTicks;
-    }
-
-    @Nullable
-    public ItemStack getKeyItem() {
-        return this.keyItem;
-    }
-
     public boolean validatePlayerItem(Player player) {
         if (keyItem == null) return true;
 

@@ -7,7 +7,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import nl.teamdiopside.infinitybuttons.registry.IBMenus;
 import org.jetbrains.annotations.NotNull;
 
@@ -22,25 +21,15 @@ public class PlainInventoryMenu extends AbstractContainerMenu {
     private static final int MAIN_SLOT_COUNT = ROWS * COLS;
 
     private final BlockPos pos;
-    private final boolean initialLever;
-    private final int initialMinTicks;
-    private final int initialMaxTicks;
-    private final ItemStack initialKeyItem;
 
     public PlainInventoryMenu(int containerId, Inventory playerInventory, FriendlyByteBuf buf) {
-        this(containerId, playerInventory, buf.readBlockPos(), buf.readBoolean(), buf.readVarInt(), buf.readVarInt(),
-                ItemStack.parseOptional(playerInventory.player.level().registryAccess(), buf.readNbt()));
+        this(containerId, playerInventory, buf.readBlockPos());
     }
 
-    public PlainInventoryMenu(int containerId, Inventory playerInventory, BlockPos pos,
-                              boolean initialLever, int initialMinTicks, int initialMaxTicks, ItemStack initialKeyItem) {
+    public PlainInventoryMenu(int containerId, Inventory playerInventory, BlockPos pos) {
         super(IBMenus.CONSOLE_INVENTORY.get(), containerId);
 
         this.pos = pos;
-        this.initialLever = initialLever;
-        this.initialMinTicks = initialMinTicks;
-        this.initialMaxTicks = initialMaxTicks;
-        this.initialKeyItem = initialKeyItem.is(Items.AIR) ? ItemStack.EMPTY : initialKeyItem;
 
         for (int row = 0; row < ROWS; row++) {
             for (int col = 0; col < COLS; col++) {
@@ -82,21 +71,5 @@ public class PlainInventoryMenu extends AbstractContainerMenu {
 
     public BlockPos getPos() {
         return this.pos;
-    }
-
-    public boolean isInitialLever() {
-        return this.initialLever;
-    }
-
-    public int getInitialMinTicks() {
-        return this.initialMinTicks;
-    }
-
-    public int getInitialMaxTicks() {
-        return this.initialMaxTicks;
-    }
-
-    public ItemStack getInitialKeyItem() {
-        return this.initialKeyItem;
     }
 }
