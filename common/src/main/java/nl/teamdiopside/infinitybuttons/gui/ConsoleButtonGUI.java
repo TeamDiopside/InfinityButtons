@@ -176,12 +176,20 @@ public class ConsoleButtonGUI extends AbstractContainerScreen<PlainInventoryMenu
 
         try {
             int fixed = Integer.parseInt(trimmed);
+
+            if (fixed < 1) return null;
+
             return new Integer[] { fixed, fixed };
         } catch (NumberFormatException ignored) {
             Matcher matcher = PRESS_DURATION_RANGE.matcher(trimmed);
             if (!matcher.matches()) return null;
 
-            return new Integer[] { Integer.parseInt(matcher.group(1)), Integer.parseInt(matcher.group(2)) };
+            int min = Integer.parseInt(matcher.group(1));
+            int max = Integer.parseInt(matcher.group(2));
+
+            if (min < 1 || max < 1) return null;
+
+            return new Integer[] { min, max };
         }
     }
 }
