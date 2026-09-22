@@ -118,7 +118,7 @@ public class SmallLargeGenerator extends RecipeGenerator {
 
     public void generateSmallLarge(IBRecipeOutput output, Map.Entry<ResourceLocation, IBRegistryUtils.LargeVariantSupplier<? extends Block>> entry) {
         ResourceLocation textureMaterial = entry.getKey();
-        if (textureMaterial.getPath().equals("netherite")) return;
+        if (textureMaterial.getPath().equals("netherite_block")) return;
         IBRegistryUtils.LargeVariantSupplier<? extends Block> supplier = entry.getValue();
         String id = supplier.getSmall().getDescriptionId();
 
