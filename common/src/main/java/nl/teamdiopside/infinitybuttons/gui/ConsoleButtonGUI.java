@@ -55,7 +55,7 @@ public class ConsoleButtonGUI extends AbstractContainerScreen<PlainInventoryMenu
         this.pressDurationInput = new EditBox(this.font, this.leftPos + 24, this.topPos + 53, 110, 10, Component.literal("Press duration"));
         this.pressDurationInput.setBordered(false);
         this.pressDurationInput.setTextColor(TERMINAL_INPUT_COLOR);
-        this.pressDurationInput.setValue("20");
+        this.pressDurationInput.setValue("40");
         this.addRenderableWidget(this.pressDurationInput);
 
         this.itemSlot = new ItemPickerSlot(this.leftPos + 141, this.topPos + 27, this.menu::getCarried);
@@ -163,14 +163,14 @@ public class ConsoleButtonGUI extends AbstractContainerScreen<PlainInventoryMenu
         Integer[] durations = this.parsePressDurations();
 
         if (lever == null) lever = false;
-        if (durations == null) durations = new Integer[] { 20, 20 };
+        if (durations == null) durations = new Integer[] { 40, 40 };
 
         IBNetworking.sendSetConsoleButton(this.menu.getPos(), lever, durations[0], durations[1], this.getKeycardItem());
 
         super.onClose();
     }
 
-    // Accepts a plain tick count ("20") or a "range(min, max)" spread; null if neither parses
+    // Accepts an int "40" or "random(int, int)"
     public static Integer[] parsePressDuration(String value) {
         String trimmed = value.trim();
 

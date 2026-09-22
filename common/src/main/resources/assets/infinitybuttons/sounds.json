@@ -30,21 +30,21 @@
   "block.console_button.beep": {
     "category": "block",
     "sounds": [
-      "infinitybuttons:block/console"
+      "infinitybuttons:block/console_on"
     ],
     "subtitle": "block.console_button.beep"
   },
   "block.console_button.unbeep": {
     "category": "block",
     "sounds": [
-      "infinitybuttons:block/console_negative"
+      "infinitybuttons:block/console_off"
     ],
     "subtitle": "block.console_button.beep"
   },
   "block.console_button.error": {
     "category": "block",
     "sounds": [
-      "infinitybuttons:block/console_negative"
+      "infinitybuttons:block/console_error"
     ],
     "subtitle": "block.console_button.error"
   }
