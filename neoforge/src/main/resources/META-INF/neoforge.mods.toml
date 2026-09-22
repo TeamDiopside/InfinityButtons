@@ -41,5 +41,5 @@ versionRange = "[1.0.0,)"
 ordering = "NONE"
 side = "BOTH"
 
-#[[mixins]]
-#config = "infinitybuttons.mixins.json"
+[[mixins]]
+config = "infinitybuttons.mixins.json"
