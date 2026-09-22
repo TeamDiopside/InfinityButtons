@@ -1,6 +1,7 @@
 package nl.teamdiopside.infinitybuttons.datagen.recipe;
 
 import net.minecraft.advancements.Criterion;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -11,9 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
 import nl.teamdiopside.infinitybuttons.datagen.conditions.DataCondition;
-import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
@@ -23,15 +22,12 @@ import static net.minecraft.data.recipes.RecipeBuilder.getDefaultRecipeId;
 
 public abstract class RecipeGenerator {
 
-    protected final IBRecipeOutput output;
+    public abstract void generate(IBRecipeOutput output);
 
-    protected RecipeGenerator(IBRecipeOutput output) {
-        this.output = output;
-    }
-
-    public void addConditions(Block block, DataCondition... conditions) {
-        IBRegistryUtils.BlockInfo info = IBRegistryUtils.BlockInfo.from(block);
-        this.output.addConditions(ResourceLocation.fromNamespaceAndPath(info.namespace(), info.id()), conditions);
+    public void addConditions(IBRecipeOutput output, ItemLike itemLike, DataCondition... conditions) {
+        Item item = itemLike.asItem();
+        ResourceLocation location = BuiltInRegistries.ITEM.getKey(item);
+        output.addConditions(location, conditions);
     }
 
     /**
@@ -50,6 +46,17 @@ public abstract class RecipeGenerator {
      */
     protected void convertingRecipe(RecipeOutput recipes, TagKey<Item> input, ItemLike output, boolean withLever, int outputCount, String suffix, @Nullable String group) {
         simpleShapelessRecipe(recipes, input, output, outputCount, suffix, group, Ingredient.of(input), Ingredient.of(withLever ? Items.LEVER : Items.STONE_BUTTON));
+    }
+
+    /**
+     * Generate simple recipes to convert an item into a Lever and Button variant
+     * @param lever The output when combining with a Lever
+     * @param button The output when combining with a Button
+     * @param outputCount How many of this item this recipe grants
+     */
+    protected void convertingRecipes(RecipeOutput recipes, ItemLike input, ItemLike button, ItemLike lever, int outputCount, String suffix, @Nullable String group) {
+        simpleShapelessRecipe(recipes, input, lever, outputCount, suffix, group, input, Items.LEVER);
+        simpleShapelessRecipe(recipes, input, button, outputCount, suffix, group, input, Items.STONE_BUTTON);
     }
 
     /**

@@ -20,10 +20,7 @@ import nl.teamdiopside.infinitybuttons.datagen.conditions.DataCondition;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 
 public class IBRecipeOutput implements RecipeOutput {
@@ -38,9 +35,9 @@ public class IBRecipeOutput implements RecipeOutput {
     private final CachedOutput cachedOutput;
     private final HolderLookup.Provider provider;
 
-    public IBRecipeOutput(final Map<ResourceLocation, HashSet<DataCondition>> conditions, final List<CompletableFuture<?>> futures, final PackOutput.PathProvider recipePathProvider, final PackOutput.PathProvider advancementPathProvider, final CachedOutput cachedOutput, final HolderLookup.Provider provider) {
+    public IBRecipeOutput(final List<CompletableFuture<?>> futures, final PackOutput.PathProvider recipePathProvider, final PackOutput.PathProvider advancementPathProvider, final CachedOutput cachedOutput, final HolderLookup.Provider provider) {
         this.set = new HashSet<>();
-        this.conditions = conditions;
+        this.conditions = new HashMap<>();
         this.futures = futures;
         this.recipePathProvider = recipePathProvider;
         this.advancementPathProvider = advancementPathProvider;
