@@ -1,6 +1,7 @@
 package nl.teamdiopside.infinitybuttons.datagen;
 
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -10,6 +11,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
+import nl.teamdiopside.infinitybuttons.compat.blocks.AtmosphericBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 
@@ -54,6 +56,7 @@ public class ItemTagGenerator extends ItemTagsProvider {
     public static final TagKey<Item> NON_FLAMMABLE_WOOD = edit("non_flammable_wood");
     public static final TagKey<Item> PIGLIN_REPELLENTS = edit("piglin_repellents");
     public static final TagKey<Item> STONE_BRICKS = edit("stone_bricks");
+    public static final TagKey<Item> STONE_BUTTONS = edit("stone_buttons");
 
     static TagKey<Item> edit(String name) {
         return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("minecraft", name));
@@ -94,7 +97,9 @@ public class ItemTagGenerator extends ItemTagsProvider {
         this.tag(LARGE_BUTTONS)
                 .addTag(WOODEN_LARGE_BUTTONS)
                 .addTag(COPPER_LARGE_BUTTONS)
-                .addTag(CONCRETE_POWDER_LARGE_BUTTONS);
+                .addTag(CONCRETE_POWDER_LARGE_BUTTONS)
+                .addOptional(BuiltInRegistries.BLOCK.getKey(AtmosphericBlocks.ARID_SAND_BUTTON.getLarge()))
+                .addOptional(BuiltInRegistries.BLOCK.getKey(AtmosphericBlocks.RED_ARID_SAND_BUTTON.getLarge()));
 
         for (var entry : IBBlocks.EMERGENCY_BUTTONS.values()) {
             this.tag(EMERGENCY_BUTTONS)
@@ -222,20 +227,15 @@ public class ItemTagGenerator extends ItemTagsProvider {
     protected void generateVanillaTags() {
         this.tag(BUTTONS)
                 .addTag(COPPER_BUTTONS)
-                .addTag(CONCRETE_POWDER_BUTTONS);
+                .addTag(CONCRETE_POWDER_BUTTONS)
+                .addTag(STONE_BUTTONS)
+                .addOptional(BuiltInRegistries.BLOCK.getKey(AtmosphericBlocks.ARID_SAND_BUTTON.getSmall()))
+                .addOptional(BuiltInRegistries.BLOCK.getKey(AtmosphericBlocks.RED_ARID_SAND_BUTTON.getSmall()));
 
-        this.tag(BUTTONS)
-                .add(IBBlocks.DEEPSLATE_BUTTON.get(false).asItem())
-                .add(IBBlocks.GRANITE_BUTTON.get(false).asItem())
-                .add(IBBlocks.DIORITE_BUTTON.get(false).asItem())
-                .add(IBBlocks.ANDESITE_BUTTON.get(false).asItem())
-                .add(IBBlocks.TUFF_BUTTON.get(false).asItem())
-                .add(IBBlocks.DRIPSTONE_BUTTON.get(false).asItem())
-                .add(IBBlocks.CALCITE_BUTTON.get(false).asItem());
-
-        for (var entry : IBBlocks.SMALL_LARGE_BUTTONS.values()) {
+        for (var entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) {
+            if (entry.getKey().getPath().contains("arid_sand")) continue;
             this.tag(BUTTONS)
-                    .add(entry.getSmall().asItem());
+                    .add(entry.getValue().getSmall().asItem());
         }
 
         this.tag(NON_FLAMMABLE_WOOD)
@@ -246,9 +246,7 @@ public class ItemTagGenerator extends ItemTagsProvider {
 
         this.tag(PIGLIN_REPELLENTS)
                 .add(IBBlocks.SOUL_TORCH_BUTTON.get().asItem())
-                .add(IBBlocks.SOUL_WALL_TORCH_BUTTON.get().asItem())
                 .add(IBBlocks.SOUL_TORCH_LEVER.get().asItem())
-                .add(IBBlocks.SOUL_WALL_TORCH_LEVER.get().asItem())
                 .add(IBBlocks.SOUL_LANTERN_BUTTON.get().asItem())
                 .add(IBBlocks.SOUL_LANTERN_LEVER.get().asItem());
 
@@ -257,6 +255,15 @@ public class ItemTagGenerator extends ItemTagsProvider {
                 .add(IBBlocks.MOSSY_STONE_BRICK_SECRET_BUTTON.get().asItem())
                 .add(IBBlocks.CRACKED_STONE_BRICK_SECRET_BUTTON.get().asItem())
                 .add(IBBlocks.CHISELED_STONE_BRICK_SECRET_BUTTON.get().asItem());
+
+        this.tag(STONE_BUTTONS)
+                .add(IBBlocks.DEEPSLATE_BUTTON.getSmall().asItem())
+                .add(IBBlocks.GRANITE_BUTTON.getSmall().asItem())
+                .add(IBBlocks.DIORITE_BUTTON.getSmall().asItem())
+                .add(IBBlocks.ANDESITE_BUTTON.getSmall().asItem())
+                .add(IBBlocks.TUFF_BUTTON.getSmall().asItem())
+                .add(IBBlocks.DRIPSTONE_BUTTON.getSmall().asItem())
+                .add(IBBlocks.CALCITE_BUTTON.getSmall().asItem());
     }
 
     protected void generateFriendsFoesTags() {

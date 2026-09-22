@@ -1,6 +1,7 @@
 package nl.teamdiopside.infinitybuttons.datagen;
 
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.VanillaBlockTagsProvider;
@@ -9,6 +10,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.Block;
 import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
+import nl.teamdiopside.infinitybuttons.compat.blocks.AtmosphericBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 
@@ -54,10 +56,13 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
     public static final TagKey<Block> MINEABLE_PICKAXE = edit("mineable/pickaxe");
     public static final TagKey<Block> MINEABLE_SHOVEL = edit("mineable/shovel");
     public static final TagKey<Block> BUTTONS = edit("buttons");
+    public static final TagKey<Block> ENCHANTMENT_POWER_PROVIDER = edit("enchantment_power_provider");
     public static final TagKey<Block> GUARDED_BY_PIGLINS = edit("guarded_by_piglins");
     public static final TagKey<Block> NON_FLAMMABLE_WOOD = edit("non_flammable_wood");
     public static final TagKey<Block> PIGLIN_REPELLENTS = edit("piglin_repellents");
     public static final TagKey<Block> STONE_BRICKS = edit("stone_bricks");
+    public static final TagKey<Block> STONE_BUTTONS = edit("stone_buttons");
+    public static final TagKey<Block> SWORD_EFFICIENT = edit("sword_efficient");
     public static final TagKey<Block> WALL_POST_OVERRIDE = edit("wall_post_override");
     public static final TagKey<Block> NEEDS_STONE_TOOL = edit("needs_stone_tool");
     public static final TagKey<Block> NEEDS_IRON_TOOL = edit("needs_iron_tool");
@@ -290,28 +295,26 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
 
         this.tag(BUTTONS)
                 .addTag(COPPER_BUTTONS)
-                .addTag(CONCRETE_POWDER_BUTTONS);
+                .addTag(CONCRETE_POWDER_BUTTONS)
+                .addTag(STONE_BUTTONS)
+                .addOptional(BuiltInRegistries.BLOCK.getKey(AtmosphericBlocks.ARID_SAND_BUTTON.getSmall()))
+                .addOptional(BuiltInRegistries.BLOCK.getKey(AtmosphericBlocks.RED_ARID_SAND_BUTTON.getSmall()));
 
-        this.tag(BUTTONS)
-                .add(IBBlocks.DEEPSLATE_BUTTON.get(false))
-                .add(IBBlocks.GRANITE_BUTTON.get(false))
-                .add(IBBlocks.DIORITE_BUTTON.get(false))
-                .add(IBBlocks.ANDESITE_BUTTON.get(false))
-                .add(IBBlocks.TUFF_BUTTON.get(false))
-                .add(IBBlocks.DRIPSTONE_BUTTON.get(false))
-                .add(IBBlocks.CALCITE_BUTTON.get(false));
-
-        for (var entry : IBBlocks.SMALL_LARGE_BUTTONS.values()) {
+        for (var entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) {
+            if (entry.getKey().getPath().contains("arid_sand")) continue;
             this.tag(BUTTONS)
-                    .add(entry.getSmall());
+                    .add(entry.getValue().getSmall());
 
             // Non-gravity buttons get pickaxed
-            if (!IBBlocks.ONE_USE_BUTTONS.containsValue(entry)) {
+            if (!IBBlocks.ONE_USE_BUTTONS.containsValue(entry.getValue())) {
                 this.tag(MINEABLE_PICKAXE)
-                        .add(entry.getSmall())
-                        .add(entry.getLarge());
+                        .add(entry.getValue().getSmall())
+                        .add(entry.getValue().getLarge());
             }
         }
+
+        this.tag(ENCHANTMENT_POWER_PROVIDER)
+                .addTag(BOOKSHELF_SECRET_BUTTONS);
 
         this.tag(GUARDED_BY_PIGLINS)
                 .add(IBBlocks.GOLD_BUTTON.get(false))
@@ -337,6 +340,19 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
                 .add(IBBlocks.CRACKED_STONE_BRICK_SECRET_BUTTON.get())
                 .add(IBBlocks.CHISELED_STONE_BRICK_SECRET_BUTTON.get());
 
+        this.tag(STONE_BUTTONS)
+                .add(IBBlocks.DEEPSLATE_BUTTON.getSmall())
+                .add(IBBlocks.GRANITE_BUTTON.getSmall())
+                .add(IBBlocks.DIORITE_BUTTON.getSmall())
+                .add(IBBlocks.ANDESITE_BUTTON.getSmall())
+                .add(IBBlocks.TUFF_BUTTON.getSmall())
+                .add(IBBlocks.DRIPSTONE_BUTTON.getSmall())
+                .add(IBBlocks.CALCITE_BUTTON.getSmall());
+
+        this.tag(SWORD_EFFICIENT)
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "powdery_torch_button"))
+                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "powdery_torch_lever"));
+
         this.tag(WALL_POST_OVERRIDE)
                 .add(IBBlocks.TORCH_BUTTON.get())
                 .add(IBBlocks.TORCH_LEVER.get())
@@ -344,8 +360,6 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
                 .add(IBBlocks.SOUL_TORCH_LEVER.get())
                 .add(IBBlocks.REDSTONE_TORCH_BUTTON.get())
                 .add(IBBlocks.REDSTONE_TORCH_LEVER.get())
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "propelplant_torch_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "propelplant_torch_lever"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "powdery_torch_button"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "powdery_torch_lever"));
 
