@@ -13,6 +13,9 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.NormalButton;
+import nl.teamdiopside.infinitybuttons.compat.blocks.AtmosphericBlocks;
+import nl.teamdiopside.infinitybuttons.datagen.conditions.ModLoaded;
+import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 import org.jetbrains.annotations.Nullable;
 
@@ -23,9 +26,6 @@ import java.util.function.Function;
 import static net.minecraft.data.recipes.RecipeBuilder.getDefaultRecipeId;
 
 public class SmallLargeGenerator extends RecipeGenerator {
-    protected SmallLargeGenerator(IBRecipeOutput output) {
-        super(output);
-    }
 
     /**
      * Generate a small and large button recipe: 1 material -> 4 small, 2 small -> 1 big
@@ -48,6 +48,14 @@ public class SmallLargeGenerator extends RecipeGenerator {
             builder.save(recipes);
         }
         largeButton(recipes, button.getSmall(), button.getLarge(), material, suffix, largeGroup);
+    }
+
+    /**
+     * Generate a large button recipe: 2 small -> 1 big
+     * @param material The material item that unlocks the recipe
+     */
+    protected void largeButton(RecipeOutput recipes, IBRegistryUtils.LargeVariantSupplier<? extends Block> button, ItemLike material, String suffix, @Nullable String group) {
+        largeButton(recipes, button.getSmall(), button.getLarge(), material, suffix, group);
     }
 
     /**
@@ -104,7 +112,11 @@ public class SmallLargeGenerator extends RecipeGenerator {
         };
     }
 
-    public void generate(Map.Entry<ResourceLocation, IBRegistryUtils.LargeVariantSupplier<? extends Block>> entry) {
+    private void addAtmosphericConditions(IBRecipeOutput output, ItemLike itemLike) {
+        addConditions(output, itemLike, new ModLoaded(AtmosphericBlocks.NAMESPACE));
+    }
+
+    public void generateSmallLarge(IBRecipeOutput output, Map.Entry<ResourceLocation, IBRegistryUtils.LargeVariantSupplier<? extends Block>> entry) {
         ResourceLocation textureMaterial = entry.getKey();
         if (textureMaterial.getPath().equals("netherite")) return;
         IBRegistryUtils.LargeVariantSupplier<? extends Block> supplier = entry.getValue();
@@ -119,6 +131,11 @@ public class SmallLargeGenerator extends RecipeGenerator {
 
         Item materialItem = IBRegistryUtils.getItemByID(textureMaterial.getNamespace(), textureMaterial.getPath());
 
+        if (textureMaterial.getPath().contains("arid_sand")) {
+            addAtmosphericConditions(output, entry.getValue().getSmall());
+            addAtmosphericConditions(output, entry.getValue().getLarge());
+        }
+
         if (materialTag == null) {
             // Create small button from just the material
             smallLargeButton(output, supplier, materialItem, "", null);
@@ -129,12 +146,22 @@ public class SmallLargeGenerator extends RecipeGenerator {
         }
     }
 
-    public void generateVanillaLargeVariant(BlockSetType vanillaType, NormalButton large) {
+    public void generateVanillaLargeVariant(IBRecipeOutput output, BlockSetType vanillaType, NormalButton large) {
         Item itemByID = IBRegistryUtils.getItemByID("minecraft", vanillaType.name() + "_button");
 
         boolean isWood = IBRegistryUtils.isWoodType(vanillaType.name());
         String group = isWood ? "wooden_large_buttons" : null;
 
         largeButton(output, itemByID, large.asItem(), large, "", group);
+    }
+
+    @Override
+    public void generate(IBRecipeOutput output) {
+        for (var entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) {
+            generateSmallLarge(output, entry);
+        }
+        for (var entry : IBBlocks.DEFAULT_LARGE_BUTTONS.entrySet()) {
+            generateVanillaLargeVariant(output, entry.getKey(), entry.getValue().get());
+        }
     }
 }
