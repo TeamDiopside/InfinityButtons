@@ -248,16 +248,6 @@ public class IBBlocks {
     public static final RegistrySupplier<ConsoleButton> BIG_CONSOLE_BUTTON = INSTANCE.registerBlock("big_console_button", BlockEntryBuilder.ofBlock(properties ->
             new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonShape.LARGE)), "console_button");
 
-    // These console buttons are only still registered for reverse compatibility reasons
-    public static final RegistrySupplier<ConsoleButton> SMALL_CONSOLE_LEVER = INSTANCE.registerBlock("small_console_lever", BlockEntryBuilder.ofBlock(properties ->
-            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonShape.SMALL)), "console_button");
-    public static final RegistrySupplier<ConsoleButton> CONSOLE_LEVER = INSTANCE.registerBlock("console_lever", BlockEntryBuilder.ofBlock(properties ->
-            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonShape.NORMAL)), "console_button");
-    public static final RegistrySupplier<ConsoleButton> LARGE_CONSOLE_LEVER = INSTANCE.registerBlock("large_console_lever", BlockEntryBuilder.ofBlock(properties ->
-            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonShape.LARGE)), "console_button");
-    public static final RegistrySupplier<ConsoleButton> BIG_CONSOLE_LEVER = INSTANCE.registerBlock("big_console_lever", BlockEntryBuilder.ofBlock(properties ->
-            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonShape.LARGE)), "console_button");
-
     /**
      * Doorbells
      */
