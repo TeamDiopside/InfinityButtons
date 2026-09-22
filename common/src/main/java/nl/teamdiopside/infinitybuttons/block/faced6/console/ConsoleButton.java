@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.SimpleMenuProvider;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -66,27 +67,19 @@ public class ConsoleButton extends ButtonFaced6 implements EntityBlock {
             return InteractionResult.CONSUME;
         }
 
-        if (!player.isShiftKeyDown()) return super.useWithoutItem(blockState, level, blockPos, player, blockHitResult);
+        return super.useWithoutItem(blockState, level, blockPos, player, blockHitResult);
+    }
 
-        if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
-            boolean isLever = entity != null && entity.isLever;
-            int minTicks = entity != null ? entity.getMinPressTicks() : 20;
-            int maxTicks = entity != null ? entity.getMaxPressTicks() : 20;
-            ItemStack keyItem = entity != null && entity.getKeyItem() != null ? entity.getKeyItem() : ItemStack.EMPTY;
+    @Override
+    public void setPlacedBy(Level level, BlockPos blockPos, BlockState blockState, @Nullable LivingEntity placer, ItemStack stack) {
+        super.setPlacedBy(level, blockPos, blockState, placer, stack);
 
-            MenuRegistry.openExtendedMenu(serverPlayer, new SimpleMenuProvider(
-                    (containerId, inv, p) -> new PlainInventoryMenu(containerId, inv, blockPos, isLever, minTicks, maxTicks, keyItem),
-                    Component.translatable("block.infinitybuttons.console_button")
-            ), buf -> {
-                buf.writeBlockPos(blockPos);
-                buf.writeBoolean(isLever);
-                buf.writeVarInt(minTicks);
-                buf.writeVarInt(maxTicks);
-                buf.writeNbt(keyItem.saveOptional(level.registryAccess()));
-            });
-        }
+        if (level.isClientSide || !(placer instanceof ServerPlayer serverPlayer)) return;
 
-        return InteractionResult.SUCCESS;
+        MenuRegistry.openExtendedMenu(serverPlayer, new SimpleMenuProvider(
+                (containerId, inv, p) -> new PlainInventoryMenu(containerId, inv, blockPos),
+                Component.translatable("block.infinitybuttons.console_button")
+        ), buf -> buf.writeBlockPos(blockPos));
     }
 
     @Nullable
