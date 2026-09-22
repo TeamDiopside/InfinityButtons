@@ -437,13 +437,9 @@ public class IBCreativeTabs {
         addBlock(output, IBBlocks.SOUL_LANTERN_LEVER.get());
 
         addBlock(output, IBBlocks.SMALL_CONSOLE_BUTTON.get());
-        addBlock(output, IBBlocks.SMALL_CONSOLE_LEVER.get());
         addBlock(output, IBBlocks.CONSOLE_BUTTON.get());
-        addBlock(output, IBBlocks.CONSOLE_LEVER.get());
         addBlock(output, IBBlocks.LARGE_CONSOLE_BUTTON.get());
-        addBlock(output, IBBlocks.LARGE_CONSOLE_LEVER.get());
         addBlock(output, IBBlocks.BIG_CONSOLE_BUTTON.get());
-        addBlock(output, IBBlocks.BIG_CONSOLE_LEVER.get());
     }
 
     /**
