@@ -412,7 +412,7 @@ public class IBBlocks {
     }
 
     protected static BlockBehaviour.Properties lanternProperties(BlockBehaviour.Properties properties, int light) {
-        return properties.lightLevel((p) -> light).sound(SoundType.LANTERN)
+        return BlockBehaviour.Properties.of().lightLevel((p) -> light).sound(SoundType.LANTERN)
                 .pushReaction(PushReaction.DESTROY).requiresCorrectToolForDrops().strength(3.5f);
     }
 
