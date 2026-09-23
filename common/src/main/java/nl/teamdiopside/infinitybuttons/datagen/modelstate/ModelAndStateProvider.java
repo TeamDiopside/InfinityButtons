@@ -109,7 +109,8 @@ public class ModelAndStateProvider implements DataProvider {
 
         @Override
         public void run() {
-            Set<String> CUSTOM_TEXTURE = Set.of("emerald", "gold", "iron", "prismarine_brick", "diamond", "netherite");
+            Set<String> CUSTOM_TEXTURE = Set.of("emerald_block", "gold_block", "iron_block", "prismarine_bricks", "diamond_block",
+                    "netherite_block", "polished_blackstone", "prismarine");
 
             for (Map.Entry<ResourceLocation, IBRegistryUtils.LargeVariantSupplier<? extends Block>> entry : IBBlocks.SMALL_LARGE_BUTTONS.entrySet()) {
                 String type = entry.getKey().getPath();
@@ -121,9 +122,10 @@ public class ModelAndStateProvider implements DataProvider {
 
                 boolean hasCustomTexture = CUSTOM_TEXTURE.contains(type);
 
+                String finalType = type;
                 Function<Boolean, ResourceLocation> texture = (isLarge) -> (
-                        hasCustomTexture ? ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/" + type + (isLarge ? "_large" : "") + "_button")
-                                         : ResourceLocation.fromNamespaceAndPath(entry.getKey().getNamespace(), "block/" + type)
+                        hasCustomTexture ? ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/" + finalType + (isLarge ? "_large" : "") + "_button")
+                                         : ResourceLocation.fromNamespaceAndPath(entry.getKey().getNamespace(), "block/" + finalType)
                 );
 
                 generateButton(smallName, texture.apply(false), false);
