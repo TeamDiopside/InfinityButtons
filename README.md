@@ -41,6 +41,7 @@ To use this mod (1.21.1+), you will need the following dependencies:
 
 - [Fabric API](https://modrinth.com/mod/fabric-api)
 - [Architectury API](https://modrinth.com/mod/architectury-api)
+- [YACL](https://modrinth.com/mod/yacl)
 
 For older versions:
 - [oωo lib](https://modrinth.com/mod/owo-lib) on Fabric (1.19-1.20.1)
