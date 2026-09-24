@@ -15,8 +15,6 @@ import org.lwjgl.glfw.GLFW;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-// Same 176x166 panel shape as vanilla's AnvilScreen, background baked with its own labels - see textures/gui/console.png
-// Real player-inventory Slots (ConsoleInventoryMenu) so items can be dragged/arranged like any other container GUI
 public class ConsoleButtonGUI extends AbstractContainerScreen<PlainInventoryMenu> {
     private static final ResourceLocation BACKGROUND = ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID,
             "textures/gui/console.png");
@@ -31,6 +29,7 @@ public class ConsoleButtonGUI extends AbstractContainerScreen<PlainInventoryMenu
     private static final Component KEYCARD_LABEL = Component.translatable("infinitybuttons.gui.console_button.keycard_label");
     private static final Component DURATION_LABEL = Component.translatable("infinitybuttons.gui.console_button.duration_label");
     private static final Component INFO_LABEL = Component.translatable("infinitybuttons.gui.console_button.duration_info");
+    private static final Component TICKS_UNIT = Component.translatable("infinitybuttons.gui.console_button.ticks_unit");
 
     private EditBox leverInput;
     private EditBox pressDurationInput;
@@ -83,6 +82,12 @@ public class ConsoleButtonGUI extends AbstractContainerScreen<PlainInventoryMenu
         drawLabelRight(guiGraphics, KEYCARD_LABEL, this.leftPos + 160, this.topPos + 16);
         drawLabel(guiGraphics, DURATION_LABEL, this.leftPos + 18, this.topPos + 42);
         drawLabel(guiGraphics, INFO_LABEL, this.leftPos + 26, this.topPos + 62);
+
+        int ticksInputWidth = Math.min(
+                this.font.width(this.pressDurationInput.getValue()),
+                this.pressDurationInput.getWidth()
+        );
+        drawLabel(guiGraphics, TICKS_UNIT, this.leftPos + 24 + ticksInputWidth, this.topPos + 53);
 
         this.renderTooltip(guiGraphics, mouseX, mouseY);
 

@@ -386,6 +386,7 @@
   "infinitybuttons.gui.console_button.duration_label": "Button duration:",
   "infinitybuttons.gui.console_button.duration_info": "num or random(min, max)",
   "infinitybuttons.gui.console_button.duration_narration": "Press duration",
+  "infinitybuttons.gui.console_button.ticks_unit": " ticks",
 
   "infinitybuttons.actionbar.closed_safety_button": "Sneak to open and close",
   "infinitybuttons.actionbar.jammed_button": "Oww oof! Too heavy!",

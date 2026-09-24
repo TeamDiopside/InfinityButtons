@@ -386,6 +386,7 @@
   "infinitybuttons.gui.console_button.duration_label": "Knopduur:",
   "infinitybuttons.gui.console_button.duration_info": "getal of random(min, max)",
   "infinitybuttons.gui.console_button.duration_narration": "Drukduur",
+  "infinitybuttons.gui.console_button.ticks_unit": " ticks",
 
   "infinitybuttons.actionbar.closed_safety_button": "Sluip om te openen en sluiten",
   "infinitybuttons.actionbar.jammed_button": "Auw oef! Te zwaar!",
