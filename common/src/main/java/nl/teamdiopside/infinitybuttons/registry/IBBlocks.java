@@ -394,7 +394,7 @@ public class IBBlocks {
     }
 
     protected static BlockBehaviour.Properties lampProperties(BlockBehaviour.Properties properties, int light) {
-        return properties.lightLevel(litBlockEmission(light)).sound(SoundType.GLASS).pushReaction(PushReaction.DESTROY);
+        return BlockBehaviour.Properties.of().lightLevel(litBlockEmission(light)).sound(SoundType.GLASS).pushReaction(PushReaction.DESTROY);
     }
 
     protected static BlockBehaviour.Properties torchProperties(BlockBehaviour.Properties properties, int light) {
