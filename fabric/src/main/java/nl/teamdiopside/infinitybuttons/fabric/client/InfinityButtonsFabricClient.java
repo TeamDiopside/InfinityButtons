@@ -51,13 +51,9 @@ public final class InfinityButtonsFabricClient implements ClientModInitializer {
 
         // Console buttons
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.CONSOLE_BUTTON.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.CONSOLE_LEVER.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.SMALL_CONSOLE_BUTTON.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.SMALL_CONSOLE_LEVER.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.BIG_CONSOLE_BUTTON.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.BIG_CONSOLE_LEVER.get(), RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.LARGE_CONSOLE_BUTTON.get(), RenderType.cutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(IBBlocks.LARGE_CONSOLE_LEVER.get(), RenderType.cutout());
 
         // Safety buttons
         for (RegistrySupplier<SafeEmergencyButton> blockRS : IBBlocks.SAFE_EMERGENCY_BUTTONS.values())
