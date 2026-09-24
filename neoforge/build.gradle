@@ -72,6 +72,7 @@ dependencies {
     modLocalRuntime "maven.modrinth:clayworks:SpFNxWZa" // 4.0.3
     modLocalRuntime "maven.modrinth:create:6.0.10+mc1.21.1" // 6.0.10
     modLocalRuntime "maven.modrinth:environmental:NdDV1AM8" // 5.0.1
+    modLocalRuntime "maven.modrinth:friends-and-foes-forge:zeGwtTNo" // 4.0.27
     modLocalRuntime "maven.modrinth:my-nethers-delight:1.10.2" // 1.10.2
     modLocalRuntime "maven.modrinth:neapolitan:RQ5qgaUC" // 6.0.1
     modImplementation "maven.modrinth:quark:hMLnxKZx" // 480
@@ -85,6 +86,7 @@ dependencies {
     modLocalRuntime "maven.modrinth:farmers-delight:1.21.1-1.3.2"
     modLocalRuntime "maven.modrinth:biolith:1ZfKhpFg" // 3.0.11
     modImplementation "maven.modrinth:zeta:9GjNW2Gf" // 1.1-40
+    modLocalRuntime "maven.modrinth:resourceful-lib:x99nCLTm" // 3.0.12, required by friends-and-foes-forge
 
     // Team Abnormals mods that are loaded unconditionally for some reason
     modLocalRuntime "maven.modrinth:gallery:HzOpAks9" // 2.0.1

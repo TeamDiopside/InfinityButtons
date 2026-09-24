@@ -47,6 +47,9 @@ dependencies {
     modImplementation "dev.isxander:yet-another-config-lib:${rootProject.yacl_version}-fabric"
     modImplementation "com.terraformersmc:modmenu:${rootProject.modmenu_version}"
 
+    modLocalRuntime "maven.modrinth:friends-and-foes:UaBxLkkc" // 4.0.27
+    modLocalRuntime "maven.modrinth:resourceful-lib:Hf91FuVF" // 3.0.12, required by friends-and-foes
+
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
 }

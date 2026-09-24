@@ -50,7 +50,7 @@ Install [Every Compat (Wood Good)](https://modrinth.com/mod/every-compat) for **
 
 ## Mod Compatibility
 
-Can be played without, but has additional content with: (version numbers inclusive)
+Can be played without, but has additional content/functionality with: (version numbers inclusive)
 
 - [Atmospheric](https://www.curseforge.com/minecraft/mc-mods/atmospheric)
 - [Autumnity](https://www.curseforge.com/minecraft/mc-mods/autumnity)
@@ -58,6 +58,7 @@ Can be played without, but has additional content with: (version numbers inclusi
 - [Clayworks](https://modrinth.com/mod/clayworks) (1.21.1+)
 - [Create](https://modrinth.com/mod/create) (1.18.2+)
 - [Environmental](https://www.curseforge.com/minecraft/mc-mods/environmental)
+- [Friends and Foes](https://modrinth.com/mod/friends-and-foes-forge/) (1.21.1+)
 - [My Nether's Delight](https://modrinth.com/mod/my-nethers-delight) (1.21.1+)
 - [Neapolitan](https://www.curseforge.com/minecraft/mc-mods/neapolitan)
 - [Quark](https://quarkmod.net/)
