@@ -135,40 +135,15 @@ public class ItemTagGenerator extends ItemTagsProvider {
 
         this.tag(SECRET_BUTTONS)
                 .addTag(WOODEN_SECRET_BUTTONS)
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "rose_quartz_tile_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_rose_quartz_tile_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_granite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_granite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_diorite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_diorite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_andesite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_andesite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_calcite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_calcite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_dripstone_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_dripstone_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_deepslate_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_deepslate_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_tuff_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_tuff_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_asurine_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_asurine_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_crimsite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_crimsite_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_limestone_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_limestone_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_ochrum_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_ochrum_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_scoria_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_scoria_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_scorchia_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_scorchia_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "cut_veridium_brick_secret_button"))
-                .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "small_veridium_brick_secret_button"))
                 .addOptional(ResourceLocation.fromNamespaceAndPath(MOD_ID, "hoglin_trophy_button"));
 
         for (var entry : IBBlocks.SECRET_BUTTONS.values()) {
-            this.tag(SECRET_BUTTONS).add(entry.get().asItem());
+            if (!IBModdedBlocks.MODDED_BUTTONS.containsKey(entry)) {
+                this.tag(SECRET_BUTTONS).add(entry.get().asItem());
+                continue;
+            }
+            ResourceLocation location = BuiltInRegistries.ITEM.getKey(entry.get().asItem());
+            this.tag(SECRET_BUTTONS).addOptional(location);
         }
 
         // Bookshelves

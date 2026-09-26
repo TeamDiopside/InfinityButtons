@@ -15,6 +15,7 @@ public class NethersDelightGenerator extends RecipeGenerator {
 
         addConditions(output, MyNethersDelightBlocks.HOGLIN_TROPHY_BUTTON.get(), new ModLoaded(MyNethersDelightBlocks.NAMESPACE));
         addConditions(output, MyNethersDelightItems.POWDERY_TORCH_BUTTON.get(), new ModLoaded(MyNethersDelightBlocks.NAMESPACE));
+        addConditions(output, MyNethersDelightItems.POWDERY_TORCH_LEVER.get(), new ModLoaded(MyNethersDelightBlocks.NAMESPACE));
 
         Item waxedHoglinTrophy = IBRegistryUtils.getItemByID(MyNethersDelightBlocks.NAMESPACE, "waxed_hoglin_trophy");
         convertingRecipe(output, waxedHoglinTrophy, MyNethersDelightBlocks.HOGLIN_TROPHY_BUTTON.get(), false, 1, "", "secret_buttons");

@@ -24,7 +24,6 @@ import nl.teamdiopside.infinitybuttons.block.emergency.SafeEmergencyButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.NormalButton;
-import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
 import nl.teamdiopside.infinitybuttons.datagen.simplifier.ButtonVariant;
 import nl.teamdiopside.infinitybuttons.datagen.simplifier.OutFolder;
 import nl.teamdiopside.infinitybuttons.datagen.simplifier.SimpleReferenceModel;
@@ -168,7 +167,6 @@ public class ModelAndStateProvider implements DataProvider {
             }
 
             var secretButtons = new ArrayList<>(IBBlocks.SECRET_BUTTONS.values());
-            secretButtons.addAll(IBModdedBlocks.MOD_SECRET_BUTTONS.values()); // TODO Aren't these already in?
 
             for (RegistrySupplier<SecretButton> secretButton : secretButtons) {
                 generateSecretButton(secretButton.get());

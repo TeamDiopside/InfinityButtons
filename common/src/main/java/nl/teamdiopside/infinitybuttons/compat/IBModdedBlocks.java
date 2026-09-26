@@ -3,8 +3,11 @@ package nl.teamdiopside.infinitybuttons.compat;
 import dev.architectury.platform.Platform;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import nl.teamdiopside.diopside.registry.BlockEntryBuilder;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.compat.blocks.*;
@@ -13,6 +16,7 @@ import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.function.Function;
 
 public abstract class IBModdedBlocks extends IBBlocks {
 
@@ -55,13 +59,11 @@ public abstract class IBModdedBlocks extends IBBlocks {
         return registry;
     }
 
-    public static final HashMap<String, RegistrySupplier<SecretButton>> MOD_SECRET_BUTTONS = new HashMap<>(); // TODO needed??
+    public static final HashMap<RegistrySupplier<? extends Block>, String> MODDED_BUTTONS = new HashMap<>();
     public static final HashMap<String, ResourceLocation> BOOKSHELF_TOP_TEXTURES = new HashMap<>();
 
     protected RegistrySupplier<SecretButton> registerModBookshelfSecretButton(String blockId, ResourceLocation originalBlock, ResourceLocation topTexture) {
         var registry = super.registerSecretButton(blockId, SecretButtonType.BOOKSHELF, BlockBehaviour.Properties.ofFullCopy(Blocks.BOOKSHELF), originalBlock);
-
-        MOD_SECRET_BUTTONS.put(blockId, registry);
         BOOKSHELF_TOP_TEXTURES.put(blockId, topTexture);
         return registry;
     }
@@ -74,5 +76,12 @@ public abstract class IBModdedBlocks extends IBBlocks {
 
         SECRET_BUTTON_TEXTURE_OVERRIDES.put(blockId, textureOverride);
         return registry;
+    }
+
+    @Override
+    protected <T extends Block> RegistrySupplier<T> registerBlock(String blockId, BlockEntryBuilder<T> builder, BlockBehaviour.Properties properties, String tooltipKey, Function<ItemStack, Boolean> tooltipCondition) {
+        RegistrySupplier<T> supplier = super.registerBlock(blockId, builder, properties, tooltipKey, tooltipCondition);
+        MODDED_BUTTONS.put(supplier, namespace);
+        return supplier;
     }
 }
