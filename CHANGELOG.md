@@ -17,3 +17,5 @@
 - Revisited press sound of Honeycomb type bricks from Buzzier Bees
 - Reworked Console Buttons
 - Removed Console Toggle Buttons
+- Added Netherite Buttons
+- Changed the sound when you pull a Lantern Button

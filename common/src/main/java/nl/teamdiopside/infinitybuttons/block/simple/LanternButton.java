@@ -69,7 +69,7 @@ public class LanternButton extends InfinityButton implements SimpleWaterloggedBl
 
     @Override
     protected SoundEvent getSound(boolean press) {
-        return press ? SoundEvents.STONE_BUTTON_CLICK_ON : SoundEvents.STONE_BUTTON_CLICK_OFF; // TODO: Custom sounds could be cool
+        return SoundEvents.CHAIN_STEP;
     }
 
     @Override
