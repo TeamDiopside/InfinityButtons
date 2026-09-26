@@ -27,10 +27,11 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import nl.teamdiopside.infinitybuttons.block.InfinityButton;
 import nl.teamdiopside.infinitybuttons.compat.jade.JadeCamouflaged;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class LanternButton extends InfinityButton implements SimpleWaterloggedBlock, JadeCamouflaged {
-    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED; // TODO: Fix :)
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     protected final ResourceLocation camouflage;
     protected final boolean isLever;
 
@@ -43,6 +44,7 @@ public class LanternButton extends InfinityButton implements SimpleWaterloggedBl
         super(properties, SHAPE_PRESSED, SHAPE);
         this.camouflage = camouflage;
         this.isLever = isLever;
+        this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false).setValue(POWERED, false));
     }
 
     @Override
@@ -86,7 +88,7 @@ public class LanternButton extends InfinityButton implements SimpleWaterloggedBl
     }
 
     @Override
-    protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor levelAccessor, BlockPos pos, BlockPos neighborPos) {
+    protected @NotNull BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor levelAccessor, BlockPos pos, BlockPos neighborPos) {
         if (direction == Direction.UP && !this.canSurvive(state, levelAccessor, pos)) {
             return Blocks.AIR.defaultBlockState();
         }
@@ -94,6 +96,11 @@ public class LanternButton extends InfinityButton implements SimpleWaterloggedBl
             levelAccessor.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
         }
         return super.updateShape(state, direction, neighborState, levelAccessor, pos, neighborPos);
+    }
+
+    @Override
+    public @NotNull FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
     @Override
