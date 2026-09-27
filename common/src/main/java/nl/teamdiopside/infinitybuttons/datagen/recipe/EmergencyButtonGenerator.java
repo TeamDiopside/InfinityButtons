@@ -11,9 +11,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import nl.teamdiopside.infinitybuttons.block.emergency.EmergencyButton;
 import nl.teamdiopside.infinitybuttons.block.emergency.SafeEmergencyButton;
-import nl.teamdiopside.infinitybuttons.datagen.ItemTagGenerator;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
+import nl.teamdiopside.infinitybuttons.registry.IBTags;
 
 import java.util.Set;
 
@@ -46,8 +46,8 @@ public class EmergencyButtonGenerator extends RecipeGenerator {
         // Fancy
         for (var button : Set.of(IBBlocks.FANCY_EMERGENCY_BUTTON, IBBlocks.FANCY_SAFE_EMERGENCY_BUTTON)) {
             TagKey<Item> itemTag = button == IBBlocks.FANCY_EMERGENCY_BUTTON
-                    ? ItemTagGenerator.NORMAL_EMERGENCY_BUTTONS
-                    : ItemTagGenerator.NORMAL_SAFE_EMERGENCY_BUTTONS;
+                    ? IBTags.Items.NORMAL_EMERGENCY_BUTTONS
+                    : IBTags.Items.NORMAL_SAFE_EMERGENCY_BUTTONS;
             String group = button == IBBlocks.FANCY_EMERGENCY_BUTTON
                     ? "emergency_buttons"
                     : "safe_emergency_buttons";
