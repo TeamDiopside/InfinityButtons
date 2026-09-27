@@ -4,6 +4,7 @@
 
 ## Technical Changes
 - Buttons now use the vanilla POWERED blockstate instead of PRESSED
+- Changed structure of assets & data
 
 ## Content
 - Added (Chiseled) Myalite Brick Secret Buttons from Quark

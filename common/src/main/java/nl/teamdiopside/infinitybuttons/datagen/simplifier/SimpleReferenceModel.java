@@ -47,15 +47,15 @@ public class SimpleReferenceModel {
     }
 
     // Special types
-    public static SimpleReferenceModel makeButton(OutFolder outDir, String buttonName, ResourceLocation textureLocation, boolean isLarge, ButtonVariant variant) {
-        String modelName = buttonName + (variant == ButtonVariant.INVENTORY ? "" : variant.suffix);
-        String parentName = (isLarge ? "large_button" : "button") + variant.suffix;
+    public static SimpleReferenceModel makeButton(OutFolder folder, String buttonName, ResourceLocation textureLocation, boolean isLarge, ButtonModelVariant variant) {
+        String modelName = buttonName + (variant == ButtonModelVariant.INVENTORY ? "" : variant.suffix);
+        String parentName = (isLarge ? "large_button" + (variant == ButtonModelVariant.INVENTORY ? "" : variant.suffix) : "button" + variant.suffix) ;
 
         ResourceLocation parent = isLarge
-                ? ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/" + parentName)
-                : ResourceLocation.withDefaultNamespace("block/" + parentName);
+                ? ResourceLocation.fromNamespaceAndPath(MOD_ID, folder.name + "/" + parentName)
+                : ResourceLocation.withDefaultNamespace( "block/" + parentName);
 
-        return new SimpleReferenceModel(ResourceLocation.fromNamespaceAndPath(MOD_ID, outDir.name + "/" + modelName), parent)
+        return new SimpleReferenceModel(ResourceLocation.fromNamespaceAndPath(MOD_ID, folder.name + "/" + modelName), parent)
                 .withTexture(textureLocation);
     }
 }

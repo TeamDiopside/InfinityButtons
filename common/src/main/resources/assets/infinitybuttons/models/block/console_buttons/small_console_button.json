@@ -1,5 +1,5 @@
 {
-	"parent": "infinitybuttons:block/console_buttons/inventory",
+	"parent": "infinitybuttons:block/console_buttons/console_button_display",
 	"render_type": "cutout",
 	"textures": {
 		"button": "infinitybuttons:block/console/small_console_button",

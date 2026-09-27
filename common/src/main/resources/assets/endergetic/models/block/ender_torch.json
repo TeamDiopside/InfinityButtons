@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/template_torch",
-  "textures": {
-    "torch": "endergetic:block/ender_torch"
-  },
-  "render_type": "cutout"
-}

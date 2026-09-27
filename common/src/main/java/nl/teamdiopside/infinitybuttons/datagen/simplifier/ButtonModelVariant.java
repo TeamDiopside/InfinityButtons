@@ -1,13 +1,13 @@
 package nl.teamdiopside.infinitybuttons.datagen.simplifier;
 
-public enum ButtonVariant {
+public enum ButtonModelVariant {
     BASE(""),
     PRESSED("_pressed"),
     INVENTORY("_inventory");
 
     public final String suffix;
 
-    ButtonVariant(String name) {
+    ButtonModelVariant(String name) {
         this.suffix = name;
     }
 }

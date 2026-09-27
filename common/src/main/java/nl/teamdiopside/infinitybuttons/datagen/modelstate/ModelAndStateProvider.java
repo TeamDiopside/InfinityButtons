@@ -24,7 +24,7 @@ import nl.teamdiopside.infinitybuttons.block.emergency.SafeEmergencyButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.NormalButton;
-import nl.teamdiopside.infinitybuttons.datagen.simplifier.ButtonVariant;
+import nl.teamdiopside.infinitybuttons.datagen.simplifier.ButtonModelVariant;
 import nl.teamdiopside.infinitybuttons.datagen.simplifier.OutFolder;
 import nl.teamdiopside.infinitybuttons.datagen.simplifier.SimpleReferenceModel;
 import nl.teamdiopside.infinitybuttons.registry.IBBlocks;
@@ -99,11 +99,11 @@ public class ModelAndStateProvider implements DataProvider {
             Block block = IBRegistryUtils.getBlockByID(MOD_ID, button_name);
 
             this.blockStateOutput.accept(BlockModelGenerators.createButton(block,
-                    SimpleReferenceModel.makeButton(OutFolder.BLOCK, button_name, textureLocation, isLarge, ButtonVariant.BASE).build(this.modelOutput),
-                    SimpleReferenceModel.makeButton(OutFolder.BLOCK, button_name, textureLocation, isLarge, ButtonVariant.PRESSED).build(this.modelOutput)
+                    SimpleReferenceModel.makeButton(OutFolder.BLOCK, button_name, textureLocation, isLarge, ButtonModelVariant.BASE).build(this.modelOutput),
+                    SimpleReferenceModel.makeButton(OutFolder.BLOCK, button_name, textureLocation, isLarge, ButtonModelVariant.PRESSED).build(this.modelOutput)
             ));
 
-            SimpleReferenceModel.makeButton(OutFolder.ITEM, button_name, textureLocation, isLarge, ButtonVariant.INVENTORY).build(this.modelOutput);
+            SimpleReferenceModel.makeButton(OutFolder.ITEM, button_name, textureLocation, isLarge, ButtonModelVariant.INVENTORY).build(this.modelOutput);
         }
 
         @Override
