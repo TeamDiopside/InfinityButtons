@@ -18,7 +18,6 @@ public class IBSounds {
     public static RegistrySupplier<SoundEvent> CONSOLE_BEEP = registerSoundEvent("block.console_button.beep");
     public static RegistrySupplier<SoundEvent> CONSOLE_UNBEEP = registerSoundEvent("block.console_button.unbeep");
     public static RegistrySupplier<SoundEvent> CONSOLE_ERROR = registerSoundEvent("block.console_button.error");
-    public static RegistrySupplier<SoundEvent> SILENT = registerSoundEvent("block.silent");
 
     private static RegistrySupplier<SoundEvent> registerSoundEvent(String name) {
         return SoundEventEntryBuilder.create().register(ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, name));

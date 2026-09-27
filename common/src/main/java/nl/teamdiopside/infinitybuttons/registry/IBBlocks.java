@@ -252,9 +252,9 @@ public class IBBlocks {
      * Doorbells
      */
     public static final RegistrySupplier<Doorbell> DOORBELL = INSTANCE.registerBlock("doorbell", BlockEntryBuilder.ofBlock((properties) ->
-            new Doorbell(properties.noCollission().strength(0.5f).sound(SoundType.METAL), false)),"doorbell");
+            new Doorbell(properties.noCollission().strength(0.5f).sound(SoundType.METAL).pushReaction(PushReaction.DESTROY), false)),"doorbell");
     public static final RegistrySupplier<Doorbell> DOORBELL_BUTTON = INSTANCE.registerBlock("doorbell_button", BlockEntryBuilder.ofBlock((properties) ->
-            new Doorbell(properties.noCollission().strength(0.5f).sound(SoundType.METAL), true)), "doorbell_button");
+            new Doorbell(properties.noCollission().strength(0.5f).sound(SoundType.METAL).pushReaction(PushReaction.DESTROY), true)), "doorbell_button");
 
     /**
      * Lamp buttons

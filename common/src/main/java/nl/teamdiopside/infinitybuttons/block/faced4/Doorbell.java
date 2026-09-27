@@ -3,18 +3,23 @@ package nl.teamdiopside.infinitybuttons.block.faced4;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import nl.teamdiopside.infinitybuttons.block.ButtonFaced4;
+import nl.teamdiopside.infinitybuttons.block.ButtonFaced6;
 import nl.teamdiopside.infinitybuttons.registry.IBSounds;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class Doorbell extends ButtonFaced4 {
+public class Doorbell extends ButtonFaced6 {
 
     protected static final VoxelShape PRESSED_SHAPE = Block.box(6, 4, 14, 10, 12, 16);
     protected static final VoxelShape FULL_SHAPE = Shapes.or(PRESSED_SHAPE, Block.box(7, 7, 13, 9, 9, 14));
@@ -22,25 +27,30 @@ public class Doorbell extends ButtonFaced4 {
     public final boolean emitsPower;
 
     public Doorbell(Properties properties, boolean emitsPower) {
-        super(properties, PRESSED_SHAPE, FULL_SHAPE);
+        super(BlockSetType.DARK_OAK, properties, PRESSED_SHAPE, FULL_SHAPE);
         this.emitsPower = emitsPower;
     }
 
     @Override
-    public @Nullable BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
-        if (blockPlaceContext.getClickedFace().getAxis().isVertical()) {
-            return null;
-        }
-        return defaultBlockState().setValue(FACING, blockPlaceContext.getClickedFace());
+    protected void playSound(@Nullable Player playerIn, LevelAccessor worldIn, BlockPos pos, boolean pressed) {
+        worldIn.playSound(pressed ? playerIn : null, pos, this.getSound(pressed), SoundSource.BLOCKS, 0.3f, 1f);
     }
 
     @Override
-    protected SoundEvent getSound(boolean press) {
-        return press ? IBSounds.DOORBELL.get() : IBSounds.SILENT.get();
+    protected @NotNull SoundEvent getSound(boolean pressed) {
+        return IBSounds.DOORBELL.get();
     }
 
     @Override
-    protected int getPressTicks() {
+    public void unpress(BlockState state, Level level, BlockPos pos, @Nullable Player player) {
+        // No sound when unpressing
+        level.setBlockAndUpdate(pos, state.setValue(POWERED, false));
+        this.updateNeighbours(state, level, pos);
+        level.gameEvent(player, GameEvent.BLOCK_DEACTIVATE, pos);
+    }
+
+    @Override
+    protected int getPressTicks(Level level, BlockPos pos) {
         return 15;
     }
 

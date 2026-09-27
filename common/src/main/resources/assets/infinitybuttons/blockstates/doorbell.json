@@ -1,34 +1,110 @@
 {
   "variants": {
-    "powered=false,facing=north": {
+    "face=ceiling,facing=east,powered=false": {
+      "model": "infinitybuttons:block/doorbell",
+      "x": 180,
+      "y": 270
+    },
+    "face=ceiling,facing=east,powered=true": {
+      "model": "infinitybuttons:block/doorbell_pressed",
+      "x": 180,
+      "y": 270
+    },
+    "face=ceiling,facing=north,powered=false": {
+      "model": "infinitybuttons:block/doorbell",
+      "x": 180,
+      "y": 180
+    },
+    "face=ceiling,facing=north,powered=true": {
+      "model": "infinitybuttons:block/doorbell_pressed",
+      "x": 180,
+      "y": 180
+    },
+    "face=ceiling,facing=south,powered=false": {
+      "model": "infinitybuttons:block/doorbell",
+      "x": 180
+    },
+    "face=ceiling,facing=south,powered=true": {
+      "model": "infinitybuttons:block/doorbell_pressed",
+      "x": 180
+    },
+    "face=ceiling,facing=west,powered=false": {
+      "model": "infinitybuttons:block/doorbell",
+      "x": 180,
+      "y": 90
+    },
+    "face=ceiling,facing=west,powered=true": {
+      "model": "infinitybuttons:block/doorbell_pressed",
+      "x": 180,
+      "y": 90
+    },
+    "face=floor,facing=east,powered=false": {
+      "model": "infinitybuttons:block/doorbell",
+      "y": 90
+    },
+    "face=floor,facing=east,powered=true": {
+      "model": "infinitybuttons:block/doorbell_pressed",
+      "y": 90
+    },
+    "face=floor,facing=north,powered=false": {
       "model": "infinitybuttons:block/doorbell"
     },
-    "powered=false,facing=east": {
-      "model": "infinitybuttons:block/doorbell",
-      "y": 90
-    },
-    "powered=false,facing=south": {
-      "model": "infinitybuttons:block/doorbell",
-      "y": 180
-    },
-    "powered=false,facing=west": {
-      "model": "infinitybuttons:block/doorbell",
-      "y": 270
-    },
-    "powered=true,facing=north": {
+    "face=floor,facing=north,powered=true": {
       "model": "infinitybuttons:block/doorbell_pressed"
     },
-    "powered=true,facing=east": {
-      "model": "infinitybuttons:block/doorbell_pressed",
-      "y": 90
+    "face=floor,facing=south,powered=false": {
+      "model": "infinitybuttons:block/doorbell",
+      "y": 180
     },
-    "powered=true,facing=south": {
+    "face=floor,facing=south,powered=true": {
       "model": "infinitybuttons:block/doorbell_pressed",
       "y": 180
     },
-    "powered=true,facing=west": {
+    "face=floor,facing=west,powered=false": {
+      "model": "infinitybuttons:block/doorbell",
+      "y": 270
+    },
+    "face=floor,facing=west,powered=true": {
       "model": "infinitybuttons:block/doorbell_pressed",
       "y": 270
+    },
+    "face=wall,facing=east,powered=false": {
+      "model": "infinitybuttons:block/doorbell",
+      "x": 270,
+      "y": 270
+    },
+    "face=wall,facing=east,powered=true": {
+      "model": "infinitybuttons:block/doorbell_pressed",
+      "x": 270,
+      "y": 270
+    },
+    "face=wall,facing=north,powered=false": {
+      "model": "infinitybuttons:block/doorbell",
+      "x": 270,
+      "y": 180
+    },
+    "face=wall,facing=north,powered=true": {
+      "model": "infinitybuttons:block/doorbell_pressed",
+      "x": 270,
+      "y": 180
+    },
+    "face=wall,facing=south,powered=false": {
+      "model": "infinitybuttons:block/doorbell",
+      "x": 270
+    },
+    "face=wall,facing=south,powered=true": {
+      "model": "infinitybuttons:block/doorbell_pressed",
+      "x": 270
+    },
+    "face=wall,facing=west,powered=false": {
+      "model": "infinitybuttons:block/doorbell",
+      "x": 270,
+      "y": 90
+    },
+    "face=wall,facing=west,powered=true": {
+      "model": "infinitybuttons:block/doorbell_pressed",
+      "x": 270,
+      "y": 90
     }
   }
 }
