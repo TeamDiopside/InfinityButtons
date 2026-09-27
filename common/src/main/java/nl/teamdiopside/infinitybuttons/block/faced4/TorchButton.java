@@ -46,7 +46,7 @@ public class TorchButton extends ButtonFaced4 implements JadeCamouflaged {
     }
 
     @Override
-    protected boolean isLever(Level level, BlockPos blockPos) {
+    protected boolean isLever(Level level, BlockPos pos) {
         return this.isLever;
     }
 
@@ -61,12 +61,6 @@ public class TorchButton extends ButtonFaced4 implements JadeCamouflaged {
         return 50;
     }
 
-//    @Override
-//    protected int getSignal(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, Direction direction) {
-//        boolean properDirectionPower = blockState.getValue(POWERED) && direction == Direction.UP;
-//        return properDirectionPower ? 15 : 0;
-//    }
-
     @Override
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext blockPlaceContext) {
         // For some reason, when this is called, it's always the wall variant of the torch.
@@ -78,10 +72,10 @@ public class TorchButton extends ButtonFaced4 implements JadeCamouflaged {
     }
 
     @Override
-    protected boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
-        Direction horse = this.isWall ? blockState.getValue(FACING).getOpposite() : Direction.DOWN;
+    protected boolean canSurvive(BlockState state, LevelReader levelReader, BlockPos pos) {
+        Direction horse = this.isWall ? state.getValue(FACING).getOpposite() : Direction.DOWN;
 
-        BlockPos blockPos2 = blockPos.relative(horse);
+        BlockPos blockPos2 = pos.relative(horse);
         BlockState otherState = levelReader.getBlockState(blockPos2);
 
         return otherState.isFaceSturdy(levelReader, blockPos2, horse.getOpposite());

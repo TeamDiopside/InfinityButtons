@@ -22,7 +22,6 @@ public class SecretButtonGenerator implements ModelStateGenerator {
 
     private final @NotNull SecretButton secretButton;
 
-    private final IBRegistryUtils.BlockInfo originalBlockInfo;
     private final IBRegistryUtils.BlockInfo buttonBlockInfo;
 
     private final ResourceLocation originalBlockModel;
@@ -32,7 +31,7 @@ public class SecretButtonGenerator implements ModelStateGenerator {
 
     public SecretButtonGenerator(@NotNull SecretButton secretButton) {
         this.secretButton = secretButton;
-        this.originalBlockInfo = IBRegistryUtils.BlockInfo.from(secretButton.getCamouflage());
+        IBRegistryUtils.BlockInfo originalBlockInfo = IBRegistryUtils.BlockInfo.from(secretButton.getCamouflage());
         this.originalBlockModel = ResourceLocation.fromNamespaceAndPath(originalBlockInfo.namespace(), "block/" + originalBlockInfo.id());
         this.buttonBlockInfo = IBRegistryUtils.BlockInfo.from(secretButton);
         this.buttonModel = ResourceLocation.fromNamespaceAndPath(buttonBlockInfo.namespace(), "block/secret_buttons/" + buttonBlockInfo.id());

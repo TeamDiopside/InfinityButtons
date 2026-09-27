@@ -27,9 +27,9 @@ import static net.minecraft.world.ItemInteractionResult.sidedSuccess;
 
 public interface WeatheringButton extends WeatheringCopper {
 
-    private Optional<BlockState> getOfType(CopperButtonType type, WeatherState weatherState, BlockState state) {
-        if (state.getBlock() instanceof CopperButton copperButton) {
-            return Optional.of(IBBlocks.COPPER_BUTTONS.get(type, weatherState).get(copperButton.isLarge()).withPropertiesOf(state));
+    private Optional<BlockState> getOfType(CopperButtonType type, WeatherState weatherState, BlockState blockState) {
+        if (blockState.getBlock() instanceof CopperButton copperButton) {
+            return Optional.of(IBBlocks.COPPER_BUTTONS.get(type, weatherState).get(copperButton.isLarge()).withPropertiesOf(blockState));
         }
         return Optional.empty();
     }
@@ -94,60 +94,60 @@ public interface WeatheringButton extends WeatheringCopper {
         return Optional.empty();
     }
 
-    private void itemUsed(BlockPos blockPos, Player player, ItemStack itemStack) {
+    private void itemUsed(BlockPos pos, Player player, ItemStack stack) {
         if (player instanceof ServerPlayer serverPlayer) {
-            CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, blockPos, itemStack);
+            CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
         }
     }
 
-    private void hurtAxe(Player player, ItemStack itemStack) {
-        itemStack.hurtAndBreak(1, player, player.getUsedItemHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
+    private void hurtAxe(Player player, ItemStack stack) {
+        stack.hurtAndBreak(1, player, player.getUsedItemHand() == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND);
     }
 
-    default ItemInteractionResult wax(BlockState state, Level level, BlockPos blockPos, Player player, ItemStack itemStack) {
+    default ItemInteractionResult wax(BlockState state, Level level, BlockPos pos, Player player, ItemStack stack) {
         return getOfType(CopperButtonType.WAXED, state).map((waxedBlockState) -> {
-            itemUsed(blockPos, player, itemStack);
-            if (!player.getAbilities().instabuild) itemStack.shrink(1);
-            level.setBlock(blockPos, waxedBlockState, Block.UPDATE_ALL_IMMEDIATE);
-            level.levelEvent(player, 3003, blockPos, 0);
-            level.playSound(player, blockPos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1.0f, 1.0f);
+            itemUsed(pos, player, stack);
+            if (!player.getAbilities().instabuild) stack.shrink(1);
+            level.setBlock(pos, waxedBlockState, Block.UPDATE_ALL_IMMEDIATE);
+            level.levelEvent(player, 3003, pos, 0);
+            level.playSound(player, pos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1.0f, 1.0f);
             return sidedSuccess(level.isClientSide());
         }).orElse(sidedSuccess(level.isClientSide()));
     }
 
-    default ItemInteractionResult scrape(BlockState state, Level level, BlockPos blockPos, Player player, ItemStack itemStack) {
+    default ItemInteractionResult scrape(BlockState state, Level level, BlockPos pos, Player player, ItemStack stack) {
         return getPrevious(state).map((previousBlockState) -> {
-            itemUsed(blockPos, player, itemStack);
-            if (!player.getAbilities().instabuild) hurtAxe(player, itemStack);
-            level.setBlock(blockPos, previousBlockState, Block.UPDATE_ALL_IMMEDIATE);
-            level.levelEvent(player, 3005, blockPos, 0);
-            level.playSound(player, blockPos, SoundEvents.AXE_SCRAPE, SoundSource.BLOCKS, 1.0f, 1.0f);
+            itemUsed(pos, player, stack);
+            if (!player.getAbilities().instabuild) hurtAxe(player, stack);
+            level.setBlock(pos, previousBlockState, Block.UPDATE_ALL_IMMEDIATE);
+            level.levelEvent(player, 3005, pos, 0);
+            level.playSound(player, pos, SoundEvents.AXE_SCRAPE, SoundSource.BLOCKS, 1.0f, 1.0f);
             return sidedSuccess(level.isClientSide());
         }).orElse(sidedSuccess(level.isClientSide()));
     }
 
-    default ItemInteractionResult scrapeWax(BlockState blockState, Level level, BlockPos blockPos, Player player, ItemStack itemStack) {
-        return getOfType(CopperButtonType.NORMAL, blockState).map((waxedBlockState) -> {
-            itemUsed(blockPos, player, itemStack);
-            if (!player.getAbilities().instabuild) hurtAxe(player, itemStack);
-            level.setBlock(blockPos, waxedBlockState, Block.UPDATE_ALL_IMMEDIATE);
-            level.levelEvent(player, 3004, blockPos, 0);
-            level.playSound(player, blockPos, SoundEvents.AXE_WAX_OFF, SoundSource.BLOCKS, 1.0f, 1.0f);
+    default ItemInteractionResult scrapeWax(BlockState state, Level level, BlockPos pos, Player player, ItemStack stack) {
+        return getOfType(CopperButtonType.NORMAL, state).map((waxedBlockState) -> {
+            itemUsed(pos, player, stack);
+            if (!player.getAbilities().instabuild) hurtAxe(player, stack);
+            level.setBlock(pos, waxedBlockState, Block.UPDATE_ALL_IMMEDIATE);
+            level.levelEvent(player, 3004, pos, 0);
+            level.playSound(player, pos, SoundEvents.AXE_WAX_OFF, SoundSource.BLOCKS, 1.0f, 1.0f);
             if (player instanceof ServerPlayer serverPlayer)
                 IBAdvancementTriggers.WAX_OFF_TRIGGER.get().trigger(serverPlayer);
             return sidedSuccess(level.isClientSide());
         }).orElse(sidedSuccess(level.isClientSide()));
     }
 
-    default ItemInteractionResult sticky(BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand hand, ItemStack itemStack) {
-        return getOfType(CopperButtonType.STICKY, blockState).map((waxedBlockState) -> {
-            itemUsed(blockPos, player, itemStack);
+    default ItemInteractionResult sticky(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack stack) {
+        return getOfType(CopperButtonType.STICKY, state).map((waxedBlockState) -> {
+            itemUsed(pos, player, stack);
             if (!player.getAbilities().instabuild) {
-                player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.GLASS_BOTTLE)));
+                player.setItemInHand(hand, ItemUtils.createFilledResult(stack, player, new ItemStack(Items.GLASS_BOTTLE)));
             }
-            level.setBlock(blockPos, waxedBlockState, Block.UPDATE_ALL_IMMEDIATE);
-            level.levelEvent(player, 3003, blockPos, 0);
-            level.playSound(player, blockPos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1.0f, 1.0f);
+            level.setBlock(pos, waxedBlockState, Block.UPDATE_ALL_IMMEDIATE);
+            level.levelEvent(player, 3003, pos, 0);
+            level.playSound(player, pos, SoundEvents.HONEYCOMB_WAX_ON, SoundSource.BLOCKS, 1.0f, 1.0f);
             return sidedSuccess(level.isClientSide());
         }).orElse(sidedSuccess(level.isClientSide()));
     }

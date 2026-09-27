@@ -37,12 +37,12 @@ public class SecretButton extends ButtonFaced4 implements JadeCamouflaged {
     }
 
     @Override
-    protected @NotNull InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
-        if (blockHitResult.getDirection() != blockState.getValue(FACING)) {
+    protected @NotNull InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult blockHitResult) {
+        if (blockHitResult.getDirection() != state.getValue(FACING)) {
             return InteractionResult.FAIL;
         }
 
-        return super.useWithoutItem(blockState, level, blockPos, player, blockHitResult);
+        return super.useWithoutItem(state, level, pos, player, blockHitResult);
     }
 
     @Override

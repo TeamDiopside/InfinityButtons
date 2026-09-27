@@ -8,17 +8,15 @@ public final class ShapeManipulator {
     public static VoxelShape translate(VoxelShape shape, double x, double y, double z) {
         VoxelShape[] result = new VoxelShape[]{Shapes.empty()};
 
-        shape.forAllBoxes((minX, minY, minZ, maxX, maxY, maxZ) -> {
-            result[0] = Shapes.or(
-                result[0],
-                Shapes.create(
-                    new AABB(
-                        minX + x, minY + y, minZ + z,
-                        maxX + x, maxY + y, maxZ + z
-                    )
+        shape.forAllBoxes((minX, minY, minZ, maxX, maxY, maxZ) -> result[0] = Shapes.or(
+            result[0],
+            Shapes.create(
+                new AABB(
+                    minX + x, minY + y, minZ + z,
+                    maxX + x, maxY + y, maxZ + z
                 )
-            );
-        });
+            )
+        ));
 
         return result[0].optimize();
     }

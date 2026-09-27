@@ -76,30 +76,30 @@ public class SafeEmergencyButton extends EmergencyButton {
     }
 
     @Override
-    protected @NotNull InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
+    protected @NotNull InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult blockHitResult) {
         if (!player.isShiftKeyDown()) {
-            if (blockState.getValue(CLOSED)) {
+            if (state.getValue(CLOSED)) {
                 player.displayClientMessage(Component.translatable("infinitybuttons.actionbar.closed_safety_button"), true);
                 return InteractionResult.FAIL;
             }
-            return super.useWithoutItem(blockState, level, blockPos, player, blockHitResult);
+            return super.useWithoutItem(state, level, pos, player, blockHitResult);
         }
 
-        if (blockState.getValue(CLOSED)) {
-            this.openCase(blockState, level, blockPos);
+        if (state.getValue(CLOSED)) {
+            this.openCase(state, level, pos);
         } else {
-            this.closeCase(blockState, level, blockPos);
+            this.closeCase(state, level, pos);
         }
         return InteractionResult.SUCCESS;
     }
 
     @Override
-    protected @NotNull VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
-        AttachFace face = blockState.getValue(FACE);
-        Direction dir = blockState.getValue(FACING);
+    protected @NotNull VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext collisionContext) {
+        AttachFace face = state.getValue(FACE);
+        Direction dir = state.getValue(FACING);
 
-        if (blockState.getValue(CLOSED)) return this.SHAPES_CLOSED.get(dir, face);
+        if (state.getValue(CLOSED)) return this.SHAPES_CLOSED.get(dir, face);
 
-        return super.getShape(blockState, blockGetter, blockPos, collisionContext);
+        return super.getShape(state, blockGetter, pos, collisionContext);
     }
 }

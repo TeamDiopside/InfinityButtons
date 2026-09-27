@@ -1,7 +1,7 @@
 package nl.teamdiopside.infinitybuttons.fabric;
 
-import nl.teamdiopside.infinitybuttons.InfinityButtons;
 import net.fabricmc.api.ModInitializer;
+import nl.teamdiopside.infinitybuttons.InfinityButtons;
 
 public final class InfinityButtonsFabric implements ModInitializer {
     @Override

@@ -25,6 +25,7 @@ public class LetterButtonGUI extends Screen {
     private static final int BUTTONS_PER_ROW = 7;
     private static final int NUM_BUTTONS = 49;
 
+    // TODO do we need a letter button instance?
     private final LetterButton letterButton;
     private final BlockState state;
     private final Level level;

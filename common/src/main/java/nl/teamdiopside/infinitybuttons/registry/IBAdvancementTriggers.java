@@ -2,15 +2,14 @@ package nl.teamdiopside.infinitybuttons.registry;
 
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.advancements.CriterionTrigger;
+import net.minecraft.resources.ResourceLocation;
 import nl.teamdiopside.diopside.registry.TriggerEntryBuilder;
+import nl.teamdiopside.infinitybuttons.InfinityButtons;
 import nl.teamdiopside.infinitybuttons.advancement.EmergencyTrigger;
 import nl.teamdiopside.infinitybuttons.advancement.SafetyTrigger;
 import nl.teamdiopside.infinitybuttons.advancement.WaxOffTrigger;
 
 import java.util.function.Supplier;
-
-import net.minecraft.resources.ResourceLocation;
-import nl.teamdiopside.infinitybuttons.InfinityButtons;
 
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
 

@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import nl.teamdiopside.infinitybuttons.block.ButtonFaced6;
+import org.jetbrains.annotations.NotNull;
 
 public class NormalButton extends ButtonFaced6 {
     private static final VoxelShape LARGE_PRESSED = Block.box(4, 4, 15, 12, 12, 16);
@@ -26,7 +27,7 @@ public class NormalButton extends ButtonFaced6 {
     }
 
     public NormalButton(BlockSetType blockSetType, int ticks, Properties properties, boolean large, boolean isLever, SoundType soundType) {
-        super(blockSetType, ticks, properties,
+        super(blockSetType, properties,
                 large ? LARGE_PRESSED   : SMALL_PRESSED,
                 large ? LARGE_UNPRESSED : SMALL_UNPRESSED
         );
@@ -41,17 +42,17 @@ public class NormalButton extends ButtonFaced6 {
     }
 
     @Override
-    protected boolean isLever(Level level, BlockPos blockPos) {
+    protected boolean isLever(Level level, BlockPos pos) {
         return this.isLever;
     }
 
     @Override
-    protected int getPressTicks(Level level, BlockPos blockPos) {
+    protected int getPressTicks(Level level, BlockPos pos) {
         return this.pressTicks;
     }
 
     @Override
-    protected SoundType getSoundType(BlockState blockState) {
+    protected @NotNull SoundType getSoundType(BlockState state) {
         return this.soundType;
     }
 }

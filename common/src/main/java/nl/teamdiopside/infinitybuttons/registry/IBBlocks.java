@@ -394,7 +394,7 @@ public class IBBlocks {
     }
 
     protected static BlockBehaviour.Properties lampProperties(BlockBehaviour.Properties properties, int light) {
-        return BlockBehaviour.Properties.of().lightLevel(litBlockEmission(light)).sound(SoundType.GLASS).pushReaction(PushReaction.DESTROY);
+        return properties.lightLevel(litBlockEmission(light)).sound(SoundType.GLASS).pushReaction(PushReaction.DESTROY);
     }
 
     protected static BlockBehaviour.Properties torchProperties(BlockBehaviour.Properties properties, int light) {
@@ -402,7 +402,7 @@ public class IBBlocks {
     }
 
     protected static BlockBehaviour.Properties lanternProperties(BlockBehaviour.Properties properties, int light) {
-        return BlockBehaviour.Properties.of().lightLevel((p) -> light).sound(SoundType.LANTERN)
+        return properties.lightLevel((p) -> light).sound(SoundType.LANTERN)
                 .pushReaction(PushReaction.DESTROY).requiresCorrectToolForDrops().strength(3.5f);
     }
 

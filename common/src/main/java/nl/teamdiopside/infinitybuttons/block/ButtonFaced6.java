@@ -33,8 +33,8 @@ public abstract class ButtonFaced6 extends ButtonBlock implements MaybeArrowActi
     protected final BiHashMap<Direction, AttachFace, VoxelShape> SHAPES_PRESSED = new BiHashMap<>();
     protected final BiHashMap<Direction, AttachFace, VoxelShape> SHAPES_UNPRESSED = new BiHashMap<>();
 
-    public ButtonFaced6(BlockSetType blockSetType, int ticks, Properties properties, VoxelShape shapePressed, VoxelShape shapeUnpressed) {
-        super(blockSetType, ticks, properties); // TODO: `ticks` could just be defaulted to 20 here, with getPressTicks() being used anyway.
+    public ButtonFaced6(BlockSetType blockSetType, Properties properties, VoxelShape shapePressed, VoxelShape shapeUnpressed) {
+        super(blockSetType, 20, properties);
 
         this.shapePressed = shapePressed;
         this.shapeUnpressed = shapeUnpressed;
@@ -60,40 +60,40 @@ public abstract class ButtonFaced6 extends ButtonBlock implements MaybeArrowActi
         }
     }
 
-    protected abstract int getPressTicks(Level level, BlockPos blockPos);
+    protected abstract int getPressTicks(Level level, BlockPos pos);
 
-    protected boolean isLever(Level level, BlockPos blockPos) {
+    protected boolean isLever(Level level, BlockPos pos) {
         return false;
     }
 
     @Override
-    public void press(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
-        level.setBlockAndUpdate(blockPos, blockState.setValue(POWERED, true));
-        this.updateNeighbours(blockState, level, blockPos);
-        if (!this.isLever(level, blockPos)) level.scheduleTick(blockPos, this, getPressTicks(level, blockPos));
+    public void press(BlockState state, Level level, BlockPos pos, @Nullable Player player) {
+        level.setBlockAndUpdate(pos, state.setValue(POWERED, true));
+        this.updateNeighbours(state, level, pos);
+        if (!this.isLever(level, pos)) level.scheduleTick(pos, this, getPressTicks(level, pos));
 
-        this.playSound(player, level, blockPos, true);
-        level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, blockPos);
+        this.playSound(player, level, pos, true);
+        level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
     }
 
-    public void unpress(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
-        level.setBlockAndUpdate(blockPos, blockState.setValue(POWERED, false));
-        this.updateNeighbours(blockState, level, blockPos);
+    public void unpress(BlockState state, Level level, BlockPos pos, @Nullable Player player) {
+        level.setBlockAndUpdate(pos, state.setValue(POWERED, false));
+        this.updateNeighbours(state, level, pos);
 
-        playSound(player, level, blockPos, false);
-        level.gameEvent(player, GameEvent.BLOCK_DEACTIVATE, blockPos);
+        playSound(player, level, pos, false);
+        level.gameEvent(player, GameEvent.BLOCK_DEACTIVATE, pos);
     }
 
     // Copied from vanilla
-    public void updateNeighbours(BlockState blockState, Level level, BlockPos blockPos) {
-        level.updateNeighborsAt(blockPos, this);
-        level.updateNeighborsAt(blockPos.relative(getConnectedDirection(blockState).getOpposite()), this);
+    protected void updateNeighbours(BlockState state, Level level, BlockPos pos) {
+        level.updateNeighborsAt(pos, this);
+        level.updateNeighborsAt(pos.relative(getConnectedDirection(state).getOpposite()), this);
     }
 
     // Copied from ButtonBlock.checkPressed
-    public boolean arrowPressing(BlockState blockState, ServerLevel level, BlockPos blockPos) {
+    protected boolean arrowPressing(BlockState state, ServerLevel level, BlockPos pos) {
         AbstractArrow abstractArrow = this.infinityButtons$activatedByArrows()
-                ? level.getEntitiesOfClass(AbstractArrow.class, blockState.getShape(level, blockPos).bounds().move(blockPos))
+                ? level.getEntitiesOfClass(AbstractArrow.class, state.getShape(level, pos).bounds().move(pos))
                         .stream()
                         .findFirst()
                         .orElse(null)
@@ -102,36 +102,36 @@ public abstract class ButtonFaced6 extends ButtonBlock implements MaybeArrowActi
     }
 
     @Override
-    protected @NotNull InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
-        if (blockState.getValue(POWERED)) {
-            if (this.isLever(level, blockPos)) {
-                this.unpress(blockState, level, blockPos, player);
+    protected @NotNull InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult blockHitResult) {
+        if (state.getValue(POWERED)) {
+            if (this.isLever(level, pos)) {
+                this.unpress(state, level, pos, player);
                 return InteractionResult.SUCCESS;
             }
             return InteractionResult.CONSUME;
         } else {
-            this.press(blockState, level, blockPos, player);
+            this.press(state, level, pos, player);
             return InteractionResult.SUCCESS;
         }
     }
 
     @Override
-    protected void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
-        if (arrowPressing(blockState, serverLevel, blockPos)) {
-            serverLevel.scheduleTick(blockPos, this, getPressTicks(serverLevel, blockPos));
+    protected void tick(BlockState state, ServerLevel serverLevel, BlockPos pos, RandomSource random) {
+        if (arrowPressing(state, serverLevel, pos)) {
+            serverLevel.scheduleTick(pos, this, getPressTicks(serverLevel, pos));
             return;
         }
 
-        if (blockState.getValue(POWERED)) {
-            unpress(blockState, serverLevel, blockPos, null);
+        if (state.getValue(POWERED)) {
+            unpress(state, serverLevel, pos, null);
         }
     }
 
     @Override
-    protected @NotNull VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
-        AttachFace face = blockState.getValue(FACE);
-        Direction dir = blockState.getValue(FACING);
-        return blockState.getValue(ButtonBlock.POWERED) ? this.SHAPES_PRESSED.get(dir, face) : this.SHAPES_UNPRESSED.get(dir, face);
+    protected @NotNull VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext collisionContext) {
+        AttachFace face = state.getValue(FACE);
+        Direction dir = state.getValue(FACING);
+        return state.getValue(ButtonBlock.POWERED) ? this.SHAPES_PRESSED.get(dir, face) : this.SHAPES_UNPRESSED.get(dir, face);
     }
 
     @Override

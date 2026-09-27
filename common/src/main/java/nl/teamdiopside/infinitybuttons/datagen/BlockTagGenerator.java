@@ -18,32 +18,12 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.MOD_ID;
+import static nl.teamdiopside.infinitybuttons.registry.IBTags.Blocks.*;
 
 public class BlockTagGenerator extends VanillaBlockTagsProvider {
 
     public BlockTagGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture) {
         super(output, registriesFuture);
-    }
-
-    public static final TagKey<Block> CONCRETE_POWDER_BUTTONS = add("concrete_powder_buttons");
-    public static final TagKey<Block> CONCRETE_POWDER_LARGE_BUTTONS = add("concrete_powder_large_buttons");
-    public static final TagKey<Block> LARGE_BUTTONS = add("large_buttons");
-    public static final TagKey<Block> WOODEN_LARGE_BUTTONS = add("wooden_large_buttons");
-    public static final TagKey<Block> EMERGENCY_BUTTONS = add("emergency_buttons");
-    public static final TagKey<Block> SAFE_EMERGENCY_BUTTONS = add("safe_emergency_buttons");
-    public static final TagKey<Block> NORMAL_EMERGENCY_BUTTONS = add("normal_emergency_buttons");
-    public static final TagKey<Block> NORMAL_SAFE_EMERGENCY_BUTTONS = add("normal_safe_emergency_buttons");
-    public static final TagKey<Block> SECRET_BUTTONS = add("secret_buttons");
-    public static final TagKey<Block> WOODEN_SECRET_BUTTONS = add("wooden_secret_buttons");
-    public static final TagKey<Block> BOOKSHELF_SECRET_BUTTONS = add("bookshelf_secret_buttons");
-    public static final TagKey<Block> TORCH_BUTTONS = add("torch_buttons");
-    public static final TagKey<Block> CONSOLE_BUTTONS = add("console_buttons");
-    public static final TagKey<Block> LANTERN_BUTTONS = add("lantern_buttons");
-    public static final TagKey<Block> COPPER_BUTTONS = add("copper_buttons");
-    public static final TagKey<Block> COPPER_LARGE_BUTTONS = add("copper_large_buttons");
-
-    static TagKey<Block> add(String name) {
-        return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
     }
 
     public static final TagKey<Block> BOOKSHELVES = addCommon("bookshelves");

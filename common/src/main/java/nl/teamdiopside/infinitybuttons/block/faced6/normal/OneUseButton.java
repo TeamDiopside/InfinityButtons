@@ -21,7 +21,7 @@ public class OneUseButton extends NormalButton {
     }
 
     @Override
-    protected int getPressTicks(Level level, BlockPos blockPos) {
+    protected int getPressTicks(Level level, BlockPos pos) {
         return PRESS_TICKS;
     }
 
@@ -31,14 +31,14 @@ public class OneUseButton extends NormalButton {
     }
 
     @Override
-    protected void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
-        super.tick(blockState, serverLevel, blockPos, randomSource);
+    protected void tick(BlockState state, ServerLevel serverLevel, BlockPos pos, RandomSource random) {
+        super.tick(state, serverLevel, pos, random);
 
-        serverLevel.destroyBlock(blockPos, false);
+        serverLevel.destroyBlock(pos, false);
     }
 
     @Override
-    protected @NotNull SoundType getSoundType(BlockState blockState) {
+    protected @NotNull SoundType getSoundType(BlockState state) {
         return this.gravelSound ? SoundType.GRAVEL : SoundType.SAND;
     }
 }

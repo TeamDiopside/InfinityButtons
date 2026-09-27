@@ -48,24 +48,24 @@ public class CopperButton extends NormalButton implements WeatheringButton {
     }
 
     @Override
-    public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        this.changeOverTime(pState, pLevel, pPos, pRandom);
+    public void randomTick(BlockState state, ServerLevel serverLevel, BlockPos pos, RandomSource random) {
+        this.changeOverTime(state, serverLevel, pos, random);
     }
 
     @Override // Slightly modified version, original in ChangeOverTimeBlock.class
-    public @NotNull Optional<BlockState> getNextState(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
+    public @NotNull Optional<BlockState> getNextState(BlockState state, ServerLevel serverLevel, BlockPos pos, RandomSource random) {
         int age = this.getAge().ordinal();
         int j = 0;
         int k = 0;
 
-        for (BlockPos closeBlockPos : BlockPos.withinManhattan(blockPos, 4, 4, 4)) {
-            int distManhattan = closeBlockPos.distManhattan(blockPos);
+        for (BlockPos closeBlockPos : BlockPos.withinManhattan(pos, 4, 4, 4)) {
+            int distManhattan = closeBlockPos.distManhattan(pos);
             if (distManhattan > 4) {
                 // I believe this shouldn't be a break statement Mojang...
                 continue;
             }
 
-            if (!closeBlockPos.equals(blockPos)) {
+            if (!closeBlockPos.equals(pos)) {
                 Block closeBlock = serverLevel.getBlockState(closeBlockPos).getBlock();
                 // Waxed buttons should not influence oxidization!
                 if (closeBlock instanceof CopperButton copperButton && copperButton.getButtonType() != CopperButtonType.NORMAL) continue;
@@ -89,41 +89,41 @@ public class CopperButton extends NormalButton implements WeatheringButton {
 
         float f = (float)(k + 1) / (float)(k + j + 1);
         float g = f * f * this.getChanceModifier();
-        return randomSource.nextFloat() < g ? this.getNext(blockState) : Optional.empty();
+        return random.nextFloat() < g ? this.getNext(state) : Optional.empty();
     }
 
     @Override
-    public @NotNull ItemInteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
-        if (blockState.getValue(ButtonBlock.POWERED) && getButtonType() != CopperButtonType.STICKY) {
+    public @NotNull ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
+        if (state.getValue(ButtonBlock.POWERED) && getButtonType() != CopperButtonType.STICKY) {
             return ItemInteractionResult.CONSUME;
         }
         switch (getButtonType()) {
             case NORMAL -> {
-                if (itemStack.getItem() == Items.HONEYCOMB) {
-                    return wax(blockState, level, blockPos, player, itemStack);
-                } else if (itemStack.getItem() instanceof AxeItem && getAge() != WeatherState.UNAFFECTED) {
-                    return scrape(blockState, level, blockPos, player, itemStack);
+                if (stack.getItem() == Items.HONEYCOMB) {
+                    return wax(state, level, pos, player, stack);
+                } else if (stack.getItem() instanceof AxeItem && getAge() != WeatherState.UNAFFECTED) {
+                    return scrape(state, level, pos, player, stack);
                 }
             }
             case WAXED -> {
-                if (itemStack.getItem() instanceof AxeItem) {
-                    return scrapeWax(blockState, level, blockPos, player, itemStack);
-                } else if (itemStack.getItem() == Items.HONEY_BOTTLE) {
-                    return sticky(blockState, level, blockPos, player, interactionHand, itemStack);
+                if (stack.getItem() instanceof AxeItem) {
+                    return scrapeWax(state, level, pos, player, stack);
+                } else if (stack.getItem() == Items.HONEY_BOTTLE) {
+                    return sticky(state, level, pos, player, hand, stack);
                 }
             }
             case STICKY -> {
-                if (itemStack.getItem() instanceof AxeItem) {
-                    return unSticky(blockState, level, blockPos, player, itemStack);
+                if (stack.getItem() instanceof AxeItem) {
+                    return unSticky(state, level, pos, player, stack);
                 }
             }
         }
-        return super.useItemOn(itemStack, blockState, level, blockPos, player, interactionHand, blockHitResult);
+        return super.useItemOn(stack, state, level, pos, player, hand, blockHitResult);
     }
 
     @Override
-    public boolean isRandomlyTicking(BlockState blockState) {
-        return buttonType == CopperButtonType.NORMAL && getAge() != WeatherState.OXIDIZED && !blockState.getValue(ButtonBlock.POWERED);
+    public boolean isRandomlyTicking(BlockState state) {
+        return buttonType == CopperButtonType.NORMAL && getAge() != WeatherState.OXIDIZED && !state.getValue(ButtonBlock.POWERED);
     }
 
     @Override
@@ -136,8 +136,8 @@ public class CopperButton extends NormalButton implements WeatheringButton {
     }
 
     @Override
-    protected void playSound(@Nullable Player playerIn, LevelAccessor worldIn, BlockPos pos, boolean hitByArrow) {
-        worldIn.playSound(hitByArrow ? playerIn : null, pos, this.getSound(hitByArrow), SoundSource.BLOCKS, 1F, hitByArrow ? 0.6F : 0.5F);
+    protected void playSound(@Nullable Player player, LevelAccessor levelAccessor, BlockPos pos, boolean hitByArrow) {
+        levelAccessor.playSound(hitByArrow ? player : null, pos, this.getSound(hitByArrow), SoundSource.BLOCKS, 1F, hitByArrow ? 0.6F : 0.5F);
     }
 
     @Override
@@ -146,12 +146,12 @@ public class CopperButton extends NormalButton implements WeatheringButton {
     }
 
     @Override
-    protected int getPressTicks(Level level, BlockPos blockPos) {
+    protected int getPressTicks(Level level, BlockPos pos) {
         return PRESS_TICKS;
     }
 
     @Override
-    protected SoundType getSoundType(BlockState blockState) {
+    protected @NotNull SoundType getSoundType(BlockState state) {
         return SoundType.COPPER;
     }
 }

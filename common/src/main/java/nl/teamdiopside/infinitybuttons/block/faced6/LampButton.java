@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import nl.teamdiopside.infinitybuttons.block.ButtonFaced6;
+import org.jetbrains.annotations.NotNull;
 
 public class LampButton extends ButtonFaced6 {
     private static final VoxelShape SHAPE = Shapes.or(
@@ -18,22 +19,22 @@ public class LampButton extends ButtonFaced6 {
     protected final boolean isLever;
 
     public LampButton(BlockSetType blockSetType, Properties properties, boolean isLever) {
-        super(blockSetType, 20, properties, SHAPE, SHAPE);
+        super(blockSetType, properties, SHAPE, SHAPE);
         this.isLever = isLever;
     }
 
     @Override
-    protected boolean isLever(Level level, BlockPos blockPos) {
+    protected boolean isLever(Level level, BlockPos pos) {
         return this.isLever;
     }
 
     @Override
-    protected int getPressTicks(Level level, BlockPos blockPos) {
+    protected int getPressTicks(Level level, BlockPos pos) {
         return 20;
     }
 
     @Override
-    protected SoundType getSoundType(BlockState blockState) {
+    protected @NotNull SoundType getSoundType(BlockState state) {
         return SoundType.GLASS;
     }
 }

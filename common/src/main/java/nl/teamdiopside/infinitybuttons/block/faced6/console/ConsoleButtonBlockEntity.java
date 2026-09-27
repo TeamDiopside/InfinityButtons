@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import nl.teamdiopside.infinitybuttons.registry.IBBlockEntities;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -29,8 +30,8 @@ public class ConsoleButtonBlockEntity extends BlockEntity {
     private ItemStack keyItem;
 
 
-    public ConsoleButtonBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(IBBlockEntities.CONSOLE_BUTTON.get(), blockPos, blockState);
+    public ConsoleButtonBlockEntity(BlockPos pos, BlockState state) {
+        super(IBBlockEntities.CONSOLE_BUTTON.get(), pos, state);
     }
 
     public int getPressTicks() {
@@ -82,7 +83,7 @@ public class ConsoleButtonBlockEntity extends BlockEntity {
 
     // Used both for chunk-load sync and for the live update packet triggered by sendBlockUpdated in configure()
     @Override
-    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+    public @NotNull CompoundTag getUpdateTag(HolderLookup.Provider registries) {
         CompoundTag tag = super.getUpdateTag(registries);
         saveAdditional(tag, registries);
         return tag;

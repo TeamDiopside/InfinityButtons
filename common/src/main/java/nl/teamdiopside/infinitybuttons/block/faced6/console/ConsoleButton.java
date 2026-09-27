@@ -27,12 +27,12 @@ import org.jetbrains.annotations.Nullable;
 
 public class ConsoleButton extends ButtonFaced6 implements EntityBlock {
     public ConsoleButton(Properties properties, ConsoleButtonShape type) {
-        super(BlockSetType.IRON, 50, properties, type.shape, type.shape);
+        super(BlockSetType.IRON, properties, type.shape, type.shape);
     }
 
     @Override
-    protected int getPressTicks(Level level, BlockPos blockPos) {
-        ConsoleButtonBlockEntity entity = (ConsoleButtonBlockEntity) level.getBlockEntity(blockPos);
+    protected int getPressTicks(Level level, BlockPos pos) {
+        ConsoleButtonBlockEntity entity = (ConsoleButtonBlockEntity) level.getBlockEntity(pos);
 
         if (entity != null) return entity.getPressTicks();
 
@@ -45,41 +45,41 @@ public class ConsoleButton extends ButtonFaced6 implements EntityBlock {
     }
 
     @Override
-    protected @NotNull SoundType getSoundType(BlockState blockState) {
+    protected @NotNull SoundType getSoundType(BlockState state) {
         return SoundType.METAL;
     }
 
     @Override
-    protected boolean isLever(Level level, BlockPos blockPos) {
-        ConsoleButtonBlockEntity entity = (ConsoleButtonBlockEntity) level.getBlockEntity(blockPos);
+    protected boolean isLever(Level level, BlockPos pos) {
+        ConsoleButtonBlockEntity entity = (ConsoleButtonBlockEntity) level.getBlockEntity(pos);
         if (entity != null) return entity.isLever;
 
-        return super.isLever(level, blockPos);
+        return super.isLever(level, pos);
     }
 
     @Override
-    protected @NotNull InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
-        ConsoleButtonBlockEntity entity = (ConsoleButtonBlockEntity) level.getBlockEntity(blockPos);
+    protected @NotNull InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult blockHitResult) {
+        ConsoleButtonBlockEntity entity = (ConsoleButtonBlockEntity) level.getBlockEntity(pos);
 
         if (entity != null && !entity.validatePlayerItem(player)) {
             player.displayClientMessage(Component.translatable("infinitybuttons.actionbar.console_button"), true);
-            level.playSound(null, blockPos, IBSounds.CONSOLE_ERROR.get(), SoundSource.BLOCKS);
+            level.playSound(null, pos, IBSounds.CONSOLE_ERROR.get(), SoundSource.BLOCKS);
             return InteractionResult.CONSUME;
         }
 
-        return super.useWithoutItem(blockState, level, blockPos, player, blockHitResult);
+        return super.useWithoutItem(state, level, pos, player, blockHitResult);
     }
 
     @Override
-    public void setPlacedBy(Level level, BlockPos blockPos, BlockState blockState, @Nullable LivingEntity placer, ItemStack stack) {
-        super.setPlacedBy(level, blockPos, blockState, placer, stack);
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+        super.setPlacedBy(level, pos, state, placer, stack);
 
         if (level.isClientSide || !(placer instanceof ServerPlayer serverPlayer)) return;
 
         MenuRegistry.openExtendedMenu(serverPlayer, new SimpleMenuProvider(
-                (containerId, inv, p) -> new PlainInventoryMenu(containerId, inv, blockPos),
+                (containerId, inv, p) -> new PlainInventoryMenu(containerId, inv, pos),
                 Component.translatable("block.infinitybuttons.console_button")
-        ), buf -> buf.writeBlockPos(blockPos));
+        ), buf -> buf.writeBlockPos(pos));
     }
 
     @Nullable

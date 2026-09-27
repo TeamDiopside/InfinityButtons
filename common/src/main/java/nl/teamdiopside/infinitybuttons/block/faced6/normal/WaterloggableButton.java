@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class WaterloggableButton extends NormalButton implements SimpleWaterloggedBlock {
@@ -37,10 +38,10 @@ public class WaterloggableButton extends NormalButton implements SimpleWaterlogg
     }
 
     @Override
-    protected FluidState getFluidState(BlockState blockState) {
-        if (blockState.getValue(WATERLOGGED)) {
+    protected @NotNull FluidState getFluidState(BlockState state) {
+        if (state.getValue(WATERLOGGED)) {
             return Fluids.WATER.getSource(false);
         }
-        return super.getFluidState(blockState);
+        return super.getFluidState(state);
     }
 }

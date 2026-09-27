@@ -10,7 +10,7 @@ public class RandomTimeButton extends NormalButton {
     }
 
     @Override
-    protected int getPressTicks(Level level, BlockPos blockPos) {
+    protected int getPressTicks(Level level, BlockPos pos) {
         return (int) Math.floor(Math.random()*(90-10+1)+10);
     }
 }

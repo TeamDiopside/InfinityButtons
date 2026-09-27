@@ -22,15 +22,15 @@ public abstract class MobMixin extends LivingEntity implements EquipmentUser, Le
     }
 
     @Shadow
-    public abstract void setItemSlot(EquipmentSlot equipmentSlot, ItemStack itemStack);
+    public abstract void setItemSlot(EquipmentSlot equipmentSlot, ItemStack stack);
 
     @Shadow public abstract void setDropChance(EquipmentSlot equipmentSlot, float chance);
 
     @Inject(method = "populateDefaultEquipmentSlots", at = @At("HEAD"), cancellable = true)
-    protected void populateDefaultEquipmentSlots(RandomSource randomSource, DifficultyInstance difficultyInstance, CallbackInfo ci) {
-        if (random.nextDouble() < 0.001) {
+    protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficultyInstance, CallbackInfo ci) {
+        if (this.random.nextDouble() < 0.001) {
             var safeEmergencyButtons = new ArrayList<>(IBBlocks.SAFE_EMERGENCY_BUTTONS.values());
-            SafeEmergencyButton chosenOne = safeEmergencyButtons.get(random.nextInt(safeEmergencyButtons.size())).get();
+            SafeEmergencyButton chosenOne = safeEmergencyButtons.get(this.random.nextInt(safeEmergencyButtons.size())).get();
 
             this.setItemSlot(EquipmentSlot.HEAD, new ItemStack(chosenOne));
             this.setDropChance(EquipmentSlot.HEAD, 1f);

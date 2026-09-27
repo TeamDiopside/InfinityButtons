@@ -22,18 +22,18 @@ public class JammedButton extends NormalButton {
     }
 
     @Override
-    protected @NotNull InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
+    protected @NotNull InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult blockHitResult) {
         player.displayClientMessage(Component.translatable("infinitybuttons.actionbar.jammed_button"), true);
         return InteractionResult.CONSUME;
     }
 
     @Override
-    protected @NotNull ItemInteractionResult useItemOn(ItemStack itemStack, BlockState blockState, Level level, BlockPos blockPos, Player player, InteractionHand interactionHand, BlockHitResult blockHitResult) {
+    protected @NotNull ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
         ItemStack inHand = player.getItemInHand(player.getUsedItemHand());
         if (inHand.getItem() instanceof MaceItem) {
-            this.press(blockState, level, blockPos, player);
-            level.playSound(null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), SoundEvents.MACE_SMASH_AIR, player.getSoundSource(), 1.0F, 1.0F);
-            spawnDestroyParticles(level, player, blockPos, blockState);
+            this.press(state, level, pos, player);
+            level.playSound(null, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.MACE_SMASH_AIR, player.getSoundSource(), 1.0F, 1.0F);
+            spawnDestroyParticles(level, player, pos, state);
             return ItemInteractionResult.SUCCESS;
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;

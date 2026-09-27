@@ -17,6 +17,7 @@ import nl.teamdiopside.infinitybuttons.block.faced6.LetterButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.LetterButtonState;
 import nl.teamdiopside.infinitybuttons.block.faced6.console.ConsoleButtonBlockEntity;
 import nl.teamdiopside.infinitybuttons.compat.jade.JadeIntegration;
+import org.jetbrains.annotations.NotNull;
 
 public class IBNetworking {
     public static void register() {
@@ -33,9 +34,7 @@ public class IBNetworking {
         }
 
         // Send 'Force Jade Camouflage' packets
-        PlayerEvent.PLAYER_JOIN.register(player -> {
-            sendJadeSyncToAll(player.server);
-        });
+        PlayerEvent.PLAYER_JOIN.register(player -> sendJadeSyncToAll(player.server));
     }
 
     public static void sendJadeSyncToAll(net.minecraft.server.MinecraftServer server) {
@@ -91,7 +90,7 @@ public class IBNetworking {
         );
 
         @Override
-        public Type<? extends CustomPacketPayload> type() {
+        public @NotNull Type<? extends CustomPacketPayload> type() {
             return TYPE;
         }
     }
@@ -126,7 +125,7 @@ public class IBNetworking {
         );
 
         @Override
-        public Type<? extends CustomPacketPayload> type() {
+        public @NotNull Type<? extends CustomPacketPayload> type() {
             return TYPE;
         }
     }
@@ -145,7 +144,7 @@ public class IBNetworking {
         );
 
         @Override
-        public Type<? extends CustomPacketPayload> type() {
+        public @NotNull Type<? extends CustomPacketPayload> type() {
             return TYPE;
         }
     }

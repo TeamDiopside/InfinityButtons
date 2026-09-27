@@ -18,32 +18,12 @@ import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 import java.util.concurrent.CompletableFuture;
 
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.MOD_ID;
+import static nl.teamdiopside.infinitybuttons.registry.IBTags.Items.*;
 
 public class ItemTagGenerator extends ItemTagsProvider {
 
     public ItemTagGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> registriesFuture, CompletableFuture<TagLookup<Block>> blockTags) {
         super(output, registriesFuture, blockTags);
-    }
-
-    public static final TagKey<Item> CONCRETE_POWDER_BUTTONS = add("concrete_powder_buttons");
-    public static final TagKey<Item> CONCRETE_POWDER_LARGE_BUTTONS = add("concrete_powder_large_buttons");
-    public static final TagKey<Item> LARGE_BUTTONS = add("large_buttons");
-    public static final TagKey<Item> WOODEN_LARGE_BUTTONS = add("wooden_large_buttons");
-    public static final TagKey<Item> EMERGENCY_BUTTONS = add("emergency_buttons");
-    public static final TagKey<Item> SAFE_EMERGENCY_BUTTONS = add("safe_emergency_buttons");
-    public static final TagKey<Item> NORMAL_EMERGENCY_BUTTONS = add("normal_emergency_buttons");
-    public static final TagKey<Item> NORMAL_SAFE_EMERGENCY_BUTTONS = add("normal_safe_emergency_buttons");
-    public static final TagKey<Item> SECRET_BUTTONS = add("secret_buttons");
-    public static final TagKey<Item> WOODEN_SECRET_BUTTONS = add("wooden_secret_buttons");
-    public static final TagKey<Item> BOOKSHELF_SECRET_BUTTONS = add("bookshelf_secret_buttons");
-    public static final TagKey<Item> TORCH_BUTTONS = add("torch_buttons");
-    public static final TagKey<Item> CONSOLE_BUTTONS = add("console_buttons");
-    public static final TagKey<Item> LANTERN_BUTTONS = add("lantern_buttons");
-    public static final TagKey<Item> COPPER_BUTTONS = add("copper_buttons");
-    public static final TagKey<Item> COPPER_LARGE_BUTTONS = add("copper_large_buttons");
-
-    static TagKey<Item> add(String name) {
-        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(MOD_ID, name));
     }
 
     public static final TagKey<Item> BOOKSHELVES = addCommon("bookshelves");

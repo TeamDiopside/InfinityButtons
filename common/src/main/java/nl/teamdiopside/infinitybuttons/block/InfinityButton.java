@@ -52,47 +52,47 @@ public abstract class InfinityButton extends Block {
 
     protected abstract Direction getConnectedDirection(BlockState state);
 
-    protected boolean isLever(Level level, BlockPos blockPos) {
+    protected boolean isLever(Level level, BlockPos pos) {
         return false;
     }
 
-    public void press(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
-        level.setBlockAndUpdate(blockPos, blockState.setValue(POWERED, true));
-        this.updateNeighbours(blockState, level, blockPos);
-        if (!this.isLever(level, blockPos)) level.scheduleTick(blockPos, this, getPressTicks());
+    public void press(BlockState state, Level level, BlockPos pos, @Nullable Player player) {
+        level.setBlockAndUpdate(pos, state.setValue(POWERED, true));
+        this.updateNeighbours(state, level, pos);
+        if (!this.isLever(level, pos)) level.scheduleTick(pos, this, getPressTicks());
 
-        this.playSound(player, level, blockPos, true);
-        if (this.isSignalSource(blockState)) level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, blockPos);
+        this.playSound(player, level, pos, true);
+        if (this.isSignalSource(state)) level.gameEvent(player, GameEvent.BLOCK_ACTIVATE, pos);
     }
 
-    public void unpress(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
-        level.setBlockAndUpdate(blockPos, blockState.setValue(POWERED, false));
-        this.updateNeighbours(blockState, level, blockPos);
-        playSound(player, level, blockPos, false);
+    public void unpress(BlockState state, Level level, BlockPos pos, @Nullable Player player) {
+        level.setBlockAndUpdate(pos, state.setValue(POWERED, false));
+        this.updateNeighbours(state, level, pos);
+        playSound(player, level, pos, false);
 
-        if (this.isSignalSource(blockState)) level.gameEvent(player, GameEvent.BLOCK_DEACTIVATE, blockPos);
+        if (this.isSignalSource(state)) level.gameEvent(player, GameEvent.BLOCK_DEACTIVATE, pos);
     }
 
     // Copied from vanilla
-    protected void updateNeighbours(BlockState blockState, Level level, BlockPos blockPos) {
-        level.updateNeighborsAt(blockPos, this);
-        level.updateNeighborsAt(blockPos.relative(getConnectedDirection(blockState).getOpposite()), this);
+    protected void updateNeighbours(BlockState state, Level level, BlockPos pos) {
+        level.updateNeighborsAt(pos, this);
+        level.updateNeighborsAt(pos.relative(getConnectedDirection(state).getOpposite()), this);
     }
 
-    protected void playSound(@Nullable Player player, LevelAccessor levelAccessor, BlockPos blockPos, boolean press) {
-        levelAccessor.playSound(player, blockPos, this.getSound(press), SoundSource.BLOCKS);
+    protected void playSound(@Nullable Player player, LevelAccessor levelAccessor, BlockPos pos, boolean press) {
+        levelAccessor.playSound(player, pos, this.getSound(press), SoundSource.BLOCKS);
     }
 
     @Override
-    protected @NotNull InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
-        if (blockState.getValue(POWERED)) {
-            if (this.isLever(level, blockPos)) {
-                this.unpress(blockState, level, blockPos, player);
+    protected @NotNull InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult blockHitResult) {
+        if (state.getValue(POWERED)) {
+            if (this.isLever(level, pos)) {
+                this.unpress(state, level, pos, player);
                 return InteractionResult.SUCCESS;
             }
             return InteractionResult.CONSUME;
         } else {
-            this.press(blockState, level, blockPos, player);
+            this.press(state, level, pos, player);
             return InteractionResult.SUCCESS;
         }
     }
@@ -103,29 +103,29 @@ public abstract class InfinityButton extends Block {
     }
 
     @Override
-    protected void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
-        if (blockState.getValue(POWERED)) {
-            unpress(blockState, serverLevel, blockPos, null);
+    protected void tick(BlockState state, ServerLevel serverLevel, BlockPos pos, RandomSource random) {
+        if (state.getValue(POWERED)) {
+            unpress(state, serverLevel, pos, null);
         }
     }
 
     @Override
-    protected boolean isSignalSource(BlockState blockState) {
+    protected boolean isSignalSource(BlockState state) {
         return true;
     }
 
     @Override
-    protected int getSignal(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, Direction direction) {
-        return blockState.getValue(POWERED) ? 15 : 0;
+    protected int getSignal(BlockState state, BlockGetter blockGetter, BlockPos pos, Direction direction) {
+        return state.getValue(POWERED) ? 15 : 0;
     }
 
     @Override
-    protected int getDirectSignal(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, Direction direction) {
-        return getSignal(blockState, blockGetter, blockPos, direction);
+    protected int getDirectSignal(BlockState state, BlockGetter blockGetter, BlockPos pos, Direction direction) {
+        return getSignal(state, blockGetter, pos, direction);
     }
 
     @Override
-    protected @NotNull VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
-        return blockState.getValue(POWERED) ? this.shapePressed : this.shapeUnpressed;
+    protected @NotNull VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext collisionContext) {
+        return state.getValue(POWERED) ? this.shapePressed : this.shapeUnpressed;
     }
 }

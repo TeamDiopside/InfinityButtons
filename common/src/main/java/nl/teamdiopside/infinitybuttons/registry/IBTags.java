@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.Block;
 import static nl.teamdiopside.infinitybuttons.InfinityButtons.MOD_ID;
 
 public class IBTags {
-    public class Blocks {
+    public static class Blocks {
         public static final TagKey<Block> CONCRETE_POWDER_BUTTONS = createBlockTag("concrete_powder_buttons");
         public static final TagKey<Block> CONCRETE_POWDER_LARGE_BUTTONS = createBlockTag("concrete_powder_large_buttons");
         public static final TagKey<Block> LARGE_BUTTONS = createBlockTag("large_buttons");
@@ -28,7 +28,7 @@ public class IBTags {
         public static final TagKey<Block> COPPER_LARGE_BUTTONS = createBlockTag("copper_large_buttons");
     }
 
-    public class Items {
+    public static class Items {
         public static final TagKey<Item> CONCRETE_POWDER_BUTTONS = createItemTag("concrete_powder_buttons");
         public static final TagKey<Item> CONCRETE_POWDER_LARGE_BUTTONS = createItemTag("concrete_powder_large_buttons");
         public static final TagKey<Item> LARGE_BUTTONS = createItemTag("large_buttons");

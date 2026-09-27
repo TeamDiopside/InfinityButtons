@@ -12,8 +12,8 @@ import java.util.Optional;
 
 public class EmergencyTrigger extends SimpleCriterionTrigger<EmergencyTrigger.TriggerInstance> {
 
-    public void trigger(ServerPlayer pPlayer) {
-        this.trigger(pPlayer, TriggerInstance::matches);
+    public void trigger(ServerPlayer serverPlayer) {
+        this.trigger(serverPlayer, TriggerInstance::matches);
     }
 
     @Override

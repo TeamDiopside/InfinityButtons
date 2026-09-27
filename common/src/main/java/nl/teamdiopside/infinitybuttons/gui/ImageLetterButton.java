@@ -18,6 +18,7 @@ public class ImageLetterButton extends Button {
     private final ResourceLocation texture;
     private final int buttonId;
 
+    // TODO what is this unused variable for?
     public ImageLetterButton(int x, int y, int width, int height, int u, int v, int hoveredVOffset, ResourceLocation texture, OnPress pressAction, int buttonId) {
         super(x, y, width, height, CommonComponents.EMPTY, pressAction, DEFAULT_NARRATION);
         this.u = u;

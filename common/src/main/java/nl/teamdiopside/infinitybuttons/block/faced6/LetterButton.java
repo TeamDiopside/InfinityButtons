@@ -19,7 +19,7 @@ public class LetterButton extends ButtonFaced6 {
     protected final boolean isLever;
 
     public LetterButton(Properties properties, boolean isLever) {
-        super(BlockSetType.STONE, 30, properties, SHAPE_PRESSED, SHAPE_UNPRESSED);
+        super(BlockSetType.STONE, properties, SHAPE_PRESSED, SHAPE_UNPRESSED);
         this.isLever = isLever;
 
         this.registerDefaultState(this.defaultBlockState()
@@ -28,12 +28,12 @@ public class LetterButton extends ButtonFaced6 {
     }
 
     @Override
-    protected boolean isLever(Level level, BlockPos blockPos) {
+    protected boolean isLever(Level level, BlockPos pos) {
         return this.isLever;
     }
 
     @Override
-    protected int getPressTicks(Level level, BlockPos blockPos) {
+    protected int getPressTicks(Level level, BlockPos pos) {
         return 30;
     }
 

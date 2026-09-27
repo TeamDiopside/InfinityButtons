@@ -21,17 +21,17 @@ public class ChainBlockMixin extends RotatedPillarBlock implements SimpleWaterlo
     }
 
     @Override
-    protected int getSignal(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, Direction direction) {
-        return infinityButtons$emitsRedstone(blockState, blockGetter, blockPos) && direction == Direction.DOWN ? 15 : 0;
+    protected int getSignal(BlockState state, BlockGetter blockGetter, BlockPos pos, Direction direction) {
+        return infinityButtons$emitsRedstone(state, blockGetter, pos) && direction == Direction.DOWN ? 15 : 0;
     }
 
     @Override
-    public int getDirectSignal(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, Direction direction) {
-        return getSignal(blockState, blockGetter, blockPos, direction);
+    public int getDirectSignal(BlockState state, BlockGetter blockGetter, BlockPos pos, Direction direction) {
+        return getSignal(state, blockGetter, pos, direction);
     }
 
     @Override
-    protected boolean isSignalSource(BlockState blockState) {
+    protected boolean isSignalSource(BlockState state) {
         return true;
     }
 

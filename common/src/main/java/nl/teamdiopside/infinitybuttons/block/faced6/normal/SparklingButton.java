@@ -20,17 +20,17 @@ public class SparklingButton extends NormalButton {
     }
 
     @Override
-    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
-        super.animateTick(blockState, level, blockPos, randomSource);
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        super.animateTick(state, level, pos, random);
 
         if (!IBConfig.diamondParticles()) return;
 
-        if (randomSource.nextInt(5) != 0) return;
+        if (random.nextInt(5) != 0) return;
 
-        VoxelShape test = this.getShape(blockState, level, blockPos, null);
-        Vec3 center = test.toAabbs().getFirst().getCenter().add(blockPos.getCenter()).subtract(0.5, 0.5, 0.5);
+        VoxelShape test = this.getShape(state, level, pos, null);
+        Vec3 center = test.toAabbs().getFirst().getCenter().add(pos.getCenter()).subtract(0.5, 0.5, 0.5);
 
-        Direction normalDir = getConnectedDirection(blockState);
+        Direction normalDir = getConnectedDirection(state);
         Vector3f step = normalDir.step().mul((float) 2 / 16);
         Vec3 particleCenter = center.add(step.x, step.y, step.z);
 
@@ -38,9 +38,9 @@ public class SparklingButton extends NormalButton {
 
         double spread = this.large ? 0.55 : 0.35;
 
-        double x = particleCenter.x + (axis == Direction.Axis.X ? 0 : (randomSource.nextDouble() - 0.5D) * spread);
-        double y = particleCenter.y + (axis == Direction.Axis.Y ? 0 : (randomSource.nextDouble() - 0.5D) * spread);
-        double z = particleCenter.z + (axis == Direction.Axis.Z ? 0 : (randomSource.nextDouble() - 0.5D) * spread);
+        double x = particleCenter.x + (axis == Direction.Axis.X ? 0 : (random.nextDouble() - 0.5D) * spread);
+        double y = particleCenter.y + (axis == Direction.Axis.Y ? 0 : (random.nextDouble() - 0.5D) * spread);
+        double z = particleCenter.z + (axis == Direction.Axis.Z ? 0 : (random.nextDouble() - 0.5D) * spread);
 
 
         level.addParticle( IBParticles.DIAMOND_SPARKLE.get(), x, y, z, 0, 0, 0);

@@ -48,7 +48,7 @@ public class LanternButton extends InfinityButton implements SimpleWaterloggedBl
     }
 
     @Override
-    protected boolean isLever(Level level, BlockPos blockPos) {
+    protected boolean isLever(Level level, BlockPos pos) {
         return this.isLever;
     }
 
@@ -110,20 +110,20 @@ public class LanternButton extends InfinityButton implements SimpleWaterloggedBl
     }
 
     @Override
-    protected boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
-        return Block.canSupportCenter(levelReader, blockPos.relative(Direction.UP), Direction.DOWN);
+    protected boolean canSurvive(BlockState state, LevelReader levelReader, BlockPos pos) {
+        return Block.canSupportCenter(levelReader, pos.relative(Direction.UP), Direction.DOWN);
     }
 
     @Override
-    public void press(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
-        super.press(blockState, level, blockPos, player);
-        this.updateThings(level, blockPos);
+    public void press(BlockState state, Level level, BlockPos pos, @Nullable Player player) {
+        super.press(state, level, pos, player);
+        this.updateThings(level, pos);
     }
 
     @Override
-    public void unpress(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
-        super.unpress(blockState, level, blockPos, player);
-        this.updateThings(level, blockPos);
+    public void unpress(BlockState state, Level level, BlockPos pos, @Nullable Player player) {
+        super.unpress(state, level, pos, player);
+        this.updateThings(level, pos);
     }
 
     @Override
@@ -132,7 +132,7 @@ public class LanternButton extends InfinityButton implements SimpleWaterloggedBl
     }
 
     @Override
-    protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos blockPos) {
+    protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
         return state.getValue(POWERED) ? 15 : 0;
     }
 

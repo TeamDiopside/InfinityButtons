@@ -14,8 +14,8 @@ import java.util.Optional;
 
 public class SafetyTrigger extends SimpleCriterionTrigger<SafetyTrigger.TriggerInstance> {
 
-    public void trigger(ServerPlayer pPlayer) {
-        this.trigger(pPlayer, (instance) -> instance.matches(pPlayer));
+    public void trigger(ServerPlayer serverPlayer) {
+        this.trigger(serverPlayer, (instance) -> instance.matches(serverPlayer));
     }
 
     @Override

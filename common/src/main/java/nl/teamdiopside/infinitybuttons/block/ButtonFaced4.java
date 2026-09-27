@@ -45,10 +45,10 @@ public abstract class ButtonFaced4 extends InfinityButton {
     }
 
     @Override
-    protected @NotNull VoxelShape getShape(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, CollisionContext collisionContext) {
-        return blockState.getValue(POWERED)
-                ? this.SHAPES_PRESSED.get(blockState.getValue(FACING))
-                : this.SHAPES_UNPRESSED.get(blockState.getValue(FACING));
+    protected @NotNull VoxelShape getShape(BlockState state, BlockGetter blockGetter, BlockPos pos, CollisionContext collisionContext) {
+        return state.getValue(POWERED)
+                ? this.SHAPES_PRESSED.get(state.getValue(FACING))
+                : this.SHAPES_UNPRESSED.get(state.getValue(FACING));
     }
 
     @Override
@@ -66,13 +66,13 @@ public abstract class ButtonFaced4 extends InfinityButton {
     }
 
     @Override
-    protected @NotNull BlockState rotate(BlockState blockState, Rotation rotation) {
-        return blockState.setValue(FACING, rotation.rotate(blockState.getValue(FACING)));
+    protected @NotNull BlockState rotate(BlockState state, Rotation rotation) {
+        return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
     }
 
     @Override
-    protected @NotNull BlockState mirror(BlockState blockState, Mirror mirror) {
-        return blockState.rotate(mirror.getRotation(blockState.getValue(FACING)));
+    protected @NotNull BlockState mirror(BlockState state, Mirror mirror) {
+        return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
 
     @Override

@@ -45,22 +45,22 @@ public class Doorbell extends ButtonFaced4 {
     }
 
     @Override
-    protected int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos blockPos) {
-        return this.emitsPower ? super.getAnalogOutputSignal(blockState, level, blockPos) : 0;
+    protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos) {
+        return this.emitsPower ? super.getAnalogOutputSignal(state, level, pos) : 0;
     }
 
     @Override
-    protected int getDirectSignal(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, Direction direction) {
-        return this.emitsPower ? super.getDirectSignal(blockState, blockGetter, blockPos, direction) : 0;
+    protected int getDirectSignal(BlockState state, BlockGetter blockGetter, BlockPos pos, Direction direction) {
+        return this.emitsPower ? super.getDirectSignal(state, blockGetter, pos, direction) : 0;
     }
 
     @Override
-    protected int getSignal(BlockState blockState, BlockGetter blockGetter, BlockPos blockPos, Direction direction) {
-        return this.emitsPower ? super.getSignal(blockState, blockGetter, blockPos, direction) : 0;
+    protected int getSignal(BlockState state, BlockGetter blockGetter, BlockPos pos, Direction direction) {
+        return this.emitsPower ? super.getSignal(state, blockGetter, pos, direction) : 0;
     }
 
     @Override
-    protected boolean isSignalSource(BlockState blockState) {
+    protected boolean isSignalSource(BlockState state) {
         return this.emitsPower;
     }
 }

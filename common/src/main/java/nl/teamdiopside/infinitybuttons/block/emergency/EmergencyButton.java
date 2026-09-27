@@ -38,7 +38,7 @@ public class EmergencyButton extends ButtonFaced6 {
     public static final int PRESS_TICKS = 20;
 
     public EmergencyButton(Properties properties, VoxelShape shapePressed, VoxelShape shapeUnpressed) {
-        super(BlockSetType.STONE, PRESS_TICKS, properties, shapePressed, shapeUnpressed);
+        super(BlockSetType.STONE, properties, shapePressed, shapeUnpressed);
     }
 
     public EmergencyButton(Properties properties) {
@@ -46,10 +46,10 @@ public class EmergencyButton extends ButtonFaced6 {
     }
 
     @Override
-    public void unpress(BlockState blockState, Level level, BlockPos blockPos, @Nullable Player player) {
-        super.unpress(blockState, level, blockPos, player);
+    public void unpress(BlockState state, Level level, BlockPos pos, @Nullable Player player) {
+        super.unpress(state, level, pos, player);
 
-        Block.pushEntitiesUp(blockState, level.getBlockState(blockPos), level, blockPos);
+        Block.pushEntitiesUp(state, level.getBlockState(pos), level, pos);
     }
 
     public static void emergencySound(Level level, BlockPos pos) {
@@ -108,7 +108,7 @@ public class EmergencyButton extends ButtonFaced6 {
     }
 
     @Override
-    protected int getPressTicks(Level level, BlockPos blockPos) {
+    protected int getPressTicks(Level level, BlockPos pos) {
         return PRESS_TICKS;
     }
 

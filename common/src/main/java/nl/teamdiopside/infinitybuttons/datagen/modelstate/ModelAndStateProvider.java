@@ -121,10 +121,9 @@ public class ModelAndStateProvider implements DataProvider {
 
                 boolean hasCustomTexture = CUSTOM_TEXTURE.contains(type);
 
-                String finalType = type;
                 Function<Boolean, ResourceLocation> texture = (isLarge) -> (
-                        hasCustomTexture ? ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/" + finalType + (isLarge ? "_large" : "") + "_button")
-                                         : ResourceLocation.fromNamespaceAndPath(entry.getKey().getNamespace(), "block/" + finalType)
+                        hasCustomTexture ? ResourceLocation.fromNamespaceAndPath(MOD_ID, "block/" + type + (isLarge ? "_large" : "") + "_button")
+                                         : ResourceLocation.fromNamespaceAndPath(entry.getKey().getNamespace(), "block/" + type)
                 );
 
                 generateButton(smallName, texture.apply(false), false);

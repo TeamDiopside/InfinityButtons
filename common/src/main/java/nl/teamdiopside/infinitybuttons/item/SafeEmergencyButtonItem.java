@@ -25,8 +25,8 @@ public class SafeEmergencyButtonItem extends BlockItem implements Equipable {
     }
 
     @Override
-    public void inventoryTick(ItemStack itemStack, Level level, Entity entity, int slot, boolean selected) {
-        super.inventoryTick(itemStack, level, entity, slot, selected);
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
+        super.inventoryTick(stack, level, entity, slot, selected);
         if (slot == HEAD_SLOT && entity instanceof ServerPlayer serverPlayer) {
             IBAdvancementTriggers.SAFETY_TRIGGER.get().trigger(serverPlayer);
         }
