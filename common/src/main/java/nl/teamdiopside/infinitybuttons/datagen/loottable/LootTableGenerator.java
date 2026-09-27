@@ -1,4 +1,4 @@
-package nl.teamdiopside.infinitybuttons.datagen;
+package nl.teamdiopside.infinitybuttons.datagen.loottable;
 
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.core.HolderLookup;

@@ -8,7 +8,8 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import nl.teamdiopside.infinitybuttons.datagen.BlockTagGenerator;
 import nl.teamdiopside.infinitybuttons.datagen.ItemTagGenerator;
-import nl.teamdiopside.infinitybuttons.datagen.LootTableGenerator;
+import nl.teamdiopside.infinitybuttons.datagen.loottable.IBLootTableProvider;
+import nl.teamdiopside.infinitybuttons.datagen.loottable.LootTableGenerator;
 import nl.teamdiopside.infinitybuttons.datagen.modelstate.ModelAndStateProvider;
 import nl.teamdiopside.infinitybuttons.datagen.recipe.IBRecipeProvider;
 
@@ -30,7 +31,7 @@ public class NeoForgeDataGen {
 
             generator.addProvider(true, new IBRecipeProvider(registries, output));
 
-            generator.addProvider(true, new LootTableProvider(
+            generator.addProvider(true, new IBLootTableProvider(
                     output,
                     Collections.emptySet(),
                     List.of(new LootTableProvider.SubProviderEntry(LootTableGenerator::new, LootContextParamSets.BLOCK)),
