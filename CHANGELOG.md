@@ -13,6 +13,7 @@
   - small_console_lever removed.
 - Tooltips config option now belongs to the 'diopside' namespace.
 - The 'Hold Shift' translation now belongs to the 'diopside' namespace.
+- Added Loot Tables for modded compat buttons
 
 ## Content
 - Added (Chiseled) Myalite Brick Secret Buttons from Quark.
