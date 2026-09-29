@@ -11,10 +11,13 @@
   - console_lever removed.
   - large_console_lever removed.
   - small_console_lever removed.
+- Tooltips config option now belongs to the 'diopside' namespace.
+- The 'Hold Shift' translation now belongs to the 'diopside' namespace.
 
 ## Content
 - Added (Chiseled) Myalite Brick Secret Buttons from Quark.
 - Removed Tuff Brick Secret Buttons from Quark.
+- Removed Chiseled Tuff Brick Secret Buttons from Quark.
 - Added Tuff Brick Secret Button from Minecraft.
 - Propelplant Torch Button/Lever is now called Powdery Torch Button/Lever.
 - Hoglin Trophy Button now has the same item model as the Hoglin Trophy.
@@ -27,4 +30,6 @@
 - Changed the sound when you pull a Lantern Button.
 - Removed Endergetic Compat due to discontinuation of the mod.
 - Doorbells can now be placed on the ground and the ceiling.
-- Tweaked Doorbell Item Model
+- Tweaked Doorbell Item Model.
+- Tweaked Dutch translations.
+- Added new tooltips to different types of buttons.

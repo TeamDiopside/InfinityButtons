@@ -6,6 +6,7 @@
   "block.infinitybuttons.calcite_button": "Calcieten knop",
   "block.infinitybuttons.tuff_button": "Tufstenen knop",
   "block.infinitybuttons.dripstone_button": "Druipstenen knop",
+
   "block.infinitybuttons.copper_button": "Koperen knop",
   "block.infinitybuttons.exposed_copper_button": "Blootgestelde koperen knop",
   "block.infinitybuttons.weathered_copper_button": "Verweerde koperen knop",
@@ -18,6 +19,7 @@
   "block.infinitybuttons.sticky_exposed_copper_button": "Kleverige blootgestelde koperen knop",
   "block.infinitybuttons.sticky_weathered_copper_button": "Kleverige verweerde koperen knop",
   "block.infinitybuttons.sticky_oxidized_copper_button": "Kleverige geoxideerde koperen knop",
+
   "block.infinitybuttons.iron_button": "Ijzeren knop",
   "block.infinitybuttons.gold_button": "Gouden knop",
   "block.infinitybuttons.emerald_button": "Smaragden knop",
@@ -26,6 +28,7 @@
   "block.infinitybuttons.prismarine_button": "Prismarienen knop",
   "block.infinitybuttons.prismarine_brick_button": "Prismarienblokstenen knop",
   "block.infinitybuttons.dark_prismarine_button": "Donkerprismarienen knop",
+
   "block.infinitybuttons.sand_button": "Zandknop",
   "block.infinitybuttons.red_sand_button": "Roodzandknop",
   "block.infinitybuttons.gravel_button": "Grindknop",
@@ -60,6 +63,7 @@
   "block.infinitybuttons.bamboo_large_button": "Bamboe grote knop",
   "block.infinitybuttons.crimson_large_button": "Helrode houten grote knop",
   "block.infinitybuttons.warped_large_button": "Spookachtige houten grote knop",
+
   "block.infinitybuttons.stone_large_button": "Stenen grote knop",
   "block.infinitybuttons.deepslate_large_button": "Wrevelstenen grote knop",
   "block.infinitybuttons.granite_large_button": "Granieten grote knop",
@@ -69,6 +73,7 @@
   "block.infinitybuttons.tuff_large_button": "Tufstenen grote knop",
   "block.infinitybuttons.dripstone_large_button": "Druipstenen grote knop",
   "block.infinitybuttons.polished_blackstone_large_button": "Gepolijste zwartstenen grote knop",
+
   "block.infinitybuttons.copper_large_button": "Koperen grote knop",
   "block.infinitybuttons.exposed_copper_large_button": "Bloodgestelde koperen grote knop",
   "block.infinitybuttons.weathered_copper_large_button": "Verweerde koperen grote knop",
@@ -81,6 +86,7 @@
   "block.infinitybuttons.sticky_exposed_copper_large_button": "Kleverige bloodgestelde koperen grote knop",
   "block.infinitybuttons.sticky_weathered_copper_large_button": "Kleverige verweerde koperen grote knop",
   "block.infinitybuttons.sticky_oxidized_copper_large_button": "Kleverige geoxideerde koperen grote knop",
+
   "block.infinitybuttons.iron_large_button": "Ijzeren grote knop",
   "block.infinitybuttons.gold_large_button": "Gouden grote knop",
   "block.infinitybuttons.emerald_large_button": "Smaragden grote knop",
@@ -89,6 +95,7 @@
   "block.infinitybuttons.prismarine_large_button": "Prismarienen grote knop",
   "block.infinitybuttons.prismarine_brick_large_button": "Prismarienblokstenen grote knop",
   "block.infinitybuttons.dark_prismarine_large_button": "Donkerprismarienen grote knop",
+
   "block.infinitybuttons.sand_large_button": "Grote zandknop",
   "block.infinitybuttons.red_sand_large_button": "Grote roodzandknop",
   "block.infinitybuttons.gravel_large_button": "Grote grindknop",
@@ -199,6 +206,8 @@
   "block.infinitybuttons.cracked_deepslate_brick_secret_button": "Gebarsten wrevelstenen verborgen knop",
   "block.infinitybuttons.deepslate_tile_secret_button": "Wrevelstenen tegel verborgen knop",
   "block.infinitybuttons.cracked_deepslate_tile_secret_button": "Gebarsten wrevelstenen tegel verborgen knop",
+  "block.infinitybuttons.tuff_brick_secret_button": "Tufstenen blokstenen verborgen knop",
+  "block.infinitybuttons.chiseled_tuff_brick_secret_button": "Gebeiteld gepolijst tufstenen blokstenen verborgen knop",
   "block.infinitybuttons.oak_plank_secret_button": "Eikenhouten planken verborgen knop",
   "block.infinitybuttons.spruce_plank_secret_button": "Sparrenhouten planken verborgen knop",
   "block.infinitybuttons.birch_plank_secret_button": "Berkenhouten planken verborgen knop",
@@ -281,11 +290,6 @@
   "block.infinitybuttons.chiseled_magenta_terracotta_brick_secret_button": "Gebeiteld magenta terracotta bakstenen verborgen knop",
   "block.infinitybuttons.chiseled_pink_terracotta_brick_secret_button": "Gebeiteld roze terracotta bakstenen verborgen knop",
 
-  "block.infinitybuttons.chiseled_end_stone_brick_secret_button": "Gebeiteld endblokstenen verborgen knop",
-  "block.infinitybuttons.chiseled_eumus_brick_secret_button": "Gebeiteld eumusblokstenen verborgen knop",
-  "block.infinitybuttons.cracked_end_stone_brick_secret_button": "Gebarsten endblokstenen verborgen knop",
-  "block.infinitybuttons.cracked_eumus_brick_secret_button": "Gebarsten eumusblokstenen verborgen knop",
-  "block.infinitybuttons.eumus_brick_secret_button": "Eumusblokstenen verborgen knop",
   "block.infinitybuttons.honeycomb_brick_secret_button": "Honingraat bakstenen verborgen knop",
   "block.infinitybuttons.chiseled_honeycomb_brick_secret_button": "Gebeiteld honingraat bakstenen verborgen knop",
   "block.infinitybuttons.chiseled_chocolate_brick_secret_button": "Gebeiteld chocolade bakstenen verborgen knop",
@@ -300,7 +304,6 @@
   "block.infinitybuttons.andesite_brick_secret_button": "Andesietblokstenen verborgen knop",
   "block.infinitybuttons.calcite_brick_secret_button": "Calcietblokstenen verborgen knop",
   "block.infinitybuttons.dripstone_brick_secret_button": "Druipstenen blokstenen verborgen knop",
-  "block.infinitybuttons.tuff_brick_secret_button": "Tufstenen blokstenen verborgen knop",
   "block.infinitybuttons.limestone_brick_secret_button": "Kalkstenen blokstenen verborgen knop",
   "block.infinitybuttons.jasper_brick_secret_button": "Jaspisblokstenen verborgen knop",
   "block.infinitybuttons.shale_brick_secret_button": "Zachte leistenen blokstenen verborgen knop",
@@ -358,12 +361,14 @@
 
   "itemGroup.infinityButtonsTab": "Infinity Buttons",
 
-  "infinitybuttons.subtitle.alarm": "Alarm gaat af",
-  "infinitybuttons.subtitle.stone_scrape": "Steen verschuift",
-  "infinitybuttons.subtitle.wood_scrape": "Hout verschuift",
-  "infinitybuttons.subtitle.doorbell": "Ding dong",
+  "subtitles.block.emergency_button.alarm": "Alarm gaat af",
+  "subtitles.block.secret_button.stone_scrape": "Steen verschuift",
+  "subtitles.block.secret_button.wood_scrape": "Hout verschuift",
+  "subtitles.block.doorbell.doorbell": "Ding dong",
+  "subtitles.block.console_button.beep": "Consoleknop biept",
+  "subtitles.block.console_button.boop": "Consoleknop boept",
+  "subtitles.block.console_button.error": "Consoleknop weigert",
 
-  "infinitybuttons.tooltip.hold_shift": "[Houd Shift ingedrukt]",
   "infinitybuttons.tooltip.sticky_copper_button": "Deze knop werkt als een hendel",
   "infinitybuttons.tooltip.emerald_button_1": "Deze knop blijft voor een willekeurige tijd",
   "infinitybuttons.tooltip.emerald_button_2": "ingedrukt tussen de 0,5 en 5 seconden",
@@ -418,7 +423,9 @@
   "tag.item.infinitybuttons.emergency_buttons": "Noodknoppen",
   "tag.item.infinitybuttons.lantern_buttons": "Lantaarnknoppen",
   "tag.item.infinitybuttons.large_buttons": "Grote knoppen",
-  "tag.item.infinitybuttons.safe_emergency_buttons": "Veiligheidsknoppen",
+  "tag.item.infinitybuttons.normal_emergency_buttons": "Normale noodknoppen",
+  "tag.item.infinitybuttons.normal_safe_emergency_buttons": "Normale veilige noodknoppen",
+  "tag.item.infinitybuttons.safe_emergency_buttons": "Veilige noodknoppen",
   "tag.item.infinitybuttons.secret_buttons": "Verborgen knoppen",
   "tag.item.infinitybuttons.torch_buttons": "Toortsknoppen",
   "tag.item.infinitybuttons.wooden_large_buttons": "Houten grote knoppen",
@@ -434,7 +441,7 @@
   "config.infinitybuttons.alarm.mute.description": "Voorkomt dat Noodknoppen een geluid afspelen op je client\n \n§7Perfect om te voorkomen dat die vervelende vriend je zen boerderijsessie verstoort.",
 
   "config.infinitybuttons.alarm_type.name": "Alarmtype",
-  "config.infinitybuttons.alarm_type.description": "De manier waarop Noodknoppen een alarm laten afgaan.\nRANGE: Alarmen zijn hoorbaar tot een bepaalde radius\nGLOBAL: Alarmen zijn overal in de wereld hoorbaar\n \n§cDit client-side veranderen heeft geen effect op een server,\n§chet moet in de config van de server veranderd worden.",
+  "config.infinitybuttons.alarm_type.description": "De manier waarop Noodknoppen een alarm laten afgaan.\nRANGE: Alarmen zijn hoorbaar tot een bepaalde radius.\nGLOBAL: Alarmen zijn overal in de wereld hoorbaar.\n \n§cDit client-side veranderen heeft geen effect op een server,\n§chet moet in de config van de server veranderd worden.",
 
   "config.infinitybuttons.alarm_range.name": "Alarmbereik",
   "config.infinitybuttons.alarm_range.description": "De afstand in chunks waarin het alarm hoorbaar is.\n§cDeze instelling is alleen van toepassing wanneer de bovenstaande 'Alarmtype' is ingesteld op 'RANGE'",

@@ -41,7 +41,7 @@ public class ConsoleButton extends ButtonFaced6 implements EntityBlock {
 
     @Override
     protected @NotNull SoundEvent getSound(boolean press) {
-        return press ? IBSounds.CONSOLE_BEEP.get() : IBSounds.CONSOLE_UNBEEP.get();
+        return press ? IBSounds.CONSOLE_BEEP.get() : IBSounds.CONSOLE_BOOP.get();
     }
 
     @Override
