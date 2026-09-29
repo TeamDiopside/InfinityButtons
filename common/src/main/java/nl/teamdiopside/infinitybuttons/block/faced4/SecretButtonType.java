@@ -65,6 +65,14 @@ public enum SecretButtonType implements StringRepresentable {
             ),
             IBSounds.STONE_SCRAPE
     ),
+    CHISELED_TUFF_BRICK(
+            Shapes.or(
+                    Block.box(0, 0, 0, 16, 4, 16),
+                    Block.box(0, 4, 3, 16, 13, 16),
+                    Block.box(0, 13, 0, 16, 16, 16)
+            ),
+            IBSounds.STONE_SCRAPE
+    ),
     DEEPSLATE_TILE(
             Shapes.or(
                     Block.box(0, 0, 0, 16, 10, 16),

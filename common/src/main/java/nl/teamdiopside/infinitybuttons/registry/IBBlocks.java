@@ -130,6 +130,8 @@ public class IBBlocks {
             "cracked_deepslate_tile_secret_button", SecretButtonType.DEEPSLATE_TILE, Blocks.CRACKED_DEEPSLATE_TILES );
     public static final RegistrySupplier<SecretButton> TUFF_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton(
             "tuff_brick_secret_button", SecretButtonType.BIG_BRICK, Blocks.TUFF_BRICKS );
+    public static final RegistrySupplier<SecretButton> CHISELED_TUFF_BRICK_SECRET_BUTTON = INSTANCE.registerSecretButton(
+            "chiseled_tuff_brick_secret_button", SecretButtonType.CHISELED_TUFF_BRICK, Blocks.CHISELED_TUFF_BRICKS );
 
     public static final RegistrySupplier<SecretButton> OAK_PLANK_SECRET_BUTTON = INSTANCE.registerSecretButton(
             "oak_plank_secret_button", SecretButtonType.PLANK, Blocks.OAK_PLANKS );

@@ -376,6 +376,7 @@ public class IBCreativeTabs {
         addBlock(output, IBBlocks.DEEPSLATE_TILE_SECRET_BUTTON.get());
         addBlock(output, IBBlocks.CRACKED_DEEPSLATE_TILE_SECRET_BUTTON.get());
         addBlock(output, IBBlocks.TUFF_BRICK_SECRET_BUTTON.get());
+        addBlock(output, IBBlocks.CHISELED_TUFF_BRICK_SECRET_BUTTON.get());
 
         addPlankSecretButtons(output);
 
