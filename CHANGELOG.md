@@ -13,9 +13,11 @@
   - small_console_lever removed.
 - Tooltips config option now belongs to the 'diopside' namespace.
 - The 'Hold Shift' translation now belongs to the 'diopside' namespace.
-- Added Loot Tables for modded compat buttons
+- Added Loot Tables for modded compat buttons.
+- Now using YACL as config library.
 
 ## Content
+- Added Bamboo Plank Secret Button.
 - Added (Chiseled) Myalite Brick Secret Buttons from Quark.
 - Removed Tuff Brick Secret Buttons from Quark.
 - Removed Chiseled Tuff Brick Secret Buttons from Quark.
