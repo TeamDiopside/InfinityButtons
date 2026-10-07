@@ -29,7 +29,7 @@ import nl.teamdiopside.infinitybuttons.block.faced4.TorchButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.LampButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.LetterButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.console.ConsoleButton;
-import nl.teamdiopside.infinitybuttons.block.faced6.console.ConsoleButtonShape;
+import nl.teamdiopside.infinitybuttons.block.faced6.console.ConsoleButtonType;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.*;
 import nl.teamdiopside.infinitybuttons.block.simple.LanternButton;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils.LargeVariantSupplier;
@@ -242,13 +242,13 @@ public class IBBlocks {
      * Console Buttons
      */
     public static final RegistrySupplier<ConsoleButton> SMALL_CONSOLE_BUTTON = INSTANCE.registerBlock("small_console_button", BlockEntryBuilder.ofBlock(properties ->
-            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonShape.SMALL)), "console_button");
+            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonType.SMALL)), "console_button");
     public static final RegistrySupplier<ConsoleButton> CONSOLE_BUTTON = INSTANCE.registerBlock("console_button", BlockEntryBuilder.ofBlock(properties ->
-            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonShape.NORMAL)), "console_button");
+            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonType.NORMAL)), "console_button");
     public static final RegistrySupplier<ConsoleButton> LARGE_CONSOLE_BUTTON = INSTANCE.registerBlock("large_console_button", BlockEntryBuilder.ofBlock(properties ->
-            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonShape.LARGE)), "console_button");
+            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonType.LARGE)), "console_button");
     public static final RegistrySupplier<ConsoleButton> BIG_CONSOLE_BUTTON = INSTANCE.registerBlock("big_console_button", BlockEntryBuilder.ofBlock(properties ->
-            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonShape.LARGE)), "console_button");
+            new ConsoleButton(lanternProperties(properties, 5), ConsoleButtonType.BIG)), "console_button");
 
     /**
      * Doorbells

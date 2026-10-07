@@ -7,26 +7,26 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
 import nl.teamdiopside.infinitybuttons.registry.IBMenus;
 import org.jetbrains.annotations.NotNull;
 
-// Matching the anvil UI
-public class PlainInventoryMenu extends AbstractContainerMenu {
+public class ConsoleButtonMenu extends AbstractContainerMenu {
     private static final int SLOT_SIZE = 18;
     private static final int ROWS = 3;
     private static final int COLS = 9;
     private static final int MAIN_START_X = 8;
-    private static final int MAIN_START_Y = 84;
-    private static final int HOTBAR_Y = 142;
+    private static final int MAIN_START_Y = 124;
+    private static final int HOTBAR_Y = 182;
     private static final int MAIN_SLOT_COUNT = ROWS * COLS;
 
     private final BlockPos pos;
 
-    public PlainInventoryMenu(int containerId, Inventory playerInventory, FriendlyByteBuf buf) {
+    public ConsoleButtonMenu(int containerId, Inventory playerInventory, FriendlyByteBuf buf) {
         this(containerId, playerInventory, buf.readBlockPos());
     }
 
-    public PlainInventoryMenu(int containerId, Inventory playerInventory, BlockPos pos) {
+    public ConsoleButtonMenu(int containerId, Inventory playerInventory, BlockPos pos) {
         super(IBMenus.CONSOLE_INVENTORY.get(), containerId);
 
         this.pos = pos;
@@ -66,7 +66,7 @@ public class PlainInventoryMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(@NotNull Player player) {
-        return true;
+        return player.getEyePosition().distanceTo(Vec3.atCenterOf(pos)) < 5;
     }
 
     public BlockPos getPos() {

@@ -15,7 +15,7 @@ import org.lwjgl.glfw.GLFW;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ConsoleButtonGUI extends AbstractContainerScreen<PlainInventoryMenu> {
+public class ConsoleButtonGUI extends AbstractContainerScreen<ConsoleButtonMenu> {
     private static final ResourceLocation BACKGROUND = ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID,
             "textures/gui/console.png");
 
@@ -28,17 +28,22 @@ public class ConsoleButtonGUI extends AbstractContainerScreen<PlainInventoryMenu
     private static final Component LEVER_LABEL = Component.translatable("infinitybuttons.gui.console_button.lever_label");
     private static final Component KEYCARD_LABEL = Component.translatable("infinitybuttons.gui.console_button.keycard_label");
     private static final Component DURATION_LABEL = Component.translatable("infinitybuttons.gui.console_button.duration_label");
-    private static final Component INFO_LABEL = Component.translatable("infinitybuttons.gui.console_button.duration_info");
+    private static final Component DURATION_INFO_LABEL = Component.translatable("infinitybuttons.gui.console_button.duration_info");
+    private static final Component DURABILITY_LABEL = Component.translatable("infinitybuttons.gui.console_button.durability_label");
+    private static final Component DURABILITY_INFO_LABEL = Component.translatable("infinitybuttons.gui.console_button.durability_info");
+
     private static final Component TICKS_UNIT = Component.translatable("infinitybuttons.gui.console_button.ticks_unit");
+    private static final Component TIMES_UNIT = Component.translatable("infinitybuttons.gui.console_button.times_unit");
 
     private EditBox leverInput;
     private EditBox pressDurationInput;
+    private EditBox durabilityInput;
     private ItemPickerSlot itemSlot;
 
-    public ConsoleButtonGUI(PlainInventoryMenu menu, Inventory playerInventory, Component title) {
+    public ConsoleButtonGUI(ConsoleButtonMenu menu, Inventory playerInventory, Component title) {
         super(menu, playerInventory, title);
         this.imageWidth = 176;
-        this.imageHeight = 166;
+        this.imageHeight = 206;
     }
 
     @Override
@@ -57,6 +62,13 @@ public class ConsoleButtonGUI extends AbstractContainerScreen<PlainInventoryMenu
         this.pressDurationInput.setTextColor(TERMINAL_INPUT_COLOR);
         this.pressDurationInput.setValue("40");
         this.addRenderableWidget(this.pressDurationInput);
+
+        this.durabilityInput = new EditBox(this.font, this.leftPos + 24, this.topPos + 88, 110, 10,
+                Component.translatable("infinitybuttons.gui.console_button.durability_narration"));
+        this.durabilityInput.setBordered(false);
+        this.durabilityInput.setTextColor(TERMINAL_INPUT_COLOR);
+        this.durabilityInput.setValue("infinite");
+        this.addRenderableWidget(this.durabilityInput);
 
         this.itemSlot = new ItemPickerSlot(this.leftPos + 141, this.topPos + 27, this.menu::getCarried);
         this.itemSlot.setItem(ItemStack.EMPTY);
@@ -81,13 +93,21 @@ public class ConsoleButtonGUI extends AbstractContainerScreen<PlainInventoryMenu
         drawLabel(guiGraphics, LEVER_LABEL, this.leftPos + 18, this.topPos + 16);
         drawLabelRight(guiGraphics, KEYCARD_LABEL, this.leftPos + 160, this.topPos + 16);
         drawLabel(guiGraphics, DURATION_LABEL, this.leftPos + 18, this.topPos + 42);
-        drawLabel(guiGraphics, INFO_LABEL, this.leftPos + 26, this.topPos + 62);
+        drawLabel(guiGraphics, DURATION_INFO_LABEL, this.leftPos + 26, this.topPos + 62);
+        drawLabel(guiGraphics, DURABILITY_LABEL, this.leftPos + 18, this.topPos + 77);
+        drawLabel(guiGraphics, DURABILITY_INFO_LABEL, this.leftPos + 26, this.topPos + 97);
 
         int ticksInputWidth = Math.min(
                 this.font.width(this.pressDurationInput.getValue()),
                 this.pressDurationInput.getWidth()
         );
         drawLabel(guiGraphics, TICKS_UNIT, this.leftPos + 24 + ticksInputWidth, this.topPos + 53);
+
+        int timesInputWidth = Math.min(
+                this.font.width(this.durabilityInput.getValue()),
+                this.durabilityInput.getWidth()
+        );
+        drawLabel(guiGraphics, TIMES_UNIT, this.leftPos + 24 + timesInputWidth, this.topPos + 88);
 
         this.renderTooltip(guiGraphics, mouseX, mouseY);
 
@@ -114,6 +134,7 @@ public class ConsoleButtonGUI extends AbstractContainerScreen<PlainInventoryMenu
 
         updateFieldFocusAndColor(this.leverInput, mouseX, mouseY);
         updateFieldFocusAndColor(this.pressDurationInput, mouseX, mouseY);
+        updateFieldFocusAndColor(this.durabilityInput, mouseX, mouseY);
 
         return handled;
     }
@@ -128,7 +149,16 @@ public class ConsoleButtonGUI extends AbstractContainerScreen<PlainInventoryMenu
     }
 
     private void revalidateFieldColor(EditBox box) {
-        boolean valid = box == this.leverInput ? parseLeverEnabled() != null : parsePressDurations() != null;
+        boolean valid;
+        if (box == this.leverInput) {
+            valid = parseLeverEnabled() != null;
+        } else if (box == this.pressDurationInput) {
+            valid = parsePressDurations() != null;
+        } else if (box == this.durabilityInput) {
+            valid = parseDurability() != null;
+        } else {
+            throw new IllegalArgumentException("Unexpected value!");
+        }
         box.setTextColor(valid ? TERMINAL_INPUT_COLOR : TERMINAL_ERROR_COLOR);
     }
 
@@ -159,6 +189,10 @@ public class ConsoleButtonGUI extends AbstractContainerScreen<PlainInventoryMenu
         return parsePressDuration(this.pressDurationInput.getValue());
     }
 
+    public Integer parseDurability() {
+        return parseDurability(this.durabilityInput.getValue());
+    }
+
     public ItemStack getKeycardItem() {
         return this.itemSlot.getItem();
     }
@@ -167,11 +201,13 @@ public class ConsoleButtonGUI extends AbstractContainerScreen<PlainInventoryMenu
     public void onClose() {
         Boolean lever = this.parseLeverEnabled();
         Integer[] durations = this.parsePressDurations();
+        Integer durability = this.parseDurability();
 
         if (lever == null) lever = false;
         if (durations == null) durations = new Integer[] { 40, 40 };
+        if (durability == null) durability = -1;
 
-        IBNetworking.sendSetConsoleButton(this.menu.getPos(), lever, durations[0], durations[1], this.getKeycardItem());
+        IBNetworking.sendSetConsoleButton(this.menu.getPos(), lever, durations[0], durations[1], durability, this.getKeycardItem());
 
         super.onClose();
     }
@@ -197,5 +233,20 @@ public class ConsoleButtonGUI extends AbstractContainerScreen<PlainInventoryMenu
 
             return new Integer[] { min, max };
         }
+    }
+
+    // Accepts an int "40" or "random(int, int)" or "infinite"
+    public static Integer parseDurability(String value) {
+        String trimmed = value.trim();
+        // -1 is infinite
+        if (trimmed.equalsIgnoreCase("infinite") || trimmed.equalsIgnoreCase("infinity")) return -1;
+
+        Integer[] rangeArray = parsePressDuration(value);
+        if (rangeArray == null || rangeArray.length != 2) return null;
+
+        int range = rangeArray[1] - rangeArray[0];
+        // Support random durability by calculating it when closing the UI.
+        // This will not be communicated to the player, but can still be used.
+        return (int)Math.floor(Math.random() * range + rangeArray[0]);
     }
 }

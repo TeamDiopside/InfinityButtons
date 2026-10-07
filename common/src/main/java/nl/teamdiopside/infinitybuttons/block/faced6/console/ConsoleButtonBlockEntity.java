@@ -21,21 +21,36 @@ public class ConsoleButtonBlockEntity extends BlockEntity {
     private static final String IS_LEVER_KEY = "IsLever";
     private static final String MIN_PRESS_TICKS_KEY = "MinPressTicks";
     private static final String MAX_PRESS_TICKS_KEY = "MaxPressTicks";
+    private static final String DURABILITY_KEY = "Durability";
     private static final String KEY_ITEM_KEY = "KeyItem";
 
-    public boolean isLever = false;
-    private int minPressTicks = 20;
-    private int maxPressTicks = 20;
+    public boolean isLever;
+    private int minPressTicks;
+    private int maxPressTicks;
+    private int durability;
 
     private ItemStack keyItem;
 
 
     public ConsoleButtonBlockEntity(BlockPos pos, BlockState state) {
         super(IBBlockEntities.CONSOLE_BUTTON.get(), pos, state);
+        this.isLever = false;
+        this.minPressTicks = 20;
+        this.maxPressTicks = 20;
+        this.durability = -1;
     }
 
     public int getPressTicks() {
         return (int) Math.floor(Math.random() * (maxPressTicks - minPressTicks) + minPressTicks);
+    }
+
+    public int getDurability() {
+        return durability;
+    }
+
+    public void use() {
+        if (durability <= 0) return;
+        durability -= 1;
     }
 
     public boolean validatePlayerItem(Player player) {
@@ -48,10 +63,11 @@ public class ConsoleButtonBlockEntity extends BlockEntity {
         return false;
     }
 
-    public void configure(boolean isLever, int minPressTicks, int maxPressTicks, @Nullable ItemStack keyItem) {
+    public void configure(boolean isLever, int minPressTicks, int maxPressTicks, int durability, @Nullable ItemStack keyItem) {
         this.isLever = isLever;
         this.minPressTicks = minPressTicks;
         this.maxPressTicks = maxPressTicks;
+        this.durability = durability;
         this.keyItem = keyItem;
 
         setChanged();
@@ -67,6 +83,7 @@ public class ConsoleButtonBlockEntity extends BlockEntity {
         tag.putBoolean(IS_LEVER_KEY, isLever);
         tag.putInt(MIN_PRESS_TICKS_KEY, minPressTicks);
         tag.putInt(MAX_PRESS_TICKS_KEY, maxPressTicks);
+        tag.putInt(DURABILITY_KEY, durability);
         tag.put(KEY_ITEM_KEY, keyItem != null ? keyItem.saveOptional(registries) : new CompoundTag());
     }
 
@@ -76,6 +93,7 @@ public class ConsoleButtonBlockEntity extends BlockEntity {
         isLever = tag.getBoolean(IS_LEVER_KEY);
         if (tag.contains(MIN_PRESS_TICKS_KEY)) minPressTicks = tag.getInt(MIN_PRESS_TICKS_KEY);
         if (tag.contains(MAX_PRESS_TICKS_KEY)) maxPressTicks = tag.getInt(MAX_PRESS_TICKS_KEY);
+        if (tag.contains(DURABILITY_KEY)) durability = tag.getInt(DURABILITY_KEY);
 
         ItemStack loadedKeyItem = ItemStack.parseOptional(registries, tag.getCompound(KEY_ITEM_KEY));
         keyItem = loadedKeyItem.isEmpty() ? null : loadedKeyItem;

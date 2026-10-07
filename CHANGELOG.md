@@ -36,3 +36,5 @@
 - Tweaked Doorbell Item Model.
 - Tweaked Dutch translations.
 - Added new tooltips to different types of buttons.
+- Letter Buttons can now only be altered when being placed.
+- Tweaked the Letter Button UI texture.

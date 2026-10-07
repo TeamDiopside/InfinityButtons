@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import nl.teamdiopside.infinitybuttons.block.emergency.SafeEmergencyButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
+import nl.teamdiopside.infinitybuttons.block.faced6.console.ConsoleButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.CopperButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.normal.NormalButton;
 import nl.teamdiopside.infinitybuttons.datagen.simplifier.ButtonModelVariant;
@@ -170,6 +171,11 @@ public class ModelAndStateProvider implements DataProvider {
             for (RegistrySupplier<SecretButton> secretButton : secretButtons) {
                 generateSecretButton(secretButton.get());
             }
+
+            generateConsoleButton(IBBlocks.SMALL_CONSOLE_BUTTON.get());
+            generateConsoleButton(IBBlocks.CONSOLE_BUTTON.get());
+            generateConsoleButton(IBBlocks.LARGE_CONSOLE_BUTTON.get());
+            generateConsoleButton(IBBlocks.BIG_CONSOLE_BUTTON.get());
         }
 
         /**
@@ -239,6 +245,13 @@ public class ModelAndStateProvider implements DataProvider {
         private void generateSecretButton(SecretButton secretButton) {
             ModelStateGenerator generator = new SecretButtonGenerator(secretButton);
             generator.generateBlockModels(this.modelOutput);
+            generator.generateItemModels(this.modelOutput);
+            generator.generateState(this.blockStateOutput);
+        }
+
+        private void generateConsoleButton(ConsoleButton consoleButton) {
+            // Does not generate block model!
+            ModelStateGenerator generator = new ConsoleButtonGenerator(consoleButton);
             generator.generateItemModels(this.modelOutput);
             generator.generateState(this.blockStateOutput);
         }

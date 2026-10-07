@@ -246,13 +246,9 @@
   "block.infinitybuttons.soul_lantern_lever": "Farol de almas con palanca oculta",
 
   "block.infinitybuttons.small_console_button": "Botón consola pequeña",
-  "block.infinitybuttons.small_console_lever": "Interruptor consola pequeña",
   "block.infinitybuttons.console_button": "Botón consola",
-  "block.infinitybuttons.console_lever": "Interruptor consola",
   "block.infinitybuttons.large_console_button": "Botón consola grande",
-  "block.infinitybuttons.large_console_lever": "Interruptor consola grande",
   "block.infinitybuttons.big_console_button": "Botón consola voluminoso",
-  "block.infinitybuttons.big_console_lever": "Interruptor consola voluminoso",
 
   "block.infinitybuttons.terracotta_brick_secret_button": "Terracotta Brick Secret Button",
   "block.infinitybuttons.white_terracotta_brick_secret_button": "White Terracotta Brick Secret Button",
@@ -390,8 +386,12 @@
   "infinitybuttons.gui.console_button.keycard_label": "Keycard item:",
   "infinitybuttons.gui.console_button.duration_label": "Button duration:",
   "infinitybuttons.gui.console_button.duration_info": "num or random(min, max)",
+  "infinitybuttons.gui.console_button.durability_label": "Durability:",
+  "infinitybuttons.gui.console_button.durability_info": "num or 'infinite'",
   "infinitybuttons.gui.console_button.duration_narration": "Press duration",
+  "infinitybuttons.gui.console_button.durability_narration": "Durability",
   "infinitybuttons.gui.console_button.ticks_unit": " ticks",
+  "infinitybuttons.gui.console_button.times_unit": " times",
 
   "infinitybuttons.actionbar.closed_safety_button": "Agachate e interactua para abrirlo o cerrarlo",
   "infinitybuttons.actionbar.jammed_button": "Oww oof! Too heavy!",

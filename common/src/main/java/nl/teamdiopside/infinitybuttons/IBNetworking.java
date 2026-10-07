@@ -50,8 +50,8 @@ public class IBNetworking {
         NetworkManager.sendToServer(new SetLetterButtonPayload(pos, letterButtonState));
     }
 
-    public static void sendSetConsoleButton(BlockPos pos, boolean isLever, int minPressTicks, int maxPressTicks, ItemStack keyItem) {
-        NetworkManager.sendToServer(new SetConsoleButtonPayload(pos, isLever, minPressTicks, maxPressTicks, keyItem));
+    public static void sendSetConsoleButton(BlockPos pos, boolean isLever, int minPressTicks, int maxPressTicks, int durability, ItemStack keyItem) {
+        NetworkManager.sendToServer(new SetConsoleButtonPayload(pos, isLever, minPressTicks, maxPressTicks, durability, keyItem));
     }
 
     private static void handleSetConsoleButton(SetConsoleButtonPayload payload, NetworkManager.PacketContext context) {
@@ -65,11 +65,11 @@ public class IBNetworking {
             if (!(entity instanceof ConsoleButtonBlockEntity consoleEntity)) return;
 
             ItemStack keyItem = payload.keyItem().isEmpty() ? null : payload.keyItem();
-            consoleEntity.configure(payload.isLever(), payload.minPressTicks(), payload.maxPressTicks(), keyItem);
+            consoleEntity.configure(payload.isLever(), payload.minPressTicks(), payload.maxPressTicks(), payload.durability(), keyItem);
         });
     }
 
-    public record SetConsoleButtonPayload(BlockPos pos, boolean isLever, int minPressTicks, int maxPressTicks, ItemStack keyItem) implements CustomPacketPayload {
+    public record SetConsoleButtonPayload(BlockPos pos, boolean isLever, int minPressTicks, int maxPressTicks, int durability, ItemStack keyItem) implements CustomPacketPayload {
         public static final Type<SetConsoleButtonPayload> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, "set_console_button"));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, SetConsoleButtonPayload> STREAM_CODEC = StreamCodec.of(
@@ -78,11 +78,13 @@ public class IBNetworking {
                     buf.writeBoolean(payload.isLever());
                     buf.writeInt(payload.minPressTicks());
                     buf.writeInt(payload.maxPressTicks());
+                    buf.writeInt(payload.durability());
                     ItemStack.OPTIONAL_STREAM_CODEC.encode(buf, payload.keyItem());
                 },
                 buf -> new SetConsoleButtonPayload(
                         buf.readBlockPos(),
                         buf.readBoolean(),
+                        buf.readInt(),
                         buf.readInt(),
                         buf.readInt(),
                         ItemStack.OPTIONAL_STREAM_CODEC.decode(buf)

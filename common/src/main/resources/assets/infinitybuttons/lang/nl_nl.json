@@ -246,13 +246,9 @@
   "block.infinitybuttons.soul_lantern_lever": "Zielenlantaarnhendel",
 
   "block.infinitybuttons.small_console_button": "Kleine consoleknop",
-  "block.infinitybuttons.small_console_lever": "Kleine consoleschakelknop",
   "block.infinitybuttons.console_button": "Consoleknop",
-  "block.infinitybuttons.console_lever": "Consoleschakelknop",
   "block.infinitybuttons.large_console_button": "Grote consoleknop",
-  "block.infinitybuttons.large_console_lever": "Grote consoleschakelknop",
   "block.infinitybuttons.big_console_button": "Joekel van een consoleknop",
-  "block.infinitybuttons.big_console_lever": "Joekel van een consoleschakelknop",
 
   "block.infinitybuttons.terracotta_brick_secret_button": "Terracotta bakstenen verborgen knop",
   "block.infinitybuttons.white_terracotta_brick_secret_button": "Witte terracotta bakstenen verborgen knop",
@@ -390,8 +386,12 @@
   "infinitybuttons.gui.console_button.keycard_label": "Keycard-item:",
   "infinitybuttons.gui.console_button.duration_label": "Knopduur:",
   "infinitybuttons.gui.console_button.duration_info": "getal of random(min, max)",
+  "infinitybuttons.gui.console_button.durability_label": "Levensduur:",
+  "infinitybuttons.gui.console_button.durability_info": "getal of 'infinite'",
   "infinitybuttons.gui.console_button.duration_narration": "Drukduur",
+  "infinitybuttons.gui.console_button.durability_narration": "Levensduur",
   "infinitybuttons.gui.console_button.ticks_unit": " ticks",
+  "infinitybuttons.gui.console_button.times_unit": " keer",
 
   "infinitybuttons.actionbar.closed_safety_button": "Sluip om te openen en sluiten",
   "infinitybuttons.actionbar.jammed_button": "Auw oef! Te zwaar!",

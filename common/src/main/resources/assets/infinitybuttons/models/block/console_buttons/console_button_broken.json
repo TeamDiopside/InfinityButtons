@@ -1,0 +1,6 @@
+{
+  "parent": "infinitybuttons:block/console_buttons/console_button",
+  "textures": {
+    "button": "infinitybuttons:block/console/console_button_broken"
+  }
+}

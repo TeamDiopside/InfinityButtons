@@ -246,13 +246,9 @@
   "block.infinitybuttons.soul_lantern_lever": "トグル式魂のランタンの引き金",
 
   "block.infinitybuttons.small_console_button": "小さなコンソールのボタン",
-  "block.infinitybuttons.small_console_lever": "トグル式小さなコンソールのボタン",
   "block.infinitybuttons.console_button": "コンソールのボタン",
-  "block.infinitybuttons.console_lever": "トグル式コンソールのボタン",
   "block.infinitybuttons.large_console_button": "大きなコンソールボタン",
-  "block.infinitybuttons.large_console_lever": "トグル式大きなコンソールボタン",
   "block.infinitybuttons.big_console_button": "特大のコンソールボタン",
-  "block.infinitybuttons.big_console_lever": "トグル式特大のコンソールボタン",
 
   "block.infinitybuttons.terracotta_brick_secret_button": "Terracotta Brick Secret Button",
   "block.infinitybuttons.white_terracotta_brick_secret_button": "White Terracotta Brick Secret Button",
@@ -390,8 +386,12 @@
   "infinitybuttons.gui.console_button.keycard_label": "Keycard item:",
   "infinitybuttons.gui.console_button.duration_label": "Button duration:",
   "infinitybuttons.gui.console_button.duration_info": "num or random(min, max)",
+  "infinitybuttons.gui.console_button.durability_label": "Durability:",
+  "infinitybuttons.gui.console_button.durability_info": "num or 'infinite'",
   "infinitybuttons.gui.console_button.duration_narration": "Press duration",
+  "infinitybuttons.gui.console_button.durability_narration": "Durability",
   "infinitybuttons.gui.console_button.ticks_unit": " ticks",
+  "infinitybuttons.gui.console_button.times_unit": " times",
 
   "infinitybuttons.actionbar.closed_safety_button": "スニークでカバーを開けます",
   "infinitybuttons.actionbar.jammed_button": "Oww oof! Too heavy!",

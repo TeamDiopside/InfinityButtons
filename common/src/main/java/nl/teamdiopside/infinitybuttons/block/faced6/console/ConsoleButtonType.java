@@ -6,17 +6,22 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
-public enum ConsoleButtonShape implements StringRepresentable {
+public enum ConsoleButtonType implements StringRepresentable {
     SMALL(Block.box(3, 5, 14, 13, 11, 16)),
     NORMAL(Block.box(4, 3, 14, 12, 13, 16)),
-    LARGE(Block.box(1, 3, 14, 15, 13, 16));
+    LARGE(Block.box(1, 3, 14, 15, 13, 16)),
+    BIG(LARGE);
 
-    public static final Codec<ConsoleButtonShape> CODEC = StringRepresentable.fromEnum(ConsoleButtonShape::values);
+    public static final Codec<ConsoleButtonType> CODEC = StringRepresentable.fromEnum(ConsoleButtonType::values);
 
     public final VoxelShape shape;
 
-    ConsoleButtonShape(VoxelShape shape) {
+    ConsoleButtonType(VoxelShape shape) {
         this.shape = shape;
+    }
+
+    ConsoleButtonType(ConsoleButtonType shape) {
+        this.shape = shape.shape;
     }
 
     @Override

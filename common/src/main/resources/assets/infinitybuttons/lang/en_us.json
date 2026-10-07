@@ -246,13 +246,9 @@
   "block.infinitybuttons.soul_lantern_lever": "Soul Lantern Lever",
 
   "block.infinitybuttons.small_console_button": "Small Console Button",
-  "block.infinitybuttons.small_console_lever": "Small Console Toggle Button",
   "block.infinitybuttons.console_button": "Console Button",
-  "block.infinitybuttons.console_lever": "Console Toggle Button",
   "block.infinitybuttons.large_console_button": "Large Console Button",
-  "block.infinitybuttons.large_console_lever": "Large Console Toggle Button",
   "block.infinitybuttons.big_console_button": "Big Console Button",
-  "block.infinitybuttons.big_console_lever": "Big Console Toggle Button",
 
   "block.infinitybuttons.terracotta_brick_secret_button":  "Terracotta Brick Secret Button",
   "block.infinitybuttons.white_terracotta_brick_secret_button":  "White Terracotta Brick Secret Button",
@@ -390,8 +386,12 @@
   "infinitybuttons.gui.console_button.keycard_label": "Keycard item:",
   "infinitybuttons.gui.console_button.duration_label": "Button duration:",
   "infinitybuttons.gui.console_button.duration_info": "num or random(min, max)",
+  "infinitybuttons.gui.console_button.durability_label": "Durability:",
+  "infinitybuttons.gui.console_button.durability_info": "num or 'infinite'",
   "infinitybuttons.gui.console_button.duration_narration": "Press duration",
+  "infinitybuttons.gui.console_button.durability_narration": "Durability",
   "infinitybuttons.gui.console_button.ticks_unit": " ticks",
+  "infinitybuttons.gui.console_button.times_unit": " times",
 
   "infinitybuttons.actionbar.closed_safety_button": "Sneak to open and close",
   "infinitybuttons.actionbar.jammed_button": "Oww oof! Too heavy!",

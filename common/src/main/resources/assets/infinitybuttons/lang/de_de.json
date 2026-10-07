@@ -246,13 +246,9 @@
     "block.infinitybuttons.soul_lantern_lever": "Seelenlaternenhebel",
 
     "block.infinitybuttons.small_console_button": "Kleiner Konsolenknopf",
-    "block.infinitybuttons.small_console_lever": "Kleiner Konsolenhebel",
     "block.infinitybuttons.console_button": "Konsolenknopf",
-    "block.infinitybuttons.console_lever": "Konsolenhebel",
     "block.infinitybuttons.large_console_button": "Großer Konsolenknopf",
-    "block.infinitybuttons.large_console_lever": "Großer Konsolenhebel",
     "block.infinitybuttons.big_console_button": "Riesiger Konsolenknopf",
-    "block.infinitybuttons.big_console_lever": "Riesiger Konsolenhebel",
 
     "block.infinitybuttons.terracotta_brick_secret_button": "Geheimer Keramikziegelknopf",
     "block.infinitybuttons.white_terracotta_brick_secret_button": "Weißer Keramikziegelknopf",
@@ -390,8 +386,12 @@
     "infinitybuttons.gui.console_button.keycard_label": "Keycard item:",
     "infinitybuttons.gui.console_button.duration_label": "Button duration:",
     "infinitybuttons.gui.console_button.duration_info": "num or random(min, max)",
+    "infinitybuttons.gui.console_button.durability_label": "Durability:",
+    "infinitybuttons.gui.console_button.durability_info": "num or 'infinite'",
     "infinitybuttons.gui.console_button.duration_narration": "Press duration",
+    "infinitybuttons.gui.console_button.durability_narration": "Durability",
     "infinitybuttons.gui.console_button.ticks_unit": " ticks",
+    "infinitybuttons.gui.console_button.times_unit": " times",
 
     "infinitybuttons.actionbar.closed_safety_button": "Schleiche um den Knopf zu öffnen und zu schließen",
     "infinitybuttons.actionbar.jammed_button": "Oww oof! Too heavy!",
