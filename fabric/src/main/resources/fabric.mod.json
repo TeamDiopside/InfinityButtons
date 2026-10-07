@@ -8,10 +8,11 @@
     "Team Diopside"
   ],
   "contact": {
-    "homepage": "https://teamdiopside.nl/infinitybuttons"
+    "homepage": "https://teamdiopside.nl/infinitybuttons",
+    "issues": "https://github.com/TeamDiopside/InfinityButtons/issues"
   },
   "license": "All-Rights-Reserved",
-  "icon": "assets/infinitybuttons/icon.png",
+  "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
   "fabric-datagen": [

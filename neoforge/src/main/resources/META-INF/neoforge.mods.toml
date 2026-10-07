@@ -1,6 +1,6 @@
 modLoader = "javafml"
 loaderVersion = "[2,)"
-#issueTrackerURL = ""
+issueTrackerURL = "https://github.com/TeamDiopside/InfinityButtons/issues"
 license = "All Rights Reserved"
 
 [[mods]]
@@ -11,7 +11,8 @@ authors = "Team Diopside"
 description = '''
 Infinity Buttons is a fabric and forge mod which adds exciting new buttons!
 '''
-#logoFile = ""
+logoFile = "icon.png"
+displayURL = "https://teamdiopside.nl/infinitybuttons"
 
 [[dependencies.infinitybuttons]]
 modId = "neoforge"
