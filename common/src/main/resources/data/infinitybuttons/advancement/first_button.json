@@ -21,7 +21,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "minecraft:buttons"
+            "items": "#minecraft:buttons"
           }
         ]
       }
@@ -31,7 +31,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "infinitybuttons:large_buttons"
+            "items": "#infinitybuttons:large_buttons"
           }
         ]
       }
@@ -41,7 +41,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "infinitybuttons:secret_buttons"
+            "items": "#infinitybuttons:secret_buttons"
           }
         ]
       }
@@ -51,7 +51,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "infinitybuttons:emergency_buttons"
+            "items": "#infinitybuttons:emergency_buttons"
           }
         ]
       }
@@ -61,7 +61,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "infinitybuttons:safe_emergency_buttons"
+            "items": "#infinitybuttons:safe_emergency_buttons"
           }
         ]
       }
@@ -71,7 +71,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "infinitybuttons:torch_buttons"
+            "items": "#infinitybuttons:torch_buttons"
           }
         ]
       }
@@ -81,7 +81,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "infinitybuttons:lantern_buttons"
+            "items": "#infinitybuttons:lantern_buttons"
           }
         ]
       }
@@ -91,7 +91,7 @@
       "conditions": {
         "items": [
           {
-            "tag": "infinitybuttons:console_buttons"
+            "items": "#infinitybuttons:console_buttons"
           }
         ]
       }
