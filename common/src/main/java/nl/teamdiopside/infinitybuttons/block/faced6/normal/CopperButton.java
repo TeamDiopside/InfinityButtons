@@ -94,19 +94,18 @@ public class CopperButton extends NormalButton implements WeatheringButton {
 
     @Override
     public @NotNull ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
-        if (state.getValue(ButtonBlock.POWERED) && getButtonType() != CopperButtonType.STICKY) {
-            return ItemInteractionResult.CONSUME;
-        }
         switch (getButtonType()) {
             case NORMAL -> {
-                if (stack.getItem() == Items.HONEYCOMB) {
+                if (state.getValue(ButtonBlock.POWERED)) {
+                    return ItemInteractionResult.CONSUME;
+                } else if (stack.getItem() == Items.HONEYCOMB) {
                     return wax(state, level, pos, player, stack);
                 } else if (stack.getItem() instanceof AxeItem && getAge() != WeatherState.UNAFFECTED) {
                     return scrape(state, level, pos, player, stack);
                 }
             }
             case WAXED -> {
-                if (stack.getItem() instanceof AxeItem) {
+                if (stack.getItem() instanceof AxeItem && !state.getValue(ButtonBlock.POWERED)) {
                     return scrapeWax(state, level, pos, player, stack);
                 } else if (stack.getItem() == Items.HONEY_BOTTLE) {
                     return sticky(state, level, pos, player, hand, stack);
