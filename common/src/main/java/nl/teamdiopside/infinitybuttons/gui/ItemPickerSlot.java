@@ -37,7 +37,7 @@ public class ItemPickerSlot extends AbstractWidget {
         if (!this.active || !this.visible || !this.isMouseOver(mouseX, mouseY)) return false;
 
         ItemStack carried = this.carriedItemSupplier.get();
-        this.item = carried.isEmpty() ? ItemStack.EMPTY : carried.copy();
+        this.item = carried.isEmpty() ? ItemStack.EMPTY : carried.copyWithCount(1);
 
         return true;
     }
