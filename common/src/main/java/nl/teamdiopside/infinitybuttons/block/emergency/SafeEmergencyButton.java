@@ -79,7 +79,7 @@ public class SafeEmergencyButton extends EmergencyButton {
     protected @NotNull InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult blockHitResult) {
         if (!player.isShiftKeyDown()) {
             if (state.getValue(CLOSED)) {
-                player.displayClientMessage(Component.translatable("infinitybuttons.actionbar.closed_safety_button"), true);
+                player.displayClientMessage(Component.translatable("actionbar.infinitybuttons.closed_safety_button"), true);
                 return InteractionResult.FAIL;
             }
             return super.useWithoutItem(state, level, pos, player, blockHitResult);

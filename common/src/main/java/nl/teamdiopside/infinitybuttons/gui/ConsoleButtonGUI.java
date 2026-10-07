@@ -25,15 +25,18 @@ public class ConsoleButtonGUI extends AbstractContainerScreen<ConsoleButtonMenu>
     private static final int TERMINAL_INPUT_COLOR = 0x2dcf4f;
     private static final int TERMINAL_ERROR_COLOR = 0xbb4967;
 
-    private static final Component LEVER_LABEL = Component.translatable("infinitybuttons.gui.console_button.lever_label");
-    private static final Component KEYCARD_LABEL = Component.translatable("infinitybuttons.gui.console_button.keycard_label");
-    private static final Component DURATION_LABEL = Component.translatable("infinitybuttons.gui.console_button.duration_label");
-    private static final Component DURATION_INFO_LABEL = Component.translatable("infinitybuttons.gui.console_button.duration_info");
-    private static final Component DURABILITY_LABEL = Component.translatable("infinitybuttons.gui.console_button.durability_label");
-    private static final Component DURABILITY_INFO_LABEL = Component.translatable("infinitybuttons.gui.console_button.durability_info");
+    private static final Component LEVER_LABEL = Component.translatable("gui.infinitybuttons.console_button.lever_label");
+    private static final Component KEYCARD_LABEL = Component.translatable("gui.infinitybuttons.console_button.keycard_label");
+    private static final Component DURATION_LABEL = Component.translatable("gui.infinitybuttons.console_button.duration_label");
+    private static final Component DURATION_INFO_LABEL = Component.translatable("gui.infinitybuttons.console_button.duration_info");
+    private static final Component DURABILITY_LABEL = Component.translatable("gui.infinitybuttons.console_button.durability_label");
+    private static final Component DURABILITY_INFO_LABEL = Component.translatable("gui.infinitybuttons.console_button.durability_info");
 
-    private static final Component TICKS_UNIT = Component.translatable("infinitybuttons.gui.console_button.ticks_unit");
-    private static final Component TIMES_UNIT = Component.translatable("infinitybuttons.gui.console_button.times_unit");
+    private static final Component TICKS_UNIT = Component.translatable("gui.infinitybuttons.console_button.ticks_unit");
+    private static final Component TIMES_UNIT = Component.translatable("gui.infinitybuttons.console_button.times_unit");
+
+    private static final Component DURATION_NARRATION = Component.translatable("gui.infinitybuttons.console_button.duration_narration");
+    private static final Component DURABILITY_NARRATION = Component.translatable("gui.infinitybuttons.console_button.durability_narration");
 
     private EditBox leverInput;
     private EditBox pressDurationInput;
@@ -56,15 +59,13 @@ public class ConsoleButtonGUI extends AbstractContainerScreen<ConsoleButtonMenu>
         this.leverInput.setValue("false");
         this.addRenderableWidget(this.leverInput);
 
-        this.pressDurationInput = new EditBox(this.font, this.leftPos + 24, this.topPos + 53, 110, 10,
-                Component.translatable("infinitybuttons.gui.console_button.duration_narration"));
+        this.pressDurationInput = new EditBox(this.font, this.leftPos + 24, this.topPos + 53, 110, 10, DURATION_NARRATION);
         this.pressDurationInput.setBordered(false);
         this.pressDurationInput.setTextColor(TERMINAL_INPUT_COLOR);
         this.pressDurationInput.setValue("40");
         this.addRenderableWidget(this.pressDurationInput);
 
-        this.durabilityInput = new EditBox(this.font, this.leftPos + 24, this.topPos + 88, 110, 10,
-                Component.translatable("infinitybuttons.gui.console_button.durability_narration"));
+        this.durabilityInput = new EditBox(this.font, this.leftPos + 24, this.topPos + 88, 110, 10, DURABILITY_NARRATION);
         this.durabilityInput.setBordered(false);
         this.durabilityInput.setTextColor(TERMINAL_INPUT_COLOR);
         this.durabilityInput.setValue("infinite");

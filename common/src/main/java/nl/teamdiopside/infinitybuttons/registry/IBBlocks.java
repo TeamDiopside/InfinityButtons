@@ -430,7 +430,7 @@ public class IBBlocks {
 
     protected <T extends Block> RegistrySupplier<T> registerBlock(String blockId, BlockEntryBuilder<T> builder, BlockBehaviour.Properties properties, String tooltipKey, Function<ItemStack, Boolean> tooltipCondition) {
         RegistrySupplier<T> registry = builder.withTooltip(TooltipBuilder
-                .builder("infinitybuttons.tooltip." + tooltipKey)
+                .builder("tooltip.infinitybuttons." + tooltipKey)
                 .setTooltipClass(HoldKeyTooltip.class)
                 .setTooltipVisible(tooltipCondition)
                 .withStyle(ChatFormatting.GRAY)

@@ -23,7 +23,7 @@ public class JammedButton extends NormalButton {
 
     @Override
     protected @NotNull InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult blockHitResult) {
-        player.displayClientMessage(Component.translatable("infinitybuttons.actionbar.jammed_button"), true);
+        player.displayClientMessage(Component.translatable("actionbar.infinitybuttons.jammed_button"), true);
         return InteractionResult.CONSUME;
     }
 

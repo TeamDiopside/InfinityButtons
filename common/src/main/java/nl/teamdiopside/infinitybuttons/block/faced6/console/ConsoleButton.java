@@ -84,7 +84,7 @@ public class ConsoleButton extends ButtonFaced6 implements EntityBlock {
         ConsoleButtonBlockEntity entity = (ConsoleButtonBlockEntity) level.getBlockEntity(pos);
 
         if (entity != null && !entity.validatePlayerItem(player)) {
-            player.displayClientMessage(Component.translatable("infinitybuttons.actionbar.console_button"), true);
+            player.displayClientMessage(Component.translatable("actionbar.infinitybuttons.console_button"), true);
             level.playSound(null, pos, IBSounds.CONSOLE_ERROR.get(), SoundSource.BLOCKS);
             return InteractionResult.CONSUME;
         }

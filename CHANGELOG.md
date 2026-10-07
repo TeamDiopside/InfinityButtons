@@ -15,6 +15,7 @@
 - The 'Hold Shift' translation now belongs to the 'diopside' namespace.
 - Added Loot Tables for modded compat buttons.
 - Now using YACL as config library.
+- Changed language keys for actionbars and tooltips.
 
 ## Content
 - Added Bamboo Plank Secret Button.
