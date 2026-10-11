@@ -2,7 +2,6 @@ package nl.teamdiopside.infinitybuttons.datagen.recipe;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -37,7 +36,7 @@ public class EmergencyButtonGenerator extends RecipeGenerator {
                     .define('O', glassPaneTag)
                     .group("safe_emergency_buttons")
                     .define('.', emergencyButton)
-                    .unlockedBy("has_thing", RecipeProvider.has(dyeItem))
+                    .unlockedBy("has_thing", IBRecipeProvider.has(dyeItem))
                     .save(output);
         }
     }
@@ -59,7 +58,7 @@ public class EmergencyButtonGenerator extends RecipeGenerator {
                     .group(group)
                     .define('O', Items.GLOWSTONE_DUST)
                     .define('.', itemTag)
-                    .unlockedBy("has_thing", RecipeProvider.has(itemTag))
+                    .unlockedBy("has_thing", IBRecipeProvider.has(itemTag))
                     .save(output);
         }
     }

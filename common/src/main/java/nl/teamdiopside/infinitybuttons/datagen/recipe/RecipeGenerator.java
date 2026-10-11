@@ -4,7 +4,6 @@ import net.minecraft.advancements.Criterion;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -88,7 +87,7 @@ public abstract class RecipeGenerator {
      * @param ingredients - Ingredients to be included in the recipe
      */
     protected void simpleShapelessRecipe(RecipeOutput recipes, ItemLike unlock, ItemLike output, int outputCount, String suffix, @Nullable String group, Ingredient... ingredients) {
-        simpleShapelessRecipe(recipes, RecipeProvider.has(unlock), output, outputCount, suffix, group, ingredients);
+        simpleShapelessRecipe(recipes, IBRecipeProvider.has(unlock), output, outputCount, suffix, group, ingredients);
     }
 
     /**
@@ -98,7 +97,7 @@ public abstract class RecipeGenerator {
      * @param ingredients - Ingredients to be included in the recipe
      */
     protected void simpleShapelessRecipe(RecipeOutput recipes, TagKey<Item> unlock, ItemLike output, int outputCount, String suffix, @Nullable String group, Ingredient... ingredients) {
-        simpleShapelessRecipe(recipes, RecipeProvider.has(unlock), output, outputCount, suffix, group, ingredients);
+        simpleShapelessRecipe(recipes, IBRecipeProvider.has(unlock), output, outputCount, suffix, group, ingredients);
     }
 
     /**

@@ -1,7 +1,9 @@
 package nl.teamdiopside.infinitybuttons;
 
+import dev.architectury.platform.Platform;
 import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
 import nl.teamdiopside.infinitybuttons.compat.IBModdedItems;
+import nl.teamdiopside.infinitybuttons.compat.everycomp.IBEveryCompat;
 import nl.teamdiopside.infinitybuttons.registry.*;
 
 import java.util.logging.Logger;
@@ -26,6 +28,10 @@ public final class InfinityButtons {
         IBNetworking.register();
 
         IBConfig.load();
+
+        if (Platform.isModLoaded("everycomp")) {
+            IBEveryCompat.loadModules();
+        }
     }
 
 }

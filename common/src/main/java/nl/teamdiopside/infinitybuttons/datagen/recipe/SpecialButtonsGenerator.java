@@ -1,7 +1,6 @@
 package nl.teamdiopside.infinitybuttons.datagen.recipe;
 
 import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.item.Items;
 import nl.teamdiopside.infinitybuttons.InfinityButtons;
@@ -32,7 +31,7 @@ public class SpecialButtonsGenerator extends RecipeGenerator {
                 .pattern("iii")
                 .define('i', Items.IRON_INGOT)
                 .define('r', Items.REDSTONE)
-                .unlockedBy("has_thing", RecipeProvider.has(Items.IRON_INGOT))
+                .unlockedBy("has_thing", IBRecipeProvider.has(Items.IRON_INGOT))
                 .save(output);
 
         simpleShapelessRecipe(output, IBBlocks.SMALL_CONSOLE_BUTTON.get(), IBBlocks.CONSOLE_BUTTON.get(), 1, "", null,
@@ -48,7 +47,7 @@ public class SpecialButtonsGenerator extends RecipeGenerator {
                 .pattern(" i ")
                 .define('i', Items.IRON_INGOT)
                 .define('.', IBRegistryUtils.getItemByID(InfinityButtons.MOD_ID, "spruce_large_button"))
-                .unlockedBy("has_thing", RecipeProvider.has(Items.IRON_INGOT))
+                .unlockedBy("has_thing", IBRecipeProvider.has(Items.IRON_INGOT))
                 .save(output);
 
         convertingRecipe(output, IBBlocks.LETTER_BUTTON.get(), IBBlocks.LETTER_LEVER.get(), true, 1, "", null);

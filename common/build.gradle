@@ -2,6 +2,10 @@ architectury {
     common rootProject.enabled_platforms.split(',')
 }
 
+repositories {
+    maven { url = "https://registry.somethingcatchy.net/repository/maven-releases/" } // EveryCompat, Moonlight
+}
+
 dependencies {
     // We depend on Fabric Loader here to use the Fabric @Environment annotations,
     // which get remapped to the correct annotations on each platform.
@@ -12,6 +16,9 @@ dependencies {
 
     modCompileOnly "dev.isxander:yet-another-config-lib:${rootProject.yacl_version}-fabric"
     modCompileOnly "maven.modrinth:jade:15.10.5+fabric"
+
+    modCompileOnly("maven.modrinth:moonlight:${moonlight_version}-fabric")
+    modCompileOnly("maven.modrinth:every-compat:${everycomp_version}-fabric")
 
     modImplementation files('libs/diopside-fabric-1.0.0.jar')
 }

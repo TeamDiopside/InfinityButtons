@@ -1,11 +1,16 @@
 package nl.teamdiopside.infinitybuttons.datagen.recipe;
 
+import net.minecraft.advancements.Criterion;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -45,5 +50,15 @@ public class IBRecipeProvider extends RecipeProvider {
         for (var generator : generators) {
             generator.generate(ibRecipeOutput);
         }
+    }
+
+    public static @NotNull Criterion<InventoryChangeTrigger.TriggerInstance> has(ItemLike itemLike) {
+        // Suddenly became protected...
+        return RecipeProvider.has(itemLike);
+    }
+
+    public static @NotNull Criterion<InventoryChangeTrigger.TriggerInstance> has(TagKey<Item> tagKey) {
+        // Suddenly became protected...
+        return RecipeProvider.has(tagKey);
     }
 }

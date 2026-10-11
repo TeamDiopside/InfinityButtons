@@ -81,8 +81,13 @@ public class ModelAndStateProvider implements DataProvider {
 
     public static class ModelAndStateGen extends BlockModelGenerators {
 
+        protected final Consumer<BlockStateGenerator> blockStateOutput;
+        protected final BiConsumer<ResourceLocation, Supplier<JsonElement>> modelOutput;
+
         public ModelAndStateGen(Consumer<BlockStateGenerator> consumer, BiConsumer<ResourceLocation, Supplier<JsonElement>> biConsumer, Consumer<Item> consumer2) {
             super(consumer, biConsumer, consumer2);
+            this.blockStateOutput = consumer;
+            this.modelOutput = biConsumer;
         }
 
         private ResourceLocation getDefaultTexture(BlockSetType type) {
@@ -99,7 +104,7 @@ public class ModelAndStateProvider implements DataProvider {
         public void generateButton(String button_name, ResourceLocation textureLocation, boolean isLarge) {
             Block block = IBRegistryUtils.getBlockByID(MOD_ID, button_name);
 
-            this.blockStateOutput.accept(BlockModelGenerators.createButton(block,
+            this.blockStateOutput.accept(createButton(block,
                     SimpleReferenceModel.makeButton(OutFolder.BLOCK, button_name, textureLocation, isLarge, ButtonModelVariant.BASE).build(this.modelOutput),
                     SimpleReferenceModel.makeButton(OutFolder.BLOCK, button_name, textureLocation, isLarge, ButtonModelVariant.PRESSED).build(this.modelOutput)
             ));
@@ -262,6 +267,27 @@ public class ModelAndStateProvider implements DataProvider {
         private static ResourceLocation defineModel(Function<String, ModelTemplate> model, String version, Block block,
                                                     TextureMapping texMap, BiConsumer<ResourceLocation, Supplier<JsonElement>> output) {
             return model.apply(version).createWithSuffix(block, version, texMap, output);
+        }
+
+        // BlockModelGenerators.createButton suddenly became private
+        public static BlockStateGenerator createButton(Block block, ResourceLocation resourceLocation, ResourceLocation resourceLocation2) {
+            return MultiVariantGenerator.multiVariant(block)
+                    .with(PropertyDispatch.property(BlockStateProperties.POWERED)
+                            .select(false, Variant.variant().with(VariantProperties.MODEL, resourceLocation))
+                            .select(true, Variant.variant().with(VariantProperties.MODEL, resourceLocation2)))
+                    .with(PropertyDispatch.properties(BlockStateProperties.ATTACH_FACE, BlockStateProperties.HORIZONTAL_FACING)
+                            .select(AttachFace.FLOOR, Direction.EAST, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                            .select(AttachFace.FLOOR, Direction.WEST, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                            .select(AttachFace.FLOOR, Direction.SOUTH, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                            .select(AttachFace.FLOOR, Direction.NORTH, Variant.variant())
+                            .select(AttachFace.WALL, Direction.EAST, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
+                            .select(AttachFace.WALL, Direction.WEST, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
+                            .select(AttachFace.WALL, Direction.SOUTH, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
+                            .select(AttachFace.WALL, Direction.NORTH, Variant.variant().with(VariantProperties.X_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
+                            .select(AttachFace.CEILING, Direction.EAST, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180))
+                            .select(AttachFace.CEILING, Direction.WEST, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180))
+                            .select(AttachFace.CEILING, Direction.SOUTH, Variant.variant().with(VariantProperties.X_ROT, VariantProperties.Rotation.R180))
+                            .select(AttachFace.CEILING, Direction.NORTH, Variant.variant().with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180)));
         }
     }
 

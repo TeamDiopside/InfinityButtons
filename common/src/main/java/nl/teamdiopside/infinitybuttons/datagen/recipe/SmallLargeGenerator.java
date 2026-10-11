@@ -4,7 +4,6 @@ import net.minecraft.advancements.Criterion;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -34,7 +33,7 @@ public class SmallLargeGenerator extends RecipeGenerator {
     protected void smallLargeButton(RecipeOutput recipes, IBRegistryUtils.LargeVariantSupplier<? extends Block> button, ItemLike material, String suffix, @Nullable Function<String, String> group) {
         var builder = ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, button.getSmall(), 4)
                 .requires(material)
-                .unlockedBy("has_thing", RecipeProvider.has(material));
+                .unlockedBy("has_thing", IBRecipeProvider.has(material));
 
         String largeGroup = null;
         if (group != null) {
@@ -71,7 +70,7 @@ public class SmallLargeGenerator extends RecipeGenerator {
      * @param material The material item that unlocks the recipe
      */
     protected void largeButton(RecipeOutput recipes, ItemLike small, ItemLike large, ItemLike material, String suffix, @Nullable String group) {
-        largeButton(recipes, small ,large, RecipeProvider.has(material), suffix, group);
+        largeButton(recipes, small ,large, IBRecipeProvider.has(material), suffix, group);
     }
 
     /**
@@ -79,7 +78,7 @@ public class SmallLargeGenerator extends RecipeGenerator {
      * @param material The material item that unlocks the recipe
      */
     protected void largeButton(RecipeOutput recipes, ItemLike small, ItemLike large, TagKey<Item> material, String suffix, @Nullable String group) {
-        largeButton(recipes, small ,large, RecipeProvider.has(material), suffix, group);
+        largeButton(recipes, small ,large, IBRecipeProvider.has(material), suffix, group);
     }
 
     /**
