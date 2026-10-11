@@ -46,6 +46,7 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
     public static final TagKey<Block> WALL_POST_OVERRIDE = edit("wall_post_override");
     public static final TagKey<Block> NEEDS_STONE_TOOL = edit("needs_stone_tool");
     public static final TagKey<Block> NEEDS_IRON_TOOL = edit("needs_iron_tool");
+    public static final TagKey<Block> NEEDS_DIAMOND_TOOL = edit("needs_diamond_tool");
 
     static TagKey<Block> edit(String name) {
         return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("minecraft", name));
@@ -333,6 +334,9 @@ public class BlockTagGenerator extends VanillaBlockTagsProvider {
                     .add(IBBlocks.DIAMOND_BUTTON.get(bool))
                     .add(IBBlocks.GOLD_BUTTON.get(bool))
                     .add(IBBlocks.EMERALD_BUTTON.get(bool));
+
+            this.tag(NEEDS_DIAMOND_TOOL)
+                    .add(IBBlocks.NETHERITE_BUTTON.get(bool));
         }
     }
 

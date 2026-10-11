@@ -134,6 +134,7 @@ public class IBNetworking {
 
 
     private static void handleJadeSync(JadeSyncPayload payload, NetworkManager.PacketContext context) {
+        if (!Platform.isModLoaded("jade")) return;
         context.queue(() -> JadeIntegration.setServerMandatesCamouflage(payload.forceHide()));
     }
 

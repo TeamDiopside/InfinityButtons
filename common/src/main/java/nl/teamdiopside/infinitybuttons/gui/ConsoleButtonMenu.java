@@ -2,6 +2,7 @@ package nl.teamdiopside.infinitybuttons.gui;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -66,7 +67,7 @@ public class ConsoleButtonMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(@NotNull Player player) {
-        return player.getEyePosition().distanceTo(Vec3.atCenterOf(pos)) < 5;
+        return player.getEyePosition().distanceTo(Vec3.atCenterOf(pos)) < player.getAttributeValue(Attributes.BLOCK_INTERACTION_RANGE) + 1;
     }
 
     public BlockPos getPos() {

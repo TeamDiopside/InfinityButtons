@@ -42,7 +42,7 @@ public class CopperButton extends NormalButton implements WeatheringButton {
     protected final CopperButtonType buttonType;
 
     public CopperButton(BlockBehaviour.Properties properties, boolean large, WeatheringCopper.WeatherState weatherState, CopperButtonType buttonType) {
-        super(BlockSetType.COPPER, PRESS_TICKS, properties, large, buttonType == CopperButtonType.STICKY);
+        super(BlockSetType.COPPER, PRESS_TICKS, properties, large, buttonType == CopperButtonType.STICKY, SoundType.COPPER);
         this.weatherState = weatherState;
         this.buttonType = buttonType;
     }
@@ -147,10 +147,5 @@ public class CopperButton extends NormalButton implements WeatheringButton {
     @Override
     protected int getPressTicks(Level level, BlockPos pos) {
         return PRESS_TICKS;
-    }
-
-    @Override
-    protected @NotNull SoundType getSoundType(BlockState state) {
-        return SoundType.COPPER;
     }
 }

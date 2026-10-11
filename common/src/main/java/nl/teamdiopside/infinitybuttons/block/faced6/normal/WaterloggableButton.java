@@ -3,6 +3,7 @@ package nl.teamdiopside.infinitybuttons.block.faced6.normal;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -17,8 +18,8 @@ public class WaterloggableButton extends NormalButton implements SimpleWaterlogg
 
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    public WaterloggableButton(BlockSetType blockSetType, Properties properties, boolean large, boolean isLever) {
-        super(blockSetType, 20, properties, large, isLever);
+    public WaterloggableButton(BlockSetType blockSetType, Properties properties, boolean large, boolean isLever, SoundType soundType) {
+        super(blockSetType, 20, properties, large, isLever, soundType);
     }
 
     @Override

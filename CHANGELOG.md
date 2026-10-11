@@ -39,3 +39,11 @@
 - Added new tooltips to different types of buttons.
 - Letter Buttons can now only be altered when being placed.
 - Tweaked the Letter Button UI texture.
+- Fixed Redstone Torch Buttons emitting light when unpowered.
+- Changed the creative mode tab icon to an Emergency Button.
+- Stone Buttons now use the place and break sounds of their original block.
+- Bamboo Large Button now use bamboo sounds.
+- Doorbells now use wood sounds.
+- Letter Buttons now use wood sounds.
+- Emergency Buttons now use stone sounds.
+- Prismarine Buttons now only drop when mined with a pickaxe.

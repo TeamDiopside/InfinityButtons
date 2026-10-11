@@ -85,25 +85,25 @@ public class IBBlocks {
      * Super-duper special buttons
      */
     public static final LargeVariantSupplier<RandomTimeButton> EMERALD_BUTTON = INSTANCE.registerLargeVariantButton(material(Blocks.EMERALD_BLOCK), "emerald",
-            (properties, large) -> new RandomTimeButton(BlockSetType.STONE, properties, large, false), "emerald_button");
+            (properties, large) -> new RandomTimeButton(BlockSetType.STONE, properties.requiresCorrectToolForDrops(), large, false, SoundType.METAL), "emerald_button");
 
     public static final LargeVariantSupplier<WaterloggableButton> PRISMARINE_BUTTON = INSTANCE.registerLargeVariantButton(material(Blocks.PRISMARINE), "prismarine",
-            (properties, large) -> new WaterloggableButton(BlockSetType.STONE, properties, large, false), "prismarine_button");
+            (properties, large) -> new WaterloggableButton(BlockSetType.STONE, properties.requiresCorrectToolForDrops(), large, false, SoundType.STONE), "prismarine_button");
     public static final LargeVariantSupplier<WaterloggableButton> DARK_PRISMARINE_BUTTON = INSTANCE.registerLargeVariantButton(material(Blocks.DARK_PRISMARINE), "dark_prismarine",
-            (properties, large) -> new WaterloggableButton(BlockSetType.STONE, properties, large, false), "prismarine_button");
+            (properties, large) -> new WaterloggableButton(BlockSetType.STONE, properties.requiresCorrectToolForDrops(), large, false, SoundType.STONE), "prismarine_button");
     public static final LargeVariantSupplier<WaterloggableButton> PRISMARINE_BRICK_BUTTON = INSTANCE.registerLargeVariantButton(material(Blocks.PRISMARINE_BRICKS), "prismarine_brick",
-            (properties, large) -> new WaterloggableButton(BlockSetType.STONE, properties, large, false), "prismarine_button");
+            (properties, large) -> new WaterloggableButton(BlockSetType.STONE, properties.requiresCorrectToolForDrops(), large, false, SoundType.STONE), "prismarine_button");
 
     public static final LargeVariantSupplier<SparklingButton> DIAMOND_BUTTON = INSTANCE.registerLargeVariantButton(material(Blocks.DIAMOND_BLOCK), "diamond",
-            (properties, large) -> new SparklingButton(BlockSetType.STONE, properties, large, false), "diamond_button");
+            (properties, large) -> new SparklingButton(BlockSetType.STONE, properties.requiresCorrectToolForDrops(), large, false), "diamond_button");
 
     public static final LargeVariantSupplier<ArrowOnlyButton> IRON_BUTTON = INSTANCE.registerLargeVariantButton(material(Blocks.IRON_BLOCK), "iron",
-            (properties, large) -> new ArrowOnlyButton(BlockSetType.IRON, properties, large, false, SoundType.METAL), "arrow_button");
+            (properties, large) -> new ArrowOnlyButton(BlockSetType.IRON, properties.requiresCorrectToolForDrops(), large, false, SoundType.METAL), "arrow_button");
     public static final LargeVariantSupplier<ArrowOnlyButton> GOLD_BUTTON = INSTANCE.registerLargeVariantButton(material(Blocks.GOLD_BLOCK), "gold",
-            (properties, large) -> new ArrowOnlyButton(BlockSetType.GOLD, properties, large, false, SoundType.STONE), "arrow_button");
+            (properties, large) -> new ArrowOnlyButton(BlockSetType.GOLD, properties.requiresCorrectToolForDrops(), large, false, SoundType.METAL), "arrow_button");
 
     public static final LargeVariantSupplier<JammedButton> NETHERITE_BUTTON = INSTANCE.registerLargeVariantButton(material(Blocks.NETHERITE_BLOCK), "netherite",
-            (properties, large) -> new JammedButton(BlockSetType.STONE, properties, large), "netherite_button");
+            (properties, large) -> new JammedButton(BlockSetType.STONE, properties.requiresCorrectToolForDrops(), large), "netherite_button");
 
     /**
      * Secret Buttons
@@ -213,17 +213,17 @@ public class IBBlocks {
     ).withoutItem(), null);
 
     public static final RegistrySupplier<TorchButton> REDSTONE_TORCH_BUTTON = INSTANCE.registerBlock("redstone_torch_button", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(torchProperties(properties, 7), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), false, false, material(Blocks.REDSTONE_TORCH))
+            new TorchButton(redstoneTorchProperties(properties), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), false, false, material(Blocks.REDSTONE_TORCH))
     ).withoutItem(), null);
     public static final RegistrySupplier<TorchButton> REDSTONE_WALL_TORCH_BUTTON = INSTANCE.registerBlock("redstone_wall_torch_button", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(torchProperties(properties, 7).dropsLike(REDSTONE_TORCH_BUTTON.get()), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), false, true, material(Blocks.REDSTONE_TORCH))
+            new TorchButton(redstoneTorchProperties(properties).dropsLike(REDSTONE_TORCH_BUTTON.get()), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), false, true, material(Blocks.REDSTONE_TORCH))
     ).withoutItem(), null);
 
     public static final RegistrySupplier<TorchButton> REDSTONE_TORCH_LEVER = INSTANCE.registerBlock("redstone_torch_lever", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(torchProperties(properties, 7), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), true, false, material(Blocks.REDSTONE_TORCH))
+            new TorchButton(redstoneTorchProperties(properties), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), true, false, material(Blocks.REDSTONE_TORCH))
     ).withoutItem(), null);
     public static final RegistrySupplier<TorchButton> REDSTONE_WALL_TORCH_LEVER = INSTANCE.registerBlock("redstone_wall_torch_lever", BlockEntryBuilder.ofBlock(properties ->
-            new TorchButton(torchProperties(properties, 7).dropsLike(REDSTONE_TORCH_LEVER.get()), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), true, true, material(Blocks.REDSTONE_TORCH))
+            new TorchButton(redstoneTorchProperties(properties).dropsLike(REDSTONE_TORCH_LEVER.get()), new DustParticleOptions(new Vector3f(1.0F, 0.0F, 0.0F), 1.0F), true, true, material(Blocks.REDSTONE_TORCH))
     ).withoutItem(), null);
 
     /**
@@ -254,27 +254,27 @@ public class IBBlocks {
      * Doorbells
      */
     public static final RegistrySupplier<Doorbell> DOORBELL = INSTANCE.registerBlock("doorbell", BlockEntryBuilder.ofBlock((properties) ->
-            new Doorbell(properties.noCollission().strength(0.5f).sound(SoundType.METAL).pushReaction(PushReaction.DESTROY), false)),"doorbell");
+            new Doorbell(properties.noCollission().strength(0.5f).pushReaction(PushReaction.DESTROY), false)),"doorbell");
     public static final RegistrySupplier<Doorbell> DOORBELL_BUTTON = INSTANCE.registerBlock("doorbell_button", BlockEntryBuilder.ofBlock((properties) ->
-            new Doorbell(properties.noCollission().strength(0.5f).sound(SoundType.METAL).pushReaction(PushReaction.DESTROY), true)), "doorbell_button");
+            new Doorbell(properties.noCollission().strength(0.5f).pushReaction(PushReaction.DESTROY), true)), "doorbell_button");
 
     /**
      * Lamp buttons
      */
     public static final RegistrySupplier<LampButton> LAMP_BUTTON = INSTANCE.registerBlock("lamp_button", BlockEntryBuilder.ofBlock((properties) ->
-            new LampButton(BlockSetType.STONE, lampProperties(properties, 15), false)), null);
+            new LampButton(BlockSetType.STONE, lampProperties(properties), false)), null);
 
     public static final RegistrySupplier<LampButton> LAMP_LEVER = INSTANCE.registerBlock("lamp_lever", BlockEntryBuilder.ofBlock((properties) ->
-            new LampButton(BlockSetType.STONE, lampProperties(properties, 15), true)),null);
+            new LampButton(BlockSetType.STONE, lampProperties(properties), true)),null);
 
     /**
      * Letter buttons
      */
     public static final RegistrySupplier<LetterButton> LETTER_BUTTON = INSTANCE.registerBlock("letter_button", BlockEntryBuilder.ofBlock((properties) ->
-            new LetterButton(properties.strength(0.5f).noCollission().sound(SoundType.METAL), false)), null);
+            new LetterButton(properties.strength(0.5f).noCollission(), false)), null);
 
     public static final RegistrySupplier<LetterButton> LETTER_LEVER = INSTANCE.registerBlock("letter_lever", BlockEntryBuilder.ofBlock((properties) ->
-            new LetterButton(properties.strength(0.5f).noCollission().sound(SoundType.METAL), true)), null);
+            new LetterButton(properties.strength(0.5f).noCollission(), true)), null);
 
 
     /**
@@ -296,8 +296,8 @@ public class IBBlocks {
     }
 
     protected LargeVariantSupplier<NormalButton> registerStoneButton(ResourceLocation material, String type, SoundType soundType) {
-        LargeVariantSupplier<nl.teamdiopside.infinitybuttons.block.faced6.normal.NormalButton> supplier = registerLargeVariantButton(material, type,
-                (properties, large) -> new nl.teamdiopside.infinitybuttons.block.faced6.normal.NormalButton(BlockSetType.STONE, 20, properties, large, false, soundType), null);
+        LargeVariantSupplier<NormalButton> supplier = registerLargeVariantButton(material, type,
+                (properties, large) -> new NormalButton(BlockSetType.STONE, 20, properties, large, false, soundType), null);
 
         STONE_BUTTONS.put(type, supplier);
         SMALL_LARGE_BUTTONS.put(material, supplier);
@@ -305,8 +305,9 @@ public class IBBlocks {
     }
 
     protected LargeVariantSupplier<OneUseButton> registerOneUseButton(ResourceLocation material, String type) {
+        boolean isGravel = type.equals("gravel");
         LargeVariantSupplier<OneUseButton> supplier = registerLargeVariantButton(material, type,
-                (properties, large) -> new OneUseButton(BlockSetType.STONE, properties, large, false, type.equals("gravel")), "falling_button");
+                (properties, large) -> new OneUseButton(BlockSetType.STONE, properties, large, false, isGravel), "falling_button");
 
         ONE_USE_BUTTONS.put(type, supplier);
         return supplier;
@@ -325,7 +326,7 @@ public class IBBlocks {
 
         return LargeVariantSupplier.registerVariants((large) -> registerBlock(
                 type + (large ? "_large_button" : "_button"), BlockEntryBuilder.ofBlock((properties) ->
-                        new CopperButton(properties.sound(SoundType.COPPER).requiresCorrectToolForDrops(), large, weatherState, copperButtonType)),
+                        new CopperButton(properties.requiresCorrectToolForDrops(), large, weatherState, copperButtonType)),
 
                 "sticky_copper_button",
                 ignored -> copperButtonType == CopperButtonType.STICKY
@@ -347,10 +348,11 @@ public class IBBlocks {
     protected void registerDefaultLargeButtons() {
         for (BlockSetType type : BlockSetType.values().toList()) {
             if (type == BlockSetType.COPPER || type == BlockSetType.GOLD || type == BlockSetType.IRON) continue;
+            boolean isStone = type == BlockSetType.STONE || type == BlockSetType.POLISHED_BLACKSTONE;
 
             var registry = registerBlock(type.name() + "_large_button", BlockEntryBuilder.ofBlock((properties) ->
-                    new NormalButton(type, type == BlockSetType.STONE ? 20 : 30, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON),
-                            true, false)), null);
+                    new NormalButton(type, isStone ? 20 : 30, getDefaultProperties(),
+                            true, false, type.soundType())), null);
 
             DEFAULT_LARGE_BUTTONS.put(type, registry);
         }
@@ -374,7 +376,7 @@ public class IBBlocks {
 
     public RegistrySupplier<EmergencyButton> registerEmergencyButton(DyeColor color, String name) {
         var registry = registerBlock(name + "_emergency_button", BlockEntryBuilder.ofBlock(EmergencyButton::new),
-                BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.METAL), "emergency_button");
+                BlockBehaviour.Properties.of().strength(0.5f), "emergency_button");
 
         EMERGENCY_BUTTONS.put(color, registry);
         return registry;
@@ -382,7 +384,7 @@ public class IBBlocks {
 
     public RegistrySupplier<SafeEmergencyButton> registerSafeEmergencyButton(DyeColor color, String name) {
         var registry = registerBlock(name + "_safe_emergency_button", BlockEntryBuilder.ofBlock(SafeEmergencyButton::new),
-                BlockBehaviour.Properties.of().strength(0.5f).sound(SoundType.METAL), "safe_emergency_button");
+                BlockBehaviour.Properties.of().strength(0.5f), "safe_emergency_button");
 
         SAFE_EMERGENCY_BUTTONS.put(color, registry);
         return registry;
@@ -395,12 +397,16 @@ public class IBBlocks {
         return BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON);
     }
 
-    protected static BlockBehaviour.Properties lampProperties(BlockBehaviour.Properties properties, int light) {
-        return properties.lightLevel(litBlockEmission(light)).sound(SoundType.GLASS).pushReaction(PushReaction.DESTROY);
+    protected static BlockBehaviour.Properties lampProperties(BlockBehaviour.Properties properties) {
+        return properties.lightLevel(litBlockEmission(15)).pushReaction(PushReaction.DESTROY);
     }
 
     protected static BlockBehaviour.Properties torchProperties(BlockBehaviour.Properties properties, int light) {
-        return properties.noCollission().strength(0.3f).instabreak().lightLevel(litBlockEmission(light)).sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY);
+        return properties.noCollission().strength(0.3f).instabreak().lightLevel((state) -> light).sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY);
+    }
+
+    protected static BlockBehaviour.Properties redstoneTorchProperties(BlockBehaviour.Properties properties) {
+        return torchProperties(properties, 7).lightLevel(litBlockEmission(7));
     }
 
     protected static BlockBehaviour.Properties lanternProperties(BlockBehaviour.Properties properties, int light) {
@@ -409,7 +415,7 @@ public class IBBlocks {
     }
 
     protected static ToIntFunction<BlockState> litBlockEmission(int light) {
-        return blockState -> blockState.getValue(BlockStateProperties.POWERED) ? light : 0;
+        return state -> state.getValue(BlockStateProperties.POWERED) ? light : 0;
     }
 
     /**

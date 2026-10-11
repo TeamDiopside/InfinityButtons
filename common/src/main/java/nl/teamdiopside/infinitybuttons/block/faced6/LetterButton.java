@@ -19,7 +19,7 @@ public class LetterButton extends ButtonFaced6 {
     protected final boolean isLever;
 
     public LetterButton(Properties properties, boolean isLever) {
-        super(BlockSetType.STONE, properties, SHAPE_PRESSED, SHAPE_UNPRESSED);
+        super(BlockSetType.SPRUCE, properties, SHAPE_PRESSED, SHAPE_UNPRESSED);
         this.isLever = isLever;
 
         this.registerDefaultState(this.defaultBlockState()

@@ -16,7 +16,7 @@ public class OneUseButton extends NormalButton {
     public static final int PRESS_TICKS = 10;
 
     public OneUseButton(BlockSetType blockSetType, Properties properties, boolean large, boolean isLever, boolean gravelSound) {
-        super(blockSetType, PRESS_TICKS, properties, large, isLever);
+        super(blockSetType, PRESS_TICKS, properties, large, isLever, gravelSound ? SoundType.GRAVEL : SoundType.SAND);
         this.gravelSound = gravelSound;
     }
 
@@ -35,10 +35,5 @@ public class OneUseButton extends NormalButton {
         super.tick(state, serverLevel, pos, random);
 
         serverLevel.destroyBlock(pos, false);
-    }
-
-    @Override
-    protected @NotNull SoundType getSoundType(BlockState state) {
-        return this.gravelSound ? SoundType.GRAVEL : SoundType.SAND;
     }
 }
