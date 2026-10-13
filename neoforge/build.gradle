@@ -73,7 +73,7 @@ dependencies {
     modLocalRuntime "maven.modrinth:create:6.0.10+mc1.21.1" // 6.0.10
     modLocalRuntime "maven.modrinth:environmental:NdDV1AM8" // 5.0.1
     modLocalRuntime "maven.modrinth:friends-and-foes-forge:zeGwtTNo" // 4.0.27
-    modLocalRuntime "maven.modrinth:my-nethers-delight:1.10.2" // 1.10.2
+    modLocalRuntime "maven.modrinth:my-nethers-delight:1.10.4.1" // 1.10.4.1
     modLocalRuntime "maven.modrinth:neapolitan:RQ5qgaUC" // 6.0.1
     modImplementation "maven.modrinth:quark:hMLnxKZx" // 480
     modLocalRuntime "maven.modrinth:upgrade-aquatic:3ZycbXog" // 7.0.1
