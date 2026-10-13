@@ -81,3 +81,11 @@ fabricApi {
         outputDirectory = project.file("$rootDir/common/src/main/generated")
     }
 }
+
+sourceSets {
+    main {
+        resources {
+            srcDir project(':common').file('src/main/resources')
+        }
+    }
+}

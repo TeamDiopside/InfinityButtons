@@ -115,3 +115,11 @@ shadowJar {
 remapJar {
     input.set shadowJar.archiveFile
 }
+
+sourceSets {
+    main {
+        resources {
+            srcDir project(':common').file('src/main/resources')
+        }
+    }
+}

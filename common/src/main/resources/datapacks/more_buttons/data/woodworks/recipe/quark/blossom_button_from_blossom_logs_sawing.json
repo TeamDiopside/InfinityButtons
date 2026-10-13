@@ -1,0 +1,36 @@
+{
+  "type": "woodworks:sawmill",
+  "ingredient": {
+    "tag": "quark:blossom_logs"
+  },
+  "result": {
+    "count": 24,
+    "id": "quark:blossom_button"
+  },
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "quark"
+    }, {
+      "type": "neoforge:mod_loaded",
+      "modid": "woodworks"
+    },
+    {
+      "type": "woodworks:config",
+      "value": "sawmill"
+    },
+    {
+      "type": "zeta:flag",
+      "flag": "blossom_trees"
+    }
+  ],
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "quark",
+        "woodworks"
+      ]
+    }
+  ]
+}

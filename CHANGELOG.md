@@ -17,6 +17,7 @@
 - Now using YACL as config library.
 - Changed language keys for actionbars and tooltips.
 - Included Every Compat module.
+- The button recipe overrides are now a datapack, which can be disabled.
 
 ## Content
 - Added Bamboo Plank Secret Button.
@@ -49,3 +50,4 @@
 - Emergency Buttons now use stone sounds.
 - Prismarine Buttons now only drop when mined with a pickaxe.
 - Modded wooden buttons have been added to the Infinity Buttons Creative Tab
+- Vanilla's Mangrove, Bamboo and Cherry Buttons will now craft 4 at a time.
