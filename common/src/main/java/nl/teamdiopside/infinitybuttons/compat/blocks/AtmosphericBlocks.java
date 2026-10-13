@@ -7,7 +7,7 @@ import nl.teamdiopside.infinitybuttons.block.faced6.normal.OneUseButton;
 import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
 import nl.teamdiopside.infinitybuttons.registry.IBRegistryUtils;
 
-import static com.mojang.text2speech.Narrator.LOGGER;
+import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
 
 public class AtmosphericBlocks extends IBModdedBlocks {
     public static final AtmosphericBlocks INSTANCE = new AtmosphericBlocks();

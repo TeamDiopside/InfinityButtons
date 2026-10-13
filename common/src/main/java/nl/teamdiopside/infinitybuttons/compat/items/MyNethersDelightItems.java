@@ -5,7 +5,7 @@ import net.minecraft.world.item.StandingAndWallBlockItem;
 import nl.teamdiopside.infinitybuttons.compat.IBModdedItems;
 import nl.teamdiopside.infinitybuttons.compat.blocks.MyNethersDelightBlocks;
 
-import static com.mojang.text2speech.Narrator.LOGGER;
+import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
 
 public class MyNethersDelightItems extends IBModdedItems {
     public static final MyNethersDelightItems INSTANCE = new MyNethersDelightItems();

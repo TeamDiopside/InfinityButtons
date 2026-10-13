@@ -9,7 +9,7 @@ import nl.teamdiopside.infinitybuttons.block.faced4.SecretButton;
 import nl.teamdiopside.infinitybuttons.block.faced4.SecretButtonType;
 import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
 
-import static com.mojang.text2speech.Narrator.LOGGER;
+import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
 
 public class UpgradeAquaticBlocks extends IBModdedBlocks {
     public static final UpgradeAquaticBlocks INSTANCE = new UpgradeAquaticBlocks();

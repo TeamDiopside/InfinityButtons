@@ -15,7 +15,7 @@ import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
 
 import java.util.function.UnaryOperator;
 
-import static com.mojang.text2speech.Narrator.LOGGER;
+import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
 
 public class MyNethersDelightBlocks extends IBModdedBlocks {
     public static final MyNethersDelightBlocks INSTANCE = new MyNethersDelightBlocks();

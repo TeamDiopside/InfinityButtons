@@ -14,7 +14,7 @@ import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
 import java.util.EnumMap;
 import java.util.Map;
 
-import static com.mojang.text2speech.Narrator.LOGGER;
+import static nl.teamdiopside.infinitybuttons.InfinityButtons.LOGGER;
 
 public class ClayworksBlocks extends IBModdedBlocks {
     public static final ClayworksBlocks INSTANCE = new ClayworksBlocks();
