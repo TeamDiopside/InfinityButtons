@@ -2,8 +2,11 @@ package nl.teamdiopside.infinitybuttons.registry;
 
 import dev.architectury.platform.Platform;
 import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.DyeColor;
@@ -45,6 +48,7 @@ public class IBCreativeTabs {
     private static CreativeModeTab.DisplayItemsGenerator itemsGenerator() {
         return (features, output) -> {
             addWoodenButtons(output, false);
+            addModdedWoodenButtons(output);
             addStoneButtons(output, false);
             addCopperButtons(output, false);
             addSpecialButtons(output, false);
@@ -93,6 +97,21 @@ public class IBCreativeTabs {
             addBlock(output, IBBlocks.DEFAULT_LARGE_BUTTONS.get(BlockSetType.BAMBOO).get());
             addBlock(output, IBBlocks.DEFAULT_LARGE_BUTTONS.get(BlockSetType.CRIMSON).get());
             addBlock(output, IBBlocks.DEFAULT_LARGE_BUTTONS.get(BlockSetType.WARPED).get());
+        }
+    }
+
+    /**
+     * Adds modded wooden buttons to the creative tab.
+     * @param output The output instance to add the blocks to.
+     */
+    public static void addModdedWoodenButtons(CreativeModeTab.Output output) {
+        for (var block : BuiltInRegistries.BLOCK) {
+            ResourceLocation location = BuiltInRegistries.BLOCK.getKey(block);
+            if (location.getNamespace().equals("minecraft")) continue;
+            if (location.getNamespace().equals(MOD_ID)) continue;
+            if (!location.getPath().endsWith("_button")) continue;
+            if (!block.defaultBlockState().is(TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath("minecraft", "wooden_buttons")))) continue;
+            addBlock(output, block);
         }
     }
 

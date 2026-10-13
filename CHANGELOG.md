@@ -48,3 +48,4 @@
 - Letter Buttons now use wood sounds.
 - Emergency Buttons now use stone sounds.
 - Prismarine Buttons now only drop when mined with a pickaxe.
+- Modded wooden buttons have been added to the Infinity Buttons Creative Tab
