@@ -383,7 +383,7 @@ public class IBBlocks {
     }
 
     public RegistrySupplier<SafeEmergencyButton> registerSafeEmergencyButton(DyeColor color, String name) {
-        var registry = registerBlock(name + "_safe_emergency_button", BlockEntryBuilder.ofBlock(SafeEmergencyButton::new),
+        var registry = registerBlock(name + "_safe_emergency_button", BlockEntryBuilder.ofBlock(SafeEmergencyButton::new).withoutItem(),
                 BlockBehaviour.Properties.of().strength(0.5f), "safe_emergency_button");
 
         SAFE_EMERGENCY_BUTTONS.put(color, registry);

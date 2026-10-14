@@ -17,6 +17,7 @@ import nl.teamdiopside.infinitybuttons.block.faced6.LetterButton;
 import nl.teamdiopside.infinitybuttons.block.faced6.LetterButtonState;
 import nl.teamdiopside.infinitybuttons.block.faced6.console.ConsoleButtonBlockEntity;
 import nl.teamdiopside.infinitybuttons.compat.jade.JadeIntegration;
+import nl.teamdiopside.infinitybuttons.config.IBConfig;
 import org.jetbrains.annotations.NotNull;
 
 public class IBNetworking {
@@ -31,6 +32,9 @@ public class IBNetworking {
         if (Platform.getEnv() == EnvType.CLIENT) {
             NetworkManager.registerReceiver(NetworkManager.Side.S2C, JadeSyncPayload.TYPE,
                     JadeSyncPayload.STREAM_CODEC, IBNetworking::handleJadeSync);
+        } else {
+            // Fabric needs to be special again
+            NetworkManager.registerS2CPayloadType(JadeSyncPayload.TYPE, JadeSyncPayload.STREAM_CODEC);
         }
 
         // Send 'Force Jade Camouflage' packets

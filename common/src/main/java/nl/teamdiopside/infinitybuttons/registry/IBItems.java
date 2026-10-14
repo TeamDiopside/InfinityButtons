@@ -47,6 +47,8 @@ public class IBItems {
         for (DyeColor color : DyeColor.values()) {
             map.put(color, registerSafetyButton(color));
         }
+        // Fancy Safety Button
+        map.put(null, registerSafetyButton(null));
         return map;
     }
 
@@ -54,6 +56,7 @@ public class IBItems {
      * Methods
      */
     private <T extends Item> RegistrySupplier<T> registerItem(String name, ItemEntryBuilder<T> builder, Item.Properties properties) {
+        LOGGER.info("Registering " + name);
         return builder.register(ResourceLocation.fromNamespaceAndPath(InfinityButtons.MOD_ID, name), properties);
     }
 

@@ -4,6 +4,7 @@ import dev.architectury.platform.Platform;
 import nl.teamdiopside.infinitybuttons.compat.IBModdedBlocks;
 import nl.teamdiopside.infinitybuttons.compat.IBModdedItems;
 import nl.teamdiopside.infinitybuttons.compat.everycomp.IBEveryCompat;
+import nl.teamdiopside.infinitybuttons.config.IBConfig;
 import nl.teamdiopside.infinitybuttons.registry.*;
 
 import java.util.logging.Logger;
